@@ -1,5 +1,6 @@
-<h1>Wikipedia von MyLearnSpace</h1>
 
+<h1>Wikipedia von MyLearnSpace</h1>
+<div class="zweispaltig">
 <table>
   <tr>
     <th>Title</th>
@@ -12,6 +13,29 @@
       <td><%= wiki.article %></td>
     </tr>
   <% end %>
-</table>
+</table></div>
+<div class="zweispaltig"> 
+<%= link_to 'Neuen Artikel verfassen', new_wiki_path %></div>
+
+
+	<div id="simpleSearch">
+<input name="search" placeholder="Suchen" title="Durchsuche das Wiki [shift-esc-f]" accesskey="f" id="searchInput" tabindex="1" autocomplete="off"/>
+	<button type="submit" onclick="wikisearch();" "button" title="Suche nach Seiten, die diesen Text enthalten" id="searchButton">
+<img src="//bits.wikimedia.org/static-1.23wmf4/skins/vector/images/search-ltr.png?303-4" width="12" height="13"/>
+</button>
+	</div>
+	
+<script type="text/javascript">
+function wikisearch() {
+	
+ var query = document.getElementById('searchInput');
+ 
+ window.location.href = ("wiki/"+escape(query.value));
+           
+		
+    
+  }
+  </script>
+
 
 
