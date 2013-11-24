@@ -1,0 +1,17 @@
+<h1>Wikipedia von MyLearnSpace</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Artikel</th>
+  </tr>
+ 
+  <% @wikis.each do |wiki| %>
+    <tr>
+      <td><%= wiki.title %></td>
+      <td><%= wiki.article %></td>
+    </tr>
+  <% end %>
+</table>
+
+
