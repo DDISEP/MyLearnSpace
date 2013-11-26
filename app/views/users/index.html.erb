@@ -1,0 +1,27 @@
+<h4> Benutzer </h4>
+<table>
+	<tr>
+		<td>
+			Name
+		</td>
+		<td>
+			E-Mail Adresse
+		</td>	
+		<td>
+			Schüler
+		</td>	
+	</tr>
+	<% @users.each do |u| 	%>
+	<tr>
+		<td>
+			<%= u.name %>
+		</td>
+		<td>
+			<%= u.email %>
+		</td>
+			<%= u.pupil %>
+		</td>
+	</tr>	
+	<% end %>
+	
+</table>
