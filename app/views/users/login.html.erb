@@ -1,5 +1,5 @@
 <h3>Anmelden</h3>
-<div class='text-field'>
+<!--div class='text-field'>
   <%= form.label :email %>
   <%= form.text_field :email, :type => 'email' %>
 </div>
@@ -7,4 +7,33 @@
 <div class='password-field'>
   <%= form.label :password %>
   <%= form.password_field :password %>
-</div>
+</div>-->
+<%= form_for @user do |f| %>
+      <% if @user.errors.any? %>
+        <div class="error_messages">
+          <h2>Fehler bei der Anmeldung</h2>
+          <ul>
+            <% for message in @user.errors.full_messages %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :email %><br>
+        <%= f.text_field :email %>
+      </div>
+      <div class="field">
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation %><br>
+        <%= f.password_field :password_confirmation %>
+      </div>
+      <div class="actions"><%= f.submit %></div>
+    <% end %>
