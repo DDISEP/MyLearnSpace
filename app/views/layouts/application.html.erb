@@ -6,22 +6,6 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<script type="text/javascript">
-function wikisearch() {
-	alert("blub");
-  if (document.Formular.search != "") {
-     	window.location.href ="/wikis/" +document.Formular.search;
-     	
-  var query = document.getElementById('searchInput');
-        
-          if ( ! query.value ) {
-               return false;  
-          }
-		window.location.href ="/wikis/" +query;
-          
-    
-  }}
-  </script>
 
 
 <body>
