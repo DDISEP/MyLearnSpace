@@ -1,0 +1,26 @@
+<%= form_for :wiki, url: wikis_path do |f| %>
+  <% if @wiki.errors.any? %>
+  <div id="error_explanation">
+    <strong><%= pluralize(@wiki.errors.count, "error") %> prohibited
+      this post from being saved:</strong>
+    <ul>
+    <% @wiki.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title, :value => @title %> 
+  </p>
+ 
+  <p>
+    <%= f.label :article %><br>
+    <%= f.text_area :article %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

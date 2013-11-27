@@ -1,0 +1,20 @@
+<div>
+<h1><%= @wikis.count %> Artikel gefunden!</h1>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+<% @wikis.each do |wiki| %>
+  <tr>
+    <td><strong><%= wiki.title %></td></strong>
+    <td><%= wiki.article %></td>
+    <td><%= link_to 'Show', wikis_path(wiki) %></td>
+
+  </tr>
+<% end %>
+</table></div>

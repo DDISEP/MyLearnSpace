@@ -5,7 +5,11 @@ MyLearnSpace::Application.routes.draw do
 
   get "welcome/index"
   
+  
+  
   resources :wikis
+  post 'wikis/search' => "wikis#search"
+  
   get 'wiki/:title' => "wikis#showByName"
   
   

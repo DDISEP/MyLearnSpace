@@ -1,0 +1,5 @@
+ <%= form_tag :controller => 'wikis', :action => 'search', :method => 'get' do %>
+2      <%= text_field_tag :search, params[:search], :id => 'search_field' %>
+3      <%= submit_tag "Suche", :name => nil %> 
+4      
+5  <% end %> 

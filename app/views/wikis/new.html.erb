@@ -1,18 +1,4 @@
 <h3>Neuen Wiki-Artikel erstellen</h3>
 
-<%= form_for :wiki, url: wikis_path do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
- 
-  <p>
-    <%= f.label :article %><br>
-    <%= f.text_area :article %>
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= render "createArticleForm" %>
 <%= link_to 'Zurück', wikis_path %>
