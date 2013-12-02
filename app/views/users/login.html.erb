@@ -1,14 +1,6 @@
-<h3>Anmelden</h3>
-<!--div class='text-field'>
-  <%= form.label :email %>
-  <%= form.text_field :email, :type => 'email' %>
-</div>
+ <h1>Anmeldung</h1>
 
-<div class='password-field'>
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-</div>-->
-<%= form_for @user do |f| %>
+    <%= form_for @user do |f| %>
       <% if @user.errors.any? %>
         <div class="error_messages">
           <h2>Fehler bei der Anmeldung</h2>
@@ -20,8 +12,8 @@
         </div>
       <% end %>
       <div class="field">
-        <%= f.label :name %><br>
-        <%= f.text_field :name %>
+        <%= f.label :username %><br>
+        <%= f.text_field :username %>
       </div>
       <div class="field">
         <%= f.label :email %><br>

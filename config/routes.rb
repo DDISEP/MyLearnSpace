@@ -5,7 +5,9 @@ MyLearnSpace::Application.routes.draw do
 
   get "welcome/index"
   
+  resources :sessions
   
+  get 'sessions/new' => "sessions#new"
   
   resources :wikis
   post 'wikis/search' => "wikis#search"

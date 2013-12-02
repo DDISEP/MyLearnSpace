@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
   
   def new
-    
+    @user = User.new
   end
   
   def login
@@ -13,9 +13,12 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.create(params[:user]) #fehlt noch: Antwort, ob erfolgreich oder nicht (respond_with)
-    @user.save
-    redirect_to @user
+     @user = User.new(params[:user])
+       if @user.save
+         redirect_to root_url, :notice => "Erfolgreich angemeldet!"
+       else
+         render "new"
+       end
   end
 
 private  
@@ -25,7 +28,7 @@ private
 
 private  
   def showByName 
-    @user=User.find_by_name(params[:name])
+    @user=User.find_by_name(params[:username])
     if @user.nil?
       render "showEmptyUser.html.erb"
     else
@@ -49,6 +52,11 @@ private
     @users = User.all
     render :action => :index
   end
-  
+
+  def authenticate 
+     user = User.find_by_email(params[:email])
+     if user && user.authenticate(params[:password])
+    end 
+  end
   
 end

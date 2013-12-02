@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'bcrypt-ruby'
+
+gem 'protected_attributes'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
