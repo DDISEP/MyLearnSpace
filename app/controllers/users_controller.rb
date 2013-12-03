@@ -42,47 +42,43 @@ class UsersController < ApplicationController
        if @user.save
          redirect_to root_url, :notice => "Erfolgreich angemeldet!"
        else
-         render "new"
+         render "new.html.erb"
        end
   end
 
-private  
-  def show
-    @user=User.find(params[:id])
-  end
+def show
+    #@user=User.find(params[:id])
+end
 
-private  
-  def showByName 
-    @user=User.find_by_name(params[:username])
+def showByName 
+    @user=User.find_by_username(params[:username])
     if @user.nil?
       render "showEmptyUser.html.erb"
     else
       render "show.html.erb"
     end
-  end
-private  
-  def edit
+end
+  
+def edit
     
-  end 
+end 
 
-private  
-  def update
+def update
     
   end
 
-private  
-  def destroy
+def destroy
     u=User.find(params[:id])
     u.destroy
     @users = User.all
     render :action => :index
-  end
+end
 
-  def authenticate 
+def authenticate 
      user = User.find_by_email(params[:email])
      if user && user.authenticate(params[:password])
     end 
-  end
+end
   
   
 end
