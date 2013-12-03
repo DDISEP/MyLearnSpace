@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
      def new
-       redirect_to 'new.html.erb'
+       
      end
      def create
        # ......

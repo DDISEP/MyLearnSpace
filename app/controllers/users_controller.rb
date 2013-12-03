@@ -9,7 +9,32 @@ class UsersController < ApplicationController
   end
   
   def login
-    render "login.html.erb"
+    @fehler1 = false
+    @fehler2 = false
+    if params[:name] != nil
+      if User.find_by_username(params[:name]) == nil
+        @fehler1 = true
+      elsif User.find_by_username(params[:name]).password == params[:pass]
+        session[:name]=params[:name]
+        redirect_to(:action => 'profile')
+      else
+        @fehler2 = true
+      end
+    end
+  end
+  
+  def profile
+    if params[:logout] != nil
+      session[:name] = nil
+      redirect_to(:action => 'login')
+    end
+    
+    @fehler = false
+    if session[:name] == nil
+      @fehler = true
+    else
+      @session = session[:name]
+    end
   end
   
   def create
@@ -58,5 +83,6 @@ private
      if user && user.authenticate(params[:password])
     end 
   end
+  
   
 end

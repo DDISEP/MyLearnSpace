@@ -10,9 +10,20 @@ MyLearnSpace::Application.routes.draw do
   get 'sessions/new' => "sessions#new"
   
   resources :wikis
+  
   post 'wikis/search' => "wikis#search"
   
   get 'wiki/:title' => "wikis#showByName"
+  
+  resources :users
+  
+  get "users/login"
+  
+  post "users/login"
+  
+  get "users/profile"
+  
+  post "users/profile"
   
   
   

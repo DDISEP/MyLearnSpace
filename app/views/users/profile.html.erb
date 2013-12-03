@@ -1,0 +1,11 @@
+
+<%if @fehler%>
+	<font color="red"><b> Du bist nicht angemeldet! <br /></b></font>
+	<a href="/users/login"> Hier geht's zur Anmeldung <\a><br />
+<%else%>
+	<h2>Herzlich Willkommen, <%= @session %></h2>
+	<form action="/users/profile" method="post"> 
+		<input type="hidden" name="logout" value ="true" />
+		<input type="submit" value="Abmelden" />		
+	</form>
+<%end%>
