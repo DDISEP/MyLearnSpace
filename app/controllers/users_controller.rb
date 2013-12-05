@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   end
 
   def show #fremde profile
-    @user=User.find(params[:id]) #wenn username in session gleich gesuchtemusername ,dann profile
+    #@user=User.find(params[:id]) #wenn username in session gleich gesuchtemusername ,dann profile
   end
 
   def showByName 

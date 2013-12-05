@@ -1,8 +1,21 @@
-<h1>hallo :)</h1>
+<h3>Hier kannst du dir ein Profil anlegen:</h3>
+<h5> Alle Felder mit * sind Pflichtfelder. Bitte fülle diese sorgfältig aus</h5>
 
-<%= form_for :user, url: users_path do |f| %>
-  <p>
-   
-  </p>
-<% end %>
+ <form action="/users/login" method="post">
+ 	<style type="text/css"> 
+    {line-height: 100;}    
+  	</style> 
+ 	<table width="30%">
+ 		<tr><td> *Benutzername:         </td> <td> <input type="text" name="name" /></td></tr> <!--hier evtl typ ändern: Text mit Zahlen????-->
+ 		<tr><td> *Passwort:             </td> <td> <input type="password" name="pass1" /></td></tr><!--name statt username weilusername schon in user belegt????-->
+ 		<tr><td> *Passwort-Bestätigung: </td> <td> <input type="password" name="pass2" /></td></tr>
+ 		<tr><td>  Bist du ein Schüler?  </td> <td>	<select name="pup">
+  												<option value="true">ja</option>
+  												<option value="false">nein</option>
+											</select>	</td></tr>
+ 		<tr><td>  </td> <td> <input type="submit" value="Anmelden" /></td></tr>
+ 	</table>	
+
+
 <%= link_to 'Zu den anderen Benutzern', users_path %>
+ 
