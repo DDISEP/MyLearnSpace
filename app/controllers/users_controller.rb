@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   
   def index
     @users = User.all #hier muss jeweils noch authorisiert werden, wer sich das ausgeben lassen darf

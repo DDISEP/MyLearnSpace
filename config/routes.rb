@@ -1,9 +1,4 @@
 MyLearnSpace::Application.routes.draw do
-  resources :users
-
-  root 'welcome#index'
-
-  get "welcome/index"
   
   resources :sessions
   
@@ -17,6 +12,10 @@ MyLearnSpace::Application.routes.draw do
   
   resources :users
   
+  root 'welcome#index'
+
+  get "welcome/index"
+  
   get "users/login"
   
   post "users/login"
@@ -25,6 +24,11 @@ MyLearnSpace::Application.routes.draw do
   
   post "users/profile"
   
+  get "users/show"
+
+  post "users/show"
+
+
   
   
   # The priority is based upon order of creation: first created -> highest priority.
