@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   
   def index
     @users = User.all #hier muss jeweils noch authorisiert werden, wer sich das ausgeben lassen darf
@@ -13,18 +12,24 @@ class UsersController < ApplicationController
     @fehler1 = false
     @fehler2 = false
     if params[:name] != nil
-      if User.find_by_username(params[:name]) == nil
+      if User.find_by_username(params[:name]) == nil #Namen gibt es nicht
         @fehler1 = true
-      elsif User.find_by_username(params[:name]).password == params[:pass]
+        #evtl.: redirect_to(:action => 'login')???
+      elsif User.find_by_username(params[:name]).password == params[:pass] #passwort richtig
         session[:name]=params[:name]
         redirect_to(:action => 'profile')
       else
-        @fehler2 = true
+        @fehler2 = true #passwort falsch
+        # evtl.: redirect_to(:action => 'login')?????
       end
     end
   end
   
-  def profile
+  def logout
+    
+  end
+  
+  def profile #nur zugriff möglich, wenn schon eigens profil
     if params[:logout] != nil
       session[:name] = nil
       redirect_to(:action => 'login')
@@ -47,39 +52,39 @@ class UsersController < ApplicationController
        end
   end
 
-def show
-    #@user=User.find(params[:id])
-end
+  def show #fremde profile
+    @user=User.find(params[:id]) #wenn username in session gleich gesuchtemusername ,dann profile
+  end
 
-def showByName 
+  def showByName 
     @user=User.find_by_username(params[:username])
     if @user.nil?
       render "showEmptyUser.html.erb"
     else
       render "show.html.erb"
     end
-end
+  end
   
-def edit
+  def edit
     
-end 
+  end 
 
-def update
+  def update
     
   end
 
-def destroy
+  def destroy
     u=User.find(params[:id])
     u.destroy
     @users = User.all
     render :action => :index
-end
+  end
 
-def authenticate 
+  def authenticate 
      user = User.find_by_email(params[:email])
      if user && user.authenticate(params[:password])
     end 
-end
+  end
   
   
 end

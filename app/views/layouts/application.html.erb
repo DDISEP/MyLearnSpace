@@ -15,10 +15,10 @@
 	<%= link_to 'Wiki', wikis_path %>
 	<%= link_to 'Benutzer', users_path %>
 	<% if current_user.nil? %>
-      <%= link_to "Anmelden", new_session_path %>
+      <%= link_to "Anmelden", users_login_path %> <!--statt session path login path-->
     <% else %>
       Eingeloggt als <%= current_user.name %>.
-      <%= link_to 'Abmelden', session_path( session ), :method => :delete %>
+      <%= link_to 'Abmelden', users_logout_path %> <!--ession_path( session ), :method => :delete %>-->
     <% end %>
 	
 </p>
