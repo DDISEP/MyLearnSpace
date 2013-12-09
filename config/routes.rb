@@ -12,8 +12,11 @@ MyLearnSpace::Application.routes.draw do
   root 'welcome#index'
 
   get "welcome/index"
+ 
   
-  get "users/new" => "users#new"
+  get "users/new"
+  
+  post "users/new" => "users#new"
   
   get "users" => "users#index"
   
@@ -32,6 +35,7 @@ MyLearnSpace::Application.routes.draw do
   get "users/show"
 
   post "users/show"
+  
 
   
   # The priority is based upon order of creation: first created -> highest priority.
