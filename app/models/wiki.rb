@@ -8,5 +8,6 @@ def self.search(search)
   search_condition = "%" + search + "%"
   find(:all, :conditions => ['title LIKE ? OR article LIKE ?', search_condition, search_condition])
 end
+
                       
 end

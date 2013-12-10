@@ -1,9 +1,10 @@
 
-<h3><%= @wiki.title %></h3>
+<h3><%= @wiki.title %></h3><%= link_to "Artikel bearbeiten", edit_wiki_path %>
 
 <hr>
 
 <%= @wiki.article %>
+
 <%= link_to 'Zurück', wikis_path %>
 
 

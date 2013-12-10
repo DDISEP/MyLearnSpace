@@ -1,5 +1,4 @@
- <%= form_tag :controller => 'wikis', :action => 'search', :method => 'get' do %>
-2      <%= text_field_tag :search, params[:search], :id => 'search_field' %>
-3      <%= submit_tag "Suche", :name => nil %> 
-4      
-5  <% end %> 
+ <%= form_tag url_for(:controller => 'wikis', :action => 'search'), :method => :post, :remote => true do %>
+     <%= text_field_tag :search, "", :id => 'search_field' %>
+      <%= submit_tag "Suche", :name => nil %> 
+  <% end %> 

@@ -13,6 +13,15 @@ def create
   end
   
 end
+def update
+  @wiki = Wiki.find(params[:id])
+ 
+  if @wiki.update(params.require(:wiki).permit(:article)) # nur Artikel änderbar
+    redirect_to @wiki
+  else
+    render 'edit'
+  end
+end
 
 def search
   @wikis = Wiki.search params[:search]
