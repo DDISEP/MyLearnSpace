@@ -1,2 +1,0 @@
-class CurriculumController < ApplicationController
-end

@@ -20,7 +20,7 @@
       Eingeloggt als <%= current_user.name %>.
       <%= link_to 'Abmelden', users_logout_path %> <!--ession_path( session ), :method => :delete %>-->
     <% end %>
-	
+	<%= link_to 'Lehrplan', curriculums_path %>
 </p>
 <%= yield %>
 
