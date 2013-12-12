@@ -1,6 +1,10 @@
 MyLearnSpace::Application.routes.draw do
   
   
+  resources :items
+
+  resources :curriculums
+
   resources :wikis
   
   post 'wikis/search' => "wikis#search"
