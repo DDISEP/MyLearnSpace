@@ -1,11 +1,11 @@
 
-<h3><%= @wiki.title %></h3><%= link_to "Artikel bearbeiten", edit_wiki_path %>
-
+<div class="zweispaltig"><h3><p align="center"><%= @wiki.title %></p></h3> 
+<%= link_to "Artikel bearbeiten", edit_wiki_path %>
 <hr>
+<p align="center"><%= @wiki.article %></p>	</div>
+<div><%= link_to 'Zurück', wikis_path %></div>
 
-<%= @wiki.article %>
 
-<%= link_to 'Zurück', wikis_path %>
 
 
 

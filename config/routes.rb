@@ -11,6 +11,8 @@ MyLearnSpace::Application.routes.draw do
   
   get 'wiki/:title' => "wikis#showByName"
   
+  post 'wikis/:id' => "wikis#update"
+  
 
   
   root 'welcome#index'

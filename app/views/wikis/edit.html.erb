@@ -1,7 +1,9 @@
 <h3>Artikel bearbeiten</h3>
 
-<%= form_for :wiki, url: wikis_path do |f| %>
-  <% if @wiki.errors.any? %>
+<%= form_for :wiki, url: wiki_path do |f| %>
+
+<strong><%= @wiki.title %></strong>
+<% if @wiki.errors.any? %>
   <div id="error_explanation">
     <strong><%= pluralize(@wiki.errors.count, "error") %> prohibited
       this post from being saved:</strong>
@@ -12,7 +14,6 @@
     </ul>
   </div>
   <% end %>
-  
  
   <p>
     <%= f.label :article %><br>

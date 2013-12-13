@@ -1,5 +1,5 @@
 <%= form_for :wiki, url: wikis_path do |f| %>
-  <% if @wiki.errors.any? %>
+<% if @wiki.errors.any? %>
   <div id="error_explanation">
     <strong><%= pluralize(@wiki.errors.count, "error") %> prohibited
       this post from being saved:</strong>
@@ -12,7 +12,7 @@
   <% end %>
   <p>
     <%= f.label :title %><br>
-    <%= f.text_field :title, :value => @title %> 
+    <%= f.text_field :title%> 
   </p>
  
   <p>
