@@ -3,20 +3,10 @@
 <%= form_for :wiki, url: wiki_path do |f| %>
 
 <strong><%= @wiki.title %></strong>
-<% if @wiki.errors.any? %>
-  <div id="error_explanation">
-    <strong><%= pluralize(@wiki.errors.count, "error") %> prohibited
-      this post from being saved:</strong>
-    <ul>
-    <% @wiki.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
+<%= render "display_errors" %>
  
   <p>
-    <%= f.label :article %><br>
+    
     <%= f.text_area :article %>
   </p>
  
