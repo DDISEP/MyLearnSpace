@@ -1,0 +1,17 @@
+<h3>Artikel bearbeiten</h3>
+
+<%= form_for :wiki, url: wiki_path do |f| %>
+
+<strong><%= @wiki.title %></strong>
+<%= render "display_errors" %>
+ 
+  <p>
+    
+    <%= f.text_area :article %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+

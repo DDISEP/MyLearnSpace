@@ -1,25 +1,46 @@
 class WikisController < ApplicationController
   def new
     @wiki = Wiki.new
+    
   end
-  
+
+
 def create
-  @wiki = Wiki.new(wiki_params)
   
+ @wiki = Wiki.new(params[:wiki])
+ 
   if @wiki.save
     redirect_to @wiki
+    
   else
     render 'new'
+    #render text: "else"
+    
   end
   
 end
+def edit
+  @wiki = Wiki.find(params[:id])
+end
+
+def update
+        
+  @wiki = Wiki.find(params[:id])
+ 
+  if @wiki.update(params.require(:wiki).permit(:article)) # nur Artikel änderbar
+    redirect_to @wiki
+  else
+    render 'edit'
+  end
+
+  
+end
+
 
 def search
   @wikis = Wiki.search params[:search]
  
- render "search_results" # Todo partial Render implementieren, so dass Ergebnisse in aktuelle Seite eingebunden werden; Vll ist das Problem dass @wikis doppelt verwendet wird
- #render :partial => "search_results"
-  
+ render "search_results" 
   
 end
   
@@ -51,7 +72,7 @@ def showByName # Aufruf wiki/[Artikelname] möglich z.B. : wiki/Wurzel
 end
 
 def index
-  @wikis = Wiki.all
+  @wikis = Wiki.all  
 end
 
 private 

@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'bootstrap-wysihtml5-rails'
+
+gem 'twitter-bootstrap-rails'
+
 gem 'bcrypt-ruby'
 
 gem 'protected_attributes'
