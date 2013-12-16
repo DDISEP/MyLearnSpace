@@ -18,7 +18,7 @@
       <%= link_to "Anmelden", users_login_path %> <!--statt session path login path-->
     <% else %>
       Eingeloggt als <%= current_user.name %>.
-      <%= link_to 'Abmelden', '#' %> <!--ession_path( session ), :method => :delete %>-->
+      <%= link_to 'Abmelden', '#' %> <!--session_path( session ), :method => :delete %>-->
     <% end %>
 	<%= link_to 'Lehrplan', curriculums_path %>
 </p>
