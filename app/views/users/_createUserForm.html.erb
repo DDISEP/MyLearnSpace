@@ -2,7 +2,7 @@
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
   <div id="error_explanation">
-    <strong><%= @user.errors.count %> Fehler führen dazu, dass das Profil nicht angelegt werden konnte:</strong>
+    <strong><%= @user.errors.count %> Fehler:</strong>
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>

@@ -1,5 +1,9 @@
 MyLearnSpace::Application.routes.draw do
   
+    
+  root 'welcome#index'
+
+  get "welcome/index"
   
   resources :items
 
@@ -11,21 +15,26 @@ MyLearnSpace::Application.routes.draw do
   
   get 'wiki/:title' => "wikis#showByName"
   
+  post 'wikis/:id' => "wikis#update"
+  
 #<<<<<<< HEAD
   resources :users
+  
+  post 'users/new' =>"users#new"
   
   get 'users/login' => "users#login"
   
   post 'users/login' => "users#login"
+  
+  get 'users/profile' => "users#profile"
+  
+  post 'users/profile' => "users#profile"
 #=======
-  post 'wikis/:id' => "wikis#update"
+
   
 
 #>>>>>>> 875e99f1056fe50df0da40374739183d74200ac0
-  
-  root 'welcome#index'
 
-  get "welcome/index"
  
   
 
