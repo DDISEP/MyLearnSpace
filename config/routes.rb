@@ -7,34 +7,16 @@ MyLearnSpace::Application.routes.draw do
   
   get 'wiki/:title' => "wikis#showByName"
   
-
+  resources :users
+  
+  get 'users/login' => "users#login"
+  
+  post 'users/login' => "users#login"
   
   root 'welcome#index'
 
   get "welcome/index"
  
-  
-  get "users/new"
-  
-  post "users/new" => "users#new"
-  
-  get "users" => "users#index"
-  
-  get "users/login" => "users#login"
-  
-  post "users/login" 
-  
-  get "users/logout" => "users#logout"
-  
-  post "users/logout"
-  
-  get "users/profile"
-  
-  post "users/profile"
-  
-  get "users/show"
-
-  post "users/show"
   
 
   

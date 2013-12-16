@@ -1,59 +1,6 @@
 <h3>Hier kannst du dir ein Profil anlegen:</h3>
 
-
-
- <font color="red"><b>
- 	
- 	<% if @fehlerName %>
- 		Gib bitte noch einen Benutzernamen an! <br />
-	<% end %>
-	
-	<% if @fehlerMail %>
-		Wir brauchen noch deine E-Mail Adresse! <br />
-	<%end%>
-	
-	<% if @fehlerPasswort1 %>
- 		Es wurde kein Passwort eingegeben! <br />
- 	<% end %>
- 	
- 	<% if @fehlerPasswort2 %>
- 		Bestätige bitte noch dein Passwort! <br />
- 	<% end %>
- 	
- 	<% if @fehlerPasswoerterUngleich %>
- 		Das Passwort und die Passwortbestätigung stimmen nicht überein! <br />
- 	<% end %>
- 	
- 	<% if @fehlerNameExistiert %>
- 		Den Benutzernamen gibt es schon!
- 	<% end %>
-
- <br /> </b> </font>
-
- 
-<h5> Alle Felder mit * sind Pflichtfelder. Bitte fülle diese sorgfältig aus</h5>
-
- <form action="/users/new" method="post">
- 	<table width="50%" cellspacing="10" > 
- 		<tr><td> *Benutzername:         </td> <td> <input type="text" name="name" /></td></tr> <!--hier evtl typ ändern: Text mit Zahlen????-->
- 		<tr><td></td></tr>
- 		<tr><td> *E-Mail Adresse:       </td> <td> <input type="email"  name="mail"/></td></tr>
- 		<tr><td></td></tr>
- 		<tr><td> *Passwort:             </td> <td> <input type="password" name="pass1" /></td></tr><!--name statt username weilusername schon in user belegt????-->
- 		<tr><td> *Passwort-Bestätigung: </td> <td> <input type="password" name="pass2" /></td></tr>
- 		<tr><td></td></tr>
- 		<tr><td>  Bist du ein Schüler?  </td> <td>	<select name="pup">
- 												<option value="null">--Bitte auswählen--</option>
-  												<option value="true">ja</option>
-  												<option value="false">nein</option>
-											</select>	</td></tr>
- 		<tr><td>  </td> <td> <input type="submit" value="Anmelden" /></td></tr>
- 	</table>
- 	</p>	
-
-
-
-<!--<%= render "createUserForm" %>-->
+<%= render "createUserForm" %>
 <%= link_to 'Zu den anderen Benutzern', users_path %>
 
  

@@ -1,13 +1,20 @@
 class UsersController < ApplicationController
   
+  def same_passwords
+    @passwordgleich = true
+    if password != confirmation
+      @passwordgleich = false
+    end
+  end
+  
+  
   def index
     @users = User.all #hier muss jeweils noch authorisiert werden, wer sich das ausgeben lassen darf
   end
   
-  def new
-     
+  def new     
      @user = User.new
-    
+  end
     #=begin @fehlerName = false
     #@fehlerMail = false
     #@fehlerPasswort1 = false
@@ -39,11 +46,8 @@ class UsersController < ApplicationController
       #redirect_to(:action => 'newError')
     #end
     #=end  
-  end
-  
-
-
-  
+ 
+ 
   def login
     @fehler1 = false
     @fehler2 = false
