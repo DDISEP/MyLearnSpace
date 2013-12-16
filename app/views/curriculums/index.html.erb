@@ -1,6 +1,44 @@
 <h1>Willkommen beim Lehrplan! TaaaDaaaa!</h1>
-Sie haben nun folgende Möglichkeiten:<br />
+<h5>Sie haben nun folgende Möglichkeiten:</h5>
 <br />
-<%=link_to "Alle Lehrpläne anzeigen", curriculums_path %>
 <br />
-<%=link_to "Neuen Lehrplan anlegen", new_curriculum_path %>
+<div class="col span_1_of_3">
+	<%=link_to "Neuen Lehrplan anlegen", new_curriculum_path %><br />
+	Lehrplan ändern<br />
+	Im Lehrplan suchen<br />
+	Lehrplan löschen
+</div>
+<div class="col span_2_of_3">
+	
+	<% curriculums = Curriculum.all %>
+	
+	<h5>Folgende Lehrpläne stehen zur Verfügung: </h5>	
+	
+	<table border="1">
+			<th>Land</th>
+			<th>Bundesland</th>
+			<th>Schulart</th>
+			<th>Zweig</th>
+			<th>Jahrgangsstufe</th>
+			<th>Fach</th>
+			<th>Lehrplan</th>
+		</tr>
+		<% curriculums.each do |cur| %>
+		<tr>
+			<td><%= cur.country %></td>
+			<td><%= cur.state %></td>
+			<td><%= cur.typeOfSchool %></td>
+			<td><%= cur.profession %></td>
+			<td><%= cur.level %></td>
+			<td><%= cur.subject %></td>
+			<td><%= link_to "Lehrplan anzeigen", cur %></td>
+		</tr>
+		<% end %>
+	</table>
+	
+	<% if curriculums.empty? %>
+	<br />
+	<br />
+	<em>Keine Lehrpläne vorhanden!</em>
+	<% end %>
+</div>

@@ -3,7 +3,30 @@
 <table cellpadding="10">
 	<tr>
 		<td>
-			<%= f.label :subject %>
+			<%= f.label :country, "Land*" %>
+		</td>
+		
+		<td>
+			   <%= f.select :country , ["Deutschland", "Austria", "Schweiz"],
+			   :include_blank => false,
+			   :prompt => "Bitte wählen" %>
+		
+	</tr>
+	
+	<tr> <!--dynamisch nach Auswahl des Landes anzeigen -->
+		<td>
+			<%= f.label :state, "Bundesland*" %>
+		</td>
+		
+		<td>
+			   <%= f.text_field :state %>
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<td>
+			<%= f.label :subject, "Fach*" %>
 		</td>
 
 		<td>
@@ -12,7 +35,7 @@
 	</tr>
 	<tr>
 		<td>
-			<%= f.label :level %>
+			<%= f.label :level, "Jahrgangsstufe*" %>
 		</td>
 		
 		<td>
@@ -22,7 +45,7 @@
 	</tr>
 	<tr>
 		<td>
-			<%= f.label :typeOfSchool %>
+			<%= f.label :typeOfSchool, "Schulart*" %>
 		</td>
 		
 		<td>
@@ -32,7 +55,7 @@
 	</tr>
 	<tr>
 		<td>
-			<%= f.label :profession %>
+			<%= f.label :profession, "Zweig" %>
 		</td>
 		
 		<td>
@@ -41,19 +64,12 @@
 		
 	</tr>
 	
+	
 </table>
 
 
-    
-   
-
- 
- 
-    
-  
-
  
   <p>
-    <%= f.submit %>
+    <%= f.submit "Lehrplan anlegen" %>
   </p>
 <% end %>

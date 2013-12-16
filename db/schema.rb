@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212174850) do
+ActiveRecord::Schema.define(version: 20131216151610) do
 
   create_table "curriculums", force: true do |t|
     t.string   "subject"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20131212174850) do
     t.string   "profession"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "country"
+    t.string   "state"
   end
 
   create_table "items", force: true do |t|
