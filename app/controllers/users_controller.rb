@@ -15,37 +15,7 @@ class UsersController < ApplicationController
   def new     
      @user = User.new
   end
-    #=begin @fehlerName = false
-    #@fehlerMail = false
-    #@fehlerPasswort1 = false
-    #@fehlerPasswort2 = false
-    #@fehlerPasswoerterUngleich = false
-    #@fehlerNameExistiert = false
-
-    #if params[:name] == nil
-     # @fehlerName = true
-      #redirect_to(:action => 'profile')
-    #end
-    #if params[:mail] == nil
-    #  @fehlerMail = true
-      #redirect_to(:action => 'newError')
-    #if params[:pass1] == nil
-     # @fehlerPasswort1 = true
-      #redirect_to(:action => 'newError')
-    #end
-    #if params[:pass2] == nil
-     # @fehlerPasswort2 = true
-      #redirect_to(:action => 'newError')
-    #end
-    #if params[:pass1] != params[:pass2]
-     # @fehlerPasswoerterUngleich = true
-      #redirect_to(:action => 'newError')
-    #end
-    #elsif params[:name] 
-      #@fehlerNameExistiert = true
-      #redirect_to(:action => 'newError')
-    #end
-    #=end  
+      
  
  
   def login
