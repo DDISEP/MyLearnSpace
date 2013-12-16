@@ -2,15 +2,14 @@
 <html>
 <head>
   <title>MyLearnSpace</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
 </head>
+
+
 
 
 <body>
 	
-<p style="border:5px solid #0000A1"><strong>Wo möchtest du hin?</strong> 
+<p style="border:5px solid cornflowerblue "><strong>Wo möchtest du hin?</strong> 
 	<a href="/welcome/index">Startseite</a>
 	<%= link_to 'Wiki', wikis_path %>
 	<%= link_to 'Benutzer', users_path %>
@@ -18,7 +17,7 @@
       <%= link_to "Anmelden", users_login_path %> <!--statt session path login path-->
     <% else %>
       Eingeloggt als <%= current_user.name %>.
-      <%= link_to 'Abmelden', users_logout_path %> <!--ession_path( session ), :method => :delete %>-->
+      <%= link_to 'Abmelden', '#' %> <!--session_path( session ), :method => :delete %>-->
     <% end %>
 	<%= link_to 'Lehrplan', curriculums_path %>
 </p>
@@ -27,3 +26,4 @@
 </body>
 
 </html>
+

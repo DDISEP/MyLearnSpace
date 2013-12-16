@@ -1,13 +1,23 @@
 class UsersController < ApplicationController
   
+  def same_passwords
+    @passwordgleich = true
+    if password != confirmation
+      @passwordgleich = false
+    end
+  end
+  
+  
   def index
     @users = User.all #hier muss jeweils noch authorisiert werden, wer sich das ausgeben lassen darf
   end
   
-  def new
-    @user = User.new
+  def new     
+     @user = User.new
   end
-  
+      
+ 
+ 
   def login
     @fehler1 = false
     @fehler2 = false
@@ -80,11 +90,10 @@ class UsersController < ApplicationController
     render :action => :index
   end
 
-  def authenticate 
-     user = User.find_by_email(params[:email])
-     if user && user.authenticate(params[:password])
-    end 
-  end
-  
-  
+  #def authenticate 
+     #user = User.find_by_email(params[:email])
+     #if user && user.authenticate(params[:password])
+    #end 
+  #end
+
 end

@@ -8,13 +8,17 @@
     <th></th>
     <th></th>
   </tr>
- 
 <% @wikis.each do |wiki| %>
   <tr>
     <td><strong><%= wiki.title %></td></strong>
-    <td><%= wiki.article %></td>
-    <td><%= link_to 'Show', wiki_path(wiki) %></td>
-
-  </tr>
+    <td>	
+    	<i><%= wiki.article.first(30) %>
+    	<% if !wiki.article.at(31).nil? %>
+    	...
+    	<% end %></td></i>
+    <td><%= link_to ' Artikel anzeigen', wiki_path(wiki) %></td>
+   </tr>
 <% end %>
 </table></div>
+
+
