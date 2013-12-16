@@ -36,9 +36,7 @@ MyLearnSpace::Application.routes.draw do
   get "users/show"
 
   post "users/show"
-  
-  
- 
+
 
   
   # The priority is based upon order of creation: first created -> highest priority.

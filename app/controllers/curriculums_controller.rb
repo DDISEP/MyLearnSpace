@@ -31,8 +31,16 @@ class CurriculumsController < ApplicationController
  # end
   
   def create
-    @curriculums = Curriculum.create
+ #   render text: params[:curriculum].inspect
+    @curriculum = Curriculum.new(params[:curriculum])
+    @curriculum.save
+    #redirect_to action: :show, id: @curriculum.id
   end
+
+#private  
+#  def curriculum_params
+#    params.require(:curriculum).permit(:country, :state, :level, :typeOfSchool, :subject, :profession)
+#  end
   
   #def update
     
