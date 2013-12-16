@@ -1,0 +1,59 @@
+<%= form_for :curriculum, url: curriculums_path do |f| %>
+
+<table cellpadding="10">
+	<tr>
+		<td>
+			<%= f.label :subject %>
+		</td>
+
+		<td>
+			<%= f.text_field :subject %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= f.label :level %>
+		</td>
+		
+		<td>
+			 <%= f.text_field :level %>
+		</td>
+			
+	</tr>
+	<tr>
+		<td>
+			<%= f.label :typeOfSchool %>
+		</td>
+		
+		<td>
+			   <%= f.text_field :typeOfSchool %>
+		</td>
+			
+	</tr>
+	<tr>
+		<td>
+			<%= f.label :profession %>
+		</td>
+		
+		<td>
+			   <%= f.text_field :profession %>
+		</td>
+		
+	</tr>
+	
+</table>
+
+
+    
+   
+
+ 
+ 
+    
+  
+
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
