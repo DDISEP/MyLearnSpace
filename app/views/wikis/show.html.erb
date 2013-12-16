@@ -1,11 +1,18 @@
 
-<div class="zweispaltig"><h3><p align="center"><%= @wiki.title %></p></h3> 
-<%= link_to 'Zurück', wikis_path %>
+<div class="zweispaltig">
+<%= link_to 'Zur Wikistartseite', wikis_path %>
+<h3><p align="center"><%= @wiki.title %></p></h3> 
 <hr>
-<p align="center"><%= @wiki.article %></p>	</div>
-<div><%= link_to "Artikel bearbeiten", edit_wiki_path %></div>
-Unescaped String -> raw benutzen
-<%= raw @wiki.title %>
+<p align="center"><%= raw @wiki.article %></p>	</div>
+<div><%= link_to "Artikel bearbeiten", edit_wiki_path %>
+	    <div><%= render :partial => 'wikis/search' %></div>
+  
+	
+<div id="results">
+	</div>
+
+</div>
+
 
 
 
