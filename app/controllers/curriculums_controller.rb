@@ -1,11 +1,7 @@
 class CurriculumsController < ApplicationController
   
-  before_filter :get_curriculum, :only => [:edit, :update, :destroy]
+  before_filter :show, :only => [:edit, :update, :destroy]
 #  before_filter :check_auth, :only => [:edit, :update, :destroy] #evtl mehrere eintragen
-  
-  def get_curriculum
-    @curriculum = Curriculum.find(params[:id])
-  end
   
 #  def check_auth
 #    if session[:user_id] != @curriculum.user_id
@@ -19,7 +15,7 @@ class CurriculumsController < ApplicationController
   end
   
   def show
-    @curriculum = Curriculum.find(params[:id])
+   @curriculum = Curriculum.find(params[:id])
   end
   
   def new
@@ -31,10 +27,12 @@ class CurriculumsController < ApplicationController
  # end
   
   def create
- #   render text: params[:curriculum].inspect
     @curriculum = Curriculum.new(params[:curriculum])
-    @curriculum.save
-    #redirect_to action: :show, id: @curriculum.id
+    if @curriculum.save
+      redirect_to :action => "index"
+    else
+      render :action => "index"
+    end
   end
 
 #private  
@@ -46,7 +44,9 @@ class CurriculumsController < ApplicationController
     
   #end
   
-  #def destroy
-    
- # end
+  def destroy
+    @curriculum = Curriculum.find(params[:id])
+    @curriculum.destroy
+  end
+  
 end
