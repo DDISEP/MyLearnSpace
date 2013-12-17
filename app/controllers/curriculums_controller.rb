@@ -1,6 +1,6 @@
 class CurriculumsController < ApplicationController
   
-  before_filter :show, :only => [:edit, :update, :destroy]
+  before_filter :get_curriculum, :only => [:edit, :update, :destroy]
 #  before_filter :check_auth, :only => [:edit, :update, :destroy] #evtl mehrere eintragen
   
 #  def check_auth
@@ -9,6 +9,10 @@ class CurriculumsController < ApplicationController
 #      redirect_to curriculums_path
 #    end
 #  end
+  
+  def get_curriculum
+    @curriculum = Curriculum.find(params[:id])
+  end
   
   def index
     @curriculums = Curriculum.all 
@@ -29,7 +33,7 @@ class CurriculumsController < ApplicationController
   def create
     @curriculum = Curriculum.new(params[:curriculum])
     if @curriculum.save
-      redirect_to :action => "index"
+      redirect_to :action => "index", :notice => "Neuen Lehrplan erfolgreich angelegt!"
     else
       render :action => "index"
     end
@@ -47,6 +51,7 @@ class CurriculumsController < ApplicationController
   def destroy
     @curriculum = Curriculum.find(params[:id])
     @curriculum.destroy
+    redirect_to curriculums_path
   end
   
 end

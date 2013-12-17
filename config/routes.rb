@@ -5,9 +5,15 @@ MyLearnSpace::Application.routes.draw do
 
   get "welcome/index"
   
+  
   resources :items
+  
 
   resources :curriculums
+  
+  delete 'curriculums/:id'  => "curriculums#destroy"
+  
+  
 
   resources :wikis
   
