@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>MyLearnSpace</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
 </head>
 
 
@@ -14,7 +16,7 @@
 	<%= link_to 'Wiki', wikis_path %>
 	<%= link_to 'Benutzer', users_path %>
 	<% if current_user.nil? %>
-      <%= link_to "Anmelden", users_login_path %> <!--statt session path login path-->
+      <%= link_to 'Anmelden', users_login_path %> <!--statt session path login path-->
     <% else %>
       Eingeloggt als <%= current_user.name %>.
       <%= link_to 'Abmelden', '#' %> <!--session_path( session ), :method => :delete %>-->
