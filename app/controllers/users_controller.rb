@@ -55,6 +55,7 @@ class UsersController < ApplicationController
   
   def create
      @user = User.new(params[:user])
+       #hier noch einfügen: Password und Confirmation stimmen überein?????
        if @user.save
          redirect_to root_url, :notice => "Erfolgreich angemeldet!"
        else
