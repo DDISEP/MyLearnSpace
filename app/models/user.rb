@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
       if password.blank?
         errors.add(:base, "Es wurde kein Passwort eingegeben!")
       end
+    
 
       #errors.add(:base, "Dein Passwort muss mind. 6 und max. 20 Zeichen umfassen!") unless self.password.length.in?(6..20)
             
