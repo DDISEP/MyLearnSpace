@@ -6,59 +6,35 @@
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
-    <% end %>
+    <%end%>
     </ul>
   </div>
-  <% end %>
-
- 
-<h5> Alle Felder mit * sind Pflichtfelder. Bitte fülle diese sorgfältig aus</h5>
-
- <form action="/users/new" method="post">
- 	<table width="50%" cellspacing="10" > 
- 		<tr><td> *Benutzername:         </td> <td> <input type="text" name="username" /></td></tr> <!--hier evtl typ ändern: Text mit Zahlen????-->
- 		<tr><td></td></tr>
- 		<tr><td> *E-Mail Adresse:       </td> <td> <input type="email"  name="email"/></td></tr>
- 		<tr><td></td></tr>
- 		<tr><td> *Passwort:             </td> <td> <input type="password" name="password" /></td> <td>(6-20 Zeichen)</td></tr><!--name statt username weilusername schon in user belegt????-->
- 		<tr><td> *Passwort-Bestätigung: </td> <td> <input type="password" name="confirmation" /></td><td>(6-20 Zeichen)</td></tr>
- 		<tr><td></td></tr>
- 		<tr><td>  Bist du ein Schüler?  </td> <td>	<select name="pupil">
- 												<option value="null">--Bitte auswählen--</option>
-  												<option value="true">ja</option>
-  												<option value="false">nein</option>
-											</select>	</td></tr>
- 		<tr><td>  </td> <td> <input type="submit" value="Anmelden"  onclick="f.save()"/></td></tr>
- 	</table>
- 	</p>	
-
+  <%end%>
+   
+  <h5> Alle Felder mit * sind Pflichtfelder. Bitte fülle diese sorgfältig aus</h5>
+  <p>
+  *Benutzername:            <%=f.text_field :username %><br />
+  </p>
+  <p>
+  *E-Mail Adresse:          <%=f.email_field :email %><br />	
+  </p>
+  <p>
+  *Passwort:                <%=f.password_field :password %><br />	
+  </p>
+  <p>
+  *Passwort-Bestätigung:    <%=f.password_field :confirmation %><br />	
+  </p>
+  <p>
+  Bist du ein Schüler?	    <%=f.check_box :pupil%> <br \>
+  </p>
+  <p>
+  <%= f.submit%>	
+  </p>	
 <% end %>
 
-
-
-
-<!--<%= form_for :user, url: users_path do |f| %>
-  <% if @user.errors.any? %>
-  <div id="error_explanation">
-    <strong><%= pluralize(@user.errors.count, "error") %> Fehler sind aufgetreten:</strong>
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
-  <p>
-    <%= f.label :username %><br>
-    <%= f.text_field :username, :value => @username %> 
-  </p>
  
-  <p>
-    <%= f.label :password %><br>
-    <%= f.text_area :password %>
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>-->
+
+
+
+
+

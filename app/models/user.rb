@@ -13,23 +13,22 @@ class User < ActiveRecord::Base
     #validates :confirmation,  presence: {message: 'Bitte bestätige noch dein Passwort!'}
     
     def valid_user
-      if self.username.blank?
+      if username.blank?
         errors.add(:base, "Gib bitte noch einen Benutzernamen an!")
       end
-      if self.username
+      unless User.find_by_username(username).nil?
         errors.add(:base, "Den Benutzenamen gibt es leider schon!!")
       end
-      if self.email.blank?
+      if email.blank?
         errors.add(:base, "Wir brauchen noch deine E-Mail Adresse!")
       end
-      if self.password.blank?
+      if password.blank?
         errors.add(:base, "Es wurde kein Passwort eingegeben!")
       end
 
-      errors.add(:base, "Dein Passwort muss mind. 6 und max. 20 Zeichen umfassen!") unless self.password.in?(6..20)
+      #errors.add(:base, "Dein Passwort muss mind. 6 und max. 20 Zeichen umfassen!") unless self.password.length.in?(6..20)
             
-
-      return false
+      return errors.count == 0
     end
    
     
