@@ -1,5 +1,4 @@
-<h3>Lehrplan in <%= @curriculum.subject %>, <%= @curriculum.state %> (<%= @curriculum.country %>) der <%= @curriculum.level %>. Jahrgangsstufe 
-	für <%= @curriculum.typeOfSchool %> 
+<h3>Lehrplan für <%= @curriculum.subject %> der <%= @curriculum.level %>. Jahrgangsstufe <%= @curriculum.typeOfSchool %> in <%= @curriculum.state %> (<%= @curriculum.country %>) <br />
 	<% if @curriculum.profession == nil %>
 	<% else %>
 		(Zweig: <%= @curriculum.profession %>)
@@ -7,5 +6,25 @@
 </h3>
 <br />
 Tabelle, die alle Items, die dem o.g. Lehrplan zugeordnet sind, auflistet <br />
-Das kommt in einem zweiten Schritt, wenn die Klasse Items verabschiedet wird.<br />
+Das kommt in einem zweiten Schritt, wenn die Klasse Items implementiert wird.<br /><br />
+Mögliche Darstellung, vergleichbar mit ISB:<br /><br />
+<table cellpadding="5" border="1">
+	<tr>
+		<td width="80%">
+			Lehrplaninhalte
+		</td>
+		<td width="20%">
+			Stundenaufwand
+		</td>
+	</tr>
+	<tr>
+		<td>
+			...
+		</td>
+		<td>
+			...
+		</td>
+	</tr>
+</table>
+<br /><br />
 <%= link_to 'Zurück', curriculums_path %>
