@@ -1,0 +1,11 @@
+
+<% if @curriculum.errors.any? %>
+  <div id="error_explanation">
+    <strong><%= @curriculum.errors.count %> Fehler gefunden:</strong>
+    <ul>
+    <% @curriculum.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>

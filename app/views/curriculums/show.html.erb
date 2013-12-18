@@ -1,5 +1,5 @@
 <h3>Lehrplan in <%= @curriculum.subject %>, <%= @curriculum.state %> (<%= @curriculum.country %>) der <%= @curriculum.level %>. Jahrgangsstufe 
-	am <%= @curriculum.typeOfSchool %> 
+	für <%= @curriculum.typeOfSchool %> 
 	<% if @curriculum.profession == nil %>
 	<% else %>
 		(Zweig: <%= @curriculum.profession %>)
@@ -7,4 +7,5 @@
 </h3>
 <br />
 Tabelle, die alle Items, die dem o.g. Lehrplan zugeordnet sind, auflistet <br />
-Das kommt in einem zweiten Schritt, wenn die Klasse Items verabschiedet wird.
+Das kommt in einem zweiten Schritt, wenn die Klasse Items verabschiedet wird.<br />
+<%= link_to 'Zurück', curriculums_path %>

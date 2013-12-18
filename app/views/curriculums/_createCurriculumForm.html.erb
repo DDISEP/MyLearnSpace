@@ -1,4 +1,5 @@
 <%= form_for :curriculum, url: curriculums_path do |f| %> 
+<%= render "display_errors" %>
 
 <table cellpadding="10">
 	<tr>
@@ -7,10 +8,10 @@
 		</td>
 		
 		<td>
-			   <%= f.select :country , ["Deutschland", "Austria", "Schweiz"],
-			   :include_blank => false,
-			   :prompt => "Bitte wählen" %>
-		
+			<%= f.select :country , ["Deutschland", "Austria", "Schweiz"],
+			  :include_blank => false,
+			  :prompt => "Bitte wählen" %>
+		</td>
 	</tr>
 	
 	<tr> <!--dynamisch nach Auswahl des Landes anzeigen -->
@@ -19,7 +20,7 @@
 		</td>
 		
 		<td>
-			   <%= f.text_field :state %>
+			   <%= f.text_field :state, placeholder:"Bundesland" %>
 		</td>
 		
 	</tr>
@@ -30,7 +31,7 @@
 		</td>
 
 		<td>
-			<%= f.text_field :subject %>
+			<%= f.text_field :subject, placeholder:"Fach" %>
 		</td>
 	</tr>
 	<tr>
@@ -39,7 +40,7 @@
 		</td>
 		
 		<td>
-			 <%= f.text_field :level %>
+			 <%= f.text_field :level, placeholder:"Jahrgangsstufe" %>
 		</td>
 			
 	</tr>
@@ -49,7 +50,7 @@
 		</td>
 		
 		<td>
-			   <%= f.text_field :typeOfSchool %>
+			   <%= f.text_field :typeOfSchool, placeholder:"Schulart" %>
 		</td>
 			
 	</tr>
@@ -59,7 +60,9 @@
 		</td>
 		
 		<td>
-			   <%= f.text_field :profession %>
+			   <%= f.select :profession , ["naturwissenschaftlich", "sprachlich", "musisch", "klassisch", "wirtschaftlich", "handwerklich"],
+			  :include_blank => false,
+			  :prompt => "Bitte wählen" %>
 		</td>
 		
 	</tr>
