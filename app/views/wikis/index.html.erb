@@ -1,19 +1,12 @@
 
-<h1>Wikipedia von MyLearnSpace</h1>
+
 <div class="zweispaltig">
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Artikel</th>
-  </tr>
- 
-  <% @wikis.each do |wiki| %>
-    <tr>
-      <td><%= wiki.title %></td>
-      <td><%= wiki.article %></td>
-    </tr>
-  <% end %>
-</table></div>
+<br/><br/>
+<strong>Neuester Artikel</strong> <br/>
+
+<h3><%= @wiki.title %> </h3><br/>
+	<%= raw @wiki.article %>
+</div>
 <div class="zweispaltig"> 
 <%= link_to 'Neuen Artikel verfassen', new_wiki_path %></div>
 

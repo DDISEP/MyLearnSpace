@@ -72,7 +72,7 @@ def showByName # Aufruf wiki/[Artikelname] möglich z.B. : wiki/Wurzel
 end
 
 def index
-  @wikis = Wiki.all  
+  @wiki = Wiki.last
 end
 
 private 

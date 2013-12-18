@@ -1,8 +1,7 @@
 
 <% if @wiki.errors.any? %>
   <div id="error_explanation">
-    <strong><%= pluralize(@wiki.errors.count, "error") %> prohibited
-      this post from being saved:</strong>
+    <strong><%= @wiki.errors.count %> Fehler beim Speichern!</strong>
     <ul>
     <% @wiki.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
