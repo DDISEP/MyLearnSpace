@@ -1,6 +1,6 @@
 class Curriculum < ActiveRecord::Base
   
-  has_many :items
+ # has_many :items
   
   validates_presence_of :subject, :message => " darf nicht leer sein."
   
