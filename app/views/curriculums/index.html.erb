@@ -3,7 +3,7 @@
 <br />
 <div class="col span_1_of_3">
 	<h5>Sie haben nun folgende Möglichkeiten:</h5>
-	<%=link_to "Neuen Lehrplan anlegen", new_curriculum_path %><br />
+	<%= link_to 'Neuen Lehrplan anlegen', new_curriculum_path %><br />
 	Lehrplan ändern<br />
 	Im Lehrplan suchen<br />
 </div>
@@ -11,8 +11,8 @@
 	
 	<% curriculums = Curriculum.all %>
 	
-	<h5>Folgende Lehrpläne stehen zur Verfügung: </h5>	
-	
+	<h5>Folgende Lehrpläne stehen bisher zur Verfügung: </h5>	
+	<!-- Liste noch sortieren!! -->
 	<table border="1" cellpadding="5">
 			<th>Land</th>
 			<th>Bundesland</th>

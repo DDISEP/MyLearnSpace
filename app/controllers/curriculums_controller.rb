@@ -15,7 +15,7 @@ class CurriculumsController < ApplicationController
 #  end
 
   
-  before_filter :get_curriculum, :only => [:edit, :update, :destroy]
+#  before_filter :get_curriculum, :only => [:edit, :update, :destroy]
   
   
   def get_curriculum
@@ -38,24 +38,25 @@ class CurriculumsController < ApplicationController
   end
   
   
- # def edit
-    #
- # end
- 
-  
-  def create
-    @curriculum = Curriculum.new(params[:curriculum])
-    @curriculum.save
-     redirect_to @curriculum
-    #else
-     # render 'new'
-    #end
+  def edit
+    @curriculum = Curriculum.find(params[:id])
   end
-  
-  
-  #def update
-    #
-  #end
+
+
+  def create
+    #render text: params[:curriculum].inspect #gibt Parameter als Text aus
+    @curriculum = Curriculum.new(params[:curriculum])
+    if @curriculum.save
+      redirect_to @curriculum
+    else
+     render 'new'
+    end
+  end
+
+
+  def update
+    @curriculum = Curriculum.find(params[:id])
+  end
   
   
   def destroy
