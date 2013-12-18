@@ -1,21 +1,21 @@
-<%= form_for :wiki, url: wikis_path do |f| %>
+ <div class="hero-unit">
+    <%= form_for :wiki, url: wikis_path do |f| %>
 <%= render "display_errors" %>
-  <p >
-    <%= f.label :title %><br>
-    <%= f.text_field :title, placeholder:"Title eingeben..."%> 
-  </p>
+    <%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" %> 
+  
  
-  <p>
-    <%= f.label :article %><br>
-   <%= f.text_area :article,  class: 'wysihtml5', placeholder:"Artikel hier schreiben..." %>
+  
+    
+   <%= f.text_area :article,  class: 'wysihtml5', placeholder:"Artikel hier schreiben...", style:"width: 810px; height: 200px" %>
    
-   
-  </p>
- 
   <p>
     <%= f.submit %>
   </p>
+  </div>
+ 
+
 <% end %>
+
 
 
 

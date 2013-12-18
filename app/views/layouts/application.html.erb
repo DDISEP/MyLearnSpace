@@ -2,8 +2,11 @@
 <html>
 <head>
   <title>MyLearnSpace</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", controller_name %>
+  
+  
+ 
 </head>
 
 
@@ -23,9 +26,10 @@
     <% end %>
 	<%= link_to 'Lehrplan', curriculums_path %>
 </p>
-<%= yield %>
+<div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
+
 
 </body>
-
+ 
 </html>
 

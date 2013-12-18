@@ -1,17 +1,28 @@
-<h3>Artikel bearbeiten</h3>
-
-<%= form_for :wiki, url: wiki_path do |f| %>
-
-<strong><%= @wiki.title %></strong>
+<h3>"<%= @wiki.title %>" - bearbeiten</h3>
+ <div class="hero-unit">
+    <%= form_for :wiki, url: wiki_path do |f| %>
 <%= render "display_errors" %>
- 
-  <p>
-    
-    <%= f.text_area :article %>
-  </p>
- 
+   
+   <%= f.text_area :article,  class: 'wysihtml5', placeholder:"Artikel hier schreiben...", style:"width: 810px; height: 200px" %>
+   
   <p>
     <%= f.submit %>
   </p>
+  </div>
+ 
+
 <% end %>
+</div>
+
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5();
+    });
+
+  })
+</script>
 

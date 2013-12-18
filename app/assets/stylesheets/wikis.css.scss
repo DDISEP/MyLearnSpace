@@ -18,3 +18,30 @@ div.simpleSearch {
   position: relative;
   width: 14em;
 }
+#searchbox {
+  background-color:#ffffff; 
+  width:45em;
+  align:center;
+  border:1px solid #999;
+  padding:1.5em;
+  border-radius:8px;
+  -moz-border-radius:8px;
+}
+#maincontent {
+  margin-left:120px;
+  text-align:left;
+}
+#form {
+  margin:0px;
+  padding:0;
+}
+#search_suggest {
+  width:23em;
+  margin:0px;
+  padding:0px;
+  position: absolute;
+  text-align:left;
+  background-color: #FFFFFF;
+  border: 1px solid #98ceff;
+  visibility: hidden;
+}
