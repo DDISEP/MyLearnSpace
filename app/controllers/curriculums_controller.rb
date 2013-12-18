@@ -45,11 +45,11 @@ class CurriculumsController < ApplicationController
   
   def create
     @curriculum = Curriculum.new(params[:curriculum])
-    if @curriculum.save
-      redirect_to @curriculum, :notice => "Neuen Lehrplan erfolgreich angelegt!"
-    else
-      render 'new'
-    end
+    @curriculum.save
+     redirect_to @curriculum
+    #else
+     # render 'new'
+    #end
   end
   
   
