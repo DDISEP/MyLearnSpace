@@ -1,12 +1,11 @@
-<h1>Willkommen beim Lehrplan! TaaaDaaaa!</h1>
-<h5>Sie haben nun folgende Möglichkeiten:</h5>
+<h1>Willkommen beim Lehrplan!</h1>
 <br />
 <br />
 <div class="col span_1_of_3">
+	<h5>Sie haben nun folgende Möglichkeiten:</h5>
 	<%=link_to "Neuen Lehrplan anlegen", new_curriculum_path %><br />
 	Lehrplan ändern<br />
 	Im Lehrplan suchen<br />
-	Lehrplan löschen
 </div>
 <div class="col span_2_of_3">
 	
@@ -14,7 +13,7 @@
 	
 	<h5>Folgende Lehrpläne stehen zur Verfügung: </h5>	
 	
-	<table border="1">
+	<table border="1" cellpadding="5">
 			<th>Land</th>
 			<th>Bundesland</th>
 			<th>Schulart</th>
@@ -31,7 +30,9 @@
 			<td><%= cur.profession %></td>
 			<td><%= cur.level %></td>
 			<td><%= cur.subject %></td>
-			<td><%= link_to "Lehrplan anzeigen", cur %></td>
+			<td><%= link_to "anzeigen", cur %> oder 
+				<%= link_to "löschen", cur, :method => :delete, :confirm => "Wollen Sie diesen Datensatz wirklich löschen?" %>
+			</td>
 		</tr>
 		<% end %>
 	</table>

@@ -8,17 +8,19 @@
  	<% end %>
  <br /> </b> </font>
  
- <p>Hier kannst du dich anmelden:</p>
+ <h4>Hier kannst du dich anmelden:</h4>
  <form action="/users/login" method="post">
- 	<table table width="50%" cellspacing="10">
+ 	<font size="3">
+ 	<table width="50%" cellspacing="10">
  		<tr><td> Benutzername: </td> <td> <input type="text" name="name" /></td></tr><!--hier evtl typ ändern: Text mit Zahlen????-->
  		<tr><td> Passwort: </td> <td> <input type="password" name="pass" /></td></tr><!--name statt username weilusername schon in user belegt????-->
  		<tr><td></td></tr>
  		<tr><td>  </td> <td> <input type="submit" value="Anmelden" /></td></tr>
- 	</table>	
+ 	</table>
+</font>
  <% end %> 
  
- <%= link_to 'Oder doch ein Profil anlegen?', users_new_path %>
+ <%= link_to 'Oder doch ein Profil anlegen?', new_user_path %>
 
 
    
