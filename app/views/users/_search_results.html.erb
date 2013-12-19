@@ -1,0 +1,20 @@
+<h4><%= @users.count %> Benutzer gefunden!</h4>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Schüler</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @users.each do |user| %>
+  <tr>
+    <td><strong><%= user.title %></td></strong>
+    <td>	
+    	<i><%= user.name %>
+    </td></i>
+    <td><%= user.pupil%></td>
+    <td><%= link_to 'Benutzer anzeigen', user_path(user) %></td>
+   </tr>
+<% end %>
+</table>

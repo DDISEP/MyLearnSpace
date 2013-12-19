@@ -31,6 +31,14 @@ class User < ActiveRecord::Base
             
       return errors.count == 0
     end
+    
+    def self.search(search)
+      if search
+        find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+      else
+        find(:all)
+    end
+  end
    
     
 end

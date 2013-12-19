@@ -27,6 +27,8 @@ MyLearnSpace::Application.routes.draw do
   post 'users/login' => "users#login"
   
   resources :users
+  
+  post 'users/search' => "users#search"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
