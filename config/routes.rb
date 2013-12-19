@@ -10,6 +10,8 @@ MyLearnSpace::Application.routes.draw do
 
   resources :curriculums
   
+  post 'curriculums/:id' => "curriculums#update"
+  
   resources :wikis
   
   post 'wikis/search' => "wikis#search"

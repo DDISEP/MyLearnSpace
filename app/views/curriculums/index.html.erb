@@ -30,8 +30,10 @@
 			<td><%= cur.profession %></td>
 			<td><%= cur.level %></td>
 			<td><%= cur.subject %></td>
-			<td><%= link_to "anzeigen", cur %> oder 
+			<td><%= link_to "anzeigen", cur %> 
+				<%= link_to "bearbeiten", cur, :method => :update %>
 				<%= link_to "löschen", cur, :method => :delete, :confirm => "Wollen Sie diesen Datensatz wirklich löschen?" %>
+				
 			</td>
 		</tr>
 		<% end %>
