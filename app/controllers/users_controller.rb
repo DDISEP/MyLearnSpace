@@ -1,12 +1,5 @@
 class UsersController < ApplicationController
   
-  def same_passwords
-    @passwordgleich = true
-    if password != confirmation
-      @passwordgleich = false
-    end
-  end
-  
   
   def index
     @users = User.all #hier muss jeweils noch authorisiert werden, wer sich das ausgeben lassen darf
