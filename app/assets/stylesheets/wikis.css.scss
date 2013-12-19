@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 div.zweispaltig{
 position: relative; width:50%; float: left;
 }
@@ -36,7 +37,7 @@ div.simpleSearch {
   padding:0;
 }
 #search_suggest {
-  width:23em;
+  width:15em;
   margin:0px;
   padding:0px;
   position: absolute;
@@ -44,4 +45,20 @@ div.simpleSearch {
   background-color: #FFFFFF;
   border: 1px solid #98ceff;
   visibility: hidden;
+}
+
+
+.suggest_link {
+  background-color: #FFFFFF;
+  color: #333;
+  padding: 2px 6px 2px 6px;
+  
+  
+}
+.suggest_link_over {
+  background-color: #d8e8ff;
+  padding: 2px 6px 2px 6px;
+  opacity:1.00;
+  filter: alpha(opacity=100);
+  -moz-opacity: 1.0;
 }

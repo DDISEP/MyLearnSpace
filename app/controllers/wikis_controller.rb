@@ -35,10 +35,29 @@ def update
 
   
 end
+def searchSuggestions
+  @wikis = Wiki.searchSuggestions params[:search]
+  results= ""
+  @wikis.each do |wiki|
+       #results += "<div onmouseover=\"javascript:suggestOver(this); " 
+       #resulst += "onmouseout=\"javascript:suggestOut(this);\" " 
+       #results += "class=\"suggest_link\">"
+       #results += link_to wiki.title, wiki_path(wiki)
+       #results += "</div>"
+       results += wiki.title + "\n"
+   
+  end
+  
+ #<div onmouseover="javascript:suggestOver(this);" onmouseout="javascript:suggestOut(this);" class="suggest_link"><%= link_to wiki.title, wiki_path(wiki) %>
+#</div>   
 
+  render text: results
+  
+end
 
 def search
   @wikis = Wiki.search params[:search]
+  #@wikis = Wiki.searchSuggestions params[:search]
  
  render "search_results" 
   

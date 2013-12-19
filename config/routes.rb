@@ -18,6 +18,8 @@ MyLearnSpace::Application.routes.draw do
   
   post 'wikis/:id' => "wikis#update"
   
+  get "wikis/searchSuggestions/:search" => "wikis#searchSuggestions"
+  
   get 'users/login' => "users#login"
   
   post 'users/login' => "users#login"
