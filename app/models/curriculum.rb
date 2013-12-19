@@ -1,6 +1,6 @@
 class Curriculum < ActiveRecord::Base
-  
- # has_many :items
+   
+  attr_accessible :country, :state, :profession, :level, :typeOfSchool, :subject #WICHTIG für Formluar und create!!!
   
   validates_presence_of :subject, :message => " darf nicht leer sein."
   
@@ -16,10 +16,6 @@ class Curriculum < ActiveRecord::Base
   
   validates_presence_of :state, :message => " darf nicht leer sein."
   
-  #validates :subject, :presence => true, :message => " Fach darf nicht leer sein"
-  #validates :level, :presence => true, :inclusion => { :in => [5..13]}
-  #validates :typeOfSchool, :presence => true #Liste der existierenden Schultypen fehlt
-  #validates :profession, :inclusion => { :in => ["naturwissenschaftlich", "sprachlich", "klassisch", "musisch", "wirtschaftlich", "handwerklich"] }
-  #validates :country, :presence => true, :inclusion => { :in => ["Deutschland", "Austria", "Schweiz"] }
-  #alidates :state, :presence => true #Liste der BuLä dynamisch nach Auswahl Land geplant
+  has_many :items
+  
 end
