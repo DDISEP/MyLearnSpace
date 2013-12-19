@@ -15,7 +15,11 @@ function getXmlHttpRequestObject() {
 
 function searchSuggest(){
 	var str = escape(document.getElementById('search_field').value);
-	$.get( "searchSuggestions/"+ str, function( data ) {
+	if(str == "") { // muss überprüft werden weil sonst wird mit dem get ein showByName aufgerufen
+		document.getElementById('search_suggest').style.visibility='hidden';
+		return;
+}
+	$.get( "wikis/searchSuggestions/"+ str, function( data ) {
 	
 	var ss = document.getElementById('search_suggest');
 	
