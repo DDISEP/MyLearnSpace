@@ -83,7 +83,11 @@ class UsersController < ApplicationController
     @users = User.all
     render :action => :index
   end
-
+  
+  def search
+    @users = User.search params[:search]
+    render "search_results" 
+  end
   #def authenticate 
      #user = User.find_by_email(params[:email])
      #if user && user.authenticate(params[:password])
