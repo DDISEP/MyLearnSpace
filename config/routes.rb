@@ -1,13 +1,13 @@
 MyLearnSpace::Application.routes.draw do
   
     
-<<<<<<< HEAD
+
   resources :items
 
   resources :contents
-=======
+
   resources :questions
->>>>>>> 214e8f747be690661f2943261d5747ee7b22b760
+
 
   root 'welcome#index'
 
