@@ -25,6 +25,7 @@
       <%= link_to 'Abmelden', '#' %> <!--session_path( session ), :method => :delete %>-->
     <% end %>
 	<%= link_to 'Lehrplan', curriculums_path %>
+	<%= link_to 'Fragenforum', questions_path %>
 </p>
 <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
 
