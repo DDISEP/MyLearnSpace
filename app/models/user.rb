@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
     include ActiveModel::Validations
     attr_accessible :username, :email, :password,  :pupil
     validate :valid_user
+    has_many :questions
     
     #validates :username, uniqueness: {message: 'Diesen Benutzernamen gibt es leider schon!'}
                

@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20131220085411) do
 
   create_table "contents", force: true do |t|
@@ -18,6 +19,9 @@ ActiveRecord::Schema.define(version: 20131220085411) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+=======
+ActiveRecord::Schema.define(version: 20131220090004) do
+>>>>>>> 214e8f747be690661f2943261d5747ee7b22b760
 
   create_table "curriculums", force: true do |t|
     t.string   "subject"
@@ -34,6 +38,13 @@ ActiveRecord::Schema.define(version: 20131220085411) do
     t.string   "title"
     t.integer  "hours"
     t.string   "descriptionOfContent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", force: true do |t|
+    t.string   "title"
+    t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
