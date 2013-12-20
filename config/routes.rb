@@ -1,13 +1,15 @@
 MyLearnSpace::Application.routes.draw do
   
     
+  resources :items
+
+  resources :contents
+
   root 'welcome#index'
 
   get "welcome/index"
   
   
-  resources :items
-
   resources :curriculums
   
   post 'curriculums/:id' => "curriculums#update"

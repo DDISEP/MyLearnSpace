@@ -2,14 +2,14 @@
 <br />
 <br />
 <div class="col span_1_of_3">
-	<h5>Sie haben nun folgende Möglichkeiten:</h5>
+	<h5>Du hast nun folgende Möglichkeiten:</h5>
 	<%= link_to 'Neuen Lehrplan anlegen', new_curriculum_path %><br />
 	Lehrplan ändern<br />
 	Im Lehrplan suchen<br />
 </div>
 <div class="col span_2_of_3">
 	
-	<% curriculums = Curriculum.all %>
+	
 	
 	<h5>Folgende Lehrpläne stehen bisher zur Verfügung: </h5>	
 	<!-- Liste noch sortieren!! -->
@@ -22,7 +22,7 @@
 			<th>Fach</th>
 			<th>Lehrplan</th>
 		</tr>
-		<% curriculums.each do |cur| %>
+		<% @curriculums.each do |cur| %>
 		<tr>
 			<td><%= cur.country %></td>
 			<td><%= cur.state %></td>
@@ -31,7 +31,7 @@
 			<td><%= cur.level %></td>
 			<td><%= cur.subject %></td>
 			<td><%= link_to "anzeigen", cur %> 
-				<%= link_to "bearbeiten", cur, :method => :update %>
+				<%= link_to "bearbeiten", edit_curriculum_path(cur) %>
 				<%= link_to "löschen", cur, :method => :delete, :confirm => "Wollen Sie diesen Datensatz wirklich löschen?" %>
 				
 			</td>
@@ -39,7 +39,7 @@
 		<% end %>
 	</table>
 	
-	<% if curriculums.empty? %>
+	<% if @curriculums.empty? %>
 	<br />
 	<br />
 	<em>Keine Lehrpläne vorhanden!</em>

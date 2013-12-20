@@ -51,7 +51,7 @@ class CurriculumsController < ApplicationController
   def update
     @curriculum = Curriculum.find(params[:id])
     @curriculum.update_attributes(params[:curriculum])
-    render 'edit'
+    redirect_to @curriculum
   end
   
   

@@ -1,0 +1,31 @@
+<h1>Listing items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Hours</th>
+      <th>Descriptionofcontent</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.title %></td>
+        <td><%= item.hours %></td>
+        <td><%= item.descriptionOfContent %></td>
+        <td><%= link_to 'anzeigen', item %></td>
+        <td><%= link_to 'bearbeiten', edit_item_path(item) %></td>
+        <td><%= link_to 'löschen', item, method: :delete, data: { confirm: 'Bist du dir sicher?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item', new_item_path %>

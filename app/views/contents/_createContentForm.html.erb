@@ -1,0 +1,18 @@
+<%= form_for(@content) do |f| %>
+  <%= render "display_errors" %> 
+
+<table cellpadding="10">
+ <tr>
+ 	<td valign="top">
+ 		<%= f.label :tag, "Schlagwort*" %>
+ 	</td>
+ 	<td>
+ 		<%= f.text_area :tag, placeholder:"Schlagwort", maxlength:"140" %>
+ 	</td>
+ </tr>
+</table>
+  
+  <div class="actions">
+    <%= f.submit "Schlagwort speichern" %>
+  </div>
+<% end %>

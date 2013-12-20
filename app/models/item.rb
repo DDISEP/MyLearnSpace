@@ -1,6 +1,10 @@
 class Item < ActiveRecord::Base
-  validates :title, presence => true
-  validates :hours, :inclusion => { :in => [0..40]}
-  validates :descriptionOfContent, :presence => true
-  belongs_to :curriculum 
+  
+  attr_accessible :title, :hours, :descriptionOfContent
+  
+  validates_presence_of :title, :message => " darf nicht leer sein."
+  validates_presence_of :descriptionOfContent, :message => " darf nicht leer sein."
+  
+  belongs_to :curriculum
+  has_many :items
 end

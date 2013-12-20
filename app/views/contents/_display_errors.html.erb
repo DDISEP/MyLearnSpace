@@ -1,0 +1,10 @@
+<% if @content.errors.any? %>
+  <div id="error_explanation">
+    <strong><%= @content.errors.count %> Fehler gefunden:</strong>
+    <ul>
+    <% @content.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
