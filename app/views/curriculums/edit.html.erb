@@ -10,7 +10,12 @@
 		<td>
 			<%= f.select :country , ["Deutschland", "Austria", "Schweiz"],
 			  :include_blank => false,
-			  :prompt => "Bitte wählen" %>
+			  :prompt => "Bi<h1>Schlagwörter bearbeiten</h1>
+
+<%= render 'createContentForm' %>
+
+<%= link_to 'Show', @content %> |
+<%= link_to 'Zurück', contents_path %>tte wählen" %>
 		</td>
 	</tr>
 	
