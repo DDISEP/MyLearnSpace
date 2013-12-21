@@ -1,25 +1,16 @@
 //= require bootstrap-wysihtml5
 
-  
-  
-function getXmlHttpRequestObject() {
-  if (window.XMLHttpRequest) {
-    return new XMLHttpRequest();
-  } else if(window.ActiveXObject) {
-    return new ActiveXObject("Microsoft.XMLHTTP");
-  } else {
-    alert("Your Browser Sucks!\nIt's about time to upgrade don't you think?");
-  }
-}
 
 
 function searchSuggest(){
+	
 	var str = escape(document.getElementById('search_field').value);
-	if(str == "") { // muss überprüft werden weil sonst wird mit dem get ein showByName aufgerufen
+	if(str == "") { // muss überprüft werden weil sonst wird mit dem get ein showByName aufgerufen 
+		//TODO im Controller get als js-formatted zurückgeben 
 		document.getElementById('search_suggest').style.visibility='hidden';
 		return;
 }
-	$.get( "wikis/searchSuggestions/"+ str, function( data ) {
+	$.get( "/wikis/searchSuggestions/"+ str, function( data ) {
 	
 	var ss = document.getElementById('search_suggest');
 	
@@ -28,16 +19,36 @@ function searchSuggest(){
 		var suggest ="";
 		for(i=0; i < str.length - 1; i++) {
 					
-			suggest += '<div onmouseover="javascript:suggestOver(this);" ';
+			suggest += '<div id="item' +i.toString() +'" ';
+			suggest += 'onmouseover="javascript:suggestOver(this);" ';
 			suggest += 'onmouseout="javascript:suggestOut(this);" ';
 			suggest += 'onclick="javascript:setSearch(this.innerHTML);" ';
-			suggest += 'class="suggest_link">' + str[i] + '</div>';
+			suggest += 'class="suggest_link">';
+			//suggest +=  str[i] + '</a></div>';
+			suggest += '<a href="/wikis/'+str[i]+ '">' +str[i] + '</a></div>';
+			
+			
+			
 			
 		}
 		ss.style.visibility='visible';
+		
 		$("#search_suggest").html(suggest);
 		
+		
+		
 	});
+}
+function navigateThroughSuggests(k)
+{
+    
+  	alert("asd");
+	// var keypress = document.getElementById('keypress');
+	keyIn = k.keyCode;
+	alert(keyIn.toString());
+    suggestOut(this);
+    getsFocusId = "item" + 39-keyIn;  //38 is up arrow, 40 is down
+    suggestOver(document.getElementById(getFocusId));
 }
 
 //Mouse over function
@@ -53,7 +64,9 @@ function suggestOut(div_value) {
 
 //Click function
 function setSearch(value) {
-	document.getElementById('search_field').value = value;
+	var str = value.split(">");
+	document.getElementById('search_field').value = str[1].split("<")[0];;
 	document.getElementById('search_suggest').innerHTML = '';
 	document.getElementById('search_suggest').style.visibility='hidden';
 }
+

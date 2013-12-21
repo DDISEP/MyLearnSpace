@@ -3,6 +3,7 @@ class CreateWikis < ActiveRecord::Migration
     create_table :wikis do |t|
       t.string :title
       t.text :article
+      t.integer :clicks
       
       # t.lehrplan :lehrplan mehrere
       # Versionen? KOmmentare?

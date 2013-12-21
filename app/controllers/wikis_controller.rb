@@ -7,7 +7,8 @@ class WikisController < ApplicationController
 
 def create
   
- @wiki = Wiki.new(params[:wiki])
+ @wiki = Wiki.new(wiki_params)
+ @wiki.clicks= 0
  
   if @wiki.save
     redirect_to @wiki
@@ -48,8 +49,6 @@ def searchSuggestions
    
   end
   
- #<div onmouseover="javascript:suggestOver(this);" onmouseout="javascript:suggestOut(this);" class="suggest_link"><%= link_to wiki.title, wiki_path(wiki) %>
-#</div>   
 
   render text: results
   
@@ -63,7 +62,7 @@ def search
   
 end
   
-def show
+def show #TODO: Auslagern in Model
   @title=""
   if Wiki.exists?(params[:id])
     @wiki = Wiki.find(params[:id])   
@@ -73,6 +72,8 @@ def show
   if @wiki.nil? # Test ob Wiki-Artikel mit disem Titel schon vorhanden
     render "showEmptyArticle.html.erb" # Falls es noch keinen gibt
   else
+    @wiki.clicks += 1
+    @wiki.update
     render "show.html.erb" 
   end   
   end
@@ -91,7 +92,7 @@ def showByName # Aufruf wiki/[Artikelname] möglich z.B. : wiki/Wurzel
 end
 
 def index
-  @wiki = Wiki.last
+  @wiki = Wiki.last #TODO: beliebtestes Wiki
 end
 
 private 

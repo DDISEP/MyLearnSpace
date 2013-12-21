@@ -5,8 +5,9 @@ class Wiki < ActiveRecord::Base
   validates :title, presence: {message: "Bitte einen Titel eingeben"}
   validates :article, presence:  {message: "Ein leerer Artikel ist nicht sehr lehrreich!"}
   validates :title, uniqueness:  {message: 'Zu diesem Titel gibt es schon einen Artikel!'}
-  validates :title, length: { in: 1..35 } #TODO
+  validates :title, length: { maximum: 35, message: "Titel darf max 35 Zeichen lang sein!"  } 
   
+  #TODO clicks mit 0 initialisieren
   
    
   attr_accessible :title, :article
