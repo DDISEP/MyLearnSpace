@@ -4,7 +4,11 @@
 		(Zweig: <%= @curriculum.profession %>)
 	<% end %> 
 </h3>
+
 <br />
+<p id="notice"><%= notice %></p>
+<br />
+
 Tabelle, die alle Items, die dem o.g. Lehrplan zugeordnet sind, auflistet <br />
 Das kommt in einem zweiten Schritt, wenn die Klasse Items implementiert wird.<br /><br />
 Mögliche Darstellung, vergleichbar mit ISB:<br /><br />
@@ -27,4 +31,5 @@ Mögliche Darstellung, vergleichbar mit ISB:<br /><br />
 	</tr>
 </table>
 <br /><br />
-<%= link_to 'Zurück', curriculums_path %>
+<%= link_to 'bearbeiten', edit_curriculum_path(@curriculum) %> |
+<%= link_to 'zurück', curriculums_path %>
