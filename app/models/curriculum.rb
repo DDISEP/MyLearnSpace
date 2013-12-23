@@ -9,7 +9,7 @@ class Curriculum < ActiveRecord::Base
   
   validates_presence_of :typeOfSchool, :message => " darf nicht leer sein."
   
-  validates_inclusion_of :profession, :in => %w(naturwissenschaftlich sprachlich klassisch musisch wirtschaftlich handwerklich), :message => "falsche Angabe"
+  validates_inclusion_of :profession, :in => %w(naturwissenschaftlich sprachlich klassisch musisch wirtschaftlich handwerklich).push(""), :message => "falsche Angabe"
   
   validates_presence_of :country, :message => " darf nicht leer sein."
   validates_inclusion_of :country, :in => %w(Deutschland Austria Schweiz), :message => " muss Deutschland, Austria oder Schweiz lauten."

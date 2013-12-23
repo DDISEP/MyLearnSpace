@@ -1,5 +1,5 @@
 <h3>Lehrplan für <%= @curriculum.subject %> der <%= @curriculum.level %>. Jahrgangsstufe <%= @curriculum.typeOfSchool %> in <%= @curriculum.state %> (<%= @curriculum.country %>) <br />
-	<% if @curriculum.profession == nil %>
+	<% if @curriculum.profession.blank? %>
 	<% else %>
 		(Zweig: <%= @curriculum.profession %>)
 	<% end %> 

@@ -18,9 +18,8 @@
 			<th>Jahrgangsstufe</th>
 			<th>Fach</th>
 			<th>Lehrplan</th>
-		</tr>
 		<% @curriculums.each do |cur| %>
-		<tr>
+		<tr id=<%= cur.id%>>
 			<td><%= cur.country %></td>
 			<td><%= cur.state %></td>
 			<td><%= cur.typeOfSchool %></td>
@@ -29,7 +28,7 @@
 			<td><%= cur.subject %></td>
 			<td><%= link_to "anzeigen", cur %> 
 				<%= link_to "bearbeiten", edit_curriculum_path(cur) %>
-				<%= link_to "löschen", cur, :method => :delete, :confirm => "Wollen Sie diesen Datensatz wirklich löschen?" %>
+				<%= link_to "löschen", cur, :remote => true, :method => :delete, :confirm => "Wollen Sie diesen Datensatz wirklich löschen?" %>
 				
 			</td>
 		</tr>

@@ -4,7 +4,7 @@ class CurriculumsController < ApplicationController
   # GET /curriculums
   # GET /curriculums.json
   def index
-    @curriculums = Curriculum.all
+    @curriculums = Curriculum.find(:all, :order => :country)
   end
 
   # GET /curriculums/1
@@ -54,10 +54,10 @@ class CurriculumsController < ApplicationController
   # DELETE /curriculums/1
   # DELETE /curriculums/1.json
   def destroy
+    @id = params[:id].to_i
     @curriculum.destroy
     respond_to do |format|
-      format.html { redirect_to curriculums_url }
-      format.json { head :no_curriculum }
+      format.js
     end
   end
 
