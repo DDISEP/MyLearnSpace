@@ -16,12 +16,12 @@ class Wiki < ActiveRecord::Base
   
 def self.search(search)
   search_condition = "%" + search + "%"
-  find(:all, :conditions => ['title LIKE ? OR article LIKE ?', search_condition, search_condition])
+  find(:all, :conditions => ['title LIKE ? OR article LIKE ?', search_condition, search_condition], :order => "clicks DESC", :limit => "15")
 end
 
 def self.searchSuggestions(search)
   search_condition = search +"%"
-  find(:all, :conditions => ['title LIKE ?', search_condition]) #TODO: Einschränkung auf top 10 
+  find(:all, :conditions => ['title LIKE ?', search_condition], :order => "clicks DESC", :limit => "8")  
   
 end
 

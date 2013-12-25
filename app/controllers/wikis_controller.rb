@@ -65,18 +65,21 @@ end
 def show #TODO: Auslagern in Model
   @title=""
   if Wiki.exists?(params[:id])
-    @wiki = Wiki.find(params[:id])   
+    @wiki = Wiki.find(params[:id]) 
+      
   else # Refactoring -> Id an findByNames übergeben und findBynames aufrufen  
     @title = params[:id]
     @wiki= Wiki.find_by_title(@title)
+  end    
   if @wiki.nil? # Test ob Wiki-Artikel mit disem Titel schon vorhanden
     render "showEmptyArticle.html.erb" # Falls es noch keinen gibt
   else
-    @wiki.clicks += 1
-    @wiki.update
-    render "show.html.erb" 
+    @wiki.increment(:clicks, by = 1)
+    @wiki.save
+    render "show.html.erb"
+    
   end   
-  end
+  
    
 end
 
@@ -92,7 +95,9 @@ def showByName # Aufruf wiki/[Artikelname] möglich z.B. : wiki/Wurzel
 end
 
 def index
-  @wiki = Wiki.last #TODO: beliebtestes Wiki
+  @wiki = Wiki.find_by_clicks(Wiki.maximum("clicks")) #TODO: beliebtestes Wiki
+ 
+  
 end
 
 private 
