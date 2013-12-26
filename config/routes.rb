@@ -22,10 +22,6 @@ MyLearnSpace::Application.routes.draw do
   
   post 'wikis/search' => "wikis#search"
   
-  get 'wiki/:title' => "wikis#showByName"
-  
-  post 'wikis/:id' => "wikis#update"
-  
   get "wikis/searchSuggestions/:search" => "wikis#searchSuggestions"
   
   get 'users/login' => "users#login"

@@ -12,7 +12,9 @@ class Wiki < ActiveRecord::Base
    
   attr_accessible :title, :article
   
-  
+def self.find_by_title(title)
+  find(:all, :conditions => ["title LIKE ?", title])[0]   # liefert Array zurück -> deswegen [0] (Title ist unique)
+end  
   
 def self.search(search)
   search_condition = "%" + search + "%"

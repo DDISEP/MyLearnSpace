@@ -22,6 +22,9 @@ def create
 end
 def edit
   @wiki = Wiki.find(params[:id])
+  @title = @wiki.title
+  
+  
 end
 
 def update
@@ -29,6 +32,7 @@ def update
   @wiki = Wiki.find(params[:id])
  
   if @wiki.update(params.require(:wiki).permit(:article)) # nur Artikel änderbar
+  #if @wiki.update(wiki_params)
     redirect_to @wiki
   else
     render 'edit'
@@ -71,10 +75,11 @@ def show #TODO: Auslagern in Model
     @wiki = Wiki.find(params[:id]) 
       
   else # Refactoring -> Id an findByNames übergeben und findBynames aufrufen  
-    @title = params[:id]
+    @title = params[:id].gsub('_',' ') # Unterstriche in Links in Leerzeichen umwandeln    
     @wiki= Wiki.find_by_title(@title)
   end    
   if @wiki.nil? # Test ob Wiki-Artikel mit disem Titel schon vorhanden
+    @wiki = Wiki.new
     render "showEmptyArticle.html.erb" # Falls es noch keinen gibt
   else
     @wiki.increment(:clicks, by = 1)
@@ -86,19 +91,10 @@ def show #TODO: Auslagern in Model
    
 end
 
-def showByName # Aufruf wiki/[Artikelname] möglich z.B. : wiki/Wurzel 
 
-  @title= params[:title]
-  @wiki= Wiki.find_by_title(@title)
-  if @wiki.nil? # Test ob Wiki-Artikel mit disem Titel schon vorhanden
-    render "showEmptyArticle.html.erb" # Falls es noch keinen gibt
-  else
-    render "show.html.erb" 
-  end  
-end
 
 def index
-  @wiki = Wiki.find_by_clicks(Wiki.maximum("clicks")) #TODO: beliebtestes Wiki
+  @wiki = Wiki.find_by_clicks(Wiki.maximum("clicks")) #beliebtestes Wiki
  
   
 end
