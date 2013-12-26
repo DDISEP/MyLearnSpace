@@ -1,0 +1,6 @@
+
+<% @wikis.each do |wiki| %>
+ <div onmouseover="javascript:suggestOver(this);" onmouseout="javascript:suggestOut(this);" class="suggest_link"><%= link_to wiki.title, wiki_path(wiki) %>
+</div>   
+<% end %>
+

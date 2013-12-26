@@ -38,27 +38,30 @@ def update
 end
 def searchSuggestions
   @wikis = Wiki.searchSuggestions params[:search]
-  results= ""
+  @results= ""
   @wikis.each do |wiki|
        #results += "<div onmouseover=\"javascript:suggestOver(this); " 
        #resulst += "onmouseout=\"javascript:suggestOut(this);\" " 
        #results += "class=\"suggest_link\">"
        #results += link_to wiki.title, wiki_path(wiki)
        #results += "</div>"
-       results += wiki.title + "\n"
+       @results += wiki.title + "\n"
    
   end
   
-
-  render text: results
+respond_to do |format|
+    format.js do
+      render(:js => "renderSearchSuggests(#{@results.to_json});")
+      end
+#    format.html { render text: "Diese Seite existiert nicht" }
+format.html { render "wiki404" }
+end
   
 end
 
 def search
   @wikis = Wiki.search params[:search]
-  #@wikis = Wiki.searchSuggestions params[:search]
- 
- render "search_results" 
+  render "search_results" 
   
 end
   

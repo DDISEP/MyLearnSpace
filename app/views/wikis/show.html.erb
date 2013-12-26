@@ -2,7 +2,7 @@
 <div class="zweispaltig">
 <h3><p align="center"><%= @wiki.title %></p></h3> 
 <hr>
-<p align="center"><%= raw @wiki.article %></p>
+<p align="center"><%= sanitize @wiki.article %></p>
 counter: <%= @wiki.clicks %>	</div>
 <div><%= link_to "Artikel bearbeiten", edit_wiki_path %>
 	    

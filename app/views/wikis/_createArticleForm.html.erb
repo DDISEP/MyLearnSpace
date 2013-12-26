@@ -1,6 +1,7 @@
  <div class="hero-unit">
     <%= form_for :wiki, url: wikis_path do |f| %>
 <%= render "display_errors" %>
+
     <%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" %> 
   
  
