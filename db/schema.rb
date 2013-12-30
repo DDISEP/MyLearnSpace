@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20131220085411) do
   create_table "wikis", force: true do |t|
     t.string   "title"
     t.text     "article"
+    t.integer  "clicks"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

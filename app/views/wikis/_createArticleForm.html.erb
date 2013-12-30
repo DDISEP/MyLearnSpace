@@ -1,7 +1,8 @@
  <div class="hero-unit">
-    <%= form_for :wiki, url: wikis_path do |f| %>
+    <%= form_for @wiki do |f| %>
 <%= render "display_errors" %>
-    <%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" %> 
+
+    <%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" , :value => @title %> 
   
  
   
@@ -9,7 +10,7 @@
    <%= f.text_area :article,  class: 'wysihtml5', placeholder:"Artikel hier schreiben...", style:"width: 810px; height: 200px" %>
    
   <p>
-    <%= f.submit %>
+    <%= f.submit "Artikel speichern"%>
   </p>
   </div>
  

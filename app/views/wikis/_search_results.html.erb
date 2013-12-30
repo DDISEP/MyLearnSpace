@@ -1,7 +1,7 @@
 <h1><%= @wikis.count %> Artikel gefunden!</h1>
 <table>
   <tr>
-    <th>Title</th>
+    <th>Titel</th>
     <th>Text</th>
     <th></th>
     <th></th>
@@ -11,7 +11,7 @@
   <tr>
     <td><strong><%= wiki.title %></td></strong>
     <td>	
-    	<i><%= wiki.article.first(30) %>
+    	<i><%= strip_tags(wiki.article.first(30)) %>
     	<% if !wiki.article.at(31).nil? %>
     	...
     	<% end %></td></i>

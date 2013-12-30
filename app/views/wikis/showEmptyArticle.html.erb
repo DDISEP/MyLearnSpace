@@ -4,19 +4,5 @@
 <strong>Die gesuchte Seite existiert nicht.</strong>
 <br/>
 Verfasse einen Artikel zu diesem Thema.
-<%= form_for :wiki, url: wikis_path do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title, :value => @title  %>
-  </p>
- 
-  <p>
-    <%= f.label :article %><br>
-    <%= f.text_area :article %>
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<%= render "createArticleForm" %>
 <%= link_to 'Zurück zur Startseite', wikis_path %>
