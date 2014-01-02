@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131220085411) do
+ActiveRecord::Schema.define(version: 20140102172333) do
 
   create_table "contents", force: true do |t|
     t.string   "tag"
@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(version: 20131220085411) do
     t.datetime "updated_at"
     t.string   "country"
     t.string   "state"
+  end
+
+  create_table "curriculums_users", force: true do |t|
+    t.integer "curriculum_id"
+    t.integer "user_id"
   end
 
   create_table "items", force: true do |t|

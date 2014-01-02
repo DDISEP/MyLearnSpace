@@ -17,5 +17,6 @@ class Curriculum < ActiveRecord::Base
   validates_presence_of :state, :message => " darf nicht leer sein."
   
   has_many :items
+  has_and_belongs_to_many :users
   
 end
