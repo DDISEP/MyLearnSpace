@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>Titel:</strong>
   <%= @item.title %>
 </p>
 
 <p>
-  <strong>Hours:</strong>
-  <%= @item.hours %>
+  <strong>Stundenaufwand:</strong>
+  <%= @item.hours %> Stunden
 </p>
 
 <p>
-  <strong>Descriptionofcontent:</strong>
+  <strong>Lehrplaninhaltsbeschreibung:</strong>
   <%= @item.descriptionOfContent %>
 </p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<%= link_to 'bearbeiten', edit_item_path(@item) %> |
+<%= link_to 'zurück', curriculums_path %>

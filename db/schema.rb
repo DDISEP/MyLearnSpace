@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140102172333) do
+ActiveRecord::Schema.define(version: 20140102184905) do
 
   create_table "contents", force: true do |t|
     t.string   "tag"
@@ -41,7 +41,11 @@ ActiveRecord::Schema.define(version: 20140102172333) do
     t.string   "descriptionOfContent"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "curriculum_id"
+    t.string   "curriculum_type"
   end
+
+  add_index "items", ["curriculum_id", "curriculum_type"], name: "index_items_on_curriculum_id_and_curriculum_type"
 
   create_table "questions", force: true do |t|
     t.string   "title"

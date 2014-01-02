@@ -1,31 +1,26 @@
-<h1>Listing items</h1>
+<h1>Alle auf MyLearnSpace verfügbaren Lehrplaninhalte auflisten, die keiner braucht</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Hours</th>
-      <th>Descriptionofcontent</th>
-      <th></th>
-      <th></th>
-      <th></th>
+<table border="1" cellpadding="5">
+    <tr bgcolor="grey">
+      <th>Titel</th>
+      <th>Stundenaufwand</th>
+      <th>Funktionen</th>
     </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.title %></td>
-        <td><%= item.hours %></td>
-        <td><%= item.descriptionOfContent %></td>
-        <td><%= link_to 'anzeigen', item %></td>
-        <td><%= link_to 'bearbeiten', edit_item_path(item) %></td>
-        <td><%= link_to 'löschen', item, method: :delete, data: { confirm: 'Bist du dir sicher?' } %></td>
-      </tr>
+    <tr><td colspan="3"></td></tr>
+    <tr>
+      <% @items.each do |item| %>
+        <td bgcolor="lightgrey"><%= item.title %></td>
+        <td bgcolor="lightgrey"><%= item.hours %> Stunde(n)</td>
+        <td bgcolor="lightgrey"><%= link_to 'anzeigen', item %> 
+            <%= link_to 'bearbeiten', edit_item_path(item) %> 
+            <%= link_to 'löschen', item, method: :delete, data: { confirm: 'Bist du dir sicher?' } %></td>
+    </tr>
+    <tr><td colspan="3"><%= item.descriptionOfContent %></td></tr>
+    <tr><td colspan="3"></td></tr>
     <% end %>
-  </tbody>
+    </tr>
 </table>
 
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+<%= link_to 'Neuer Lehrplaninhalt', new_item_path %>
