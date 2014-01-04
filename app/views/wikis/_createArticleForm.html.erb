@@ -1,7 +1,9 @@
  <div class="hero-unit">
-    <%= form_for @wiki do |f| %>
+    
 <%= render "display_errors" %>
 
+<%= render "upload/uploadfile" %>
+<%= form_for @wiki do |f| %>
     <%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" , :value => @title %> 
   
  
@@ -12,10 +14,12 @@
   <p>
     <%= f.submit "Artikel speichern"%>
   </p>
-  </div>
+  
  
 
 <% end %>
+
+</div>
 
 
 

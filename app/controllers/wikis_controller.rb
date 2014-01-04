@@ -65,7 +65,8 @@ end
 
 def search
   @wikis = Wiki.search params[:search]
-  render "search_results" 
+  render "search_results"
+  
   
 end
   
@@ -94,6 +95,7 @@ end
 
 
 def index
+  
   @wiki = Wiki.find_by_clicks(Wiki.maximum("clicks")) #beliebtestes Wiki
  
   
