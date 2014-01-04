@@ -44,13 +44,7 @@ def searchSuggestions
   @wikis = Wiki.searchSuggestions params[:search]
   @results= ""
   @wikis.each do |wiki|
-       #results += "<div onmouseover=\"javascript:suggestOver(this); " 
-       #resulst += "onmouseout=\"javascript:suggestOut(this);\" " 
-       #results += "class=\"suggest_link\">"
-       #results += link_to wiki.title, wiki_path(wiki)
-       #results += "</div>"
-       @results += wiki.title + "\n"
-   
+       @results += wiki.title + "\n"   
   end
   
 respond_to do |format|
@@ -65,7 +59,8 @@ end
 
 def search
   @wikis = Wiki.search params[:search]
-  render "search_results" 
+  render "search_results"
+  
   
 end
   
@@ -94,6 +89,7 @@ end
 
 
 def index
+  
   @wiki = Wiki.find_by_clicks(Wiki.maximum("clicks")) #beliebtestes Wiki
  
   
