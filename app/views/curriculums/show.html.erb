@@ -1,5 +1,5 @@
 <h3>Lehrplan für <%= @curriculum.subject %> der <%= @curriculum.level %>. Jahrgangsstufe <%= @curriculum.typeOfSchool %> in <%= @curriculum.state %> (<%= @curriculum.country %>) <br />
-	<% if @curriculum.profession == nil %>
+	<% if @curriculum.profession.blank? %>
 	<% else %>
 		(Zweig: <%= @curriculum.profession %>)
 	<% end %> 
@@ -12,24 +12,26 @@
 Tabelle, die alle Items, die dem o.g. Lehrplan zugeordnet sind, auflistet <br />
 Das kommt in einem zweiten Schritt, wenn die Klasse Items implementiert wird.<br /><br />
 Mögliche Darstellung, vergleichbar mit ISB:<br /><br />
-<table cellpadding="5" border="1">
-	<tr>
-		<td width="80%">
-			Lehrplaninhalte
-		</td>
-		<td width="20%">
-			Funktionen
-		</td>
-	</tr>
-	<tr>
-		<td>
-			...
-		</td>
-		<td>
-			...
-		</td>
-	</tr>
+<table border="1" cellpadding="5">
+    <tr bgcolor="grey">
+      <th>Titel</th>
+      <th>Stundenaufwand</th>
+      <th>Funktionen</th>
+    </tr>
+    <tr><td colspan="3"></td></tr>
+    <tr>
+      <% @curriculum.items.each do |cur| %> 
+        <td bgcolor="lightgrey"><%= cur.title %></td>
+        <td bgcolor="lightgrey"><%= cur.hours %> Stunde(n)</td>
+        <td bgcolor="lightgrey"><%= link_to 'anzeigen', cur %> 
+            <%= link_to 'bearbeiten', edit_item_path(cur) %> 
+            <%= link_to 'löschen', cur, method: :delete, data: { confirm: 'Bist du dir sicher?' } %></td>
+    </tr>
+    <tr><td colspan="3"><%= cur.descriptionOfContent %></td></tr>
+    <tr><td colspan="3"></td></tr>
+    <% end %>
+    </tr>
 </table>
 <br /><br />
 <%= link_to 'bearbeiten', edit_curriculum_path(@curriculum) %> |
-<%= link_to 'zurück', curriculums_path %>
+<%= link_to 'zur Übersicht', curriculums_path %>

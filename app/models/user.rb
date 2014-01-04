@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
     attr_accessible :username, :email, :password,  :pupil
     validate :valid_user
     has_many :questions
+    has_and_belongs_to_many :curriculums
     
     #validates :username, uniqueness: {message: 'Diesen Benutzernamen gibt es leider schon!'}
                

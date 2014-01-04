@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140104153056) do
 
   create_table "bootsy_image_galleries", force: true do |t|
@@ -26,6 +27,9 @@ ActiveRecord::Schema.define(version: 20140104153056) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+=======
+ActiveRecord::Schema.define(version: 20140102184905) do
+>>>>>>> 12c50812f8b38c00bc4db2f4ff457c6d2405c4a8
 
   create_table "contents", force: true do |t|
     t.string   "tag"
@@ -44,10 +48,16 @@ ActiveRecord::Schema.define(version: 20140104153056) do
     t.string   "state"
   end
 
+<<<<<<< HEAD
   create_table "data_files", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "fileName"
+=======
+  create_table "curriculums_users", force: true do |t|
+    t.integer "curriculum_id"
+    t.integer "user_id"
+>>>>>>> 12c50812f8b38c00bc4db2f4ff457c6d2405c4a8
   end
 
   create_table "items", force: true do |t|
@@ -56,7 +66,11 @@ ActiveRecord::Schema.define(version: 20140104153056) do
     t.string   "descriptionOfContent"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "curriculum_id"
+    t.string   "curriculum_type"
   end
+
+  add_index "items", ["curriculum_id", "curriculum_type"], name: "index_items_on_curriculum_id_and_curriculum_type"
 
   create_table "questions", force: true do |t|
     t.string   "title"

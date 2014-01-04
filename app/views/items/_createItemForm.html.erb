@@ -1,0 +1,19 @@
+<%= form_for(@item) do |f| %>
+ <%= render "display_errors" %> 
+
+  <div class="field">
+    <%= f.label :title, "Titel*" %><br>
+    <%= f.text_field :title, placeholder:"Titel" %>
+  </div>
+  <div class="field">
+    <%= f.label :hours, "Stundenaufwand" %><br>
+    <%= f.number_field :hours, placeholder:"Stundenaufwand" %>
+  </div>
+  <div class="area">
+    <%= f.label :descriptionOfContent, "Lehrplaninhaltsbeschreibung*" %><br>
+    <%= f.text_area :descriptionOfContent, placeholder:"Lehrplaninhaltsbeschreibung" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Lehrplaninhalt speichern" %>
+  </div>
+<% end %>
