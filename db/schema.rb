@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140102184905) do
+ActiveRecord::Schema.define(version: 20140105120708) do
+
+  create_table "bootsy_image_galleries", force: true do |t|
+    t.integer  "bootsy_resource_id"
+    t.string   "bootsy_resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bootsy_images", force: true do |t|
+    t.string   "image_file"
+    t.integer  "image_gallery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "contents", force: true do |t|
     t.string   "tag"
@@ -33,6 +47,13 @@ ActiveRecord::Schema.define(version: 20140102184905) do
   create_table "curriculums_users", force: true do |t|
     t.integer "curriculum_id"
     t.integer "user_id"
+  end
+
+  create_table "data_files", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "fileName"
+    t.string   "fileType"
   end
 
   create_table "items", force: true do |t|

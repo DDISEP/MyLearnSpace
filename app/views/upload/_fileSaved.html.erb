@@ -1,0 +1,29 @@
+<% if @post %> 
+Datei <i><%= @file.fileName %></i> gespeichert!
+Generierter Downloadlink: <div id="link" class="suggest_downloadlink"></div>
+
+<% else %>
+Fehler beim Upload!
+<% end %>
+
+<script type="text/javascript">
+
+var editor = $('#articleInput').data("wysihtml5").editor;
+var value = editor.getValue();
+
+
+var url = document.location.protocol +"//" + document.location.host
+url += '/uploads/<%= @file.getStorableName %>'
+
+$("#link").html(url)
+
+var link = '<a href="'+url+'"><%= @file.fileName %></a>'
+
+editor.setValue(value + link, true);
+
+
+</script>
+
+
+
+

@@ -2,6 +2,7 @@ MyLearnSpace::Application.routes.draw do
   
     
 
+  
   resources :items
 
   resources :contents
@@ -12,6 +13,10 @@ MyLearnSpace::Application.routes.draw do
   root 'welcome#index'
 
   get "welcome/index"
+  
+  get "upload/index" => "upload#index"
+  post "upload" => "upload#upload"
+ 
   
   
   resources :curriculums
