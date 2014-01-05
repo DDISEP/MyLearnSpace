@@ -9,6 +9,7 @@ input {
 div.zweispaltig{
 position: relative; width:50%; float: left;
 }
+
 div.simpleSearch { 
   background-color: white;
   background-position: 0% 0%;
@@ -58,10 +59,24 @@ div.simpleSearch {
   
   
 }
+
+
 .suggest_link_over {
   background-color: #d8e8ff;
   padding: 2px 6px 2px 6px;
   opacity:1.00;
   filter: alpha(opacity=100);
   -moz-opacity: 1.0;
+}
+#suggest_downloadlink {
+  color: #333;
+  padding: 2px 6px 2px 6px;
+  width:15em;
+  margin:0px;
+  padding:0px;
+  position: absolute;
+  text-align:left;
+  
+  
+  
 }

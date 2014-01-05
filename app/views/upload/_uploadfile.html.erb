@@ -1,4 +1,5 @@
 <div id="uploadState"></div>
+<div id="generatedLink"></div>
 <%= form_tag url_for(:controller => 'upload', :action => 'upload'), :method => :post, :multipart => true, :remote => true do %>
   <%= file_field_tag 'file' %> <!-- Kann nicht geändert werden. Browser abhängig -->
   <%= submit_tag "Upload" %>
