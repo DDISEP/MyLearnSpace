@@ -13,9 +13,9 @@
 
 
 <body>
-	
-<p style="border:5px solid cornflowerblue "><strong>Wo möchtest du hin?</strong> 
-	<a href="/welcome/index">Startseite</a>
+<p style="border:2px solid cornflowerblue ">
+	<%= link_to image_tag('MyLearnSpace.png', border:"0", width:"150", height:"150", :mouseover => "/images/MyLearnSpace5.png"), welcome_index_path %>
+	<strong>Wo möchtest du hin?</strong> 
 	<%= link_to 'Wiki', wikis_path %>
 	<%= link_to 'Benutzer', users_path %>
 	<% if current_user.nil? %>
