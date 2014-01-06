@@ -6,9 +6,6 @@
   <%= javascript_include_tag "application", controller_name %>
 </head>
 
-
-
-
 <body>
 <p style="border:2px solid cornflowerblue ">
 	<%= link_to image_tag('MyLearnSpace.png', border:"0", width:"150", height:"150", :mouseover => "/images/MyLearnSpace5.png"), welcome_index_path %>
@@ -25,8 +22,5 @@
 </p>
 <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
 
-
 </body>
- 
 </html>
-

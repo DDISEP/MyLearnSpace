@@ -14,11 +14,13 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
+    @curriculumID = Curriculum.find(params[:curriculum_id])
     @item = Item.new
   end
 
   # GET /items/1/edit
   def edit
+    @curriculumID = Curriculum.find(params[:curriculum_id])
   end
 
   # POST /items

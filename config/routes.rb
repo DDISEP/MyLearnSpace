@@ -19,9 +19,14 @@ MyLearnSpace::Application.routes.draw do
  
   
   
-  resources :curriculums
+  resources :curriculums do
+    resources :items
+  end
   
   post 'curriculums/:id' => "curriculums#update"
+  
+  
+  
   
   resources :wikis
   

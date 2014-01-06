@@ -1,6 +1,11 @@
 <%= form_for(@item) do |f| %>
- <%= render "display_errors" %> 
+ <%= render "display_errors" %>
+ 
 
+  <div class="field">
+    <%= f.label :curriculum_id, "Lehrplan" %>
+	<%= f.select :curriculum_id, [@curriculumID.id] %>
+  </div>
   <div class="field">
     <%= f.label :title, "Titel*" %><br>
     <%= f.text_field :title, placeholder:"Titel" %>
