@@ -10,6 +10,7 @@
     <tr>
       <% @items.each do |item| %>
         <td bgcolor="lightgrey"><%= item.title %></td>
+
         <td bgcolor="lightgrey"><%= item.hours %> Stunde(n)</td>
         <td bgcolor="lightgrey"><%= link_to 'anzeigen', item %> 
             <%= link_to 'bearbeiten', edit_item_path(item) %> 

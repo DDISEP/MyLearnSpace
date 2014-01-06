@@ -6,32 +6,30 @@
 </h3>
 <br />
 <p id="notice"><%= notice %></p>
-<%= link_to 'Neuen Lehrplaninhalt hinzufügen', new_item_path %><br />
+<%= link_to 'Lehrplan bearbeiten', edit_curriculum_path(@curriculum) %> | 
+Lehrplan löschen | 
+<%= link_to 'Neuen Lehrplaninhalt hinzufügen', new_curriculum_item_path(@curriculum) %><br />
 <br />
-
-Tabelle, die alle Items, die dem o.g. Lehrplan zugeordnet sind, auflistet <br />
-Das kommt in einem zweiten Schritt, wenn die Klasse Items implementiert wird.<br /><br />
-Mögliche Darstellung, vergleichbar mit ISB:<br /><br />
 <table border="1" cellpadding="5">
     <tr bgcolor="grey">
-      <th>Titel</th>
-      <th>Stundenaufwand</th>
+      <th>Titel, Stundenaufwand</th>
       <th>Funktionen</th>
     </tr>
-    <tr><td colspan="3"></td></tr>
+    <tr><td colspan="2"></td></tr>
     <tr>
-      <% @curriculum.items.each do |cur| %> 
-        <td bgcolor="lightgrey"><%= cur.title %></td>
-        <td bgcolor="lightgrey"><%= cur.hours %> Stunde(n)</td>
-        <td bgcolor="lightgrey"><%= link_to 'anzeigen', cur %> 
-            <%= link_to 'bearbeiten', edit_item_path(cur) %> 
-            <%= link_to 'löschen', cur, method: :delete, data: { confirm: 'Bist du dir sicher?' } %></td>
+      <% @curriculum.items.each do |curitem| %> 
+        <td bgcolor="lightgrey"><%= curitem.title %>, <%= curitem.hours %> Stunde(n) </td>
+        <td bgcolor="lightgrey">
+            <%= link_to 'bearbeiten', edit_curriculum_item_path(@curriculum, curitem) %> | 
+            <%= link_to 'löschen', curitem, method: :delete, data: { confirm: 'Bist du dir sicher?' } %> |
+        	Neuen Stichpunkt hinzufügen
+        </td>
     </tr>
-    <tr><td colspan="3"><%= cur.descriptionOfContent %></td></tr>
+    <tr><td colspan="3"><%= curitem.descriptionOfContent %></td></tr>
     <tr><td colspan="3"></td></tr>
     <% end %>
     </tr>
 </table>
-<br /><br />
-<%= link_to 'bearbeiten', edit_curriculum_path(@curriculum) %> |
+<br />
+
 <%= link_to 'zur Übersicht', curriculums_path %>
