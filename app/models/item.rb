@@ -1,6 +1,6 @@
 class Item < ActiveRecord::Base
   
-  attr_accessible :title, :hours, :descriptionOfContent
+  attr_accessible :title, :hours, :descriptionOfContent, :curriculum_id
   
   validates_presence_of :title, :message => " darf nicht leer sein."
   validates_presence_of :descriptionOfContent, :message => " darf nicht leer sein."

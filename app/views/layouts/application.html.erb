@@ -4,13 +4,7 @@
   <title>MyLearnSpace</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application", controller_name %>
-  
-  
- 
 </head>
-
-
-
 
 <body>
 <p style="border:2px solid cornflowerblue ">
@@ -28,8 +22,5 @@
 </p>
 <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
 
-
 </body>
- 
 </html>
-
