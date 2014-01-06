@@ -1,5 +1,5 @@
 //= require bootstrap-wysihtml5
-
+//= require upload.js
 
 
 function searchSuggest(){
@@ -37,6 +37,7 @@ function renderSearchSuggests(data){
 	    ss.style.visibility='visible';	    
 	
 }
+
 function navigateThroughSuggests(k) //TODO Implementierten
 {
     

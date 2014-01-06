@@ -17,8 +17,13 @@ url += '/uploads/<%= @file.getStorableName %>'
 
 $("#link").html(url)
 
+<% if @file.isImage %>
+var height=prompt("Bitte Höhe für Bild eingeben","100");
+var width=prompt("Bitte Breite für Bild eingeben","100");
+var link = '<img src="' +url +'" alt="" height="' +height+'" width="'+width+'">'
+<% else %> 
 var link = '<a href="'+url+'"><%= @file.fileName %></a>'
-
+<% end %>
 editor.setValue(value + link, true);
 
 

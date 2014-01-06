@@ -8,14 +8,16 @@ class DataFile < ActiveRecord::Base
     if uploaded_io.nil?
     return false
     end
+
     filename = sanitize_filename(uploaded_io.original_filename)
     
-    #fileType auslesen
+  
+    #fileType auslesen --> eventuell auch mit File.extname(filename)
     tmp = filename.split('.')
     if(tmp.size == 1)
       filetype = nil 
     else
-      filetype = tmp.last
+      filetype = tmp.last.downcase # speichert den Dateityp (immer lowercase)
     end
     #Datenbankeintrag anlegen
     uploadedFile = DataFile.create(fileName: filename, fileType: filetype)
@@ -40,6 +42,14 @@ class DataFile < ActiveRecord::Base
     just_filename = File.basename(file_name)
     #Sonderzeichen durch Unterstrich ersetzen
     just_filename.sub(/[^\w\.\-]/,'_')
+    
+  end
+  def isImage
+    if fileType == "jpg" || fileType == "png" || fileType == "gif" || fileType == "jpeg"
+      return true
+    else
+      return false
+    end
     
   end
 end
