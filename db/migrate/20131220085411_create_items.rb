@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :title
       t.integer :hours
       t.string :descriptionOfContent
-      t.belongs_to :curriculum
+      #t.belongs_to :curriculum
 
       t.timestamps
     end
