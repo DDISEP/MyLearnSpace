@@ -1,9 +1,10 @@
 <div id="uploadState"></div>
 <div id="generatedLink"></div>
 <%= form_tag url_for(:controller => 'upload', :action => 'upload'), :method => :post, :multipart => true, :remote => true do %>
-  <%= file_field_tag 'file',:onchange =>"validateFiles(this);",
+  <%= file_field_tag 'file', :style =>"float:left", :onchange =>"validateFiles(this);",
   :data => {:max_file_size => 5.megabytes } %> <!-- Kann nicht geändert werden. Browser abhängig -->
-  <%= submit_tag "Upload" %>
+ <div id="uploadButton" style="visibility:hidden; float:left"><%= submit_tag "Upload", onClick:"uploadProcessing()"%></div>
+ <div id="uploadProgess"></div><br/>
 <% end %>
 
 

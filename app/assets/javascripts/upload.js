@@ -26,5 +26,15 @@ function validateFiles(inputFile) {
   }
   else{
   	 $("#uploadState").html("");
+  	 var button = document.getElementById('uploadButton');
+  	 button.style.visibility='visible';
+  	 
   };
+}
+function uploadProcessing(){
+	var button = document.getElementById('uploadButton');
+  	 button.style.visibility='hidden';
+	$("#uploadProgess").html('<img src="/assets/loader.gif" alt="Uploading...">');
+
+	
 }
