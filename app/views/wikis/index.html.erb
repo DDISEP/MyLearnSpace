@@ -6,7 +6,8 @@
 <strong>Beliebtester Artikel</strong> <br/>
 
 <h3><%= @wiki.title %> </h3><br/>
-	<%= raw @wiki.article %>
+<%= link_to "Artikel anschauen" , wiki_path(@wiki) %>
+	<%= sanitize @wiki.article %>
 <% end %>
 </div>
 <div class="zweispaltig"> 
