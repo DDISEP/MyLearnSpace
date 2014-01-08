@@ -2,15 +2,19 @@
 
 <div class="zweispaltig">
 <br/><br/>
+<div align="right" ><%= button_to 'Neuen Artikel verfassen', new_wiki_path, method:"get", class:"btn btn-xs btn-default" %></div>
 <% if !@wiki.nil? %>
 <strong>Beliebtester Artikel</strong> <br/>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title"><%= link_to @wiki.title , wiki_path(@wiki) %>
+		</h3>
+				</div>
+	<div class="panel-body"><%= sanitize @wiki.article %></div> <!-- sanitize verhindert XSS -->
+	</div>
 
-<h3><%= @wiki.title %> </h3><br/>
-<%= link_to "Artikel anschauen" , wiki_path(@wiki) %>
-	<%= sanitize @wiki.article %>
 <% end %>
 </div>
-<div class="zweispaltig"> 
-<%= link_to 'Neuen Artikel verfassen', new_wiki_path %></div>
+
 
 

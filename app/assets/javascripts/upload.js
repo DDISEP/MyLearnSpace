@@ -15,25 +15,27 @@ function validateFiles(inputFile) {
     if ($.inArray(extName, allowedExtension) == -1) {extError=true;};
   });
   if (sizeExceeded) {
-    $("#uploadState").html(maxExceededMessage);
+  	$("#uploadState").html(maxExceededMessage);
+	document.getElementById('uploadState').className = 'alert alert-danger';
     $(inputFile).val('');
     return;
   };
  
   if (extError) {
     $("#uploadState").html(extErrorMessage);
+    document.getElementById('uploadState').className = 'alert alert-danger';
     $(inputFile).val('');
   }
   else{
   	 $("#uploadState").html("");
-  	 var button = document.getElementById('uploadButton');
-  	 button.style.visibility='visible';
+  	 document.getElementById('uploadButton').style.visibility='visible';
+  	 document.getElementById('uploadState').className='';   	 
+  	 
   	 
   };
 }
 function uploadProcessing(){
-	var button = document.getElementById('uploadButton');
-  	 button.style.visibility='hidden';
+	document.getElementById('uploadButton').style.visibility='hidden';
 	$("#uploadProgess").html('<img src="/assets/loader.gif" alt="Uploading...">');
 
 	

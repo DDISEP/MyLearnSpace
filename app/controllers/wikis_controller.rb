@@ -21,7 +21,13 @@ def create
   
 end
 def edit
-  @wiki = Wiki.find(params[:id])
+  if Wiki.exists?(params[:id])
+    @wiki = Wiki.find(params[:id]) 
+      
+  else   
+    title = params[:id].gsub('_',' ') # Unterstriche in Links in Leerzeichen umwandeln    
+    @wiki= Wiki.find_by_title(title)
+  end    
   @title = @wiki.title
   
   
@@ -69,7 +75,7 @@ def show #TODO: Auslagern in Model
   if Wiki.exists?(params[:id])
     @wiki = Wiki.find(params[:id]) 
       
-  else # Refactoring -> Id an findByNames übergeben und findBynames aufrufen  
+  else   
     @title = params[:id].gsub('_',' ') # Unterstriche in Links in Leerzeichen umwandeln    
     @wiki= Wiki.find_by_title(@title)
   end    

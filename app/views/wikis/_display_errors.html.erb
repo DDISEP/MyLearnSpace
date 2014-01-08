@@ -1,6 +1,7 @@
 
 <% if @wiki.errors.any? %>
-  <div id="error_explanation">
+  
+  	<div class="alert alert-danger">
     <strong><%= @wiki.errors.count %> Fehler beim Speichern!</strong>
     <ul>
     <% @wiki.errors.full_messages.each do |msg| %>
@@ -8,4 +9,5 @@
     <% end %>
     </ul>
   </div>
+  
   <% end %>
