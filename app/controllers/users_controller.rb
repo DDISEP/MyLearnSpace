@@ -17,14 +17,14 @@ class UsersController < ApplicationController
     if params[:name] != nil
       if User.find_by_username(params[:name]) == nil #Namen gibt es nicht
         @fehler1 = true
-        #evtl.: redirect_to(:action => 'login')???
+        redirect_to(:action => 'login')
       elsif User.find_by_username(params[:name]).password == params[:pass] #passwort richtig
         session[:name]=params[:name]
         redirect_to(:action => 'profile')
       else
         @fehler2 = true #passwort falsch
-        # evtl.: redirect_to(:action => 'login')?????
-      end
+        redirect_to(:action => 'login')
+       end
     end
   end
   
