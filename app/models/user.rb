@@ -1,16 +1,12 @@
+require 'digest/sha1'
+
+
 class User < ActiveRecord::Base
     include ActiveModel::Validations
     attr_accessible :username, :email, :password,  :pupil
-    validate :valid_user, :on => :new
-    validate :valid_login, :on => :login
-    has_many :questions
+    validate :valid_user
     has_and_belongs_to_many :curriculums
-    
-    def valid_login
-      errors.add(:base, "FEHLER")
-      return errors.count == 0
-    end
-    
+  
     
     def valid_user
       if username.blank?
@@ -27,7 +23,7 @@ class User < ActiveRecord::Base
       end
     
       errors.add(:base, "Dein Passwort muss mind. 6 und max. 20 Zeichen umfassen!") unless self.password.length.in?(6..20)
-      
+    
       #errors.add(:base, "Die Passwörter stimmen nicht überein!") unless confirmation != self.password
             
       return errors.count == 0
@@ -39,7 +35,8 @@ class User < ActiveRecord::Base
       else
         find(:all)
     end
+  
   end
-   
+
     
 end

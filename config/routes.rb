@@ -1,6 +1,22 @@
 MyLearnSpace::Application.routes.draw do
   
     
+  get 'users/login' => "users#login"
+  
+  post 'users/login' => "users#login"
+  
+  get 'users/search' => "users#search"
+  
+  post 'users/search' => "users#search"
+  
+  
+  resources :users
+  
+  
+  root 'welcome#index'
+
+  get "welcome/index"
+   
 
   
   resources :items
@@ -10,10 +26,6 @@ MyLearnSpace::Application.routes.draw do
   resources :questions
 
 
-  root 'welcome#index'
-
-  get "welcome/index"
-  
   get "upload/index" => "upload#index"
   post "upload" => "upload#upload"
  
@@ -34,13 +46,8 @@ MyLearnSpace::Application.routes.draw do
   
   get "wikis/searchSuggestions/:search" => "wikis#searchSuggestions"
   
-  get 'users/login' => "users#login"
   
-  post 'users/login' => "users#login"
-  
-  resources :users
-  
-  post 'users/search' => "users#search"
+ 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
