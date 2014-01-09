@@ -17,13 +17,13 @@ class UsersController < ApplicationController
     if params[:name] != nil
       if User.find_by_username(params[:name]) == nil #Namen gibt es nicht
         @fehler1 = true
-        #evtl.: redirect_to(:action => 'login')???
+        redirect_to(:action => 'login')
       elsif User.find_by_username(params[:name]).password == params[:pass] #passwort richtig
         session[:name]=params[:name]
         redirect_to(:action => 'profile')
       else
         @fehler2 = true #passwort falsch
-        # evtl.: redirect_to(:action => 'login')?????
+        redirect_to(:action => 'login')
       end
     end
   end
@@ -47,12 +47,16 @@ class UsersController < ApplicationController
   end
   
   def create
-     @user = User.new(params[:user])
-       #hier noch einfügen: Password und Confirmation stimmen überein?????
-       if @user.save
-         redirect_to root_url, :notice => "Erfolgreich angemeldet!"
+       if params[:password] != params[:password_confirmation]
+         flash.now[:notice] = 'Passwortbestaetigung falsch'
+         redirect_to new_user_path 
        else
+        @user = User.new(params[:user])
+         if @user.save
+         redirect_to root_url, :notice => "Erfolgreich angemeldet!"
+        else
          render "new.html.erb"
+        end
        end
   end
 

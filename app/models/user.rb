@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
     include ActiveModel::Validations
     attr_accessible :username, :email, :password,  :pupil
     validate :valid_user
+    #validates_confirmation_of :password, :password_confirmation => "Passwortbestaetigung falsch"
     has_and_belongs_to_many :curriculums
   
     
@@ -24,7 +25,7 @@ class User < ActiveRecord::Base
     
       errors.add(:base, "Dein Passwort muss mind. 6 und max. 20 Zeichen umfassen!") unless self.password.length.in?(6..20)
     
-      #errors.add(:base, "Die Passwörter stimmen nicht überein!") unless confirmation != self.password
+      #errors.add(:base, "Die Passwoerter stimmen nicht ueberein!") unless self.password_confirmation == self.password
             
       return errors.count == 0
     end
