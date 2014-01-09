@@ -1,12 +1,13 @@
 
-<div class="zweispaltig">
-<h3><p align="center"><%= @wiki.title %></p></h3> 
-<hr>
-<p align="center"><%= sanitize @wiki.article %></p> <!-- sanitize verhindert XSS -->
-counter: <%= @wiki.clicks %>	</div>
-<div><%= link_to "Artikel bearbeiten", edit_wiki_path %>
-	    
-</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title"><%= @wiki.title %></h3>
+		<%= button_to "Artikel bearbeiten", edit_wiki_path , class:"btn btn-xs btn-default" , method:"get" %>	</div>
+	<div class="panel-body"><%= sanitize @wiki.article %></div> <!-- sanitize verhindert XSS -->
+	</div>
+	counter: <%= @wiki.clicks %>
+
 
 
 
