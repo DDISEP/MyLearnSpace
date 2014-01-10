@@ -4,7 +4,7 @@ class ContentsController < ApplicationController
   # GET /contents
   # GET /contents.json
   def index
-    @contents = Content.all
+    @contents = Content.find(:all, :order => :tag)
   end
 
   # GET /contents/1
@@ -28,8 +28,8 @@ class ContentsController < ApplicationController
 
     respond_to do |format|
       if @content.save
-        format.html { redirect_to @content, notice: 'Content was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @content }
+        format.html { redirect_to contents_path, notice: "Schlagwort #{@content.tag} wurde erfolgreich angelegt." }
+        format.json { render action: 'index', status: :created, location: @content }
       else
         format.html { render action: 'new' }
         format.json { render json: @content.errors, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class ContentsController < ApplicationController
   def update
     respond_to do |format|
       if @content.update(content_params)
-        format.html { redirect_to @content, notice: 'Content was successfully updated.' }
+        format.html { redirect_to contents_path, notice: "Schlagwort #{@content.tag} wurde erfolgreich aktualisiert." }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

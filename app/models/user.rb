@@ -1,17 +1,14 @@
+require 'digest/sha1'
+
+
 class User < ActiveRecord::Base
     include ActiveModel::Validations
     attr_accessible :username, :email, :password,  :pupil
     validate :valid_user
-    
-    #validates :username, uniqueness: {message: 'Diesen Benutzernamen gibt es leider schon!'}
-               
-   
-    #validates :email, uniqueness: {message: 'Diese E-Mail Adresse ist schon registriert!'}
-                       
-                                  
-    # Abfrage: Passwort == Bestätigung: presence: {:password == :confirmation, message: 'Das Passwort und die Passwortbestätigung stimmen nicht überein!'}
-    #validates :confirmation,  presence: {message: 'Bitte bestätige noch dein Passwort!'}
-    
+
+    #validates_confirmation_of :password, :password_confirmation => "Passwortbestaetigung falsch"
+    has_and_belongs_to_many :curriculums
+  
     def valid_user
       if username.blank?
         errors.add(:base, "Gib bitte noch einen Benutzernamen an!")
@@ -26,8 +23,9 @@ class User < ActiveRecord::Base
         errors.add(:base, "Es wurde kein Passwort eingegeben!")
       end
     
-
-      #errors.add(:base, "Dein Passwort muss mind. 6 und max. 20 Zeichen umfassen!") unless self.password.length.in?(6..20)
+      errors.add(:base, "Dein Passwort muss mind. 6 und max. 20 Zeichen umfassen!") unless self.password.length.in?(6..20)
+    
+      #errors.add(:base, "Die Passwoerter stimmen nicht ueberein!") unless self.password_confirmation == self.password
             
       return errors.count == 0
     end
@@ -38,7 +36,8 @@ class User < ActiveRecord::Base
       else
         find(:all)
     end
+  
   end
-   
+
     
 end

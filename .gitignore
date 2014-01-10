@@ -15,3 +15,6 @@
 /log/*.log
 /tmp
 db/schema.rb
+
+#Ignore uploaded Files (Wiki)
+public/uploads/*

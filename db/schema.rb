@@ -27,6 +27,11 @@ ActiveRecord::Schema.define(version: 20140108092738) do
     t.datetime "updated_at"
   end
 
+  create_table "contents_items", force: true do |t|
+    t.integer "content_id"
+    t.integer "item_id"
+  end
+
   create_table "curriculums", force: true do |t|
     t.string   "subject"
     t.integer  "level"
@@ -38,10 +43,23 @@ ActiveRecord::Schema.define(version: 20140108092738) do
     t.string   "state"
   end
 
+  create_table "curriculums_users", force: true do |t|
+    t.integer "curriculum_id"
+    t.integer "user_id"
+  end
+
+  create_table "data_files", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "fileName"
+    t.string   "fileType"
+  end
+
   create_table "items", force: true do |t|
     t.string   "title"
     t.integer  "hours"
     t.string   "descriptionOfContent"
+    t.integer  "curriculum_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66,6 +84,7 @@ ActiveRecord::Schema.define(version: 20140108092738) do
   create_table "wikis", force: true do |t|
     t.string   "title"
     t.text     "article"
+    t.integer  "clicks"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

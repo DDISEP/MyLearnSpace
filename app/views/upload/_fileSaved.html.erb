@@ -1,0 +1,36 @@
+<% if @post %> 
+<div class="alert alert-success"><i><%= @file.fileName %></i> gespeichert!</div>
+<% else %>
+<div class="alert alert-danger">Fehler beim Upload!</div>
+<% end %>
+
+<script type="text/javascript">
+
+var editor = $('#articleInput').data("wysihtml5").editor;
+var value = editor.getValue();
+
+
+var url = document.location.protocol +"//" + document.location.host
+url += '/uploads/<%= @file.getStorableName %>'
+
+
+
+<% if @file.isImage %>
+//var height=prompt("Bitte Höhe für Bild eingeben","100");
+//var width=prompt("Bitte Breite für Bild eingeben","100");
+//var link = '<img src="' +url +'" alt="" height="' +height+'" width="'+width+'">'
+var link = '<img src="' +url +'" alt="" height ="100" width="100">'
+
+<% else %> 
+var link = '<a href="'+url+'"><%= @file.fileName %></a>'
+<% end %>
+editor.setValue(value + link, true);
+
+//Upload Animation ausblenden
+$("#uploadProgess").html('');
+
+</script>
+
+
+
+

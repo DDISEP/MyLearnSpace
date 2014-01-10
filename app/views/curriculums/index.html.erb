@@ -1,11 +1,11 @@
-<h1>Willkommen beim Lehrplan!</h1>
+<h1><%= image_tag "lehrplaene.jpg", border:"0", width:"150", height:"150" %>Willkommen beim Lehrplan!</h1>
 <br />
 <br />
 <div class="col span_1_of_3">
 	<h5>Du hast nun folgende Möglichkeiten:</h5>
 	<%= link_to 'Neuen Lehrplan anlegen', new_curriculum_path %><br />
-	Lehrplan ändern<br />
 	Im Lehrplan suchen<br />
+	<%= link_to 'Alle Schlagwörter auflisten', contents_path%>
 </div>
 <div class="col span_2_of_3">
 
@@ -19,9 +19,8 @@
 			<th>Jahrgangsstufe</th>
 			<th>Fach</th>
 			<th>Lehrplan</th>
-		</tr>
 		<% @curriculums.each do |cur| %>
-		<tr>
+		<tr id=<%= cur.id%>>
 			<td><%= cur.country %></td>
 			<td><%= cur.state %></td>
 			<td><%= cur.typeOfSchool %></td>
@@ -30,7 +29,7 @@
 			<td><%= cur.subject %></td>
 			<td><%= link_to "anzeigen", cur %> 
 				<%= link_to "bearbeiten", edit_curriculum_path(cur) %>
-				<%= link_to "löschen", cur, :method => :delete, :confirm => "Wollen Sie diesen Datensatz wirklich löschen?" %>
+				<%= link_to "löschen", cur, :remote => true, :method => :delete, :confirm => "Wollen Sie diesen Datensatz wirklich löschen?" %>
 				
 			</td>
 		</tr>

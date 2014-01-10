@@ -1,30 +1,36 @@
- <div class="hero-unit">
-    <%= form_for :wiki, url: wikis_path do |f| %>
+ <div class="jumbotron">
+    
 <%= render "display_errors" %>
-    <%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" %> 
+
+<%= render "upload/uploadfile" %>
+<%= form_for @wiki do |f| %>
+    <%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" , :value => @title %> 
   
  
   
     
-   <%= f.text_area :article,  class: 'wysihtml5', placeholder:"Artikel hier schreiben...", style:"width: 810px; height: 200px" %>
+   <%= f.text_area :article, id:"articleInput", class: 'wysihtml5', placeholder:"Artikel hier schreiben...", style:"width: 810px; height: 200px" %>
    
   <p>
-    <%= f.submit %>
+    <%= f.submit "Artikel speichern", class:"btn btn-xs btn-primary"%>
   </p>
-  </div>
+  
  
 
 <% end %>
 
-
-
-
+</div>
 <script type="text/javascript">
-  $(document).ready(function(){
 
-    $('.wysihtml5').each(function(i, elem) {
-      $(elem).wysihtml5();
-    });
+$('#articleInput').wysihtml5({
+	"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+	"emphasis": true, //Italics, bold, etc. Default true
+	"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+	"link": true, //Button to insert a link. Default true
+	"image": true, //Button to insert an image. Default true,
+	"color": true, //Button to change color of font 
+	"html": true //Button which allows you to edit the generated HTML. Default false 
+});
 
-  })
+
 </script>

@@ -1,12 +1,12 @@
-<h1>Listing contents</h1>
+<h1>Liste der Schlagwörter</h1>
 
-<table>
+<p id="notice"><%= notice %></p>
+
+<table cellpadding="5" border="1">
   <thead>
     <tr>
-      <th>Tag</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Schlagwort</th>
+      <th>Funktionen</th>
     </tr>
   </thead>
 
@@ -14,9 +14,9 @@
     <% @contents.each do |content| %>
       <tr>
         <td><%= content.tag %></td>
-        <td><%= link_to 'Show', content %></td>
-        <td><%= link_to 'Edit', edit_content_path(content) %></td>
-        <td><%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Bist du dir sicher?' } %></td>
+        <td><%= link_to 'anzeigen', content %> 
+        <%= link_to 'bearbeiten', edit_content_path(content) %> 
+        <%= link_to 'löschen', content, method: :delete, data: { confirm: 'Bist du dir sicher?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Content', new_content_path %>
+<%= link_to 'Neues Schlagwort', new_content_path %>

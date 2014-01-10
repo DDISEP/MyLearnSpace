@@ -1,5 +1,5 @@
-<%= form_for :curriculum, url: curriculums_path do |f| %> 
-<%= render "display_errors" %>
+<%= form_for(@curriculum) do |f| %>
+  <%= render "display_errors" %> 
 
 
 <table cellpadding="10">
@@ -72,6 +72,6 @@
 
  
   <p>
-    <%= f.submit "Lehrplan anlegen" %>
+    <%= f.submit "Lehrplan speichern" %>
   </p>
 <% end %>
