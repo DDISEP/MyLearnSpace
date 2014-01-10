@@ -1,18 +1,16 @@
 MyLearnSpace::Application.routes.draw do
   
-    
-
   resources :items
 
   resources :contents
 
-  resources :questions
-
+  resources :questions do
+    resources :answers
+  end
 
   root 'welcome#index'
 
   get "welcome/index"
-  
   
   resources :curriculums
   

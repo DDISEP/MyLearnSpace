@@ -1,5 +1,9 @@
+#Encoding: utf-8
 class Question < ActiveRecord::Base
-  belongs_to :user
+  has_many :answers
   
-  attr_protected 
+  attr_protected
+  
+  validates :title, presence: {message: "Gib bitte eine kurzen Überschrift zu deiner Frage an!"}
+  validates :text, presence: {message: "Hier musst du deine ausformulierte Frage angeben!"}
 end
