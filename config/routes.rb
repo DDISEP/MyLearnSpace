@@ -14,9 +14,7 @@ MyLearnSpace::Application.routes.draw do
 
   get "welcome/index"
   
-  get "upload/index" => "upload#index"
-  post "upload" => "upload#upload"
- 
+  
   
   
   resources :curriculums do
@@ -25,8 +23,7 @@ MyLearnSpace::Application.routes.draw do
   
   post 'curriculums/:id' => "curriculums#update"
   
-  
-  
+  resources :upload
   
   resources :wikis
   

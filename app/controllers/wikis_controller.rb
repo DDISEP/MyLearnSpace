@@ -100,7 +100,10 @@ def index
  
   
 end
-
+def destroy
+    @wiki.destroy
+    render "index"
+  end
 private 
   def wiki_params
     params.require(:wiki).permit(:title, :article)

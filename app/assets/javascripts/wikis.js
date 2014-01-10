@@ -2,6 +2,7 @@
 //= require upload.js
 
 
+
 function searchSuggest(){
 	
 	var str = escape(document.getElementById('search_field').value);

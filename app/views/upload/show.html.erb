@@ -1,0 +1,3 @@
+Datei :
+<%= link_to @file.fileName, "/uploads/"+@file.getStorableName %>
+<%= button_to "Datei löschen", upload_path(@file) , class:"btn btn-xs btn-default" , method:"delete" %>	
