@@ -7,5 +7,5 @@ class Item < ActiveRecord::Base
   validates_exclusion_of :hours, :in => [0], :message => " darf nicht 0 sein"
   
   belongs_to :curriculum
-  has_many :items
+  has_and_belongs_to_many :contents
 end

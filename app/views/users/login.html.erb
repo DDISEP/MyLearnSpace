@@ -1,24 +1,30 @@
- <h3>Anmeldung</h3>
- <%= form_tag users_path do %>
+
+<h3>Anmeldung</h3>
+ 
+ <%= form_for users_path do |f| %>
  <font color="red"><b>
  	<% if @fehler1 %>
  	Den Benutzernamen gibt es nicht!
- 	<% elsif @fehler2 %>
+ 	<% end %>
+ 	<% if @fehler2 %>
  	Das Passwort ist falsch!
+ 	<% end %>
+ 	<%if @fehler3 %>
+ 	Du hast keinen Benutzernamen eingegeben!
  	<% end %>
  <br /> </b> </font>
  
  <h4>Hier kannst du dich anmelden:</h4>
- <form action="/users/login" method="post">
- 	<font size="3">
- 	<table width="50%" cellspacing="10">
- 		<tr><td> Benutzername: </td> <td> <input type="text" name="name" /></td></tr><!--hier evtl typ ändern: Text mit Zahlen????-->
- 		<tr><td> Passwort: </td> <td> <input type="password" name="pass" /></td></tr><!--name statt username weilusername schon in user belegt????-->
- 		<tr><td></td></tr>
- 		<tr><td>  </td> <td> <input type="submit" value="Anmelden" /></td></tr>
- 	</table>
-</font>
- <% end %> 
+  <font size="3">
+  <table width="50%" cellspacing="10">
+  <tr><td>Benutzername</td><td> <%=f.text_field :username %></td></tr><!--hier evtl typ ändern: Text mit Zahlen????-->
+ <tr><td>Passwort</td><td><%=f.password_field :password %></td></tr><!--name statt username weilusername schon in user belegt????-->
+ 		<tr><td>   </td></tr>
+  <tr><td>  </td><td>  <%= f.submit "Jetzt anmelden"%> </td></tr>
+  </table>
+  </font>
+ <% end %>
+
  
  <%= link_to 'Oder doch ein Profil anlegen?', new_user_path %>
 

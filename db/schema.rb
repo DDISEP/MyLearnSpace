@@ -11,12 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140104153056) do
+ActiveRecord::Schema.define(version: 20140109145420) do
 
   create_table "contents", force: true do |t|
     t.string   "tag"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "contents_items", force: true do |t|
+    t.integer "content_id"
+    t.integer "item_id"
   end
 
   create_table "curriculums", force: true do |t|
@@ -46,13 +51,10 @@ ActiveRecord::Schema.define(version: 20140104153056) do
     t.string   "title"
     t.integer  "hours"
     t.string   "descriptionOfContent"
+    t.integer  "curriculum_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "curriculum_id"
-    t.string   "curriculum_type"
   end
-
-  add_index "items", ["curriculum_id", "curriculum_type"], name: "index_items_on_curriculum_id_and_curriculum_type"
 
   create_table "questions", force: true do |t|
     t.string   "title"
