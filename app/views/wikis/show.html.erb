@@ -2,8 +2,20 @@
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title"><%= @wiki.title %></h3>
-		<%= button_to "Artikel bearbeiten", edit_wiki_path , class:"btn btn-xs btn-default" , method:"get" %>	</div>
+		<div class="zweispaltig"><h3 class="panel-title"><%= @wiki.title %></h3> </div>
+		<div align="right" >
+		<div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    Artikel bearbeiten <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><%= link_to "Artikel bearbeiten", edit_wiki_path %></li>
+    <li><%= link_to "Artikel löschen", wiki_path, method:"delete" , data: { confirm: 'Bist du dir sicher?' }%></li>
+    <li class="divider"></li>
+    <li><%= link_to "Neuen Artikel verfassen", new_wiki_path %></li>
+  </ul>
+</div>
+		</div>	</div>
 	<div class="panel-body"><%= sanitize @wiki.article %></div> <!-- sanitize verhindert XSS -->
 	</div>
 	counter: <%= @wiki.clicks %>

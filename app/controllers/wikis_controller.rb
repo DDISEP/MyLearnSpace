@@ -96,13 +96,15 @@ end
 
 def index
   
-  @wiki = Wiki.find_by_clicks(Wiki.maximum("clicks")) #beliebtestes Wiki
+  @popArticle = Wiki.find_by_clicks(Wiki.maximum("clicks")) #beliebtestes Artikel
+  @newestArticle = Wiki.last # neuester Artikel
  
   
 end
 def destroy
+    @wiki = Wiki.find(params[:id])
     @wiki.destroy
-    render "index"
+    redirect_to wikis_path
   end
 private 
   def wiki_params

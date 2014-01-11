@@ -34,7 +34,7 @@ def destroy
   @file = DataFile.find(params[:id])
   File.delete(Rails.root.join('public', 'uploads', @file.getStorableName))
   @file.destroy
-  render :partial => "uploadfile"   #TODO: JS Respond
+  render :partial => "uploadfile"     #TODO: JS Respond
   
   
 end
