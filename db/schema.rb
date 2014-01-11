@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108092738) do
+ActiveRecord::Schema.define(version: 20140109145420) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -19,6 +19,20 @@ ActiveRecord::Schema.define(version: 20140108092738) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "user_name"
+  end
+
+  create_table "bootsy_image_galleries", force: true do |t|
+    t.integer  "bootsy_resource_id"
+    t.string   "bootsy_resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bootsy_images", force: true do |t|
+    t.string   "image_file"
+    t.integer  "image_gallery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "contents", force: true do |t|
@@ -59,10 +73,13 @@ ActiveRecord::Schema.define(version: 20140108092738) do
     t.string   "title"
     t.integer  "hours"
     t.string   "descriptionOfContent"
-    t.integer  "curriculum_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "curriculum_id"
+    t.string   "curriculum_type"
   end
+
+  add_index "items", ["curriculum_id", "curriculum_type"], name: "index_items_on_curriculum_id_and_curriculum_type"
 
   create_table "questions", force: true do |t|
     t.string   "title"

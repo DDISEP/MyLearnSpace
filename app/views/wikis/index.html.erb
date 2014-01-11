@@ -1,6 +1,7 @@
 TODO: Länge der Anzeige begrenzen
 <br/><br/>
-
+<div align="right" >
+<%= button_to "Neuen Artikel verfassen" , new_wiki_path, class:"btn btn-xs btn-primary", method:"get" %></div>
 <div class="zweispaltig">
 
 <% if !@popArticle.nil? %>
@@ -11,15 +12,8 @@ TODO: Länge der Anzeige begrenzen
 		<h3 class="panel-title"><%= link_to @popArticle.title , wiki_path(@popArticle) %>
 		</h3></div>
 		<div align="right" >
-		<div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-    Neuen Artikel verfassen <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-  	<li><%= link_to "Neuen Artikel verfassen", new_wiki_path %></li>
-    <li><%= link_to "Artikel ansehen", wiki_path(@popArticle) %></li>    
-  </ul>
-</div></div>
+			<%= button_to "Artikel ansehen" , wiki_path(@popArticle), class:"btn btn-xs btn-primary", method:"get" %>
+		</div>
 		</div>
 	<div class="panel-body"><%= sanitize @popArticle.article %></div> <!-- sanitize verhindert XSS -->
 	</div>
@@ -35,15 +29,8 @@ TODO: Länge der Anzeige begrenzen
 		<h3 class="panel-title"><%= link_to @newestArticle.title , wiki_path(@newestArticle) %>
 		</h3></div>
 		<div align="right" >
-		<div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-    Neuen Artikel verfassen <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-  	<li><%= link_to "Neuen Artikel verfassen", new_wiki_path %></li>
-    <li><%= link_to "Artikel ansehen", wiki_path(@newestArticle) %></li>    
-  </ul>
-</div></div>
+			<%= button_to "Artikel ansehen" , wiki_path(@newestArticle), class:"btn btn-xs btn-primary", method:"get" %>
+		</div>
 		</div>
 	<div class="panel-body"><%= sanitize @newestArticle.article %></div> <!-- sanitize verhindert XSS -->
 	</div>

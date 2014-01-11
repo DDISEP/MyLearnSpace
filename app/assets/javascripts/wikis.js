@@ -1,8 +1,32 @@
 //= require bootstrap-wysihtml5
 //= require upload.js
+//= require bootstrap-tagsinput.js
 
 
 
+
+
+function page2(){
+	document.getElementById('form1').style.display='none';
+	document.getElementById('form2').style.display='block';
+	document.getElementById('uploadForm').style.display='block';
+	
+	var newPagination = '<li><a href="#" onclick="page1()">&laquo;</a></li> <li><a href="#" onclick="page1()">1 </a></li>';
+	newPagination += '<li id="nav2" class="active"><a href="#">2 <span class="sr-only">(current)</span></a></li>';
+	newPagination += '<li class="disabled"><a href="#">&raquo;</a></li>';
+	$("#pagination").html( newPagination);
+
+}
+function page1(){
+	document.getElementById('form1').style.display='block';
+	document.getElementById('form2').style.display='none';
+	document.getElementById('uploadForm').style.display='none';
+	var newPagination = ' <li class="disabled"><a href="#">&laquo;</a></li>';
+	newPagination += '<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>';
+	newPagination += '<li><a href="#" onclick="page2()">2</a></li>';
+	newPagination += '<li><a href="#" onclick="page2()">&raquo;</a></li>';
+	$("#pagination").html( newPagination);
+}
 function searchSuggest(){
 	
 	var str = escape(document.getElementById('search_field').value);

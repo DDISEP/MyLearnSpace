@@ -4,9 +4,11 @@ class WikisController < ApplicationController
     
   end
 
+  #render text: params[:wiki].inspect
+
 
 def create
-  
+ 
  @wiki = Wiki.new(wiki_params)
  @wiki.clicks= 0
  
@@ -15,7 +17,7 @@ def create
     
   else
     render 'new'
-    #render text: "else"
+    
     
   end
   
