@@ -4,15 +4,16 @@ class WikisController < ApplicationController
     
   end
 
-  #render text: params[:wiki].inspect
+  #render text: params[:wiki][:tags]
 
-
+#http://ruby-auf-schienen.de/3.2/ar-many_to_many.html
 def create
  
  @wiki = Wiki.new(wiki_params)
  @wiki.clicks= 0
  
-  if @wiki.save
+ @wiki.addTags(params[:wiki][:tags])
+  if @wiki.save      
     redirect_to @wiki
     
   else
@@ -35,12 +36,13 @@ def edit
   
 end
 
-def update
+def update # funktioniert noch nicht mit Tags
         
   @wiki = Wiki.find(params[:id])
- 
-  if @wiki.update(params.require(:wiki).permit(:article)) # nur Artikel änderbar
-  #if @wiki.update(wiki_params)
+  @wiki.addTags(params[:wiki][:tags])
+  
+  #if @wiki.update(params.require(:wiki).permit(:article)) # nur Artikel änderbar
+  if @wiki.update(wiki_params)
     redirect_to @wiki
   else
     render 'edit'

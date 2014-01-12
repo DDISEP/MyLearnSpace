@@ -17,7 +17,9 @@
 	<%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" , :value => @title , class:"form-control" %> </div>
 	
 	Markiere hier bitte Content-Items, die zu deinem Artikel gehören [TODO]:<br/>
-	<input id="tags" type="text" value="Sinus,Cosinus" data-role="tagsinput" name="wiki[tags]" />
+	<input id="tags" type="text" value="<% @wiki.contents.each do |content| %>
+										<%= content.tag %>,
+										<% end %>" data-role="tagsinput" name="wiki[tags]" />
 	 	
 	<br/><br/><input type="button" value="Weiter"  class="btn btn-primary" onclick="page2()"/> </div>
 <div id="form2" style="display: none" >
