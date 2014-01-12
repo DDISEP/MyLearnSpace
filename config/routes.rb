@@ -22,9 +22,6 @@ MyLearnSpace::Application.routes.draw do
     resources :answers
   end
 
-  get "upload/index" => "upload#index"
-  post "upload" => "upload#upload"
-   
   resources :curriculums do
     resources :items
   end

@@ -7,13 +7,21 @@
   <li><a href="#" onclick="page2()">&raquo;</a></li>
 </ul></div>
 <%= render "display_errors" %>
+  <div id="uploadForm" style="display: none">
+  	Bilder oder Dateien zum Artikel hinzufügen:
+<%= render "upload/uploadfile" %></div>
 <%= form_for @wiki do |f| %>
-<div id="form1">Hier werden die Tags für die Contents gesetzt [TODO] <br/>
-	 <input id="tags" type="text" value="Sinus,Cosinus" data-role="tagsinput" name="wiki[tags]"/>
-	 
-	<br/><input type="button" value="Weiter"  class="btn btn-primary" onclick="page2()"/> </div>
+<div id="form1">
+	Bitte gebe einen Titel für deinen Artikel ein:
+	<div class="input-group input-group-lg">
+	<%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" , :value => @title , class:"form-control" %> </div>
+	
+	Markiere hier bitte Content-Items, die zu deinem Artikel gehören [TODO]:<br/>
+	<input id="tags" type="text" value="Sinus,Cosinus" data-role="tagsinput" name="wiki[tags]" />
+	 	
+	<br/><br/><input type="button" value="Weiter"  class="btn btn-primary" onclick="page2()"/> </div>
 <div id="form2" style="display: none" >
-    <%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" , :value => @title %> 
+    
         
    <%= f.text_area :article, id:"articleInput", class: 'wysihtml5', placeholder:"Artikel hier schreiben...", style:"width: 810px; height: 200px" %>
    
@@ -22,8 +30,9 @@
   </p>
   </div>
   <% end %>
-  <div id="uploadForm" style="display: none">
-<%= render "upload/uploadfile" %></div>
+  
+
+
 
 </div>
   
@@ -32,12 +41,13 @@
 
 
 <script type="text/javascript">
+
 $('#articleInput').wysihtml5({
 	"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
 	"emphasis": true, //Italics, bold, etc. Default true
 	"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
-	"link": true, //Button to insert a link. Default true
-	"image": true, //Button to insert an image. Default true,
+	"link": false, //Button to insert a link. Default true
+	"image": false, //Button to insert an image. Default true,
 	"color": true, //Button to change color of font 
 	"html": true //Button which allows you to edit the generated HTML. Default false 
 });
