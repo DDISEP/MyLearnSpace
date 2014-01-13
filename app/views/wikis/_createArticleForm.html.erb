@@ -17,7 +17,7 @@
 	<%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" , :value => @title , class:"form-control" %> </div>
 	
 	Markiere hier bitte Content-Items, die zu deinem Artikel gehören [TODO]:<br/>
-	<input id="tags" type="text" value="<% @wiki.contents.each do |content| %>
+	<input id="tags" type="text" placeholder="Passende Tags eingeben..." value="<% @wiki.contents.each do |content| %>
 										<%= content.tag %>,
 										<% end %>" data-role="tagsinput" name="wiki[tags]" />
 	 	
@@ -25,7 +25,7 @@
 <div id="form2" style="display: none" >
     
         
-   <%= f.text_area :article, id:"articleInput", class: 'wysihtml5', placeholder:"Artikel hier schreiben...", style:"width: 810px; height: 200px" %>
+   <%= f.text_area :article, id:"articleInput", class: 'wysihtml5', placeholder:"Artikel hier schreiben...", style:"width: 900px; height: 400px" %>
    
   <p>
     <%= f.submit "Artikel speichern", class:"btn btn-xs btn-primary"%>

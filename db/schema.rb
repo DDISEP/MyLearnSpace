@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140109145420) do
+ActiveRecord::Schema.define(version: 20140112135556) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -89,11 +89,23 @@ ActiveRecord::Schema.define(version: 20140109145420) do
     t.string   "user_name"
   end
 
+  create_table "taggables", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "password"
     t.string   "email"
     t.boolean  "pupil"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "wiki_tags", force: true do |t|
+    t.integer  "wiki_id"
+    t.integer  "content_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

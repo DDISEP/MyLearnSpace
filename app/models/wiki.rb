@@ -30,15 +30,21 @@ def self.searchSuggestions(search)
 end
 def addTags(paramsTags)
   tags = paramsTags.split(',')
+  
   #alle löschen (zum überschreiben nötig)
-  contents.to_a.each do |c| c.destroy end
-  WikiTag.find(:all, :conditions => ["wiki_id = ?", id]).each do |t| t.destroy end
+
+ 
+ contents.clear # wird nur foreign key gelöscht?
+
+  
     
   tags.each do |tag|
-    content = Content.find_by_tag(tag) 
-    if !content.nil? # and !contents.exists?(content.id)
-       contents << content
-    end      
+    c = Content.find_by_tag(tag.strip) #strip nötig zum entfernen von Whitespaces am Anfang
+    if !c.nil?  #and !contents.exists?(content.id)
+       contents << c
+     
+       
+    end     
   end
 end
     

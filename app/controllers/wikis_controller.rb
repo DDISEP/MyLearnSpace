@@ -35,7 +35,14 @@ def edit
   
   
 end
-
+def update2 # funktioniert noch nicht mit Tags
+        
+  @wiki = Wiki.find(params[:id])
+    
+  a = params[:wiki][:tags].split(',')
+  render text: a[1].strip
+  
+end
 def update # funktioniert noch nicht mit Tags
         
   @wiki = Wiki.find(params[:id])
@@ -43,6 +50,9 @@ def update # funktioniert noch nicht mit Tags
   
   #if @wiki.update(params.require(:wiki).permit(:article)) # nur Artikel änderbar
   if @wiki.update(wiki_params)
+    
+  
+  
     redirect_to @wiki
   else
     render 'edit'
