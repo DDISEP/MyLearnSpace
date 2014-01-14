@@ -1,8 +1,16 @@
 //= require bootstrap-wysihtml5
 //= require upload.js
-//= require bootstrap-tagsinput.js
 
 
+
+function insertLink(){
+
+var editor = $('#articleInput').data("wysihtml5").editor;
+var value = editor.getValue();
+var url = '<a href="' + document.getElementById('url').value+'">'+document.getElementById('linkText').value; +'</a>';
+
+editor.setValue(value + url, true);
+}
 
 
 

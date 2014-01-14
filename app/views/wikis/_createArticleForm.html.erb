@@ -1,3 +1,7 @@
+ Upload in ein neues Fenster auslagern,
+ Suchergebnisse mit Pagination und oder nach Tags geordnet,
+ Links einfügen-Feature implementieren
+ 
  <div class="jumbotron">
  	<div align="right">
    	   <ul class="pagination" id="pagination">
@@ -20,11 +24,12 @@
 	<input id="tags" type="text" placeholder="Passende Tags eingeben..." value="<% @wiki.contents.each do |content| %>
 										<%= content.tag %>,
 										<% end %>" data-role="tagsinput" name="wiki[tags]" />
+										
 	 	
 	<br/><br/><input type="button" value="Weiter"  class="btn btn-primary" onclick="page2()"/> </div>
 <div id="form2" style="display: none" >
     
-        
+   Bitte Link eingeben: <input id="url" type="text" value="https://" />  Was soll angezeigt werden: <input id="linkText" type="text"/> <button type="button" onclick="insertLink()">Link einfügen</button>
    <%= f.text_area :article, id:"articleInput", class: 'wysihtml5', placeholder:"Artikel hier schreiben...", style:"width: 900px; height: 400px" %>
    
   <p>
@@ -37,12 +42,11 @@
 
 
 </div>
-  
 
-   
-
+<script src="/assets/bootstrap-tagsinput.js?body=1"></script>
 
 <script type="text/javascript">
+
 
 $('#articleInput').wysihtml5({
 	"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
