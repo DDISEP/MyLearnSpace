@@ -1,7 +1,7 @@
 //= require bootstrap-wysihtml5
 //= require upload.js
 
-function showCollapse(id){
+function toggleCollapse(id){
 	var collapse = document.getElementById(id);
 	if(collapse.className != 'panel-collapse collapse in'){
 	collapse.style='';
@@ -20,10 +20,10 @@ var value = editor.getValue();
 var url = document.getElementById('url').value;
 if (!(/^http:\/\//).test(url)) // http:// muss immer vor dem Link stehen da sonst der XSS Schutz des Editors greift
 	url= 'http:\/\/' + url;
-url = '<a href="' + url +'">'+document.getElementById('linkText').value; +'</a>';
-
-
+url = ' <a href="' + url +'">'+document.getElementById('linkText').value; +'</a>';
 editor.setValue(value + url, true);
+toggleCollapse('collapseLink');
+
 }
 
 

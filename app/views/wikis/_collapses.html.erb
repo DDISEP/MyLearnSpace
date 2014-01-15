@@ -1,9 +1,9 @@
 <div class="panel-group" id="accordion">
   <div class="panel panel-default">
-    <div class="panel-heading" onclick="showCollapse('collapseOne')">
+    <div class="panel-heading" onclick="toggleCollapse('collapseUpload')">
       <h4 class="panel-title">Datei hochladen</h4>
     </div>
-    <div id="collapseOne" class="panel-collapse collapse">
+    <div id="collapseUpload" class="panel-collapse collapse">
       <div class="panel-body">
         Bilder oder Dateien zum Artikel hinzufügen:
 		<%= render "upload/uploadfile" %>
@@ -11,14 +11,22 @@
     </div>    
   </div>
 <div class="panel panel-default">
-    <div class="panel-heading" onclick="showCollapse('collapseTwo')">
+    <div class="panel-heading" onclick="toggleCollapse('collapseLink')">
       <h4 class="panel-title">
            Link einfügen        
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
+    <div id="collapseLink" class="panel-collapse collapse">
       <div class="panel-body">
-      	 Bitte Link eingeben: <input id="url" type="text" value="http://"/> <div id="linkTextInput"> Anzeigetext: <input id="linkText" type="text"/> <button type="button" onclick="insertLink()">Link einfügen</button></div>
+      	  Link eingeben: 
+      	  <div class="input-group input-group-lg">
+      	 	<input id="url" type="text" class="form-control" size="50" value="http://"/></div>
+      	    Anzeigetext:
+      	   	<div class="input-group input-group-lg">
+      	 	<input id="linkText" type="text" class="form-control" size="50" /> 
+      	 	</div>
+      	 	<button type="button" onclick="insertLink()" class="btn btn-xs">Link einfügen</button>
+      	 	
       </div>
     </div>    
   </div>

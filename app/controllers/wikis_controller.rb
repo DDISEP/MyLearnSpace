@@ -35,14 +35,7 @@ def edit
   
   
 end
-def update2 # funktioniert noch nicht mit Tags
-        
-  @wiki = Wiki.find(params[:id])
-    
-  a = params[:wiki][:tags].split(',')
-  render text: a[1].strip
-  
-end
+
 def update # funktioniert noch nicht mit Tags
         
   @wiki = Wiki.find(params[:id])
