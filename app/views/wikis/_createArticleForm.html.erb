@@ -12,8 +12,7 @@
 </ul></div>
 <%= render "display_errors" %>
   <div id="uploadForm" style="display: none">
-  	Bilder oder Dateien zum Artikel hinzufügen:
-<%= render "upload/uploadfile" %></div>
+  	<%= render "collapses" %></div>
 <%= form_for @wiki do |f| %>
 <div id="form1">
 	Bitte gebe einen Titel für deinen Artikel ein:
@@ -28,8 +27,7 @@
 	 	
 	<br/><br/><input type="button" value="Weiter"  class="btn btn-primary" onclick="page2()"/> </div>
 <div id="form2" style="display: none" >
-    
-   Bitte Link eingeben: <input id="url" type="text" value="https://" />  Was soll angezeigt werden: <input id="linkText" type="text"/> <button type="button" onclick="insertLink()">Link einfügen</button>
+       
    <%= f.text_area :article, id:"articleInput", class: 'wysihtml5', placeholder:"Artikel hier schreiben...", style:"width: 900px; height: 400px" %>
    
   <p>
@@ -43,10 +41,10 @@
 
 </div>
 
+
 <script src="/assets/bootstrap-tagsinput.js?body=1"></script>
 
 <script type="text/javascript">
-
 
 $('#articleInput').wysihtml5({
 	"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true

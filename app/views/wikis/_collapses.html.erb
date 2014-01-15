@@ -1,0 +1,25 @@
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading" onclick="showCollapse('collapseOne')">
+      <h4 class="panel-title">Datei hochladen</h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <div class="panel-body">
+        Bilder oder Dateien zum Artikel hinzufügen:
+		<%= render "upload/uploadfile" %>
+      </div>
+    </div>    
+  </div>
+<div class="panel panel-default">
+    <div class="panel-heading" onclick="showCollapse('collapseTwo')">
+      <h4 class="panel-title">
+           Link einfügen        
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+      	 Bitte Link eingeben: <input id="url" type="text" value="http://"/> <div id="linkTextInput"> Anzeigetext: <input id="linkText" type="text"/> <button type="button" onclick="insertLink()">Link einfügen</button></div>
+      </div>
+    </div>    
+  </div>
+  </div>
