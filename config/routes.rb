@@ -10,6 +10,8 @@ MyLearnSpace::Application.routes.draw do
   
   resources :users
   
+  resources :logins
+  
   root 'welcome#index'
 
   get "welcome/index"

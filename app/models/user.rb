@@ -3,8 +3,9 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base
     include ActiveModel::Validations
-    attr_accessible :username, :email, :password,  :pupil
-    validate :valid_user
+    attr_accessible :username, :email, :password, :password_confirmation, :pupil
+    has_secure_password 
+    validate :valid_user, :on => :create
 
     #validates_confirmation_of :password, :password_confirmation => "Passwortbestaetigung falsch"
     has_and_belongs_to_many :curriculums
