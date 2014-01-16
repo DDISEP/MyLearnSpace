@@ -1,3 +1,4 @@
+#Encoding: utf-8
 class UsersController < ApplicationController
   
   
@@ -27,8 +28,8 @@ class UsersController < ApplicationController
        if params[:password] != params[:password_confirmation]
          flash.now[:notice] = 'Passwortbestaetigung falsch'
          redirect_to new_user_path 
-       else
-        @user = User.new(params[:user])
+       else      
+         @user = User.new(params[:user])
          if @user.save
          redirect_to root_url, :notice => "Erfolgreich angemeldet!"
         else
@@ -36,7 +37,8 @@ class UsersController < ApplicationController
         end
        end
   end
-
+  
+ 
   def show #fremde profile
     #@user=User.find(params[:id]) #wenn username in session gleich gesuchtemusername ,dann profile
   end
@@ -69,10 +71,6 @@ class UsersController < ApplicationController
     @users = User.search params[:search]
     render "search_results" 
   end
-  def authenticate 
-     user = User.find_by_email(params[:email])
-     if user && user.authenticate(params[:password])
-    end 
-  end
+  
 
 end

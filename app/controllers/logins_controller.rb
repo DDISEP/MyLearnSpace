@@ -1,3 +1,4 @@
+#Encoding: utf-8
 class LoginsController < ApplicationController
   # "Create" a login, aka "log the user in"
   skip_before_action :require_login, only: [:new, :create]
@@ -26,15 +27,15 @@ class LoginsController < ApplicationController
   # POST /logins
   # POST /logins.json
   def create
-    if user = User.authenticate(params[:username], params[:password])
-      # Save the user ID in the session so it can be used in
-      # subsequent requests
-      session[:current_user_id] = user.id
-      redirect_to root_url, :notice => "Erfolgreich angemeldet!"
+    user = User.authenticate params[:email], params[:password]
+    if user
+      session[:user_id] = user.id
+      redirect_to root_url, :notice => 'Willkommen zurück, ' + user.username + '!'
     else
-      flash.now.alert = "Invalid email or password"  
-      render "new"
+      flash[:notice] = "Bitte gib deine Benutzerdaten ein."
+      render 'new'
     end
+    
 
     #@login = Login.new(login_params)
 

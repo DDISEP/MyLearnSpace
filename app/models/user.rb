@@ -1,16 +1,17 @@
 require 'digest/sha1'
 
-
+#Encoding: utf-8
 class User < ActiveRecord::Base
   
     include ActiveModel::Validations
     attr_accessible :username, :email, :password,  :pupil
-    #has_secure_password 
     validate :valid_user
 
     #validates_confirmation_of :password, :password_confirmation => "Passwortbestaetigung falsch"
     has_and_belongs_to_many :curriculums
-  
+    
+    
+    
     def valid_user
       if username.blank?
         errors.add(:base, "Gib bitte noch einen Benutzernamen an!")
@@ -27,11 +28,7 @@ class User < ActiveRecord::Base
         errors.add(:base, "Dein Passwort muss mind. 6 und max. 20 Zeichen umfassen!") unless self.password.length.in?(6..20)
       end
       
-      
-      
-      
-    
-      #errors.add(:base, "Die Passwoerter stimmen nicht ueberein!") unless self.password_confirmation == self.password
+      #errors.add(:base, "Die Passwörter stimmen nicht überein!") unless self.password_confirmation == self.password
             
       return errors.count == 0
     end
@@ -41,9 +38,16 @@ class User < ActiveRecord::Base
         find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
       else
         find(:all)
+      end
     end
   
-  end
-
+    def self.authenticate email, password
+        user = find_by_email email
+        if user && user.password == password
+            user
+        else
+            false
+        end
+    end
     
 end
