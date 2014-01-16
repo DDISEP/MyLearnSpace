@@ -14,7 +14,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-db/development.sqlite3
 db/schema.rb
 
 #Ignore uploaded Files (Wiki)

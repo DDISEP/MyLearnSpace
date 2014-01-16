@@ -1,0 +1,9 @@
+<% @answers.each do |answer| %>
+	<p>
+		<strong>Antwort von <%= answer.user_name %> vom <%= answer.created_at %>:</strong>
+		<%= answer.text%>
+	</p>
+<% end %>
+<% if @answers.empty? %>
+	<em>Diese Frage wurde noch nicht beantwortet</em>
+<% end %>

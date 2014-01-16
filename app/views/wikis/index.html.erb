@@ -1,20 +1,40 @@
-
-
-<div class="zweispaltig">
+TODO: Länge der Anzeige begrenzen
 <br/><br/>
-<div align="right" ><%= button_to 'Neuen Artikel verfassen', new_wiki_path, method:"get", class:"btn btn-xs btn-default" %></div>
-<% if !@wiki.nil? %>
+<div align="right" >
+<%= button_to "Neuen Artikel verfassen" , new_wiki_path, class:"btn btn-xs btn-primary", method:"get" %></div>
+<div class="zweispaltig">
+
+<% if !@popArticle.nil? %>
 <strong>Beliebtester Artikel</strong> <br/>
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title"><%= link_to @wiki.title , wiki_path(@wiki) %>
-		</h3>
-				</div>
-	<div class="panel-body"><%= sanitize @wiki.article %></div> <!-- sanitize verhindert XSS -->
+		<div class="zweispaltig">
+		<h3 class="panel-title"><%= link_to @popArticle.title , wiki_path(@popArticle) %>
+		</h3></div>
+		<div align="right" >
+			<%= button_to "Artikel ansehen" , wiki_path(@popArticle), class:"btn btn-xs btn-primary", method:"get" %>
+		</div>
+		</div>
+	<div class="panel-body"><%= sanitize @popArticle.article %></div> <!-- sanitize verhindert XSS -->
 	</div>
 
 <% end %>
 </div>
+<div class="zweispaltig">
+	<% if !@newestArticle.nil? %>
+<strong>Neuester Artikel</strong> <br/>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="zweispaltig">
+		<h3 class="panel-title"><%= link_to @newestArticle.title , wiki_path(@newestArticle) %>
+		</h3></div>
+		<div align="right" >
+			<%= button_to "Artikel ansehen" , wiki_path(@newestArticle), class:"btn btn-xs btn-primary", method:"get" %>
+		</div>
+		</div>
+	<div class="panel-body"><%= sanitize @newestArticle.article %></div> <!-- sanitize verhindert XSS -->
+	</div>
 
+<% end %></div>
 
 

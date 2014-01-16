@@ -11,12 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140104153056) do
+ActiveRecord::Schema.define(version: 20140112135556) do
+
+  create_table "answers", force: true do |t|
+    t.string   "text"
+    t.integer  "question_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "user_name"
+  end
 
   create_table "contents", force: true do |t|
     t.string   "tag"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "contents_items", force: true do |t|
+    t.integer "content_id"
+    t.integer "item_id"
   end
 
   create_table "curriculums", force: true do |t|
@@ -46,19 +59,17 @@ ActiveRecord::Schema.define(version: 20140104153056) do
     t.string   "title"
     t.integer  "hours"
     t.string   "descriptionOfContent"
+    t.integer  "curriculum_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "curriculum_id"
-    t.string   "curriculum_type"
   end
-
-  add_index "items", ["curriculum_id", "curriculum_type"], name: "index_items_on_curriculum_id_and_curriculum_type"
 
   create_table "questions", force: true do |t|
     t.string   "title"
     t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "user_name"
   end
 
   create_table "users", force: true do |t|
@@ -66,6 +77,13 @@ ActiveRecord::Schema.define(version: 20140104153056) do
     t.string   "password"
     t.string   "email"
     t.boolean  "pupil"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "wiki_tags", force: true do |t|
+    t.integer  "wiki_id"
+    t.integer  "content_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

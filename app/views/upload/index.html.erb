@@ -1,0 +1,17 @@
+<h1>Dateien</h1>
+<table>
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+<% @files.each do |file| %>
+  <tr id=<%= file.id%>>
+  	<td><%= link_to file.fileName, "/uploads/"+file.getStorableName %></td>
+    <td><%= link_to 'Anzeigen', upload_path(file) %></td>
+    <td><%= link_to 'Löschen', upload_path(file), remote: true,
+                    method: :delete, data: { confirm: 'Datei wirklich löschen?' } %></td>
+  </tr>
+<% end %>
+</table>

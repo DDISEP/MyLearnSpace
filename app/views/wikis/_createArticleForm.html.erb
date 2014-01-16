@@ -1,36 +1,61 @@
- <div class="jumbotron">
-    
-<%= render "display_errors" %>
-
-<%= render "upload/uploadfile" %>
-<%= form_for @wiki do |f| %>
-    <%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" , :value => @title %> 
-  
+ Upload in ein neues Fenster auslagern,
+ Suchergebnisse mit Pagination und oder nach Tags geordnet,
+ Links einfügen-Feature implementieren
  
-  
-    
-   <%= f.text_area :article, id:"articleInput", class: 'wysihtml5', placeholder:"Artikel hier schreiben...", style:"width: 810px; height: 200px" %>
+ <div class="jumbotron">
+ 	<div align="right">
+   	   <ul class="pagination" id="pagination">
+ <li class="disabled"><a href="#">&laquo;</a></li>
+  <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+  <li><a href="#" onclick="page2()">2</a></li>
+  <li><a href="#" onclick="page2()">&raquo;</a></li>
+</ul></div>
+<%= render "display_errors" %>
+  <div id="uploadForm" style="display: none">
+  	<%= render "collapses" %></div>
+<%= form_for @wiki do |f| %>
+<div id="form1">
+	Bitte gebe einen Titel für deinen Artikel ein:
+	<div class="input-group input-group-lg">
+	<%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" , :value => @title , class:"form-control" %> </div>
+	
+	Markiere hier bitte Content-Items, die zu deinem Artikel gehören [TODO]:<br/>
+	<input id="tags" type="text" placeholder="Passende Tags eingeben..." value="<% @wiki.contents.each do |content| %>
+										<%= content.tag %>,
+										<% end %>" data-role="tagsinput" name="wiki[tags]" />
+										
+	 	
+	<br/><br/><input type="button" value="Weiter"  class="btn btn-primary" onclick="page2()"/> </div>
+<div id="form2" style="display: none" >
+       
+   <%= f.text_area :article, id:"articleInput", class: 'wysihtml5', placeholder:"Artikel hier schreiben...", style:"width: 900px; height: 400px" %>
    
   <p>
     <%= f.submit "Artikel speichern", class:"btn btn-xs btn-primary"%>
   </p>
+  </div>
+  <% end %>
   
- 
 
-<% end %>
+
 
 </div>
+
+
+<script src="/assets/bootstrap-tagsinput.js?body=1"></script>
+
 <script type="text/javascript">
 
 $('#articleInput').wysihtml5({
 	"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
 	"emphasis": true, //Italics, bold, etc. Default true
 	"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
-	"link": true, //Button to insert a link. Default true
-	"image": true, //Button to insert an image. Default true,
+	"link": false, //Button to insert a link. Default true
+	"image": false, //Button to insert an image. Default true,
 	"color": true, //Button to change color of font 
 	"html": true //Button which allows you to edit the generated HTML. Default false 
 });
 
 
 </script>
+

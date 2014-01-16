@@ -1,7 +1,7 @@
 <%= form_for(@question) do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+      <h2>Wegen folgender Fehler konnte deine Frage nicht gespeichert werden:</h2>
 
       <ul>
       <% @question.errors.full_messages.each do |msg| %>
@@ -12,14 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, placeholder: 'Überschirft eingeben' %>
   </div>
   <div class="field">
-    <%= f.label :text %><br>
-    <%= f.text_field :text %>
+    <%= f.text_area :text, placeholder: 'Gib deine Frage hier ein' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Frage abschicken' %>
   </div>
 <% end %>

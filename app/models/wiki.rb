@@ -1,5 +1,7 @@
 class Wiki < ActiveRecord::Base
   
+ has_many :wiki_tags
+ has_many :contents, :through => :wiki_tags
  
   
   validates :title, presence: {message: "Bitte einen Titel eingeben"}
@@ -26,5 +28,27 @@ def self.searchSuggestions(search)
   find(:all, :conditions => ['title LIKE ?', search_condition], :order => "clicks DESC", :limit => "8")  
   
 end
+def addTags(paramsTags)
+  tags = paramsTags.split(',')
+  
+  #alle löschen (zum überschreiben nötig)
+
+ 
+ contents.clear # wird nur foreign key gelöscht?
+
+  
+    
+  tags.each do |tag|
+    c = Content.find_by_tag(tag.strip) #strip nötig zum entfernen von Whitespaces am Anfang
+    if !c.nil?  #and !contents.exists?(content.id)
+       contents << c
+     
+       
+    end     
+  end
+end
+    
+  
+ 
 
 end

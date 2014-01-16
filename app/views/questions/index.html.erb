@@ -1,12 +1,9 @@
-<h1>Listing questions</h1>
+<h1>Alle Fragen in diesem Forum</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Text</th>
-      <th></th>
-      <th></th>
+      <th>Überschrift</th>
       <th></th>
     </tr>
   </thead>
@@ -14,11 +11,7 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= question.title %></td>
-        <td><%= question.text %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to question.title, question %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +19,4 @@
 
 <br>
 
-<%= link_to 'New Question', new_question_path %>
+<%= link_to 'Neue Frage Stellen', new_question_path %>
