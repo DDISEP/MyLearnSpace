@@ -74,8 +74,8 @@ class ItemsController < ApplicationController
       params.require(:item).permit(:title, :hours, :descriptionOfContent)
     end
     
-    def add     #Hinzufügen von contents zu items
-      @contents = Contents.all
-      
-    end
+    #def add     #Hinzufügen von contents zu items
+     # @contents = Contents.all
+     # 
+    #end
 end
