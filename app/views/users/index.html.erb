@@ -2,12 +2,13 @@
 <div class="zweispaltig">
 <font size="3">
 <table width="50%">
+	<tr><td><p style="font-size:10pt"><%= link_to 'Neues Profil anlegen?', new_user_path %></p></td></tr>
 	<tr>
 		<td>
-			<b>Name</b>
+			<b><p style="font-size: 15pt">Name</p></b>
 		</td>
 		<td>
-			<b>Schüler</b>
+			<b><p style="font-size: 15pt">Schüler?</p></b>
 		</td>	
 	</tr>
 	<% @users.each do |u| 	%>
@@ -16,13 +17,14 @@
 			<%= u.username %>
 		</td>
 		<td>
-			<%= u.pupil %>
+			<%= u.pupil %><!--statt t und f muss hier noch ja nein eingefügt werden!!-->
 		</td>
 	</tr>	
 	<% end %>
 	
 </table></div>
 </font>
+
 
 
 <div class="zweispaltig"> 
@@ -42,6 +44,8 @@ alert("tesst");
  	window.location.href = ("user/"+escape(query.value));
   }
 </script>
+
+
 
 
 

@@ -1,14 +1,15 @@
 MyLearnSpace::Application.routes.draw do
       
-  get 'users/login' => "users#login"
   
-  post 'users/login' => "users#login"
-  
+  resources :logins
+
   get 'users/search' => "users#search"
   
   post 'users/search' => "users#search"
   
   resources :users
+  
+  
   
   root 'welcome#index'
 
