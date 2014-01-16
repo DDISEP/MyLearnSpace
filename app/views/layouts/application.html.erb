@@ -18,17 +18,13 @@
 	
 	<%= link_to 'Fragenforum', questions_path %>
 	<%= link_to 'Wiki', wikis_path %>
-	<% if current_user.nil? %>
+	<% if @current_user.nil? %>
       <%= link_to 'Anmelden', new_login_path %> <!--statt session path login path-->
     <% else %>
       Eingeloggt als <%= current_user.name %>.
       <%= link_to 'Abmelden', login_path( session ), :method => :delete %> <!--session_path( session ), :method => :delete %>-->
     <% end %>
-<<<<<<< HEAD
-=======
-	<%= link_to 'Fragenforum', questions_path %>
->>>>>>> 3119e5e3def5b93840e44aec6d59d0e625485fa7
-</p>
+
 
 <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
 

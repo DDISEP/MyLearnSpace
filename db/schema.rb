@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112135556) do
+ActiveRecord::Schema.define(version: 20140116094842) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -60,6 +60,11 @@ ActiveRecord::Schema.define(version: 20140112135556) do
     t.integer  "hours"
     t.string   "descriptionOfContent"
     t.integer  "curriculum_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "logins", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
