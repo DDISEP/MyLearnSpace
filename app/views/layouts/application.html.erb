@@ -4,6 +4,7 @@
   <title>MyLearnSpace</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application", controller_name %>
+  
 </head>
 
 <body>
@@ -23,9 +24,14 @@
       Eingeloggt als <%= current_user.name %>.
       <%= link_to 'Abmelden', login_path( session ), :method => :delete %> <!--session_path( session ), :method => :delete %>-->
     <% end %>
+<<<<<<< HEAD
+=======
+	<%= link_to 'Fragenforum', questions_path %>
+>>>>>>> 3119e5e3def5b93840e44aec6d59d0e625485fa7
 </p>
 
 <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
 
 </body>
+
 </html>

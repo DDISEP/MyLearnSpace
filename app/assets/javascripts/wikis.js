@@ -1,8 +1,30 @@
 //= require bootstrap-wysihtml5
 //= require upload.js
-//= require bootstrap-tagsinput.js
 
+function toggleCollapse(id){
+	var collapse = document.getElementById(id);
+	if(collapse.className != 'panel-collapse collapse in'){
+	collapse.style='';
+	collapse.className ='panel-collapse collapse in';
+	}
+	else{
+		collapse.className ='panel-collapse collapse';
+	}
+	
+}
 
+function insertLink(){
+
+var editor = $('#articleInput').data("wysihtml5").editor;
+var value = editor.getValue();
+var url = document.getElementById('url').value;
+if (!(/^http:\/\//).test(url)) // http:// muss immer vor dem Link stehen da sonst der XSS Schutz des Editors greift
+	url= 'http:\/\/' + url;
+url = ' <a href="' + url +'">'+document.getElementById('linkText').value; +'</a>';
+editor.setValue(value + url, true);
+toggleCollapse('collapseLink');
+
+}
 
 
 

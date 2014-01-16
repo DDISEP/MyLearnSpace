@@ -1,19 +1,13 @@
 class UploadController < ApplicationController
   def index
-     @file = DataFile.last
-     render :partial => 'uploadfile'
-  
+     
+   @files = DataFile.all
+   render "index" 
   
   end
 
-def upload
+def new
   
-   @post = DataFile.save(params[:file])
-   if @post
-    #@filename = params[:file].original_filename
-    @file = DataFile.last
-   end
-   render "fileSaved"      # data:remote funktioniert irgendwie nur im Wiki !?
 end
 
 def create
@@ -31,12 +25,17 @@ def show
   
 end
 def destroy
+  @id = params[:id].to_i
   @file = DataFile.find(params[:id])
-  File.delete(Rails.root.join('public', 'uploads', @file.getStorableName))
+  if File.exist?(Rails.root.join('public', 'uploads', @file.getStorableName))
+    File.delete(Rails.root.join('public', 'uploads', @file.getStorableName))
+  end
   @file.destroy
-  render :partial => "uploadfile"     #TODO: JS Respond
-  
-  
+     #TODO: JS Respond
+  #render "index"
+  respond_to do |format|
+      format.js
+    end
 end
   
   
