@@ -34,7 +34,8 @@ def destroy
      #TODO: JS Respond
   #render "index"
   respond_to do |format|
-      format.js
+      format.js {render "destroy.js.erb"}
+      format.html {index}
     end
 end
   

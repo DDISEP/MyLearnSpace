@@ -13,8 +13,12 @@ def create
  @wiki.clicks= 0
  
  @wiki.addTags(params[:wiki][:tags])
+ @tags = @wiki.searchArticleForTags # TODO: String mit Tags zurückgeben, Benutzer anzeigen -> trifft die Auswahl welche übernommen werden
+ #Vorgehen: _addTags.html.erb anlegen, submit als Edit nehmen -> addTags(params)
   if @wiki.save      
     redirect_to @wiki
+    # JS response 
+    # 2Seitiges Layout : 1. Seite Titel, Artikel -> click auf Weiter: Speichert _> JS Antwort mit vorgeschlagenen Tags auf 2.Seite
     
   else
     render 'new'
