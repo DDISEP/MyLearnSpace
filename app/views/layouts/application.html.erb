@@ -17,14 +17,15 @@
 	<%= link_to 'Lehrplan', curriculums_path %>
 	
 	<%= link_to 'Fragenforum', questions_path %>
+	
 	<%= link_to 'Wiki', wikis_path %>
+	
 	<% if @current_user.nil? %>
       <%= link_to 'Anmelden', new_login_path %> <!--statt session path login path-->
     <% else %>
       Eingeloggt als <%= current_user.name %>.
       <%= link_to 'Abmelden', login_path( session ), :method => :delete %> <!--session_path( session ), :method => :delete %>-->
     <% end %>
-
 
 <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
 
