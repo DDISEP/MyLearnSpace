@@ -19,10 +19,10 @@ def searchArticleForTags
   @tags_as_string = ""
   @tags.each do |tag|
     tagInArticle = Wiki.where("id = :w_id AND article LIKE :tag", {:w_id => id, :tag => "%#{tag.tag}%"})
-    if !tagInArticle.empty? and !contents.exists?(tag.id)
+    if !tagInArticle.empty?
       contents << tag
-      @tags_as_string += ","
       @tags_as_string += tag.tag 
+      @tags_as_string += ","
     end
   end
   return @tags_as_string

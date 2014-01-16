@@ -59,10 +59,13 @@ ActiveRecord::Schema.define(version: 20140116094842) do
     t.string   "title"
     t.integer  "hours"
     t.string   "descriptionOfContent"
-    t.integer  "curriculum_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "curriculum_id"
+    t.string   "curriculum_type"
   end
+
+  add_index "items", ["curriculum_id", "curriculum_type"], name: "index_items_on_curriculum_id_and_curriculum_type"
 
   create_table "logins", force: true do |t|
     t.datetime "created_at"
