@@ -2,8 +2,10 @@ require 'digest/sha1'
 
 
 class User < ActiveRecord::Base
+  
     include ActiveModel::Validations
     attr_accessible :username, :email, :password,  :pupil
+    #has_secure_password 
     validate :valid_user
 
     #validates_confirmation_of :password, :password_confirmation => "Passwortbestaetigung falsch"
@@ -21,9 +23,13 @@ class User < ActiveRecord::Base
       end
       if password.blank?
         errors.add(:base, "Es wurde kein Passwort eingegeben!")
+      else 
+        errors.add(:base, "Dein Passwort muss mind. 6 und max. 20 Zeichen umfassen!") unless self.password.length.in?(6..20)
       end
-    
-      errors.add(:base, "Dein Passwort muss mind. 6 und max. 20 Zeichen umfassen!") unless self.password.length.in?(6..20)
+      
+      
+      
+      
     
       #errors.add(:base, "Die Passwoerter stimmen nicht ueberein!") unless self.password_confirmation == self.password
             

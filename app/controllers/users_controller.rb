@@ -7,30 +7,7 @@ class UsersController < ApplicationController
   
   def new     
      @user = User.new
-  end
-      
- 
- 
-  def login
-    @fehler1 = false
-    @fehler2 = false
-    if params[:name] != nil
-      if User.find_by_username(params[:name]) == nil #Namen gibt es nicht
-        @fehler1 = true
-        redirect_to(:action => 'login')
-      elsif User.find_by_username(params[:name]).password == params[:pass] #passwort richtig
-        session[:name]=params[:name]
-        redirect_to(:action => 'profile')
-      else
-        @fehler2 = true #passwort falsch
-        redirect_to(:action => 'login')
-      end
-    end
-  end
-  
-  def logout
-    
-  end
+  end   
   
   def profile #nur zugriff möglich, wenn schon eigens profil
     if params[:logout] != nil
@@ -92,10 +69,10 @@ class UsersController < ApplicationController
     @users = User.search params[:search]
     render "search_results" 
   end
-  #def authenticate 
-     #user = User.find_by_email(params[:email])
-     #if user && user.authenticate(params[:password])
-    #end 
-  #end
+  def authenticate 
+     user = User.find_by_email(params[:email])
+     if user && user.authenticate(params[:password])
+    end 
+  end
 
 end
