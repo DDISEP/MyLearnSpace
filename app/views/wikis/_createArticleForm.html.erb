@@ -1,8 +1,9 @@
- Upload in ein neues Fenster auslagern,
+
  Suchergebnisse mit Pagination und oder nach Tags geordnet,
- Links einfügen-Feature implementieren
+ 
  
  <div class="jumbotron">
+ 	
  	<div align="right">
    	   <ul class="pagination" id="pagination">
  <li class="disabled"><a href="#">&laquo;</a></li>
@@ -11,30 +12,28 @@
   <li><a href="#" onclick="page2()">&raquo;</a></li>
 </ul></div>
 <%= render "display_errors" %>
-  <div id="uploadForm" style="display: none">
+<div id="errors"></div>
+  <div id="uploadForm">
   	<%= render "collapses" %></div>
-<%= form_for @wiki do |f| %>
+<%= form_for @wiki, :remote => true do |f|  %>
+
 <div id="form1">
-	Bitte gebe einen Titel für deinen Artikel ein:
+	Titel für deinen Artikel ein:
 	<div class="input-group input-group-lg">
 	<%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" , :value => @title , class:"form-control" %> </div>
 	
-	Markiere hier bitte Content-Items, die zu deinem Artikel gehören [TODO]:<br/>
-	<input id="tags" type="text" placeholder="Passende Tags eingeben..." value="<% @wiki.contents.each do |content| %>
-										<%= content.tag %>,
-										<% end %>" data-role="tagsinput" name="wiki[tags]" />
+		<%= f.text_area :article, id:"articleInput", class: 'wysihtml5', placeholder:"Artikel hier schreiben...", style:"width: 900px; height: 400px" %>									
 										
 	 	
-	<br/><br/><input type="button" value="Weiter"  class="btn btn-primary" onclick="page2()"/> </div>
+	<br/><br/> <%= f.submit "Weiter", class:"btn btn-xs btn-primary"%> </div>
+	  <% end %>
 <div id="form2" style="display: none" >
        
-   <%= f.text_area :article, id:"articleInput", class: 'wysihtml5', placeholder:"Artikel hier schreiben...", style:"width: 900px; height: 400px" %>
+   <div id="tagsInput"></div>
    
-  <p>
-    <%= f.submit "Artikel speichern", class:"btn btn-xs btn-primary"%>
-  </p>
+  
   </div>
-  <% end %>
+
   
 
 
@@ -42,7 +41,6 @@
 </div>
 
 
-<script src="/assets/bootstrap-tagsinput.js?body=1"></script>
 
 <script type="text/javascript">
 

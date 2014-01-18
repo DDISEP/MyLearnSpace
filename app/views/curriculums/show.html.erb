@@ -22,7 +22,7 @@ Lehrplan löschen |
         <td bgcolor="lightgrey">
             <%= link_to 'bearbeiten', edit_curriculum_item_path(@curriculum, curitem) %> | 
             <%= link_to 'löschen', curitem, method: :delete, data: { confirm: 'Bist du dir sicher?' } %> |
-        	Neuen Stichpunkt hinzufügen
+        	<%= link_to 'Neuen Stichpunkt hinzufügen' %>
         </td>
     </tr>
     <tr><td colspan="3"><%= curitem.descriptionOfContent %></td></tr>

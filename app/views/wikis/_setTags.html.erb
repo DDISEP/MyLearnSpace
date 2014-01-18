@@ -1,0 +1,7 @@
+Der Server hat folgende Tags in deinem Artikel gefunden. Ergänze/lösche sie bitte ggf. passend:
+<%= form_for @wiki do |f|  %>
+<input id="tags" type="text" placeholder="Passende Tags eingeben..." value="<%= @tags %>" data-role="tagsinput" name="wiki[tags]" />
+<%= f.submit "Artikel speichern", class:"btn btn-xs btn-primary"%>
+<% end %>
+<script src="/assets/bootstrap-tagsinput.js?body=1"></script>
+	
