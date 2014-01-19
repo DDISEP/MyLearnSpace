@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-inverse navbar-static-top " role="navigation">
 <div class="navbar navbar-static-top">
     <div class="navbar-header"> 
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -16,7 +16,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
         </a>
- 			<%= link_to image_tag('MyLearnSpace6.png', border:"0", width:"75", height:"75"), welcome_index_path %>
+ 			<%= link_to image_tag('MyLearnSpace6.png', border:"0", width:"65", height:"65"), welcome_index_path %>
 	</div>	
 	<div class="navbar-default" id=".nav-collapse">
     	<ul class="nav navbar-nav">
@@ -59,7 +59,7 @@
       </ul>
 	</div>
    </div>
-</nav>      
+</nav>   
 <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
 </body>
 </html>
