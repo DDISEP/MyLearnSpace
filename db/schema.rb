@@ -67,8 +67,6 @@ ActiveRecord::Schema.define(version: 20140116094842) do
 
   add_index "items", ["curriculum_id", "curriculum_type"], name: "index_items_on_curriculum_id_and_curriculum_type"
 
-  add_index "items", ["curriculum_id", "curriculum_type"], name: "index_items_on_curriculum_id_and_curriculum_type"
-
   create_table "logins", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
