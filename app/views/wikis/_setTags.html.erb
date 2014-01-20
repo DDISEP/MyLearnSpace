@@ -1,0 +1,8 @@
+<div id= "errors"></div>
+<div class="alert alert-info">Es wurden Tags in deinem Artikel gefunden!</div>Ergänze/lösche sie bitte ggf. passend:
+<%= form_for @wiki, remote: true do |f|  %>
+<input id="tags" type="text" placeholder="Passende Tags eingeben..." value="<%= @tags %>" data-role="tagsinput" name="wiki[tags]" />
+<%= f.submit "Artikel speichern", class:"btn btn-xs btn-primary"%>
+<% end %>
+<script src="/assets/bootstrap-tagsinput.js?body=1"></script>
+	

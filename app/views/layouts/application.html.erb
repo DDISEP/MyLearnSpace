@@ -8,26 +8,58 @@
 </head>
 
 <body>
-<p style="border:2px solid cornflowerblue ">
-	<%= link_to image_tag('MyLearnSpace.png', border:"0", width:"150", height:"150", :mouseover => "/images/MyLearnSpace5.png"), welcome_index_path %>
-	<strong>Wo möchtest du hin?</strong> 
-	
-	<%= link_to 'Benutzer', users_path %>
-	
-	<%= link_to 'Lehrplan', curriculums_path %>
-	
-	<%= link_to 'Fragenforum', questions_path %>
-	<%= link_to 'Wiki', wikis_path %>
-	<% if @current_user.nil? %>
-      <%= link_to 'Anmelden', new_login_path %> <!--statt session path login path-->
-    <% else %>
-      Eingeloggt als <%= current_user.name %>.
-      <%= link_to 'Abmelden', login_path( session ), :method => :delete %> <!--session_path( session ), :method => :delete %>-->
-    <% end %>
-
-
+<nav class="navbar navbar-inverse navbar-static-top " role="navigation">
+<div class="navbar navbar-static-top">
+    <div class="navbar-header"> 
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+        </a>
+ 			<%= link_to image_tag('MyLearnSpace6.png', border:"0", width:"65", height:"65"), welcome_index_path %>
+	</div>	
+	<div class="navbar-default" id=".nav-collapse">
+    	<ul class="nav navbar-nav">
+      		<li><%= link_to 'Benutzer', users_path %></li>
+      		<li class="dropdown">
+        		<a href="" class="dropdown-toggle" data-toggle="dropdown">Lehrplan <b class="caret"></b></a>
+        		<ul class="dropdown-menu">
+          			<li><%= link_to "Lehrpläne anzeigen", curriculums_path %></li>
+    	  			<li><%= link_to "Neuen Lehrplan hinzufügen", new_curriculum_path %></li>
+          			<li class="divider"></li>
+          			<li><a href="">Nach Lehrplänen suchen</a></li>
+         		</ul>
+      		</li>
+      		<li><%= link_to 'Wiki', wikis_path %></li>
+      		<li><%= link_to 'Fragenforum', questions_path %></li>
+    
+    		<form class="navbar-form navbar-left" role="search">
+      			<div class="form-group ">
+        			<input type="text" class="form-control" placeholder="Search">
+     			</div>
+      			<button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> </button>
+    		</form>
+    	</ul>
+    	<ul class="nav navbar-nav navbar-right">
+      		<li><% if @current_user.nil? %>
+      			<%= link_to 'Anmelden', new_login_path %> <!--statt session path login path-->
+    		<% else %>
+      			Eingeloggt als <%= current_user.name %>.
+      			<%= link_to 'Abmelden', login_path( session ), :method => :delete %> <!--session_path( session ), :method => :delete %>-->
+    		<% end %>
+    		</li>   		
+      		<li class="dropdown">
+        		<a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Einstellungen <b class="caret"></b></a>
+        		<ul class="dropdown-menu">
+          			<li><a href="#">Hier kann irgendetwas stehen</a></li>
+          			<li class="divider"></li>
+          			<li><a href="#">Hier auch</a></li>
+        		</ul>
+      		</li>
+      </ul>
+	</div>
+   </div>
+</nav>   
 <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
-
 </body>
-
 </html>
