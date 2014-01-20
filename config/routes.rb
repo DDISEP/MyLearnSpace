@@ -7,25 +7,26 @@ MyLearnSpace::Application.routes.draw do
   
   post 'users/search' => "users#search"
   
+  
   resources :users
-  
-  
-  
+
   root 'welcome#index'
 
   get "welcome/index"
-   
-  resources :items
+  
 
   resources :contents
+  
 
   resources :questions do
     resources :answers
   end
+  
 
   resources :curriculums do
     resources :items
   end
+  
   
   post 'curriculums/:id' => "curriculums#update"
   

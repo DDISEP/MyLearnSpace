@@ -1,7 +1,10 @@
 class Curriculum < ActiveRecord::Base
    
+   
   attr_accessible :country, :state, :profession, :level, :typeOfSchool, :subject #WICHTIG für Formluar und create!!!
   
+  
+  #Validations
   validates_presence_of :subject, :message => " darf nicht leer sein."
   
   validates_presence_of :level, :message => " darf nicht leer sein."
@@ -16,7 +19,11 @@ class Curriculum < ActiveRecord::Base
   
   validates_presence_of :state, :message => " darf nicht leer sein."
   
-  has_many :items, :dependent => :destroy
+  
+  #Relations between different parts of the website
+  #m:n relation between curriculum and item (join-table curriculums_items) with destroy-dependence
+  has_many :items, :dependent => :destroy  
+  #m:n relation between curriculum and user (join-table contents_items)
   has_and_belongs_to_many :users
   
 end

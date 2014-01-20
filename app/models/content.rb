@@ -1,10 +1,9 @@
 class Content < ActiveRecord::Base
   
- #Wiki Tags
- has_many :wiki_tags
- has_many :wikis, :through => :wiki_tags 
- #end 
- 
+  #Wiki Tags (m:n ralation between wiki and content with join-table wiki_tags)
+  has_many :wiki_tags
+  has_many :wikis, :through => :wiki_tags 
+  #end 
  
   attr_accessible :tag
   
@@ -12,5 +11,7 @@ class Content < ActiveRecord::Base
   validates_uniqueness_of :tag, :message => " gibt es schon."
   validates_uniqueness_of :tag, :message => "den Tag gibt es schon"
   
+  #m:n relation between contents and items (join-table contents_items)
   has_and_belongs_to_many :items
+  
 end

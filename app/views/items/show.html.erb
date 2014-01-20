@@ -14,8 +14,7 @@
 </table>
 <br />
 
-<%= link_to 'zurück', curriculum_path %> |
-<%= link_to 'bearbeiten', edit_item_path(@item) %> |
-<%= link_to 'löschen', @item, method: :delete, data: { confirm: 'Bist du dir sicher?' } %>
+<%= link_to 'zurück', curriculum_path(@item.curriculum_id) %> |
+<%= link_to 'bearbeiten', edit_curriculum_item_path(@item.curriculum_id, @item) %> |
 </div>
 

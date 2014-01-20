@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.all 
   end
 
   # GET /items/1
@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @curriculumID = Curriculum.find(params[:curriculum_id])
-    @item = Item.new
+    @item = @curriculumID.items.build
   end
 
   # GET /items/1/edit
@@ -26,11 +26,14 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(item_params)
-
+    @curriculumID = Curriculum.find(params[:curriculum_id])
+    @item = @curriculumID.items.build(params[:item])
+    #alt: @item = Item.new(item_params)
+    #von andi: @item.curriculum_id = params[:item][:curriculum_id]
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Lehrplaninhalt wurde erfolgreich angelegt.' }
+        format.html { redirect_to [@curriculumID, @item], notice: 'Lehrplaninhalt wurde erfolgreich angelegt.' }
+        #format.html { render action: 'show',  notice: 'Lehrplaninhalt wurde erfolgreich angelegt.' }
         format.json { render action: 'show', status: :created, location: @item }
       else
         format.html { render action: 'new' }
@@ -42,9 +45,11 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
+    @curriculumID = Curriculum.find(params[:curriculum_id])
+    @item = @curriculumID.items.build(params[:item])
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Lehrplaninhalt wurde erfolgreich aktualisiert.' }
+        format.html { redirect_to [@curriculumID, @item], notice: 'Lehrplaninhalt wurde erfolgreich aktualisiert.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

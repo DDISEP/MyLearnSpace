@@ -1,5 +1,5 @@
 <% if @item.errors.any? %>
-  <div id="error_explanation">
+  <div class="alert alert-danger">
     <strong><%= @item.errors.count %> Fehler gefunden:</strong>
     <ul>
     <% @item.errors.full_messages.each do |msg| %>

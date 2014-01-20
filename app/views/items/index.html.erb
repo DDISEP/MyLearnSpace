@@ -10,11 +10,10 @@
     <tr>
       <% @items.each do |item| %>
         <td bgcolor="lightgrey"><%= item.title %></td>
-
         <td bgcolor="lightgrey"><%= item.hours %> Stunde(n)</td>
-        <td bgcolor="lightgrey"><%= link_to 'anzeigen', item %> 
-            <%= link_to 'bearbeiten', edit_item_path(item) %> 
-            <%= link_to 'löschen', item, method: :delete, data: { confirm: 'Bist du dir sicher?' } %></td>
+        <td bgcolor="lightgrey"><%= link_to 'anzeigen', item.curriculum %> 
+            <%= link_to 'bearbeiten', edit_curriculum_item_path(@item.curriculum_id, item) %> 
+            </td>
     </tr>
     <tr><td colspan="3"><%= item.descriptionOfContent %></td></tr>
     <tr><td colspan="3"></td></tr>
@@ -24,4 +23,4 @@
 
 <br>
 
-<%= link_to 'Neuer Lehrplaninhalt', new_item_path %>
+<%= link_to 'Neuer Lehrplaninhalt', new_curriculum_item_path %>
