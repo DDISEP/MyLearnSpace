@@ -9,10 +9,25 @@ class Wiki < ActiveRecord::Base
   validates :title, uniqueness:  {message: 'Zu diesem Titel gibt es schon einen Artikel!'}
   validates :title, length: { maximum: 35, message: "Titel darf max 35 Zeichen lang sein!"  } 
   
-  #TODO clicks mit 0 initialisieren
+  
   
    
   attr_accessible :title, :article
+ 
+def searchArticleForTags
+  @tags = Content.all
+  @tags_as_string = ""
+  @tags.each do |tag|
+    tagInArticle = Wiki.where("id = :w_id AND article LIKE :tag", {:w_id => id, :tag => "%#{tag.tag}%"})
+    if !tagInArticle.empty?
+      # contents << tag
+      @tags_as_string += tag.tag 
+      @tags_as_string += ","
+     
+    end
+  end
+  return @tags_as_string
+end
   
 def self.find_by_title(title)
   find(:all, :conditions => ["title LIKE ?", title])[0]   # liefert Array zurück -> deswegen [0] (Title ist unique)
@@ -28,22 +43,19 @@ def self.searchSuggestions(search)
   find(:all, :conditions => ['title LIKE ?', search_condition], :order => "clicks DESC", :limit => "8")  
   
 end
-def addTags(paramsTags)
+def setTags(paramsTags)
   tags = paramsTags.split(',')
   
   #alle löschen (zum überschreiben nötig)
 
- 
- contents.clear # wird nur foreign key gelöscht?
-
+ contents.delete_all 
   
-    
   tags.each do |tag|
     c = Content.find_by_tag(tag.strip) #strip nötig zum entfernen von Whitespaces am Anfang
-    if !c.nil?  #and !contents.exists?(content.id)
-       contents << c
-     
-       
+    if !c.nil?  and !contents.exists?(c.id)
+       contents << c   
+    else
+       errors.add(:tag, '"'+tag+'" existiert nicht in der Contents-Datenbank!')        
     end     
   end
 end

@@ -6,23 +6,27 @@ class WikisController < ApplicationController
 
   #render text: params[:wiki][:tags]
 
-#http://ruby-auf-schienen.de/3.2/ar-many_to_many.html
-def create
- 
- @wiki = Wiki.new(wiki_params)
- @wiki.clicks= 0
- 
- @wiki.addTags(params[:wiki][:tags])
-  if @wiki.save      
-    redirect_to @wiki
-    
-  else
-    render 'new'
-    
-    
-  end
-  
+
+def create 
+ if !params[:wiki][:title].nil? # -> 1. Seite von der Form
+    @wiki = Wiki.new(wiki_params)
+    @wiki.clicks= 0
+    if @wiki.save   
+      @tags = @wiki.searchArticleForTags
+      render "displaySuggestedTags"
+    else
+      render "displayErrors"
+    end
+  else                           # -> 2. Seite von der Form
+    @wiki.setTags(params[:wiki][:tags])
+    if @wiki.errors.any?
+      render "displayErrors"
+      else
+         render js: "window.location.href = '"+wiki_path(@wiki)+"';"  # entspricht redirect_to @wiki
+      end
+  end  
 end
+
 def edit
   if Wiki.exists?(params[:id])
     @wiki = Wiki.find(params[:id]) 
@@ -31,29 +35,33 @@ def edit
     title = params[:id].gsub('_',' ') # Unterstriche in Links in Leerzeichen umwandeln    
     @wiki= Wiki.find_by_title(title)
   end    
-  @title = @wiki.title
-  
-  
+  @title = @wiki.title  
 end
 
-def update # funktioniert noch nicht mit Tags
-        
+def update 
   @wiki = Wiki.find(params[:id])
-  @wiki.addTags(params[:wiki][:tags])
-  
-  #if @wiki.update(params.require(:wiki).permit(:article)) # nur Artikel änderbar
-  if @wiki.update(wiki_params)
     
-  
-  
-    redirect_to @wiki
-  else
-    render 'edit'
+  if !params[:wiki][:title].nil? # -> 1. Seite von der Form
+    if @wiki.update(wiki_params)    
+      @tags = @wiki.searchArticleForTags
+      render "displaySuggestedTags"
+    else
+      render "displayErrors"
+    end
+  else                           # -> 2. Seite von der Form
+    @wiki.setTags(params[:wiki][:tags])
+      if @wiki.errors.any?
+        render "displayErrors"
+      else
+         render js: "window.location.href = '"+wiki_path(@wiki)+"';"  # entspricht redirect_to @wiki
+      end
+        
   end
-
-  
 end
-def searchSuggestions
+
+
+
+def searchSuggestions  # TODO Route in Index integrieren -> searchSUggestions soll ausgeführt werden wenn index mit JS aufgerufen wird
   @wikis = Wiki.searchSuggestions params[:search]
   @results= ""
   @wikis.each do |wiki|
@@ -72,8 +80,7 @@ end
 
 def search
   @wikis = Wiki.search params[:search]
-  render "search_results"
-  
+  render "search_results" 
   
 end
   

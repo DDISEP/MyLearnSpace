@@ -1,9 +1,9 @@
-<h3>Dein Profil</h3>
+
 <%if @fehler%>
-	<font color="red"><b> Du bist nicht angemeldet! <br /></b></font>
-	<a href="/users/login"> Hier geht's zur Anmeldung <br />
+	<p style="font-size:22pt"; id="notice">&nbsp;&nbsp;<%= notice%></p>
+	<a href="/logins/new"> Jetzt melde dich hier an! <br />
 <%else%>
-	<h2>Herzlich Willkommen, <%= @session %></h2>
+	<h2>Herzlich Willkommen, <%= @current_user.username %></h2>
 	<form action="/users/profile" method="post"> 
 		<input type="hidden" name="logout" value ="true" />
 		<input type="submit" value="Abmelden" />		

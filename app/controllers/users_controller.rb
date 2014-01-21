@@ -11,10 +11,10 @@ class UsersController < ApplicationController
   end   
   
   def profile #nur zugriff möglich, wenn schon eigens profil
-    if params[:logout] != nil
-      session[:name] = nil
-      redirect_to(:action => 'login')
-    end
+    #if params[:logout] != nil
+      #session[:name] = nil
+      #redirect_to new_login_path
+    #end
     
     @fehler = false
     if session[:name] == nil
@@ -30,11 +30,11 @@ class UsersController < ApplicationController
          redirect_to new_user_path 
        else      
          @user = User.new(params[:user])
-         if @user.save
-         redirect_to root_url, :notice => "Erfolgreich angemeldet!"
-        else
-         render "new.html.erb"
-        end
+          if @user.save
+            redirect_to users_profile_path, :notice => "Profil erfolgreich angelegt!"
+          else
+            render "new.html.erb"
+          end
        end
   end
   

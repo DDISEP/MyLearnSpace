@@ -1,7 +1,7 @@
 #Encoding: utf-8
 class LoginsController < ApplicationController
   # "Create" a login, aka "log the user in"
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :check_login
   before_action :set_login, only: [:show, :edit, :update, :destroy]
 
   # GET /logins
@@ -29,13 +29,13 @@ class LoginsController < ApplicationController
   def create
     user = User.authenticate params[:email], params[:password]
     if user
-      session[:user_id] = user.id
-      redirect_to root_url, :notice => 'Willkommen zurück, ' + user.username + '!'
+      session[:current_user_id] = user.id
+      redirect_to users_profile_path, :notice => 'Willkommen zurück, ' + user.username + '!'
     else
-      flash[:notice] = "Bitte gib deine Benutzerdaten ein."
+      flash[:notice] = "Es ist ein Fehler aufgetreten. Bitte überprüfe nochmal deine Eingabedaten."
       render 'new'
     end
-    
+ end   
 
     #@login = Login.new(login_params)
 
@@ -48,8 +48,6 @@ class LoginsController < ApplicationController
         #format.json { render json: @login.errors, status: :unprocessable_entity }
       #end
     #end
-  end
-
   # PATCH/PUT /logins/1
   # PATCH/PUT /logins/1.json
   def update

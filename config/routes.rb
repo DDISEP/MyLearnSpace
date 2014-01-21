@@ -7,6 +7,10 @@ MyLearnSpace::Application.routes.draw do
   
   post 'users/search' => "users#search"
   
+  get 'users/profile' => "users#profile"
+  
+  post 'users/profile' => "users#profile"
+  
   resources :users
   
   
