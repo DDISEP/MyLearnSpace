@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     @current_user ||= session[:current_user_id] && 
                      User.find_by(id: session[:current_user_id])
     if @current_user.nil?
-      flash[:error] = "Du musst dich dazu erst anmelden!"
+      flash[:error] = "Du musst dich dazu erst anmelden:"
       redirect_to new_login_path # halts request cycle
     end
   end

@@ -1,5 +1,10 @@
 MyLearnSpace::Application.routes.draw do
       
+  root 'welcome#index'
+
+  get "welcome/index"
+   
+  
   
   resources :logins
 
@@ -15,10 +20,7 @@ MyLearnSpace::Application.routes.draw do
   
   
   
-  root 'welcome#index'
-
-  get "welcome/index"
-   
+  
   resources :items
 
   resources :contents

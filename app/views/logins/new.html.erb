@@ -1,6 +1,8 @@
-<h1>Anmelden</h1>
-<% if flash[:notice] %>
-    <div class="notice" style="color: red"><%= flash[:notice] %></div>
+<h2>Anmelden</h2>
+<% if flash[:error]%>
+	<div class="error" style="color: red; font-size: 18pt"><%= flash[:error] %></div>
+<% elsif flash[:notice] %>
+    <div class="notice" style="color: red; font-size: 18pt"><%= flash[:notice] %></div>
  <% end %>
  <br />
   <%= form_tag logins_path do %>

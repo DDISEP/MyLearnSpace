@@ -1,6 +1,6 @@
 #Encoding: utf-8
 class UsersController < ApplicationController
-  
+  skip_before_action :check_login, only: [:new, :create]
   
   def index
     @users = User.all #hier muss jeweils noch authorisiert werden, wer sich das ausgeben lassen darf
@@ -16,12 +16,12 @@ class UsersController < ApplicationController
       #redirect_to new_login_path
     #end
     
-    @fehler = false
-    if session[:name] == nil
-      @fehler = true
-    else
-      @session = session[:name]
-    end
+    #@fehler = false
+    #if session[:name] == nil
+      #@fehler = true
+    #else
+      #@session = session[:name]
+    #end
   end
   
   def create
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
        else      
          @user = User.new(params[:user])
           if @user.save
-            redirect_to users_profile_path, :notice => "Profil erfolgreich angelegt!"
+            redirect_to new_login_path, :notice => "Dein Profil wurde erfolgreich angelegt! Um alle Funktionen nutzen zu können, melde dich jetzt hier an."
           else
             render "new.html.erb"
           end

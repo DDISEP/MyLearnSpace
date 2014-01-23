@@ -5,6 +5,7 @@ gem 'bootstrap-wysihtml5-rails'
 # remote-true funktioniert damit auch bei FileUploads
 gem 'remotipart', '~> 1.2'
 
+gem 'thin'
 
 gem 'twitter-bootstrap-rails'
 
