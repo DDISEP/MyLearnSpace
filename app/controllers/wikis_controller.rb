@@ -8,7 +8,6 @@ class WikisController < ApplicationController
 
 
 def create 
- if !params[:wiki][:title].nil? # -> 1. Seite von der Form
     @wiki = Wiki.new(wiki_params)
     @wiki.clicks= 0
     if @wiki.save   
@@ -16,15 +15,8 @@ def create
       render "displaySuggestedTags"
     else
       render "displayErrors"
-    end
-  else                           # -> 2. Seite von der Form
-    @wiki.setTags(params[:wiki][:tags])
-    if @wiki.errors.any?
-      render "displayErrors"
-      else
-         render js: "window.location.href = '"+wiki_path(@wiki)+"';"  # entspricht redirect_to @wiki
-      end
-  end  
+    end 
+  
 end
 
 def edit

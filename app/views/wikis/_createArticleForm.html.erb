@@ -15,7 +15,7 @@
   <div id="uploadForm">
   	<%= render "collapses" %></div>
 <%= form_for @wiki, :remote => true do |f|  %>
-
+<%= token_tag(nil) %>
 <div id="form1">
 	Titel für deinen Artikel ein:
 	<div class="input-group input-group-lg">

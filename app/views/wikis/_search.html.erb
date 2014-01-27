@@ -1,6 +1,6 @@
  <%= form_tag url_for(:controller => 'wikis', :action => 'search'), :method => :post, :remote => true do %>
      <%= search_field :search, "", :id => 'search_field', name:"search", :onkeyup => "searchSuggest();", :autocomplete => "off" %>
-     <div id="search_suggest"></div>
+     <div id="search_suggest"></div><%= token_tag(nil) %>
       <%= submit_tag "suchen", :name => nil ,class:"btn btn-xs btn-default"%> 
   <% end %> 
   

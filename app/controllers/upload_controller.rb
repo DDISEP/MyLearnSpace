@@ -1,4 +1,5 @@
 class UploadController < ApplicationController
+  skip_filter :verify_authenticity_token, :destroy
   def index
      
    @files = DataFile.all
@@ -31,8 +32,6 @@ def destroy
     File.delete(Rails.root.join('public', 'uploads', @file.getStorableName))
   end
   @file.destroy
-     #TODO: JS Respond
-  #render "index"
   respond_to do |format|
       format.js {render "destroy.js.erb"}
       format.html {index}
