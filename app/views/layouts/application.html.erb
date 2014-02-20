@@ -10,7 +10,13 @@
 <body>
 	
 <p style="border:2px solid cornflowerblue ">
+	<% if @current_user.nil? %>
+		<%=  link_to image_tag('MyLearnSpace.png', border:"0", width:"150", height:"150", :mouseover => "/images/MyLearnSpace5.png"), welcome_index_path %>
+	<% else %>
 	<%= link_to image_tag('MyLearnSpace.png', border:"0", width:"150", height:"150", :mouseover => "/images/MyLearnSpace5.png"), users_profile_path %>
+	<% end %>
+	
+	
 	<strong>Wo möchtest du hin?</strong> 
 	
 	
@@ -29,7 +35,7 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<strong>Du bist angemeldet als <%= @current_user.username %></strong>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <%= link_to 'Abmelden', login_path( session[:current_user_id] ), :method => :delete %> <!--session_path( session ), :method => :delete %>-->
+      <%= link_to 'Abmelden', login_path(@current_user, :authenticity_token => form_authenticity_token), :method => :delete%> <!--session_path( session ), :method => :delete %>-->
     <% end %>
 
 

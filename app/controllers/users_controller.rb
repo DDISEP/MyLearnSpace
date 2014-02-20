@@ -10,18 +10,7 @@ class UsersController < ApplicationController
      @user = User.new
   end   
   
-  def profile #nur zugriff möglich, wenn schon eigens profil
-    #if params[:logout] != nil
-      #session[:name] = nil
-      #redirect_to new_login_path
-    #end
-    
-    #@fehler = false
-    #if session[:name] == nil
-      #@fehler = true
-    #else
-      #@session = session[:name]
-    #end
+  def profile 
   end
   
   def create
@@ -40,7 +29,7 @@ class UsersController < ApplicationController
   
  
   def show #fremde profile
-    #@user=User.find(params[:id]) #wenn username in session gleich gesuchtemusername ,dann profile
+    #@user=User.find(params[:id]) #wenn username in session gleich gesuchtem username ,dann profile
   end
 
   def showByName 
