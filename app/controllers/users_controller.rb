@@ -57,14 +57,22 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    u=User.find(params[:id])
-    @password = Digest::MD5.hexdigest(params[:password])
-    if @password == u.password
-      u.destroy
-      redirect_to root_url
-    else
-      redirect_to users_destroy_path, :notice => "Falsches Passwort. Benutzerprofil wurde nicht gelöscht"
-    end
+    @user= @current_user
+    @user.destroy
+    session.clear
+    redirect_to root_url    
+    #if params[:password].nil?
+
+    #else  
+      #@password = Digest::MD5.hexdigest(params[:password])
+      #if @password == @user.password
+       #@user.destroy
+        #redirect_to root_url
+      #else
+        #redirect_to users_destroy_path, :notice => "Falsches Passwort. Benutzerprofil wurde nicht gelöscht"
+      #end
+    #end
+    
   end
   
 end
