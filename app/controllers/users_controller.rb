@@ -58,15 +58,13 @@ class UsersController < ApplicationController
 
   def destroy
     u=User.find(params[:id])
-    u.destroy
-    @users = User.all
-    render :action => :index
+    @password = Digest::MD5.hexdigest(params[:password])
+    if @password == u.password
+      u.destroy
+      redirect_to root_url
+    else
+      redirect_to users_destroy_path, :notice => "Falsches Passwort. Benutzerprofil wurde nicht gelöscht"
+    end
   end
   
-  def search
-    @users = User.search params[:search]
-    render "search_results" 
-  end
-  
-
 end

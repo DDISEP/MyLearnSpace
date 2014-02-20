@@ -8,9 +8,9 @@ MyLearnSpace::Application.routes.draw do
   
   resources :logins
 
-  get 'users/search' => "users#search"
+  get 'users/destroy' => "users#destroy"
   
-  post 'users/search' => "users#search"
+  post 'users/destroy' => "users#destroy"
   
   get 'users/profile' => "users#profile"
   
