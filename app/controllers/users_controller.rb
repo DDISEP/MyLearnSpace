@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :check_login, only: [:new, :create]
   
   def index
-    @users = User.all #hier muss jeweils noch authorisiert werden, wer sich das ausgeben lassen darf
+    @users = User.all.sort{|a,b| a.username <=> b.username } #hier muss jeweils noch authorisiert werden, wer sich das ausgeben lassen darf
   end
   
   def new     
@@ -42,11 +42,18 @@ class UsersController < ApplicationController
   end
   
   def edit
-    
+     @user = @current_user
   end 
 
   def update
-    
+    @user = @current_user
+    if @user.update_attributes params[:user]
+         redirect_to user_profile_path
+         #:notice => "Profil erfolgreich geändert"
+    else
+        render 'edit'
+        #:notice =>  "Profil wurde nicht erfolgreich geändert. Bitte probier es nocheinmal"
+    end
   end
 
   def destroy

@@ -21,7 +21,8 @@ class LoginsController < ApplicationController
 
   
   def create
-    user = User.authenticate params[:email], params[:password]
+    @password = Digest::MD5.hexdigest(params[:password])
+    user = User.authenticate params[:email],@password
     if user
       session[:current_user_id] = user.id
       redirect_to users_profile_path, :notice => 'Willkommen zurück, ' + user.username + '!'
