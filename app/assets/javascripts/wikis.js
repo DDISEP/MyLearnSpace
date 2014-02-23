@@ -25,7 +25,19 @@ editor.setValue(value + url, true);
 toggleCollapse('collapseLink');
 
 }
+function insertArticle(){
 
+var editor = $('#articleInput').data("wysihtml5").editor;
+var value = editor.getValue();
+var url = document.getElementById('article_field').value;
+var url= window.location.host + "/wikis/"+ url;
+if (!(/^http:\/\//).test(url)) // http:// muss immer vor dem Link stehen da sonst der XSS Schutz des Editors greift
+	url= 'http:\/\/' + url;
+url = '<b><a href="' + url +'">'+document.getElementById('article_field').value; +'</a></b>';
+editor.setValue(value + url, true);
+toggleCollapse('collapseLink');
+
+}
 
 
 
@@ -50,19 +62,21 @@ function page1(){
 	newPagination += '<li><a href="#" onclick="page2()">&raquo;</a></li>';
 	$("#pagination").html( newPagination);
 }
-function searchSuggest(){
-	
-	var str = escape(document.getElementById('search_field').value);
-	if(str == "") { // muss überprüft werden weil sonst wird mit dem get ein showByName aufgerufen 
-		document.getElementById('search_suggest').style.visibility='hidden';
+
+function searchSuggest(id){
+	var str = escape(document.getElementById(id+"_field").value);
+	if(str == "") { 
+		document.getElementById(id+"_suggest").style.visibility='hidden';
 		return;
 	}
-	$.get( "/wikis/searchSuggestions/"+ str);
+	$.get( "/wikis/searchSuggestions/"+ str+ "-" + id);
+	
 			
 	
 }
 
 function renderSearchSuggests(data){
+		
 		
 		var ss = document.getElementById('search_suggest');	
 		$("#search_suggest").html( "");		
@@ -82,6 +96,29 @@ function renderSearchSuggests(data){
 		
 				   
 	    $("#search_suggest").html(suggest);
+	    ss.style.visibility='visible';	    
+	
+}
+function renderLinkSuggests(data){
+			
+		var ss = document.getElementById('article_suggest');	
+		$("#article_suggest").html( "");		
+		var str = data.split("\n");		
+		var suggest ="";
+		
+		for(i=0; i < str.length - 1; i++) {
+			
+			suggest += '<div id="item' +i.toString() +'" ';
+			suggest += 'onmouseover="javascript:suggestOver(this);" ';
+			suggest += 'onmouseout="javascript:suggestOut(this);" ';
+			suggest += 'onclick="javascript:setLink(this.innerHTML);" ';
+			suggest += 'class="suggest_link">';
+			suggest += str[i] + '</div>';			
+			
+		}
+		
+				   
+	    $("#article_suggest").html(suggest);
 	    ss.style.visibility='visible';	    
 	
 }
@@ -116,4 +153,10 @@ function setSearch(value) {
 	document.getElementById('search_suggest').innerHTML = '';
 	document.getElementById('search_suggest').style.visibility='hidden';
 }
+function setLink(value) {
+	document.getElementById('article_field').value = value;
+	document.getElementById('article_suggest').innerHTML = '';
+	document.getElementById('article_suggest').style.visibility='hidden';
+}
+
 

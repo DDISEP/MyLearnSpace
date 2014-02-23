@@ -54,7 +54,8 @@ end
 
 
 def searchSuggestions  # TODO Route in Index integrieren -> searchSUggestions soll ausgeführt werden wenn index mit JS aufgerufen wird
-  @wikis = Wiki.searchSuggestions params[:search]
+  search_input = params[:search].split('-')
+  @wikis = Wiki.searchSuggestions search_input[0]
   @results= ""
   @wikis.each do |wiki|
        @results += wiki.title + "\n"   
@@ -62,7 +63,11 @@ def searchSuggestions  # TODO Route in Index integrieren -> searchSUggestions so
   
 respond_to do |format|
     format.js do
-      render(:js => "renderSearchSuggests(#{@results.to_json});")
+      if search_input[1] == "article"
+        render(:js => "renderLinkSuggests(#{@results.to_json});")
+      else
+        render(:js => "renderSearchSuggests(#{@results.to_json});")
+      end
       end
 #    format.html { render text: "Diese Seite existiert nicht" }
 format.html { render "wiki404" }

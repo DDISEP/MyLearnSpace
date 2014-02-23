@@ -2,7 +2,7 @@
  Suchergebnisse mit Pagination und oder nach Tags geordnet,
  
  
- <div class="jumbotron">
+ <div>
  	
  	<div align="right">
    	   <ul class="pagination" id="pagination">
@@ -14,6 +14,7 @@
 <div id="errors"></div>
   <div id="uploadForm">
   	<%= render "collapses" %></div>
+  	<div class="jumbotron">
 <%= form_for @wiki, :remote => true do |f|  %>
 <%= token_tag(nil) %>
 <div id="form1">
@@ -30,7 +31,7 @@
        
    <div id="tagsInput"></div>
    
-  
+</div>  
   </div>
 
   

@@ -24,8 +24,18 @@
       	    Anzeigetext:
       	   	<div class="input-group input-group-lg">
       	 	<input id="linkText" type="text" class="form-control" size="50" /> 
-      	 	</div>
+      	 	</div>     	 
       	 	<button type="button" onclick="insertLink()" class="btn btn-xs">Link einfügen</button>
+      	 	
+      	 <div>
+      	 	TODO: Eigenes Collapse!
+     <%= search_field :search, "", :id => 'article_field', name:"search", :onkeyup => "searchSuggest('article')", :autocomplete => "off" %>
+     <div id="article_suggest" style="width: 20em"></div>
+     <%= token_tag(nil) %>
+      <button type="button" onclick="insertArticle()" class="btn btn-xs">Artikel einfügen</button> 
+  
+      	 	</div>
+      	 	
       	 	
       </div>
     </div>    
