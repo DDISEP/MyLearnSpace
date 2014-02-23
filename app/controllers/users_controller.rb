@@ -3,25 +3,14 @@ class UsersController < ApplicationController
   skip_before_action :check_login, only: [:new, :create]
   
   def index
-    @users = User.all #hier muss jeweils noch authorisiert werden, wer sich das ausgeben lassen darf
+    @users = User.all.sort{|a,b| a.username <=> b.username } #hier muss jeweils noch authorisiert werden, wer sich das ausgeben lassen darf
   end
   
   def new     
      @user = User.new
   end   
   
-  def profile #nur zugriff möglich, wenn schon eigens profil
-    #if params[:logout] != nil
-      #session[:name] = nil
-      #redirect_to new_login_path
-    #end
-    
-    #@fehler = false
-    #if session[:name] == nil
-      #@fehler = true
-    #else
-      #@session = session[:name]
-    #end
+  def profile 
   end
   
   def create
@@ -40,7 +29,7 @@ class UsersController < ApplicationController
   
  
   def show #fremde profile
-    #@user=User.find(params[:id]) #wenn username in session gleich gesuchtemusername ,dann profile
+    #@user=User.find(params[:id]) #wenn username in session gleich gesuchtem username ,dann profile
   end
 
   def showByName 
@@ -53,24 +42,37 @@ class UsersController < ApplicationController
   end
   
   def edit
-    
+     @user = @current_user
   end 
 
   def update
-    
+    @user = @current_user
+    if @user.update_attributes params[:user]
+         redirect_to user_profile_path
+         #:notice => "Profil erfolgreich geändert"
+    else
+        render 'edit'
+        #:notice =>  "Profil wurde nicht erfolgreich geändert. Bitte probier es nocheinmal"
+    end
   end
 
   def destroy
-    u=User.find(params[:id])
-    u.destroy
-    @users = User.all
-    render :action => :index
-  end
-  
-  def search
-    @users = User.search params[:search]
-    render "search_results" 
-  end
-  
+    @user= @current_user
+    @user.destroy
+    session.clear
+    redirect_to root_url    
+    #if params[:password].nil?
 
+    #else  
+      #@password = Digest::MD5.hexdigest(params[:password])
+      #if @password == @user.password
+       #@user.destroy
+        #redirect_to root_url
+      #else
+        #redirect_to users_destroy_path, :notice => "Falsches Passwort. Benutzerprofil wurde nicht gelöscht"
+      #end
+    #end
+    
+  end
+  
 end

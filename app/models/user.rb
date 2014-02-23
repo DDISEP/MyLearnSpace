@@ -6,9 +6,12 @@ class User < ActiveRecord::Base
     include ActiveModel::Validations
     attr_accessible :username, :email, :password,  :pupil
     validate :valid_user
-
-    #validates_confirmation_of :password, :password_confirmation => "Passwortbestaetigung falsch"
     has_and_belongs_to_many :curriculums
+    before_create :hash_password
+
+    def hash_password
+      self.password = Digest::MD5.hexdigest(self.password)
+    end
     
     
     
