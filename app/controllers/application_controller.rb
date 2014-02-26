@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
     unless session[:current_user_id].nil?
       @current_user = User.find(session[:current_user_id])
     else
-      flash[:error] = "Du musst dich dazu erst anmelden:"
-      redirect_to root_url 
+      redirect_to root_url, :notice =>"Du musst dich dazu erst anmelden!"
     end
   end
  
+
 end

@@ -1,5 +1,8 @@
 class CurriculumsController < ApplicationController
   before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
+  #skip_before_action :check_login, only: [:new, :create]
+  #before_action :check_admin,  only:[:new, :create]
+  
 
   # GET /curriculums
   # GET /curriculums.json
@@ -61,6 +64,12 @@ class CurriculumsController < ApplicationController
     end
   end
 
+  def check_admin
+      if @admin!=true
+        redirect_to root_url, :notice => "Du bist kein Administrator!"
+      end
+    end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_curriculum
@@ -71,4 +80,7 @@ class CurriculumsController < ApplicationController
     def curriculum_params
       params.require(:curriculum).permit(:country, :state, :profession, :typeOfSchool, :level, :subject)
     end
+    
+    
+ 
 end

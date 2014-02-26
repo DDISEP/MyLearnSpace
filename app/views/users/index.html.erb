@@ -8,7 +8,7 @@
 			<b><p style="font-size: 15pt">Name</p></b>
 		</td>
 		<td>
-			<b><p style="font-size: 15pt">Schüler?</p></b>
+			<b><p style="font-size: 15pt">Schülerstatus</p></b>
 		</td>	
 	</tr>
 	<% @users.each do |u| 	%>
@@ -17,7 +17,13 @@
 			<%= u.username %>
 		</td>
 		<td>
-			<%= u.pupil %><!--statt t und f muss hier noch ja nein eingefügt werden!!-->
+			<%if u.pupil == true%>
+				<%="Schüler"%><!--statt t und f muss hier noch ja nein eingefügt werden!!-->
+			<%elsif u.pupil == false%>
+				<%="Kein Schüler"%>
+			<%else%>
+				<%="Keine Angabe"%>
+			<%end%>
 		</td>
 	</tr>	
 	<% end %>

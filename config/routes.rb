@@ -11,8 +11,17 @@ MyLearnSpace::Application.routes.draw do
   get 'users/profile' => "users#profile"
   
   post 'users/profile' => "users#profile"
+  
+  get 'users/adminLogin' => "users#adminLogin"
+  
+  post 'users/adminLogin' => "users#adminLogin"
+  
+  get 'users/admin' => "users#admin"
+  
+  post 'users/admin' => "users#admin"
 
   get 'users/destroy' =>"users#destroy"  
+  
   post 'users/destroy' =>"users#destroy"
 
   resources :users
