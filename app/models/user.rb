@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     validate :valid_user
     has_and_belongs_to_many :curriculums
     before_create :hash_password
+    before_update :hash_password
 
     def hash_password
       self.password = Digest::MD5.hexdigest(self.password)
@@ -19,9 +20,19 @@ class User < ActiveRecord::Base
       if username.blank?
         errors.add(:base, "Gib bitte noch einen Benutzernamen an!")
       end
-      unless User.find_by_username(username).nil?
-        errors.add(:base, "Den Benutzenamen gibt es leider schon!!")
+      
+      if @current_user.nil?
+         unless User.find_by_username(username).nil?
+            errors.add(:base, "Den Benutzenamen gibt es leider schon!!")
+         end
+      else 
+        if @current_user.username != username
+          unless User.find_by_username(username).nil?
+            errors.add(:base, "Den neuen Benutzenamen gibt es leider schon!!")
+          end
+        end
       end
+      
       if email.blank?
         errors.add(:base, "Wir brauchen noch deine E-Mail Adresse!")
       end

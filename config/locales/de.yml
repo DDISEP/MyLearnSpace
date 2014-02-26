@@ -1,0 +1,13 @@
+# ruby encoding: utf-8
+
+de:
+  
+  Cancel: Abbrechen
+  OK: Bestätigen
+  views:
+    show: Anzeigen
+    edit: Bearbeiten
+    destroy: Löschen
+    are_you_sure: Bist du sicher?
+    back: Zurück
+    

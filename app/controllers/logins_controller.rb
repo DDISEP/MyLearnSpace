@@ -25,7 +25,7 @@ class LoginsController < ApplicationController
     user = User.authenticate params[:email],@password
     if user
       session[:current_user_id] = user.id
-      redirect_to users_profile_path, :notice => 'Willkommen zurück, ' + user.username + '!'
+      redirect_to users_profile_path
     else
       flash[:notice] = "Es ist ein Fehler aufgetreten. Bitte überprüfe nochmal deine Eingabedaten."
       render 'new'

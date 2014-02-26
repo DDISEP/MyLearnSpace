@@ -46,15 +46,18 @@ class UsersController < ApplicationController
   end 
 
   def update
-    @user = @current_user
-    if @user.update_attributes params[:user]
-         redirect_to user_profile_path
-         #:notice => "Profil erfolgreich geändert"
+  @user = User.find(params[:id])
+
+  respond_to do |format|
+    if @user.update_attributes(params[:user])
+      format.html { redirect_to users_profile_path, notice: 'Das Benutzerprofil wurde erfolgreich geändert' }
+      format.json { head :no_content }
     else
-        render 'edit'
-        #:notice =>  "Profil wurde nicht erfolgreich geändert. Bitte probier es nocheinmal"
+      format.html { render action: "edit" }
+      format.json { render json: @user.errors, status: :unprocessable_entity }
     end
   end
+end
 
   def destroy
     @user= @current_user

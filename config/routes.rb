@@ -7,15 +7,14 @@ MyLearnSpace::Application.routes.draw do
   
   
   resources :logins
-
-  get 'users/destroy' => "users#destroy"
-  
-  post 'users/destroy' => "users#destroy"
   
   get 'users/profile' => "users#profile"
   
   post 'users/profile' => "users#profile"
-  
+
+  get 'users/destroy' =>"users#destroy"  
+  post 'users/destroy' =>"users#destroy"
+
   resources :users
   
   

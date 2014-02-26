@@ -6,13 +6,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_action :check_login
-
+  
   def check_login
     unless session[:current_user_id].nil?
       @current_user = User.find(session[:current_user_id])
     else
       flash[:error] = "Du musst dich dazu erst anmelden:"
-      redirect_to root_url # halts request cycle
+      redirect_to root_url 
     end
   end
  
