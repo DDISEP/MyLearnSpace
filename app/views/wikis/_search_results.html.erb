@@ -1,6 +1,7 @@
 <% if @wikis.count > 14  %><div class="alert alert-info"> über <%= @wikis.count %> Artikel gefunden!
 Bitte Suche ggf. verfeinern! </div><%end%>
-<% if @wikis.empty? %><div class ="alert alert-danger">Kein Artikel gefunden! Bitter erneut suchen!</div><% end %>
+<% if @wikis.empty? %><div class ="alert alert-danger">Kein Artikel gefunden! Bitter erneut suchen!</div>
+<% else %><div class= "alert alert-success"><%= @wikis.count %> Artikel gefunden:</div><% end %>
 <table>
 <% @wikis.each do |wiki| %>
   <tr>

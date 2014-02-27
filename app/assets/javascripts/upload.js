@@ -1,8 +1,8 @@
 
 function validateFiles(inputFile) {
   var maxExceededMessage = "Die Datei ist zu groß! (Max 5 MB)";
-  var extErrorMessage = "Nur Bilder (jpg,jpeg,gif,png) oder Dateien vom Typ(pdf,txt) sind erlaubt!";
-  var allowedExtension = ["jpg", "jpeg", "gif", "png", "pdf", "txt"];
+  var extErrorMessage = "Nur Bilder (jpg,jpeg,gif,png), Videos (mp4) oder Dateien vom Typ(pdf,txt) sind erlaubt!";
+  var allowedExtension = ["jpg", "jpeg", "gif", "png", "pdf", "txt", "mp4"];
  
   var extName;
   var maxFileSize = $(inputFile).data('max-file-size');
