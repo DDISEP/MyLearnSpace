@@ -1,9 +1,19 @@
  <%= form_tag url_for(:controller => 'wikis', :action => 'search'), :method => :post, :remote => true do %>
-     <%= search_field :search, "", :id => 'search_field', name:"search", :onkeyup => "searchSuggest('search');", :autocomplete => "off" %>
+     <div id = "tagSearch" style="display: none">
+     	<b>Markiere alle Tags, die der gesuchte Artikel enthalten soll.</b>
+     	<table>
+     	<% @contents.each do |content| %>     	
+			<td><%= content.tag %><%= check_box_tag "contents[]", content.id %></td>
+		<% end %>
+</table></div>
+     <%= search_field :search, "", :id => 'search_field', name:"search", :onkeyup => "searchSuggest('search');", :autocomplete => "off" %> 
+     <%= submit_tag "suchen", :name => nil ,class:"btn btn-xs btn-default"%>
      <div id="search_suggest"></div>
+     
      <%= token_tag(nil) %>
-      <%= submit_tag "suchen", :name => nil ,class:"btn btn-xs btn-default"%> 
+      
   <% end %> 
+  <button onclick='$("#tagSearch").toggle();$(this).hide();' class="btn btn-xs btn-info">Mit Tags suchen</button>
   
   
   

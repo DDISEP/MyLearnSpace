@@ -1,6 +1,7 @@
 //= require bootstrap-wysihtml5
 //= require upload.js
 
+
 function toggleCollapse(id){
 	var collapse = document.getElementById(id);
 	if(collapse.className != 'panel-collapse collapse in'){
@@ -35,7 +36,7 @@ if (!(/^http:\/\//).test(url)) // http:// muss immer vor dem Link stehen da sons
 	url= 'http:\/\/' + url;
 url = '<b><a href="' + url +'">'+document.getElementById('article_field').value; +'</a></b>';
 editor.setValue(value + url, true);
-toggleCollapse('collapseLink');
+toggleCollapse('collapseArticleLink');
 
 }
 

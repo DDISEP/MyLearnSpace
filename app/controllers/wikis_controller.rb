@@ -1,9 +1,13 @@
 class WikisController < ApplicationController
+   before_action :get_tags
+   
   def new
     @wiki = Wiki.new
     
   end
-
+def get_tags
+  @contents = Content.all
+end
   #render text: params[:wiki][:tags]
 
 
@@ -76,10 +80,15 @@ end
 end
 
 def search
-  @wikis = Wiki.search params[:search]
-  render "search_results" 
-  
-end
+  if params[:contents].nil?
+    @wikis = Wiki.search params[:search]
+    render "search_results" 
+  else
+    @wikis = Wiki.find_by_tags(params[:contents], params[:search])
+    render "search_results" 
+  end
+end 
+
   
 def show #TODO: Auslagern in Model
   @title=""
@@ -108,7 +117,7 @@ end
 def index
   
   @popArticle = Wiki.find_by_clicks(Wiki.maximum("clicks")) #beliebtestes Artikel
-  @newestArticle = Wiki.last # neuester Artikel
+  @newestArticle = Wiki.last # neuester Artikel 
  
   
 end
