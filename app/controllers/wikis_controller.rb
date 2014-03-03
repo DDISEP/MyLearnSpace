@@ -1,14 +1,15 @@
 class WikisController < ApplicationController
    before_action :get_tags
+   skip_filter :verify_authenticity_token, :search
    
   def new
     @wiki = Wiki.new
     
   end
-def get_tags
+  
+def get_tags # für Suche mit Tags nötig
   @contents = Content.all
 end
-  #render text: params[:wiki][:tags]
 
 
 def create 
@@ -73,8 +74,7 @@ respond_to do |format|
         render(:js => "renderSearchSuggests(#{@results.to_json});")
       end
       end
-#    format.html { render text: "Diese Seite existiert nicht" }
-format.html { render "wiki404" }
+    format.html { render "wiki404" } # rendert: Fehler 404 (Diese Seite existiert nicht...)
 end
   
 end
@@ -90,7 +90,7 @@ def search
 end 
 
   
-def show #TODO: Auslagern in Model
+def show 
   @title=""
   if Wiki.exists?(params[:id])
     @wiki = Wiki.find(params[:id]) 
@@ -115,12 +115,11 @@ end
 
 
 def index
-  
   @popArticle = Wiki.find_by_clicks(Wiki.maximum("clicks")) #beliebtestes Artikel
   @newestArticle = Wiki.last # neuester Artikel 
- 
   
 end
+
 def destroy
     @wiki = Wiki.find(params[:id])
     @wiki.destroy

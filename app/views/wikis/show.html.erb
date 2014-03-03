@@ -1,11 +1,11 @@
-
-
+	
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<div class="zweispaltig"><h3 class="panel-title"><%= @wiki.title %></h3> 
-		<% @wiki.contents.each do |content| %>
-		<span class="tag label label-info"><%= content.tag %></span>
-		<% end %></div>
+		<div class="zweispaltig"><h3 class="panel-title"><%= @wiki.title %></h3>
+		 <form action="search" method="post">
+	    	<% @wiki.contents.each do |content| %>
+		<span class="tag label label-info"><%= link_to content.tag, wikis_search_path(contents: [content.id], search: ""), method: "post", remote: "true"%></span>
+		<% end %></form></div>
 		<div align="right" >
 		<div class="btn-group">
   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
