@@ -80,10 +80,21 @@ end
 end
 
 def search
+  @query = params[:search]
+  @tags =[]
+    
   if params[:contents].nil?
-    @wikis = Wiki.search params[:search]
-    render "search_results" 
+    @wiki =  Wiki.find_by_title params[:search]
+    if @wiki.nil?
+      @wikis = Wiki.search params[:search]
+      render "search_results" 
+    else 
+       render js: "window.location.href = '"+wiki_path(@wiki)+"';"  # entspricht redirect_to @wiki
+    end
   else
+      params[:contents].each do |content|
+      @tags << Content.find(content).tag
+    end
     @wikis = Wiki.find_by_tags(params[:contents], params[:search])
     render "search_results" 
   end

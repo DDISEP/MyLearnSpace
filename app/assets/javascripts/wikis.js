@@ -124,17 +124,6 @@ function renderLinkSuggests(data){
 	
 }
 
-function navigateThroughSuggests(k) //TODO Implementierten
-{
-    
-  	alert("asd");
-	// var keypress = document.getElementById('keypress');
-	keyIn = k.keyCode;
-	alert(keyIn.toString());
-    suggestOut(this);
-    getsFocusId = "item" + 39-keyIn;  //38 is up arrow, 40 is down
-    suggestOver(document.getElementById(getFocusId));
-}
 
 //Mouse over function
 function suggestOver(div_value) {

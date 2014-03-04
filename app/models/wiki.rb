@@ -55,7 +55,7 @@ def self.search(search)
 end
 
 def self.searchSuggestions(search)
-  search_condition = search +"%"
+  search_condition = "%"+search +"%"
   find(:all, :conditions => ['title LIKE ?', search_condition], :order => "clicks DESC", :limit => "8")  
   
 end
