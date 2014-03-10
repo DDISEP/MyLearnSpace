@@ -5,22 +5,20 @@ class UsersController < ApplicationController
   # Administrator ist Sepp1314 mit Passwort: 123*#abc
  
   def adminLogin
-    @admin 
   end
   
-  def admin    
-    if params[:adminname]=='Sepp1314'
-      if params[:adminpassword]=='123*#abc'
-        @admin = true
-      end
+  def admin 
+    @admin = false  
+    if params[:adminname]=='Sepp1314'&& params[:adminpassword]=='123*#abc'
+      @admin = true
     else
-      @admin = false
-      redirect_to root_url, :notice => "Du bist kein Administrator!"
+      redirect_to root_url, :notice => "Melde dich bitte erst an!"
     end
+    session[:admin] = @admin
   end
   
   def adminDelete
-    @admin = false
+    session.clear
   end
  
   def index
@@ -35,17 +33,12 @@ class UsersController < ApplicationController
   end
   
   def create
-       if params[:password] != params[:password_confirmation]
-         flash.now[:notice] = 'Passwortbestaetigung falsch'
-         redirect_to new_user_path 
-       else      
-         @user = User.new(params[:user])
-          if @user.save
-            redirect_to new_login_path, :notice => "Dein Profil wurde erfolgreich angelegt! Um alle Funktionen nutzen zu können, melde dich jetzt hier an."
-          else
-            render "new.html.erb"
-          end
-       end
+    @user = User.new(params[:user])
+    if @user.save
+       redirect_to new_login_path, :notice => "Dein Profil wurde erfolgreich angelegt! Um alle Funktionen nutzen zu können, melde dich jetzt hier an."
+    else
+       render "new.html.erb"
+    end
   end
   
  
@@ -64,6 +57,7 @@ class UsersController < ApplicationController
   
   def edit
       @user = @current_user
+      flash.now[:notice] = 'Bitte gib zur Speicherung der geänderten Daten erneut dein Passwort ein. Falls du dein Passwort ändern möchtest, dann gib dein neues Passwort ein.'
   end 
 
   def update

@@ -14,11 +14,13 @@ MyLearnSpace::Application.routes.draw do
   
   get 'users/adminLogin' => "users#adminLogin"
   
-  post 'users/adminLogin' => "users#adminLogin"
+  post 'users/adminLogin' => "users#admin"
   
   get 'users/admin' => "users#admin"
   
   post 'users/admin' => "users#admin"
+  
+  delete 'users/admin' => "users#adminDelete"
 
   get 'users/destroy' =>"users#destroy"  
   

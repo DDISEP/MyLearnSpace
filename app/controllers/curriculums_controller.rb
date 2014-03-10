@@ -1,7 +1,8 @@
 class CurriculumsController < ApplicationController
   before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
-  #skip_before_action :check_login, only: [:new, :create]
-  #before_action :check_admin,  only:[:new, :create]
+  before_action :check_admin,  only:[:new, :create, :edit, :update, :delete, :destroy]
+  skip_before_action :check_login, only: [:new, :create, :edit, :update, :delete, :destroy]
+
   
 
   # GET /curriculums
@@ -65,10 +66,15 @@ class CurriculumsController < ApplicationController
   end
 
   def check_admin
+      @admin = session[:admin]
       if @admin!=true
-        redirect_to root_url, :notice => "Du bist kein Administrator!"
+        if session[:current_user_id].nil?
+          redirect_to root_url, :notice => "Du bist kein Administrator!"
+        else
+          redirect_to curriculums_path, :notice => "Das darfst du nur als Administrator!"
+        end
       end
-    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

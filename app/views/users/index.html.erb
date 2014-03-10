@@ -1,15 +1,20 @@
 <h3> Benutzer </h3>
 <div class="zweispaltig">
 <font size="3">
-<table width="50%">
-	<tr><td><p style="font-size:10pt"><%= link_to 'Neues Profil anlegen?', new_user_path %></p></td></tr>
+<table width="70%">
 	<tr>
 		<td>
 			<b><p style="font-size: 15pt">Name</p></b>
 		</td>
 		<td>
 			<b><p style="font-size: 15pt">Schülerstatus</p></b>
-		</td>	
+		</td>
+		<td>
+		<%if @admin%>			
+				<b><p style="font-size: 15pt">E-Mail Adresse</p></b>			
+		<%end%>
+		</td>
+			
 	</tr>
 	<% @users.each do |u| 	%>
 	<tr>
@@ -24,6 +29,11 @@
 			<%else%>
 				<%="Keine Angabe"%>
 			<%end%>
+		</td>
+		<td>
+		<%if @admin%>			
+				<%= u.email %>			
+		<%end%>
 		</td>
 	</tr>	
 	<% end %>

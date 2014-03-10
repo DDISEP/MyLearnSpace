@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     has_and_belongs_to_many :curriculums
     before_create :hash_password
     before_update :hash_password
-    validates_uniqueness_of :username
+    validates_uniqueness_of :username, :email
 
     def hash_password
       self.password = Digest::MD5.hexdigest(self.password)
