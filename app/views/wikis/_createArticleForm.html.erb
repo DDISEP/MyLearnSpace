@@ -7,12 +7,12 @@
   <li class="disabled"><a href="#" onclick="page2()">2</a></li>
   <li class="disabled"><a href="#" onclick="page2()">&raquo;</a></li>
 </ul></div>
-<div id="errors"></div>
   <div id="uploadForm">
   	<%= render "collapses" %></div>
   	<div class="jumbotron">
 <%= form_for @wiki, :remote => true do |f|  %>
 <%= token_tag(nil) %>
+<div id="errors"></div>
 <div id="form1">
 	<div class="input-group input-group-lg">
 	<%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" , :value => @title , class:"form-control" %> </div>

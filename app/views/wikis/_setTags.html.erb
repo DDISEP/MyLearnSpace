@@ -1,5 +1,5 @@
 <div id= "errors"></div>
-<div class="alert alert-info">Es wurden Tags in deinem Artikel gefunden!</div>Ergänze/lösche sie bitte ggf. passend:
+<div class="alert alert-info">Es wurden folgende Tags in deinem Artikel gefunden!</div>Ergänze/lösche sie bitte ggf. passend:
 <%= form_for @wiki, :url => {:action => "update", :id => @wiki.id}, remote: true do |f|  %>
 <%= token_tag(nil) %>
 <input id="tags" type="text" placeholder="Passende Tags eingeben..." value="<%= @tags %>" data-role="tagsinput" name="wiki[tags]" />

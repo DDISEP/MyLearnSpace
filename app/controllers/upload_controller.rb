@@ -25,17 +25,23 @@ def show
   
 end
 def destroy
-  @id = params[:id].to_i
-  @file = DataFile.find(params[:id])
-  if File.exist?(Rails.root.join('public', 'uploads', @file.getStorableName))
-    File.delete(Rails.root.join('public', 'uploads', @file.getStorableName))
-  end
-  @file.destroy
-  respond_to do |format|
+  if session[:admin].nil?
+    respond_to do |format|
+      format.js {render js: "alert('Nur Amdins duerfen Dateien loeschen!');"}
+      format.html {render text: "Nur Administratoren duerfen Dateien loeschen!"}
+    end  
+  else  
+    @id = params[:id].to_i
+    @file = DataFile.find(params[:id])
+    if File.exist?(Rails.root.join('public', 'uploads', @file.getStorableName))
+      File.delete(Rails.root.join('public', 'uploads', @file.getStorableName))
+    end
+    @file.destroy
+    respond_to do |format|
       format.js {render "destroy.js.erb"}
       format.html {index}
     end
+  end
 end
-  
   
 end

@@ -1,6 +1,8 @@
 class WikisController < ApplicationController
    before_action :get_tags
-   skip_filter :verify_authenticity_token, :search
+   skip_filter :verify_authenticity_token, :search, :destroy
+   
+  
    
   def new
     @wiki = Wiki.new
@@ -132,10 +134,23 @@ def index
 end
 
 def destroy
+if session[:admin].nil?
+  respond_to do |format|
+      format.js {render js: "alert('Nur Administratoren duerfen Artikel loeschen!');"}
+      format.html {render text: "Nur Administratoren duerfen Dateien loeschen!"}
+    end  
+else
     @wiki = Wiki.find(params[:id])
     @wiki.destroy
-    redirect_to wikis_path
-  end
+   
+    respond_to do |format|
+      format.js { render js: "alert('Artikel geloescht!');window.location.href = '"+wikis_path+"';" }
+      format.html {index}
+    end  
+  
+end
+
+end
 private 
   def wiki_params
     params.require(:wiki).permit(:title, :article)
