@@ -4,9 +4,11 @@ class UsersController < ApplicationController
   
   # Administrator ist Sepp1314 mit Passwort: 123*#abc
  
+  #Methode hat eine View, tut aber slebst nichts
   def adminLogin
   end
   
+  #Überprüfung der Administratordaten => View als extra Willkommensseite füe Administratoren
   def admin 
     @admin = false  
     if params[:adminname]=='Sepp1314'&& params[:adminpassword]=='123*#abc'
@@ -17,12 +19,13 @@ class UsersController < ApplicationController
     session[:admin] = @admin
   end
   
+  #Abmelden des Administrators
   def adminDelete
     session.clear
   end
  
   def index
-    @users = User.all.sort{|a,b| a.username.downcase <=> b.username.downcase } #hier muss jeweils noch authorisiert werden, wer sich das ausgeben lassen darf
+    @users = User.all.sort{|a,b| a.username.downcase <=> b.username.downcase } #Sortierung nach Alphabet um Suche zu ersetzem
   end
   
   def new     
@@ -46,17 +49,10 @@ class UsersController < ApplicationController
     
   end
 
-  def showByName 
-    @user=User.find_by_username(params[:username])
-    if @user.nil?
-      render "showEmptyUser.html.erb"
-    else
-      render "show.html.erb"
-    end
-  end
   
   def edit
       @user = @current_user
+      #Passwortfeld bleibt in der Anzeige zunächst leer und muss vom Benutzer nochmal ausgefüllt werden
       flash.now[:notice] = 'Bitte gib zur Speicherung der geänderten Daten erneut dein Passwort ein. Falls du dein Passwort ändern möchtest, dann gib dein neues Passwort ein.'
   end 
 
@@ -72,25 +68,13 @@ class UsersController < ApplicationController
       format.json { render json: @user.errors, status: :unprocessable_entity }
     end
   end
-end
+  end
 
   def destroy
     @user= @current_user
     @user.destroy
     session.clear
-    redirect_to root_url    
-    #if params[:password].nil?
-
-    #else  
-      #@password = Digest::MD5.hexdigest(params[:password])
-      #if @password == @user.password
-       #@user.destroy
-        #redirect_to root_url
-      #else
-        #redirect_to users_destroy_path, :notice => "Falsches Passwort. Benutzerprofil wurde nicht gelöscht"
-      #end
-    #end
-    
+    redirect_to root_url   
   end
   
 end

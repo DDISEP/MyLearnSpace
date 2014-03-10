@@ -1,7 +1,7 @@
 class CurriculumsController < ApplicationController
   before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
-  before_action :check_admin,  only:[:new, :create, :edit, :update, :delete, :destroy]
-  skip_before_action :check_login, only: [:new, :create, :edit, :update, :delete, :destroy]
+  before_action :check_admin,  only:[:new, :create, :edit, :update, :delete, :destroy] #Zugriffsrechte nur für Administratoren!
+  skip_before_action :check_login, only: [:new, :create, :edit, :update, :delete, :destroy]#check_admin ersetzt für diese Methoden check_login
 
   
 
@@ -65,6 +65,7 @@ class CurriculumsController < ApplicationController
     end
   end
 
+  #Testet, ob ein Administrator eingeloggt ist
   def check_admin
       @admin = session[:admin]
       if @admin!=true

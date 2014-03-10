@@ -19,9 +19,9 @@ class LoginsController < ApplicationController
   def edit
   end
 
-  
+  #Anmeldemethode => current_user wird angelegt
   def create
-    @password = Digest::MD5.hexdigest(params[:password])
+    @password = Digest::MD5.hexdigest(params[:password]) #Passwort wird gehasht
     user = User.authenticate params[:email],@password
     if user
       session[:current_user_id] = user.id
@@ -32,7 +32,7 @@ class LoginsController < ApplicationController
     end
  end   
 
-
+  #Vorlage für update, wird aber von uns nicht benutzte(automatisch generiert vom Programm)
   def update
     respond_to do |format|
       if @login.update(login_params)
@@ -45,10 +45,9 @@ class LoginsController < ApplicationController
     end
   end
 
-  
+  #Abmeldemethode
   def destroy
     session.clear
-    #flash[:notice] = "Erfolgreich abgemeldet!"
     redirect_to root_url
   end
 
