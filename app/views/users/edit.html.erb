@@ -1,0 +1,9 @@
+<h1>Benutzerprofil bearbeiten</h1>
+<% if flash[:error]%>
+	<div class="error" style="color: red; font-size: 18pt"><%= flash[:error] %></div>
+<% elsif flash[:notice] %>
+    <div class="notice" style="color: red; font-size: 18pt"><%= flash[:notice] %></div>
+ <% end %>
+
+<%= render 'createUserForm' %>
+<%= link_to 'zurück zum Profil', users_profile_path %>

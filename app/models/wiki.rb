@@ -28,6 +28,22 @@ def searchArticleForTags
   end
   return @tags_as_string
 end
+
+def self.find_by_tags(content_ids, search_text) # wenn search_text leer ist wird nur nach Tags gesucht
+  @articles = []
+  search_condition = "%"+search_text+ "%"
+  Wiki.all.each do |article|
+    hasAllTags = true
+    content_ids.each do |content|
+      hasAllTags = article.contents.where("content_id = ?", content).any? and hasAllTags 
+    end   
+    if Wiki.where("id = ? and (title LIKE ? or article LIKE ?)", article.id, search_condition, search_condition).any? and hasAllTags
+      @articles << article
+    end
+  end
+    
+  return @articles
+end
   
 def self.find_by_title(title)
   find(:all, :conditions => ["title LIKE ?", title])[0]   # liefert Array zurück -> deswegen [0] (Title ist unique)
@@ -39,7 +55,7 @@ def self.search(search)
 end
 
 def self.searchSuggestions(search)
-  search_condition = search +"%"
+  search_condition = "%"+search +"%"
   find(:all, :conditions => ['title LIKE ?', search_condition], :order => "clicks DESC", :limit => "8")  
   
 end

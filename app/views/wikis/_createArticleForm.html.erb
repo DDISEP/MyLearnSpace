@@ -1,8 +1,4 @@
-
- Suchergebnisse mit Pagination und oder nach Tags geordnet,
- 
- 
- <div class="jumbotron">
+ <div>
  	
  	<div align="right">
    	   <ul class="pagination" id="pagination">
@@ -11,26 +7,26 @@
   <li class="disabled"><a href="#" onclick="page2()">2</a></li>
   <li class="disabled"><a href="#" onclick="page2()">&raquo;</a></li>
 </ul></div>
-<div id="errors"></div>
   <div id="uploadForm">
   	<%= render "collapses" %></div>
+  	<div class="jumbotron">
 <%= form_for @wiki, :remote => true do |f|  %>
-
+<%= token_tag(nil) %>
+<div id="errors"></div>
 <div id="form1">
-	Titel für deinen Artikel ein:
 	<div class="input-group input-group-lg">
 	<%= f.text_field :title, placeholder:"Titel eingeben...", maxlength:"35" , :value => @title , class:"form-control" %> </div>
 	
 		<%= f.text_area :article, id:"articleInput", class: 'wysihtml5', placeholder:"Artikel hier schreiben...", style:"width: 900px; height: 400px" %>									
 										
 	 	
-	<br/><br/> <%= f.submit "Weiter", class:"btn btn-xs btn-primary"%> </div>
+	<br/><%= f.submit "Weiter", class:"btn btn-xs btn-primary"%> </div>
 	  <% end %>
 <div id="form2" style="display: none" >
        
    <div id="tagsInput"></div>
    
-  
+</div>  
   </div>
 
   

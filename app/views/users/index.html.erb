@@ -1,15 +1,20 @@
 <h3> Benutzer </h3>
 <div class="zweispaltig">
 <font size="3">
-<table width="50%">
-	<tr><td><p style="font-size:10pt"><%= link_to 'Neues Profil anlegen?', new_user_path %></p></td></tr>
+<table width="70%">
 	<tr>
 		<td>
 			<b><p style="font-size: 15pt">Name</p></b>
 		</td>
 		<td>
-			<b><p style="font-size: 15pt">Schüler?</p></b>
-		</td>	
+			<b><p style="font-size: 15pt">Schülerstatus</p></b>
+		</td>
+		<td>
+		<%if @admin%>			
+				<b><p style="font-size: 15pt">E-Mail Adresse</p></b>			
+		<%end%>
+		</td>
+			
 	</tr>
 	<% @users.each do |u| 	%>
 	<tr>
@@ -17,7 +22,18 @@
 			<%= u.username %>
 		</td>
 		<td>
-			<%= u.pupil %><!--statt t und f muss hier noch ja nein eingefügt werden!!-->
+			<%if u.pupil == true%>
+				<%="Schüler"%><!--statt t und f muss hier noch ja nein eingefügt werden!!-->
+			<%elsif u.pupil == false%>
+				<%="Kein Schüler"%>
+			<%else%>
+				<%="Keine Angabe"%>
+			<%end%>
+		</td>
+		<td>
+		<%if @admin%>			
+				<%= u.email %>			
+		<%end%>
 		</td>
 	</tr>	
 	<% end %>
@@ -27,23 +43,6 @@
 
 
 
-<div class="zweispaltig"> 
-
-
-<%= form_tag("/search", method: "get") do %>
-  <%= label_tag(:q, "Benutzer durchsuchen") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Suchen") %>
-<% end %>
-		
-<script type="text/javascript"> 
-function usersearch() {			#suchfunktion muss noch bearbeitet werden!!
-alert("tesst");
-	var query = document.getElementById('searchInput');
- 
- 	window.location.href = ("user/"+escape(query.value));
-  }
-</script>
 
 
 

@@ -1,5 +1,9 @@
 class CurriculumsController < ApplicationController
   before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin,  only:[:new, :create, :edit, :update, :delete, :destroy] #Zugriffsrechte nur für Administratoren!
+  skip_before_action :check_login, only: [:new, :create, :edit, :update, :delete, :destroy]#check_admin ersetzt für diese Methoden check_login
+
+  
 
   # GET /curriculums
   # GET /curriculums.json
@@ -61,6 +65,18 @@ class CurriculumsController < ApplicationController
     end
   end
 
+  #Testet, ob ein Administrator eingeloggt ist
+  def check_admin
+      @admin = session[:admin]
+      if @admin!=true
+        if session[:current_user_id].nil?
+          redirect_to root_url, :notice => "Du bist kein Administrator!"
+        else
+          redirect_to curriculums_path, :notice => "Das darfst du nur als Administrator!"
+        end
+      end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_curriculum
@@ -71,4 +87,7 @@ class CurriculumsController < ApplicationController
     def curriculum_params
       params.require(:curriculum).permit(:country, :state, :profession, :typeOfSchool, :level, :subject)
     end
+    
+    
+ 
 end

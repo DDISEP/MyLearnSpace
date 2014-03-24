@@ -2,9 +2,11 @@ source 'https://rubygems.org'
 
 gem 'bootstrap-wysihtml5-rails'
 
+gem 'rails-i18n'
 # remote-true funktioniert damit auch bei FileUploads
 gem 'remotipart', '~> 1.2'
 
+gem 'thin'
 
 gem 'twitter-bootstrap-rails'
 

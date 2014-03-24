@@ -1,14 +1,20 @@
-<h1>Anmelden</h1>
+<h2>Anmelden</h2>
+<% if flash[:error]%>
+	<div class="error" style="color: green; font-size: 15pt"><%= flash[:error] %></div>
+<% elsif flash[:notice] %>
+    <div class="notice" style="color: green; font-size: 15pt"><%= flash[:notice] %></div>
+ <% end %>
+ <br />
   <%= form_tag logins_path do %>
-    <div class="field">
-      <%= label_tag :email %>
+    <div class="field" style="size: 15pt">
+      <%= label_tag :email, 'E-Mail Adresse:' %>
       <%= text_field_tag :email, params[:email] %>
     </div>
     <div class="field">
-      <%= label_tag :password %>
+      <%= label_tag :password, 'Passwort:' %>
       <%= password_field_tag :password %>
     </div>
     <div class="actions"><%= submit_tag "Anmelden" %></div>
   <% end %>
-  
+ 
   <%= link_to 'Oder doch ein Profil anlegen?', new_user_path %>

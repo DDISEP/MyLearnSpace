@@ -1,0 +1,13 @@
+<h2>Als Administrator anmelden</h2>
+<%= form_tag users_adminLogin_path do %>
+    <div class="field" style="size: 15pt">
+      <%= label_tag :adminname, 'Administrator-Name' %>
+      <%= text_field_tag :adminname, params[:adminname] %>
+    </div>
+    <div class="field">
+      <%= label_tag :adminpassword, 'Administrator-Passwort:' %>
+      <%= password_field_tag :adminpassword, params[:adminpassword] %>
+    </div>
+    <div class="actions"><%= submit_tag "Anmelden" %></div>
+  <% end %>
+

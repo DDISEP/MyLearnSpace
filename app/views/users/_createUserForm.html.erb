@@ -1,14 +1,14 @@
 
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
-  <div id="error_explanation">
+     <div id="error_explanation">
     <strong><%= @user.errors.count %> Fehler:</strong>
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <%end%>
     </ul>
-  </div>
+    </div>
   <%end%>
    
   <h4> Alle Felder mit * sind Pflichtfelder. Bitte fülle diese sorgfältig aus</h4>
@@ -17,9 +17,8 @@
   <tr><td>Benutzername*</td><td> <%=f.text_field :username %></td></tr>
   <tr><td>E-Mail Adresse*</td><td> <%=f.email_field :email %></td></tr>	
   <tr><td>Passwort*</td><td><%=f.password_field :password %></td></tr>
-  <tr><td>Passwort-Bestätigung*</td> <td><%=f.password_field :password_confirmation %></td></tr>
   <tr><td>   </td></tr>	
-  <tr><td>Bist du ein Schüler?</td><td><%= f.select :pupil, [["--Bitte auswählen--", ], ["ja", true], ["Nein", false]]%></td></tr>
+  <tr><td>Bist du ein Schüler?</td><td><%= f.select :pupil, [["--Bitte auswählen--", nil], ["Ja", true], ["Nein", false]]%></td></tr>
   <tr><td>   </td></tr>
   <tr><td>  </td><td>  <%= f.submit "Profil jetzt anlegen"%> </td></tr>
   </table>

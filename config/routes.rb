@@ -1,32 +1,47 @@
 MyLearnSpace::Application.routes.draw do
       
-  
-  resources :logins
-
-  get 'users/search' => "users#search"
-  
-  post 'users/search' => "users#search"
-  
-  
-  resources :users
-
   root 'welcome#index'
 
   get "welcome/index"
+   
   
+  
+  resources :logins
+  
+  get 'users/profile' => "users#profile"
+  
+  post 'users/profile' => "users#profile"
+  
+  get 'users/adminLogin' => "users#adminLogin"
+  
+  post 'users/adminLogin' => "users#admin"
+  
+  get 'users/admin' => "users#admin"
+  
+  post 'users/admin' => "users#admin"
+  
+  delete 'users/admin' => "users#adminDelete"
+
+  get 'users/destroy' =>"users#destroy"  
+  
+  post 'users/destroy' =>"users#destroy"
+
+  resources :users
+  
+  
+  
+  
+  resources :items
 
   resources :contents
-  
 
   resources :questions do
     resources :answers
   end
-  
 
   resources :curriculums do
     resources :items
   end
-  
   
   post 'curriculums/:id' => "curriculums#update"
   

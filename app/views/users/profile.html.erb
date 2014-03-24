@@ -1,11 +1,23 @@
-<h3>Dein Profil</h3>
-<%if @fehler%>
-	<font color="red"><b> Du bist nicht angemeldet! <br /></b></font>
-	<a href="/users/login"> Hier geht's zur Anmeldung <br />
-<%else%>
-	<h2>Herzlich Willkommen, <%= @session %></h2>
-	<form action="/users/profile" method="post"> 
-		<input type="hidden" name="logout" value ="true" />
-		<input type="submit" value="Abmelden" />		
-	</form>
-<%end%>
+<p style="font-size: 25pt; color: cornflowerblue">Herzlich Willkommen, <%= @current_user.username %></p>
+
+<p id="notice"><%= notice %></p>
+<p>&nbsp;</p>
+<p style="font-size: 17pt; color: gold">Dies sind deine Daten:</p>
+<table>
+<tr><td><p style="font-size: 13pt; color: gold"> Dein Benutzername: <%=@current_user.username%></p></td></tr>
+<tr><td><p style="font-size: 13pt; color: gold">Deine E-Mail Adresse <%=@current_user.email%></p></td></tr>
+<tr><td><p style="font-size: 13pt; color: gold">Dein Schülerstatus:
+	<%if @current_user.pupil == true%>
+			<%="Schüler"%><!--statt t und f muss hier noch ja nein eingefügt werden!!-->
+	<%elsif @current_user.pupil == false%>
+			<%="Kein Schüler"%>
+	<%else%>
+			<%="Keine Angabe"%>
+	<%end%>
+</p></td></tr>
+</table>
+<p>&nbsp;</p>
+<table>
+<tr><td><%= link_to 'Benutzerprofil bearbeiten', edit_user_path(@current_user) %></td></tr>
+<tr><td><%= link_to "Benutzerprofil löschen", users_profile_path(@current_user, :authenticity_token => form_authenticity_token), data:{confirm: ('Bist du dir sicher?')}, method: :delete%></td></tr>
+</table>

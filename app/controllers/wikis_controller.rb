@@ -1,14 +1,20 @@
 class WikisController < ApplicationController
+   before_action :get_tags
+   skip_filter :verify_authenticity_token, :search, :destroy
+   
+  
+   
   def new
     @wiki = Wiki.new
     
   end
-
-  #render text: params[:wiki][:tags]
+  
+def get_tags # für Suche mit Tags nötig
+  @contents = Content.all
+end
 
 
 def create 
- if !params[:wiki][:title].nil? # -> 1. Seite von der Form
     @wiki = Wiki.new(wiki_params)
     @wiki.clicks= 0
     if @wiki.save   
@@ -16,15 +22,8 @@ def create
       render "displaySuggestedTags"
     else
       render "displayErrors"
-    end
-  else                           # -> 2. Seite von der Form
-    @wiki.setTags(params[:wiki][:tags])
-    if @wiki.errors.any?
-      render "displayErrors"
-      else
-         render js: "window.location.href = '"+wiki_path(@wiki)+"';"  # entspricht redirect_to @wiki
-      end
-  end  
+    end 
+  
 end
 
 def edit
@@ -62,7 +61,8 @@ end
 
 
 def searchSuggestions  # TODO Route in Index integrieren -> searchSUggestions soll ausgeführt werden wenn index mit JS aufgerufen wird
-  @wikis = Wiki.searchSuggestions params[:search]
+  search_input = params[:search].split('-')
+  @wikis = Wiki.searchSuggestions search_input[0]
   @results= ""
   @wikis.each do |wiki|
        @results += wiki.title + "\n"   
@@ -70,21 +70,40 @@ def searchSuggestions  # TODO Route in Index integrieren -> searchSUggestions so
   
 respond_to do |format|
     format.js do
-      render(:js => "renderSearchSuggests(#{@results.to_json});")
+      if search_input[1] == "article"
+        render(:js => "renderLinkSuggests(#{@results.to_json});")
+      else
+        render(:js => "renderSearchSuggests(#{@results.to_json});")
       end
-#    format.html { render text: "Diese Seite existiert nicht" }
-format.html { render "wiki404" }
+      end
+    format.html { render "wiki404" } # rendert: Fehler 404 (Diese Seite existiert nicht...)
 end
   
 end
 
 def search
-  @wikis = Wiki.search params[:search]
-  render "search_results" 
+  @query = params[:search]
+  @tags =[]
+    
+  if params[:contents].nil?
+    @wiki =  Wiki.find_by_title params[:search]
+    if @wiki.nil?
+      @wikis = Wiki.search params[:search]
+      render "search_results" 
+    else 
+       render js: "window.location.href = '"+wiki_path(@wiki)+"';"  # entspricht redirect_to @wiki
+    end
+  else
+      params[:contents].each do |content|
+      @tags << Content.find(content).tag
+    end
+    @wikis = Wiki.find_by_tags(params[:contents], params[:search])
+    render "search_results" 
+  end
+end 
+
   
-end
-  
-def show #TODO: Auslagern in Model
+def show 
   @title=""
   if Wiki.exists?(params[:id])
     @wiki = Wiki.find(params[:id]) 
@@ -109,17 +128,29 @@ end
 
 
 def index
-  
   @popArticle = Wiki.find_by_clicks(Wiki.maximum("clicks")) #beliebtestes Artikel
-  @newestArticle = Wiki.last # neuester Artikel
- 
+  @newestArticle = Wiki.last # neuester Artikel 
   
 end
+
 def destroy
+if session[:admin].nil?
+  respond_to do |format|
+      format.js {render js: "alert('Nur Administratoren duerfen Artikel loeschen!');"}
+      format.html {render text: "Nur Administratoren duerfen Dateien loeschen!"}
+    end  
+else
     @wiki = Wiki.find(params[:id])
     @wiki.destroy
-    redirect_to wikis_path
-  end
+   
+    respond_to do |format|
+      format.js { render js: "alert('Artikel geloescht!');window.location.href = '"+wikis_path+"';" }
+      format.html {index}
+    end  
+  
+end
+
+end
 private 
   def wiki_params
     params.require(:wiki).permit(:title, :article)

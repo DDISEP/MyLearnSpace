@@ -5,7 +5,7 @@
     </div>
     <div id="collapseUpload" class="panel-collapse collapse">
       <div class="panel-body">
-        Bilder oder Dateien zum Artikel hinzufügen:
+        Bilder, Videos oder Dateien zum Artikel hinzufügen:
 		<%= render "upload/uploadfile" %>
       </div>
     </div>    
@@ -24,10 +24,27 @@
       	    Anzeigetext:
       	   	<div class="input-group input-group-lg">
       	 	<input id="linkText" type="text" class="form-control" size="50" /> 
-      	 	</div>
+      	 	</div>     	 
       	 	<button type="button" onclick="insertLink()" class="btn btn-xs">Link einfügen</button>
+     
+      	 	
       	 	
       </div>
-    </div>    
+    </div>
+    </div>
+     	 	
+   <div class="panel panel-default">
+      <div class="panel-heading" onclick="toggleCollapse('collapseArticleLink')">
+      	 	<h4 class="panel-title">
+           Auf einen anderen Wiki-Artikel verlinken        
+      		</h4></div>
+      <div id="collapseArticleLink" class="panel-collapse collapse">
+      	<div class="panel-body">
+	     <%= search_field :search, "", :id => 'article_field', name:"search", :onkeyup => "searchSuggest('article')", :autocomplete => "off" %>
+	     <div id="article_suggest" style="width: 20em"></div>
+	     <%= token_tag(nil) %>
+	     <button type="button" onclick="insertArticle()" class="btn btn-xs">Artikel einfügen</button> 
+   	 	</div>    
+  </div>
   </div>
   </div>
