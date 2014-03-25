@@ -26,14 +26,14 @@ MyLearnSpace::Application.routes.draw do
   
   post 'users/destroy' =>"users#destroy"
 
+  
+  
   resources :users
   
   
-  
-  
-  resources :items
-
   resources :contents
+
+  
 
   resources :questions do
     resources :answers
@@ -44,6 +44,12 @@ MyLearnSpace::Application.routes.draw do
   end
   
   post 'curriculums/:id' => "curriculums#update"
+  
+  get 'curriculums/:curriculum_id/items/:id/addContent' => "items#addContent", as: 'addContent'
+  
+  post 'curriculums/:curriculum_id/items/:id/addContent' => "items#addContent"
+  
+ 
   
   resources :upload
   

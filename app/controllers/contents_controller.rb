@@ -1,5 +1,6 @@
 class ContentsController < ApplicationController
-  before_action :set_content, only: [:show, :edit, :update, :destroy]
+  #before_action :set_content, only: [:show, :edit, :update, :destroy]
+  before_action :set_content, only: [:edit, :update, :destroy]
 
   # GET /contents
   # GET /contents.json
@@ -9,8 +10,8 @@ class ContentsController < ApplicationController
 
   # GET /contents/1
   # GET /contents/1.json
-  def show
-  end
+  #def show
+  #end
 
   # GET /contents/new
   def new
@@ -54,12 +55,19 @@ class ContentsController < ApplicationController
   # DELETE /contents/1
   # DELETE /contents/1.json
   def destroy
+    @id = params[:id].to_i
     @content.destroy
     respond_to do |format|
-      format.html { redirect_to contents_url }
-      format.json { head :no_content }
+      format.js
     end
   end
+  #def destroy
+  #  @content.destroy
+  #  respond_to do |format|
+  #    format.html { redirect_to contents_url }
+  #    format.json { head :no_content }
+  #  end
+  #end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -21,11 +21,19 @@ Lehrplan löschen |
         <td bgcolor="lightgrey"><%= curitem.title %>, <%= curitem.hours %> Stunde(n) </td>
         <td bgcolor="lightgrey">
             <%= link_to 'bearbeiten', edit_curriculum_item_path(@curriculum, curitem) %> | 
-        	<%= link_to 'Neuen Stichpunkt hinzufügen' %>
-        </td>
+            löschen  | 
+			<%= link_to 'Stichwörter verwalten', addContent_path(@curriculum, curitem) %>
+        </td>        
     </tr>
-    <tr><td colspan="3"><%= curitem.descriptionOfContent %></td></tr>
-    <tr><td colspan="3"></td></tr>
+    <tr><td colspan="3"><%= curitem.descriptionOfContent %>
+    	  <p>&nbsp;</p>
+    	  <% curitem.contents.each do |contentlist| %>
+    	  <ul class="list-unstyled">
+    		<ul><li><%= contentlist.tag %></li></ul>
+    	  </ul>
+          <% end %>
+    	</td>
+    </tr>
     <% end %>
     </tr>
 </table>

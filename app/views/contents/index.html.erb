@@ -12,11 +12,12 @@
 
   <tbody>
     <% @contents.each do |content| %>
-      <tr>
+      <tr id=<%= content.id%>>
         <td><%= content.tag %></td>
-        <td><%= link_to 'anzeigen', content %> 
+        <td>
         <%= link_to 'bearbeiten', edit_content_path(content) %> 
-        <%= link_to 'löschen', content, method: :delete, data: { confirm: 'Bist du dir sicher?' } %></td>
+        <%= link_to "löschen", content, :remote => true, :method => :delete, :confirm => "Wollen Sie diesen Datensatz wirklich löschen?" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +25,5 @@
 
 <br>
 
-<%= link_to 'Neues Schlagwort', new_content_path %>
+<%= link_to 'Neues Schlagwort', new_content_path %> <br />
+<%= link_to 'zurück zur Lehrplanübersicht', curriculums_path %>

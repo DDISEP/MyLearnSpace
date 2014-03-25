@@ -1,16 +1,17 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-
+  #before_action :set_item, only: [:show, :edit, :update, :destroy, :addContent]
+  before_action :set_item, only: [:edit, :update, :destroy, :addContent]
+  
   # GET /items
   # GET /items.json
-  def index
-    @items = Item.all 
-  end
+  #def index
+  #  @items = Item.all 
+  #end
 
   # GET /items/1
   # GET /items/1.json
-  def show
-  end
+  #def show
+  #end
 
   # GET /items/new
   def new
@@ -32,9 +33,9 @@ class ItemsController < ApplicationController
     #von andi: @item.curriculum_id = params[:item][:curriculum_id]
     respond_to do |format|
       if @item.save
-        format.html { redirect_to [@curriculumID, @item], notice: 'Lehrplaninhalt wurde erfolgreich angelegt.' }
+        format.html { redirect_to @curriculumID, notice: "Lehrplaninhalt #{@item.title} wurde erfolgreich angelegt." }
         #format.html { render action: 'show',  notice: 'Lehrplaninhalt wurde erfolgreich angelegt.' }
-        format.json { render action: 'show', status: :created, location: @item }
+        format.json { render action: 'show', status: :created, location: @item }        
       else
         format.html { render action: 'new' }
         format.json { render json: @item.errors, status: :unprocessable_entity }
@@ -43,13 +44,14 @@ class ItemsController < ApplicationController
   end
 
   # PATCH/PUT /items/1
-  # PATCH/PUT /items/1.json
+  # PATCH/PUT /items/1.json    
   def update
     @curriculumID = Curriculum.find(params[:curriculum_id])
-    @item = @curriculumID.items.build(params[:item])
+    #@item = @curriculumID.items.build(params[:item])
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to [@curriculumID, @item], notice: 'Lehrplaninhalt wurde erfolgreich aktualisiert.' }
+        format.html { redirect_to @curriculumID, notice: "Lehrplaninhalt #{@item.title} wurde erfolgreich aktualisiert." }
+        #Leitet zu LP-Detail-Seite: format.html { redirect_to [@curriculumID, @item], notice: 'Lehrplaninhalt wurde erfolgreich aktualisiert.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -79,8 +81,8 @@ class ItemsController < ApplicationController
       params.require(:item).permit(:title, :hours, :descriptionOfContent)
     end
     
-    #def add     #Hinzufügen von contents zu items
-     # @contents = Contents.all
-     # 
-    #end
+    #Hinzufügen von contents zu items
+    def addContent    
+      @curriculumID = Curriculum.find(params[:curriculum_id])   
+    end
 end
