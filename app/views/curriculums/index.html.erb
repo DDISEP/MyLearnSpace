@@ -5,13 +5,12 @@
 <div class="col span_1_of_3">
 	<h5>Du hast nun folgende Möglichkeiten:</h5>
 	<%= link_to 'Neuen Lehrplan anlegen', new_curriculum_path %><br />
-	Im Lehrplan suchen<br />
 	<%= link_to 'Alle Schlagwörter auflisten', contents_path%>
 </div>
 <div class="col span_2_of_3">
 
 	<h5>Folgende Lehrpläne stehen bisher zur Verfügung: </h5>	
-	<!-- Liste noch sortieren!! -->
+	<!-- unsorted list!! -->
 	<table border="1" cellpadding="5">
 			<th>Land</th>
 			<th>Bundesland</th>
@@ -19,6 +18,7 @@
 			<th>Zweig</th>
 			<th>Jahrgangsstufe</th>
 			<th>Fach</th>
+			<th>Original-Lehrplan</th>
 			<th>Lehrplan</th>
 		<% @curriculums.each do |cur| %>
 		<tr id=<%= cur.id%>>
@@ -28,18 +28,21 @@
 			<td><%= cur.profession %></td>
 			<td><%= cur.level %></td>
 			<td><%= cur.subject %></td>
+			<td><span class="glyphicon-cog"><a href="<%= cur.hyperlink %>" target="_blank"> zur Webseite</a></span></td>
 			<td><%= link_to "anzeigen", cur %> 
 				<%= link_to "bearbeiten", edit_curriculum_path(cur) %>
-				<%= link_to "löschen", cur, :remote => true, :method => :delete, :confirm => "Wollen Sie diesen Datensatz wirklich löschen?" %>
-				
+				<%= link_to "löschen", curriculum_path(cur, :authenticity_token => form_authenticity_token), :remote => true, :method => :delete, :confirm => "Wollen Sie diesen Datensatz wirklich löschen?" %>
+				<!-- error message CSRF -> to send token to form: curriculum_path(cur, :authenticity_token => form_authenticity_token) -->
 			</td>
 		</tr>
 		<% end %>
 	</table>
 	
+	<!-- if there are no curriculums -->
 	<% if @curriculums.empty? %>
-	<br />
-	<br />
-	<em>Keine Lehrpläne vorhanden!</em>
+		<br />
+		<br />
+		<em>Keine Lehrpläne vorhanden!</em>
 	<% end %>
+	
 </div>

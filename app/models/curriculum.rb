@@ -1,7 +1,7 @@
 class Curriculum < ActiveRecord::Base
    
    
-  attr_accessible :country, :state, :profession, :level, :typeOfSchool, :subject #WICHTIG für Formluar und create!!!
+  attr_accessible :country, :state, :profession, :level, :typeOfSchool, :subject, :hyperlink #WICHTIG für Formluar und create!!!
   
   
   #Validations
@@ -18,6 +18,8 @@ class Curriculum < ActiveRecord::Base
   validates_inclusion_of :country, :in => %w(Deutschland Austria Schweiz), :message => " muss Deutschland, Austria oder Schweiz lauten."
   
   validates_presence_of :state, :message => " darf nicht leer sein."
+  
+  validates_presence_of :hyperlink, :message => " darf nicht leer sein"
   
   
   #Relations between different parts of the website

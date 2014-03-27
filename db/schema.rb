@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140116094842) do
+ActiveRecord::Schema.define(version: 20140327131719) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140116094842) do
     t.datetime "updated_at"
     t.string   "country"
     t.string   "state"
+    t.string   "hyperlink"
   end
 
   create_table "curriculums_users", force: true do |t|

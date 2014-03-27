@@ -1,5 +1,7 @@
 class CurriculumsController < ApplicationController
+  
   before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
+  #Team Benutzer:
   before_action :check_admin,  only:[:new, :create, :edit, :update, :delete, :destroy] #Zugriffsrechte nur für Administratoren!
   skip_before_action :check_login, only: [:new, :create, :edit, :update, :delete, :destroy]#check_admin ersetzt für diese Methoden check_login
 
@@ -8,7 +10,7 @@ class CurriculumsController < ApplicationController
   # GET /curriculums
   # GET /curriculums.json
   def index
-    @curriculums = Curriculum.find(:all, :order => :country)
+    @curriculums = Curriculum.find(:all, :order => 'country, state, typeOfSchool' )
   end
 
   # GET /curriculums/1
@@ -61,10 +63,12 @@ class CurriculumsController < ApplicationController
     @id = params[:id].to_i
     @curriculum.destroy
     respond_to do |format|
-      format.js
+      format.js #destroy.js.erb -> delete entry with id from database
     end
   end
 
+
+  #Team Benutzer
   #Testet, ob ein Administrator eingeloggt ist
   def check_admin
       @admin = session[:admin]
@@ -85,7 +89,7 @@ class CurriculumsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def curriculum_params
-      params.require(:curriculum).permit(:country, :state, :profession, :typeOfSchool, :level, :subject)
+      params.require(:curriculum).permit(:country, :state, :profession, :typeOfSchool, :level, :subject, :hyperlink)
     end
     
     
