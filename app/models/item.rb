@@ -4,6 +4,8 @@ class Item < ActiveRecord::Base
   
   #Validations
   validates_presence_of :title, :message => " darf nicht leer sein."
+  validates_uniqueness_of :title, :message => " gibt es schon."
+  
   validates_presence_of :descriptionOfContent, :message => " darf nicht leer sein."
   validates_exclusion_of :hours, :in => [0], :message => " darf nicht 0 sein"
   
@@ -13,5 +15,5 @@ class Item < ActiveRecord::Base
   belongs_to :curriculum
   #m:n relation between item and content (join-table contents_items) 
   has_and_belongs_to_many :contents
-  
+
 end

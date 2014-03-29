@@ -35,8 +35,7 @@
           </td>
           <td bgcolor="lightgrey" width="50%">
             <%= link_to 'bearbeiten', edit_curriculum_item_path(@curriculum, curitem) %> | 
-            <%= link_to "löschen", curriculum_item_path(@curriculum, curitem, :authenticity_token => form_authenticity_token), :remote => true, :method => :delete, :data => { :confirm => 'Wollen Sie diesen Datensatz wirklich löschen?' } %>  | 
-			<%= link_to 'Stichwörter verwalten', addContent_path(@curriculum, curitem) %>
+            <%= link_to "löschen", curriculum_item_path(@curriculum, curitem, :authenticity_token => form_authenticity_token), :remote => true, :method => :delete, :data => { :confirm => 'Wollen Sie diesen Datensatz wirklich löschen?' } %>
           </td>        
         </tr>
     

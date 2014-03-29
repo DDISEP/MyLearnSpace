@@ -1,7 +1,6 @@
 class CurriculumsController < ApplicationController
   
   before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
-  #Team Benutzer:
   before_action :check_admin,  only:[:new, :create, :edit, :update, :delete, :destroy] #Zugriffsrechte nur für Administratoren!
   skip_before_action :check_login, only: [:new, :create, :edit, :update, :delete, :destroy]#check_admin ersetzt für diese Methoden check_login
 

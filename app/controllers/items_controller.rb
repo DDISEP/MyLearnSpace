@@ -19,6 +19,7 @@ class ItemsController < ApplicationController
   def new
     @curriculumID = Curriculum.find(params[:curriculum_id])
     @item = @curriculumID.items.build
+    @item.contents.build
   end
 
   # GET /items/1/edit
@@ -92,8 +93,4 @@ class ItemsController < ApplicationController
       params.require(:item).permit(:title, :hours, :descriptionOfContent)
     end
     
-    #Add contents to items
-    def addContent    
-      @curriculumID = Curriculum.find(params[:curriculum_id])   
-    end
 end

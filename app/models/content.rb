@@ -13,5 +13,6 @@ class Content < ActiveRecord::Base
   
   #m:n relation between contents and items (join-table contents_items)
   has_and_belongs_to_many :items
+
   
 end
