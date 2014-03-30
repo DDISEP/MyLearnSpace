@@ -11,11 +11,15 @@
 <body>
 	
 <p style="border:2px solid cornflowerblue ">
+ <% if @admin.nil?%>
 	<% if @current_user.nil? %>
 		<%=  link_to image_tag('MyLearnSpace.png', border:"0", width:"150", height:"150", :mouseover => "/images/MyLearnSpace5.png"), welcome_index_path %>
 	<% else %>
 		<%= link_to image_tag('MyLearnSpace.png', border:"0", width:"150", height:"150", :mouseover => "/images/MyLearnSpace5.png"), users_profile_path %>
-	<% end %>	
+	<% end %>
+ <% else %>
+ 	<%= image_tag('MyLearnSpace.png', border:"0", width:"150", height:"150", :mouseover => "/images/MyLearnSpace5.png") %>
+ <% end %>	
 	
 	<strong>Wo möchtest du hin?</strong> 	
 	

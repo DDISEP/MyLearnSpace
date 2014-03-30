@@ -32,7 +32,10 @@ class UsersController < ApplicationController
      @user = User.new
   end   
   
-  def profile 
+  def profile
+    if @current_user.nil?
+      redirect_to users_path
+    end 
   end
   
   def create

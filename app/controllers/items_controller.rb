@@ -69,15 +69,14 @@ class ItemsController < ApplicationController
     end
   end
 
-  #Testet, ob ein Administrator eingeloggt ist
+
   def check_admin
-    @curriculum_id = Curriculum.find(params[:curriculum_id])
       @admin = session[:admin]
       if @admin!=true
         if session[:current_user_id].nil?
           redirect_to root_url, :notice => "Du bist kein Administrator!"
         else
-          redirect_to curriculum_path(@curriculum_id), :notice => "Das darfst du nur als Administrator!"
+          redirect_to curriculums_path, :notice => "Das darfst du nur als Administrator!"
         end
       end
   end
