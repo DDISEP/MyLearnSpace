@@ -10,7 +10,6 @@
 <p id="notice"><%= notice %></p>
 
 <%= link_to 'Lehrplan bearbeiten', edit_curriculum_path(@curriculum) %> | 
-<%= link_to "Lehrplan löschen", curriculum_path(@curriculum, :authenticity_token => form_authenticity_token), :remote => true, :method => :delete, :data => { :confirm => 'Wollen Sie diesen Datensatz wirklich löschen?' } %> | 
 <%= link_to 'Neuen Lehrplaninhalt hinzufügen', new_curriculum_item_path(@curriculum) %><br />
 
 <br />

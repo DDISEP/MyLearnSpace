@@ -18,7 +18,7 @@
 		<%= link_to image_tag('MyLearnSpace.png', border:"0", width:"150", height:"150", :mouseover => "/images/MyLearnSpace5.png"), users_profile_path %>
 	<% end %>
  <% else %>
- 	<%= image_tag('MyLearnSpace.png', border:"0", width:"150", height:"150", :mouseover => "/images/MyLearnSpace5.png") %>
+ 	<%= link_to image_tag('MyLearnSpace.png', border:"0", width:"150", height:"150", :mouseover => "/images/MyLearnSpace5.png"), curriculums_path %>
  <% end %>	
 	
 	<strong>Wo möchtest du hin?</strong> 	
