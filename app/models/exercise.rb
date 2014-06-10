@@ -1,11 +1,12 @@
-class Exercise < ActiveRecord :: Base
+class Exercise < ActiveRecord::Base
   
-  #exercises for learning on specific topic, later on to be connected with tags
+  has_many :tags 
+  has_many :exercise_questions
   
-  attr_accessible :date, :title, :description
   
-  has_many :tags                #each exercise is useful for many tags
-  has_many :exercise_questions  #exercise consists of many questions
-  belongs_to :user              #each exercise is composed by one user
+  attr_accessible :tags, :title, :description, :exercise_questions
+  
+  validates_presence_of :title
+  validates_uniqueness_of :title
   
 end

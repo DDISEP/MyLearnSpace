@@ -1,8 +1,25 @@
-<h1>Verfügbare Lernaufgaben</h1>
+<h1>Alle Lernaufgaben</h1>
 
-<% @exercises.each do |e| %>
-	<h2> <%= e.name %> <\h2>
-<%end%>
+<table>
+  <thead>
+    <tr>
+      <th>Überschrift</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exercises.each do |exercise| %>
+      <tr>
+        <td><%= link_to exercise.title, exercise %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Neue Lernaufgabe anlegen', new_exercise_path %>
 
 
 <!-- should display the names of all available exercises --> 

@@ -1,0 +1,18 @@
+<%= form_for(@exercise) do |f| %>
+  <%= render "display_errors" %> 
+
+<table cellpadding="10">
+ <tr>
+ 	<td valign="top">
+ 		<%= f.label :title, "Titel*" %>
+ 	</td>
+ 	<td>
+ 		<%= f.text_area :title, placeholder:"Titel", maxlength:"40" %>
+ 	</td>
+ </tr>
+</table>
+  
+  <div class="actions">
+    <%= f.submit "Lernaufgabe speichern" %>
+  </div>
+<% end %>

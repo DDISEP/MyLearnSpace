@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327131719) do
+ActiveRecord::Schema.define(version: 20140610120348) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -54,6 +54,27 @@ ActiveRecord::Schema.define(version: 20140327131719) do
     t.datetime "updated_at"
     t.string   "fileName"
     t.string   "fileType"
+  end
+
+  create_table "exercise_answers", force: true do |t|
+    t.text     "answer"
+    t.text     "explanation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "exercise_questions", force: true do |t|
+    t.text     "question"
+    t.text     "hint"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "exercises", force: true do |t|
+    t.string   "title",       limit: 40
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "items", force: true do |t|
