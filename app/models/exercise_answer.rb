@@ -1,6 +1,8 @@
-class TestAnswer < ActiveRecord::Base
+class ExerciseAnswer < ActiveRecord::Base
   
-  belongs_to :test_question
+  #answers to te questions of the exercises
+  
+  belongs_to :exercise_question
   
   attr_accessible :explanation
   
