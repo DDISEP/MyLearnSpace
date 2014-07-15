@@ -1,25 +1,32 @@
 class ExercisesController < ApplicationController
   
+  before_action :get_exercise, only: [:show, :edit, :update, :delete]
+  #before_action :check_auth, only:[:edit, :delete]
   
+  #def check_auth
+   # if session[:current_user_id] != @exercise.user_id
+  #end
+  
+  def get_exercise
+    @exercise = Exercise.find(params[:id])
+  end
   
   def index
     @exercises = Exercise.all
   end
   
   def show
-    @exercise = Exercise.find(params[:id])
   end
   
   def new
     @exercise = Exercise.new
+    @exercise.user_id = session[:current_user_id]
   end
   
   def edit
-    @exercise = Exercise.find(params[:id])
   end
   
   def update
-    @exercise = Exercise.find(params[:id])
     respond_to do |format|
       if @exercise.update(exercise_params)
         format.html { redirect_to exercises_path, notice: "Lernaufgabe wurde erfolgreich aktualisiert." }
@@ -49,6 +56,12 @@ class ExercisesController < ApplicationController
         format.json { render json: @exercise.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  
+  def destroy
+    @exercise.destroy
+    render action: delete
   end
   
   # Never trust parameters from the scary internet, only allow the white list through.
