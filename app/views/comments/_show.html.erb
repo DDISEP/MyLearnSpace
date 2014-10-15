@@ -1,0 +1,19 @@
+
+	<div class="span2"><%= link_to @comment.username, user_path(@comment.user) %></div>
+	<div class="span8"><%= @comment.text %></div>
+	<div class="span1">
+		<% if @comment.user_id == session[:current_user_id] then %>
+			<%= button_to edit_exercise_comment_path(@exercise, @comment), :remote => true, :method => :get,
+				class:"btn btn-xs btn-warning" do%>
+				<span class='glyphicon glyphicon-pencil'></span>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="span1">
+		<% if @comment.user_id == session[:current_user_id] || session[:admin] == true then %>
+			<%= button_to exercise_comment_path(@exercise, @comment, :page => @page), :remote => true, :method => :delete, 
+				data: {confirm: "Bist Du Dir sicher?"}, class:"btn btn-xs btn-danger" do %>
+				<span class='glyphicon glyphicon-remove'></span>
+			<% end %>
+		<% end %>
+	</div>

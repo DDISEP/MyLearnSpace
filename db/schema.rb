@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140610120348) do
+ActiveRecord::Schema.define(version: 20140811190629) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 20140610120348) do
     t.datetime "updated_at"
     t.string   "user_name"
   end
+
+  create_table "comments", force: true do |t|
+    t.string   "text"
+    t.integer  "user_id"
+    t.integer  "exercise_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["exercise_id"], name: "index_comments_on_exercise_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "contents", force: true do |t|
     t.string   "tag"
@@ -56,26 +67,25 @@ ActiveRecord::Schema.define(version: 20140610120348) do
     t.string   "fileType"
   end
 
-  create_table "exercise_answers", force: true do |t|
-    t.text     "answer"
-    t.text     "explanation"
+  create_table "exercise_contents", force: true do |t|
+    t.integer  "exercise_id"
+    t.integer  "content_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "exercise_questions", force: true do |t|
-    t.text     "question"
-    t.text     "hint"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "exercise_contents", ["content_id"], name: "index_exercise_contents_on_content_id"
+  add_index "exercise_contents", ["exercise_id"], name: "index_exercise_contents_on_exercise_id"
 
   create_table "exercises", force: true do |t|
-    t.string   "title",       limit: 40
-    t.text     "description"
+    t.string   "title"
+    t.string   "description", limit: 1000
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "exercises", ["user_id"], name: "index_exercises_on_user_id"
 
   create_table "items", force: true do |t|
     t.string   "title"
@@ -86,10 +96,33 @@ ActiveRecord::Schema.define(version: 20140610120348) do
     t.datetime "updated_at"
   end
 
+  create_table "likes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "exercise_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["exercise_id"], name: "index_likes_on_exercise_id"
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
+
   create_table "logins", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "performances", force: true do |t|
+    t.integer  "max_points"
+    t.integer  "achieved_points"
+    t.integer  "user_id"
+    t.integer  "exercise_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "current_position"
+  end
+
+  add_index "performances", ["exercise_id"], name: "index_performances_on_exercise_id"
+  add_index "performances", ["user_id"], name: "index_performances_on_user_id"
 
   create_table "questions", force: true do |t|
     t.string   "title"
@@ -98,6 +131,18 @@ ActiveRecord::Schema.define(version: 20140610120348) do
     t.datetime "updated_at"
     t.string   "user_name"
   end
+
+  create_table "subexercises", force: true do |t|
+    t.integer  "position"
+    t.string   "text"
+    t.string   "solution"
+    t.integer  "exercise_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "points"
+  end
+
+  add_index "subexercises", ["exercise_id"], name: "index_subexercises_on_exercise_id"
 
   create_table "users", force: true do |t|
     t.string   "username"

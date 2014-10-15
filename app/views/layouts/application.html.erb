@@ -2,6 +2,11 @@
 <html>
 <head>
   <title>MyLearnSpace</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application", controller_name %>
 
@@ -10,7 +15,7 @@
 
 <body>
 	
-<p style="border:2px solid cornflowerblue ">
+<p style="border:2px solid cornflowerblue" id="topNavigation">
  <% if @admin.nil?%>
 	<% if @current_user.nil? %>
 		<%=  link_to image_tag('MyLearnSpace.png', border:"0", width:"150", height:"150", :mouseover => "/images/MyLearnSpace5.png"), welcome_index_path %>
@@ -58,8 +63,19 @@
       &nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to 'Abmelden', login_path(@current_user, :authenticity_token => form_authenticity_token), :method => :delete%> <!--session_path( session ), :method => :delete %>-->
     <% end %>
+</p>
 
+<div class="container-fluid" id="errors_and_notices">
+<% if flash[:error]%>
+		<div class="span12 error" style="color: red; font-size: 15pt"><%= flash[:error] %></div>
+<% end %>
+<% if flash[:notice] %>
+    	<div class="span12 notice" style="color: green; font-size: 15pt"><%= flash[:notice] %></div>
+<% end %>
+</div>
 
 <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
+
+
 </body>
 </html>

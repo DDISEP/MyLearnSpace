@@ -74,7 +74,7 @@ class ExercisesController < ApplicationController
 
   def edit  # even admin isn't allowed to edit exercises, he/she may only delete it
     if @exercise.user_id != session[:current_user_id] then
-      flash[:notice] = "Nur der Autor einer Aufgabe darf diese ändern!"
+      flash[:notice] = "Nur der Autor einer Aufgabe darf diese aendern!"
       redirect_to @exercise
     end
     @subexercises = @exercise.subexercises
@@ -160,7 +160,8 @@ class ExercisesController < ApplicationController
     @performance = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id]).order('created_at DESC').first
     if @performance.current_position > -2 && params[:given_points] != nil then                    # necessary to prevent multiple adding of points when reloading page
                                                                                                   # params[:given_points} should never be nil, check just for security
-        @performance.achieved_points += params[:given_points].to_i
+        @performance.achieved_points = @performance.achieved_points + params[:given_points].to_i
+        puts "HELLO" +  params[:given_points].to_s
     end
     @performance.current_position = -2
     @performance.save

@@ -1,0 +1,14 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span2">Aufgabe: </div>
+		<div class="span10"><%= @subexercise.text %></div>
+	</div>
+	<div class="row-fluid">
+		<div class="span2">Deine Antwort: </div>
+		<div class="span10">Hier muss ein Textfeld hin, auf das ich zugreifen kann.</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span2"><%= link_to "Lösung anzeigen", solution_exercise_subexercise_path(@exercise, @subexercise)%></div>
+		
+	</div>
+</div>

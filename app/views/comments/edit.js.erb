@@ -1,0 +1,4 @@
+
+<% c_id = "comment_" + @comment.id.to_s %>
+$('#<%= c_id %>').html('<%= escape_javascript render partial: 'comments/edit' %> ');
+

@@ -2,7 +2,7 @@ require 'digest/sha1'
 
 #Encoding: utf-8
 class User < ActiveRecord::Base
-  
+    
     include ActiveModel::Validations
     attr_accessible :username, :email, :password,  :pupil
     validate :valid_user
@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
     before_create :hash_password
     before_update :hash_password
     validates_uniqueness_of :username, :email
+    has_many :comments, dependent: :nullify
+    has_many :exercises, dependent: :nullify
+    has_many :likes, dependent: :destroy
+    has_many :performances, dependent: :destroy
 
     def hash_password
       self.password = Digest::MD5.hexdigest(self.password)

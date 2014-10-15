@@ -1,0 +1,14 @@
+
+
+<% @comments.each do |c| %>
+	<% if c.user == nil then%>
+	<% username = "Unbekannter Nutzer" %>
+	<% else username = c.user.username %>
+	<% end %>
+	<div class="row-fluid">
+		<div class="span2"><%= username %>: </div>
+		<div class="span6"><%= c.text %></div>
+		<div class="span2"><%= link_to("Bearbeiten", edit_exercise_comment_path(:exercise_id, c.id)) %></div>
+		<div class="span2"><%= link_to "löschen", exercise_comment_path(:exercise_id, c.id, :authenticity_token => form_authenticity_token), :remote => true, :method => :delete%></div>
+	</div>
+<% end %>

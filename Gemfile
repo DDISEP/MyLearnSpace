@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'rails_autocomplete'
+
+gem 'will_paginate-bootstrap'
+
 gem 'bootstrap-wysihtml5-rails'
 
 gem 'rails-i18n'

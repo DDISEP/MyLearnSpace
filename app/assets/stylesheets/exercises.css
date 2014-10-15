@@ -1,0 +1,15 @@
+body {
+}
+
+.tablehead{
+	background:#0000FF;
+	color:#FFFFFF;
+}
+
+.tablerowuneven{
+	background:#D8D8D8;
+}
+
+.tableroweven{
+	background:#FAFAFA;
+}
