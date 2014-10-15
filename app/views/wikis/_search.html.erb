@@ -5,7 +5,8 @@
      	<% @contents.each do |content| %>     	
 			<td><%= content.tag %><%= check_box_tag "contents[]", content.id %></td>
 		<% end %>
-</table></div>
+		</table>
+	</div>
      <%= search_field :search, "", :id => 'search_field', name:"search", :onkeyup => "searchSuggest('search');", :autocomplete => "off" %> 
      <%= submit_tag "suchen", :name => nil ,class:"btn btn-xs btn-default"%>
      <div id="search_suggest"></div>

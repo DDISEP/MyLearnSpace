@@ -1,0 +1,29 @@
+<div class="container-fluid">
+
+<div class="col-sm-9"><div class="row-fluid"><h1>Alle Lernaufgaben</h1></div></div>
+
+<div class="col-sm-9">
+
+<% if @exercises.length == 0 then %>
+	<div id="notice"> Noch keine Aufgaben vorhanden! </div> 
+<% end %>
+	
+	
+	<div class="panel panel-primary">
+		<div class="panel-body" id="exercise_list">
+			<%= render 'list_exercises'%>
+		</div>
+	</div>
+	
+	
+</div> <!-- /col-sm-9 -->
+
+<div class="col-sm-3">
+	<div id="search_panel">
+		<%= render 'search_panel'%>
+	</div>
+
+	<%= render 'top_exercise' %>
+
+</div> <!-- /col-sm-3 -->
+</div> <!-- /container-fluid -->

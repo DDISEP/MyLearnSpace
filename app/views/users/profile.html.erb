@@ -8,18 +8,19 @@
 <tr><td><p style="font-size: 13pt; color: gold"> Dein Benutzername: <%=@current_user.username%></p></td></tr>
 <tr><td><p style="font-size: 13pt; color: gold">Deine E-Mail Adresse <%=@current_user.email%></p></td></tr>
 <tr><td><p style="font-size: 13pt; color: gold">Dein Schülerstatus:
-	<%if @current_user.pupil == true%>
-			<%="Schüler"%><!--statt t und f muss hier noch ja nein eingefügt werden!!-->
-	<%elsif @current_user.pupil == false%>
+	<%if @current_user.pupil == 'ja'%>
+			<%="Schüler"%>
+	<%elsif @current_user.pupil == 'nein'%>
 			<%="Kein Schüler"%>
 	<%else%>
 			<%="Keine Angabe"%>
 	<%end%>
-</p></td></tr>
+	
+	</p></td></tr>
 </table>
+
 <p>&nbsp;</p>
 <table>
 <tr><td><%= link_to 'Benutzerprofil bearbeiten', edit_user_path(@current_user) %></td></tr>
 <tr><td><%= link_to "Benutzerprofil löschen", users_profile_path(@current_user, :authenticity_token => form_authenticity_token), data:{confirm: ('Bist du dir sicher?')}, method: :delete%></td></tr>
 </table>
-

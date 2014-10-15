@@ -1,0 +1,12 @@
+
+			<%= form_for [@exercise, @comment], remote: true do |f| %>
+			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+			<div class="span2"><%= @comment.username%></div>
+			<div class="span6"><%= f.text_area :text, placeholder:"Schreibe einen Kommentar...", style:"width: 100%", maxlength:"1000" %></div>
+			<div class="span2"><%= f.submit "Speichern", style:"width: 100%", class:"btn btn-xs btn-success" %></div>
+			<% end %>
+			<div class="span2">
+				<%= button_to "Doch nicht", exercise_comment_path(@exercise, @comment, :authenticity_token => form_authenticity_token ), 
+					:remote => true, :method => :get, class:"btn btn-xs btn-warning", style:"width:100%;" %>
+			</div>
+		

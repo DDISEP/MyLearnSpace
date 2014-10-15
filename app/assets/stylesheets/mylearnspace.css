@@ -1,0 +1,21 @@
+body {
+
+}
+
+.tablehead{
+	background:#0000FF;
+	color:#FFFFFF;
+}
+
+.tableroweven{
+	background:#D8D8D8;
+}
+
+.tablerowodd{
+	background:#FAFAFA;
+}
+
+.highlighted-comment{
+	border:"4px";
+	border-color:#00FF00;
+}

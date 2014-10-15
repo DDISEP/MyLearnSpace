@@ -1,0 +1,27 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span5">
+			<%= render 'comment_form' %>
+			<%= link_to 'zurück', exercise_path(@comment.exercise) %>
+		</div>
+		<div class="span7">
+			<% @comments.each do |c| %>
+			<% if c.user == nil then%>
+			<% username = "Unbekannter Nutzer" %>
+			<% else username = c.user.username %>
+			<% end %>
+			<% if c.id == @comment.id then %>
+			<div class="row-fluid" style="border: green 5px solid" >
+				<div class="span2"><%= username %>: </div>
+				<div class="span10"><%= c.text %></div>
+			</div>
+			<% else %>
+			<div class="row-fluid">
+				<div class="span2"><%= username %>: </div>
+				<div class="span10"><%= c.text %></div>
+			</div>
+			<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>

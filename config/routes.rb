@@ -1,10 +1,10 @@
 MyLearnSpace::Application.routes.draw do
-      
+  
+  #get '/exercises/:id/exercise_questions', to: 'exercise_questions#new'
+          
   root 'welcome#index'
 
   get "welcome/index"
-   
-  
   
   resources :logins
   
@@ -31,9 +31,28 @@ MyLearnSpace::Application.routes.draw do
   resources :users
   
   
-  resources :contents
-
+  resources :exercises do 
+    
+    get 'change_search_style', on: :collection
+    get 'search', on: :collection
+    get 'statistics', on: :member
+    get 'start', on: :member
+    get 'finish', on: :member
+    
+    resources :comments 
+    
+    resources :performances
+    
+    resources :subexercises do
+      get 'perform', on: :member
+      get 'solution', on: :member
+    end
+    
+    resources :likes
+    
+  end
   
+  resources :contents
 
   resources :questions do
     resources :answers
@@ -49,7 +68,7 @@ MyLearnSpace::Application.routes.draw do
   
   post 'curriculums/:curriculum_id/items/:id/addContent' => "items#addContent"
   
- 
+  post 'exercises/:id' => "exercises#start"
   
   resources :upload
   
