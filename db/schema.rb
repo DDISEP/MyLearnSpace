@@ -67,6 +67,13 @@ ActiveRecord::Schema.define(version: 20140811190629) do
     t.string   "fileType"
   end
 
+  create_table "exercise_answers", force: true do |t|
+    t.text     "answer"
+    t.text     "explanation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "exercise_contents", force: true do |t|
     t.integer  "exercise_id"
     t.integer  "content_id"
