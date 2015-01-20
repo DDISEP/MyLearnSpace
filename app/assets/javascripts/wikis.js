@@ -86,7 +86,7 @@ function renderSearchSuggests(data){
 		
 		for(i=0; i < str.length - 1; i++) {
 			
-			suggest += '<div id="item' +i.toString() +'" ';
+			suggest += '<div id="learning_units' +i.toString() +'" ';
 			suggest += 'onmouseover="javascript:suggestOver(this);" ';
 			suggest += 'onmouseout="javascript:suggestOut(this);" ';
 			suggest += 'onclick="javascript:setSearch(this.innerHTML);" ';
@@ -109,7 +109,7 @@ function renderLinkSuggests(data){
 		
 		for(i=0; i < str.length - 1; i++) {
 			
-			suggest += '<div id="item' +i.toString() +'" ';
+			suggest += '<div id="learning_units' +i.toString() +'" ';
 			suggest += 'onmouseover="javascript:suggestOver(this);" ';
 			suggest += 'onmouseout="javascript:suggestOut(this);" ';
 			suggest += 'onclick="javascript:setLink(this.innerHTML);" ';

@@ -46,7 +46,7 @@
     constructor: TagsInput,
 
     /**
-     * Adds the given item as a new tag. Pass true to dontPushVal to prevent
+     * Adds the given learning_units as a new tag. Pass true to dontPushVal to prevent
      * updating the elements val()
      */
     add: function(item, dontPushVal) {
@@ -88,7 +88,7 @@
           itemText = self.options.itemText(item),
           tagClass = self.options.tagClass(item);
 
-      // Ignore items allready added
+      // Ignore learning_units allready added
       var existing = $.grep(self.itemsArray, function(item) { return self.options.itemValue(item) === itemValue; } )[0];
       if (existing) {
         // Invoke onTagExists
@@ -99,7 +99,7 @@
         return;
       }
 
-      // register item in internal array and map
+      // register learning_units in internal array and map
       self.itemsArray.push(item);
 
       // add a tag element
@@ -108,7 +108,7 @@
       self.findInputWrapper().before($tag);
       $tag.after(' ');
 
-      // add <option /> if item represents a value not present in one of the <select />'s options
+      // add <option /> if learning_units represents a value not present in one of the <select />'s options
       if (self.isSelect && !$('option[value="' + escape(itemValue) + '"]',self.$element)[0]) {
         var $option = $('<option selected>' + htmlEncode(itemText) + '</option>');
         $option.data('item', item);
@@ -127,7 +127,7 @@
     },
 
     /**
-     * Removes the given item. Pass true to dontPushVal to prevent updating the
+     * Removes the given learning_units. Pass true to dontPushVal to prevent updating the
      * elements val()
      */
     remove: function(item, dontPushVal) {
@@ -157,7 +157,7 @@
     },
 
     /**
-     * Removes all items
+     * Removes all learning_units
      */
     removeAll: function() {
       var self = this;
@@ -176,7 +176,7 @@
 
     /**
      * Refreshes the tags so they match the text/value of their corresponding
-     * item.
+     * learning_units.
      */
     refresh: function() {
       var self = this;
@@ -202,14 +202,14 @@
     },
 
     /**
-     * Returns the items added as tags
+     * Returns the learning_units added as tags
      */
     items: function() {
       return this.itemsArray;
     },
 
     /**
-     * Assembly value by retrieving the value of each item, and set it on the
+     * Assembly value by retrieving the value of each learning_units, and set it on the
      * element. 
      */
     pushVal: function() {

@@ -23,8 +23,8 @@ class Curriculum < ActiveRecord::Base
   
   
   #Relations between different parts of the website
-  #m:n relation between curriculum and item (join-table curriculums_items) with destroy-dependence
-  has_many :items, :dependent => :destroy  
+  #m:n relation between curriculum and learning_units (join-table curriculums_items) with destroy-dependence
+  has_many :LearningUnit, :dependent => :destroy
   #m:n relation between curriculum and user (join-table contents_items)
   has_and_belongs_to_many :users
   

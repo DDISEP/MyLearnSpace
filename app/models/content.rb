@@ -12,8 +12,8 @@ class Content < ActiveRecord::Base
   validates_uniqueness_of :tag, :message => " gibt es schon."
   
   
-  #m:n relation between contents and items (join-table contents_items)
-  has_and_belongs_to_many :items
+  #m:n relation between contents and learning_units (join-table contents_items)
+  has_and_belongs_to_many :LearningUnit
 
   
 end

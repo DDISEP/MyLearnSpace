@@ -25,7 +25,7 @@
     	<td colspan="2"></td>
     </tr>
     
-    <% @curriculum.items.order(:title).each do |curitem| %> 
+    <% @curriculum.learning_units.order(:title).each do |curitem| %>
 
     <table id=<%= curitem.id%> width="50%" border="1" cellpadding="5" >
     	<tr>	

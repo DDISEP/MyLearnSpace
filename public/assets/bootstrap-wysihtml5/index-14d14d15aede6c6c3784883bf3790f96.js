@@ -4191,7 +4191,7 @@ wysihtml5.dom.convertToList = (function() {
       }
       
       if (isLineBreak) {
-        // Only create a new list item in the next iteration when the current one has already content
+        // Only create a new list learning_units in the next iteration when the current one has already content
         currentListItem = currentListItem.firstChild ? null : currentListItem;
         continue;
       }
@@ -5719,7 +5719,7 @@ wysihtml5.quirks.cleanPastedHTML = (function() {
 
 
   /**
-   * In Opera when the caret is in the first and only item of a list (<ul><li>|</li></ul>) and the list is the first child of the contentEditable element, it's impossible to delete the list by hitting backspace
+   * In Opera when the caret is in the first and only learning_units of a list (<ul><li>|</li></ul>) and the list is the first child of the contentEditable element, it's impossible to delete the list by hitting backspace
    *
    * @param {Object} contentEditableElement The contentEditable element to observe for clearing events
    * @exaple
@@ -5993,7 +5993,7 @@ wysihtml5.quirks.cleanPastedHTML = (function() {
           content         = isElement ? node.innerHTML : node.data,
           isEmpty         = (content === "" || content === wysihtml5.INVISIBLE_SPACE),
           displayStyle    = dom.getStyle("display").from(node),
-          isBlockElement  = (displayStyle === "block" || displayStyle === "list-item");
+          isBlockElement  = (displayStyle === "block" || displayStyle === "list-learning_units");
 
       if (isEmpty && isElement && canHaveHTML) {
         // Make sure that caret is visible in node by inserting a zero width no breaking space

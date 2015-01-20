@@ -1,4 +1,4 @@
-class Item < ActiveRecord::Base
+class LearningUnit < ActiveRecord::Base
   
   attr_accessible :title, :hours, :descriptionOfContent, :curriculum_id
   
@@ -11,9 +11,9 @@ class Item < ActiveRecord::Base
   
   
   #Relations between different parts of the website
-  #1:n relation between curriculum and item 
+  #1:n relation between curriculum and learning_units
   belongs_to :curriculum
-  #m:n relation between item and content (join-table contents_items) 
+  #m:n relation between learning_units and content (join-table contents_items)
   has_and_belongs_to_many :contents
 
 end

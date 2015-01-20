@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 20140811190629) do
 
   add_index "exercises", ["user_id"], name: "index_exercises_on_user_id"
 
-  create_table "items", force: true do |t|
+  create_table "learning_units", force: true do |t|
     t.string   "title"
     t.integer  "hours"
     t.string   "descriptionOfContent"

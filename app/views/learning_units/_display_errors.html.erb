@@ -1,0 +1,10 @@
+<% if @learning_units.errors.any? %>
+  <div class="alert alert-danger">
+    <strong><%= @learning_units.errors.count %> Fehler gefunden:</strong>
+    <ul>
+    <% @learning_units.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

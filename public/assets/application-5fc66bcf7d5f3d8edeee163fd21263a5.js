@@ -143,7 +143,7 @@ jQuery.fn = jQuery.prototype = {
 					// Check parentNode to catch when Blackberry 4.6 returns
 					// nodes that are no longer in the document #6963
 					if ( elem && elem.parentNode ) {
-						// Handle the case where IE and Opera return items
+						// Handle the case where IE and Opera return learning_units
 						// by name instead of ID
 						if ( elem.id !== match[2] ) {
 							return rootjQuery.find( selector );
@@ -369,7 +369,7 @@ jQuery.extend({
 	// Is the DOM ready to be used? Set to true once it occurs.
 	isReady: false,
 
-	// A counter to track how many items to wait for before
+	// A counter to track how many learning_units to wait for before
 	// the ready event fires. See #6781
 	readyWait: 1,
 
@@ -704,7 +704,7 @@ jQuery.extend({
 			length = elems.length;
 		inv = !!inv;
 
-		// Go through the array, only saving the items
+		// Go through the array, only saving the learning_units
 		// that pass the validator function
 		for ( ; i < length; i++ ) {
 			retVal = !!callback( elems[ i ], i );
@@ -725,7 +725,7 @@ jQuery.extend({
 			// jquery objects are treated as arrays
 			isArray = elems instanceof jQuery || length !== undefined && typeof length === "number" && ( ( length > 0 && elems[ 0 ] && elems[ length -1 ] ) || length === 0 || jQuery.isArray( elems ) ) ;
 
-		// Go through the array, translating each of the items to their
+		// Go through the array, translating each of the learning_units to their
 		if ( isArray ) {
 			for ( ; i < length; i++ ) {
 				value = callback( elems[ i ], i, arg );
@@ -2081,7 +2081,7 @@ jQuery.fn.extend({
 
 					className = (" " + elem.className + " ").replace( rclass, " " );
 
-					// loop over each item in the removal list
+					// loop over each learning_units in the removal list
 					for ( c = 0, cl = removes.length; c < cl; c++ ) {
 						// Remove until there is nothing to remove,
 						while ( className.indexOf(" " + removes[ c ] + " ") >= 0 ) {
@@ -3903,7 +3903,7 @@ function Sizzle( selector, context, results, seed ) {
 					// Check parentNode to catch when Blackberry 4.6 returns
 					// nodes that are no longer in the document #6963
 					if ( elem && elem.parentNode ) {
-						// Handle the case where IE, Opera, and Webkit return items
+						// Handle the case where IE, Opera, and Webkit return learning_units
 						// by name instead of ID
 						if ( elem.id === m ) {
 							results.push( elem );
@@ -5983,7 +5983,7 @@ jQuery.fn.extend({
 			if ( first ) {
 				table = table && jQuery.nodeName( first, "tr" );
 
-				// Use the original fragment for the last item instead of the first because it can end up
+				// Use the original fragment for the last learning_units instead of the first because it can end up
 				// being emptied incorrectly in certain situations (#8070).
 				// Fragments from the fragment cache must always be cloned and never used in place.
 				for ( iNoClone = results.cacheable || l - 1; i < l; i++ ) {
@@ -7248,14 +7248,14 @@ function buildParams( prefix, obj, traditional, add ) {
 	var name;
 
 	if ( jQuery.isArray( obj ) ) {
-		// Serialize array item.
+		// Serialize array learning_units.
 		jQuery.each( obj, function( i, v ) {
 			if ( traditional || rbracket.test( prefix ) ) {
-				// Treat each array item as a scalar.
+				// Treat each array learning_units as a scalar.
 				add( prefix, v );
 
 			} else {
-				// If array item is non-scalar (array or object), encode its
+				// If array learning_units is non-scalar (array or object), encode its
 				// numeric index to resolve deserialization ambiguity issues.
 				// Note that rack (as of 1.0.0) can't currently deserialize
 				// nested arrays properly, and attempting to do so may cause
@@ -7267,13 +7267,13 @@ function buildParams( prefix, obj, traditional, add ) {
 		});
 
 	} else if ( !traditional && jQuery.type( obj ) === "object" ) {
-		// Serialize object item.
+		// Serialize object learning_units.
 		for ( name in obj ) {
 			buildParams( prefix + "[" + name + "]", obj[ name ], traditional, add );
 		}
 
 	} else {
-		// Serialize scalar item.
+		// Serialize scalar learning_units.
 		add( prefix, obj );
 	}
 }
