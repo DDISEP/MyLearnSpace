@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Rails MyLearnSpace: development" uuid="9a9f7abc-3f77-403f-a759-26fb2f44d86e">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails MyLearnSpace: test" uuid="91dc19da-d2cd-4608-87c7-5d4247a26d8c">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
