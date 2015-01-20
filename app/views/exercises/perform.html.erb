@@ -2,16 +2,16 @@
 	<div class="panel panel-primary">
 		<div class="panel-body">	
 			<div class="row-fluid">
-				<div class="span12">Teilaufgabe <%= @current_subexercise_position %> / <%= @exercise.subexercises.length %></div>
+				<div class="span12">Teilaufgabe <%= @current_subexercise_position %> / <%= @task.subtasks.length %></div>
 			</div>
 			<div class="row-fluid">
-				<div class="span12">Erreichbare Punkte: <%= @subexercise.points %></div>
+				<div class="span12">Erreichbare Punkte: <%= @exercises.points %></div>
 			</div>
 			<div class="row-fluid">
 				<div class="span2">Aufgabe: </div>
-				<div class="span10"><%= @subexercise.text %></div>
+				<div class="span10"><%= @exercises.text %></div>
 			</div>
-			<%= form_tag solution_exercise_subexercise_path(@exercise, @subexercise), :method => :get do %> <!-- form for pupil's answer -->
+			<%= form_tag solution_exercise_subexercise_path(@task, @exercises), :method => :get do %> <!-- form for pupil's answer -->
 			<div class="row-fluid">
 				<div class="span2">Deine Antwort:</div>
 				<div class="span10"><%= text_area_tag 'answer', "", :placeholder => "Gib hier Deine Antwort ein...", style:"resize:vertical; width:100%;" %></div>

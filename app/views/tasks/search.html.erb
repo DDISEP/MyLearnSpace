@@ -2,10 +2,10 @@
 	<div class="col-sm-9">
 		<div class="panel panel-primary">
 			<div class="panel-body">	
-				<% if @matching_exercises.length == 0 then %>
+				<% if @matching_tasks.length == 0 then %>
 					<h4> Keine passenden Lernaufgaben !! </h4>
 				<% else %>
-				<%= will_paginate @matching_exercises, :inner_window => 1, :outer_window => 0, :previous_label => t("<"), :next_label => t(">"), renderer: BootstrapPagination::Rails %>
+				<%= will_paginate @matching_tasks, :inner_window => 1, :outer_window => 0, :previous_label => t("<"), :next_label => t(">"), renderer: BootstrapPagination::Rails %>
 				<table class="table table-striped">
 					<thead>
 						<tr><strong>		
@@ -17,9 +17,9 @@
 					</thead>
 			
 					<tbody>
-					<% @matching_exercises.each do |exercise| %>
+					<% @matching_tasks.each do |exercise| %>
 						<tr>
-							<!-- show title, author, likes, and creation date for each exercise -->
+							<!-- show title, author, likes, and creation date for each task -->
 							<td> <%= link_to exercise.title, exercise %> </td>
 							<td> <%= link_to exercise.user.username, exercise.user %> </td>
 							<td> <%= exercise.likes.length %> </td>
@@ -28,14 +28,14 @@
 					<% end %>
 					</tbody> 
 				</table>
-				<%= will_paginate @matching_exercises, :inner_window => 1, :outer_window => 0, :previous_label => t("<"), :next_label => t(">"), renderer: BootstrapPagination::Rails %>
+				<%= will_paginate @matching_tasks, :inner_window => 1, :outer_window => 0, :previous_label => t("<"), :next_label => t(">"), renderer: BootstrapPagination::Rails %>
 				<% end %>
 			</div>
 		</div>
 	</div>
 	<div class="col-sm-3">
 		<div id="search_panel">
-			<%= render 'exercises/search_panel' %>
+			<%= render 'tasks/search_panel' %>
 		</div>
 	</div>
 </div>

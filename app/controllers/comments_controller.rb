@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
  
   
   def get_exercise
-    @exercise = Exercise.find(params[:exercise_id])
+    @task = Task.find(params[:exercise_id])
   end
   
   def get_comment
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
   def edit  # even admin isn't allowed to edit comments, he/she may only delete it
     if @comment.user_id != session[:current_user_id] then
       #flash[:notice] = "Nur der Autor eines Kommentars darf diesen aendern!"
-      redirect_to @exercise
+      redirect_to @task
     end
   end
 
@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
     
     @comment.text = params[:comment][:text]
     @comment.save
-    @comments = @exercise.comments.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+    @comments = @task.comments.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
     @page = params[:page].nil? ? 1 : params[:page]
   end
   
@@ -50,8 +50,8 @@ class CommentsController < ApplicationController
   
   def destroy
     @comment.destroy
-    @exercise.comments.reload         # reload to make sure that destroyed comment isn't included
-    @comments = @exercise.comments.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+    @task.comments.reload         # reload to make sure that destroyed comment isn't included
+    @comments = @task.comments.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
     @page = params[:page].nil? ? 1 : params[:page]
   end
   

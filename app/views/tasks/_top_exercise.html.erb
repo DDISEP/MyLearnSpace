@@ -1,0 +1,17 @@
+<% if !@top_task.nil? %>		<!-- if existent, show most popular task (based on likes) in right column -->
+	
+	<div class="panel panel-primary">
+		<div class="panel-heading" align="center">
+			<h4>Beliebteste Lernaufgabe</h4>		
+		</div>
+		<div class="panel-body">
+			<h4><%= link_to @top_task.title , wiki_path(@top_task) %></h4>
+			<%= @top_task.description %><br />
+			<strong>Likes: <%= @top_task.likes.length %></strong>
+		</div>
+		<div class="panel-footer">
+			<%= button_to "zur Lernaufgabe" , exercise_path(@top_task), :method => :get, class:"btn btn-xs btn-primary", style:"width: 100%;" %>
+		</div>
+	</div>
+
+<% end %>

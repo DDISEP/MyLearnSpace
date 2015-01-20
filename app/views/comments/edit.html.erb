@@ -2,7 +2,7 @@
 	<div class="row-fluid">
 		<div class="span5">
 			<%= render 'comment_form' %>
-			<%= link_to 'zurück', exercise_path(@comment.exercise) %>
+			<%= link_to 'zurück', exercise_path(@comment.task) %>
 		</div>
 		<div class="span7">
 			<% @comments.each do |c| %>

@@ -1,17 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  creation_date: MyString
-  datetime: MyString
-  title: MyString
-  description: MyString
-  user_id: 
+  position: 1
+  text: MyString
+  solution: MyString
   exercise_id: 
 
 two:
-  creation_date: MyString
-  datetime: MyString
-  title: MyString
-  description: MyString
-  user_id: 
+  position: 1
+  text: MyString
+  solution: MyString
   exercise_id: 

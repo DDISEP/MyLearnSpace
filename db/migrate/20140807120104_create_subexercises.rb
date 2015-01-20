@@ -4,7 +4,7 @@ class CreateSubexercises < ActiveRecord::Migration
       t.integer :position
       t.string :text
       t.string :solution
-      t.references :exercise, index: true
+      t.references :task, index: true
 
       t.timestamps
     end

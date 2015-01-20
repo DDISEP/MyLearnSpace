@@ -1,4 +1,11 @@
-<p>Lernaufgabe erfolgreich angelegt.</p>
-<br/>
-<br/>
-<p><%= link_to( "zurück zu den Lernaufgaben" , exercises_path ) %></p>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span2">Frage: </div>
+		<div class="span10"><%=@exercises.text%></div>
+	</div>
+	<div class="row-fluid">
+		<div class="span2">Antwort </div>
+		<div class="span10"><%=@exercises.solution %></div>
+	</div>
+	
+</div>

@@ -1,7 +1,7 @@
 class Wiki < ActiveRecord::Base
   
  has_many :wiki_tags
- has_many :contents, :through => :wiki_tags
+ has_many :knowledge_elements, :through => :wiki_tags
  
   
   validates :title, presence: {message: "Bitte einen Titel eingeben"}
@@ -15,12 +15,12 @@ class Wiki < ActiveRecord::Base
   attr_accessible :title, :article
  
 def searchArticleForTags
-  @tags = Content.all
+  @tags = KnowledgeElement.all
   @tags_as_string = ""
   @tags.each do |tag|
     tagInArticle = Wiki.where("id = :w_id AND article LIKE :tag", {:w_id => id, :tag => "%#{tag.tag}%"})
     if !tagInArticle.empty?
-      # contents << tag
+      # knowledge_elements << tag
       @tags_as_string += tag.tag 
       @tags_as_string += ","
      
@@ -35,7 +35,7 @@ def self.find_by_tags(content_ids, search_text) # wenn search_text leer ist wird
   Wiki.all.each do |article|
     hasAllTags = true
     content_ids.each do |content|
-      hasAllTags = article.contents.where("content_id = ?", content).any? and hasAllTags 
+      hasAllTags = article.knowledge_elements.where("content_id = ?", content).any? and hasAllTags
     end   
     if Wiki.where("id = ? and (title LIKE ? or article LIKE ?)", article.id, search_condition, search_condition).any? and hasAllTags
       @articles << article
@@ -64,14 +64,14 @@ def setTags(paramsTags)
   
   #alle löschen (zum überschreiben nötig)
 
- contents.delete_all 
+ knowledge_elements.delete_all
   
   tags.each do |tag|
-    c = Content.find_by_tag(tag.strip) #strip nötig zum entfernen von Whitespaces am Anfang
-    if !c.nil?  and !contents.exists?(c.id)
-       contents << c   
+    c = KnowledgeElement.find_by_tag(tag.strip) #strip nötig zum entfernen von Whitespaces am Anfang
+    if !c.nil?  and !knowledge_elements.exists?(c.id)
+       knowledge_elements << c
     else
-       errors.add(:tag, '"'+tag+'" existiert nicht in der Contents-Datenbank!')        
+       errors.add(:tag, '"'+tag+'" existiert nicht in der KnowledgeElement-Datenbank!')
     end     
   end
 end

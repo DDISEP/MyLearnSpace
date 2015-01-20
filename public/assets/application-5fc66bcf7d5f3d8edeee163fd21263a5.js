@@ -6123,7 +6123,7 @@ function cloneFixAttributes( src, dest ) {
 	} else if ( nodeName === "input" || nodeName === "textarea" ) {
 		dest.defaultValue = src.defaultValue;
 
-	// IE blanks contents when cloning scripts
+	// IE blanks knowledge_elements when cloning scripts
 	} else if ( nodeName === "script" && dest.text !== src.text ) {
 		dest.text = src.text;
 	}
@@ -7477,7 +7477,7 @@ jQuery.fn.load = function( url, params, callback ) {
 			// Create a dummy div to hold the results
 			jQuery("<div>")
 
-				// inject the contents of the document in, removing the scripts
+				// inject the knowledge_elements of the document in, removing the scripts
 				// to avoid any 'Permission Denied' errors in IE
 				.append( responseText.replace( rscript, "" ) )
 

@@ -1,4 +1,4 @@
-<% if @subexercises.length == 0 then %>
+<% if @subtasks.length == 0 then %>
 	<h3> Noch keine Teilaufgaben vorhanden!</h3>
 <% else %>
 <table class="table table-striped table-condensed">
@@ -12,13 +12,13 @@
 		</tr>
 	</thead>	
 	<tbody>
-		<% @subexercises.each do |s| %>
+		<% @subtasks.each do |s| %>
 			<tr>
 				<td><%= s.text %></td>
 				<td><%= s.solution %></td>
 				<td><%= s.points %></td>
 				<td>
-					<%= button_to edit_exercise_subexercise_path(s.exercise, s),
+					<%= button_to edit_exercise_subexercise_path(s.task, s),
 						:method => :get, class:"btn btn-xs btn-warning" do %>
 							<span class="glyphicon glyphicon-pencil"></span>
 					<% end %>

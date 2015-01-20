@@ -10,7 +10,7 @@ class WikisController < ApplicationController
   end
   
 def get_tags # für Suche mit Tags nötig
-  @contents = Content.all
+  @knowledge_elements = KnowledgeElement.all
 end
 
 
@@ -85,7 +85,7 @@ def search
   @query = params[:search]
   @tags =[]
     
-  if params[:contents].nil?
+  if params[:knowledge_elements].nil?
     @wiki =  Wiki.find_by_title params[:search]
     if @wiki.nil?
       @wikis = Wiki.search params[:search]
@@ -94,10 +94,10 @@ def search
        render js: "window.location.href = '"+wiki_path(@wiki)+"';"  # entspricht redirect_to @wiki
     end
   else
-      params[:contents].each do |content|
-      @tags << Content.find(content).tag
+      params[:knowledge_elements].each do |content|
+      @tags << KnowledgeElement.find(content).tag
     end
-    @wikis = Wiki.find_by_tags(params[:contents], params[:search])
+    @wikis = Wiki.find_by_tags(params[:knowledge_elements], params[:search])
     render "search_results" 
   end
 end 

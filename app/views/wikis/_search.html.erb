@@ -2,8 +2,8 @@
      <div id = "tagSearch" style="display: none">
      	<b>Markiere alle Tags, die der gesuchte Artikel enthalten soll.</b>
      	<table>
-     	<% @contents.each do |content| %>     	
-			<td><%= content.tag %><%= check_box_tag "contents[]", content.id %></td>
+     	<% @knowledge_elements.each do |content| %>
+			<td><%= content.tag %><%= check_box_tag "knowledge_elements[]", content.id %></td>
 		<% end %>
 		</table>
 	</div>

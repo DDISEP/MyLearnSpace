@@ -1,8 +1,8 @@
 <div class="row-fluid">	
 <div class="span6">
-	<%= will_paginate @exercises, :inner_window => 1, :outer_window => 0, :previous_label => t("<"), :next_label => t(">"), renderer: BootstrapPagination::Rails %>
+	<%= will_paginate @tasks, :inner_window => 1, :outer_window => 0, :previous_label => t("<"), :next_label => t(">"), renderer: BootstrapPagination::Rails %>
 </div>
-<div class="span3" style="padding-top: 20px"> <!-- link to creating new exercise -->
+<div class="span3" style="padding-top: 20px"> <!-- link to creating new task -->
 	<%= button_to new_exercise_path, :method => :get, class:"btn btn-xs btn-primary" do %>
 		<span class="glyphicon glyphicon-plus"></span> Neue Lernaufgabe
 	<% end %>
@@ -13,7 +13,7 @@
  	 	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
     		Sortieren nach <span class="caret"></span>
   		</button>
-  		<ul class="dropdown-menu" role="menu">		<!-- IMPORTANT: if you add new sort options, add them also in exercises#index!! -->
+  		<ul class="dropdown-menu" role="menu">		<!-- IMPORTANT: if you add new sort options, add them also in tasks#index!! -->
     		<li><%= link_to "Likes", exercises_path(:sort_by => "like_counter DESC"), :remote => true %></li>
     		<li><%= link_to "Erstelldatum", exercises_path(:sort_by => "created_at DESC"), :remote => true%></li>
     		<li><%= link_to "Titel", exercises_path(:sort_by => "title"), :remote => true%></li>
@@ -34,9 +34,9 @@
 	</thead>
 
 	<tbody>
-	<% @exercises.each do |exercise| %>
+	<% @tasks.each do |exercise| %>
 		<tr>
-			<!-- show title, author, and creation date for each exercise -->
+			<!-- show title, author, and creation date for each task -->
 			<td> <%= link_to exercise.title, exercise %> </td>
 			<td> <%= link_to exercise.user.username, exercise.user %> </td>
 			<td> <%= exercise.likes.length %> </td>
@@ -45,4 +45,4 @@
 	<% end %>
 	</tbody> 
 </table>
-<%= will_paginate @exercises, :inner_window => 1, :outer_window => 0, :previous_label => t("<"), :next_label => t(">"), renderer: BootstrapPagination::Rails %>
+<%= will_paginate @tasks, :inner_window => 1, :outer_window => 0, :previous_label => t("<"), :next_label => t(">"), renderer: BootstrapPagination::Rails %>

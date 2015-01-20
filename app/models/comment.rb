@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
-  belongs_to :exercise
+  belongs_to :task
   
   def username
     if self.user == nil then

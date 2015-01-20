@@ -19,7 +19,7 @@ class LearningUnitsController < ApplicationController
   def new
     @curriculumID = Curriculum.find(params[:curriculum_id])
     @learning_units = @curriculumID.learning_units.build
-    @learning_units.contents.build
+    @learning_units.knowledge_elements.build
   end
 
   # GET /learning_units/1/edit

@@ -2,11 +2,11 @@
 	<div class="panel panel-primary">
 		<div class="panel-body">
 			<div class="row-fluid">
-				<div class="span12">Teilaufgabe <%= @current_subexercise_position %> / <%= @exercise.subexercises.length %></div>
+				<div class="span12">Teilaufgabe <%= @current_subexercise_position %> / <%= @task.subtasks.length %></div>
 			</div>
 			<div class="row-fluid">
 				<div class="span2">Aufgabe: </div>
-				<div class="span10"><%= @subexercise.text %></div>
+				<div class="span10"><%= @exercises.text %></div>
 			</div>
 			<div class="row-fluid">
 				<div class="span2">Deine Antwort: </div>
@@ -14,13 +14,13 @@
 			</div>
 			<div class="row-fluid" style="color: green">
 				<div class="span2">Lösungsvorschlag: </div>
-				<div class="span10"><%= @subexercise.solution %></div>
+				<div class="span10"><%= @exercises.solution %></div>
 			</div>
 			<% if @next == nil then %>
-				<%= form_tag finish_exercise_path(@exercise), :method => :get, onsubmit:"return validatePoints();" do %> 
+				<%= form_tag finish_exercise_path(@task), :method => :get, onsubmit:"return validatePoints();" do %>
 				<div class="row-fluid">					<!-- form for pupil's given points -->
 					<div class="span4"><%= label_tag 'given_points', 'Wie viele Punkte gibst Du Deiner Antwort? ' %></div>
-					<div class="span4"><%= number_field_tag 'given_points' %> / <%= @subexercise.points %></div>
+					<div class="span4"><%= number_field_tag 'given_points' %> / <%= @exercises.points %></div>
 				</div>
 				<div class="row-fluid">
 					<div class="span4">
@@ -31,10 +31,10 @@
 				</div>
 				<% end %>
 			<% else %>
-				<%= form_tag perform_exercise_subexercise_path(@exercise, @next), :method => :get, onsubmit:"return validatePoints();" do %> 
+				<%= form_tag perform_exercise_subexercise_path(@task, @next), :method => :get, onsubmit:"return validatePoints();" do %>
 				<div class="row-fluid"><!-- form for pupil's given points -->
 					<div class="span4"><%= label_tag 'given_points', 'Wie viele Punkte gibst Du Deiner Antwort? ' %></div>
-					<div class="span4"><%= number_field_tag 'given_points', :value =>"-100", style:"height:100%;" %> / <%= @subexercise.points %></div>
+					<div class="span4"><%= number_field_tag 'given_points', :value =>"-100", style:"height:100%;" %> / <%= @exercises.points %></div>
 				</div>
 				<div class="row-fluid">
 					<div class="span4">
@@ -52,7 +52,7 @@
 <script>
 function validatePoints(){
 	var entered_points = document.getElementById('given_points').value;
-	if ( entered_points < 0 || entered_points > <%= @subexercise.points %> ){
+	if ( entered_points < 0 || entered_points > <%= @exercises.points %> ){
 		alert('Bitte gib eine gültige Punktzahl ein!');
 		return false;
 	} else {

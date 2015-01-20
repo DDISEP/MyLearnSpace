@@ -1,4 +1,4 @@
-<%= will_paginate @comments, :inner_window => 2, :outer_window => 0, :previous_label => t("<"), :next_label => t(">"), :params => { :controller => "exercises", :action => "show", :id => @exercise.id }, renderer: BootstrapPagination::Rails %>
+<%= will_paginate @comments, :inner_window => 2, :outer_window => 0, :previous_label => t("<"), :next_label => t(">"), :params => { :controller => "tasks", :action => "show", :id => @task.id }, renderer: BootstrapPagination::Rails %>
 
 <% if @comments.length == 0 then %>
 	<h4> noch keine Kommentare vorhanden! </h4>

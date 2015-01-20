@@ -1282,7 +1282,7 @@ rangy.createModule("DomUtil", function(api, module) {
             assertNodeNotReadOnly(this.startContainer);
             assertNodeNotReadOnly(this.endContainer);
 
-            // Check if the contents can be surrounded. Specifically, this means whether the range partially selects
+            // Check if the knowledge_elements can be surrounded. Specifically, this means whether the range partially selects
             // no non-text nodes.
             var iterator = new RangeIterator(this, true);
             var boundariesInvalid = (iterator._first && (isNonTextPartiallySelected(iterator._first, this)) ||
@@ -1298,7 +1298,7 @@ rangy.createModule("DomUtil", function(api, module) {
                 throw new RangeException("BAD_BOUNDARYPOINTS_ERR");
             }
 
-            // Extract the contents
+            // Extract the knowledge_elements
             var content = this.extractContents();
 
             // Clear the children of the node
@@ -1308,7 +1308,7 @@ rangy.createModule("DomUtil", function(api, module) {
                 }
             }
 
-            // Insert the new node and add the extracted contents
+            // Insert the new node and add the extracted knowledge_elements
             insertNodeAtPosition(node, this.startContainer, this.startOffset);
             node.appendChild(content);
 
@@ -1669,7 +1669,7 @@ rangy.createModule("DomUtil", function(api, module) {
             },
 
             selectNodeContents: function(node) {
-                // This doesn't seem well specified: the spec talks only about selecting the node's contents, which
+                // This doesn't seem well specified: the spec talks only about selecting the node's knowledge_elements, which
                 // could be taken to mean only its children. However, browsers implement this the same as selectNode for
                 // text nodes, so I shall do likewise
                 assertNotDetached(this);
@@ -1696,7 +1696,7 @@ rangy.createModule("DomUtil", function(api, module) {
                 assertNodeNotReadOnly(this.startContainer);
                 assertNodeNotReadOnly(this.endContainer);
 
-                // Check if the contents can be surrounded. Specifically, this means whether the range partially selects
+                // Check if the knowledge_elements can be surrounded. Specifically, this means whether the range partially selects
                 // no non-text nodes.
                 var iterator = new RangeIterator(this, true);
                 var boundariesInvalid = (iterator._first && (isNonTextPartiallySelected(iterator._first, this)) ||
@@ -4790,7 +4790,7 @@ wysihtml5.dom.parse = (function() {
       }
     }
     
-    // Clear element contents
+    // Clear element knowledge_elements
     element.innerHTML = "";
     
     // Insert new DOM tree

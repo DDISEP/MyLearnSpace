@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140811190629) do
   add_index "comments", ["exercise_id"], name: "index_comments_on_exercise_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
-  create_table "contents", force: true do |t|
+  create_table "knowledge_elements", force: true do |t|
     t.string   "tag"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20140811190629) do
   add_index "exercise_contents", ["content_id"], name: "index_exercise_contents_on_content_id"
   add_index "exercise_contents", ["exercise_id"], name: "index_exercise_contents_on_exercise_id"
 
-  create_table "exercises", force: true do |t|
+  create_table "tasks", force: true do |t|
     t.string   "title"
     t.string   "description", limit: 1000
     t.integer  "user_id"
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 20140811190629) do
     t.string   "user_name"
   end
 
-  create_table "subexercises", force: true do |t|
+  create_table "subtasks", force: true do |t|
     t.integer  "position"
     t.string   "text"
     t.string   "solution"

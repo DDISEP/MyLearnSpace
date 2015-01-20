@@ -1,8 +1,8 @@
 class CreateExerciseContents < ActiveRecord::Migration
   def change
     create_table :exercise_contents do |t|
-      t.references :exercise, index: true
-      t.references :content, index: true
+      t.references :task, index: true
+      t.references :knowledge_elements, index: true
 
       t.timestamps
     end
