@@ -4,7 +4,7 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
     
     include ActiveModel::Validations
-    attr_accessible :username, :email, :password,  :pupil
+    attr_accessible :username, :email, :password,  :pupil, :admin, :learner, :teacher
     validate :valid_user
     has_and_belongs_to_many :curriculums
     before_create :hash_password
