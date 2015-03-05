@@ -4,6 +4,7 @@ class Content < ActiveRecord::Base
   has_many :wiki_tags
   has_many :wikis, :through => :wiki_tags 
   has_and_belongs_to_many :exercises
+  has_and_belongs_to_many :assessments
   #end 
  
   attr_accessible :tag

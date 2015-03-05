@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120133959) do
+ActiveRecord::Schema.define(version: 20150305111921) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -20,6 +20,41 @@ ActiveRecord::Schema.define(version: 20150120133959) do
     t.datetime "updated_at"
     t.string   "user_name"
   end
+
+  create_table "assessment_contents", force: true do |t|
+    t.integer  "assessment_id"
+    t.integer  "content_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assessment_contents", ["assessment_id"], name: "index_assessment_contents_on_assessment_id"
+  add_index "assessment_contents", ["content_id"], name: "index_assessment_contents_on_content_id"
+
+  create_table "assessments", force: true do |t|
+    t.string   "creation_date"
+    t.string   "datetime"
+    t.string   "title"
+    t.string   "description",   limit: 1000
+    t.integer  "user_id"
+    t.integer  "assessment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assessments", ["assessment_id"], name: "index_assessments_on_assessment_id"
+  add_index "assessments", ["user_id"], name: "index_assessments_on_user_id"
+
+  create_table "comments", force: true do |t|
+    t.string   "text"
+    t.integer  "user_id"
+    t.integer  "exercise_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["exercise_id"], name: "index_comments_on_exercise_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "contents", force: true do |t|
     t.string   "tag"

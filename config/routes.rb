@@ -51,7 +51,27 @@ MyLearnSpace::Application.routes.draw do
     resources :likes
     
   end
-  
+
+  resources :assessments do
+    get 'change_search_style', on: :collection
+    get 'search', on: :collection
+    get 'statistics', on: :member
+    get 'start', on: :member
+    get 'finish', on: :member
+
+    resources :comments
+
+    resources :performances
+
+    resources :subexercises do
+      get 'perform', on: :member
+      get 'solution', on: :member
+    end
+
+    resources :likes
+
+  end
+
   resources :contents
 
   resources :questions do

@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
     validates_uniqueness_of :username, :email
     has_many :comments, dependent: :nullify
     has_many :exercises, dependent: :nullify
+    has_many :assessments, dependent: :nullify
     has_many :likes, dependent: :destroy
     has_many :performances, dependent: :destroy
 

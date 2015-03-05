@@ -27,7 +27,7 @@ class ExercisesController < ApplicationController
   end
   
   def index
-    case params[:sort_by]       # you can add other cases when new sort options are implemented in _list_exercises.html.erb
+    case params[:sort_by]       # you can add other cases when new sort options are implemented in _list_assessments.html.erb
     when "created_at"
       @exercises = Exercise.all.order('created_at')
     when "created_at DESC"
