@@ -1,0 +1,48 @@
+<div class="row-fluid">	
+<div class="span6">
+	<%= will_paginate @assessments, :inner_window => 1, :outer_window => 0, :previous_label => t("<"), :next_label => t(">"), renderer: BootstrapPagination::Rails %>
+</div>
+<div class="span3" style="padding-top: 20px"> <!-- link to creating new assessment -->
+	<%= button_to new_assessment_path, :method => :get, class:"btn btn-xs btn-primary" do %>
+		<span class="glyphicon glyphicon-plus"></span> Neue Prüfung
+	<% end %>
+</div>
+<div class="span3" style="padding-top: 20px">
+	<div align="right">
+	<div class="btn-group">
+ 	 	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    		Sortieren nach <span class="caret"></span>
+  		</button>
+  		<ul class="dropdown-menu" role="menu">		<!-- IMPORTANT: if you add new sort options, add them also in assessments#index!! -->
+    		<li><%= link_to "Likes", assessments_path(:sort_by => "like_counter DESC"), :remote => true %></li>
+    		<li><%= link_to "Erstelldatum", assessments_path(:sort_by => "created_at DESC"), :remote => true%></li>
+    		<li><%= link_to "Titel", assessments_path(:sort_by => "title"), :remote => true%></li>
+    		<li><%= link_to "Autor", assessments_path(:sort_by => "author_name"), :remote => true%></li>
+  		</ul>
+	</div>
+	</div>
+</div>
+</div>
+<table class="table table-striped">
+	<thead>
+		<tr><strong>		
+			<th> Aufgabenname </th>
+			<th> Autor </th>
+			<th> Likes </th>
+			<th> erstellt am </th>
+		</strong></tr>
+	</thead>
+
+	<tbody>
+	<% @assessments.each do |assessment| %>
+		<tr>
+			<!-- show title, author, and creation date for each assessment -->
+			<td> <%= link_to assessment.title, assessment %> </td>
+			<td> <%= link_to assessment.user.username, assessment.user %> </td>
+			<td> <%= assessment.likes.length %> </td>
+			<td> <%= assessment.created_at.to_s(format = :db) %> </td>
+		</tr>
+	<% end %>
+	</tbody> 
+</table>
+<%= will_paginate @assessments, :inner_window => 1, :outer_window => 0, :previous_label => t("<"), :next_label => t(">"), renderer: BootstrapPagination::Rails %>

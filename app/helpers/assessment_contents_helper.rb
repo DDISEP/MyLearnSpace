@@ -1,0 +1,2 @@
+module AssessmentContentsHelper
+end

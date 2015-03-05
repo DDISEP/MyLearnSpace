@@ -1,0 +1,21 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Datum</th>
+			<th>erreichte Punkte</th>
+			<th>/</th>
+			<th>erreichbare Punkte</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @performances.each do |p| %>
+			<tr>
+				<td><%= p.updated_at %></td>
+				<td><%= p.achieved_points %></td>
+				<td></td>
+				<td><%= p.max_points %></td>
+			</tr>
+		<% end %>
+	</tbody>
+	
+</table>

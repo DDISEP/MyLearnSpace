@@ -1,0 +1,41 @@
+<div class="container-fluid">
+	<div class="col-sm-9">
+		<div class="panel panel-primary">
+			<div class="panel-body">	
+				<% if @matching_assessments.length == 0 then %>
+					<h4> Keine passenden Prüfungen !! </h4>
+				<% else %>
+				<%= will_paginate @matching_assessments, :inner_window => 1, :outer_window => 0, :previous_label => t("<"), :next_label => t(">"), renderer: BootstrapPagination::Rails %>
+				<table class="table table-striped">
+					<thead>
+						<tr><strong>		
+								<th> Aufgabenname </th>
+							<th> Autor </th>
+							<th> Likes </th>
+							<th> erstellt am </th>
+						</strong></tr>
+					</thead>
+			
+					<tbody>
+					<% @matching_assessments.each do |assessment| %>
+						<tr>
+							<!-- show title, author, likes, and creation date for each exercise -->
+							<td> <%= link_to assessment.title, assessment %> </td>
+							<td> <%= link_to assessment.user.username, assessment.user %> </td>
+							<td> <%= assessment.likes.length %> </td>
+							<td> <%= assessment.created_at.to_s(format = :db) %> </td>
+						</tr>
+					<% end %>
+					</tbody> 
+				</table>
+				<%= will_paginate @matching_assessments, :inner_window => 1, :outer_window => 0, :previous_label => t("<"), :next_label => t(">"), renderer: BootstrapPagination::Rails %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<div id="search_panel">
+			<%= render 'assessments/search_panel' %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+<div class="container-fluid">
+	<div class="col-sm-12">
+		<div class="row-fluid">
+			<div class="span10">
+				<h3> Deine Statistik zur Prüfung "<%= @assessment.title %>"</h3>
+			</div>
+			<div class="span2">
+				<%= button_to @assessment, :method => :get, class:"btn btn-xs btn-primary", style:"width:100%;" do %>
+					<span class="glyphicon glyphicon-arrow-left"></span> zurück
+				<% end %>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<%= render partial: 'statistics' %>
+		</div>
+	</div>
+</div>

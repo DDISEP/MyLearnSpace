@@ -1,0 +1,26 @@
+<%= form_for(@assessment) do |f| %>
+<div class="container-fluid">
+	<div class="panel panel-primary">
+		<div class="panel-body">
+			<div id="title_field" class="row-fluid">
+				<div class="span2"><%= f.label :title, "Titel" %></div>
+				<div class="span10"><%= f.text_field :title, placeholder:"Gib hier einen Titel ein...", maxlength:"40", style:"width:100%; height:100%;" %></div>
+			</div>
+			<div id="description_field" class="row-fluid">
+				<div class="span2"><%= f.label :description, "Beschreibung" %></div>
+				<div class="span10"><%= f.text_area :description, placeholder:"Gib hier eine Beschreibung ein...", maxlength:"1000", style:"width:100%; height:60px; resize:vertical;" %></div>
+			</div>
+			<div id="tags_field" class="row-fluid">
+				<div class="span2"><%= label_tag :tags, "Tags" %></div>
+				<div class="span10"><%= text_field_tag :tags, @assessment.tags, placeholder:"Gib hier passende Tags ein...", maxlength:"1000", style:"width:100%; height:100%;" %></div>
+			</div>
+
+			<div id="save_button" class="row-fluid">
+				<div class="span10 offset2"><%= f.submit "Titel, Beschreibung und Tags speichern", class:"btn btn-xs btn-success", style:"width:100%" %></div>
+			</div>
+		</div>
+	</div>
+</div>
+   
+
+<% end %>

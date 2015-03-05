@@ -1,0 +1,17 @@
+<% if !@top_assessment.nil? %>		<!-- if existent, show most popular assessment (based on likes) in right column -->
+	
+	<div class="panel panel-primary">
+		<div class="panel-heading" align="center">
+			<h4>Beliebteste Prüfung</h4>
+		</div>
+		<div class="panel-body">
+			<h4><%= link_to @top_assessment.title , wiki_path(@top_assessment) %></h4>
+			<%= @top_assessment.description %><br />
+			<strong>Likes: <%= @top_assessment.likes.length %></strong>
+		</div>
+		<div class="panel-footer">
+			<%= button_to "zur Prüfungsaufgabe" , assessment_path(@top_assessment), :method => :get, class:"btn btn-xs btn-primary", style:"width: 100%;" %>
+		</div>
+	</div>
+
+<% end %>

@@ -1,0 +1,115 @@
+<div class="container-fluid" style="height: 300px;">
+<div class="row-fluid" id="assessment_title" >
+	<div class="col-sm-9" >
+		<h1><%= @assessment.title %></h1>
+	</div>
+	<div class="col-sm-3" >
+		<%= button_to assessments_path, class:"btn btn-xs btn-primary", :method => :get do %>
+			<span class="glyphicon glyphicon-arrow-left"></span> zur Lernaufgabenübersicht
+		<% end %>
+	</div>
+</div>
+
+<!-- ask user if he/she wants to continue a previously started assessment -->
+<% if @next != nil then%>
+<div id="existing_performance_displayer">
+<div class="row-fluid"><div class="col-sm-12">Du hast diese Lernaufgabe bereits angefangen. Willst Du dort weitermachen oder die bisherige Bearbeitung löschen?</div></div>
+<div class="row-fluid" style="margin-bottom: 10px; margin-top: 10px;">
+	<div class="col-sm-6"><%= button_to perform_assessment_subexercise_path(@assessment.id, @next),
+		:method => :get, class:"btn btn-xs btn-primary", style:"width:100%" do %>
+			Weitermachen <span class="glyphicon glyphicon-share-alt"></span>
+		<% end %>
+	</div>
+		
+	<div class="col-sm-6"><%= button_to assessment_performance_path(@assessment.id, @latest_performance, :authenticity_token => form_authenticity_token),
+		:method => :delete, data: {confirm: "Bist Du Dir sicher?"}, class:"btn btn-xs btn-primary", style:"width:100%" do %>
+			Löschen <span class="glyphicon glyphicon-trash"></span>
+		<% end %>
+	</div>
+</div>
+</div>
+<% end %>
+
+<div class="col-sm-4" id="info_and_actions" style="overflow-y:scroll; height:550px;">
+	<h3> Info </h3> <!-- Informationen zur Aufgabe -->
+	von <%= link_to @assessment.user.username, @assessment.user %> <br/>
+	erstellt: <%= @assessment.created_at.to_s(format = :db) %> <br/>
+	zuetzt bearbeitet: <%= @assessment.updated_at.to_s(format = :db) %> <br/>
+	Beschreibung: <%= @assessment.description %> <br/>
+	Anzahl der Fragen: <%= @assessment.subexercise_counter %><br />
+	Likes: <span id="like_counter"><%= @assessment.like_counter %></span><br/>
+	Erreichbare Punkte: <%= @assessment.max_points %>	<br/>
+	Deine Bestleistung:
+	<% if @top_performance != nil then %>
+		<%= @top_performance.achieved_points %>
+		<%= link_to statistics_assessment_path(@assessment.id) do %>
+			( Statistik <span class="glyphicon glyphicon-stats"></span> )
+		<% end %>
+	<% else %>
+		Noch keine!
+	<% end %>
+	<br />
+	Tags:
+	<% i = 0 %>
+	<% while i < @assessment.contents.length - 1 do %>
+		<%= link_to @assessment.contents[i].tag, @assessment.contents[i] %>,
+		<% i += 1 %>
+	<% end %>
+	<% if @assessment.contents.last != nil %>
+		<%= link_to @assessment.contents.last.tag, @assessment.contents.last %>
+	<% end %>
+	
+	<hr/> <!-- Aufgabenaktionen -->
+	
+	<!-- Start- bzw. Fortsetzen-/Löschen-Button -->
+	<% if @next == nil then%>
+	<div class="row-fluid"><%= button_to start_assessment_path(@assessment.id), :method => :get,
+		style:"width: 100%", class:"btn btn-xs btn-primary" do %>
+			Prüfung starten   <span class="glyphicon glyphicon-play"></span>
+		<% end %>
+	</div>
+	<% else %>
+	<div class="row-fluid"><%= button_to perform_assessment_subexercise_path(@assessment.id, @next),
+		:method => :get, style:"width: 100%", class:"btn btn-xs btn-primary" do %>
+			Prüfung fortsetzen   <span class="glyphicon glyphicon-share-alt"></span>
+		<% end %>
+	</div>
+	<div class="row-fluid"><%= button_to assessment_performance_path(@assessment.id, @latest_performance, :authenticity_token => form_authenticity_token),
+		:method => :delete, :remote => true, style:"width: 100%", class:"btn btn-xs btn-primary"  do%>
+			Bearbeitung löschen   <span class="glyphicon glyphicon-trash"></span>
+		<% end %>
+	</div>
+	<% end%>
+	
+	<!-- Like- bzw. Disklike-Button -->
+	<div id="like_button">
+		<%= render 'likes/button'%>
+	</div>
+	
+	<!-- Bearbeiten-Button -->
+	<% if @assessment.user_id == session[:current_user_id] || session[:admin] == true then%>
+	<div class="row-fluid">
+		<%= button_to edit_assessment_path(@assessment) , :method => :get, style:"width: 100%", class:"btn btn-xs btn-primary" do %>
+			Prüfung bearbeiten   <span class="glyphicon glyphicon-pencil"></span>
+		<% end %>
+	</div>
+	<% end %>
+	
+	<!-- Zurück-Button -->
+	<div class="row-fluid"><%= button_to 'Zurück zur Prüfungsübersicht' , assessments_path, :method => :get, style:"width: 100%", class:"btn btn-xs btn-primary" %></div>
+		
+</div> <!-- /col-4-sm -->
+
+<div class="col-sm-8 panel panel-default" id="comment_column" style="overflow-y:scroll; height:550px;">
+	<h3> Kommentare </h3>
+	<div id="comment_form">
+		<%= render 'comments/form' %>
+	</div>
+	<div id="comment_list">
+		<!-- <button onclick="showMoreComments()">Alle Kommentare</button> -->
+		<%= render 'comments/list_comments' %>
+	</div>
+	
+</div>
+
+</div>

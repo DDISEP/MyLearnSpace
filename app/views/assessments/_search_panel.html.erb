@@ -1,0 +1,56 @@
+<div class="panel panel-primary">
+	<div class="panel-heading" align="center">
+		<h4>Nach Prüfungen suchen</h4>
+	</div>
+	
+	<% if @search_style == "title" then %>
+	<div class="panel-body">
+		<div class="row-fluid">
+			<div class="span6">
+			<%= button_to "Tags", change_search_style_assessments_path(:search_style => "tags"), :remote => true, :method => :get,
+				class:"btn btn-xs btn-info", style:"width: 100%" %>
+			</div>
+			<div class="span6">
+			<%= button_to "Titel", change_search_style_assessments_path(:search_style => "title"), :remote => true, :method => :get,
+				class:"btn btn-xs btn-info disabled", style:"width: 100%" %>
+			</div>
+		</div>
+		
+		<%= form_tag search_assessments_path,  :method => :get do %>
+			<%= label_tag :input_title, "Suche nach Titel:" %>
+			<%= text_area_tag 'input_title', "", placeholder:"Gib hier einen Titel ein...", maxlength:"150", style:"width: 100%; resize:vertical;"%>
+			<%= hidden_field_tag :search_style, "title" %>
+			<%= button_tag type:'submit', class:"btn btn-xs btn-primary", style:"width: 100%;" do %>
+				Suchen <span class="glyphicon glyphicon-search"></span>
+			<% end %>
+			
+		<% end %>
+	</div>
+	<% else %>
+      <div class="panel-body">
+        <div class="row-fluid">
+          <div class="span6">
+            <%= button_to "Tags", change_search_style_assessments_path(:search_style => "tags"), :remote => true, :method => :get,
+                          class:"btn btn-xs btn-info disabled", style:"width: 100%" %>
+          </div>
+          <div class="span6">
+            <%= button_to "Titel", change_search_style_assessments_path(:search_style => "title"), :remote => true, :method => :get,
+                          class:"btn btn-xs btn-info", style:"width: 100%" %>
+          </div>
+        </div>
+
+        <%= form_tag search_assessments_path, :method => :get do %>
+            <%= label_tag :input_tags, "Suche nach Prüfungen mit Tags:" %>
+            <%= text_area_tag 'input_tags', "", placeholder:"Gib hier Tags ein...", maxlength:"150", style:"width: 100%; resize:vertical;"%>
+            <%= hidden_field_tag :search_style, "tags" %>
+            <%= button_tag type:'submit', class:"btn btn-xs btn-primary", style:"width: 100%;" do %>
+                Suchen <span class="glyphicon glyphicon-search"></span>
+            <% end %>
+
+        <% end %>
+      </div>
+
+	<% end %>
+
+</div>
+<% puts "search panel rendered" %>

@@ -1,0 +1,33 @@
+<div class="container-fluid">
+<div class="row-fluid">
+	<div class="span10"><h2>Prüfung bearbeiten</h2></div>
+	<div class="span2">
+		<%= button_to @assessment, :method => :get, class:"btn btn-xs btn-primary", style:"width:100%" do %>
+			<span class="glyphicon glyphicon-arrow-left"> zurück </span>
+		<% end %>
+	</div>
+</div>
+<div class="row-fluid" style="margin-bottom: 0px; margin-top: 15px;">
+		<%= render 'form' %>
+</div>
+
+<div class="row-fluid">
+	<div class="span4">
+		<%= button_to new_assessment_subexercise_path(@assessment), :method => :get,
+			class:"btn btn-xs btn-primary", style:"width:100%" do %>
+			<span class="glyphicon glyphicon-plus"></span> Neue Teilaufgabe
+		<% end %>
+	</div>
+	<div class="span4">
+		<%= button_to  assessment_path(@assessment, :authenticity_token => form_authenticity_token),
+			:method => :delete, data: {confirm:"Willst Du die Lernaufgabe wirklich löschen?"}, class:"btn btn-xs btn-primary", style:"width:100%" do %>
+			<span class="glyphicon glyphicon-trash"></span> Löschen
+		<% end%>
+	</div>	
+	<div class="span4">
+		<%= button_to "zurück",  assessment_path(@assessment), :method => :get, class:"btn btn-xs btn-primary", style:"width:100%" %>
+	</div>	
+</div>	<!-- /row-fluid -->
+<%= render 'subexercises/list_subexercises' %>
+	
+</div> 
