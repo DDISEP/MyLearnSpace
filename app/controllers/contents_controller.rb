@@ -1,8 +1,8 @@
 class ContentsController < ApplicationController
 
   before_action :set_content, only: [:edit, :update, :destroy]
-  before_action :check_admin,  only:[:new, :create, :edit, :update, :delete, :destroy] #Zugriffsrechte nur für Administratoren!
-  skip_before_action :check_login, only: [:new, :create, :edit, :update, :delete, :destroy]#check_admin ersetzt für diese Methoden check_login
+  before_action :authorize_admin,  only:[:new, :create, :edit, :update, :delete, :destroy] #Zugriffsrechte nur für Administratoren!
+  skip_before_action :check_login, only: [:new, :create, :edit, :update, :delete, :destroy]#authorize_admin ersetzt für diese Methoden check_login
 
   
 
@@ -64,18 +64,6 @@ class ContentsController < ApplicationController
     respond_to do |format|
       format.js
     end
-  end
-
-  #Testet, ob ein Administrator eingeloggt ist
-  def check_admin
-      @admin = session[:admin]
-      if @admin!=true
-        if session[:current_user_id].nil?
-          redirect_to root_url, :notice => "Du bist kein Administrator!"
-        else
-          redirect_to contents_path, :notice => "Das darfst du nur als Administrator!"
-        end
-      end
   end
   
   def autocomplete

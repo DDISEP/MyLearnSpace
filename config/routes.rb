@@ -79,14 +79,14 @@ MyLearnSpace::Application.routes.draw do
   end
 
   resources :curriculums do
-    resources :items
+    resources :learning_units
   end
-  
+
   post 'curriculums/:id' => "curriculums#update"
   
-  get 'curriculums/:curriculum_id/items/:id/addContent' => "items#addContent", as: 'addContent'
+  get 'curriculums/:curriculum_id/learning_units/:id/addContent' => "learning_units#addContent", as: 'addContent'
   
-  post 'curriculums/:curriculum_id/items/:id/addContent' => "items#addContent"
+  post 'curriculums/:curriculum_id/learning_units/:id/addContent' => "learning_units#addContent"
   
   post 'exercises/:id' => "exercises#start"
   

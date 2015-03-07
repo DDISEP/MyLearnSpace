@@ -10,7 +10,7 @@
 <p id="notice"><%= notice %></p>
 
 <%= link_to 'Lehrplan bearbeiten', edit_curriculum_path(@curriculum) %> | 
-<%= link_to 'Neuen Lehrplaninhalt hinzufügen', new_curriculum_item_path(@curriculum) %><br />
+<%= link_to 'Neuen Lehrplaninhalt hinzufügen', new_curriculum_learning_unit_path(@curriculum) %><br />
 
 <br />
 
@@ -25,24 +25,24 @@
     	<td colspan="2"></td>
     </tr>
     
-    <% @curriculum.items.order(:title).each do |curitem| %> 
+    <% @curriculum.learningUnits.order(:title).each do |curlearningUnit| %>
 
-    <table id=<%= curitem.id%> width="50%" border="1" cellpadding="5" >
+    <table id=<%= curlearningUnit.id%> width="50%" border="1" cellpadding="5" >
     	<tr>	
           <td bgcolor="lightgrey">
-        	<%= curitem.title %>, <%= curitem.hours %> Stunde(n) 
+        	<%= curlearningUnit.title %>, <%= curlearningUnit.hours %> Stunde(n)
           </td>
           <td bgcolor="lightgrey" width="50%">
-            <%= link_to 'bearbeiten', edit_curriculum_item_path(@curriculum, curitem) %> | 
-            <%= link_to "löschen", curriculum_item_path(@curriculum, curitem, :authenticity_token => form_authenticity_token), :remote => true, :method => :delete, :data => { :confirm => 'Wollen Sie diesen Datensatz wirklich löschen?' } %>
+            <%= link_to 'bearbeiten', edit_curriculum_learning_unit_path(@curriculum, curlearningUnit) %> |
+            <%= link_to "löschen", curriculum_learning_unit_path(@curriculum, curlearningUnit, :authenticity_token => form_authenticity_token), :remote => true, :method => :delete, :data => { :confirm => 'Wollen Sie diesen Datensatz wirklich löschen?' } %>
           </td>        
         </tr>
     
        <tr>
       	<td colspan="3">
-    	  <%= curitem.descriptionOfContent %>
+    	  <%= curlearningUnit.descriptionOfContent %>
     	  <p>&nbsp;</p>
-    	  <% curitem.contents.each do |contentlist| %>
+    	  <% curlearningUnit.contents.each do |contentlist| %>
     	  <ul class="list-unstyled">
     		<ul><li><%= contentlist.tag %></li></ul>
     	  </ul>

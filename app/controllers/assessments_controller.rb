@@ -5,6 +5,7 @@ class AssessmentsController < ApplicationController
   before_action :get_comments, only: [:destroy, :delete, :show]
   before_action :get_latest_performance, only: [:show, :start]
   before_action :check_auth, only:[:update, :destroy]
+  before_action :authorize_teacher, only:[:create, :new]
 
   def check_auth
     if @assessment.user_id != session[:current_user_id] && session[:admin] != true then

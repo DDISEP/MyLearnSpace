@@ -1,0 +1,4 @@
+json.array!(@learningUnits) do |learningUnit|
+  json.extract! learningUnit, :title, :hours, :descriptionOfContent
+  json.url learningUnit_url(learningUnit, format: :json)
+end

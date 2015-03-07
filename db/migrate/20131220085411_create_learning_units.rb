@@ -1,11 +1,10 @@
-class CreateItems < ActiveRecord::Migration
+class CreateLearningUnits < ActiveRecord::Migration
   def change
-    create_table :items do |t|
+    create_table :learning_units do |t|
       t.string :title
       t.integer :hours
       t.string :descriptionOfContent
       t.belongs_to :curriculum
-
       t.timestamps
     end
   end

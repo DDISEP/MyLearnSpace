@@ -88,7 +88,7 @@
           itemText = self.options.itemText(item),
           tagClass = self.options.tagClass(item);
 
-      // Ignore items allready added
+      // Ignore learning_units allready added
       var existing = $.grep(self.itemsArray, function(item) { return self.options.itemValue(item) === itemValue; } )[0];
       if (existing) {
         // Invoke onTagExists
@@ -157,7 +157,7 @@
     },
 
     /**
-     * Removes all items
+     * Removes all learning_units
      */
     removeAll: function() {
       var self = this;
@@ -202,7 +202,7 @@
     },
 
     /**
-     * Returns the items added as tags
+     * Returns the learning_units added as tags
      */
     items: function() {
       return this.itemsArray;

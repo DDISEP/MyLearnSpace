@@ -1,0 +1,26 @@
+<h1>Alle auf MyLearnSpace verfügbaren Lehrplaninhalte auflisten, die keiner braucht</h1>
+
+<table border="1" cellpadding="5">
+    <tr bgcolor="grey">
+      <th>Titel</th>
+      <th>Stundenaufwand</th>
+      <th>Funktionen</th>
+    </tr>
+    <tr><td colspan="3"></td></tr>
+    <tr>
+      <% @learningUnits.each do |learningUnit| %>
+        <td bgcolor="lightgrey"><%= learningUnit.title %></td>
+        <td bgcolor="lightgrey"><%= learningUnit.hours %> Stunde(n)</td>
+        <td bgcolor="lightgrey"><%= link_to 'anzeigen', learningUnit.curriculum %>
+            <%= link_to 'bearbeiten', edit_curriculum_learningUnit_path(@learningUnit.curriculum_id, learningUnit) %>
+            </td>
+    </tr>
+    <tr><td colspan="3"><%= learningUnit.descriptionOfContent %></td></tr>
+    <tr><td colspan="3"></td></tr>
+    <% end %>
+    </tr>
+</table>
+
+<br>
+
+<%= link_to 'Neuer Lehrplaninhalt', new_curriculum_learningUnit_path %>

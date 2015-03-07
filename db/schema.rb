@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(version: 20150305111921) do
     t.datetime "updated_at"
   end
 
-  create_table "contents_items", force: true do |t|
+  create_table "contents_learning_units", force: true do |t|
     t.integer "content_id"
-    t.integer "item_id"
+    t.integer "learning_unit_id"
   end
 
   create_table "curriculums", force: true do |t|
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20150305111921) do
 
   add_index "exercises", ["user_id"], name: "index_exercises_on_user_id"
 
-  create_table "items", force: true do |t|
+  create_table "learning_units", force: true do |t|
     t.string   "title"
     t.integer  "hours"
     t.string   "descriptionOfContent"
