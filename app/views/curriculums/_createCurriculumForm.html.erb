@@ -7,9 +7,9 @@
 		<td>
 			<%= f.label :country, "Land*" %>
 		</td>
-		
+
 		<td>
-			<%= f.select :country , ["Deutschland", "Austria", "Schweiz"],
+			<%= f.select :country , ["Deutschland", "Österreich", "Schweiz"],
 			  :include_blank => false,
 			  :prompt => "Bitte wählen" %>
 		</td>
@@ -31,7 +31,9 @@
 		</td>
 		
 		<td>
-			   <%= f.text_field :typeOfSchool, placeholder:"Schulart" %>
+          <%= f.select :typeOfSchool , ["Gymnasium", "Realschule", "Hauptschule", "Fachoberschule", "Berufsoberschule"],
+                       :include_blank => false,
+                       :prompt => "Bitte wählen" %>
 		</td>
 			
 	</tr>
