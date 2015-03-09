@@ -51,12 +51,12 @@
 	<br />
 	Tags:
 	<% i = 0 %>
-	<% while i < @assessment.contents.length - 1 do %>
-		<%= link_to @assessment.contents[i].tag, @assessment.contents[i] %>,
+	<% while i < @assessment.knowledge_elements.length - 1 do %>
+		<%= link_to @assessment.knowledge_elements[i].tag, @assessment.knowledge_elements[i] %>,
 		<% i += 1 %>
 	<% end %>
-	<% if @assessment.contents.last != nil %>
-		<%= link_to @assessment.contents.last.tag, @assessment.contents.last %>
+	<% if @assessment.knowledge_elements.last != nil %>
+		<%= link_to @assessment.knowledge_elements.last.tag, @assessment.knowledge_elements.last %>
 	<% end %>
 	
 	<hr/> <!-- Aufgabenaktionen -->

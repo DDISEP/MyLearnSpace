@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   respond_to do |format|
     if @user.update(params[:user])
       format.html { redirect_to users_profile_path, notice: 'Das Benutzerprofil wurde erfolgreich geändert.' }
-      format.json { head :no_content }
+      format.json { head :no_knowledge_element }
     else
       format.html { render action: "edit" }
       format.json { render json: @user.errors, status: :unprocessable_entity }

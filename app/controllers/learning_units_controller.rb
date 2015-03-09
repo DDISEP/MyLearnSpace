@@ -1,6 +1,6 @@
 class LearningUnitsController < ApplicationController
 
-  before_action :set_learningUnit, only: [:edit, :update, :destroy, :addContent]
+  before_action :set_learningUnit, only: [:edit, :update, :destroy, :addKnowledgeElement]
   before_action :authorize_admin,  only:[:new, :create, :edit, :update, :delete, :destroy] #Zugriffsrechte nur für Administratoren!
   skip_before_action :check_login, only: [:new, :create, :edit, :update, :delete, :destroy]#authorize_admin ersetzt für diese Methoden check_login
 
@@ -19,7 +19,7 @@ class LearningUnitsController < ApplicationController
   def new
     @curriculumID = Curriculum.find(params[:curriculum_id])
     @learningUnit = @curriculumID.learningUnits.build
-    @learningUnit.contents.build
+    @learningUnit.knowledge_elements.build
   end
 
   # GET /learning_units/1/edit
@@ -51,7 +51,7 @@ class LearningUnitsController < ApplicationController
       if @learningUnit.update(learningUnit_params)
         format.html { redirect_to @curriculumID, notice: "Lehrplaninhalt #{@learningUnit.title} wurde erfolgreich aktualisiert." }
         #redirects to LP-Detail-Site: format.html { redirect_to [@curriculumID, @learningUnit], notice: 'Lehrplaninhalt wurde erfolgreich aktualisiert.' }
-        format.json { head :no_content }
+        format.json { head :no_knowledge_element }
       else
         format.html { render action: 'edit' }
         format.json { render json: @learningUnit.errors, status: :unprocessable_entity }
@@ -77,7 +77,7 @@ class LearningUnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def learningUnit_params
-      params.require(:learningUnit).permit(:title, :hours, :descriptionOfContent)
+      params.require(:learningUnit).permit(:title, :hours, :descriptionOfKnowledgeElement)
     end
     
 end

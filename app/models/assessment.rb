@@ -8,11 +8,11 @@ class Assessment < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_many :performances, dependent: :destroy
   has_many :assessment_contents, dependent: :destroy
-  has_many :contents, through: :assessment_contents
+  has_many :knowledge_elements, through: :assessment_contents
 
   def tags
     tags = ""
-    self.contents.each do |c|
+    self.knowledge_elements.each do |c|
       tags = tags + c.tag + ", "
     end
     # here we have @existing_tags = "tag1, tag2, ... , tag23, " , so we need to take away the last to chars

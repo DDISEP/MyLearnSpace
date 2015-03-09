@@ -48,7 +48,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
-        format.json { head :no_content }
+        format.json { head :no_knowledge_element }
       else
         format.html { render action: 'edit' }
         format.json { render json: @question.errors, status: :unprocessable_entity }
@@ -62,7 +62,7 @@ class QuestionsController < ApplicationController
     @question.destroy
     respond_to do |format|
       format.html { redirect_to questions_url }
-      format.json { head :no_content }
+      format.json { head :no_knowledge_element }
     end
   end
 

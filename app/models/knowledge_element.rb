@@ -1,6 +1,6 @@
-class Content < ActiveRecord::Base
+class KnowledgeElement < ActiveRecord::Base
   
-  #Wiki Tags (m:n ralation between wiki and content with join-table wiki_tags)
+  #Wiki Tags (m:n ralation between wiki and knowledge_element with join-table wiki_tags)
   has_many :wiki_tags
   has_many :wikis, :through => :wiki_tags 
   has_and_belongs_to_many :exercises
@@ -13,7 +13,7 @@ class Content < ActiveRecord::Base
   validates_uniqueness_of :tag, :message => " gibt es schon."
   
   
-  #m:n relation between contents and learning_units (join-table contents_learningUnits)
+  #m:n relation between knowledge_elements and learning_units (join-table knowledge_elements_learningUnits)
   has_and_belongs_to_many :learningUnits
 
   

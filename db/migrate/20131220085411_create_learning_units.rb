@@ -3,7 +3,7 @@ class CreateLearningUnits < ActiveRecord::Migration
     create_table :learning_units do |t|
       t.string :title
       t.integer :hours
-      t.string :descriptionOfContent
+      t.string :descriptionOfKnowledgeElement
       t.belongs_to :curriculum
       t.timestamps
     end

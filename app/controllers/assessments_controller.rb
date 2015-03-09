@@ -93,14 +93,14 @@ class AssessmentsController < ApplicationController
     tags = params[:tags].split(",").map{|tag| tag.strip }
     tags.each do |t|
       # attention: works only with SQLite!
-      matching_tag = Content.find_by_sql("SELECT * FROM contents WHERE tag = '" + t + "' COLLATE NOCASE;").first
+      matching_tag = KnowledgeElement.find_by_sql("SELECT * FROM knowledge_elements WHERE tag = '" + t + "' COLLATE NOCASE;").first
       if matching_tag != nil then
         to_create = AssessmentContent.new
         to_create.assessment_id = @assessment.id
-        to_create.content_id = matching_tag.id
+        to_create.knowledge_element_id = matching_tag.id
         to_create.save
       end
-    end     # links between exercise and contents created and saved
+    end     # links between exercise and knowledge_elements created and saved
     flash[:notice] = "Aufgabe erfolgreich angelegt"
     redirect_to assessment_path(@assessment)
   end
@@ -110,16 +110,16 @@ class AssessmentsController < ApplicationController
     @assessment.description = params[:assessment][:description]
     @assessment.save
 
-    old_tags = @assessment.contents.map{|t| t.tag}                # tags as they were before editing
+    old_tags = @assessment.knowledge_elements.map{|t| t.tag}                # tags as they were before editing
     new_tags = params[:tags].split(",").map{|tag| tag.strip }   # tags that have now been entered
     tags_to_create = new_tags - old_tags                        # tags that now have to be created
     tags_to_delete = old_tags - new_tags                        # tags that now have to be removed
 
     tags_to_delete.each do |t|
-      # matching_tag = Content.where(tag: t).first
+      # matching_tag = KnowledgeElement.where(tag: t).first
       # attention: wors only with SQLite!
-      matching_tag = Content.find_by_sql("SELECT * FROM contents WHERE tag = '" + t + "' COLLATE NOCASE;").first
-      matching_link = matching_tag.nil? ? nil : AssessmentContent.where(content_id: matching_tag.id, assessment_id: @assessment.id).first
+      matching_tag = KnowledgeElement.find_by_sql("SELECT * FROM knowledge_elements WHERE tag = '" + t + "' COLLATE NOCASE;").first
+      matching_link = matching_tag.nil? ? nil : AssessmentContent.where(knowledge_element_id: matching_tag.id, assessment_id: @assessment.id).first
       # should never be nil because link already existed, check just for security
       if matching_link != nil then    # should also never be nil because link already existed, check just for security
         matching_link.destroy
@@ -128,11 +128,11 @@ class AssessmentsController < ApplicationController
 
     tags_to_create.each do |t|
       # attention: wors only with SQLite!
-      matching_tag = Content.find_by_sql("SELECT * FROM contents WHERE tag = '" + t + "' COLLATE NOCASE;").first
+      matching_tag = KnowledgeElement.find_by_sql("SELECT * FROM knowledge_elements WHERE tag = '" + t + "' COLLATE NOCASE;").first
       if matching_tag != nil then
         to_create = AssessmentContent.new
         to_create.exercise_id = @assessment.id
-        to_create.content_id = matching_tag.id
+        to_create.knowledge_element_id = matching_tag.id
         to_create.save
       end
     end       # created the newly entered tags
@@ -179,7 +179,7 @@ class AssessmentsController < ApplicationController
     if params[:search_style] == "tags" then
       tags_to_search = params[:input_tags].split(',').map{|t| t.strip.downcase}   # stores all entered words downcased
       AssessmentContent.all.each do  |l|
-        if tags_to_search.include?(l.content.tag.downcase) then       # check for each existing link if its tag has eben entered
+        if tags_to_search.include?(l.knowledge_element.tag.downcase) then       # check for each existing link if its tag has eben entered
           @matching_assessments.push(l.assessment)                        # if yes, add corresponding exercises to matching_exercises
         end
       end

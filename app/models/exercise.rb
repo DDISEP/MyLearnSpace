@@ -9,12 +9,12 @@ class Exercise < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_many :performances, dependent: :destroy
   has_many :exercise_contents, dependent: :destroy
-  has_many :contents, through: :exercise_contents
+  has_many :knowledge_elements, through: :exercise_contents
   
-  # returns String representation of associated contents
+  # returns String representation of associated knowledge_elements
   def tags
     tags = ""
-    self.contents.each do |c|
+    self.knowledge_elements.each do |c|
       tags = tags + c.tag + ", "
     end
     # here we have @existing_tags = "tag1, tag2, ... , tag23, " , so we need to take away the last to chars

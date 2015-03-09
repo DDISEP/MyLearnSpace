@@ -1,8 +1,0 @@
-voi fian ar***
-<p>
-  <strong>Schlagwort:</strong>
-  <%= @content.tag %>
-</p>
-
-<%= link_to 'bearbeiten', edit_content_path(@content) %> |
-<%= link_to 'zurück', contents_path %>

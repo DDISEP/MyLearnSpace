@@ -1,0 +1,10 @@
+<% if @knowledge_element.errors.any? %>
+  <div class="alert alert-danger">
+    <strong><%= @knowledge_element.errors.count %> Fehler gefunden:</strong>
+    <ul>
+    <% @knowledge_element.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -1,0 +1,1 @@
+json.extract! @knowledge_element, :tag, :created_at, :updated_at

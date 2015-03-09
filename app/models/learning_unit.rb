@@ -1,6 +1,6 @@
 class LearningUnit < ActiveRecord::Base
   
-  attr_accessible :title, :hours, :descriptionOfContent, :curriculum_id
+  attr_accessible :title, :hours, :descriptionOfKnowledgeElement, :curriculum_id
   
   #Validations
   validate :valid_learning_unit
@@ -11,7 +11,7 @@ class LearningUnit < ActiveRecord::Base
     if title.nil?
       errors.add(:base, "Geben Sie bitte noch einen Titel an.")
     end
-    if descriptionOfContent.nil?
+    if descriptionOfKnowledgeElement.nil?
       errors.add(:base, "Geben Sie bitte noch eine Beschreibung des Lehrplaninhaltes an.")
     end
     if hours==0
@@ -23,7 +23,7 @@ class LearningUnit < ActiveRecord::Base
   #Relations between different parts of the website
   #1:n relation between curriculum and learningUnit
   belongs_to :curriculum
-  #m:n relation between learningUnit and content (join-table contents_learningUnits)
-  has_and_belongs_to_many :contents
+  #m:n relation between learningUnit and knowledge_element (join-table knowledge_elements_learningUnits)
+  has_and_belongs_to_many :knowledge_elements
 
 end

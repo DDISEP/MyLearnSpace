@@ -1,5 +1,5 @@
 <%= form_for(@curriculum) do |f| %>
-  <%= render "display_errors" %> 
+  <%= render "display_errors" %>
 
 
 <table cellpadding="10">
@@ -14,40 +14,40 @@
 			  :prompt => "Bitte wählen" %>
 		</td>
 	</tr>
-	
-	<tr> 
+
+	<tr>
 		<td>
 			<%= f.label :state, "Bundesland*" %>
 		</td>
-		
+
 		<td>
 			   <%= f.text_field :state, placeholder:"Bundesland" %>
 		</td>
-		
+
 	</tr>
 	<tr>
 		<td>
 			<%= f.label :typeOfSchool, "Schulart*" %>
 		</td>
-		
+
 		<td>
           <%= f.select :typeOfSchool , ["Gymnasium", "Realschule", "Hauptschule", "Fachoberschule", "Berufsoberschule"],
                        :include_blank => false,
                        :prompt => "Bitte wählen" %>
 		</td>
-			
+
 	</tr>
 	<tr>
 		<td>
 			<%= f.label :profession, "Zweig" %>
 		</td>
-		
+
 		<td>
 			   <%= f.select :profession , ["naturwissenschaftlich", "sprachlich", "musisch", "klassisch", "wirtschaftlich", "handwerklich"],
 			  :include_blank => false,
 			  :prompt => "Bitte wählen" %>
 		</td>
-		
+
 	</tr>
 	<tr>
 		<td>
@@ -62,25 +62,25 @@
 		<td>
 			<%= f.label :level, "Jahrgangsstufe*" %>
 		</td>
-		
+
 		<td>
 			 <%= f.text_field :level, placeholder:"Jahrgangsstufe" %>
 		</td>
-			
+
 	</tr>
 	<tr>
 		<td>
 			<%= f.label :hyperlink, "Original-Lehrplan*" %>
 		</td>
-		
+
 		<td>
 			 <%= f.text_field :hyperlink, placeholder:"http://" %>
 		</td>
-			
+
 	</tr>
 
 </table>
- 
+
   <p>
     <%= f.submit "Lehrplan speichern" %>
   </p>

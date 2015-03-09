@@ -40,11 +40,11 @@
     
        <tr>
       	<td colspan="3">
-    	  <%= curlearningUnit.descriptionOfContent %>
+    	  <%= curlearningUnit.descriptionOfKnowledgeElement %>
     	  <p>&nbsp;</p>
-    	  <% curlearningUnit.contents.each do |contentlist| %>
+    	  <% curlearningUnit.knowledge_elements.each do |knowledge_element_list| %>
     	  <ul class="list-unstyled">
-    		<ul><li><%= contentlist.tag %></li></ul>
+    		<ul><li><%= knowledge_element_list.tag %></li></ul>
     	  </ul>
           <% end %>
     	</td>

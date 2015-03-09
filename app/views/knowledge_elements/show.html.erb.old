@@ -1,0 +1,8 @@
+voi fian ar***
+<p>
+  <strong>Schlagwort:</strong>
+  <%= @knowledge_element.tag %>
+</p>
+
+<%= link_to 'bearbeiten', edit_knowledge_element_path(@knowledge_element) %> |
+<%= link_to 'zurück', knowledge_elements_path %>

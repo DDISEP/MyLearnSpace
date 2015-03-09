@@ -6123,7 +6123,7 @@ function cloneFixAttributes( src, dest ) {
 	} else if ( nodeName === "input" || nodeName === "textarea" ) {
 		dest.defaultValue = src.defaultValue;
 
-	// IE blanks contents when cloning scripts
+	// IE blanks knowledge_elements when cloning scripts
 	} else if ( nodeName === "script" && dest.text !== src.text ) {
 		dest.text = src.text;
 	}
@@ -7477,7 +7477,7 @@ jQuery.fn.load = function( url, params, callback ) {
 			// Create a dummy div to hold the results
 			jQuery("<div>")
 
-				// inject the contents of the document in, removing the scripts
+				// inject the knowledge_elements of the document in, removing the scripts
 				// to avoid any 'Permission Denied' errors in IE
 				.append( responseText.replace( rscript, "" ) )
 
@@ -7921,7 +7921,7 @@ jQuery.extend({
 
 		// Set the correct header, if data is being sent
 		if ( s.data && s.hasContent && s.contentType !== false || options.contentType ) {
-			jqXHR.setRequestHeader( "Content-Type", s.contentType );
+			jqXHR.setRequestHeader( "KnowledgeElement-Type", s.contentType );
 		}
 
 		// Set the If-Modified-Since and/or If-None-Match header, if in ifModified mode.
@@ -9960,7 +9960,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 //     </textarea>
 
 // The iframe transport plugin will detect this and pass the value of the
-// `data-type` attribute on to jQuery as if it was the "Content-Type" response
+// `data-type` attribute on to jQuery as if it was the "KnowledgeElement-Type" response
 // header, thereby enabling the same kind of conversions that jQuery applies
 // to regular responses. For the example above you should get a Javascript
 // object as the `data` parameter of the `complete` callback, with the
@@ -10107,7 +10107,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
                 jqXHR.responseText = content.text;
               }
               completeCallback(status, statusText, content, type ?
-                ("Content-Type: " + type) :
+                ("KnowledgeElement-Type: " + type) :
                 null);
             });
 
@@ -12765,7 +12765,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
       return (400 <= (_ref = xhr.status) && _ref < 600);
     };
     validContent = function() {
-      return xhr.getResponseHeader('Content-Type').match(/^(?:text\/html|application\/xhtml\+xml|application\/xml)(?:;|$)/);
+      return xhr.getResponseHeader('KnowledgeElement-Type').match(/^(?:text\/html|application\/xhtml\+xml|application\/xml)(?:;|$)/);
     };
     extractTrackAssets = function(doc) {
       var node, _i, _len, _ref, _results;

@@ -1,0 +1,29 @@
+<h1>Liste der Schlagwörter</h1>
+
+<p id="notice"><%= notice %></p>
+
+<table cellpadding="5" border="1">
+  <thead>
+    <tr>
+      <th>Schlagwort</th>
+      <th>Funktionen</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @knowledge_elements.each do |knowledge_element| %>
+      <tr id=<%= knowledge_element.id%>>
+        <td><%= knowledge_element.tag %></td>
+        <td>
+        <%= link_to 'bearbeiten', edit_knowledge_element_path(knowledge_element) %>
+        <%= link_to "löschen", knowledge_element_path(knowledge_element, :authenticity_token => form_authenticity_token), :remote => true, :method => :delete, :confirm => "Wollen Sie diesen Datensatz wirklich löschen?" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Neues Schlagwort', new_knowledge_element_path %> <br />
+<%= link_to 'zurück zur Lehrplanübersicht', curriculums_path %>

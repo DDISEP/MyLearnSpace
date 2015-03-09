@@ -15,8 +15,8 @@ class Curriculum < ActiveRecord::Base
   validates_inclusion_of :profession, :in => %w(naturwissenschaftlich sprachlich klassisch musisch wirtschaftlich handwerklich).push(""), :message => "falsche Angabe"
   
   validates_presence_of :country, :message => " darf nicht leer sein."
-  validates_inclusion_of :country, :in => %w(Deutschland Austria Schweiz), :message => " muss Deutschland, Austria oder Schweiz lauten."
-  
+  validates_inclusion_of :country, :in => %w(Deutschland Österreich Schweiz), :message => " muss Deutschland, Österreich oder Schweiz lauten."
+
   validates_presence_of :state, :message => " darf nicht leer sein."
   
   validates_presence_of :hyperlink, :message => " darf nicht leer sein"
@@ -25,7 +25,7 @@ class Curriculum < ActiveRecord::Base
   #Relations between different parts of the website
   #m:n relation between curriculum and learningUnit (join-table curriculums_learningUnits) with destroy-dependence
   has_many :learningUnits, :dependent => :destroy
-  #m:n relation between curriculum and user (join-table contents_learningUnits)
+  #m:n relation between curriculum and user (join-table knowledge_elements_learningUnits)
   has_and_belongs_to_many :users
   
 end

@@ -72,7 +72,7 @@ MyLearnSpace::Application.routes.draw do
 
   end
 
-  resources :contents
+  resources :knowledge_elements
 
   resources :questions do
     resources :answers

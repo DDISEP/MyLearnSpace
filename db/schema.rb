@@ -23,13 +23,13 @@ ActiveRecord::Schema.define(version: 20150305111921) do
 
   create_table "assessment_contents", force: true do |t|
     t.integer  "assessment_id"
-    t.integer  "content_id"
+    t.integer  "knowledge_element_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "assessment_contents", ["assessment_id"], name: "index_assessment_contents_on_assessment_id"
-  add_index "assessment_contents", ["content_id"], name: "index_assessment_contents_on_content_id"
+  add_index "assessment_contents", ["knowledge_element_id"], name: "index_assessment_contents_on_knowledge_element_id"
 
   create_table "assessments", force: true do |t|
     t.string   "creation_date"
@@ -55,17 +55,6 @@ ActiveRecord::Schema.define(version: 20150305111921) do
 
   add_index "comments", ["exercise_id"], name: "index_comments_on_exercise_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
-
-  create_table "contents", force: true do |t|
-    t.string   "tag"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "contents_learning_units", force: true do |t|
-    t.integer "content_id"
-    t.integer "learning_unit_id"
-  end
 
   create_table "curriculums", force: true do |t|
     t.string   "subject"
@@ -100,13 +89,13 @@ ActiveRecord::Schema.define(version: 20150305111921) do
 
   create_table "exercise_contents", force: true do |t|
     t.integer  "exercise_id"
-    t.integer  "content_id"
+    t.integer  "knowledge_element_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "exercise_contents", ["content_id"], name: "index_exercise_contents_on_content_id"
   add_index "exercise_contents", ["exercise_id"], name: "index_exercise_contents_on_exercise_id"
+  add_index "exercise_contents", ["knowledge_element_id"], name: "index_exercise_contents_on_knowledge_element_id"
 
   create_table "exercises", force: true do |t|
     t.string   "title"
@@ -118,10 +107,21 @@ ActiveRecord::Schema.define(version: 20150305111921) do
 
   add_index "exercises", ["user_id"], name: "index_exercises_on_user_id"
 
+  create_table "knowledge_elements", force: true do |t|
+    t.string   "tag"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "knowledge_elements_learning_units", force: true do |t|
+    t.integer "knowledge_element_id"
+    t.integer "learning_unit_id"
+  end
+
   create_table "learning_units", force: true do |t|
     t.string   "title"
     t.integer  "hours"
-    t.string   "descriptionOfContent"
+    t.string   "descriptionOfKnowledgeElement"
     t.integer  "curriculum_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -189,7 +189,7 @@ ActiveRecord::Schema.define(version: 20150305111921) do
 
   create_table "wiki_tags", force: true do |t|
     t.integer  "wiki_id"
-    t.integer  "content_id"
+    t.integer  "knowledge_element_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
