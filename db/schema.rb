@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811190629) do
+ActiveRecord::Schema.define(version: 20150120133959) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -20,17 +20,6 @@ ActiveRecord::Schema.define(version: 20140811190629) do
     t.datetime "updated_at"
     t.string   "user_name"
   end
-
-  create_table "comments", force: true do |t|
-    t.string   "text"
-    t.integer  "user_id"
-    t.integer  "exercise_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comments", ["exercise_id"], name: "index_comments_on_exercise_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "contents", force: true do |t|
     t.string   "tag"
@@ -156,6 +145,9 @@ ActiveRecord::Schema.define(version: 20140811190629) do
     t.string   "password"
     t.string   "email"
     t.boolean  "pupil"
+    t.boolean  "learner"
+    t.boolean  "admin"
+    t.boolean  "teacher"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

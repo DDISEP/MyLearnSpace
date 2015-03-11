@@ -1,29 +1,7 @@
 #Encoding: utf-8
 class UsersController < ApplicationController
-  skip_before_action :check_login, only: [:new, :create, :adminLogin, :admin]
+  skip_before_action :check_login, only: [:new, :create]
   
-  # Administrator ist Sepp1314 mit Passwort: 123*#abc
- 
-  #Methode hat eine View, tut aber slebst nichts
-  def adminLogin
-  end
-  
-  #Überprüfung der Administratordaten => View als extra Willkommensseite füe Administratoren
-  def admin 
-    @admin = false  
-    if params[:adminname]=='Sepp1314'&& params[:adminpassword]=='123*#abc'
-      @admin = true
-    else
-      redirect_to root_url, :notice => "Melde dich bitte erst an!"
-    end
-    session[:admin] = @admin
-  end
-  
-  #Abmelden des Administrators
-  def adminDelete
-    session.clear
-  end
- 
   def index
     @users = User.all.sort{|a,b| a.username.downcase <=> b.username.downcase } #Sortierung nach Alphabet um Suche zu ersetzem
   end
