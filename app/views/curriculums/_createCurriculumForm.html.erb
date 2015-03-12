@@ -1,87 +1,189 @@
 <%= form_for(@curriculum) do |f| %>
-  <%= render "display_errors" %>
+    <form method="get" action="_output.html">
+      <%= render "display_errors" %>
 
 
-<table cellpadding="10">
-	<tr>
-		<td>
-			<%= f.label :country, "Land*" %>
-		</td>
+      <table cellpadding="10">
 
-		<td>
-			<%= f.select :country , ["Deutschland", "Österreich", "Schweiz"],
-			  :include_blank => false,
-			  :prompt => "Bitte wählen" %>
-		</td>
-	</tr>
 
-	<tr>
-		<td>
-			<%= f.label :state, "Bundesland*" %>
-		</td>
+        <tr>
+          <td> <%= f.label :country, "Land*:" %></td>
+          <td><select name="curriculum[country]" id="Land">
+            <option value="" selected = "selected">Bitte wählen:</option>
+            <option value="Deutschland">Deutschland</option>
+            <option value="Österreich">Österreich</option>
+            <option value="Schweiz">Schweiz</option>
+          </select></td>
+        </tr>
+        <tr id="tr_Deutschland" class="method_options">
+          <th><%= f.label :state, "Bundesland*:" %></th>
+          <td><select name="curriculum[state]" id="id_Deutschland">
+            <option value="" selected = "selected">Bitte wählen:</option>
+            <option value="Baden-Württemberg">Baden-Württemberg</option>
+            <option value="Bayern">Bayern</option>
+            <option value="Berlin">Berlin</option>
+            <option value="Brandenburg">Brandenburg</option>
+            <option value="Bremen">Bremen</option>
+            <option value="Hamburg">Hamburg</option>
+            <option value="Hessen">Hessen</option>
+            <option value="Mecklenburg-Vorpommern">Mecklenburg-Vorpommern</option>
+            <option value="Nordrhein-Westfalen">Nordrhein-Westfalen</option>
+            <option value="Niedersachsen">Niedersachsen</option>
+            <option value="Saarland">Saarland</option>
+            <option value="Sachsen">Sachsen</option>
+            <option value="Sachsen-Anhalt">Sachsen-Anhalt</option>
+            <option value="Schleswig-Holstein">Schleswig-Holstein</option>
+            <option value="Thüringen">Thüringen</option>
+          </select></td>
+        </tr>
+        <tr id="tr_Österreich" class="method_options">
+          <th><%= f.label :state, "Bundesland*:" %></th>
+          <td><select name="othername" id="id_Österreich">
+            <option value="" selected = "selected">Bitte wählen:</option>
+            <option value="Burgenland">Burgenland</option>
+            <option value="Kärnten">Kärnten</option>
+            <option value="Niederösterreich">Niederösterreich</option>
+            <option value="Oberösterreich">Oberösterreich</option>
+            <option value="Salzburg">Salzburg</option>
+            <option value="Steiermark">Steiermark</option>
+            <option value="Tirol">Tirol</option>
+            <option value="Vorarlberg">Vorarlberg</option>
+            <option value="Wien">Wien</option>
+          </select></td>
+        </tr>
+        <tr id="tr_Schweiz" class="method_options">
 
-		<td>
-			   <%= f.text_field :state, placeholder:"Bundesland" %>
-		</td>
+          <th><%= f.label :state, "Kanton*:" %></th>
+          <td><select name="othername" id="id_Schweiz">
+            <option value="" selected = "selected">Bitte wählen:</option>
+            <option value="Aargau">Aargau</option>
+            <option value="Appenzell Ausserrhoden">Appenzell Ausserrhoden</option>
+            <option value="Appenzell Innerrhoden">Appenzell Innerrhoden</option>
+            <option value="Basel-Landschaft">Basel-Landschaft</option>
+            <option value="Basel-Stadt">Basel-Stadt</option>
+            <option value="Bern">Bern</option>
+            <option value="Freiburg">Freiburg</option>
+            <option value="Genf">Genf</option>
+            <option value="Glarus">Glarus</option>
+            <option value="Graubünden">Graubünden</option>
+            <option value="Jura">Jura</option>
+            <option value="Luzern">Luzern</option>
+            <option value="Neuenburg">Neuenburg</option>
+            <option value="Nidwalden">Nidwalden</option>
+            <option value="Obwalden">Obwalden</option>
+            <option value="Schaffhausen">Schaffhausen</option>
+            <option value="Schwyz">Schwyz</option>
+            <option value="Solothurn">Solothurn</option>
+            <option value="St. Gallen">St. Gallen</option>
+            <option value="Thessin">Thessin</option>
+            <option value="Thurgau">Thurgau</option>
+            <option value="Uri">Uri</option>
+            <option value="Waadt">Waadt</option>
+            <option value="Wallis">Wallis</option>
+            <option value="Zug">Zug</option>
+            <option value="Zürich">Zürich</option>
+          </select> </td>
+        </tr>
 
-	</tr>
-	<tr>
-		<td>
-			<%= f.label :typeOfSchool, "Schulart*" %>
-		</td>
+        <script>
+            $(document).ready(function(){
+                $ ('tr.method_options').hide();
+                $('#Land').on('change', function() {
 
-		<td>
-          <%= f.select :typeOfSchool , ["Gymnasium", "Realschule", "Hauptschule", "Fachoberschule", "Berufsoberschule"],
-                       :include_blank => false,
-                       :prompt => "Bitte wählen" %>
-		</td>
+                    $('tr.method_options').hide();
+                    $('#tr_' + $(this).val()).show();
 
-	</tr>
-	<tr>
-		<td>
-			<%= f.label :profession, "Zweig" %>
-		</td>
+                    var s = document.getElementById('Land');
+                    var item1 = s.options[s.selectedIndex].value;
 
-		<td>
-			   <%= f.select :profession , ["naturwissenschaftlich", "sprachlich", "musisch", "klassisch", "wirtschaftlich", "handwerklich"],
-			  :include_blank => false,
-			  :prompt => "Bitte wählen" %>
-		</td>
+                    window.onclick = nameChange;
 
-	</tr>
-	<tr>
-		<td>
-			<%= f.label :subject, "Fach*" %>
-		</td>
 
-		<td>
-			<%= f.text_field :subject, placeholder:"Fach" %>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<%= f.label :level, "Jahrgangsstufe*" %>
-		</td>
+                    function nameChange() {
+                        if(item1 == "Deutschland"){
+                            document.getElementById('id_Österreich').name = 'othername';
+                            document.getElementById('id_Schweiz').name = 'othername';
+                        }
+                        if(item1 == "Österreich"){
+                            document.getElementById('id_Österreich').name = 'curriculum[state]';
+                            document.getElementById('id_Schweiz').name = 'othername';
+                        }
+                        if (item1 == "Schweiz") {
+                            document.getElementById('id_Österreich').name = 'othername';
+                            document.getElementById('id_Schweiz').name = 'curriculum[state]';
+                        };
 
-		<td>
-			 <%= f.text_field :level, placeholder:"Jahrgangsstufe" %>
-		</td>
+                    }
 
-	</tr>
-	<tr>
-		<td>
-			<%= f.label :hyperlink, "Original-Lehrplan*" %>
-		</td>
 
-		<td>
-			 <%= f.text_field :hyperlink, placeholder:"http://" %>
-		</td>
 
-	</tr>
 
-</table>
 
-  <p>
-    <%= f.submit "Lehrplan speichern" %>
-  </p>
+
+
+                });
+            });
+        </script>
+
+
+        <tr>
+          <td>
+            <%= f.label :typeOfSchool, "Schulart*" %>
+          </td>
+
+          <td>
+            <%= f.select :typeOfSchool , ["Gymnasium", "Realschule", "Hauptschule", "Fachoberschule", "Berufsoberschule"],
+                         :include_blank => false,
+                         :prompt => "Bitte wählen" %>
+          </td>
+
+        </tr>
+        <tr>
+          <td>
+            <%= f.label :profession, "Zweig" %>
+          </td>
+
+          <td>
+            <%= f.select :profession , ["naturwissenschaftlich", "sprachlich", "musisch", "klassisch", "wirtschaftlich", "handwerklich"],
+                         :include_blank => false,
+                         :prompt => "Bitte wählen" %>
+          </td>
+
+        </tr>
+        <tr>
+          <td>
+            <%= f.label :subject, "Fach*" %>
+          </td>
+
+          <td>
+            <%= f.text_field :subject, placeholder:"Fach" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= f.label :level, "Jahrgangsstufe*" %>
+          </td>
+
+          <td>
+            <%= f.text_field :level, placeholder:"Jahrgangsstufe" %>
+          </td>
+
+        </tr>
+        <tr>
+          <td>
+            <%= f.label :hyperlink, "Original-Lehrplan*" %>
+          </td>
+
+          <td>
+            <%= f.text_field :hyperlink, placeholder:"http://" %>
+          </td>
+
+        </tr>
+
+      </table>
+
+      <p>
+        <%= f.submit "Lehrplan speichern" %>
+      </p>
+    </form>
 <% end %>
