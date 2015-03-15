@@ -56,6 +56,8 @@ MyLearnSpace::Application.routes.draw do
     get 'change_search_style', on: :collection
     get 'search', on: :collection
     get 'statistics', on: :member
+    get 'clef', on: :member
+    get 'showclef', on: :member
     get 'start', on: :member
     get 'finish', on: :member
 
@@ -63,7 +65,7 @@ MyLearnSpace::Application.routes.draw do
 
     resources :performances
 
-    resources :subexercises do
+    resources :subassessments do
       get 'perform', on: :member
       get 'solution', on: :member
     end

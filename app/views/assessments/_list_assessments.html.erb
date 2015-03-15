@@ -14,7 +14,6 @@
     		Sortieren nach <span class="caret"></span>
   		</button>
   		<ul class="dropdown-menu" role="menu">		<!-- IMPORTANT: if you add new sort options, add them also in assessments#index!! -->
-    		<li><%= link_to "Likes", assessments_path(:sort_by => "like_counter DESC"), :remote => true %></li>
     		<li><%= link_to "Erstelldatum", assessments_path(:sort_by => "created_at DESC"), :remote => true%></li>
     		<li><%= link_to "Titel", assessments_path(:sort_by => "title"), :remote => true%></li>
     		<li><%= link_to "Autor", assessments_path(:sort_by => "author_name"), :remote => true%></li>
@@ -28,7 +27,6 @@
 		<tr><strong>		
 			<th> Aufgabenname </th>
 			<th> Autor </th>
-			<th> Likes </th>
 			<th> erstellt am </th>
 		</strong></tr>
 	</thead>
@@ -39,7 +37,6 @@
 			<!-- show title, author, and creation date for each assessment -->
 			<td> <%= link_to assessment.title, assessment %> </td>
 			<td> <%= link_to assessment.user.username, assessment.user %> </td>
-			<td> <%= assessment.likes.length %> </td>
 			<td> <%= assessment.created_at.to_s(format = :db) %> </td>
 		</tr>
 	<% end %>

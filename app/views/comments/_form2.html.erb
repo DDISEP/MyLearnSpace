@@ -1,0 +1,7 @@
+<%= form_for [@assessment, @comment], remote: true do |f| %>
+    <div class="row-fluid">
+      <div class="span10"><%= f.text_area :text, placeholder:"Schreibe einen Kommentar...", style:"width: 100%; resize:none;", maxlength:"1000" %></div>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <div class="span2"><%= f.submit "Speichern", style:"width: 100%", class:"btn btn-xs btn-success" %></div>
+    </div>
+<% end %>

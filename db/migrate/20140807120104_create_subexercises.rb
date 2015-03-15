@@ -5,7 +5,6 @@ class CreateSubexercises < ActiveRecord::Migration
       t.string :text
       t.string :solution
       t.references :exercise, index: true
-
       t.timestamps
     end
   end

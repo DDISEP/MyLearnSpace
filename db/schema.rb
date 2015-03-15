@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305111921) do
+ActiveRecord::Schema.define(version: 20150314204944) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(version: 20150305111921) do
     t.string   "datetime"
     t.string   "title"
     t.string   "description",   limit: 1000
+    t.integer  "min_points_1"
+    t.integer  "min_points_2"
+    t.integer  "min_points_3"
+    t.integer  "min_points_4"
+    t.integer  "min_points_5"
     t.integer  "user_id"
     t.integer  "assessment_id"
     t.datetime "created_at"
@@ -49,10 +54,12 @@ ActiveRecord::Schema.define(version: 20150305111921) do
     t.string   "text"
     t.integer  "user_id"
     t.integer  "exercise_id"
+    t.integer  "assessment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "comments", ["assessment_id"], name: "index_comments_on_assessment_id"
   add_index "comments", ["exercise_id"], name: "index_comments_on_exercise_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
@@ -147,11 +154,13 @@ ActiveRecord::Schema.define(version: 20150305111921) do
     t.integer  "achieved_points"
     t.integer  "user_id"
     t.integer  "exercise_id"
+    t.integer  "assessment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "current_position"
   end
 
+  add_index "performances", ["assessment_id"], name: "index_performances_on_assessment_id"
   add_index "performances", ["exercise_id"], name: "index_performances_on_exercise_id"
   add_index "performances", ["user_id"], name: "index_performances_on_user_id"
 
@@ -162,6 +171,18 @@ ActiveRecord::Schema.define(version: 20150305111921) do
     t.datetime "updated_at"
     t.string   "user_name"
   end
+
+  create_table "subassessments", force: true do |t|
+    t.integer  "position"
+    t.string   "text"
+    t.string   "solution"
+    t.integer  "points"
+    t.integer  "assessment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subassessments", ["assessment_id"], name: "index_subassessments_on_assessment_id"
 
   create_table "subexercises", force: true do |t|
     t.integer  "position"

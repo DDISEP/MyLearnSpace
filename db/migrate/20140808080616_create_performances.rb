@@ -5,6 +5,7 @@ class CreatePerformances < ActiveRecord::Migration
       t.integer :achieved_points
       t.references :user, index: true
       t.references :exercise, index: true
+      t.references :assessment, index: true
 
       t.timestamps
     end

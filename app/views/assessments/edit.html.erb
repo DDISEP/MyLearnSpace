@@ -13,7 +13,7 @@
 
 <div class="row-fluid">
 	<div class="span4">
-		<%= button_to new_assessment_subexercise_path(@assessment), :method => :get,
+		<%= button_to new_assessment_subassessment_path(@assessment), :method => :get,
 			class:"btn btn-xs btn-primary", style:"width:100%" do %>
 			<span class="glyphicon glyphicon-plus"></span> Neue Teilaufgabe
 		<% end %>
@@ -28,6 +28,6 @@
 		<%= button_to "zurück",  assessment_path(@assessment), :method => :get, class:"btn btn-xs btn-primary", style:"width:100%" %>
 	</div>	
 </div>	<!-- /row-fluid -->
-<%= render 'subexercises/list_subexercises' %>
+<%= render 'subassessments/list_subassessments' %>
 	
 </div> 

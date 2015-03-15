@@ -1,10 +1,10 @@
 class Assessment < ActiveRecord::Base
-  attr_accessor :like_counter, :max_points, :subexercise_counter, :author_name
-  attr_accessible :like_counter, :max_points, :subexercise_counter, :author_name
+  attr_accessor :like_counter, :max_points, :subassessment_counter, :author_name
+  attr_accessible :like_counter, :max_points, :subassessment_counter, :author_name
 
   belongs_to :user
   has_many :comments, dependent: :destroy
-  has_many :subexercises, dependent: :destroy
+  has_many :subassessments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :performances, dependent: :destroy
   has_many :assessment_contents, dependent: :destroy
@@ -20,16 +20,12 @@ class Assessment < ActiveRecord::Base
     return tags
   end
 
-  def like_counter
-    return Like.where(assessment_id: self.id).length
-  end
-
-  def subexercise_counter
-    return Subexercise.where(assessment_id: self.id).length
+  def subassessment_counter
+    return Subassessment.where(assessment_id: self.id).length
   end
 
   def max_points
-    return Subexercise.where(assessment_id: self.id).map{ |s| s.points}.sum
+    return Subassessment.where(assessment_id: self.id).map{ |s| s.points}.sum
   end
 
   def author_name

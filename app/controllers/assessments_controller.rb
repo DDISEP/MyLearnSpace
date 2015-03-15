@@ -1,7 +1,7 @@
 require 'will_paginate/array'
 
 class AssessmentsController < ApplicationController
-  before_action :get_assessment, only: [:show, :edit, :delete, :destroy, :update, :get_comments, :start, :authenticate, :finish, :statistics]
+  before_action :get_assessment, only: [:show, :edit, :delete, :destroy, :update, :get_comments, :start, :authenticate, :finish, :statistics, :clef, :showclef]
   before_action :get_comments, only: [:destroy, :delete, :show]
   before_action :get_latest_performance, only: [:show, :start]
   before_action :check_auth, only:[:update, :destroy]
@@ -32,10 +32,6 @@ class AssessmentsController < ApplicationController
         @assessments = Assessment.all.order('created_at')
       when "created_at DESC"
         @assessments = Assessment.all.order('created_at DESC')
-      when "like_counter"
-        @assessments = Assessment.all.sort_by{|e| e.like_counter}
-      when "like_counter DESC"
-        @assessments = Assessment.all.sort_by{|e| e.like_counter}.reverse
       when "title"
         @assessments = Assessment.all.order('title')
       when "title DESC"
@@ -50,8 +46,6 @@ class AssessmentsController < ApplicationController
       end
 
 
-    @top_assessment = @assessments.sort_by{|e| e.like_counter }.last    # important: find top_assessment before calling paginate!
-
     @assessments = @assessments.paginate(:page => params[:page], :per_page => 10)
 
     respond_to do |format|
@@ -62,22 +56,21 @@ class AssessmentsController < ApplicationController
 
   def show
     if @latest_performance != nil && @latest_performance.current_position > -1 then
-      #last performance unfinished, set next subexercise to do
-      @next = Subexercise.where(assessment_id: params[:id], position: @latest_performance.current_position).first
+      #last performance unfinished, set next subassessment to do
+      @next = Subassessment.where(assessment_id: params[:id], position: @latest_performance.current_position).first
     end
     @comment = Comment.new      # needed for comment/_form.html.erb
-    @existingLike = Like.where(assessment_id: params[:id], user_id: session[:current_user_id]).first #check, if user already likes this exercise
     @comments = @comments.paginate(:page => params[:page], :per_page => 10)
     @page = params[:page].nil? ? 1 : params[:page]
     @top_performance = Performance.where(assessment_id: @assessment.id, user_id: session[:current_user_id]).order('achieved_points DESC').first
   end
 
-  def edit  # even admin isn't allowed to edit exercises, he/she may only delete it
+  def edit  # even admin isn't allowed to edit subassessments, he/she may only delete it
     if @assessment.user_id != session[:current_user_id] then
       flash[:notice] = "Nur der Autor einer Prüfung darf diese aendern!"
       redirect_to @assessment
     end
-    @subexercises = @assessment.subexercises
+    @subassessments = @assessment.subassessments
   end
 
   def new
@@ -86,8 +79,13 @@ class AssessmentsController < ApplicationController
 
   def create
     @assessment = Assessment.new
-    @assessment.title = params[:assessments][:title]
-    @assessment.description = params[:assessments][:description]
+    @assessment.title = params[:assessment][:title]
+    @assessment.description = params[:assessment][:description]
+    @assessment.min_points_1 = params[:assessment][:min_points_1]
+    @assessment.min_points_2 = params[:assessment][:min_points_2]
+    @assessment.min_points_3 = params[:assessment][:min_points_3]
+    @assessment.min_points_4 = params[:assessment][:min_points_4]
+    @assessment.min_points_5 = params[:assessment][:min_points_5]
     @assessment.user_id = session[:current_user_id]
     @assessment.save      # assessments created and saved
     tags = params[:tags].split(",").map{|tag| tag.strip }
@@ -100,14 +98,20 @@ class AssessmentsController < ApplicationController
         to_create.knowledge_element_id = matching_tag.id
         to_create.save
       end
-    end     # links between exercise and knowledge_elements created and saved
+    end     # links between assessment and knowledge_elements created and saved
     flash[:notice] = "Aufgabe erfolgreich angelegt"
     redirect_to assessment_path(@assessment)
   end
 
   def update
+
     @assessment.title = params[:assessment][:title]
     @assessment.description = params[:assessment][:description]
+    @assessment.min_points_1 = params[:assessment][:min_points_1]
+    @assessment.min_points_2 = params[:assessment][:min_points_2]
+    @assessment.min_points_3 = params[:assessment][:min_points_3]
+    @assessment.min_points_4 = params[:assessment][:min_points_4]
+    @assessment.min_points_5 = params[:assessment][:min_points_5]
     @assessment.save
 
     old_tags = @assessment.knowledge_elements.map{|t| t.tag}                # tags as they were before editing
@@ -117,7 +121,7 @@ class AssessmentsController < ApplicationController
 
     tags_to_delete.each do |t|
       # matching_tag = KnowledgeElement.where(tag: t).first
-      # attention: wors only with SQLite!
+      # attention: works only with SQLite!
       matching_tag = KnowledgeElement.find_by_sql("SELECT * FROM knowledge_elements WHERE tag = '" + t + "' COLLATE NOCASE;").first
       matching_link = matching_tag.nil? ? nil : AssessmentContent.where(knowledge_element_id: matching_tag.id, assessment_id: @assessment.id).first
       # should never be nil because link already existed, check just for security
@@ -127,24 +131,25 @@ class AssessmentsController < ApplicationController
     end     # deleted all tags that aren't enumerated anymore
 
     tags_to_create.each do |t|
-      # attention: wors only with SQLite!
+      # attention: works only with SQLite!
       matching_tag = KnowledgeElement.find_by_sql("SELECT * FROM knowledge_elements WHERE tag = '" + t + "' COLLATE NOCASE;").first
       if matching_tag != nil then
         to_create = AssessmentContent.new
-        to_create.exercise_id = @assessment.id
+        to_create.assessment_id = @assessment.id
         to_create.knowledge_element_id = matching_tag.id
         to_create.save
       end
+
     end       # created the newly entered tags
     flash[:notice] = "Prüfung erfolgreich bearbeitet!"
-    redirect_to exercise_path(@assessment)
+    redirect_to assessment_path(@assessment)
   end
 
   def start
-    if @assessment.subexercise_counter == 0 then
+    if @assessment.subassessment_counter == 0 then
       redirect_to(assessment_path(@assessment), notice: "Keine Teilaufgaben vorhanden!")
     else
-      firstQuestion = Subexercise.where(assessment_id: @assessment.id).order('position ASC').first   # first question doesn't have to have position 0
+      firstQuestion = Subassessment.where(assessment_id: @assessment.id).order('position ASC').first   # first question doesn't have to have position 0
       @performance = Performance.new          # for some (unknown) reason mass assignment via create didn't work
       @performance.assessment_id = params[:id]
       @performance.user_id = session[:current_user_id]
@@ -152,7 +157,7 @@ class AssessmentsController < ApplicationController
       @performance.achieved_points = 0
       @performance.max_points = @assessment.max_points
       @performance.save
-      redirect_to perform_assessment_subexercise_path(@assessment, firstQuestion)
+      redirect_to perform_assessment_subassessment_path(@assessment, firstQuestion)
     end
   end
 
@@ -180,14 +185,14 @@ class AssessmentsController < ApplicationController
       tags_to_search = params[:input_tags].split(',').map{|t| t.strip.downcase}   # stores all entered words downcased
       AssessmentContent.all.each do  |l|
         if tags_to_search.include?(l.knowledge_element.tag.downcase) then       # check for each existing link if its tag has eben entered
-          @matching_assessments.push(l.assessment)                        # if yes, add corresponding exercises to matching_exercises
+          @matching_assessments.push(l.assessment)                        # if yes, add corresponding assessments to matching_assessments
         end
       end
     elsif params[:search_style] == "title" then
       input_title = params[:input_title].downcase                           # downcase input title to account for simple typos
       Assessment.all.each do |e|
         e_title = e.title.downcase                                          # downcase title to account for simple typos
-        if e_title.match(input_title) || input_title.match(e_title) then    # check for each exercise if its title in
+        if e_title.match(input_title) || input_title.match(e_title) then    # check for each assessment if its title in
           @matching_assessments.push(e)
         end
       end
@@ -207,6 +212,15 @@ class AssessmentsController < ApplicationController
 
   def statistics
     @performances = Performance.where(assessment_id: params[:id], user_id: session[:current_user_id], current_position: -2).order('created_at DESC')
+  end
+
+  def clef
+
+  end
+
+
+  def showclef
+
   end
 end
 

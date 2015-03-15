@@ -11,7 +11,7 @@
 						<tr><strong>		
 								<th> Aufgabenname </th>
 							<th> Autor </th>
-							<th> Likes </th>
+
 							<th> erstellt am </th>
 						</strong></tr>
 					</thead>
@@ -19,10 +19,9 @@
 					<tbody>
 					<% @matching_assessments.each do |assessment| %>
 						<tr>
-							<!-- show title, author, likes, and creation date for each exercise -->
+							<!-- show title, author, and creation date for each assessment -->
 							<td> <%= link_to assessment.title, assessment %> </td>
 							<td> <%= link_to assessment.user.username, assessment.user %> </td>
-							<td> <%= assessment.likes.length %> </td>
 							<td> <%= assessment.created_at.to_s(format = :db) %> </td>
 						</tr>
 					<% end %>

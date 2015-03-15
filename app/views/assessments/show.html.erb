@@ -15,7 +15,7 @@
 <div id="existing_performance_displayer">
 <div class="row-fluid"><div class="col-sm-12">Du hast diese Lernaufgabe bereits angefangen. Willst Du dort weitermachen oder die bisherige Bearbeitung löschen?</div></div>
 <div class="row-fluid" style="margin-bottom: 10px; margin-top: 10px;">
-	<div class="col-sm-6"><%= button_to perform_assessment_subexercise_path(@assessment.id, @next),
+	<div class="col-sm-6"><%= button_to perform_assessment_subassessment_path(@assessment.id, @next),
 		:method => :get, class:"btn btn-xs btn-primary", style:"width:100%" do %>
 			Weitermachen <span class="glyphicon glyphicon-share-alt"></span>
 		<% end %>
@@ -36,8 +36,7 @@
 	erstellt: <%= @assessment.created_at.to_s(format = :db) %> <br/>
 	zuetzt bearbeitet: <%= @assessment.updated_at.to_s(format = :db) %> <br/>
 	Beschreibung: <%= @assessment.description %> <br/>
-	Anzahl der Fragen: <%= @assessment.subexercise_counter %><br />
-	Likes: <span id="like_counter"><%= @assessment.like_counter %></span><br/>
+	Anzahl der Fragen: <%= @assessment.subassessment_counter %><br />
 	Erreichbare Punkte: <%= @assessment.max_points %>	<br/>
 	Deine Bestleistung:
 	<% if @top_performance != nil then %>
@@ -69,7 +68,7 @@
 		<% end %>
 	</div>
 	<% else %>
-	<div class="row-fluid"><%= button_to perform_assessment_subexercise_path(@assessment.id, @next),
+	<div class="row-fluid"><%= button_to perform_assessment_subassessment_path(@assessment.id, @next),
 		:method => :get, style:"width: 100%", class:"btn btn-xs btn-primary" do %>
 			Prüfung fortsetzen   <span class="glyphicon glyphicon-share-alt"></span>
 		<% end %>
@@ -80,20 +79,30 @@
 		<% end %>
 	</div>
 	<% end%>
-	
-	<!-- Like- bzw. Disklike-Button -->
-	<div id="like_button">
-		<%= render 'likes/button'%>
-	</div>
-	
+
+
+  <div class="row-fluid">
+    <%= button_to showclef_assessment_path(@assessment) , :method => :get, style:"width: 100%", class:"btn btn-xs btn-primary" do %>
+        Notenschlüssel einsehen   <span class="glyphicon glyphicon-play"></span>
+    <% end %>
+  </div>
 	<!-- Bearbeiten-Button -->
-	<% if @assessment.user_id == session[:current_user_id] || session[:admin] == true then%>
+	<% if @assessment.user_id == session[:current_user_id]%>
 	<div class="row-fluid">
 		<%= button_to edit_assessment_path(@assessment) , :method => :get, style:"width: 100%", class:"btn btn-xs btn-primary" do %>
 			Prüfung bearbeiten   <span class="glyphicon glyphicon-pencil"></span>
 		<% end %>
 	</div>
 	<% end %>
+
+  <!-- Notenschlüssel-Button -->
+  <% if @assessment.user_id == session[:current_user_id] %>
+      <div class="row-fluid">
+        <%= button_to clef_assessment_path(@assessment) , :method => :get, style:"width: 100%", class:"btn btn-xs btn-primary" do %>
+            Notenschlüssel bearbeiten   <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+      </div>
+  <% end %>
 	
 	<!-- Zurück-Button -->
 	<div class="row-fluid"><%= button_to 'Zurück zur Prüfungsübersicht' , assessments_path, :method => :get, style:"width: 100%", class:"btn btn-xs btn-primary" %></div>
@@ -103,11 +112,11 @@
 <div class="col-sm-8 panel panel-default" id="comment_column" style="overflow-y:scroll; height:550px;">
 	<h3> Kommentare </h3>
 	<div id="comment_form">
-		<%= render 'comments/form' %>
+		<%= render 'comments/form2' %>
 	</div>
 	<div id="comment_list">
 		<!-- <button onclick="showMoreComments()">Alle Kommentare</button> -->
-		<%= render 'comments/list_comments' %>
+		<%= render 'comments/list_comments2' %>
 	</div>
 	
 </div>

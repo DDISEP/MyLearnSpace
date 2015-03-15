@@ -1,0 +1,48 @@
+<table cellspacing="10" cellpadding="20">
+
+  <tr>
+    <th>Note 1:</th>
+    <th><%= @assessment.max_points %> </th>
+    <th>-</th>
+    <th><%= @assessment.min_points_1 %></th>
+  </tr>
+
+  <tr>
+    <th>Note 2:</th>
+    <th><%= (@assessment.min_points_1)-1 %> </th>
+    <th>-</th>
+    <th><%= @assessment.min_points_2 %></th>
+  </tr>
+
+  <tr>
+    <th>Note 3:</th>
+    <th><%= (@assessment.min_points_2)-1 %> </th>
+    <th>-</th>
+    <th><%= @assessment.min_points_3 %></th>
+  </tr>
+
+  <tr>
+    <th>Note 4:</th>
+    <th><%= (@assessment.min_points_3)-1 %> </th>
+    <th>-</th>
+    <th><%= @assessment.min_points_4 %></th>
+  </tr>
+
+  <tr>
+    <th>Note 5:</th>
+    <th><%= (@assessment.min_points_4)-1 %> </th>
+    <th>-</th>
+    <th><%= @assessment.min_points_5 %></th>
+  </tr>
+
+
+  <tr>
+    <th>Note 6:</th>
+    <th><%= (@assessment.min_points_5)-1 %> </th>
+    <th>-</th>
+    <th> 0 </th>
+  </tr>
+
+</table>
+
+    </div>
