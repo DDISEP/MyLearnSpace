@@ -1,4 +1,4 @@
-<%= form_for(@assessment) do |f| %>
+<%= form_for @assessment, :html => {:onsubmit => "return validateForm();"} do |f| %>
 
     <table cellspacing="10" cellpadding="20">
       <tr>
@@ -28,6 +28,15 @@
 
 
     </table>
+
+    <div id="title_field" class="row-fluid">
+      <div class="span2"><%= f.label :title, "" %></div>
+      <div class="span10"><%= f.hidden_field :title, placeholder:"Gib hier einen Titel ein...", maxlength:"40", style:"width:100%; height:100%;" %></div>
+    </div>
+    <div id="description_field" class="row-fluid">
+      <div class="span2"><%= f.label :description, "" %></div>
+      <div class="span10"><%= f.hidden_field :description, placeholder:"Gib hier eine Beschreibung ein...", maxlength:"1000", style:"width:100%; height:60px; resize:vertical;" %></div>
+    </div>
     <div id="tags_field" class="row-fluid">
       <div class="span2"><%= label_tag :tags, "" %></div>
       <div class="span10"><%= hidden_field_tag :tags, @assessment.tags, placeholder:"Gib hier passende Tags ein...", maxlength:"1000", style:"width:100%; height:100%;" %></div>
@@ -38,5 +47,36 @@
         </div>
       </div>
     </div>
+
+    <script>
+
+        function validateForm(){
+            var min_points_1 = +document.getElementById('min_points_1').value;
+            var min_points_2 = +document.getElementById('min_points_2').value;
+            var min_points_3 = +document.getElementById('min_points_3').value;
+            var min_points_4 = +document.getElementById('min_points_4').value;
+            var min_points_5 = +document.getElementById('min_points_5').value;
+
+            if (min_points_1 == null || min_points_1 <= 0 || min_points_1 > <%= @assessment.max_points %>){
+                alert('Bitte gib einen gültigen Notenschlüssel ein! 1');
+                return false;
+            } else if (min_points_2 == null || min_points_2 <= 0 || min_points_2 > min_points_1){
+                alert('Bitte gib einen gültigen Notenschlüssel ein! 2');
+                return false;
+            } else if (min_points_3 == null || min_points_3 <= 0 || min_points_3 > min_points_2) {
+                alert('Bitte gib einen gültigen Notenschlüssel ein! 3');
+                return false;
+            } else if (min_points_4 == null || min_points_4 <= 0 || min_points_4 > min_points_3) {
+                alert('Bitte gib einen gültigen Notenschlüssel ein! 4');
+                return false;
+            } else if (min_points_5 == null || min_points_5 <= 0 || min_points_5 > min_points_4){
+                alert('Bitte gib einen gültigen Notenschlüssel ein! 5');
+                return false;
+            } else{
+                return true;
+            }
+        }
+
+    </script>
 
 <% end %>
