@@ -10,6 +10,12 @@ class Assessment < ActiveRecord::Base
   has_many :assessment_contents, dependent: :destroy
   has_many :knowledge_elements, through: :assessment_contents
 
+  before_create :defaultvalue
+
+  def defaultvalue
+    self.min_points_1 ||= 0
+  end
+
   def tags
     tags = ""
     self.knowledge_elements.each do |c|

@@ -1,3 +1,26 @@
+<% if (@assessment.max_points == 0) %>
+    <div class="container-fluid" style="height: 100px;" style = "font-size: 1.2em">
+
+
+
+      <h3>Zur Prüfung <%= @assessment.title %> gibt es noch keine Teilaufgaben. <br>
+        Bitte legen Sie erst welche an, bevor Sie den Notenschlüssel eingeben.<br>
+        <%= link_to "Hier", edit_assessment_path%> können Sie das tun. </h3>
+    </div>
+
+    <br>   <br>
+    <br>   <br>
+    <br>   <br>
+    <br>   <br>
+    <br>   <br>
+    <div class="span2">
+      <%= button_to @assessment, :method => :get, class:"btn btn-xs btn-primary", style:"width:100%;" do %>
+          <span class="glyphicon glyphicon-arrow-left"></span> zurück
+      <% end %>
+    </div>
+<% else %>
+
+
 <div class="container-fluid">
   <div class="col-sm-12">
     <div class="row-fluid">
@@ -15,3 +38,5 @@
     </div>
   </div>
 </div>
+
+<% end %>
