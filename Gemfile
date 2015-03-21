@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails_autocomplete'
 
+gem 'paperclip'
+
 gem 'will_paginate-bootstrap'
 
 gem 'bootstrap-wysihtml5-rails'

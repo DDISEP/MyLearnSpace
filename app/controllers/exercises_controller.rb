@@ -117,7 +117,7 @@ class ExercisesController < ApplicationController
     
     tags_to_delete.each do |t|
       # matching_tag = KnowledgeElement.where(tag: t).first
-      # attention: wors only with SQLite!
+      # attention: works only with SQLite!
       matching_tag = KnowledgeElement.find_by_sql("SELECT * FROM knowledge_elements WHERE tag = '" + t + "' COLLATE NOCASE;").first
       matching_link = matching_tag.nil? ? nil : ExerciseContent.where(knowledge_element_id: matching_tag.id, exercise_id: @exercise.id).first
                                       # should never be nil because link already existed, check just for security
