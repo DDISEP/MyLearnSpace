@@ -1,3 +1,15 @@
+<% if (@assessment.min_points_1 == 0) %>
+    <div class="container-fluid" style="height: 100px;" style = "font-size: 1.2em">
+
+
+          <h3>Zur Prüfung <%= @assessment.title %> gibt es noch keinen Notenschlüssel.</h3>
+        </div>
+      </div>
+    </div>
+
+
+<% else %>
+
 <table cellspacing="10" cellpadding="20">
 
   <tr>
@@ -46,3 +58,11 @@
 </table>
 
     </div>
+
+<% end %>
+
+<div class="span2">
+  <%= button_to @assessment, :method => :get, class:"btn btn-xs btn-primary", style:"width:100%;" do %>
+      <span class="glyphicon glyphicon-arrow-left"></span> zurück
+  <% end %>
+</div>
