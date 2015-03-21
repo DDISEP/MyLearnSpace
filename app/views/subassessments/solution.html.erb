@@ -12,34 +12,24 @@
 				<div class="span2">Deine Antwort: </div>
 				<div class="span10"><%= @answer %></div>
 			</div>
-			<div class="row-fluid" style="color: green">
-				<div class="span2">Lösungsvorschlag: </div>
-				<div class="span10"><%= @subassessment.solution %></div>
-			</div>
 			<% if @next == nil then %>
-				<%= form_tag finish_assessment_path(@assessment), :method => :get, onsubmit:"return validatePoints();" do %>
-				<div class="row-fluid">					<!-- form for pupil's given points -->
-					<div class="span4"><%= label_tag 'given_points', 'Wie viele Punkte gibst Du Deiner Antwort? ' %></div>
-					<div class="span4"><%= number_field_tag 'given_points' %> / <%= @subassessment.points %></div>
-				</div>
+				<%= form_tag assessment_path(@assessment), :method => :get, onsubmit:"return validatePoints();" do %>
+
 				<div class="row-fluid">
 					<div class="span4">
 						<%= button_tag type: 'submit', class:"btn btn-xs btn-primary", style:"height:100%; width:100%" do %>
-							Lernaufgabe abschließen <span class="glyphicon glyphicon-ok"></span>
+							Prüfung abschließen <span class="glyphicon glyphicon-ok"></span>
 						<% end %>
 					</div>
 				</div>
 				<% end %>
 			<% else %>
 				<%= form_tag perform_assessment_subassessment_path(@assessment, @next), :method => :get, onsubmit:"return validatePoints();" do %>
-				<div class="row-fluid"><!-- form for pupil's given points -->
-					<div class="span4"><%= label_tag 'given_points', 'Wie viele Punkte gibst Du Deiner Antwort? ' %></div>
-					<div class="span4"><%= number_field_tag 'given_points', :value =>"-100", style:"height:100%;" %> / <%= @subassessment.points %></div>
-				</div>
+
 				<div class="row-fluid">
 					<div class="span4">
 						<%= button_tag type: 'submit', class:"btn btn-xs btn-primary", style:"height:100%; width:100%;" do %>
-							nächste Frage <span class="glyphicon glyphicon-arrow-right"></span>
+							nächste Teilaufgabe <span class="glyphicon glyphicon-arrow-right"></span>
 						<% end %>
 					</div>
 				</div>

@@ -1,6 +1,6 @@
 class KnowledgeElement < ActiveRecord::Base
   
-  #Wiki Tags (m:n ralation between wiki and knowledge_element with join-table wiki_tags)
+  #Wiki Tags (m:n relation between wiki and knowledge_element with join-table wiki_tags)
   has_many :wiki_tags
   has_many :wikis, :through => :wiki_tags 
   has_and_belongs_to_many :exercises

@@ -1,6 +1,8 @@
 <h3> Benutzer </h3>
 <div class="zweispaltig">
 
+
+
 <table width="70%">
 	<tr>
 		<td>
@@ -21,15 +23,7 @@
 		<td>
 			<%= u.username %>
 		</td>
-		<td>
-			<%if u.pupil == true%>
-				<%="Schüler"%><!--statt t und f muss hier noch ja nein eingefügt werden!!-->
-			<%elsif u.pupil == false%>
-				<%="Kein Schüler"%>
-			<%else%>
-				<%="Keine Angabe"%>
-			<%end%>
-		</td>
+
 		<td>
 		<%if @admin%>			
 				<%= u.email %>			

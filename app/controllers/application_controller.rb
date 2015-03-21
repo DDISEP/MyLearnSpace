@@ -22,14 +22,14 @@ class ApplicationController < ActionController::Base
   def authorize_admin
     @user = User.find(session[:current_user_id])
     unless @user.admin
-      redirect_to(:back, :notice => "You are no admin")
+      redirect_to(:back, :notice => "Tut uns leid.. Für das Aufrufen dieser Seite musst du Administrator-Rechte besitzen!")
     end
   end
 
   def authorize_teacher
     @user = User.find(session[:current_user_id])
     unless @user.teacher
-      redirect_to(:back, :notice => "You are no teacher")
+      redirect_to(:back, :notice => "Tut uns leid.. Für das Aufrufen dieser Seite musst du Lehrer-Rechte besitzen!")
     end
   end
 

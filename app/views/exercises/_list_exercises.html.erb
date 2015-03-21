@@ -38,7 +38,13 @@
 		<tr>
 			<!-- show title, author, and creation date for each exercise -->
 			<td> <%= link_to exercise.title, exercise %> </td>
-			<td> <%= link_to exercise.user.username, exercise.user %> </td>
+			<td> <%= link_to exercise.user.username, exercise.user %>
+              <% if exercise.user.admin %>
+                  (Admin)
+              <% elsif exercise.user.teacher %>
+                  (Lehrer)
+              <% end %>
+            </td>
 			<td> <%= exercise.likes.length %> </td>
 			<td> <%= exercise.created_at.to_s(format = :db) %> </td>
 		</tr>

@@ -1,0 +1,26 @@
+<%= form_for [@question, @answer], :remote => true do |f| %>
+      <% if @answer.errors.any? %>
+          <div id="error_explanation">
+            <h2>Wegen folgender Fehler konnte deine Antwort nicht gespeichert werden:</h2>
+
+            <ul>
+              <% @answer.errors.full_messages.each do |msg| %>		        <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <% if @answers.empty? %>
+          Frage beantworten:
+      <% else %>
+          Eigene Antwort hinzufügen:
+      <% end %>
+
+
+      <div class="field">
+        <%= f.text_field :text %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Antwort abschicken' %>
+      </div>
+<% end %>

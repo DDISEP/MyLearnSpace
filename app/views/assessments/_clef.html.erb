@@ -58,19 +58,19 @@
             var min_points_5 = +document.getElementById('min_points_5').value;
 
             if (min_points_1 == null || min_points_1 <= 0 || min_points_1 > <%= @assessment.max_points %>){
-                alert('Bitte gib einen gültigen Notenschlüssel ein! 1');
+                alert('Bitte gib einen gültigen Notenschlüssel ein!');
                 return false;
             } else if (min_points_2 == null || min_points_2 <= 0 || min_points_2 > min_points_1){
-                alert('Bitte gib einen gültigen Notenschlüssel ein! 2');
+                alert('Bitte gib einen gültigen Notenschlüssel ein!');
                 return false;
             } else if (min_points_3 == null || min_points_3 <= 0 || min_points_3 > min_points_2) {
-                alert('Bitte gib einen gültigen Notenschlüssel ein! 3');
+                alert('Bitte gib einen gültigen Notenschlüssel ein!');
                 return false;
             } else if (min_points_4 == null || min_points_4 <= 0 || min_points_4 > min_points_3) {
-                alert('Bitte gib einen gültigen Notenschlüssel ein! 4');
+                alert('Bitte gib einen gültigen Notenschlüssel ein!');
                 return false;
             } else if (min_points_5 == null || min_points_5 <= 0 || min_points_5 > min_points_4){
-                alert('Bitte gib einen gültigen Notenschlüssel ein! 5');
+                alert('Bitte gib einen gültigen Notenschlüssel ein!');
                 return false;
             } else{
                 return true;

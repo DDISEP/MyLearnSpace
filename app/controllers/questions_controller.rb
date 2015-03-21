@@ -25,11 +25,8 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     
-    if session[:name] == nil
-      @question.user_name = 'Illegaler Frager'
-    else
-      @question.user_name = session[:name]
-    end
+    @question.user_name = @current_user.username
+
 
     respond_to do |format|
       if @question.save

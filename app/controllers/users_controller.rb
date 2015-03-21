@@ -1,7 +1,8 @@
 #Encoding: utf-8
 class UsersController < ApplicationController
   skip_before_action :check_login, only: [:new, :create]
-  
+
+  before_action :authorize_admin, only: [:index]
   def index
     @users = User.all.sort{|a,b| a.username.downcase <=> b.username.downcase } #Sortierung nach Alphabet um Suche zu ersetzem
   end

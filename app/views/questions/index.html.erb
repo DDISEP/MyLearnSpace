@@ -1,6 +1,6 @@
 <h1>Alle Fragen in diesem Forum</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Überschrift</th>
@@ -11,7 +11,9 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= link_to question.title, question %></td>
+        <td><%= link_to question.title, question %>
+          <td><%= question.created_at%></td>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -19,4 +21,4 @@
 
 <br>
 
-<%= link_to 'Neue Frage Stellen', new_question_path %>
+<%= link_to 'Neue Frage stellen', new_question_path %>

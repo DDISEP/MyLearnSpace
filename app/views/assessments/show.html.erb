@@ -5,7 +5,7 @@
 	</div>
 	<div class="col-sm-3" >
 		<%= button_to assessments_path, class:"btn btn-xs btn-primary", :method => :get do %>
-			<span class="glyphicon glyphicon-arrow-left"></span> zur Lernaufgabenübersicht
+			<span class="glyphicon glyphicon-arrow-left"></span> zur Prüfungsübersicht
 		<% end %>
 	</div>
 </div>
@@ -13,7 +13,7 @@
 <!-- ask user if he/she wants to continue a previously started assessment -->
 <% if @next != nil then%>
 <div id="existing_performance_displayer">
-<div class="row-fluid"><div class="col-sm-12">Du hast diese Lernaufgabe bereits angefangen. Willst Du dort weitermachen oder die bisherige Bearbeitung löschen?</div></div>
+<div class="row-fluid"><div class="col-sm-12">Du hast diese Prüfung bereits angefangen. Willst Du dort weitermachen oder die bisherige Bearbeitung löschen?</div></div>
 <div class="row-fluid" style="margin-bottom: 10px; margin-top: 10px;">
 	<div class="col-sm-6"><%= button_to perform_assessment_subassessment_path(@assessment.id, @next),
 		:method => :get, class:"btn btn-xs btn-primary", style:"width:100%" do %>
@@ -38,15 +38,7 @@
 	Beschreibung: <%= @assessment.description %> <br/>
 	Anzahl der Fragen: <%= @assessment.subassessment_counter %><br />
 	Erreichbare Punkte: <%= @assessment.max_points %>	<br/>
-	Deine Bestleistung:
-	<% if @top_performance != nil then %>
-		<%= @top_performance.achieved_points %>
-		<%= link_to statistics_assessment_path(@assessment.id) do %>
-			( Statistik <span class="glyphicon glyphicon-stats"></span> )
-		<% end %>
-	<% else %>
-		Noch keine!
-	<% end %>
+
 	<br />
 	Tags:
 	<% i = 0 %>

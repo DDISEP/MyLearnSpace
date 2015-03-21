@@ -21,7 +21,7 @@ class Assessment < ActiveRecord::Base
     self.knowledge_elements.each do |c|
       tags = tags + c.tag + ", "
     end
-    # here we have @existing_tags = "tag1, tag2, ... , tag23, " , so we need to take away the last to chars
+    # here we have @existing_tags = "tag1, tag2, ... , tag23, " , so we need to take away the last two chars
     tags = tags.chop.chop
     return tags
   end
