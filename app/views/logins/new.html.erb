@@ -8,11 +8,11 @@
   <%= form_tag logins_path do %>
     <div class="field" style="size: 15pt">
       <%= label_tag :email, 'E-Mail Adresse:' %>
-      <%= text_field_tag :email, params[:email] %>
+      <%= text_field_tag :email, params[:email], style: "height:100%;" %>
     </div>
     <div class="field">
       <%= label_tag :password, 'Passwort:' %>
-      <%= password_field_tag :password %>
+      <%= password_field_tag :password%>
     </div>
     <div class="actions"><%= submit_tag "Anmelden" %></div>
   <% end %>

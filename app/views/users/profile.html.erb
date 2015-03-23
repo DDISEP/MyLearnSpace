@@ -3,13 +3,13 @@
 
 <p id="notice"><%= notice %></p>
 <p>&nbsp;</p>
-<p style="font-size: 17pt; color: gold">Dies sind deine Daten:</p>
+<p style="font-size: 17pt">Dies sind deine Daten:</p>
 <table>
-<tr><td><p style="font-size: 13pt; color: gold"> Dein Benutzername: <%=@current_user.username%></p></td></tr>
-<tr><td><p style="font-size: 13pt; color: gold">Deine E-Mail Adresse: <%=@current_user.email%></p></td></tr>
-<tr><td><p style="font-size: 13pt; color: gold">Adminstatus: <%=@current_user.admin%></p></td></tr>
-<tr><td><p style="font-size: 13pt; color: gold">Lehrerstatus: <%=@current_user.teacher%></p></td></tr>
-<tr><td><p style="font-size: 13pt; color: gold">Schülerstatus: <%=@current_user.learner%></p></td></tr>
+<tr><td><p style="font-size: 13pt"> Dein Benutzername: <%=@current_user.username%></p></td></tr>
+<tr><td><p style="font-size: 13pt">Deine E-Mail Adresse: <%=@current_user.email%></p></td></tr>
+<tr><td><p style="font-size: 13pt">Bist du Admin? <%if @current_user.admin%> Ja <% else %> Nein <%end%></p></td></tr>
+<tr><td><p style="font-size: 13pt">Bist du Lehrer? <%if @current_user.teacher%> Ja <% else %> Nein <%end%></p></td></tr>
+<tr><td><p style="font-size: 13pt">Bist du Schüler? <%if @current_user.learner%> Ja <% else %> Nein <%end%></p></td></tr>
 </table>
 
 <p>&nbsp;</p>

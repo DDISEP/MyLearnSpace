@@ -29,28 +29,18 @@
 	<strong>Wo möchtest du hin?</strong> 	
 	
 	<% if @current_user.nil? %>
-		<% if @admin.nil?%>
+
       		&nbsp;&nbsp;&nbsp;&nbsp;
-      		<%= link_to 'Anmelden', new_login_path %> 
-      	<% else %>
-      		&nbsp;&nbsp;
-    		<%= link_to 'Benutzer', users_path %>
-			&nbsp;&nbsp;
-			<%= link_to 'Lehrplan', curriculums_path %>
-			&nbsp;&nbsp;
-			<%= link_to 'Fragenforum', questions_path %>
-			&nbsp;&nbsp;
-			<%= link_to 'Lernaufgaben', exercises_path %>
-			&nbsp;&nbsp;
-			<%= link_to 'Wiki', wikis_path %>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<strong>Du bist als Administrator angemeldet</strong>
-			<%= link_to "Abmelden", users_admin_path(@dmin, :authenticity_token => form_authenticity_token), :method => :delete%>
-      		<% end %>
+      		<%= link_to 'Anmelden', new_login_path %>
+
     <% else %>
     	&nbsp;&nbsp;
-    	<%= link_to 'Benutzer', users_path %>
-		&nbsp;&nbsp;
+      <% if  @current_user.admin %>
+          <%= link_to 'Benutzerübersicht', users_path %>
+          &nbsp;&nbsp;
+      <% end %>
+        <%= link_to 'Profil', users_profile_path %>
+        &nbsp;&nbsp;
 		<%= link_to 'Lehrplan', curriculums_path %>
 		&nbsp;&nbsp;
 		<%= link_to 'Fragenforum', questions_path %>

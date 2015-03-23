@@ -3,19 +3,27 @@
 
 
 
-<table width="70%">
+<table width="100%">
 	<tr>
 		<td>
 			<b><p style="font-size: 15pt">Name</p></b>
 		</td>
 		<td>
-			<b><p style="font-size: 15pt">Schülerstatus</p></b>
+		<b><p style="font-size: 15pt">E-Mail Adresse</p></b>
+
 		</td>
-		<td>
-		<%if @admin%>			
-				<b><p style="font-size: 15pt">E-Mail Adresse</p></b>			
-		<%end%>
-		</td>
+      <td>
+        <b><p style="font-size: 15pt">Admin?</p></b>
+
+      </td>
+      <td>
+        <b><p style="font-size: 15pt">Lehrer?</p></b>
+
+      </td>
+      <td>
+        <b><p style="font-size: 15pt">Schüler?</p></b>
+      </td>
+
 			
 	</tr>
 	<% @users.each do |u| 	%>
@@ -25,10 +33,29 @@
 		</td>
 
 		<td>
-		<%if @admin%>			
-				<%= u.email %>			
-		<%end%>
+           <%= u.email %>
 		</td>
+      <td>
+        <% if u.admin %>
+        Ja
+        <% else %>
+        Nein
+        <% end %>
+      </td>
+      <td>
+        <% if u.teacher %>
+            Ja
+        <% else %>
+            Nein
+        <% end %>
+      </td>
+      <td>
+        <% if u.learner %>
+            Ja
+        <% else %>
+            Nein
+        <% end %>
+      </td>
 	</tr>	
 	<% end %>
 	

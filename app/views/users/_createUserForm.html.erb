@@ -14,9 +14,9 @@
   <h4> Alle Felder mit * sind Pflichtfelder. Bitte fülle diese sorgfältig aus</h4>
   <font size="3">
   <table width="50%" cellspacing="10">
-  <tr><td>Benutzername*</td><td> <%=f.text_field :username %></td></tr>
-  <tr><td>E-Mail Adresse*</td><td> <%=f.email_field :email %></td></tr>	
-  <tr><td>Passwort*</td><td><%=f.password_field :password %></td></tr>
+  <tr><td>Benutzername*</td><td> <%=f.text_field :username, style: "height: 100%;" %></td></tr>
+  <tr><td>E-Mail Adresse*</td><td> <%=f.email_field :email, style: "height: 100%;" %></td></tr>
+  <tr><td>Passwort*</td><td><%=f.password_field :password, style: "height: 100%;" %></td></tr>
   <tr><td>   </td></tr>	
   <tr><td>Bist du ein Schüler?</td><td><%= f.select :pupil, [["--Bitte auswählen--", nil], ["Ja", true], ["Nein", false]]%></td></tr>
   <tr><td>   </td></tr>
@@ -26,6 +26,11 @@
 <% end %> -->
 
 <%= form_for(@user) do |f| %>
+    <div class="container-fluid">
+      <div class="panel panel-primary">
+        <div class="panel-body">
+
+
     <% if @user.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -37,39 +42,43 @@
           </ul>
         </div>
     <% end %>
-
+          <h4> Alle Felder mit * sind Pflichtfelder. Bitte fülle diese sorgfältig aus.</h4> </br>
     <div class="field">
-      <%= f.label :username %><br>
-      <%= f.text_field :username %>
+      <%= f.label :username, "Benutzername*:" %>
+      <%= f.text_field :username, style: "height: 100%;" %>
     </div>
     <div class="field">
-      <%= f.label :email %><br>
-      <%= f.text_field :email %>
+      <%= f.label :email, "E-Mail-Adresse*:" %>
+      <%= f.text_field :email, style: "height: 100%;" %>
     </div>
     <div class="field">
-      <%= f.label :password %><br />
-      <%= f.password_field :password %>
+      <%= f.label :password, "Passwort*" %>
+      <%= f.password_field :password, style: "height: 100%;" %>
     </div>
     <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation %>
+      <%= f.label :password_confirmation, "Passwort-Bestätigung*" %>
+      <%= f.password_field :password_confirmation, style: "height: 100%;" %>
     </div>
     <div class="field">
-      <%= f.label :admin %><br />
+      <%= f.label :admin %>
       <%= f.check_box :admin %>
     </div>
+    </br>
     <div class="field">
-      <%= f.label :learner %><br />
+      <%= f.label :learner, "Bist du ein Schüler?" %>
       <%= f.check_box :learner %>
     </div>
     <div class="field">
-      <%= f.label :teacher %><br />
+      <%= f.label :teacher, "Bist du ein Lehrer?" %>
       <%= f.check_box :teacher %>
     </div>
+
     <div class="actions">
       <%= f.submit %>
     </div>
-
+  </div>
+ </div>
+</div>
 <% end %>
 
  
