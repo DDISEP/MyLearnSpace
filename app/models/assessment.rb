@@ -10,6 +10,8 @@ class Assessment < ActiveRecord::Base
   has_many :assessment_contents, dependent: :destroy
   has_many :knowledge_elements, through: :assessment_contents
 
+  has_attached_file :avatar
+  do_not_validate_attachment_file_type :avatar
   before_create :defaultvalue
 
   def defaultvalue

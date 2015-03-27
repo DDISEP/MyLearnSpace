@@ -99,7 +99,8 @@ MyLearnSpace::Application.routes.draw do
   post 'wikis/search' => "wikis#search"
   
   get "wikis/searchSuggestions/:search" => "wikis#searchSuggestions"
-  
+
+  get 'assessment/:id/remove_avatar', to: 'assessments#remove_avatar', as: 'remove_assessment_avatar'
   
  
 

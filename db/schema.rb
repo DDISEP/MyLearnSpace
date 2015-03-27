@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314204944) do
+ActiveRecord::Schema.define(version: 20150327171452) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20150314204944) do
     t.string   "creation_date"
     t.string   "datetime"
     t.string   "title"
-    t.string   "description",   limit: 1000
+    t.string   "description",         limit: 1000
     t.integer  "min_points_1"
     t.integer  "min_points_2"
     t.integer  "min_points_3"
@@ -45,6 +45,10 @@ ActiveRecord::Schema.define(version: 20150314204944) do
     t.integer  "assessment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "assessments", ["assessment_id"], name: "index_assessments_on_assessment_id"

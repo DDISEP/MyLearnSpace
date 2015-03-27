@@ -43,7 +43,7 @@ class AssessmentsController < ApplicationController
       else        # created_at DESC as default order
         puts "Undefined sort_by option"
         @assessments = Assessment.all.order('created_at DESC')
-      end
+    end
 
 
     @assessments = @assessments.paginate(:page => params[:page], :per_page => 10)
@@ -78,7 +78,7 @@ class AssessmentsController < ApplicationController
   end
 
   def create
-    @assessment = Assessment.new
+    @assessment = Assessment.create(assessment_params)
     @assessment.title = params[:assessment][:title]
     @assessment.description = params[:assessment][:description]
     @assessment.min_points_1 = params[:assessment][:min_points_1]
@@ -86,6 +86,8 @@ class AssessmentsController < ApplicationController
     @assessment.min_points_3 = params[:assessment][:min_points_3]
     @assessment.min_points_4 = params[:assessment][:min_points_4]
     @assessment.min_points_5 = params[:assessment][:min_points_5]
+    @assessment.avatar = params[:assessment][:avatar]
+
     @assessment.user_id = session[:current_user_id]
     @assessment.save      # assessments created and saved
     tags = params[:tags].split(",").map{|tag| tag.strip }
@@ -99,7 +101,7 @@ class AssessmentsController < ApplicationController
         to_create.save
       end
     end     # links between assessment and knowledge_elements created and saved
-    flash[:notice] = "Aufgabe erfolgreich angelegt"
+    flash[:notice] = "Prüfung erfolgreich angelegt"
     redirect_to assessment_path(@assessment)
   end
 
@@ -112,6 +114,11 @@ class AssessmentsController < ApplicationController
     @assessment.min_points_3 = params[:assessment][:min_points_3]
     @assessment.min_points_4 = params[:assessment][:min_points_4]
     @assessment.min_points_5 = params[:assessment][:min_points_5]
+
+    if @assessment.avatar_file_name.nil?
+    @assessment.update_attribute(:avatar, params[:assessment][:avatar])
+    end
+
     @assessment.save
 
     old_tags = @assessment.knowledge_elements.map{|t| t.tag}                # tags as they were before editing
@@ -175,7 +182,7 @@ class AssessmentsController < ApplicationController
 
   def destroy
     @assessment.destroy
-    flash[:notice] = "Aufgabe erfolgreich geloescht!"
+    flash[:notice] = "Prüfung erfolgreich geloescht!"
     redirect_to assessments_path
   end
 
@@ -221,6 +228,17 @@ class AssessmentsController < ApplicationController
 
   def showclef
 
+  end
+
+  def assessment_params
+    params.require(:assessment).permit(:avatar)
+  end
+
+  def remove_avatar
+    @assessment = Assessment.find(params[:id])
+    @assessment.avatar = nil
+    @assessment.save
+    redirect_to @assessment, flash: { success: 'Datei erfolgreich gelöscht.' }
   end
 end
 
