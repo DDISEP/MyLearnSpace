@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  knowledge_element_id: 1
+  name: MyString
+  content: MyText
+
+two:
+  knowledge_element_id: 1
+  name: MyString
+  content: MyText

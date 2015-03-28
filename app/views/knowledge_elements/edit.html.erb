@@ -3,3 +3,8 @@
 <%= render 'createContentForm' %>
 
 <%= link_to 'Zurück', knowledge_elements_path %>
+
+<p>
+  <%= link_to "Schlagwort anzeigen", @knowledge_element %> |
+  <%= link_to "Zur Übersicht über alle Schlagwörter", knowledge_elements_path %>
+</p>

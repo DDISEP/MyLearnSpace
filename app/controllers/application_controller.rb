@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   def authorize_learner
     @user = User.find(session[:current_user_id])
     unless @user.learner
-      redirect_to(:back, :notice => "You are no learner")
+      redirect_to(:back, :notice => "Tut uns leid.. Für das Aufrufen dieser Seite musst du Schüler-Rechte besitzen!")
     end
   end
 end

@@ -1,0 +1,12 @@
+<%= form_for @knmessage do |f| %>
+    <%= f.hidden_field :knowledge_element_id %>
+    <%= f.hidden_field :name %>
+
+    <p>
+
+      <%= f.text_area :content, :rows => '6', :cols => 35 %>
+    </p>
+
+    <p><%= f.submit "Send" %></p>
+
+<% end %>

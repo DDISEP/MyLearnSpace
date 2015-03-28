@@ -11,7 +11,7 @@
 				<div class="span2">Aufgabe: </div>
 				<div class="span10"><%= @subassessment.text %></div>
 			</div>
-			<%= form_tag solution_assessment_subassessment_path(@assessment, @subassessment), :method => :get do %> <!-- form for pupil's answer -->
+			<%= form_tag solution_assessment_subassessment_path(@assessment, @subassessment), :method => :get do %> <!-- form for learner's answer -->
 			<div class="row-fluid">
 				<div class="span2">Deine Antwort:</div>
 				<div class="span10"><%= text_area_tag 'answer', "", :placeholder => "Gib hier Deine Antwort ein...", style:"resize:vertical; width:100%;" %></div>

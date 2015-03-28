@@ -1,11 +1,10 @@
 class Assessment < ActiveRecord::Base
-  attr_accessor :like_counter, :max_points, :subassessment_counter, :author_name
-  attr_accessible :like_counter, :max_points, :subassessment_counter, :author_name
+  attr_accessor :max_points, :subassessment_counter, :author_name
+  attr_accessible :max_points, :subassessment_counter, :author_name
 
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :subassessments, dependent: :destroy
-  has_many :likes, dependent: :destroy
   has_many :performances, dependent: :destroy
   has_many :assessment_contents, dependent: :destroy
   has_many :knowledge_elements, through: :assessment_contents

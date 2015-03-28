@@ -8,7 +8,9 @@
   
   
   <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag "application", controller_name %>
+  <%= csrf_meta_tag %>
 
 
 </head>
@@ -43,7 +45,9 @@
         &nbsp;&nbsp;
 		<%= link_to 'Lehrplan', curriculums_path %>
 		&nbsp;&nbsp;
-		<%= link_to 'Fragenforum', questions_path %>
+        <%= link_to 'KnowledgeElements', knowledge_elements_path %>
+        &nbsp;&nbsp;
+        <%= link_to 'Fragenforum', questions_path %>
 		&nbsp;&nbsp;
 		<%= link_to 'Lernaufgaben', exercises_path %>
 		&nbsp;&nbsp;

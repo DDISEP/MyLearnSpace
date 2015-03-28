@@ -1,1 +1,24 @@
-#TODO!!!
+<p>
+  <h4><%= @knowledge_element.tag %></h4>
+</p>
+
+<div id="knowledge_element" data-id="<%= @knowledge_element.id %>">
+  <%= simple_format @knowledge_element.content %>
+
+  <% unless @knowledge_element.knmessages.empty? %>
+      <h2><%= pluralize(@knowledge_element.knmessages.size, 'Nachricht(en)') %></h2>
+
+      <div id="knmessages">
+        <%= render @knowledge_element.knmessages %>
+      </div>
+
+  <% end %>
+  <br>
+
+  <h4>Add your message here:</h4>
+
+  <%= render :partial => 'knmessages/form' %>
+
+  <p><%= link_to "Zurück zu den Schlagwörtern", knowledge_elements_path %></p>
+</div>
+

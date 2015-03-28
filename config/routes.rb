@@ -26,6 +26,7 @@ MyLearnSpace::Application.routes.draw do
   
   post 'users/destroy' =>"users#destroy"
 
+
   
   
   resources :users
@@ -74,7 +75,11 @@ MyLearnSpace::Application.routes.draw do
 
   end
 
-  resources :knowledge_elements
+  resources :knmessages
+
+  resources :knowledge_elements do
+    resources :knmessages
+  end
 
   resources :questions do
     resources :answers

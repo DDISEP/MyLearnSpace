@@ -16,4 +16,21 @@
 //= require twitter/bootstrap
 //= require turbolinks
 
-
+$(function(){
+    if ($('#knmessages').length > 0){
+        setTimeout(updateKnmessages, 10000);
+    }
+});
+function updateKnmessages(){
+    var knowledge_element_id = $('#knowledge_element').attr('data-id');
+    if ($(".knmessage").length > 0)
+    {
+        var after = $('.knmessage:last-child').attr('data-time');
+    }
+    else
+    {
+        var after = 0;
+    }
+    $.getScript('/knmessages.js?knowledge_element_id=' + knowledge_element_id + "&after=" + after);
+    setTimeout(updateKnmessages, 10000);
+}

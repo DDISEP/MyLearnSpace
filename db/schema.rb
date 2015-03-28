@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150327171452) do
+ActiveRecord::Schema.define(version: 20150328114455) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -118,8 +118,17 @@ ActiveRecord::Schema.define(version: 20150327171452) do
 
   add_index "exercises", ["user_id"], name: "index_exercises_on_user_id"
 
+  create_table "knmessages", force: true do |t|
+    t.integer  "knowledge_element_id"
+    t.string   "name"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "knowledge_elements", force: true do |t|
     t.string   "tag"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -204,7 +213,6 @@ ActiveRecord::Schema.define(version: 20150327171452) do
     t.string   "username"
     t.string   "password"
     t.string   "email"
-    t.boolean  "pupil"
     t.boolean  "learner"
     t.boolean  "admin"
     t.boolean  "teacher"

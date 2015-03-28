@@ -9,13 +9,15 @@ class KnowledgeElementsController < ApplicationController
   # GET /knowledge_elements
   # GET /knowledge_elements.json
   def index
-    @knowledge_elements = KnowledgeElement.find(:all, :order => :tag)
+    @knowledge_elements = KnowledgeElement.all
   end
 
   # GET /knowledge_elements/1
   # GET /knowledge_elements/1.json
-  #def show
-  #end
+  def show
+    @knowledge_element = KnowledgeElement.find(params[:id])
+    @knmessage = Knmessage.new(:knowledge_element_id => @knowledge_element.id)
+  end
 
   # GET /knowledge_elements/new
   def new
@@ -24,6 +26,7 @@ class KnowledgeElementsController < ApplicationController
 
   # GET /knowledge_elements/1/edit
   def edit
+    @knowledge_element = KnowledgeElement.find(params[:id])
   end
 
   # POST /knowledge_elements
@@ -61,9 +64,7 @@ class KnowledgeElementsController < ApplicationController
   def destroy
     @id = params[:id].to_i
     @knowledge_element.destroy
-    respond_to do |format|
-      format.js
-    end
+    redirect_to knowledge_elements_path
   end
   
   def autocomplete
@@ -73,6 +74,8 @@ class KnowledgeElementsController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_knowledge_element
@@ -81,6 +84,6 @@ class KnowledgeElementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def knowledge_element_params
-      params.require(:knowledge_element).permit(:tag)
+      params.require(:knowledge_element).permit(:tag, :name, :content)
     end
 end

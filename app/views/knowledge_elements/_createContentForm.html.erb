@@ -4,11 +4,18 @@
 <table cellpadding="10">
  <tr>
  	<td valign="top">
- 		<%= f.label :tag, "Schlagwort*" %>
+ 		<%= f.label :tag, "Knowledge Element*" %>
  	</td>
  	<td>
  		<%= f.text_area :tag, placeholder:"Schlagwort", maxlength:"140" %>
  	</td>
+   <td valign="top">
+     <%= f.label :content, "Inhalt des Schlagworts*" %>
+   </td>
+   <td>
+     <%= f.text_area :content, placeholder:"Inhalt des Schlagworts", maxlength:"500" %>
+   </td>
+
  </tr>
 </table>
   

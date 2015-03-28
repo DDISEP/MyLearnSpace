@@ -1,0 +1,4 @@
+<% unless @knmessages.empty? %>
+$("#knmessages").append("<%=raw escape_javascript(render(@knmessages)) %>");
+$("#knowledge_element h2").text($(".knmessage").length + " messages");
+<% end %>

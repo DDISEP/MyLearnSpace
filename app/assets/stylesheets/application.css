@@ -11,9 +11,86 @@
  *= require_self
  *= require_tree .
 
- 
+
  */
 
- 
+ #container {
+    width: 75%;
+    margin: 0 auto;
+    background-color: #FFF;
+    padding: 20px 40px;
+    border: solid 1px black;
+    margin-top: 20px;
+}
+#flash_notice, #flash_error, #flash_alert {
+    padding: 5px 8px;
+    margin: 10px 0;
+}
+#flash_notice {
+    background-color: #CFC;
+    border: solid 1px #6C6;
+}
+#flash_error, #flash_alert {
+    background-color: #FCC;
+    border: solid 1px #C66;
+}
+.fieldWithErrors {
+    display: inline;
+}
+.error_messages {
+    width: 400px;
+    border: 2px solid #CF0000;
+    padding: 0px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    font-size: 12px;
+}
+.error_messages h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 10px;
+    font-size: 12px;
+    margin: 0;
+    background-color: #c00;
+    color: #fff;
+}
+.error_messages p {
+    margin: 8px 10px;
+}
+.error_messages ul {
+    margin: 0;
+}
+#knowledge_elements h2 {
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+#knowledge_elements h2 .knmessages {
+    font-size: 12px;
+    font-weight: normal;
+}
+#knowledge_elements .created_at {
+    font-style: italic;
+    color: #333;
+}
+#knmessages {
+    font-size: 12px;
+    background-color: #DDD;
+    padding: 0 20px;
+    width: 325px;
+    border: solid 1px #333;
+}
+.knmessage {
+    border-bottom: solid 1px #999;
+    margin: 15px 0;
+}
+.knmessage .author_name {
+    font-weight: bold;
+}
+.knmessage:last-child {
+    border-bottom: none;
+}
+
+
 
 

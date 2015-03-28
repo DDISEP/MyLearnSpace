@@ -18,7 +18,7 @@
 			</div>
 			<% if @next == nil then %>
 				<%= form_tag finish_exercise_path(@exercise), :method => :get, onsubmit:"return validatePoints();" do %> 
-				<div class="row-fluid">					<!-- form for pupil's given points -->
+				<div class="row-fluid">					<!-- form for learner's given points -->
 					<div class="span4"><%= label_tag 'given_points', 'Wie viele Punkte gibst Du Deiner Antwort? ' %></div>
 					<div class="span4"><%= number_field_tag 'given_points' %> / <%= @subexercise.points %></div>
 				</div>
@@ -32,7 +32,7 @@
 				<% end %>
 			<% else %>
 				<%= form_tag perform_exercise_subexercise_path(@exercise, @next), :method => :get, onsubmit:"return validatePoints();" do %> 
-				<div class="row-fluid"><!-- form for pupil's given points -->
+				<div class="row-fluid"><!-- form for learner's given points -->
 					<div class="span4"><%= label_tag 'given_points', 'Wie viele Punkte gibst Du Deiner Antwort? ' %></div>
 					<div class="span4"><%= number_field_tag 'given_points', :value =>"-100", style:"height:100%;" %> / <%= @subexercise.points %></div>
 				</div>

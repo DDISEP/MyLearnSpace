@@ -1,0 +1,7 @@
+<div class="knmessage" data-time="<%= knmessage.created_at.to_i %>">
+  <strong><%= knmessage.name %></strong>
+  <em>
+    on <%= knmessage.created_at.strftime('%b %d, %Y at %I:%M %p') %>
+  </em>
+  <%= simple_format knmessage.content %>
+</div>
