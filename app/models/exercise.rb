@@ -10,6 +10,9 @@ class Exercise < ActiveRecord::Base
   has_many :performances, dependent: :destroy
   has_many :exercise_contents, dependent: :destroy
   has_many :knowledge_elements, through: :exercise_contents
+
+  has_attached_file :image
+  do_not_validate_attachment_file_type :image
   
   # returns String representation of associated knowledge_elements
   def tags

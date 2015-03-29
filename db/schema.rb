@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328114455) do
+ActiveRecord::Schema.define(version: 20150329170104) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20150328114455) do
     t.string   "creation_date"
     t.string   "datetime"
     t.string   "title"
-    t.string   "description",         limit: 1000
+    t.string   "description",        limit: 1000
     t.integer  "min_points_1"
     t.integer  "min_points_2"
     t.integer  "min_points_3"
@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 20150328114455) do
     t.integer  "assessment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "assessments", ["assessment_id"], name: "index_assessments_on_assessment_id"
@@ -58,12 +58,10 @@ ActiveRecord::Schema.define(version: 20150328114455) do
     t.string   "text"
     t.integer  "user_id"
     t.integer  "exercise_id"
-    t.integer  "assessment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["assessment_id"], name: "index_comments_on_assessment_id"
   add_index "comments", ["exercise_id"], name: "index_comments_on_exercise_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
@@ -110,10 +108,14 @@ ActiveRecord::Schema.define(version: 20150328114455) do
 
   create_table "exercises", force: true do |t|
     t.string   "title"
-    t.string   "description", limit: 1000
+    t.string   "description",        limit: 1000
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "exercises", ["user_id"], name: "index_exercises_on_user_id"

@@ -1,4 +1,4 @@
-<h1>Listing logins</h1>
+<h1>Liste der Logins</h1>
 
 <table>
   <thead>
@@ -12,9 +12,9 @@
   <tbody>
     <% @logins.each do |login| %>
       <tr>
-        <td><%= link_to 'Show', login %></td>
-        <td><%= link_to 'Edit', edit_login_path(login) %></td>
-        <td><%= link_to 'Destroy', login, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Anzeigen', login %></td>
+        <td><%= link_to 'Bearbeiten', edit_login_path(login) %></td>
+        <td><%= link_to 'Löschen', login, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Login', new_login_path %>
+<%= link_to 'Neuer Login', new_login_path %>

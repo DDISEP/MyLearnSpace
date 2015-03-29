@@ -1,8 +1,7 @@
 require 'will_paginate/array'
 
 class AssessmentsController < ApplicationController
-  before_action :get_assessment, only: [:show, :edit, :delete, :destroy, :update, :get_comments, :start, :authenticate, :finish, :statistics, :clef, :showclef]
-  before_action :get_comments, only: [:destroy, :delete, :show]
+  before_action :get_assessment, only: [:show, :edit, :delete, :destroy, :update, :start, :authenticate, :finish, :statistics, :clef, :showclef]
   before_action :get_latest_performance, only: [:show, :start]
   before_action :check_auth, only:[:update, :destroy]
   before_action :authorize_teacher, only:[:create, :new]
@@ -22,9 +21,7 @@ class AssessmentsController < ApplicationController
     @assessment = Assessment.find(params[:id])
   end
 
-  def get_comments
-    @comments = Comment.where(assessment_id: @assessment.id).order('created_at DESC')
-  end
+
 
   def index
     case params[:sort_by]       # you can add other cases when new sort options are implemented in _list_assessments.html.erb
@@ -59,8 +56,7 @@ class AssessmentsController < ApplicationController
       #last performance unfinished, set next subassessment to do
       @next = Subassessment.where(assessment_id: params[:id], position: @latest_performance.current_position).first
     end
-    @comment = Comment.new      # needed for comment/_form.html.erb
-    @comments = @comments.paginate(:page => params[:page], :per_page => 10)
+
     @page = params[:page].nil? ? 1 : params[:page]
     @top_performance = Performance.where(assessment_id: @assessment.id, user_id: session[:current_user_id]).order('achieved_points DESC').first
   end
@@ -86,7 +82,7 @@ class AssessmentsController < ApplicationController
     @assessment.min_points_3 = params[:assessment][:min_points_3]
     @assessment.min_points_4 = params[:assessment][:min_points_4]
     @assessment.min_points_5 = params[:assessment][:min_points_5]
-    @assessment.avatar = params[:assessment][:avatar]
+    @assessment.image = params[:assessment][:image]
 
     @assessment.user_id = session[:current_user_id]
     @assessment.save      # assessments created and saved
@@ -115,8 +111,8 @@ class AssessmentsController < ApplicationController
     @assessment.min_points_4 = params[:assessment][:min_points_4]
     @assessment.min_points_5 = params[:assessment][:min_points_5]
 
-    if @assessment.avatar_file_name.nil?
-    @assessment.update_attribute(:avatar, params[:assessment][:avatar])
+    if @assessment.image_file_name.nil?
+    @assessment.update_attribute(:image, params[:assessment][:image])
     end
 
     @assessment.save
@@ -231,12 +227,12 @@ class AssessmentsController < ApplicationController
   end
 
   def assessment_params
-    params.require(:assessment).permit(:avatar)
+    params.require(:assessment).permit(:image)
   end
 
-  def remove_avatar
+  def remove_image
     @assessment = Assessment.find(params[:id])
-    @assessment.avatar = nil
+    @assessment.image = nil
     @assessment.save
     redirect_to @assessment, flash: { success: 'Datei erfolgreich gelöscht.' }
   end

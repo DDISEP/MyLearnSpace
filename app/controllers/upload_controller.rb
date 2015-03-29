@@ -27,7 +27,7 @@ end
 def destroy
   if session[:admin].nil?
     respond_to do |format|
-      format.js {render js: "alert('Nur Amdins duerfen Dateien loeschen!');"}
+      format.js {render js: "alert('Nur Admins duerfen Dateien loeschen!');"}
       format.html {render text: "Nur Administratoren duerfen Dateien loeschen!"}
     end  
   else  

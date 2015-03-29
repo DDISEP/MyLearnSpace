@@ -80,7 +80,25 @@
 		<% end %>
 	</div>
 	<% end%>
-	
+
+    <% if (!@exercise.image_file_name.nil?) %>
+      <div class="row-fluid"><%= button_to @exercise.image.url, :class => "button", :method => :get,
+                                           style:"width: 100%", class:"btn btn-xs btn-primary" do %>
+            Datei zur Lernaufgabe ansehen  <span class="glyphicon glyphicon"></span>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if @exercise.user_id == session[:current_user_id] && (!@exercise.image_file_name.nil?) %>
+      <div class="row-fluid"><%= button_to remove_exercise_image_path, :class => "button", :method => :get, data:{confirm: ('Bist du dir sicher?')},
+                                           style:"width: 100%", class:"btn btn-xs btn-primary" do %>
+            Datei zur Lernaufgabe löschen <span class="glyphicon glyphicon"></span>
+        <% end %>
+      </div>
+
+    <% end %>
+
+
 	<!-- Like- bzw. Disklike-Button -->
 	<div id="like_button">
 		<%= render 'likes/button'%>

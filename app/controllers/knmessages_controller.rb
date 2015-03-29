@@ -11,7 +11,7 @@ class KnmessagesController < ApplicationController
     @knmessage = Knmessage.new(params[:knmessage])
     @knmessage.name = @current_user.username
     if @knmessage.save
-      flash[:notice] = "Successfully created message."
+      flash[:notice] = "Nachricht wurde erfolgreich erstellt."
       redirect_to @knmessage.knowledge_element
     else
       render :action => 'new'

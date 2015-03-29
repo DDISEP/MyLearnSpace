@@ -2,23 +2,23 @@
 
     <table cellspacing="10" cellpadding="20">
       <tr>
-        <th>Note 1:</th> <th><%= @assessment.max_points%></th> <th> - </th> <th> <div class="span1"><%= f.number_field :min_points_1, id:"min_points_1", :input_html => {:maxlength => 3, :size => 1} %></div> </th>
+        <th>Note 1:</th> <th><%= @assessment.max_points%></th> <th> - </th> <th> <div class="span1"><%= f.number_field :min_points_1, id:"min_points_1", :input_html => {:maxlength => 3, :size => 1},  style:"height:100%" %></div> </th>
 
       </tr>
       <tr>
-        <th>Note 2:</th> <th> </th> <th> - </th> <th> <div class="span1"><%= f.number_field :min_points_2, id:"min_points_2", :input_html => {:maxlength => 3, :size => 1} %></div> </th>
+        <th>Note 2:</th> <th> </th> <th> - </th> <th> <div class="span1"><%= f.number_field :min_points_2, id:"min_points_2", :input_html => {:maxlength => 3, :size => 1}, style:"height:100%" %></div> </th>
 
       </tr>
       <tr>
-        <th>Note 3:</th> <th></th> <th> - </th> <th> <div class="span1"><%= f.number_field :min_points_3, id:"min_points_3", :input_html => {:maxlength => 3, :size => 1} %></div> </th>
+        <th>Note 3:</th> <th></th> <th> - </th> <th> <div class="span1"><%= f.number_field :min_points_3, id:"min_points_3", :input_html => {:maxlength => 3, :size => 1},  style:"height:100%" %></div> </th>
 
       </tr>
       <tr>
-        <th>Note 4:</th> <th></th> <th> - </th> <th> <div class="span1"><%= f.number_field :min_points_4, id:"min_points_4", :input_html => {:maxlength => 3, :size => 1} %></div> </th>
+        <th>Note 4:</th> <th></th> <th> - </th> <th> <div class="span1"><%= f.number_field :min_points_4, id:"min_points_4", :input_html => {:maxlength => 3, :size => 1},  style:"height:100%" %></div> </th>
 
       </tr>
       <tr>
-        <th>Note 5:</th> <th></th> <th> - </th> <th> <div class="span1"><%= f.number_field :min_points_5, id:"min_points_5", :input_html => {:maxlength => 3, :size => 1} %></div> </th>
+        <th>Note 5:</th> <th></th> <th> - </th> <th> <div class="span1"><%= f.number_field :min_points_5, id:"min_points_5", :input_html => {:maxlength => 3, :size => 1},  style:"height:100%" %></div> </th>
 
       </tr>
       <tr>
@@ -42,7 +42,7 @@
     </div>
 
     <div id="save_button" class="row-fluid">
-      <div class="span10 offset2"><%= f.submit "Notenschlüssel speichern", class:"btn btn-xs btn-success", style:"width:20%" %></div>
+      <div class="span10"><%= f.submit "Notenschlüssel speichern", class:"btn btn-xs btn-success", style:"width:20%" %></div>
       </div>
         </div>
       </div>

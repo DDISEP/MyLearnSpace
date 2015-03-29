@@ -7,7 +7,7 @@ class SubassessmentsController < ApplicationController
 
   def check_auth
     if @assessment.user_id != session[:current_user_id] && session[:admin] != true then
-      flash[:notice] = "Du bist weder Administrator, noch Autor deser Lernaufgabe!"
+      flash[:notice] = "Du bist weder Administrator, noch Autor dieser Prüfung!"
       redirect_to @assessment
     end
   end

@@ -9,7 +9,7 @@ class ExercisesController < ApplicationController
   
   def check_auth
     if @exercise.user_id != session[:current_user_id] && session[:admin] != true then
-      flash[:notice] = "Du bist weder Administrator, noch Autor deser Lernaufgabe!"
+      flash[:notice] = "Du bist weder Administrator, noch Autor dieser Lernaufgabe!"
       redirect_to @exercise
     end
   end
@@ -88,6 +88,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new
     @exercise.title = params[:exercise][:title]
     @exercise.description = params[:exercise][:description]
+    @exercise.image = params[:exercise][:image]
     @exercise.user_id = session[:current_user_id]
     @exercise.save      # exercises created and saved
     tags = params[:tags].split(",").map{|tag| tag.strip }
@@ -108,6 +109,11 @@ class ExercisesController < ApplicationController
   def update
     @exercise.title = params[:exercise][:title]
     @exercise.description = params[:exercise][:description]
+
+    if @exercise.image_file_name.nil?
+      @exercise.update_attribute(:image, params[:exercise][:image])
+    end
+
     @exercise.save
     
     old_tags = @exercise.knowledge_elements.map{|t| t.tag}                # tags as they were before editing
@@ -207,6 +213,17 @@ class ExercisesController < ApplicationController
   
   def statistics
     @performances = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id], current_position: -2).order('created_at DESC')
+  end
+
+  def exercise_params
+    params.require(:exercise).permit(:image)
+  end
+
+  def remove_image
+    @exercise = Exercise.find(params[:id])
+    @exercise.image = nil
+    @exercise.save
+    redirect_to @exercise, flash: { success: 'Datei erfolgreich gelöscht.' }
   end
 
 end

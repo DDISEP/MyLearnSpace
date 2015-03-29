@@ -71,16 +71,16 @@
     <% else %>
         Du hast diese Prüfung bereits bearbeitet! <br> <br>
     <% end%>
-    <% if (!@assessment.avatar_file_name.nil?) %>
-    <div class="row-fluid"><%= button_to @assessment.avatar.url, :class => "button", :method => :get,
+    <% if (!@assessment.image_file_name.nil?) %>
+    <div class="row-fluid"><%= button_to @assessment.image.url, :class => "button", :method => :get,
                                          style:"width: 100%", class:"btn btn-xs btn-primary" do %>
           Datei zur Prüfung ansehen  <span class="glyphicon glyphicon"></span>
       <% end %>
     </div>
       <% end %>
 
-    <% if @assessment.user_id == session[:current_user_id] && (!@assessment.avatar_file_name.nil?) %>
-        <div class="row-fluid"><%= button_to remove_assessment_avatar_path, :class => "button", :method => :get,
+    <% if @assessment.user_id == session[:current_user_id] && (!@assessment.image_file_name.nil?) %>
+        <div class="row-fluid"><%= button_to remove_assessment_image_path, :class => "button", :method => :get, data:{confirm: ('Bist du dir sicher?')},
                                              style:"width: 100%", class:"btn btn-xs btn-primary" do %>
               Datei zur Prüfung löschen <span class="glyphicon glyphicon"></span>
           <% end %>
@@ -118,16 +118,6 @@
   </div> <!-- /col-4-sm -->
 
 
-  <div class="col-sm-8 panel panel-default" id="comment_column" style="overflow-y:scroll; height:550px;">
-    <h3> Kommentare </h3>
-    <div id="comment_form">
-      <%= render 'comments/form2' %>
-    </div>
-    <div id="comment_list">
-      <!-- <button onclick="showMoreComments()">Alle Kommentare</button> -->
-      <%= render 'comments/list_comments2' %>
-    </div>
 
-  </div>
 
 </div>

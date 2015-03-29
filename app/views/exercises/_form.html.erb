@@ -14,7 +14,14 @@
 				<div class="span2"><%= label_tag :tags, "Tags (Tag1, Tag2, ...)" %></div>
 				<div class="span10"><%= text_field_tag :tags, @exercise.tags, placeholder:"Gib hier passende Tags ein...", maxlength:"1000", style:"width:100%; height:100%;" %></div>
 			</div>
-			
+          <% if @exercise.image_file_name.nil? %>
+              <div id="image_field" class="row-fluid">
+                <div class="span2"><%= f.label :image, "Datei zur Lernaufgabe hochladen" %></div>
+                <div class="span10"><%= f.file_field :image %></div>
+              </div>
+          <% else %>
+              Hinweis: Bevor Sie eine neue Datei hochladen können, müssen Sie zunächst die aktuelle löschen. Das können Sie auf der Übersichtsseite für diese Lernaufgabe tun.<br> <br>
+          <% end %>
 			<div id="save_button" class="row-fluid">
 				<div class="span10 offset2"><%= f.submit "Speichern", class:"btn btn-xs btn-success", style:"width:20%" %></div>
 			</div>

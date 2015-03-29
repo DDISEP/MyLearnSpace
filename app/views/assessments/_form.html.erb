@@ -14,10 +14,10 @@
             <div class="span2"><%= label_tag :tags, "Tags (Tag1, Tag2, ...)" %></div>
             <div class="span10"><%= text_field_tag :tags, @assessment.tags, placeholder:"Gib hier passende Tags ein...", maxlength:"1000", style:"width:100%; height:100%;" %></div>
           </div>
-          <% if @assessment.avatar_file_name.nil? %>
-          <div id="avatar_field" class="row-fluid">
-            <div class="span2"><%= f.label :avatar, "Datei zur Prüfung hochladen" %></div>
-            <div class="span10"><%= f.file_field :avatar %></div>
+          <% if @assessment.image_file_name.nil? %>
+          <div id="image_field" class="row-fluid">
+            <div class="span2"><%= f.label :image, "Datei zur Prüfung hochladen" %></div>
+            <div class="span10"><%= f.file_field :image %></div>
           </div>
           <% else %>
           Hinweis: Bevor Sie eine neue Datei hochladen können, müssen Sie zunächst die aktuelle löschen. Das können Sie auf der Übersichtsseite für diese Prüfung tun.<br> <br>

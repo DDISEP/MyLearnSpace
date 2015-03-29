@@ -36,7 +36,7 @@ class LoginsController < ApplicationController
   def update
     respond_to do |format|
       if @login.update(login_params)
-        format.html { redirect_to @login, notice: 'Login was successfully updated.' }
+        format.html { redirect_to @login, notice: 'Login wurde erfolgreich aktualisiert.' }
         format.json { head :no_knowledge_element }
       else
         format.html { render action: 'edit' }

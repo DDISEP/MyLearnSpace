@@ -62,8 +62,6 @@ MyLearnSpace::Application.routes.draw do
     get 'start', on: :member
     get 'finish', on: :member
 
-    resources :comments
-
     resources :performances
 
     resources :subassessments do
@@ -105,7 +103,9 @@ MyLearnSpace::Application.routes.draw do
   
   get "wikis/searchSuggestions/:search" => "wikis#searchSuggestions"
 
-  get 'assessment/:id/remove_avatar', to: 'assessments#remove_avatar', as: 'remove_assessment_avatar'
+  get 'assessment/:id/remove_image', to: 'assessments#remove_image', as: 'remove_assessment_image'
+
+  get 'exercise/:id/remove_image', to: 'exercises#remove_image', as: 'remove_exercise_image'
   
  
 
