@@ -2,7 +2,7 @@ class LearningUnitsController < ApplicationController
 
   before_action :set_learningUnit, only: [:edit, :update, :destroy, :addKnowledgeElement]
   before_action :authorize_admin,  only:[:new, :create, :edit, :update, :delete, :destroy] #Zugriffsrechte nur für Administratoren!
-  skip_before_action :check_login, only: [:new, :create, :edit, :update, :delete, :destroy]#authorize_admin ersetzt für diese Methoden check_login
+  
 
   # GET /learning_units
   # GET /learning_units.json

@@ -2,7 +2,7 @@ class CurriculumsController < ApplicationController
   
   before_action :set_curriculum, only: [:show, :edit, :update, :destroy]
   before_action :authorize_admin,  only:[:new, :create, :edit, :update, :delete, :destroy] #Zugriffsrechte nur für Administratoren!
-  skip_before_action :check_login, only: [:new, :create, :edit, :update, :delete, :destroy]#authorize_admin ersetzt für diese Methoden check_login
+
 
   
 
@@ -30,6 +30,7 @@ class CurriculumsController < ApplicationController
   # POST /curriculums.json
   def create
     @curriculum = Curriculum.new(curriculum_params)
+    @curriculum.user_id = session[:current_user_id]
 
     respond_to do |format|
       if @curriculum.save

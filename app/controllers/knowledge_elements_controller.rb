@@ -2,7 +2,7 @@ class KnowledgeElementsController < ApplicationController
 
   before_action :set_knowledge_element, only: [:edit, :update, :destroy]
   before_action :authorize_admin,  only:[:new, :create, :edit, :update, :delete, :destroy] #Zugriffsrechte nur für Administratoren!
-  skip_before_action :check_login, only: [:new, :create, :edit, :update, :delete, :destroy]#authorize_admin ersetzt für diese Methoden check_login
+
 
   
 
