@@ -30,7 +30,6 @@ class CurriculumsController < ApplicationController
   # POST /curriculums.json
   def create
     @curriculum = Curriculum.new(curriculum_params)
-    @curriculum.user_id = session[:current_user_id]
 
     respond_to do |format|
       if @curriculum.save

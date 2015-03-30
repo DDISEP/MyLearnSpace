@@ -35,7 +35,7 @@ def self.find_by_tags(knowledge_element_ids, search_text) # wenn search_text lee
   Wiki.all.each do |article|
     hasAllTags = true
     knowledge_element_ids.each do |knowledge_element|
-      hasAllTags = article.knowledge_elements.where("content_id = ?", knowledge_element).any? and hasAllTags
+      hasAllTags = article.knowledge_elements.where("knowledge_element_id = ?", knowledge_element).any? and hasAllTags
     end   
     if Wiki.where("id = ? and (title LIKE ? or article LIKE ?)", article.id, search_condition, search_condition).any? and hasAllTags
       @articles << article

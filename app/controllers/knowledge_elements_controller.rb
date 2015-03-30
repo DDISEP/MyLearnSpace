@@ -36,7 +36,7 @@ class KnowledgeElementsController < ApplicationController
 
     respond_to do |format|
       if @knowledge_element.save
-        format.html { redirect_to knowledge_elements_path, notice: "Schlagwort #{@knowledge_element.tag} wurde erfolgreich angelegt." }
+        format.html { redirect_to knowledge_elements_path, notice: "KnowledgeElement #{@knowledge_element.tag} wurde erfolgreich angelegt." }
         format.json { render action: 'index', status: :created, location: @knowledge_element }
       else
         format.html { render action: 'new' }
@@ -50,7 +50,7 @@ class KnowledgeElementsController < ApplicationController
   def update
     respond_to do |format|
       if @knowledge_element.update(knowledge_element_params)
-        format.html { redirect_to knowledge_elements_path, notice: "Schlagwort #{@knowledge_element.tag} wurde erfolgreich aktualisiert." }
+        format.html { redirect_to knowledge_elements_path, notice: "KnowledgeElement #{@knowledge_element.tag} wurde erfolgreich aktualisiert." }
         format.json { head :no_knowledge_element }
       else
         format.html { render action: 'edit' }

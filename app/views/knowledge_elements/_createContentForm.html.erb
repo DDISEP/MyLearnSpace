@@ -7,19 +7,19 @@
  		<%= f.label :tag, "Knowledge Element*" %>
  	</td>
  	<td>
- 		<%= f.text_area :tag, placeholder:"Schlagwort", maxlength:"140" %>
+ 		<%= f.text_area :tag, placeholder:"KnowledgeElement", maxlength:"140" %>
  	</td>
    <td valign="top">
-     <%= f.label :content, "Inhalt des Schlagworts*" %>
+     <%= f.label :content, "Inhalt des KnowledgeElements*" %>
    </td>
    <td>
-     <%= f.text_area :content, placeholder:"Inhalt des Schlagworts", maxlength:"500" %>
+     <%= f.text_area :content, placeholder:"Inhalt des KnowledgeElements", maxlength:"500" %>
    </td>
 
  </tr>
 </table>
   
   <div class="actions">
-    <%= f.submit "Schlagwort speichern" %>
+    <%= f.submit "KnowledgeElement speichern" %>
   </div>
 <% end %>

@@ -1,6 +1,6 @@
 voi fian ar***
 <p>
-  <strong>Schlagwort:</strong>
+  <strong>KnowledgeElement:</strong>
   <%= @knowledge_element.tag %>
 </p>
 

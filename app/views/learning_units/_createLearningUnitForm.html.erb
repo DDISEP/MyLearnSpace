@@ -3,15 +3,15 @@
 
   <div class="field">
     <%= f.label :curriculum_id, "Lehrplan" %>
-	<%= f.select :curriculum_id, [@curriculumID.id] %>
+	<%= f.select :curriculum_id, [@curriculumID.id], style: "height:100%;" %>
   </div>
   <div class="field">
     <%= f.label :title, "Titel*" %><br>
-    <%= f.text_field :title, placeholder:"Titel" %>
+    <%= f.text_field :title, placeholder:"Titel", style: "height:100%;" %>
   </div>
   <div class="field">
     <%= f.label :hours, "Stundenaufwand" %><br>
-    <%= f.number_field :hours, placeholder:"Stundenaufwand" %>
+    <%= f.number_field :hours, placeholder:"Stundenaufwand", style: "height:100%;" %>
   </div>
   <div class="area">
     <%= f.label :descriptionOfKnowledgeElement, "Lehrplaninhaltsbeschreibung*" %><br>
