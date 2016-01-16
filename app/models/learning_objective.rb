@@ -1,4 +1,4 @@
-class LearningObjective < ActiveRecord
+class LearningObjective < ActiveRecord::Base
 
   attr_accessible cognitiveDimension,
 
