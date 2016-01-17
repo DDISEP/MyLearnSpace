@@ -1,5 +1,8 @@
 class Topic < ActiveRecord::Base
 
+
+  enum subject: [:Mathematik, :Deutsch, :Englisch, :Ethik, :Französisch, :Informatik, :Physik, :Chemie, :Biologie, :Geschichte, :Sozialkunde, :Latein, :Wirtschaft_und_Recht, :Kunst, :Musik, :Sport, :Katholische_Religionslehre, :Evangelische_Religionslehre]
+
   attr_accessible :name, :description, :subject
 
   validates_presence_of :name, :message => " darf nicht leer sein."

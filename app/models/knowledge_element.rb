@@ -1,7 +1,10 @@
 class KnowledgeElement < ActiveRecord::Base
 
 
-  attr_accessible :name, :description, :topic
+  attr_accessible :name, :description
+
+  validates_presence_of :name, :message => " darf nicht leer sein."
+  validates_presence_of :description, :message => " darf nicht leer sein."
 
   #Relations between different parts of the website
   #1:1 relation between KnowledgeElement and KnowledgeElement_Chat join table (?) with destroy dependence
@@ -13,5 +16,6 @@ class KnowledgeElement < ActiveRecord::Base
 
   #n:m relation between KnowledgeElement and Material
   has_and_belongs_to_many :materials
+  has_and_belongs_to_many :topic
 
 end
