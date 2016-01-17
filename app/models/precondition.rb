@@ -12,8 +12,7 @@ class Precondition < ActiveRecord::Base
   has_many :learning_objectives
 
   validates :learning_objectives,
-            length: {maximum: 2},
-            length: {minimum: 2}
+            length: {minimum: 2, maximum: 2}
 
 
 end
