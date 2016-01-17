@@ -1,13 +1,12 @@
 class Topic < ActiveRecord::Base
 
+  attr_accessible :name, :description, :subject
 
   enum subject: [:Mathematik, :Deutsch, :Englisch, :Ethik, :Französisch, :Informatik, :Physik, :Chemie, :Biologie, :Geschichte, :Sozialkunde, :Latein, :Wirtschaft_und_Recht, :Kunst, :Musik, :Sport, :Katholische_Religionslehre, :Evangelische_Religionslehre]
 
-  attr_accessible :name, :description, :subject
-
-  validates_presence_of :name, :message => " darf nicht leer sein."
-  validates_presence_of :description, :message => " darf nicht leer sein."
-  validates_presence_of :subject, :message => " darf nicht leer sein."
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :subject, presence: true
 
   #Relations between different parts of the website
   #n:m relation between Topic and KnowledgeElement

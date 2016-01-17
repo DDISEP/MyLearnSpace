@@ -3,8 +3,8 @@ class KnowledgeElement < ActiveRecord::Base
 
   attr_accessible :name, :description
 
-  validates_presence_of :name, :message => " darf nicht leer sein."
-  validates_presence_of :description, :message => " darf nicht leer sein."
+  validates :name, presence: true
+  validates :description, presence: true
 
   #Relations between different parts of the website
   #1:1 relation between KnowledgeElement and KnowledgeElement_Chat join table (?) with destroy dependence
