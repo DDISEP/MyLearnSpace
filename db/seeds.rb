@@ -7,8 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Wiki.create(:title => "Anton", :article => "asdasdasd")
-Wiki.create(:article => "asdjlkasdjla", :title => "ajsdklasd")
+#Wiki
+Wiki.create(:title => "DerTitel1", :article => "WikiInhalt1")
+Wiki.create(:article => "DerTitel2", :title => "WikiInhalt2")
+
+#User
 User.create(:username => "admin", :email => "admin@mls.de", :password => "password", :admin => TRUE)
 User.create(:username => "teacher", :email => "teacher@mls.de", :password => "password", :teacher => TRUE)
 User.create(:username => "learner", :email => "teacher@mls.de", :password => "password", :learner => TRUE)
+
+#Question
+Question.create(:title => "Frage1?", :text => "FragentextZurFrage1")
+
+#Topic
+#Topic.create(:name => "TopicName1", :description => "TopicDesc1", :subject => :Mathematik)
