@@ -9,3 +9,4 @@
 
 Wiki.create(:title => "Anton", :article => "asdasdasd")
 Wiki.create(:article => "asdjlkasdjla", :title => "ajsdklasd")
+User.create()
