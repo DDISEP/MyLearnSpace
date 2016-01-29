@@ -9,4 +9,4 @@
 
 Wiki.create(:title => "Anton", :article => "asdasdasd")
 Wiki.create(:article => "asdjlkasdjla", :title => "ajsdklasd")
-User.create()
+User.create(:username => "admin", :email => "admin@mls.de", :password => "password", :admin => TRUE)
