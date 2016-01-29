@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160129103650) do
+ActiveRecord::Schema.define(version: 20160129115232) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -41,15 +41,6 @@ ActiveRecord::Schema.define(version: 20160129103650) do
   create_table "contents_items", force: true do |t|
     t.integer "content_id"
     t.integer "item_id"
-  end
-
-  create_table "curriculum_items", force: true do |t|
-    t.string   "title"
-    t.integer  "hours"
-    t.string   "descriptionOfContent"
-    t.integer  "curriculum_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "curriculums", force: true do |t|
@@ -101,20 +92,26 @@ ActiveRecord::Schema.define(version: 20160129103650) do
   add_index "exercise_contents", ["content_id"], name: "index_exercise_contents_on_content_id"
   add_index "exercise_contents", ["exercise_id"], name: "index_exercise_contents_on_exercise_id"
 
-  create_table "items", force: true do |t|
-    t.integer  "position"
-    t.string   "text"
-    t.string   "solution"
-    t.integer  "exercise_id"
+  create_table "exercises", force: true do |t|
+    t.string   "title"
+    t.string   "description", limit: 1000
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "points"
     t.boolean  "moderated"
-    t.boolean  "active"
-    t.boolean  "examItem"
+    t.boolean  "sequence"
   end
 
-  add_index "items", ["exercise_id"], name: "index_items_on_exercise_id"
+  add_index "exercises", ["user_id"], name: "index_exercises_on_user_id"
+
+  create_table "items", force: true do |t|
+    t.string   "title"
+    t.integer  "hours"
+    t.string   "descriptionOfContent"
+    t.integer  "curriculum_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "likes", force: true do |t|
     t.integer  "user_id"
@@ -132,17 +129,13 @@ ActiveRecord::Schema.define(version: 20160129103650) do
   end
 
   create_table "performances", force: true do |t|
-    t.integer  "max_points"
     t.integer  "achieved_points"
-    t.integer  "user_id"
-    t.integer  "exercise_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "current_position"
+    t.integer  "user_id"
+    t.integer  "exercise_id"
   end
-
-  add_index "performances", ["exercise_id"], name: "index_performances_on_exercise_id"
-  add_index "performances", ["user_id"], name: "index_performances_on_user_id"
 
   create_table "progresses", force: true do |t|
     t.integer  "rating"
@@ -165,17 +158,20 @@ ActiveRecord::Schema.define(version: 20160129103650) do
     t.datetime "updated_at"
   end
 
-  create_table "tasks", force: true do |t|
-    t.string   "title"
-    t.string   "description", limit: 1000
-    t.integer  "user_id"
+  create_table "subexercises", force: true do |t|
+    t.integer  "position"
+    t.string   "text"
+    t.string   "solution"
+    t.integer  "exercise_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "points"
     t.boolean  "moderated"
-    t.boolean  "sequence"
+    t.boolean  "active"
+    t.boolean  "examItem"
   end
 
-  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
+  add_index "subexercises", ["exercise_id"], name: "index_subexercises_on_exercise_id"
 
   create_table "users", force: true do |t|
     t.string   "username"
