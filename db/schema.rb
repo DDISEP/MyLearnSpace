@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160129115232) do
+ActiveRecord::Schema.define(version: 20160131104622) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -66,6 +66,14 @@ ActiveRecord::Schema.define(version: 20160129115232) do
     t.string   "fileName"
     t.string   "fileType"
   end
+
+  create_table "exam_subexercise", id: false, force: true do |t|
+    t.integer "exams_id"
+    t.integer "subexercises_id"
+  end
+
+  add_index "exam_subexercise", ["exams_id"], name: "index_exam_subexercise_on_exams_id"
+  add_index "exam_subexercise", ["subexercises_id"], name: "index_exam_subexercise_on_subexercises_id"
 
   create_table "exams", force: true do |t|
     t.integer  "maxPoints"
