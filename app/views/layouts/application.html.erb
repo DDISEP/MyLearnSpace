@@ -31,10 +31,8 @@
 	<% if @current_user.nil? %>
 		<% if @admin.nil?%>
       		&nbsp;&nbsp;&nbsp;&nbsp;
-      		<%= link_to 'Anmelden', new_login_path %> 
+      		<%= link_to 'Anmelden', new_login_path %>
       	<% else %>
-            &nbsp;&nbsp;
-            <%= link_to 'Persönliche aDaten', users_path %>
             &nbsp;&nbsp;
     		<%= link_to 'Benutzer', users_path %>
 			&nbsp;&nbsp;
@@ -50,9 +48,11 @@
 			<%= link_to "Abmelden", users_admin_path(@dmin, :authenticity_token => form_authenticity_token), :method => :delete%>
       		<% end %>
     <% else %>
-    	&nbsp;&nbsp;
-    	<%= link_to 'Benutzer', users_path %>
-		&nbsp;&nbsp;
+        &nbsp;&nbsp;
+        <%= link_to 'Persönliche Daten', users_profile_path %>
+        &nbsp;&nbsp;
+         <%= link_to 'Nachrichten', questions_path %>
+        &nbsp;&nbsp;
 		<%= link_to 'Lehrplan', curriculums_path %>
 		&nbsp;&nbsp;
 		<%= link_to 'Fragenforum', questions_path %>
