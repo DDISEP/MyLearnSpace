@@ -25,6 +25,10 @@ class ExercisesController < ApplicationController
   def get_comments
     @comments = Comment.where(exercise_id: @exercise.id).order('created_at DESC')
   end
+
+  def get_likes
+      @likes = Like.where(exercise_id: @exercise.id)
+  end
   
   def index
     case params[:sort_by]       # you can add other cases when new sort options are implemented in _list_exercises.html.erb
@@ -207,6 +211,14 @@ class ExercisesController < ApplicationController
   
   def statistics
     @performances = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id], current_position: -2).order('created_at DESC')
+  end
+
+  def update_subnumbers
+    int temp = 1
+    for aufgabe in @subexercises = Subexercises.where(active: true).order('position') do
+      aufgabe.setNumber = temp
+      temp = temp + 1
+    end
   end
 
 end
