@@ -175,7 +175,11 @@ class ExercisesController < ApplicationController
   def destroy
     @exercise.destroy
     flash[:notice] = "Aufgabe erfolgreich geloescht!"
-    redirect_to exercises_path
+    #redirect_to exercises_path #Eine Aufgabe wird nicht gelöscht, sondern nicht angezeigt, falls es keine Unteraufgabe (subexercises gibt)
+    #Zum Löschen einer Exercise werden alle Subexercises gelöscht
+    for aufgabe in @subexercieses = Subexercises.where(exercises_id: param[id])
+      aufgabe.destroy
+    end
   end
   
   def search
@@ -214,10 +218,15 @@ class ExercisesController < ApplicationController
   end
 
   def update_subnumbers
-    int temp = 1
-    for aufgabe in @subexercises = Subexercises.where(active: true).order('position') do
-      aufgabe.setNumber = temp
-      temp = temp + 1
+    if @exercises.sequence = true
+      #hier muss manuell sortiert bzw. bestätigt werden!
+    else
+      #hier wird automatisch aufgerückt
+      int temp = 1
+      for aufgabe in @subexercises = Subexercises.where(active: true, exercises_id: params[id]).order('position') do
+        aufgabe.setNumber = temp
+        temp = temp + 1
+      end
     end
   end
 
