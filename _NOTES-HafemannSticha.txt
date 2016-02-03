@@ -2,12 +2,23 @@ Notes Hafemann-Sticha
 ---------------------
 
 ### Git ###
+https://www.git-tower.com/blog/git-cheat-sheet-de
+
 clone https://github.com/DDISEP/MyLearnSpace.git
+git pull <remote> <branch>
 git commit -a -m "message"
-git push
-git pull
+git push <remote> <branch>
 
 ### rails console ###
+http://guides.rubyonrails.org/command_line.html
+
+rails console
+rails server
+rake
+rails generate
+rails dbconsole
+rails new app_name
+
 ~/RubymineProjects/MyLearnSpace
 bundle install
 rake db:create
