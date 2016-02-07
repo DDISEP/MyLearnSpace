@@ -1,6 +1,4 @@
 class Precondition < ActiveRecord::Base
-
-
   attr_accessible :necessity
 
   validates :necessity,
@@ -13,6 +11,4 @@ class Precondition < ActiveRecord::Base
 
   validates :learning_objectives,
             length: {minimum: 2, maximum: 2}
-
-
 end
