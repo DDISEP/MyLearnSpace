@@ -1,10 +1,11 @@
 class CreateExams < ActiveRecord::Migration
   def change
     create_table :exams do |t|
-      t.Integer :maxPoints
-      t.Integer :minPoints
+      t.integer :maxPoints
+      t.integer :minPoints
+      t.time :maxTime
 
-      t.timestamps :created_at
+      t.timestamps
     end
   end
 end
