@@ -1,4 +1,4 @@
-class RenameSubexercisesToItem < ActiveRecord::Migration
+class ChangeSubexercises < ActiveRecord::Migration
   def change
     add_column :subexercises, :moderated, :boolean
     add_column :subexercises, :active, :boolean

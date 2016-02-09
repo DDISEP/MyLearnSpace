@@ -138,12 +138,15 @@ ActiveRecord::Schema.define(version: 20160131104622) do
 
   create_table "performances", force: true do |t|
     t.integer  "achieved_points"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "current_position"
     t.integer  "user_id"
     t.integer  "exercise_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "handedin"
   end
+
+  add_index "performances", ["exercise_id"], name: "index_performances_on_exercise_id"
+  add_index "performances", ["user_id"], name: "index_performances_on_user_id"
 
   create_table "progresses", force: true do |t|
     t.integer  "rating"
@@ -160,7 +163,7 @@ ActiveRecord::Schema.define(version: 20160131104622) do
   end
 
   create_table "solutions", force: true do |t|
-    t.string   "correct"
+    t.string   "solution"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
