@@ -15,4 +15,8 @@ class KnowledgeElement < ActiveRecord::Base
   #n:m relation between KnowledgeElement and Material
   has_and_belongs_to_many :materials
   has_and_belongs_to_many :topic
+
+  def initialize
+    
+  end
 end
