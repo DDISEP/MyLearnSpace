@@ -1,0 +1,2 @@
+class KnowledgeElementController < ApplicationController
+end
