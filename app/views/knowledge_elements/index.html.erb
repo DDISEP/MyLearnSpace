@@ -2,22 +2,54 @@
 
   <div class="col-sm-9"><div class="row-fluid"><h1>KnowledgeElement</h1></div></div>
 
+  <div class="col-sm-9">
 
-<% if @knowledgeElements.to_s.length == 0 then %>
-    <div id="notice"> Noch keine KnowledgeElemente vorhanden! </div>
-<% end %>
-<p></p>
-
-  <div class="span3" style="padding-top: 20px"> <!-- link to creating new exercise -->
-    <%= button_to new_knowledge_element_path, :method => :get, class:"btn btn-xs btn-primary" do %>
-        <span class="glyphicon glyphicon-plus"></span> Neues KnowledgeElement
+    <% if @knowledgeElements.to_s.length == 0 then %>
+        <div id="notice"> Noch keine Aufgaben vorhanden! </div>
     <% end %>
-  </div>
+
+
+    <div class="panel panel-primary">
+      <div class="panel-body" id="knowledgeelements_list">
+        <div class="row-fluid">
+          <div class="span3" style="padding-top: 20px"> <!-- link to creating new knowledgeElement -->
+            <%= button_to new_knowledge_element_path, :method => :get, class:"btn btn-xs btn-primary" do %>
+              <span class="glyphicon glyphicon-plus"></span> Neues KnowledgeElement
+            <% end %>
+          </div>
+          </div>
+        </div>
+        <table class="table table-striped">
+          <thead>
+          <tr><strong>
+            <th> Name des Knowledge Elements </th>
+            <th> Beschreibung </th>
+          </strong></tr>
+          </thead>
+
+          <tbody>
+          <% @knowledgeElements.each do |ke| %>
+              <tr>
+                <!-- show title, author, and creation date for each exercise -->
+                <td> <%= link_to ke.name, ke %> </td>
+                <td> <%= ke.description %> </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div> <!-- /col-sm-9 -->
+</div> <!-- /container-fluid -->
+
+
+
 
 
 
 <% if @knowledgeElements.to_s.length != 0 then %>
-    <p>Möchten Sie ein bestehendes <%= link_to 'KnowledgeElement bearbeiten', edit_user_path(@current_user) %>?</p>
     <% if @knowledgeElements.length > 1 then %>
         <p>Möchten Sie <%= link_to 'Voraussetzungen für das Lernen von KnowledgeElementen', edit_user_path(@current_user) %> einfügen?</p>
     <% end %>

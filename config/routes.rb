@@ -81,18 +81,6 @@ MyLearnSpace::Application.routes.draw do
 
   resources :knowledge_elements
 
-  get "learning_objectives/index"
-  get "knowledge_elements/index"
-
-  post 'knowledge_elements/index' => "knowledge_elements#index"
-
-  get 'knowledge_elements/index' => "knowledge_elements#index"
-
-  post 'knowledge_elements/new' => "knowledge_elements#new"
-
-  get 'knowledge_elements/new' => "knowledge_elements#new"
-
-
   resources :learning_objectives
 
   resources :preconditions
