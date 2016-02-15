@@ -1,5 +1,6 @@
 MyLearnSpace::Application.routes.draw do
   
+
   #get '/exercises/:id/exercise_questions', to: 'exercise_questions#new'
           
   root 'welcome#index'
@@ -77,6 +78,24 @@ MyLearnSpace::Application.routes.draw do
   post 'wikis/search' => "wikis#search"
   
   get "wikis/searchSuggestions/:search" => "wikis#searchSuggestions"
+
+  resources :knowledge_elements
+
+  get "learning_objectives/index"
+  get "knowledge_elements/index"
+
+  post 'knowledge_elements/index' => "knowledge_elements#index"
+
+  get 'knowledge_elements/index' => "knowledge_elements#index"
+
+  post 'knowledge_elements/new' => "knowledge_elements#new"
+
+  get 'knowledge_elements/new' => "knowledge_elements#new"
+
+
+  resources :learning_objectives
+
+  resources :preconditions
   
   
  

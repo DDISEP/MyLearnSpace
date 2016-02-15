@@ -1,0 +1,33 @@
+<div class="container-fluid">
+
+  <div class="col-sm-9"><div class="row-fluid"><h1>KnowledgeElement</h1></div></div>
+
+
+<% if @knowledgeElements.to_s.length == 0 then %>
+    <div id="notice"> Noch keine KnowledgeElemente vorhanden! </div>
+<% end %>
+<p></p>
+
+  <div class="span3" style="padding-top: 20px"> <!-- link to creating new exercise -->
+    <%= button_to new_knowledge_element_path, :method => :get, class:"btn btn-xs btn-primary" do %>
+        <span class="glyphicon glyphicon-plus"></span> Neues KnowledgeElement
+    <% end %>
+  </div>
+
+
+
+<% if @knowledgeElements.to_s.length != 0 then %>
+    <p>Möchten Sie ein bestehendes <%= link_to 'KnowledgeElement bearbeiten', edit_user_path(@current_user) %>?</p>
+    <% if @knowledgeElements.length > 1 then %>
+        <p>Möchten Sie <%= link_to 'Voraussetzungen für das Lernen von KnowledgeElementen', edit_user_path(@current_user) %> einfügen?</p>
+    <% end %>
+<% end %>
+
+</div> <!-- /col-sm-9 -->
+
+
+</div> <!-- /container-fluid -->
+
+
+
+

@@ -1,2 +1,0 @@
-class KnowledgeElementController < ApplicationController
-end

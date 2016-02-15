@@ -11,12 +11,10 @@ class KnowledgeElement < ActiveRecord::Base
 
   #1:n relation between KnowledgeElement and LearningObjective with destroy dependence
   has_many :learning_objectives, :dependent => :destroy
+  has_many :exams
 
   #n:m relation between KnowledgeElement and Material
   has_and_belongs_to_many :materials
   has_and_belongs_to_many :topic
 
-  def initialize
-    
-  end
 end
