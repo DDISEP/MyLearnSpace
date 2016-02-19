@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207133315) do
+ActiveRecord::Schema.define(version: 20160219163109) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -159,6 +159,11 @@ ActiveRecord::Schema.define(version: 20160207133315) do
     t.datetime "updated_at"
   end
 
+  create_table "parent_learning_objectives", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "performances", force: true do |t|
     t.integer  "max_points"
     t.integer  "achieved_points"
@@ -175,7 +180,7 @@ ActiveRecord::Schema.define(version: 20160207133315) do
   create_table "preconditions", force: true do |t|
     t.boolean  "necessity"
     t.integer  "learning_objective_id"
-    t.integer  "parent_learnining_objetive_id"
+    t.integer  "parent_learning_objective_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

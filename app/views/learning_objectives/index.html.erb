@@ -1,0 +1,61 @@
+<div class="container-fluid">
+
+  <div class="col-sm-9"><div class="row-fluid"><h1>Learning Objectives</h1></div></div>
+
+  <div class="col-sm-9">
+
+    <% if @learningObjectives.count == 0 then %>
+      <div id="notice"> Noch keine LearningObjectives vorhanden! Arbeite an deinem Code </div>
+    <%else%>
+      <div id="notice"> Es sind <%= @learningObjectives.count %> LearningObjectives vorhanden!
+    <% end %>
+
+
+    <div class="panel panel-primary">
+      <div class="panel-body" id="knowledgeelements_list">
+        <div class="row-fluid">
+          <div class="span3" style="padding-top: 20px"> <!-- link to creating new knowledgeElement -->
+            <%= button_to new_learning_objective_path, :method => :get, class:"btn btn-xs btn-primary" do %>
+                <span class="glyphicon glyphicon-plus"></span> Neues LearningObjetive
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <p>
+        Sie haben <%= @learningObjectives.count.to_s %> Learning Objectives
+      </p>
+      <table class="table table-striped">
+        <thead>
+        <tr><strong>
+          <th> Name des Learning Objectives </th>
+          <th> CognitiveDimension </th>
+        </strong></tr>
+        </thead>
+
+        <tbody>
+        <% @learningObjectives.each do |le| %>
+            <tr>
+              <!-- show title, author, and creation date for each exercise -->
+              <td><%= le.knowledge_element.name %></td>
+              <td><%= le[:cognitiveDimension]%> </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+</div> <!-- /col-sm-9 -->
+</div> <!-- /container-fluid -->
+
+
+
+</div> <!-- /col-sm-9 -->
+
+
+</div> <!-- /container-fluid -->
+
+
+
+

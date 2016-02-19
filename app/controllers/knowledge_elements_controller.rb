@@ -1,5 +1,6 @@
 class KnowledgeElementsController < ApplicationController
 
+  # method for the index view, that lists all knowledgeElements
   def index
     @knowledgeElements = KnowledgeElement.all
   end
@@ -11,24 +12,31 @@ class KnowledgeElementsController < ApplicationController
     end
   end
 
+
+  # method for the new view, the form in the view calls the create method, so this method is empty
   def new
-    @knowledgeElements = KnowledgeElement.new
-    #@knowledgeElement = KnowledgeElement.new(params.require(:knowledgeElement).permit(:name, :description))
-    #@knowledgeElement.save
-    #redirect_to @knowledgeElement
+
   end
 
+  # method for craeting new KnowledgeElements
   def create
-    @knowledgeElements = KnowledgeElement.new
     @knowledgeElement = KnowledgeElement.new(params.require(:knowledgeElement).permit(:name, :description))
-    #@knowledgeElement..learning_objectives[1]=LearningObjective.create(cognitiveDimension: 1, knowledgeElement: self)
-    #@knowledgeElement..learning_objectives[2]=LearningObjective.create(cognitiveDimension: 2, knowledgeElement: self)
-    #@knowledgeElement..learning_objectives[3]=LearningObjective.create(cognitiveDimension: 3, knowledgeElement: self)
-    #@knowledgeElement..learning_objectives[4]=LearningObjective.create(cognitiveDimension: 4, knowledgeElement: self)
-    #@knowledgeElement..learning_objectives[5]=LearningObjective.create(cognitiveDimension: 5, knowledgeElement: self)
-   # @knowledgeElement..learning_objectives[6]=LearningObjective.create(cognitiveDimension: 6, knowledgeElement: self)
-    @knowledgeElement.save
-    redirect_to @knowledgeElement
+    #You can add an object to a collection without saving it by using the collection.build method
+    #The Object has been instantiated with attributes and linked to this object through the join table, but has not yet been saved
+    #Important if you haven't saved the Object (knowledgeElement) before building the collection
+    @knowledgeElement.learning_objectives.build(cognitiveDimension: 1)
+    @knowledgeElement.learning_objectives.build(cognitiveDimension: 2)
+    @knowledgeElement.learning_objectives.build(cognitiveDimension: 3)
+    @knowledgeElement.learning_objectives.build(cognitiveDimension: 4)
+    @knowledgeElement.learning_objectives.build(cognitiveDimension: 5)
+    @knowledgeElement.learning_objectives.build(cognitiveDimension: 6)
+    if @knowledgeElement.save
+      redirect_to @knowledgeElement
+    else
+      #render method is used so that the @knowledgeElement object is passed backto the new template when it is rendered
+      #this rendering isdone within the same request as the form submission whereas the redirect_to will tell the browser to issue another request
+      render 'new'
+    end
   end
 
   def show

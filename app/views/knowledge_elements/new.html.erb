@@ -8,6 +8,15 @@
       <div id="notice"> Noch keine KnowledgeElemente vorhanden! Bitte erstellen Sie ein KnowledgeElement</div>
   <% end %>
 
+  <%# When you callform_for, you pass it an identifying object for this form. In this case it is the symbol :knowledgeElement %>
+  <%# This tells the form_for helper what this form is for. Inside the block for this method, the FormBuilder object- %>
+  <%# represented by f - is used to build two labels, one text_field and one text_are %>
+  <%# Finlly, a call to submit on the f object will create a submit button for the fourm %>
+  <%# Implicityl the route for the action attribute for the form is ointing at /knowledge_elements/new%(route when submitting the form)%>
+  <%# The form needs to use a different URL in order to go somewhere else. This can be done with the :url option of form_for%>
+  <%# Typically in Rails, the action that is used for new form submissions like this is called "create", and so the form should be pointed to that action %>
+  <%# The articles_path helper tells Rails to point the form to the URI Patters associated with the articles prefix; and the form will (by default) %>
+  <%# send a POST request to that route. This is associated with the create action on the current controller. The KnowledgeElementsController %>
   <%= form_for :knowledgeElement, url: knowledge_elements_path  do |f| %>
   <div class="container-fluid">
     <div class="panel panel-primary">

@@ -79,13 +79,13 @@ MyLearnSpace::Application.routes.draw do
   
   get "wikis/searchSuggestions/:search" => "wikis#searchSuggestions"
 
-  resources :knowledge_elements
+  resources :knowledge_elements do
+    resources :learning_objectives do
+      resources :preconditions
+    end
+  end
 
   resources :learning_objectives
-
-  resources :preconditions
-  
-  
  
 
   # The priority is based upon order of creation: first created -> highest priority.

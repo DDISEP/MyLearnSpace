@@ -1,9 +1,17 @@
 <p>
   <strong>Name: </strong>
-  <%= @knowledgeElement.name %>
+  <%= @knowledgeElement.name %> <%= @knowledgeElement.learning_objectives.count %>
 </p>
 
 <p>
   <strong>Description: </strong>
   <%= @knowledgeElement.description %>
+</p>
+
+<p>
+  <%# @knowledgeElement.learning_objectives.all %>
+</p>
+
+<p>
+  <%= link_to 'Zurück', knowledge_elements_path%>
 </p>

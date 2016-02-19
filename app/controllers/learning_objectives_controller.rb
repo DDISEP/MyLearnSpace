@@ -7,10 +7,8 @@ class LearningObjectivesController < ApplicationController
     end
   end
 
-  def create
-    @learningObjective = LearningObjective.new
-    @learningObjective.cognitiveDimension = params[:cognitiveDimension]
-    @learningObjective.knowledge_element = params[:knowledgeElement]
+  def index
+    @learningObjectives = LearningObjective.all
   end
 
   def get_learning_Objective
