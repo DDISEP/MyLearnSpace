@@ -1,17 +1,44 @@
-<p>
-  <strong>Name: </strong>
-  <%= @knowledgeElement.name %> <%= @knowledgeElement.learning_objectives.count %>
-</p>
+<div class="container-fluid">
 
-<p>
-  <strong>Description: </strong>
-  <%= @knowledgeElement.description %>
-</p>
+  <div class="col-sm-9"><div class="row-fluid"><h1>Knowledge Element</h1></div></div>
 
-<p>
-  <%# @knowledgeElement.learning_objectives.all %>
-</p>
+  <div class="col-sm-9">
 
-<p>
-  <%= link_to 'Zurück', knowledge_elements_path%>
-</p>
+
+
+    <div class="panel panel-primary">
+
+      <% if @knowledgeElement != nil%>
+          <p>
+            <strong>Name: </strong>
+            <%= @knowledgeElement.name %> <%= @knowledgeElement.learning_objectives.count %>
+          </p>
+
+          <p>
+            <strong>Description: </strong>
+            <%= @knowledgeElement.description %>
+          </p>
+
+          <p>
+            <%# @knowledgeElement.learning_objectives.all %>
+          </p>
+      <%else%>
+          <p>
+            Dieses KnowledgeElement existiert nicht
+          </p>
+      <%end%>
+      <p>
+        <%= link_to 'Zurück zur Übersicht', knowledge_elements_path%>
+      </p>
+    </div>
+  </div>
+
+
+</div> <!-- /col-sm-9 -->
+</div> <!-- /container-fluid -->
+
+
+</div> <!-- /col-sm-9 -->
+
+
+</div>

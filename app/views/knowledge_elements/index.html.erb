@@ -22,7 +22,7 @@
         <table class="table table-striped">
           <thead>
           <tr><strong>
-            <th> Name des Knowledge Elements </th>
+            <th width="20%"> Name des Knowledge Elements </th>
             <th> Beschreibung </th>
           </strong></tr>
           </thead>
@@ -32,7 +32,13 @@
               <tr>
                 <!-- show title, author, and creation date for each exercise -->
                 <td> <%= link_to ke.name, ke %> </td>
-                <td> <%= ke.description %> </td>
+                <td> <%= ke.description %></td>
+                <td width="100">
+                  <%= button_to 'Löschen', {:action => "destroy", :id => ke.id}, :confirm => 'Are you sure?', :method => "delete",
+                                               :remote => true, :disable_with => 'loading...', class: "btn btn-xs btn-primary"%>
+                  <%#= button_to ("löschen", :id => ke.id, :method => :delete, data: {confirm: "Are you sure?"},
+                                               :remote => true, :disable_with => 'loading...'")
+                                              %></td>
               </tr>
           <% end %>
           </tbody>
@@ -44,16 +50,6 @@
   </div> <!-- /col-sm-9 -->
 </div> <!-- /container-fluid -->
 
-
-
-
-
-
-<% if @knowledgeElements.to_s.length != 0 then %>
-    <% if @knowledgeElements.length > 1 then %>
-        <p>Möchten Sie <%= link_to 'Voraussetzungen für das Lernen von KnowledgeElementen', edit_user_path(@current_user) %> einfügen?</p>
-    <% end %>
-<% end %>
 
 </div> <!-- /col-sm-9 -->
 

@@ -30,6 +30,8 @@ class KnowledgeElementsController < ApplicationController
     @knowledgeElement.learning_objectives.build(cognitiveDimension: 4)
     @knowledgeElement.learning_objectives.build(cognitiveDimension: 5)
     @knowledgeElement.learning_objectives.build(cognitiveDimension: 6)
+    @knowledgeElement.knowledge_element_chat
+    @knowledgeElement.forum
     if @knowledgeElement.save
       redirect_to @knowledgeElement
     else
@@ -40,6 +42,12 @@ class KnowledgeElementsController < ApplicationController
   end
 
   def show
+    @knowledgeElement = KnowledgeElement.find_by_id(params[:id])
+  end
+
+  def destroy
     @knowledgeElement = KnowledgeElement.find(params[:id])
+    @knowledgeElement.destroy
+    redirect_to knowledge_element_path, :notice => "The knowledgeElement has been deleted"
   end
 end
