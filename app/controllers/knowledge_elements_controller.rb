@@ -23,8 +23,12 @@ class KnowledgeElementsController < ApplicationController
   end
 
   def update
-    @kE = KnowledgeElement.find params[:id]
+    @kE = KnowledgeElement.find(params[:id])
+    @kE.name = params[:knowledge_element][:name]
+    @kE.description = params[:knowledge_element][:description]
+    @ke.save
     flash[:notice] = params.inspect
+    redirect_to :action => 'show', :id => @knowledgeElement
     #if @kE.update_attributes(knowledgeElement_param)
     #  redirect_to :action => 'show', :id => kE.id
     #else
