@@ -1,12 +1,8 @@
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span10"><h2>KnowledgeElemente anlegen</h2></div>
+    <div class="span10"><h2>KnowledgeElemente bearbeiten</h2></div>
     <div class="span2"><%= button_to "zurück", knowledge_elements_path, :method => :get, class:"btn btn-xs btn-primary", style:"width:100%"%></div>
   </div>
-
-  <% if @knowledgeElements.to_s.length == 0 then %>
-      <div id="notice"> Noch keine KnowledgeElemente vorhanden! Bitte erstellen Sie ein KnowledgeElement</div>
-  <% end %>
 
   <%# When you callform_for, you pass it an identifying object for this form. In this case it is the symbol :knowledgeElement %>
   <%# This tells the form_for helper what this form is for. Inside the block for this method, the FormBuilder object- %>
@@ -17,7 +13,7 @@
   <%# Typically in Rails, the action that is used for new form submissions like this is called "create", and so the form should be pointed to that action %>
   <%# The articles_path helper tells Rails to point the form to the URI Patters associated with the articles prefix; and the form will (by default) %>
   <%# send a POST request to that route. This is associated with the create action on the current controller. The KnowledgeElementsController %>
-  <%= form_for @knowledgeElement, url: {:action => "update", :id => @knowledgeElement}  do |f| %>
+  <%= form_for(@knowledgeElement) do |f| %>
       <div class="container-fluid">
         <div class="panel panel-primary">
           <div class="panel-body">

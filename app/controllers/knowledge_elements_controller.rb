@@ -23,27 +23,9 @@ class KnowledgeElementsController < ApplicationController
   end
 
   def update
-    @kE = KnowledgeElement.find(params[:id])
-    @kE.name = params[:knowledge_element][:name]
-    @kE.description = params[:knowledge_element][:description]
-    @ke.save
-    flash[:notice] = params.inspect
-    redirect_to :action => 'show', :id => @knowledgeElement
-    #if @kE.update_attributes(knowledgeElement_param)
-    #  redirect_to :action => 'show', :id => kE.id
-    #else
-    #  render :action=> 'edit'
-    #end
-    #if KnowledgeElement.find_by_id(params[:id]).update_attributes(params.require(:knowledgeElement).permit(:name, :description))
-     # redirect_to :action => 'show', :id => @knowledgeElement
-    #else
-    #  render :action => 'edit'
-    #end
-
-
-    #@knowledgeElement.update_attributes!(params.require(:knowledgeElement).permit(:name, :description))
-    #flash[:notice] = "#{@knowledgeElement.name} ist erfolgreich bearbeitet worden"
-    #redirect_to @knowledgeElement_path
+    KnowledgeElement.update(params[:id], :name => params[:knowledge_element][:name], :description=> params[:knowledge_element][:description])
+    #flash[:notice] = params.inspect
+    redirect_to knowledge_element_path(params[:id])
   end
 
   # method for craeting new KnowledgeElements
