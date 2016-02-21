@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-  <div class="col-sm-9"><div class="row-fluid"><h1>Knowledge Element</h1></div></div>
+  <div class="col-sm-9"><div class="row-fluid"><h1><%= @knowledgeElement.name %></h1></div></div>
 
   <div class="col-sm-9">
 
@@ -9,24 +9,73 @@
     <div class="panel panel-primary">
 
       <% if @knowledgeElement != nil%>
-          <p>
-            <strong>Name: </strong>
-            <%= @knowledgeElement.name %> <%= @knowledgeElement.learning_objectives.count %>
-          </p>
 
           <p>
-            <strong>Description: </strong>
             <%= @knowledgeElement.description %>
           </p>
 
+          <%= button_to 'Bearbeiten', edit_knowledge_element_path, :method => :get%>
+
+          <br>
+          <br>
+
           <p>
-            <%# @knowledgeElement.learning_objectives.all %>
+            <H4><strong>Tests:</strong></H4>
+          <% if @exams != nil %>
+              <% @exams.each do |e| %>
+                  <td> <%= link_to e.name, e %> </td>
+              <%end%>
+          <%else%>
+              Es gibt noch keine Tests für <%= @knowledgeElement.name %>
+          <%end%>
           </p>
+
+          <br>
+          <br>
+
+          <p>
+            <H4><strong>Aufgaben:</strong></H4>
+          <% if @exercises1 != nil%>
+              <% @exercises1.each do |e| %>
+                  <td> <%= link_to e.name, e %> </td>
+              <%end%>
+          <%end%>
+          <% if @exercises2 != nil%>
+              <% @exercises1.each do |e| %>
+                  <td> <%= link_to e.name, e %> </td>
+              <%end%>
+          <%end%>
+          <% if @exercises3 != nil%>
+              <% @exercises1.each do |e| %>
+                  <td> <%= link_to e.name, e %> </td>
+              <%end%>
+          <%end%>
+          <% if @exercises4 != nil%>
+              <% @exercises1.each do |e| %>
+                  <td> <%= link_to e.name, e %> </td>
+              <%end%>
+          <%end%>
+          <% if @exercises5 != nil%>
+              <% @exercises1.each do |e| %>
+                  <td> <%= link_to e.name, e %> </td>
+              <%end%>
+          <%end%>
+          <% if @exercises6 != nil%>
+              <% @exercises1.each do |e| %>
+                  <td> <%= link_to e.name, e %> </td>
+              <%end%>
+          <%end%>
+
+          </p>
+
+
       <%else%>
           <p>
             Dieses KnowledgeElement existiert nicht
           </p>
       <%end%>
+
+
       <p>
         <%= link_to 'Zurück zur Übersicht', knowledge_elements_path%>
       </p>
