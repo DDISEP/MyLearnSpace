@@ -1,5 +1,7 @@
 MyLearnSpace::Application.routes.draw do
   
+  resources :materialtexts
+
   #get '/exercises/:id/exercise_questions', to: 'exercise_questions#new'
           
   root 'welcome#index'
