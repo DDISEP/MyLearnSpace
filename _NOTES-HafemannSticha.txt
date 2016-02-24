@@ -21,11 +21,25 @@ rails new app_name
 
 ~/RubymineProjects/MyLearnSpace
 bundle install
-rake db:create
-rake db:migrate
-
-rake db:seeds
-
+bundle check
 rails c
 rails s
 http://127.0.0.1:3000
+
+### rails database ###
+rake db:create
+rake db:migrate
+rake db:setup
+rake db:seed
+
+### rails generate ###
+rails generate model/controller/view name
+rails generate scaffold name attribute:type
+
+### rails guides ###
+http://guides.rubyonrails.org/getting_started.html
+http://www.pragtob.info/rails-beginner-cheatsheet/
+http://www.cheat-sheets.org/saved-copy/RubyOnRails-Cheatsheet-BlaineKendall.pdf
+
+### rubymine guides ###
+https://www.jetbrains.com/webstorm/help/file-status-highlights.html
