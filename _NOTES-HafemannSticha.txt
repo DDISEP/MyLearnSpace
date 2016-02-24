@@ -18,3 +18,8 @@ rake db:seeds
 rails c
 rails s
 http://127.0.0.1:3000
+
+### rails guides ###
+http://guides.rubyonrails.org/getting_started.html
+http://www.pragtob.info/rails-beginner-cheatsheet/
+http://www.cheat-sheets.org/saved-copy/RubyOnRails-Cheatsheet-BlaineKendall.pdf

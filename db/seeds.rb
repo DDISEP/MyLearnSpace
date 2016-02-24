@@ -15,7 +15,6 @@ Wiki.create(:article => "DerTitel2", :title => "WikiInhalt2")
 User.create(:username => "admin", :email => "admin@mls.de", :password => "password", :admin => TRUE)
 User.create(:username => "teacher", :email => "teacher@mls.de", :password => "password", :teacher => TRUE)
 User.create(:username => "learner", :email => "learner@mls.de", :password => "password", :learner => TRUE)
-#a
 
 #Question
 Question.create(:title => "Frage1?", :text => "FragentextZurFrage1")
