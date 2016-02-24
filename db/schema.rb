@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811190629) do
+ActiveRecord::Schema.define(version: 20160224183621) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -114,6 +114,13 @@ ActiveRecord::Schema.define(version: 20140811190629) do
   add_index "likes", ["user_id"], name: "index_likes_on_user_id"
 
   create_table "logins", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "materialtexts", force: true do |t|
+    t.string   "title"
+    t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -20,6 +20,9 @@ User.create(:username => "learner", :email => "learner@mls.de", :password => "pa
 Question.create(:title => "Frage1?", :text => "FragentextZurFrage1")
 Question.create(:title => "Frage2?", :text => "FragentextZurFrage2")
 
+#Materialtext
+Materialtext.create(:title => "Materialtext1?", :text => "TextZuMaterialtext1")
+
 #Topic
 #Topic.create(:name => "TopicName1", :description => "TopicDesc1", :subject => :Mathematik)
 
