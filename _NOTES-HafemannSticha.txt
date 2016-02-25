@@ -27,14 +27,34 @@ rails s
 http://127.0.0.1:3000
 
 ### rails database ###
-rake db:create
-rake db:migrate
-rake db:setup
-rake db:seed
+rake db:create      #creates the database
+rake db:drop        #deletes the database
+rake db:migrate     #runs (single) migrations that have not run yet.
+rake db:schema:load #creates tables and columns within the (existing) database following schema.rb
+rake db:setup       #does db:create, db:schema:load, db:seed
+rake db:reset       #does db:drop, db:setup
+rake db:seed        #(only) runs the db/seed.rb file
+
+### mySQL data types ###
+NATIVE_DATABASE_TYPES = {
+        :primary_key => "int(11) auto_increment PRIMARY KEY",
+        :string      => { :name => "varchar", :limit => 255 },
+        :text        => { :name => "text" },
+        :integer     => { :name => "int", :limit => 4 },
+        :float       => { :name => "float" },
+        :decimal     => { :name => "decimal" },
+        :datetime    => { :name => "datetime" },
+        :time        => { :name => "time" },
+        :date        => { :name => "date" },
+        :binary      => { :name => "blob" },
+        :boolean     => { :name => "tinyint", :limit => 1 }
+      }
 
 ### rails generate ###
 rails generate model/controller/view name
 rails generate scaffold name attribute:type
+rails generate migration AddPartNumberToProducts part_number:string:index
+rails generate migration RemovePartNumberFromProducts part_number:string
 
 ### rails guides ###
 http://guides.rubyonrails.org/getting_started.html
