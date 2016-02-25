@@ -50,6 +50,11 @@ NATIVE_DATABASE_TYPES = {
         :boolean     => { :name => "tinyint", :limit => 1 }
       }
 
+### rails relationships ###
+http://ruby-auf-schienen.de/3.2/ar-has_one.html
+http://ruby-auf-schienen.de/3.2/activerecord_has_many.html
+http://ruby-auf-schienen.de/3.2/ar-many_to_many.html
+
 ### rails generate ###
 rails generate model/controller/view name
 rails generate scaffold name attribute:type
