@@ -1,0 +1,5 @@
+Todo Hafemann-Sticha
+---------------------
+
+- question text:string -> text:text
+- answer text:string -> text:text
