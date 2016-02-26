@@ -30,4 +30,4 @@ Materiallink.create(:title => "Materiallink1?", :link => "http://mylollyspace.de
 Materialpicture.create(:title => "Materialpicture1", :file => '010101001101', :filename => "file1", :fileformat => "png", :user_id => 1)
 
 #Materialvideo
-Materialvideo.create(:title => "Materialpicture1", :file => '010101001110001', :filename => "file1", :fileformat => "avi", :user_id => 1).
+Materialvideo.create(:title => "Materialpicture1", :file => '010101001110001', :filename => "file1", :fileformat => "avi", :user_id => 1)
