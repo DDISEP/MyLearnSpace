@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226170128) do
+ActiveRecord::Schema.define(version: 20160226173830) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -101,6 +101,26 @@ ActiveRecord::Schema.define(version: 20160226170128) do
     t.integer  "curriculum_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "join_materiallinks_knowledge_elements", force: true do |t|
+    t.integer "materiallink_id"
+    t.integer "knowledge_element_id"
+  end
+
+  create_table "join_materialpictures_knowledge_elements", force: true do |t|
+    t.integer "materialpicture_id"
+    t.integer "knowledge_element_id"
+  end
+
+  create_table "join_materialtexts_knowledge_elements", force: true do |t|
+    t.integer "materialtext_id"
+    t.integer "knowledge_element_id"
+  end
+
+  create_table "join_materialvideos_knowledge_elements", force: true do |t|
+    t.integer "materialvideo_id"
+    t.integer "knowledge_element_id"
   end
 
   create_table "likes", force: true do |t|
