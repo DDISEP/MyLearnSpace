@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226162839) do
+ActiveRecord::Schema.define(version: 20160226164451) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -126,9 +126,25 @@ ActiveRecord::Schema.define(version: 20160226162839) do
     t.datetime "updated_at"
   end
 
+  create_table "materialpictures", force: true do |t|
+    t.string   "title"
+    t.binary   "file"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "materialtexts", force: true do |t|
     t.string   "title"
     t.text     "text"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "materialvideos", force: true do |t|
+    t.string   "title"
+    t.binary   "file"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
