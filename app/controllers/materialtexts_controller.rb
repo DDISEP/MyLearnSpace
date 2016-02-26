@@ -69,6 +69,6 @@ class MaterialtextsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def materialtext_params
-      params.require(:materialtext).permit(:title, :text)
+      params.require(:materialtext).permit(:title, :text, :user_id)
     end
 end

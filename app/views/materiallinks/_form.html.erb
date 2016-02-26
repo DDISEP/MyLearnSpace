@@ -1,10 +1,10 @@
-<%= form_for(@materialtext) do |f| %>
-  <% if @materialtext.errors.any? %>
+<%= form_for(@materiallink) do |f| %>
+  <% if @materiallink.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@materialtext.errors.count, "error") %> prohibited this materialtext from being saved:</h2>
+      <h2><%= pluralize(@materiallink.errors.count, "error") %> prohibited this materiallink from being saved:</h2>
 
       <ul>
-      <% @materialtext.errors.full_messages.each do |msg| %>
+      <% @materiallink.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -16,8 +16,8 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br>

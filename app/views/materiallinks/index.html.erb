@@ -1,0 +1,31 @@
+<h1>Listing materiallinks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Link</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @materiallinks.each do |materiallink| %>
+      <tr>
+        <td><%= materiallink.title %></td>
+        <td><%= materiallink.link %></td>
+        <td><%= materiallink.user_id %></td>
+        <td><%= link_to 'Show', materiallink %></td>
+        <td><%= link_to 'Edit', edit_materiallink_path(materiallink) %></td>
+        <td><%= link_to 'Destroy', materiallink, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Materiallink', new_materiallink_path %>

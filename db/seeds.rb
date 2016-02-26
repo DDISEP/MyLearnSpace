@@ -21,10 +21,7 @@ Question.create(:title => "Frage1?", :text => "FragentextZurFrage1")
 Question.create(:title => "Frage2?", :text => "FragentextZurFrage2")
 
 #Materialtext
-Materialtext.create(:title => "Materialtext1?", :text => "TextZuMaterialtext1")
+Materialtext.create(:title => "Materialtext1?", :text => "TextZuMaterialtext1", :user_id => 1)
 
-#Topic
-#Topic.create(:name => "TopicName1", :description => "TopicDesc1", :subject => :Mathematik)
-
-#Exercise
-#Exercise.create(:title => "Aufgabentitel1", :description => "Aufgabenbeschreibung1", :author_name => "admin")
+#Materiallink
+Materiallink.create(:title => "Materiallink1?", :link => "http://mylollyspace.de", :user_id => 1)

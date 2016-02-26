@@ -5,6 +5,7 @@
     <tr>
       <th>Title</th>
       <th>Text</th>
+      <th>User</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= materialtext.title %></td>
         <td><%= materialtext.text %></td>
+        <td><%= materialtext.user_id %></td>
         <td><%= link_to 'Show', materialtext %></td>
         <td><%= link_to 'Edit', edit_materialtext_path(materialtext) %></td>
         <td><%= link_to 'Destroy', materialtext, method: :delete, data: { confirm: 'Are you sure?' } %></td>

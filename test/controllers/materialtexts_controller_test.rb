@@ -18,7 +18,7 @@ class MaterialtextsControllerTest < ActionController::TestCase
 
   test "should create materialtext" do
     assert_difference('Materialtext.count') do
-      post :create, materialtext: { text: @materialtext.text, title: @materialtext.title }
+      post :create, materialtext: { text: @materialtext.text, title: @materialtext.title, user_id: @materialtext.user_id }
     end
 
     assert_redirected_to materialtext_path(assigns(:materialtext))
@@ -35,7 +35,7 @@ class MaterialtextsControllerTest < ActionController::TestCase
   end
 
   test "should update materialtext" do
-    patch :update, id: @materialtext, materialtext: { text: @materialtext.text, title: @materialtext.title }
+    patch :update, id: @materialtext, materialtext: { text: @materialtext.text, title: @materialtext.title, user_id: @materialtext.user_id }
     assert_redirected_to materialtext_path(assigns(:materialtext))
   end
 
