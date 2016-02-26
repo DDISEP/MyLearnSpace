@@ -1,7 +1,23 @@
 Todo Hafemann-Sticha
 ---------------------
 
-### schema ###
+### model ###
+material raus aus model, sondern nur als controller und als view
+
+MaterialXXX
+bei Erstellung:
+    (id)
+    title
+    text/link/file
+    user_id
+im model:
+    has_many :users
+    has_and_belongs_to_many :knowledge_elements
+
+4x Join_Tabelle erstellen knowledge_element_materialXXX
+
+
+### schema-änderungen ###
 - question text:string -> text:text
 - answer text:string -> text:text
 
