@@ -1,0 +1,31 @@
+<h1>Listing materialvideos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>File</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @materialvideos.each do |materialvideo| %>
+      <tr>
+        <td><%= materialvideo.title %></td>
+        <td><%= materialvideo.file %></td>
+        <td><%= materialvideo.user_id %></td>
+        <td><%= link_to 'Show', materialvideo %></td>
+        <td><%= link_to 'Edit', edit_materialvideo_path(materialvideo) %></td>
+        <td><%= link_to 'Destroy', materialvideo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Materialvideo', new_materialvideo_path %>
