@@ -1,6 +1,6 @@
 class Materialpicture < ActiveRecord::Base
 
-  attr_accessible :title, :file, :user_id
+  attr_accessible :title, :file, :filename, :fileformat, :user_id
 
   validates :title, presence: true
   validates :file, presence: true

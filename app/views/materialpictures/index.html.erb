@@ -5,6 +5,8 @@
     <tr>
       <th>Title</th>
       <th>File</th>
+      <th>Filename</th>
+      <th>Fileformat</th>
       <th>User</th>
       <th></th>
       <th></th>
@@ -17,6 +19,8 @@
       <tr>
         <td><%= materialpicture.title %></td>
         <td><%= materialpicture.file %></td>
+        <td><%= materialpicture.filename %></td>
+        <td><%= materialpicture.fileformat %></td>
         <td><%= materialpicture.user_id %></td>
         <td><%= link_to 'Show', materialpicture %></td>
         <td><%= link_to 'Edit', edit_materialpicture_path(materialpicture) %></td>

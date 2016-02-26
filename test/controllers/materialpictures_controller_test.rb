@@ -18,7 +18,7 @@ class MaterialpicturesControllerTest < ActionController::TestCase
 
   test "should create materialpicture" do
     assert_difference('Materialpicture.count') do
-      post :create, materialpicture: { file: @materialpicture.file, title: @materialpicture.title, user_id: @materialpicture.user_id }
+      post :create, materialpicture: { file: @materialpicture.file, fileformat: @materialpicture.fileformat, filename: @materialpicture.filename, title: @materialpicture.title, user_id: @materialpicture.user_id }
     end
 
     assert_redirected_to materialpicture_path(assigns(:materialpicture))
@@ -35,7 +35,7 @@ class MaterialpicturesControllerTest < ActionController::TestCase
   end
 
   test "should update materialpicture" do
-    patch :update, id: @materialpicture, materialpicture: { file: @materialpicture.file, title: @materialpicture.title, user_id: @materialpicture.user_id }
+    patch :update, id: @materialpicture, materialpicture: { file: @materialpicture.file, fileformat: @materialpicture.fileformat, filename: @materialpicture.filename, title: @materialpicture.title, user_id: @materialpicture.user_id }
     assert_redirected_to materialpicture_path(assigns(:materialpicture))
   end
 

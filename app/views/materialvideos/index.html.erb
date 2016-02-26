@@ -5,6 +5,8 @@
     <tr>
       <th>Title</th>
       <th>File</th>
+      <th>Filename</th>
+      <th>Fileformat</th>
       <th>User</th>
       <th></th>
       <th></th>
@@ -17,6 +19,8 @@
       <tr>
         <td><%= materialvideo.title %></td>
         <td><%= materialvideo.file %></td>
+        <td><%= materialvideo.filename %></td>
+        <td><%= materialvideo.fileformat %></td>
         <td><%= materialvideo.user_id %></td>
         <td><%= link_to 'Show', materialvideo %></td>
         <td><%= link_to 'Edit', edit_materialvideo_path(materialvideo) %></td>

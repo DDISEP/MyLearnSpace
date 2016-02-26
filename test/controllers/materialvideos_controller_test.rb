@@ -18,7 +18,7 @@ class MaterialvideosControllerTest < ActionController::TestCase
 
   test "should create materialvideo" do
     assert_difference('Materialvideo.count') do
-      post :create, materialvideo: { file: @materialvideo.file, title: @materialvideo.title, user_id: @materialvideo.user_id }
+      post :create, materialvideo: { file: @materialvideo.file, fileformat: @materialvideo.fileformat, filename: @materialvideo.filename, title: @materialvideo.title, user_id: @materialvideo.user_id }
     end
 
     assert_redirected_to materialvideo_path(assigns(:materialvideo))
@@ -35,7 +35,7 @@ class MaterialvideosControllerTest < ActionController::TestCase
   end
 
   test "should update materialvideo" do
-    patch :update, id: @materialvideo, materialvideo: { file: @materialvideo.file, title: @materialvideo.title, user_id: @materialvideo.user_id }
+    patch :update, id: @materialvideo, materialvideo: { file: @materialvideo.file, fileformat: @materialvideo.fileformat, filename: @materialvideo.filename, title: @materialvideo.title, user_id: @materialvideo.user_id }
     assert_redirected_to materialvideo_path(assigns(:materialvideo))
   end
 
