@@ -25,3 +25,9 @@ Materialtext.create(:title => "Materialtext1?", :text => "TextZuMaterialtext1", 
 
 #Materiallink
 Materiallink.create(:title => "Materiallink1?", :link => "http://mylollyspace.de", :user_id => 1)
+
+#Materialpicture
+Materialpicture.create(:title => "Materialpicture1", :file => 010101001101, :user_id => 1)
+
+#Materialvideo
+Materialvideo.create(:title => "Materialpicture1", :file => 010101001110001, :user_id => 1)
