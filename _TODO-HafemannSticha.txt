@@ -16,7 +16,7 @@ im model:
 
 4x Join_Tabelle erstellen knowledge_element_materialXXX
 
-
+.
 ### schema-änderungen ###
 - question text:string -> text:text
 - answer text:string -> text:text
