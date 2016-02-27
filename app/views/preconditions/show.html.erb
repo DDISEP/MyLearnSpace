@@ -1,0 +1,51 @@
+<div class="container-fluid">
+
+
+  <div class="col-sm-9"><div class="row-fluid"><h1>Precondition</h1></div></div>
+  <div class="col-sm-9">
+
+
+
+    <div class="panel panel-primary">
+
+      <% if @precondition != nil%>
+          <table class="table table-striped">
+            <thead>
+            <tr><strong>
+              <th width="50%"> Parent LearningObjective </th>
+              <th> Child LearningObjective </th>
+            </strong></tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td> <%=@precondition.parent_learning_objective.cognitiveDimension_to_s%> <%= @precondition.parent_learning_objective.knowledge_element.name%></td>
+                <td> <%=@precondition.parent_learning_objective.cognitiveDimension_to_s%> <%= @precondition.child_learning_objective.knowledge_element.name%></td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+      <%else%>
+          <p>
+            Diese Precondition existiert nicht
+          </p>
+      <%end%>
+
+
+      <p>
+        <%= link_to 'Zurück zur Übersicht', preconditions_path%>
+      </p>
+    </div>
+  </div>
+
+
+</div> <!-- /col-sm-9 -->
+</div> <!-- /container-fluid -->
+
+
+</div> <!-- /col-sm-9 -->
+
+
+</div>

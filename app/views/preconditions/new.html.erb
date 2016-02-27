@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span10"><h2>Precondition anlegen</h2></div>
+    <div class="span2"><%= button_to "zurück", knowledge_elements_path, :method => :get, class:"btn btn-xs btn-primary", style:"width:100%"%></div>
+  </div>
+
+  <% if @preconditions.to_s.length == 0 then %>
+      <div id="notice"> Noch keine Preconditions vorhanden!</div>
+  <% end %>
+
+  <table class="table table-striped">
+    <tbody>
+
+    <% @knowledgeElements.each do |ke| %>
+      <tr>
+        <!-- show name of the KnowledgeElement the LearningObjectives belong to -->
+        <td><strong><%= ke.name %></strong> </td>
+        <!-- list the CognitiveDimensions of the Learning Objectives, click on creates new precondition -->
+        <% ke.learning_objectives.each do |lo| %>
+          <td>
+            <%= link_to  lo.cognitiveDimension_to_s, {:action => "create",
+                         :knowledge_element_id=> :knowledge_lement_id,
+                         :learning_objective_id => :learning_objective_id,
+                         :child_learning_objective_id=> :learning_objective_id,
+                         :parent_learning_objective_id=> lo.id},
+                         :method => "post" %></td>
+        <%end%>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+
+
+
+
+
+</div>
+

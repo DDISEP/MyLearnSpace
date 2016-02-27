@@ -35,12 +35,13 @@ class KnowledgeElementsController < ApplicationController
     #You can add an object to a collection without saving it by using the collection.build method
     #The Object has been instantiated with attributes and linked to this object through the join table, but has not yet been saved
     #Important if you haven't saved the Object (knowledgeElement) before building the collection
-    @knowledgeElement.learning_objectives.build(cognitiveDimension: 1)
-    @knowledgeElement.learning_objectives.build(cognitiveDimension: 2)
-    @knowledgeElement.learning_objectives.build(cognitiveDimension: 3)
-    @knowledgeElement.learning_objectives.build(cognitiveDimension: 4)
-    @knowledgeElement.learning_objectives.build(cognitiveDimension: 5)
-    @knowledgeElement.learning_objectives.build(cognitiveDimension: 6)
+    6.times {|i| @knowledgeElement.learning_objectives.build(cognitiveDimension: (i+1))}
+    #@knowledgeElement.learning_objectives.build(cognitiveDimension: 1)
+    #@knowledgeElement.learning_objectives.build(cognitiveDimension: 2)
+    #@knowledgeElement.learning_objectives.build(cognitiveDimension: 3)
+    #@knowledgeElement.learning_objectives.build(cognitiveDimension: 4)
+    #@knowledgeElement.learning_objectives.build(cognitiveDimension: 5)
+    #@knowledgeElement.learning_objectives.build(cognitiveDimension: 6)
     @knowledgeElement.knowledge_element_chat
     @knowledgeElement.forum
     if @knowledgeElement.save
@@ -54,14 +55,17 @@ class KnowledgeElementsController < ApplicationController
 
   def show
     @knowledgeElement = KnowledgeElement.find_by_id(params[:id])
-    @exams = nil
-    @knowledgeElementForum = nil
-    @exercises1=nil
-    @exercises2=nil
-    @exercises3=nil
-    @exercises4=nil
-    @exercises5=nil
-    @exercises6=nil
+    if !@knowledgeElement.nil?
+      @learningObjectives = @knowledgeElement.learning_objectives.all
+      @exams = nil
+      @knowledgeElementForum = nil
+      @exercises1=nil
+      @exercises2=nil
+      @exercises3=nil
+      @exercises4=nil
+      @exercises5=nil
+      @exercises6=nil
+    end
     #@exams = KnowledgeElement.exams.all
     #@knowledgeElementForum = KnowledgeElement.forum.first
   end

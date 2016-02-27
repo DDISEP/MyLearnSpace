@@ -23,4 +23,22 @@ class LearningObjective < ActiveRecord::Base
   belongs_to :knowledge_element, inverse_of: :learning_objectives #required: true, ging nicht muss nachschauen wieso
 
   has_many :items
+
+  def cognitiveDimension_to_s
+    if self[:cognitiveDimension].to_s == "1"
+      return "remember"
+    elsif self[:cognitiveDimension].to_s == "2"
+      return "understand"
+    elsif self[:cognitiveDimension].to_s == "3"
+      return "apply"
+    elsif self[:cognitiveDimension].to_s == "4"
+      return "analyze"
+    elsif self[:cognitiveDimension].to_s == "5"
+      return "evaluate"
+    elsif self[:cognitiveDimension].to_s == "6"
+      return "create"
+    else "Keine Zulässige CognitiveDimension"
+    end
+
+  end
 end

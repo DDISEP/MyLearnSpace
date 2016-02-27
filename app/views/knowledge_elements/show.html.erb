@@ -1,7 +1,10 @@
 <div class="container-fluid">
 
-  <div class="col-sm-9"><div class="row-fluid"><h1><%= @knowledgeElement.name %></h1></div></div>
-
+  <% if @knowledgeElement !=nil%>
+    <div class="col-sm-9"><div class="row-fluid"><h1><%= @knowledgeElement.name %></h1></div></div>
+  <% else %>
+      <div class="col-sm-9"><div class="row-fluid"><h1>KnowledgeElement</h1></div></div>
+      <%end%>
   <div class="col-sm-9">
 
 
@@ -15,6 +18,30 @@
           </p>
 
           <%= button_to 'Bearbeiten', edit_knowledge_element_path, :method => :get, class:"btn btn-xs btn-primary"%>
+
+          <br>
+          <br>
+
+          <p>
+          <table class="table table-striped">
+            <thead>
+            <tr><strong>
+              <th>Learning Objectives:</th>
+            </strong></tr>
+            </thead>
+
+            <tbody>
+            <tr>
+
+              <% @learningObjectives.each do |lo| %>
+                  <!-- show the different cognitive Dimensions, and -->
+                  <td width = "16%" > <%= link_to lo.cognitiveDimension_to_s, knowledge_element_learning_objective_path(:id => lo.id, :knowledge_element_id => lo.knowledge_element_id) %> </td>
+
+              <% end %>
+            </tr>
+            </tbody>
+          </table>
+          </p>
 
           <br>
           <br>

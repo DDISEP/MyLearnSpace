@@ -86,6 +86,8 @@ MyLearnSpace::Application.routes.draw do
   end
 
   resources :learning_objectives
+
+  resources :preconditions
  
 
   # The priority is based upon order of creation: first created -> highest priority.

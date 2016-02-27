@@ -1,0 +1,59 @@
+<div class="container-fluid">
+
+  <% if @learningObjective !=nil%>
+      <div class="col-sm-9"><div class="row-fluid"><h1><%= @learningObjective.cognitiveDimension_to_s%> <%= @learningObjective.knowledge_element.name %></h1></div></div>
+  <% else %>
+      <div class="col-sm-9"><div class="row-fluid"><h1>LearningObjective</h1></div></div>
+  <%end%>
+  <div class="col-sm-9">
+
+
+
+    <div class="panel panel-primary">
+
+      <% if @learningObjective != nil%>
+
+          <p>
+            <%= @learningObjective.knowledge_element.description %>
+          </p>
+
+          <br>
+          <br>
+
+          <%= link_to 'Neue Precondition', new_knowledge_element_learning_objective_precondition_path(knowledge_element_id: @learningObjective.knowledge_element_id, learning_objective_id: @learningObjective.id)%>
+
+          <br>
+          <br>
+          <p>
+          <H4><strong>Aufgaben:</strong></H4>
+          <%# if @learningObjective.items != nil%>
+              <%# @learningObjective.items.each do |e| %>
+                  <%#= link_to e.name, e %>
+              <%#end%>
+          <%#end%>
+
+          </p>
+
+
+      <%else%>
+          <p>
+            Dieses LearningObjective existiert nicht
+          </p>
+      <%end%>
+
+
+      <p>
+        <%= link_to 'Zurück zur Übersicht', knowledge_element_path%>
+      </p>
+    </div>
+  </div>
+
+
+</div> <!-- /col-sm-9 -->
+</div> <!-- /container-fluid -->
+
+
+</div> <!-- /col-sm-9 -->
+
+
+</div>

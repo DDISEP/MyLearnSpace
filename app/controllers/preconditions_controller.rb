@@ -7,8 +7,22 @@ class PreconditionsController < ApplicationController
     end
   end
 
+  def index
+    @preconditions = Precondition.all
+  end
+
+  def new
+    @learningObjective = LearningObjective.find_by_id(:learning_objective_id)
+    @knowledgeElements = KnowledgeElement.all
+    @preconditions = Precondition.all
+  end
+
   def create
-    @precondition = LearningObjective.get_learning_objective(:learning_objective_id).preconditions.build(:parent_learning_objective_id => params[:parent_learning_objective_id])
+    #@precondition = LearningObjective.find_by_id(params[:learning_objective_id]).preconditions.build(:parent_learning_objective_id => params[:parent_learning_objective_id])
+    @precondition = Precondition.new()
+    @precondition.child_learning_objective = LearningObjective.find_by_id(params[:child_learning_objective])
+    @precondition.parent_learning_objetive = LearningObjective.find_by_id(params[:parent_learning_objective])
+    flash[:notice] = params.inspect
     if @precondition.save
       flash[:notice] = "Die Lernvorraussetzung wurde erfolgreich gespeichert"
       redirect_to root_url
@@ -24,4 +38,13 @@ class PreconditionsController < ApplicationController
     #output missing
     redirect_to
   end
+
+  def show
+    @precondition = Precondition.find_by_id(params[:id])
+  end
+
+  def index
+    @preconditions = Precondition.all
+  end
+
 end
