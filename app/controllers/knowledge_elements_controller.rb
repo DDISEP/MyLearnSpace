@@ -36,12 +36,6 @@ class KnowledgeElementsController < ApplicationController
     #The Object has been instantiated with attributes and linked to this object through the join table, but has not yet been saved
     #Important if you haven't saved the Object (knowledgeElement) before building the collection
     6.times {|i| @knowledgeElement.learning_objectives.build(cognitiveDimension: (i+1))}
-    #@knowledgeElement.learning_objectives.build(cognitiveDimension: 1)
-    #@knowledgeElement.learning_objectives.build(cognitiveDimension: 2)
-    #@knowledgeElement.learning_objectives.build(cognitiveDimension: 3)
-    #@knowledgeElement.learning_objectives.build(cognitiveDimension: 4)
-    #@knowledgeElement.learning_objectives.build(cognitiveDimension: 5)
-    #@knowledgeElement.learning_objectives.build(cognitiveDimension: 6)
     @knowledgeElement.knowledge_element_chat
     @knowledgeElement.forum
     if @knowledgeElement.save

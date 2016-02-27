@@ -18,7 +18,7 @@ class PreconditionsController < ApplicationController
   end
 
   def create
-    #@precondition = LearningObjective.find_by_id(params[:learning_objective_id]).preconditions.build(:parent_learning_objective_id => params[:parent_learning_objective_id])
+    #@precondition = LearningObjective.find_by_id(params[:learning_objective_id]).parent_learning_objective_preconditions.build(:parent_learning_objective_id => params[:parent_learning_objective_id])
     @precondition = Precondition.new()
     @precondition.child_learning_objective = LearningObjective.find_by_id(params[:child_learning_objective])
     @precondition.parent_learning_objetive = LearningObjective.find_by_id(params[:parent_learning_objective])
