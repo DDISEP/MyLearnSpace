@@ -19,9 +19,13 @@ class PreconditionsController < ApplicationController
 
   def create
     #@precondition = LearningObjective.find_by_id(params[:learning_objective_id]).parent_learning_objective_preconditions.build(:parent_learning_objective_id => params[:parent_learning_objective_id])
-    @precondition = Precondition.new()
-    @precondition.child_learning_objective = LearningObjective.find_by_id(params[:child_learning_objective])
-    @precondition.parent_learning_objetive = LearningObjective.find_by_id(params[:parent_learning_objective])
+    @ke2.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective_id => params[:learning_objective_id],
+                                                                                 :nessecity => true,
+                                                                                 :parent_learning_objective_id =>params[:parent_learning_objective_id])
+    @ke2.save
+    #@precondition = Precondition.new()
+    #@precondition.child_learning_objective = LearningObjective.find_by_id(params[:child_learning_objective])
+    #@precondition.parent_learning_objetive = LearningObjective.find_by_id(params[:parent_learning_objective])
     flash[:notice] = params.inspect
     if @precondition.save
       flash[:notice] = "Die Lernvorraussetzung wurde erfolgreich gespeichert"

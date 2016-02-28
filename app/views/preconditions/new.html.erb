@@ -19,7 +19,7 @@
         <% ke.learning_objectives.each do |lo| %>
           <td>
             <%= link_to  lo.cognitiveDimension_to_s, {:action => "create",
-                         :knowledge_element_id=> :knowledge_lement_id,
+                         :knowledge_element_id=> :knowledge_element_id,
                          :learning_objective_id => :learning_objective_id,
                          :child_learning_objective_id=> :learning_objective_id,
                          :parent_learning_objective_id=> lo.id},

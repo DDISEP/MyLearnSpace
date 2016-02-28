@@ -21,7 +21,11 @@ Wiki.create(:article => "asdjlkasdjla", :title => "ajsdklasd")
 @ke2.save
 @ke3.save
 
-#@ke2.learning_objectives.parent_learning_objective_preconditions.build(LearningObjectives.where(:knowledge_element_id => @ke1.id, :cognitiveDimension => 4))
+
+@ke2.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke2.learning_objectives.first,
+                                                                             :nessecity => true,
+                                                                             :parent_learning_objective =>LearningObjective.where(:knowledge_element_id => @ke1.id, :cognitiveDimension => 4))
+@ke2.save
 
 #@ke2.learning_objectives.first.parent_learning_objective_preconditions.build(:child_learning_objective => @ke2.learning_objectives.first,
 #                                                                             :parent_learning_objective =>LearningObjective.where(:knowledge_element_id => @ke1.id, :cognitiveDimension => 4))
@@ -29,4 +33,4 @@ Wiki.create(:article => "asdjlkasdjla", :title => "ajsdklasd")
 #@ke2.learning_objectives.first.preconditions.build(:child_learning_objective => @ke2.learning_objectives.first,
 #                                                                             :parent_learning_objective =>LearningObjective.where(:knowledge_element_id => @ke1.id, :cognitiveDimension => 4))
 
-Precondition.create(:child_learning_objective_id => @ke2.learning_objectives.first, :parent_learning_objective_id => LearningObjective.where(:knowledge_element_id => @ke1.id, :cognitiveDimension => 4) )
+#Precondition.create(:child_learning_objective_id => @ke2.learning_objectives.first, :parent_learning_objective_id => LearningObjective.where(:knowledge_element_id => @ke1.id, :cognitiveDimension => 4) )
