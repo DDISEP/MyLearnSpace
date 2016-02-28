@@ -14,12 +14,12 @@ Wiki.create(:article => "asdjlkasdjla", :title => "ajsdklasd")
 @ke2 = KnowledgeElement.create(:name=> "Informationsdarstellung mit Graphikdokumenten - Graphiksoftware", :description => "Objekte als Informationseinheiten in Graphiken/n Objekte einer Vektorgraphik: Attribut, Attributwert und Methode")
 @ke3 = KnowledgeElement.create(:name=> "Informationsdarstellung mit Textdokumenten - Textverarbeitungssoftware", :description => "Objekte und Klassen in Texted, Zeichen, Absatz, Textdokument")
 
-#LearningObjective.create(:knowledge_element => @ke1, cognitiveDimension: 1)
-#LearningObjective.create(:knowledge_element_id => 1, cognitiveDimension: 2)
-#@ke1.learning_objectives.build(cognitiveDimension: 1)
-#6.times {|i| @ke1.learning_objectives.build(cognitiveDimension: (i+1))}
-#6.times {|i| @ke1.learning_objectives.build(cognitiveDimension: (i+1))}
-#6.times {|i| @ke1.learning_objectives.build(cognitiveDimension: (i+1))}
+6.times {|i| @ke1.learning_objectives.build(cognitiveDimension: (i+1))}
+6.times {|i| @ke2.learning_objectives.build(cognitiveDimension: (i+1))}
+6.times {|i| @ke3.learning_objectives.build(cognitiveDimension: (i+1))}
+@ke1.save
+@ke2.save
+@ke3.save
 
 #@ke2.learning_objectives.parent_learning_objective_preconditions.build(LearningObjectives.where(:knowledge_element_id => @ke1.id, :cognitiveDimension => 4))
 
