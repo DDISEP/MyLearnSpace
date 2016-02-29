@@ -1,0 +1,61 @@
+<div class="container-fluid">
+
+  <div class="col-sm-9"><div class="row-fluid"><h1>KnowledgeElement</h1></div></div>
+
+  <div class="col-sm-9">
+
+    <% if @knowledgeElements.to_s.length == 0 then %>
+        <div id="notice"> Noch keine Aufgaben vorhanden! </div>
+    <% end %>
+
+
+    <div class="panel panel-primary">
+      <div class="panel-body" id="knowledgeelements_list">
+        <div class="row-fluid">
+          <div class="span3" style="padding-top: 20px"> <!-- link to creating new knowledgeElement -->
+            <%= button_to new_knowledge_element_path, :method => :get, class:"btn btn-xs btn-primary" do %>
+              <span class="glyphicon glyphicon-plus"></span> Neues KnowledgeElement
+            <% end %>
+          </div>
+          </div>
+        </div>
+        <table class="table table-striped">
+          <thead>
+          <tr><strong>
+            <th width="20%"> Name des Knowledge Elements </th>
+            <th> Beschreibung </th>
+          </strong></tr>
+          </thead>
+
+          <tbody>
+          <% @knowledgeElements.each do |ke| %>
+              <tr>
+                <!-- show title, author, and creation date for each exercise -->
+                <td> <%= link_to ke.name, ke %> </td>
+                <td> <%= ke.description %></td>
+                <td width="100">
+                  <%= button_to 'Löschen', {:action => "destroy", :id => ke.id}, :confirm => 'Are you sure?', :method => "delete",
+                                               :remote => true, :disable_with => 'loading...', class: "btn btn-xs btn-primary"%>
+                  <%#= button_to ("löschen", :id => ke.id, :method => :delete, data: {confirm: "Are you sure?"},
+                                               :remote => true, :disable_with => 'loading...'")
+                                              %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div> <!-- /col-sm-9 -->
+</div> <!-- /container-fluid -->
+
+
+</div> <!-- /col-sm-9 -->
+
+
+</div> <!-- /container-fluid -->
+
+
+
+

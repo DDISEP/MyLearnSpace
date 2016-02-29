@@ -1,18 +1,18 @@
 class Precondition < ActiveRecord::Base
-
-
   attr_accessible :necessity
 
   validates :necessity,
-            presence: true,
-            inclusion: 0..1
+            presence: true
 
   #Relations between different parts of the website
-  #n:2 relation between Precondition and Learning Objective
-  has_many :learning_objectives
+  #Preconditions are the edges between two LearningObjectives
+  belongs_to :learning_objective, class_name: "LearningObjective"
+  validates :learning_objective,
+            presence: true
 
-  validates :learning_objectives,
-            length: {minimum: 2, maximum: 2}
-
+  # belongs_to :child_learning_objective, foreign_key: "child_learning_objective_id", class_name: "LearningObjective"
+  belongs_to :parent_learning_objective, foreign_key: "parent_learning_objective_id", :class_name => "LearningObjective"
+  validates :parent_learning_objective,
+      presence: true
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226173830) do
+ActiveRecord::Schema.define(version: 20140811190629) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -123,6 +123,37 @@ ActiveRecord::Schema.define(version: 20160226173830) do
     t.integer "knowledge_element_id"
   end
 
+  create_table "knowledge_element_chats", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "knowledge_elements", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "knowledge_elements_materials", id: false, force: true do |t|
+    t.integer "knowledge_element_id", null: false
+    t.integer "material_id",          null: false
+  end
+
+  create_table "knowledge_elements_topics", id: false, force: true do |t|
+    t.integer "knowledge_element_id", null: false
+    t.integer "topic_id",             null: false
+  end
+
+  create_table "learning_objectives", force: true do |t|
+    t.integer  "cognitiveDimension"
+    t.integer  "knowledge_element_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "learning_objectives", ["knowledge_element_id"], name: "index_learning_objectives_on_knowledge_element_id"
+
   create_table "likes", force: true do |t|
     t.integer  "user_id"
     t.integer  "exercise_id"
@@ -187,6 +218,14 @@ ActiveRecord::Schema.define(version: 20160226173830) do
   add_index "performances", ["exercise_id"], name: "index_performances_on_exercise_id"
   add_index "performances", ["user_id"], name: "index_performances_on_user_id"
 
+  create_table "preconditions", force: true do |t|
+    t.boolean  "necessity"
+    t.integer  "learning_objective_id"
+    t.integer  "parent_learning_objective_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "questions", force: true do |t|
     t.string   "title"
     t.string   "text"
@@ -206,6 +245,14 @@ ActiveRecord::Schema.define(version: 20160226173830) do
   end
 
   add_index "subexercises", ["exercise_id"], name: "index_subexercises_on_exercise_id"
+
+  create_table "topics", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "subject"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username"

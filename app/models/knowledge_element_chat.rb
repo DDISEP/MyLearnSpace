@@ -1,4 +1,2 @@
-class KnowledgeElement_Chat < ActiveRecord::Base
-
-  belongs_to :knowledge_element
+class KnowledgeElementChat < ActiveRecord::Base
 end

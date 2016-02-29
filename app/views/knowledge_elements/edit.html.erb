@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span10"><h2>KnowledgeElemente bearbeiten</h2></div>
+    <div class="span2"><%= button_to "zurück", knowledge_elements_path, :method => :get, class:"btn btn-xs btn-primary", style:"width:100%"%></div>
+  </div>
+
+  <%# When you callform_for, you pass it an identifying object for this form. In this case it is the symbol :knowledgeElement %>
+  <%# This tells the form_for helper what this form is for. Inside the block for this method, the FormBuilder object- %>
+  <%# represented by f - is used to build two labels, one text_field and one text_are %>
+  <%# Finlly, a call to submit on the f object will create a submit button for the fourm %>
+  <%# Implicityl the route for the action attribute for the form is ointing at /knowledge_elements/new%(route when submitting the form)%>
+  <%# The form needs to use a different URL in order to go somewhere else. This can be done with the :url option of form_for%>
+  <%# Typically in Rails, the action that is used for new form submissions like this is called "create", and so the form should be pointed to that action %>
+  <%# The articles_path helper tells Rails to point the form to the URI Patters associated with the articles prefix; and the form will (by default) %>
+  <%# send a POST request to that route. This is associated with the create action on the current controller. The KnowledgeElementsController %>
+  <%= form_for(@knowledgeElement) do |f| %>
+      <div class="container-fluid">
+        <div class="panel panel-primary">
+          <div class="panel-body">
+            <div id="name_field" class="row-fluid">
+              <div class="span2"><%= f.label :name, "Name" %></div>
+              <div class="span10"><%= f.text_field :name, placeholder: @knowledgeElement.name, style:"width:100%; height:100%;" %></div>
+            </div>
+            <div id="description_field" class="row-fluid">
+              <div class="span2"><%= f.label :description, "Beschreibung" %></div>
+              <div class="span10"><%= f.text_area :description, placeholder: @knowledgeElement.description, maxlength:"1000", style:"width:100%; height:60px; resize:vertical;" %></div>
+            </div>
+            <div id="save_button" class="row-fluid">
+              <div class="span10 offset2"><%= f.submit "Änderungen speichern", class:"btn btn-xs btn-success", style:"width:100%" %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
+

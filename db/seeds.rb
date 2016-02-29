@@ -31,3 +31,19 @@ Materialpicture.create(:title => "Materialpicture1", :file => '010101001101', :f
 
 #Materialvideo
 Materialvideo.create(:title => "Materialpicture1", :file => '010101001110001', :filename => "file1", :fileformat => "avi", :user_id => 1)
+@ke1 = KnowledgeElement.create(:name=> "Information und Ihre Darstellung", :description => "Anhand von Beispielen aus ihrer Erfahrungswelt wird den Schülern deutlich, dass Information auf ganz unterschiedliche Weise dargestellt werden kann")
+@ke2 = KnowledgeElement.create(:name=> "Informationsdarstellung mit Graphikdokumenten - Graphiksoftware", :description => "Objekte als Informationseinheiten in Graphiken/n Objekte einer Vektorgraphik: Attribut, Attributwert und Methode")
+@ke3 = KnowledgeElement.create(:name=> "Informationsdarstellung mit Textdokumenten - Textverarbeitungssoftware", :description => "Objekte und Klassen in Texten, Zeichen, Absatz, Textdokument")
+
+6.times {|i| @ke1.learning_objectives.build(cognitiveDimension: (i+1))}
+6.times {|i| @ke2.learning_objectives.build(cognitiveDimension: (i+1))}
+6.times {|i| @ke3.learning_objectives.build(cognitiveDimension: (i+1))}
+@ke1.save
+@ke2.save
+@ke3.save
+
+@lo = LearningObjective.where(:knowledge_element_id => @ke1.id, :cognitiveDimension => 4).first
+@pc = @ke2.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke2.learning_objectives.first,
+                                                                             :necessity => true,
+                                                                             :parent_learning_objective =>@lo)
+
