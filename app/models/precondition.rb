@@ -7,7 +7,12 @@ class Precondition < ActiveRecord::Base
   #Relations between different parts of the website
   #Preconditions are the edges between two LearningObjectives
   belongs_to :learning_objective, class_name: "LearningObjective"
- # belongs_to :child_learning_objective, foreign_key: "child_learning_objective_id", class_name: "LearningObjective"
-  belongs_to :parent_learning_objetive, foreign_key: "parent_learning_objective_id", :class_name => "LearningObjective"
+  validates :learning_objective,
+            presence: true
+
+  # belongs_to :child_learning_objective, foreign_key: "child_learning_objective_id", class_name: "LearningObjective"
+  belongs_to :parent_learning_objective, foreign_key: "parent_learning_objective_id", :class_name => "LearningObjective"
+  validates :parent_learning_objective,
+      presence: true
 
 end

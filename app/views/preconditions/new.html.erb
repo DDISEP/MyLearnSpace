@@ -7,33 +7,46 @@
   <% if @preconditions.to_s.length == 0 then %>
       <div id="notice"> Noch keine Preconditions vorhanden!</div>
   <% end %>
+  <%= form_for :precondition, knowledge_element_learning_objective_preconditions_path do |f| %>
+      <div class="container-fluid">
+        <div class="panel panel-primary">
+          <div class="panel-body">
+            <div id="necessity_field" class="row-fluid">
+              <table class="table table-striped">
+                <tr>
+                  <td><%= f.radio_button :necessity, 'true', :checked => true%><%= f.label :necessity, 'Notwendige Voraussetzung', :value => true%></td>
+                  <td><%= f.radio_button :necessity, 'false'%><%= f.label :necessity, 'Pädagogische Voraussetzung', :value => false%></td>
+                </tr>
+              </table>
+            </div>
+            <div id="parent_learning_objective_field" class="row-fluid">
+              <table class="table table-striped">
+                <tbody>
 
-  <table class="table table-striped">
-    <tbody>
+                <% @knowledgeElements.each do |ke| %>
+                    <tr>
+                      <!-- show name of the KnowledgeElement the LearningObjectives belong to -->
+                      <td><strong><%= ke.name %></strong> </td>
+                      <!-- list the CognitiveDimensions of the Learning Objectives, click on creates new precondition -->
+                      <% ke.learning_objectives.each do |lo| %>
+                          <td>
+                            <%= f.radio_button :parent_learning_objective_id,  lo.id %><%= f.label :parent_learning_objective_id, lo.cognitiveDimension_to_s, value => lo.id%>
+                          </td>
+                      <%end%>
+                    </tr>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
 
-    <% @knowledgeElements.each do |ke| %>
-      <tr>
-        <!-- show name of the KnowledgeElement the LearningObjectives belong to -->
-        <td><strong><%= ke.name %></strong> </td>
-        <!-- list the CognitiveDimensions of the Learning Objectives, click on creates new precondition -->
-        <% ke.learning_objectives.each do |lo| %>
-          <td>
-            <%= link_to  lo.cognitiveDimension_to_s, {:action => "create",
-                         :knowledge_element_id=> :knowledge_element_id,
-                         :learning_objective_id => :learning_objective_id,
-                         :child_learning_objective_id=> :learning_objective_id,
-                         :parent_learning_objective_id=> lo.id},
-                         :method => "post" %></td>
-        <%end%>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-
-
-
+            <div id="save_button" class="row-fluid">
+              <div class="span10 offset2"><%= f.submit "Precondition speichern", class:"btn btn-xs btn-success", style:"width:100%" %></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
-
+  <% end %>
 </div>
 

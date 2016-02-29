@@ -10,7 +10,7 @@
 
       <% if @preconditions != nil%>
           <p>
-            Sie haben <%= @preconditions.length %> Preconditions
+            Sie haben <%= @preconditions.count %> Preconditions
           </p>
           <table class="table table-striped">
             <thead>
@@ -23,8 +23,8 @@
             <% @preconditions.each do |p| %>
               <tbody>
                <tr>
-                 <td> <%=@precondition.parent_learning_objective.cognitiveDimension_to_s%> <%= @precondition.parent_learning_objective.knowledge_element.name%></td>
-                 <td> <%=@precondition.parent_learning_objective.cognitiveDimension_to_s%> <%= @precondition.child_learning_objective.knowledge_element.name%></td>
+                 <td><%=p.parent_learning_objective.cognitiveDimension_to_s%> <%= link_to p.parent_learning_objective.knowledge_element.name, p.parent_learning_objective.knowledge_element%></td>
+                 <td><%=p.learning_objective.cognitiveDimension_to_s%> <%=link_to p.learning_objective.knowledge_element.name, p.learning_objective.knowledge_element%></td>
                </tr>
               </tbody>
             <%end%>
