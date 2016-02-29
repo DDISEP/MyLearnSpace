@@ -60,12 +60,16 @@ class SubexercisesController < ApplicationController
   
   def destroy
     @subexercise.destroy
-    flash[:notice] = "Teilaufgabe erfolgreich geloescht."
+    flash[:notice] = "Teilaufgabe erfolgreich entfernt."
     respond_to do |format|
       format.js {}
       format.html {}
-    end 
-    redirect_to edit_exercise_path(@exercise)
+    end
+    @subexercise.active = :false
+    @subexercise.position = nil
+    @subexercise.save
+    @exercise.update_subnumbers #Nummerierungen der Teilaufgaben aktualisieren
+    #redirect_to edit_exercise_path(@exercise) #subexercise soll nicht ganz gelöscht werden, sondern nur unsichtbar geschalten werden
   end
   
   def perform
@@ -98,6 +102,10 @@ class SubexercisesController < ApplicationController
   
   def show
     
+  end
+
+  def setNumber
+    @position = params[:number]
   end
   
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811190629) do
+ActiveRecord::Schema.define(version: 20150120133959) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -67,6 +67,27 @@ ActiveRecord::Schema.define(version: 20140811190629) do
     t.string   "fileType"
   end
 
+  create_table "exam_subexercise", id: false, force: true do |t|
+    t.integer "exams_id"
+    t.integer "subexercises_id"
+  end
+
+  add_index "exam_subexercise", ["exams_id"], name: "index_exam_subexercise_on_exams_id"
+  add_index "exam_subexercise", ["subexercises_id"], name: "index_exam_subexercise_on_subexercises_id"
+
+  create_table "exam_subexercises", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "exams", force: true do |t|
+    t.integer  "maxPoints"
+    t.integer  "minPoints"
+    t.time     "maxTime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "exercise_answers", force: true do |t|
     t.text     "answer"
     t.text     "explanation"
@@ -90,6 +111,8 @@ ActiveRecord::Schema.define(version: 20140811190629) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "moderated"
+    t.boolean  "sequence"
   end
 
   add_index "exercises", ["user_id"], name: "index_exercises_on_user_id"
@@ -206,17 +229,22 @@ ActiveRecord::Schema.define(version: 20140811190629) do
   end
 
   create_table "performances", force: true do |t|
-    t.integer  "max_points"
     t.integer  "achieved_points"
     t.integer  "user_id"
     t.integer  "exercise_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "current_position"
+    t.string   "handedin"
   end
 
   add_index "performances", ["exercise_id"], name: "index_performances_on_exercise_id"
   add_index "performances", ["user_id"], name: "index_performances_on_user_id"
+
+  create_table "progresses", force: true do |t|
+    t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "preconditions", force: true do |t|
     t.boolean  "necessity"
@@ -234,6 +262,13 @@ ActiveRecord::Schema.define(version: 20140811190629) do
     t.string   "user_name"
   end
 
+  create_table "solutions", force: true do |t|
+    t.string   "solution"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "subexercises", force: true do |t|
     t.integer  "position"
     t.string   "text"
@@ -242,6 +277,9 @@ ActiveRecord::Schema.define(version: 20140811190629) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "points"
+    t.boolean  "moderated"
+    t.boolean  "active"
+    t.boolean  "examItem"
   end
 
   add_index "subexercises", ["exercise_id"], name: "index_subexercises_on_exercise_id"

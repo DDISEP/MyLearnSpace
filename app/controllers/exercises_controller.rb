@@ -25,6 +25,10 @@ class ExercisesController < ApplicationController
   def get_comments
     @comments = Comment.where(exercise_id: @exercise.id).order('created_at DESC')
   end
+
+  def get_likes
+      @likes = Like.where(exercise_id: @exercise.id)
+  end
   
   def index
     case params[:sort_by]       # you can add other cases when new sort options are implemented in _list_exercises.html.erb
@@ -171,7 +175,11 @@ class ExercisesController < ApplicationController
   def destroy
     @exercise.destroy
     flash[:notice] = "Aufgabe erfolgreich geloescht!"
-    redirect_to exercises_path
+    #redirect_to exercises_path #Eine Aufgabe wird nicht gelöscht, sondern nicht angezeigt, falls es keine Unteraufgabe (subexercises gibt)
+    #Zum Löschen einer Exercise werden alle Subexercises gelöscht
+    for aufgabe in @subexercieses = Subexercises.where(exercises_id: param[id])
+      aufgabe.destroy
+    end
   end
   
   def search
@@ -207,6 +215,19 @@ class ExercisesController < ApplicationController
   
   def statistics
     @performances = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id], current_position: -2).order('created_at DESC')
+  end
+
+  def update_subnumbers
+    if @exercises.sequence = true
+      #hier muss manuell sortiert bzw. bestätigt werden!
+    else
+      #hier wird automatisch aufgerückt
+      int temp = 1
+      for aufgabe in @subexercises = Subexercises.where(active: true, exercises_id: params[id]).order('position') do
+        aufgabe.setNumber = temp
+        temp = temp + 1
+      end
+    end
   end
 
 end
