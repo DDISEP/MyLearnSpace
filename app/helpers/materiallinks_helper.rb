@@ -1,0 +1,2 @@
+module MateriallinksHelper
+end

@@ -1,0 +1,35 @@
+<h1>Listing materialpictures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>File</th>
+      <th>Filename</th>
+      <th>Fileformat</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @materialpictures.each do |materialpicture| %>
+      <tr>
+        <td><%= materialpicture.title %></td>
+        <td><%= materialpicture.file %></td>
+        <td><%= materialpicture.filename %></td>
+        <td><%= materialpicture.fileformat %></td>
+        <td><%= materialpicture.user_id %></td>
+        <td><%= link_to 'Show', materialpicture %></td>
+        <td><%= link_to 'Edit', edit_materialpicture_path(materialpicture) %></td>
+        <td><%= link_to 'Destroy', materialpicture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Materialpicture', new_materialpicture_path %>

@@ -1,0 +1,17 @@
+Todo Hafemann-Sticha
+---------------------
+
+### model ###
+material raus aus model, sondern nur als controller und als view
+4x in KEs has_and_belongs_to_many :materialXXXs
+
+### schema-änderungen ###
+- question text:string -> text:text
+- answer text:string -> text:text
+
+### upload ###
+http://archive.railsforum.com/viewtopic.php?id=4642
+https://gist.github.com/macek/610596
+https://stackoverflow.com/questions/22247582/rails-4-saving-images-in-database
+http://forum.ruby-portal.de/viewtopic.php?f=14&t=2801
+https://matt.berther.io/2007/10/19/uploading-files-to-a-database-using-rails/

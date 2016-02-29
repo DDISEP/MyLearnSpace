@@ -1,0 +1,72 @@
+Notes Hafemann-Sticha
+---------------------
+
+### Git ###
+https://www.git-tower.com/blog/git-cheat-sheet-de
+
+clone https://github.com/DDISEP/MyLearnSpace.git
+git pull <remote> <branch>
+git commit -a -m "message"
+git push <remote> <branch>
+
+### rails console ###
+http://guides.rubyonrails.org/command_line.html
+
+rails console
+rails server
+rake
+rails generate
+rails dbconsole
+rails new app_name
+
+~/RubymineProjects/MyLearnSpace
+bundle install
+bundle check
+rails c
+rails s
+http://127.0.0.1:3000
+
+### rails database ###
+rake db:create      #creates the database
+rake db:drop        #deletes the database
+rake db:migrate     #runs (single) migrations that have not run yet.
+rake db:schema:load #creates tables and columns within the (existing) database following schema.rb
+rake db:setup       #does db:create, db:schema:load, db:seed
+rake db:reset       #does db:drop, db:setup
+rake db:seed        #(only) runs the db/seed.rb file
+
+### mySQL data types ###
+NATIVE_DATABASE_TYPES = {
+        :primary_key => "int(11) auto_increment PRIMARY KEY",
+        :string      => { :name => "varchar", :limit => 255 },
+        :text        => { :name => "text" },
+        :integer     => { :name => "int", :limit => 4 },
+        :float       => { :name => "float" },
+        :decimal     => { :name => "decimal" },
+        :datetime    => { :name => "datetime" },
+        :time        => { :name => "time" },
+        :date        => { :name => "date" },
+        :binary      => { :name => "blob" },
+        :boolean     => { :name => "tinyint", :limit => 1 }
+      }
+
+### rails relationships ###
+http://openbook.rheinwerk-verlag.de/ruby_on_rails/ruby_on_rails_10_010.htm
+http://ruby-auf-schienen.de/3.2/ar-has_one.html
+http://ruby-auf-schienen.de/3.2/activerecord_has_many.html
+http://ruby-auf-schienen.de/3.2/ar-many_to_many.html
+
+### rails generate ###
+rails generate model/controller/view name
+rails generate scaffold name attribute:type
+rails generate migration AddPartNumberToProducts part_number:string:index
+rails generate migration RemovePartNumberFromProducts part_number:string
+rails generate migration CreateJoinFlightsPassengers
+
+### rails guides ###
+http://guides.rubyonrails.org/getting_started.html
+http://www.pragtob.info/rails-beginner-cheatsheet/
+http://www.cheat-sheets.org/saved-copy/RubyOnRails-Cheatsheet-BlaineKendall.pdf
+
+### rubymine guides ###
+https://www.jetbrains.com/webstorm/help/file-status-highlights.html
