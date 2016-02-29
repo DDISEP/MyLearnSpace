@@ -5,6 +5,9 @@ Todo Hafemann-Sticha
 - question text:string -> text:text
 - answer text:string -> text:text
 
+- ist klasse forum nötig (direkte Verbindung zwischen den questions und den KEs)
+    - neues Attribut in questions mit KEs_id
+
 ### upload ###
 http://archive.railsforum.com/viewtopic.php?id=4642
 https://gist.github.com/macek/610596

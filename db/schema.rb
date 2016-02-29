@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120133959) do
+ActiveRecord::Schema.define(version: 20160226173830) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -240,16 +240,16 @@ ActiveRecord::Schema.define(version: 20150120133959) do
   add_index "performances", ["exercise_id"], name: "index_performances_on_exercise_id"
   add_index "performances", ["user_id"], name: "index_performances_on_user_id"
 
-  create_table "progresses", force: true do |t|
-    t.integer  "rating"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "preconditions", force: true do |t|
     t.boolean  "necessity"
     t.integer  "learning_objective_id"
     t.integer  "parent_learning_objective_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "progresses", force: true do |t|
+    t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
