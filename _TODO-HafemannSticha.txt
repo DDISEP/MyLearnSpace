@@ -1,10 +1,6 @@
 Todo Hafemann-Sticha
 ---------------------
 
-### model ###
-material raus aus model, sondern nur als controller und als view
-4x in KEs has_and_belongs_to_many :materialXXXs
-
 ### schema-änderungen ###
 - question text:string -> text:text
 - answer text:string -> text:text
