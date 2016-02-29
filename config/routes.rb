@@ -1,5 +1,12 @@
 MyLearnSpace::Application.routes.draw do
   
+  resources :materialvideos
+
+  resources :materialpictures
+
+  resources :materiallinks
+
+  resources :materialtexts
 
   #get '/exercises/:id/exercise_questions', to: 'exercise_questions#new'
           

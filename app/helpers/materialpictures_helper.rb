@@ -1,0 +1,2 @@
+module MaterialpicturesHelper
+end

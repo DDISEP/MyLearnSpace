@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219163109) do
+ActiveRecord::Schema.define(version: 20140811190629) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -94,11 +94,6 @@ ActiveRecord::Schema.define(version: 20160219163109) do
 
   add_index "exercises", ["user_id"], name: "index_exercises_on_user_id"
 
-  create_table "forums", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "items", force: true do |t|
     t.string   "title"
     t.integer  "hours"
@@ -106,6 +101,26 @@ ActiveRecord::Schema.define(version: 20160219163109) do
     t.integer  "curriculum_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "join_materiallinks_knowledge_elements", force: true do |t|
+    t.integer "materiallink_id"
+    t.integer "knowledge_element_id"
+  end
+
+  create_table "join_materialpictures_knowledge_elements", force: true do |t|
+    t.integer "materialpicture_id"
+    t.integer "knowledge_element_id"
+  end
+
+  create_table "join_materialtexts_knowledge_elements", force: true do |t|
+    t.integer "materialtext_id"
+    t.integer "knowledge_element_id"
+  end
+
+  create_table "join_materialvideos_knowledge_elements", force: true do |t|
+    t.integer "materialvideo_id"
+    t.integer "knowledge_element_id"
   end
 
   create_table "knowledge_element_chats", force: true do |t|
@@ -154,12 +169,38 @@ ActiveRecord::Schema.define(version: 20160219163109) do
     t.datetime "updated_at"
   end
 
-  create_table "materials", force: true do |t|
+  create_table "materiallinks", force: true do |t|
+    t.string   "title"
+    t.string   "link"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "parent_learning_objectives", force: true do |t|
+  create_table "materialpictures", force: true do |t|
+    t.string   "title"
+    t.binary   "file"
+    t.string   "filename"
+    t.string   "fileformat"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "materialtexts", force: true do |t|
+    t.string   "title"
+    t.text     "text"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "materialvideos", force: true do |t|
+    t.string   "title"
+    t.binary   "file"
+    t.string   "filename"
+    t.string   "fileformat"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

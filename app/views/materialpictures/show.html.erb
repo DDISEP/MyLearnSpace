@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @materialpicture.title %>
+</p>
+
+<p>
+  <strong>File:</strong>
+  <%= @materialpicture.file %>
+</p>
+
+<p>
+  <strong>Filename:</strong>
+  <%= @materialpicture.filename %>
+</p>
+
+<p>
+  <strong>Fileformat:</strong>
+  <%= @materialpicture.fileformat %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @materialpicture.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_materialpicture_path(@materialpicture) %> |
+<%= link_to 'Back', materialpictures_path %>
