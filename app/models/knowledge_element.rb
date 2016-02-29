@@ -13,8 +13,13 @@ class KnowledgeElement < ActiveRecord::Base
   has_many :learning_objectives, :dependent => :destroy, inverse_of: :knowledge_element
   has_many :exams
 
-  #n:m relation between KnowledgeElement and Material
-  has_and_belongs_to_many :materials
+
   has_and_belongs_to_many :topic
+  
+  #n:m relation between KnowledgeElement and Material
+  has_and_belongs_to_many :materialtexts
+  has_and_belongs_to_many :materiallinks
+  has_and_belongs_to_many :materialpictures
+  has_and_belongs_to_many :materialvideos
 
 end
