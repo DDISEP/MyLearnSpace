@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+>
 <head>
   <title>MyLearnSpace</title>
   
@@ -7,7 +8,7 @@
   
   
   
-  <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag "application" %>s
   <%= javascript_include_tag "application", controller_name %>
 
 
@@ -31,9 +32,9 @@
 	<% if @current_user.nil? %>
 		<% if @admin.nil?%>
       		&nbsp;&nbsp;&nbsp;&nbsp;
-      		<%= link_to 'Anmelden', new_login_path %> 
+      		<%= link_to 'Anmelden', new_login_path %>
       	<% else %>
-      		&nbsp;&nbsp;
+            &nbsp;&nbsp;
     		<%= link_to 'Benutzer', users_path %>
 			&nbsp;&nbsp;
 			<%= link_to 'Lehrplan', curriculums_path %>
@@ -46,19 +47,57 @@
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<strong>Du bist als Administrator angemeldet</strong>
 			<%= link_to "Abmelden", users_admin_path(@dmin, :authenticity_token => form_authenticity_token), :method => :delete%>
-      		<% end %>
+      	<% end %>
     <% else %>
-    	&nbsp;&nbsp;
-    	<%= link_to 'Benutzer', users_path %>
-		&nbsp;&nbsp;
-		<%= link_to 'Lehrplan', curriculums_path %>
-		&nbsp;&nbsp;
-		<%= link_to 'Fragenforum', questions_path %>
-		&nbsp;&nbsp;
-		<%= link_to 'Lernaufgaben', exercises_path %>
-		&nbsp;&nbsp;
-		<%= link_to 'Wiki', wikis_path %>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <% if @current_user.admin?%>
+            &nbsp;&nbsp;
+            <%= link_to 'Persönliche Daten', users_profile_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Benutzer', users_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Neuen Admin anlegen', users_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'User suchen', users_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Nachrichten', questions_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Newsfeed', questions_path %>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <% elsif @current_user.teacher?%>
+            &nbsp;&nbsp;
+            <%= link_to 'Persönliche Daten', users_profile_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Neuen Teacher anlegen', users_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'User suchen', users_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Nachrichten', questions_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Lehrplan', curriculums_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Fragenforum', questions_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Lernaufgaben', exercises_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Wiki', wikis_path %>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <% else %>
+            &nbsp;&nbsp;
+            <%= link_to 'Persönliche Daten', users_profile_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'User suchen', users_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Nachrichten', questions_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Lehrplan', curriculums_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Fragenforum', questions_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Lernaufgaben', exercises_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Wiki', wikis_path %>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <% end %>
 	<strong>Du bist angemeldet als <%= @current_user.username %></strong>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <%= link_to 'Abmelden', login_path(@current_user, :authenticity_token => form_authenticity_token), :method => :delete%> <!--session_path( session ), :method => :delete %>-->
