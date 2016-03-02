@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226173830) do
+ActiveRecord::Schema.define(version: 20160302155735) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -104,6 +104,11 @@ ActiveRecord::Schema.define(version: 20160226173830) do
 
   add_index "exercise_contents", ["content_id"], name: "index_exercise_contents_on_content_id"
   add_index "exercise_contents", ["exercise_id"], name: "index_exercise_contents_on_exercise_id"
+
+  create_table "exerciseoverviews", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "exercises", force: true do |t|
     t.string   "title"
