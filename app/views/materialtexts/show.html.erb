@@ -12,7 +12,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @materialtext.user_id %>
+  <%= @user.find_by(id: @materialtext.user_id).username %>
 </p>
 
 <%= link_to 'Edit', edit_materialtext_path(@materialtext) %> |

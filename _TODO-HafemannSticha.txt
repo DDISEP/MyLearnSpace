@@ -20,3 +20,6 @@ database is locked
 
 - question text:string -> text:text
 - answer text:string -> text:text
+
+### materialtext ###
+show user name ausgeben

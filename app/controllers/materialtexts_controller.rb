@@ -5,6 +5,8 @@ class MaterialtextsController < ApplicationController
   # GET /materialtexts.json
   def index
     @materialtexts = Materialtext.all
+    @current_user = User.find(session[:current_user_id])
+    @user = User.all
   end
 
   # GET /materialtexts/1
@@ -25,6 +27,8 @@ class MaterialtextsController < ApplicationController
   # POST /materialtexts.json
   def create
     @materialtext = Materialtext.new(materialtext_params)
+    @materialtext.user_id = @current_user.id
+
 
     respond_to do |format|
       if @materialtext.save

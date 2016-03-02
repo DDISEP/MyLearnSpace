@@ -15,7 +15,7 @@
       <tr>
         <td><%= material.title %></td>
         <td><%= link_to 'Show', material %></td>
-        <td><%= link_to 'Edit', edit_material_path(material) %></td>
+        <td><%= link_to 'Edit', edit_materialtext_path(material) %></td>
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -25,7 +25,7 @@
       <tr>
         <td><%= material.title %></td>
         <td><%= link_to 'Show', material %></td>
-        <td><%= link_to 'Edit', edit_material_path(material) %></td>
+        <td><%= link_to 'Edit', edit_materiallink_path(material) %></td>
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
@@ -35,7 +35,7 @@
       <tr>
         <td><%= material.title %></td>
         <td><%= link_to 'Show', material %></td>
-        <td><%= link_to 'Edit', edit_material_path(material) %></td>
+        <td><%= link_to 'Edit', edit_materialpicture_path(material) %></td>
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
@@ -45,7 +45,7 @@
       <tr>
         <td><%= material.title %></td>
         <td><%= link_to 'Show', material %></td>
-        <td><%= link_to 'Edit', edit_material_path(material) %></td>
+        <td><%= link_to 'Edit', edit_materialvideo_path(material) %></td>
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
