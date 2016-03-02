@@ -1,16 +1,26 @@
 <h1>Materialien</h1>
 
+<br>
+<%= link_to 'Neues Textmaterial erstellen', new_materialtext_path %>
+<br>
+<%= link_to 'Neuen Link erstellen Material', new_materiallink_path %>
+<br>
+<%= link_to 'Neues Bild hochladen', new_materialpicture_path %>
+<br>
+<%= link_to 'Neues Video hochladen', new_material_path %>
+<br>
+
 <table>
   <thead>
+  <caption><h3>Texte</h3></caption>
     <tr>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
     </tr>
   </thead>
-
   <tbody>
-  <h3>Texte</h3>
   <% @materialtexts.each do |material| %>
       <tr>
         <td><%= material.title %></td>
@@ -19,9 +29,22 @@
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+  </tbody>
+</table>
 
-    <h3>Links</h3>
-    <% @materiallinks.each do |material| %>
+
+<table>
+  <thead>
+  <caption><h3>Links</h3></caption>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @materiallinks.each do |material| %>
       <tr>
         <td><%= material.title %></td>
         <td><%= link_to 'Show', material %></td>
@@ -29,8 +52,21 @@
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
+  </tbody>
+</table>
 
-  <h3>Bilder</h3>
+
+<table>
+  <thead>
+  <caption><h3>Bilder</h3></caption>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
   <% @materialpictures.each do |material| %>
       <tr>
         <td><%= material.title %></td>
@@ -39,8 +75,21 @@
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
+  </tbody>
+</table>
 
-  <h3>Videos</h3>
+
+<table>
+  <thead>
+  <caption><h3>Videos</h3></caption>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
   <% @materialvideos.each do |material| %>
       <tr>
         <td><%= material.title %></td>
@@ -51,14 +100,3 @@
   <% end %>
   </tbody>
 </table>
-
-<br>
-
-<br>
-<%= link_to 'Neues Textmaterial erstellen', new_materialtext_path %>
-<br>
-<%= link_to 'Neuen Link erstellen Material', new_materiallink_path %>
-<br>
-<%= link_to 'Neues Bild hochladen', new_materialpicture_path %>
-<br>
-<%= link_to 'Neues Video hochladen', new_material_path %>

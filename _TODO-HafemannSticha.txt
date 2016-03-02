@@ -2,8 +2,8 @@ Todo Hafemann-Sticha
 ---------------------
 
 ### schema ###
-- ist klasse forum nötig (direkte Verbindung zwischen den questions und den KEs)
-    - neues Attribut in questions mit KEs_id
+ist klasse forum nötig (direkte Verbindung zwischen den questions und den KEs)
+    neues Attribut in questions mit KEs_id
 
 ### upload ###
 http://archive.railsforum.com/viewtopic.php?id=4642
@@ -12,14 +12,10 @@ https://stackoverflow.com/questions/22247582/rails-4-saving-images-in-database
 http://forum.ruby-portal.de/viewtopic.php?f=14&t=2801
 https://matt.berther.io/2007/10/19/uploading-files-to-a-database-using-rails/
 
-### material ###
-show zwischen den überschriften
-
-### forum ###
-database is locked
-
-- question text:string -> text:text
-- answer text:string -> text:text
+### forum & question ###
+question text:string -> text:text
+answer text:string -> text:text
+erkennung des autors über user_id und nicht user_name
 
 ### materialtext ###
 show user name ausgeben
