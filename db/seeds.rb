@@ -9,7 +9,7 @@
 #User
 User.create(:username => "admin", :email => "admin@mls.de", :password => "password", :admin => TRUE)
 User.create(:username => "teacher", :email => "teacher@mls.de", :password => "password", :teacher => TRUE)
-User.create(:username => "learner", :email => "learner@mls.de", :password => "password", :learner => TRUE)
+User.create(:username => "learner", :email => "learner@mls.de", :password => "password", :learner => TRUE, :pupil => TRUE)
 
 #Wiki
 Wiki.create(:title => "DerTitel1", :article => "WikiInhalt1")
@@ -48,4 +48,3 @@ Materialvideo.create(:title => "Materialpicture1", :file => '010101001110001', :
 @pc = @ke2.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke2.learning_objectives.first,
                                                                              :necessity => true,
                                                                              :parent_learning_objective =>@lo)
-

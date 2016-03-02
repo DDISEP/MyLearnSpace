@@ -1,0 +1,55 @@
+<h1>Listing materials</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @materials.each do |materialtext| %>
+      <tr>
+        <td><%= link_to 'Show', materialtext %></td>
+        <td><%= link_to 'Edit', edit_materialtext_path(materialtext) %></td>
+        <td><%= link_to 'Destroy', materialtext, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+
+
+    <% @materials.each do |material| %>
+      <tr>
+        <td><%= link_to 'Show', material %></td>
+        <td><%= link_to 'Edit', edit_material_path(material) %></td>
+        <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+  <% @materials.each do |material| %>
+      <tr>
+        <td><%= link_to 'Show', material %></td>
+        <td><%= link_to 'Edit', edit_material_path(material) %></td>
+        <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+  <% @materials.each do |material| %>
+      <tr>
+        <td><%= link_to 'Show', material %></td>
+        <td><%= link_to 'Edit', edit_material_path(material) %></td>
+        <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<br>
+<%= link_to 'Neues Textmaterial erstellen', new_materialtext_path %>
+<br>
+<%= link_to 'Neuen Link erstellen Material', new_materiallink_path %>
+<br>
+<%= link_to 'Neues Bild hochladen', new_materialpicture_path %>
+<br>
+<%= link_to 'Neues Video hochladen', new_material_path %>
