@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b53cebfc-f08e-477c-afaa-d56d54149ce5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_TODO-HafemannSticha.txt" afterPath="$PROJECT_DIR$/_TODO-HafemannSticha.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/materialtexts_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/materialtexts_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/materials/index.html.erb" afterPath="$PROJECT_DIR$/app/views/materials/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/materialtexts/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/materialtexts/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/materialtexts/show.html.erb" afterPath="$PROJECT_DIR$/app/views/materialtexts/show.html.erb" />
     </list>
     <ignored path="MyLearnSpace.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -528,7 +523,13 @@
       <option name="project" value="LOCAL" />
       <updated>1456939649889</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="forum &quot;illegaler frager&quot; fixed">
+      <created>1456941892129</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1456941892129</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
