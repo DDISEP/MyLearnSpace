@@ -11,17 +11,19 @@
 
   <tbody>
   <h3>Texte</h3>
-    <% @materials.each do |materialtext| %>
+  <% @materialtexts.each do |material| %>
       <tr>
-        <td><%= link_to 'Show', materialtext %></td>
-        <td><%= link_to 'Edit', edit_materialtext_path(materialtext) %></td>
-        <td><%= link_to 'Destroy', materialtext, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= material.title %></td>
+        <td><%= link_to 'Show', material %></td>
+        <td><%= link_to 'Edit', edit_material_path(material) %></td>
+        <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
 
     <h3>Links</h3>
-    <% @materials.each do |material| %>
+    <% @materiallinks.each do |material| %>
       <tr>
+        <td><%= material.title %></td>
         <td><%= link_to 'Show', material %></td>
         <td><%= link_to 'Edit', edit_material_path(material) %></td>
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,8 +31,9 @@
   <% end %>
 
   <h3>Bilder</h3>
-  <% @materials.each do |material| %>
+  <% @materialpictures.each do |material| %>
       <tr>
+        <td><%= material.title %></td>
         <td><%= link_to 'Show', material %></td>
         <td><%= link_to 'Edit', edit_material_path(material) %></td>
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -38,8 +41,9 @@
   <% end %>
 
   <h3>Videos</h3>
-  <% @materials.each do |material| %>
+  <% @materialvideos.each do |material| %>
       <tr>
+        <td><%= material.title %></td>
         <td><%= link_to 'Show', material %></td>
         <td><%= link_to 'Edit', edit_material_path(material) %></td>
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>

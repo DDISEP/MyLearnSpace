@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     @questions = Question.all
+    @current_user = User.find(session[:current_user_id])
   end
 
   # GET /questions/1
@@ -24,12 +25,14 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
-    
-    if session[:name] == nil
-      @question.user_name = 'Illegaler Frager'
-    else
-      @question.user_name = session[:name]
-    end
+    @question.user_name = @current_user.username
+
+    #Sicherheitskopie der alten Implementierung (NOT-WORKING PROPERLY)
+    #if session[:name] == nil
+    #  @question.user_name = 'Illegaler Frager'
+    #else
+    #  @question.user_name = session[:name]
+    #end
 
     respond_to do |format|
       if @question.save

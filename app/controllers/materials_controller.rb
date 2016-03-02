@@ -5,6 +5,11 @@ class MaterialsController < ApplicationController
   # GET /materials.json
   def index
     @materials = Material.all
+
+    @materialtexts = Materialtext.all
+    @materiallinks = Materiallink.all
+    @materialpictures = Materialpicture.all
+    @materialvideos = Materialvideo.all
   end
 
   # GET /materials/1
