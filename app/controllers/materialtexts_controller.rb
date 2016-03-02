@@ -12,6 +12,8 @@ class MaterialtextsController < ApplicationController
   # GET /materialtexts/1
   # GET /materialtexts/1.json
   def show
+    @user_author_id = User.find_by_id(@materialtext.user_id)
+    @user_author_name = @user_author_id.username
   end
 
   # GET /materialtexts/new
