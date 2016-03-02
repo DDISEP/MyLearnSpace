@@ -1,4 +1,4 @@
-<h1>Listing materials</h1>
+<h1>Materialien</h1>
 
 <table>
   <thead>
@@ -10,6 +10,7 @@
   </thead>
 
   <tbody>
+  <h3>Texte</h3>
     <% @materials.each do |materialtext| %>
       <tr>
         <td><%= link_to 'Show', materialtext %></td>
@@ -18,7 +19,7 @@
       </tr>
     <% end %>
 
-
+    <h3>Links</h3>
     <% @materials.each do |material| %>
       <tr>
         <td><%= link_to 'Show', material %></td>
@@ -26,6 +27,8 @@
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
+
+  <h3>Bilder</h3>
   <% @materials.each do |material| %>
       <tr>
         <td><%= link_to 'Show', material %></td>
@@ -33,6 +36,8 @@
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
+
+  <h3>Videos</h3>
   <% @materials.each do |material| %>
       <tr>
         <td><%= link_to 'Show', material %></td>
