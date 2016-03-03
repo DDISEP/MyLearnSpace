@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302152016) do
+ActiveRecord::Schema.define(version: 20160303184634) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -126,26 +126,6 @@ ActiveRecord::Schema.define(version: 20160302152016) do
     t.datetime "updated_at"
   end
 
-  create_table "join_materiallinks_knowledge_elements", force: true do |t|
-    t.integer "materiallink_id"
-    t.integer "knowledge_element_id"
-  end
-
-  create_table "join_materialpictures_knowledge_elements", force: true do |t|
-    t.integer "materialpicture_id"
-    t.integer "knowledge_element_id"
-  end
-
-  create_table "join_materialtexts_knowledge_elements", force: true do |t|
-    t.integer "materialtext_id"
-    t.integer "knowledge_element_id"
-  end
-
-  create_table "join_materialvideos_knowledge_elements", force: true do |t|
-    t.integer "materialvideo_id"
-    t.integer "knowledge_element_id"
-  end
-
   create_table "knowledge_element_chats", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -162,6 +142,14 @@ ActiveRecord::Schema.define(version: 20160302152016) do
     t.integer "knowledge_element_id", null: false
     t.integer "material_id",          null: false
   end
+
+  create_table "knowledge_elements_materialtexts", id: false, force: true do |t|
+    t.integer "knowledge_element_id", null: false
+    t.integer "materialtext_id",      null: false
+  end
+
+  add_index "knowledge_elements_materialtexts", ["knowledge_element_id"], name: "index_knowledge_elements_materialtexts_on_knowledge_element_id"
+  add_index "knowledge_elements_materialtexts", ["materialtext_id"], name: "index_knowledge_elements_materialtexts_on_materialtext_id"
 
   create_table "knowledge_elements_topics", id: false, force: true do |t|
     t.integer "knowledge_element_id", null: false

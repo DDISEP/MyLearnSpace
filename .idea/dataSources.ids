@@ -3,7 +3,4 @@
   <data-source name="Rails MyLearnSpace: development" uuid="616cf3b2-5712-42e9-830b-7512983a5661">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
-  <data-source name="Rails MyLearnSpace: test" uuid="cd28ce5e-ec05-4cd8-999f-108a683a2e82">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
 </component>
