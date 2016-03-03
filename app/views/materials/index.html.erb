@@ -1,9 +1,9 @@
 <h1>Materialien</h1>
 
 <br>
-<%= link_to 'Neues Textmaterial erstellen', new_materialtext_path %>
+<%= link_to 'Neuen Text erstellen', new_materialtext_path %>
 <br>
-<%= link_to 'Neuen Link erstellen Material', new_materiallink_path %>
+<%= link_to 'Neuen Link erstellen', new_materiallink_path %>
 <br>
 <%= link_to 'Neues Bild hochladen', new_materialpicture_path %>
 <br>
@@ -23,10 +23,7 @@
   <tbody>
   <% @materialtexts.each do |material| %>
       <tr>
-        <td><%= material.title %></td>
-        <td><%= link_to 'Show', material %></td>
-        <td><%= link_to 'Edit', edit_materialtext_path(material) %></td>
-        <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to material.title, material %></td>
       </tr>
     <% end %>
   </tbody>
@@ -46,10 +43,7 @@
   <tbody>
   <% @materiallinks.each do |material| %>
       <tr>
-        <td><%= material.title %></td>
-        <td><%= link_to 'Show', material %></td>
-        <td><%= link_to 'Edit', edit_materiallink_path(material) %></td>
-        <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to material.title, material %></td>
       </tr>
   <% end %>
   </tbody>
@@ -69,10 +63,7 @@
   <tbody>
   <% @materialpictures.each do |material| %>
       <tr>
-        <td><%= material.title %></td>
-        <td><%= link_to 'Show', material %></td>
-        <td><%= link_to 'Edit', edit_materialpicture_path(material) %></td>
-        <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to material.title, material %></td>
       </tr>
   <% end %>
   </tbody>
@@ -92,10 +83,7 @@
   <tbody>
   <% @materialvideos.each do |material| %>
       <tr>
-        <td><%= material.title %></td>
-        <td><%= link_to 'Show', material %></td>
-        <td><%= link_to 'Edit', edit_materialvideo_path(material) %></td>
-        <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to material.title, material %></td>
       </tr>
   <% end %>
   </tbody>

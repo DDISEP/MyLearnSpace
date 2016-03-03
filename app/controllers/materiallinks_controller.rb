@@ -5,11 +5,15 @@ class MateriallinksController < ApplicationController
   # GET /materiallinks.json
   def index
     @materiallinks = Materiallink.all
+    @current_user = User.find(session[:current_user_id])
+    @user = User.all
   end
-#ÄNDERUNG
+
   # GET /materiallinks/1
   # GET /materiallinks/1.json
   def show
+    @user_author_id = User.find_by_id(@materiallink.user_id)
+    @user_author_name = @user_author_id.username
   end
 
   # GET /materiallinks/new
@@ -25,6 +29,7 @@ class MateriallinksController < ApplicationController
   # POST /materiallinks.json
   def create
     @materiallink = Materiallink.new(materiallink_params)
+    @materialtext.user_id = @current_user.id
 
     respond_to do |format|
       if @materiallink.save
