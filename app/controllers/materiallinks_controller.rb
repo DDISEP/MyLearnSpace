@@ -29,7 +29,7 @@ class MateriallinksController < ApplicationController
   # POST /materiallinks.json
   def create
     @materiallink = Materiallink.new(materiallink_params)
-    @materialtext.user_id = @current_user.id
+    @materiallink.user_id = @current_user.id
 
     respond_to do |format|
       if @materiallink.save
@@ -61,7 +61,7 @@ class MateriallinksController < ApplicationController
   def destroy
     @materiallink.destroy
     respond_to do |format|
-      format.html { redirect_to materiallinks_url }
+      format.html { redirect_to materials_url }
       format.json { head :no_content }
     end
   end
