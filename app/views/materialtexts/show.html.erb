@@ -15,5 +15,6 @@
   <%= @user_author_name %>
 </p>
 
-<%= link_to 'Edit', edit_materialtext_path(@materialtext) %> |
-<%= link_to 'Back', materialtexts_path %>
+<%= link_to 'Editieren', edit_materialtext_path(@materialtext) %> |
+<%= link_to 'Löschen', materialtext_path, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Zurück', materials_path %>
