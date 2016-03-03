@@ -1,29 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>Titel:</strong>
   <%= @materialvideo.title %>
 </p>
 
 <p>
-  <strong>File:</strong>
-  <%= @materialvideo.file %>
+  <strong>Autor:</strong>
+  <%= @user_author_name %>
 </p>
 
-<p>
-  <strong>Filename:</strong>
-  <%= @materialvideo.filename %>
-</p>
-
-<p>
-  <strong>Fileformat:</strong>
-  <%= @materialvideo.fileformat %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @materialvideo.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_materialvideo_path(@materialvideo) %> |
-<%= link_to 'Back', materialvideos_path %>
+<%= link_to 'Bearbeiten', edit_materialvideo_path(@materialvideo) %> |
+<%= link_to 'Zurück', materials_path %>
