@@ -6,24 +6,10 @@
 </p>
 
 <p>
-  <strong>File:</strong>
-  <%= @materialpicture.file %>
+  <strong>Autor:</strong>
+  <%= @user_author_name %>
 </p>
 
-<p>
-  <strong>Filename:</strong>
-  <%= @materialpicture.filename %>
-</p>
-
-<p>
-  <strong>Fileformat:</strong>
-  <%= @materialpicture.fileformat %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @materialpicture.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_materialpicture_path(@materialpicture) %> |
-<%= link_to 'Back', materialpictures_path %>
+<%= link_to 'Bearbeiten', edit_materialpicture_path(@materialpicture) %> |
+<%= link_to 'Löschen', materialpicture_path, method: :delete, data: { confirm: 'Bist du sicher?' } %> |
+<%= link_to 'Zurück', materials_path %>

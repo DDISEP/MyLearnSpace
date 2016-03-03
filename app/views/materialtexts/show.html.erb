@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>Titel:</strong>
   <%= @materialtext.title %>
 </p>
 
@@ -15,6 +15,6 @@
   <%= @user_author_name %>
 </p>
 
-<%= link_to 'Editieren', edit_materialtext_path(@materialtext) %> |
-<%= link_to 'Löschen', materialtext_path, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Bearbeiten', edit_materialtext_path(@materialtext) %> |
+<%= link_to 'Löschen', materialtext_path, method: :delete, data: { confirm: 'Bist du sicher?' } %> |
 <%= link_to 'Zurück', materials_path %>

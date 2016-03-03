@@ -5,11 +5,15 @@ class MaterialpicturesController < ApplicationController
   # GET /materialpictures.json
   def index
     @materialpictures = Materialpicture.all
+    @current_user = User.find(session[:current_user_id])
+    @user = User.all
   end
 
   # GET /materialpictures/1
   # GET /materialpictures/1.json
   def show
+    @user_author_id = User.find_by_id(@materialpicture.user_id)
+    @user_author_name = @user_author_id.username
   end
 
   # GET /materialpictures/new
@@ -25,6 +29,7 @@ class MaterialpicturesController < ApplicationController
   # POST /materialpictures.json
   def create
     @materialpicture = Materialpicture.new(materialpicture_params)
+    @materialpicture.user_id = @current_user.id
 
     respond_to do |format|
       if @materialpicture.save
