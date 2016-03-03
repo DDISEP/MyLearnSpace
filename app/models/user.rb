@@ -15,6 +15,15 @@ class User < ActiveRecord::Base
     has_many :likes, dependent: :destroy
     has_many :performances, dependent: :destroy
 
+    #n:1 to materialXs
+    has_many :materialtexts
+    has_many :materiallinks
+    has_many :materialpictures
+    has_many :materialvideos
+
+    has_many :questions
+    has_many :answers
+
     def hash_password
       self.password = Digest::MD5.hexdigest(self.password)
     end    

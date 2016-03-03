@@ -1,6 +1,9 @@
-#Encoding: utf-8
 class Question < ActiveRecord::Base
+
   has_many :answers
+
+  has_one :users
+
 
   attr_protected
   

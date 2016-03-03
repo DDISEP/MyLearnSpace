@@ -1,6 +1,10 @@
 class Answer < ActiveRecord::Base
+
   belongs_to :question
-  
+
+  has_one :users
+
+
   attr_protected
   
   validates :text, presence: {message: "Du kannst keine leere Antwort angeben!"}, 
