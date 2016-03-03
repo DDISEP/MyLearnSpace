@@ -6,7 +6,7 @@ class MateriallinksController < ApplicationController
   def index
     @materiallinks = Materiallink.all
   end
-
+#ÄNDERUNG
   # GET /materiallinks/1
   # GET /materiallinks/1.json
   def show
