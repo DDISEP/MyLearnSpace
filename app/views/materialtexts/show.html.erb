@@ -14,11 +14,7 @@
   <strong>Autor:</strong>
   <%= @user_author_name %>
 </p>
-<!--
-%= link_to 'Bearbeiten', edit_materialtext_path(@materialtext) %> |
-%= link_to 'Löschen', materialtext_path, method: :delete, data: { confirm: 'Bist du sicher?' } %> |
-%= link_to 'Zurück', materials_path %>
--->
+
 <table>
   <thead>
   <tr>
@@ -33,3 +29,9 @@
       </tr>
   </tbody>
 </table>
+
+<!--
+%= link_to 'Bearbeiten', edit_materialtext_path(@materialtext) %> |
+%= link_to 'Löschen', materialtext_path, method: :delete, data: { confirm: 'Bist du sicher?' } %> |
+%= link_to 'Zurück', materials_path %>
+-->

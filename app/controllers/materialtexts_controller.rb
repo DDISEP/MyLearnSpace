@@ -83,9 +83,9 @@ class MaterialtextsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to @materialtext, notice: 'Nur der Autor oder ein Admin Materialien löschen!' }
+        format.html { redirect_to @materialtext, notice: 'Nur der Autor oder ein Admin dürfen Materialien löschen!' }
         #format.js {render js: "alert('Nur Autoren dürfen ihre Materialien bearbeiten!');"}
-        format.html {render text: "Nur der Autor oder ein Admin Materialien löschen!"}
+        format.html {render text: "Nur der Autor oder ein Admin dürfen Materialien löschen!"}
       end
     end
   end
