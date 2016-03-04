@@ -48,13 +48,21 @@ class MateriallinksController < ApplicationController
     @current_user = User.find(session[:current_user_id])
     @user_author = User.find_by_id(@materiallink.user_id)
 
-    respond_to do |format|
-      if @materiallink.update(materiallink_params)
-        format.html { redirect_to @materiallink, notice: 'Materiallink was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @materiallink.errors, status: :unprocessable_entity }
+    if @user_author.id == @current_user.id
+      respond_to do |format|
+        if @materiallink.update(materiallink_params)
+          format.html { redirect_to @materiallink, notice: 'Der Link wurde erfolgreich bearbeitet!' }
+          format.json { head :no_content }
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @materiallink.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @materiallink, notice: 'Nur der Autor darf seine Materialien bearbeiten!' }
+        #format.js {render js: "alert('Nur Autoren dürfen ihre Materialien bearbeiten!');"}
+        format.html {render text: "Nur der Autor darf seine Materialien bearbeiten!"}
       end
     end
   end

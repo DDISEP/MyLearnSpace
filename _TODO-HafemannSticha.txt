@@ -17,5 +17,5 @@ question text:string -> text:text
 answer text:string -> text:text
 erkennung des autors über user_id und nicht user_name
 
-### materialtext ###
-show user name ausgeben
+### materialXXXs ###
+delete-Methode loggt Benutzer aus ???

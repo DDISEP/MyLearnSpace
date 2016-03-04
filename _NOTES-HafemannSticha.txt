@@ -70,18 +70,3 @@ http://www.cheat-sheets.org/saved-copy/RubyOnRails-Cheatsheet-BlaineKendall.pdf
 
 ### rubymine guides ###
 https://www.jetbrains.com/webstorm/help/file-status-highlights.html
-
-### join tables ###
-rails generate migration associate_knowledge_element_to_materialtext knowledge_elements materialtexts
-class AssociateKnowledgeElementToMaterialtext < ActiveRecord::Migration
-  def change
-    #create_table :knowledge_elements_materialtexts, id: false do |t|
-    #  t.belongs_to :knowledge_elements, index: true
-    #  t.belongs_to :materialtext, index: true
-    #end
-    create_join_table :knowledge_elements, :materialtexts do |t|
-      t.index :knowledge_element_id
-      t.index :materialtext_id
-    end
-  end
-end
