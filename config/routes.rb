@@ -1,5 +1,7 @@
 MyLearnSpace::Application.routes.draw do
   
+  resources :exams
+
   resources :exerciseoverviews
 
   resources :materialvideos

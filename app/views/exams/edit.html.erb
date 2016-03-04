@@ -1,0 +1,11 @@
+<h4>Bitte beachte, dass deine Klausur abgegeben wird, sobald du auf einen anderen Link drückst.</h4>
+
+<%= render 'form' %>
+<% @exercises.each do |ex| %>
+    <tr>
+      <!-- show title, author, and creation date for each exercise -->
+      <td> <%= ex.description %></td>
+
+
+
+<% end %>
