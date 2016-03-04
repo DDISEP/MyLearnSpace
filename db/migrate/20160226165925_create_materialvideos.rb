@@ -9,5 +9,7 @@ class CreateMaterialvideos < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    create_join_table :knowledge_elements, :materialvideos
   end
 end

@@ -7,5 +7,7 @@ class CreateMateriallinks < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    create_join_table :knowledge_elements, :materiallinks
   end
 end
