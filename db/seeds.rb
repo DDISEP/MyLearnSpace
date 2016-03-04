@@ -59,4 +59,4 @@ Wiki.create(:article => "DerTitel2", :title => "WikiInhalt2")
 
 ### Grett ###
 #Subexercise
-Subexercise.create(:position => 1, :text => "Funktion", :solution => "ja", :exercise_id => 1, :points => 1 , :moderated => true, :aktiv => true, :examItem => true)
+Subexercise.create(:position => 1, :text => "Funktion", :solution => "ja", :exercise_id => 1, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE)

@@ -8,6 +8,7 @@ class ExamsController < ApplicationController
  end
 
  def edit
+   @subexercises = Subexercise.all
    @exercises = Exercise.all
  end
 end
