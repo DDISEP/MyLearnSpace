@@ -12,8 +12,8 @@ class MaterialvideosController < ApplicationController
   # GET /materialvideos/1
   # GET /materialvideos/1.json
   def show
-    @user_author_id = User.find_by_id(@materialvideo.user_id)
-    @user_author_name = @user_author_id.username
+    @user_author = User.find_by_id(@materialvideo.user_id)
+    @user_author_name = @user_author.username
   end
 
   # GET /materialvideos/new
@@ -45,6 +45,9 @@ class MaterialvideosController < ApplicationController
   # PATCH/PUT /materialvideos/1
   # PATCH/PUT /materialvideos/1.json
   def update
+    @current_user = User.find(session[:current_user_id])
+    @user_author = User.find_by_id(@materialvideo.user_id)
+
     respond_to do |format|
       if @materialvideo.update(materialvideo_params)
         format.html { redirect_to @materialvideo, notice: 'Materialvideo was successfully updated.' }

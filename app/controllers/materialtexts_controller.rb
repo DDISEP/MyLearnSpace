@@ -12,8 +12,8 @@ class MaterialtextsController < ApplicationController
   # GET /materialtexts/1
   # GET /materialtexts/1.json
   def show
-    @user_author_id = User.find_by_id(@materialtext.user_id)
-    @user_author_name = @user_author_id.username
+    @user_author = User.find_by_id(@materialtext.user_id)
+    @user_author_name = @user_author.username
   end
 
   # GET /materialtexts/new
@@ -34,7 +34,7 @@ class MaterialtextsController < ApplicationController
 
     respond_to do |format|
       if @materialtext.save
-        format.html { redirect_to @materialtext, notice: 'Materialtext was successfully created.' }
+        format.html { redirect_to @materialtext, notice: 'Der Text wurde erfolgreich erstellt!' }
         format.json { render action: 'show', status: :created, location: @materialtext }
       else
         format.html { render action: 'new' }
@@ -46,11 +46,11 @@ class MaterialtextsController < ApplicationController
   # PATCH/PUT /materialtexts/1
   # PATCH/PUT /materialtexts/1.json
   def update
-    @user_author_id = User.find_by_id(@materialtext.user_id)
     @current_user = User.find(session[:current_user_id])
+    @user_author = User.find_by_id(@materialtext.user_id)
 
 
-    if @user_author_id == @current_user.id
+    if @user_author.id == @current_user.id
       respond_to do |format|
         if @materialtext.update(materialtext_params)
           format.html { redirect_to @materialtext, notice: 'Der Text wurde erfolgreich bearbeitet!' }
@@ -62,9 +62,9 @@ class MaterialtextsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to @materialtext, notice: 'Nur Autoren dürfen ihre Materialien bearbeiten!' }
+        format.html { redirect_to @materialtext, notice: 'Nur der Autor darf seine Materialien bearbeiten!' }
        #format.js {render js: "alert('Nur Autoren dürfen ihre Materialien bearbeiten!');"}
-        format.html {render text: "Nur Autoren dürfen ihre Materialien bearbeiten!"}
+        format.html {render text: "Nur der Autor darf seine Materialien bearbeiten!"}
       end
     end
   end
