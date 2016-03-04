@@ -46,13 +46,25 @@ class MaterialtextsController < ApplicationController
   # PATCH/PUT /materialtexts/1
   # PATCH/PUT /materialtexts/1.json
   def update
-    respond_to do |format|
-      if @materialtext.update(materialtext_params)
-        format.html { redirect_to @materialtext, notice: 'Materialtext was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @materialtext.errors, status: :unprocessable_entity }
+    @user_author_id = User.find_by_id(@materialtext.user_id)
+    @current_user = User.find(session[:current_user_id])
+
+
+    if @user_author_id == @current_user.id
+      respond_to do |format|
+        if @materialtext.update(materialtext_params)
+          format.html { redirect_to @materialtext, notice: 'Der Text wurde erfolgreich bearbeitet!' }
+          format.json { head :no_content }
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @materialtext.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @materialtext, notice: 'Nur Autoren dürfen ihre Materialien bearbeiten!' }
+       #format.js {render js: "alert('Nur Autoren dürfen ihre Materialien bearbeiten!');"}
+        format.html {render text: "Nur Autoren dürfen ihre Materialien bearbeiten!"}
       end
     end
   end
