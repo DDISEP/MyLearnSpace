@@ -31,13 +31,21 @@ class MaterialpicturesController < ApplicationController
     @materialpicture = Materialpicture.new(materialpicture_params)
     @materialpicture.user_id = @current_user.id
 
-    respond_to do |format|
-      if @materialpicture.save
-        format.html { redirect_to @materialpicture, notice: 'Materialpicture was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @materialpicture }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @materialpicture.errors, status: :unprocessable_entity }
+    if @user_author.id == @current_user.id
+      respond_to do |format|
+        if @materialpicture.update(materialpicture_params)
+          format.html { redirect_to @materialpicture, notice: 'Das Bild wurde erfolgreich bearbeitet!' }
+          format.json { head :no_content }
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @materialpicture.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @materialpicture, notice: 'Nur der Autor darf seine Materialien bearbeiten!' }
+        #format.js {render js: "alert('Nur Autoren dürfen ihre Materialien bearbeiten!');"}
+        format.html {render text: "Nur der Autor darf seine Materialien bearbeiten!"}
       end
     end
   end

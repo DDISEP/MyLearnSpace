@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b53cebfc-f08e-477c-afaa-d56d54149ce5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_NOTES-HafemannSticha.txt" afterPath="$PROJECT_DIR$/_NOTES-HafemannSticha.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_TODO-HafemannSticha.txt" afterPath="$PROJECT_DIR$/_TODO-HafemannSticha.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/materiallinks_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/materiallinks_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/materialpictures_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/materialpictures_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/materialvideos_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/materialvideos_controller.rb" />
     </list>
     <ignored path="MyLearnSpace.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="materiallinks_controller.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="materiallinks_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/materiallinks_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53467155">
-              <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
+            <state vertical-scroll-proportion="-5.892857">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="66" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -66,18 +65,18 @@
       <file leaf-file-name="materialpictures_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/materialpictures_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+            <state vertical-scroll-proportion="-3.8214285">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="49" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="materialvideos_controller.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="materialvideos_controller.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/materialvideos_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="48" column="49" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.16788322">
+              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -137,13 +136,13 @@
         <option value="$PROJECT_DIR$/app/models/question.rb" />
         <option value="$PROJECT_DIR$/app/models/answer.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20160207131510_create_knowledge_elements.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/materialpictures_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/materialvideos_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/materialtexts_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/_NOTES-HafemannSticha.txt" />
         <option value="$PROJECT_DIR$/_TODO-HafemannSticha.txt" />
         <option value="$PROJECT_DIR$/app/controllers/materiallinks_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/materialpictures_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/materialvideos_controller.rb" />
       </list>
     </option>
   </component>
@@ -728,7 +727,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457107241889</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="materiallinks edit rechtemanagement">
+      <created>1457107779081</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1457107779081</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView">
@@ -792,7 +797,8 @@
     <MESSAGE value="materialtexts edit rechtemanagement (Not working yet)" />
     <MESSAGE value="materialXXX edit rechtemanagement" />
     <MESSAGE value="menüleiste" />
-    <option name="LAST_COMMIT_MESSAGE" value="menüleiste" />
+    <MESSAGE value="materiallinks edit rechtemanagement" />
+    <option name="LAST_COMMIT_MESSAGE" value="materiallinks edit rechtemanagement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1122,22 +1128,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/materialpictures_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/materialvideos_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="49" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_TODO-HafemannSticha.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1180,8 +1170,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/materiallinks_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53467155">
-          <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
+        <state vertical-scroll-proportion="-5.892857">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="66" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/materialpictures_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8214285">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="49" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/materialvideos_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16788322">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding />
         </state>
       </provider>
