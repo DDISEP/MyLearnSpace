@@ -25,7 +25,7 @@ Materiallink.create(:title => "Materiallink3", :link => "http://youtube.de", :us
 #Materialpicture
 Materialpicture.create(:title => "Materialpicture1", :file => '010101001101', :filename => "file1", :fileformat => "png", :user_id => 1)
 #Materialvideo
-Materialvideo.create(:title => "Materialpicture1", :file => '010101001110001', :filename => "file1", :fileformat => "avi", :user_id => 1)
+Materialvideo.create(:title => "Materialvideo1", :file => '010101001110001', :filename => "file1", :fileformat => "avi", :user_id => 1)
 #Question
 Question.create(:title => "Frage1?", :text => "FragentextZurFrage1", :user_name => "admin")
 Question.create(:title => "Frage2?", :text => "FragentextZurFrage2", :user_name => "teacher")

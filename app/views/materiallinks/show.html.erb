@@ -15,6 +15,23 @@
   <%= @user_author_name %>
 </p>
 
-<%= link_to 'Bearbeiten', edit_materiallink_path(@materiallink) %> |
-<%= link_to 'Löschen', materiallink_path, method: :delete, data: { confirm: 'Bist du sicher?' } %> |
-<%= link_to 'Zurück', materials_path %>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= button_to 'Bearbeiten', edit_materiallink_path, {:method => "get", :id => @materiallink.id} %></td>
+        <td><%= button_to 'Löschen', materiallink_path, {:method => "delete", :id => @materiallink.id} %></td>
+        <td><%= button_to 'Zurück', materials_path, :method => "get" %></td>
+      </tr>
+  </tbody>
+</table>
+
+<!--
+%= link_to 'Bearbeiten', edit_materiallink_path(@materiallink) %> |
+%= link_to 'Löschen', materiallink_path, method: :delete, data: { confirm: 'Bist du sicher?' } %> |
+%= link_to 'Zurück', materials_path %>
+-->
