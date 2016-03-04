@@ -41,6 +41,26 @@
 
 <br>
 
+<%= link_to 'Löschen_geht', {:action => "destroy", :id => @materialtext.id}, :confirm => 'Are you sure?', :method => "delete", :remote => true, :disable_with => 'loading...'%>
+
+<br>
+
+<%= link_to 'Destroy', { action: :destroy, id: @materialtext.id }, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+<br>
+
+
+<br>
+
+<%= button_to 'Bearbeiten', materialtext_path, {:method => "edit", :id => @materialtext.id}%>
+<%= button_to 'Löschen', materialtext_path, {:method => "delete", :id => @materialtext.id}%>
+
+<br>
+
+
+
+<br>
+
 <#%= link_to 'Löschen6', post_comment_path(@post, comment), data: { confirm: 'Are you sure?' }, method: :delete %> |
 
 <br>
