@@ -72,10 +72,21 @@ class MaterialtextsController < ApplicationController
   # DELETE /materialtexts/1
   # DELETE /materialtexts/1.json
   def destroy
-    @materialtext.destroy
-    respond_to do |format|
-      format.html { redirect_to materialtexts_url }
-      format.json { head :no_content }
+    @current_user = User.find(session[:current_user_id])
+    @user_author = User.find_by_id(@materialtext.user_id)
+
+    if (@user_author.id == @current_user.id) || @current_user.admin?
+      @materialtext.destroy
+      respond_to do |format|
+        format.html { redirect_to materialtexts_url }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @materialtext, notice: 'Nur der Autor oder ein Admin Materialien löschen!' }
+        #format.js {render js: "alert('Nur Autoren dürfen ihre Materialien bearbeiten!');"}
+        format.html {render text: "Nur der Autor oder ein Admin Materialien löschen!"}
+      end
     end
   end
 
