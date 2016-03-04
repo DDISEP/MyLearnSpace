@@ -18,3 +18,33 @@
 <%= link_to 'Bearbeiten', edit_materialtext_path(@materialtext) %> |
 <%= link_to 'Löschen', materialtext_path, method: :delete, data: { confirm: 'Bist du sicher?' } %> |
 <%= link_to 'Zurück', materials_path %>
+
+
+
+<br>
+<br>
+<br>
+
+<%= link_to 'Löschen2', materialtext_path, :action => "destroy", :id => @materialtext.id, data: { confirm: 'Bist du sicher?' } %> |
+
+<br>
+
+<%= link_to 'Löschen3', materialtext_path, action: :destroy, data: { confirm: 'Bist du sicher?' } %> |
+
+<br>
+
+<%= link_to 'Löschen4', materialtext_path(@materialtext), data: {:confirm => 'Are you sure?'}, :method => :delete %> |
+
+<br>
+
+<%= link_to 'Löschen5', materialtext_path, data: {:confirm => 'Are you sure?'}, :method => :delete %> |
+
+<br>
+
+<#%= link_to 'Löschen6', post_comment_path(@post, comment), data: { confirm: 'Are you sure?' }, method: :delete %> |
+
+<br>
+<br>
+<br>
+
+<%= button_to 'Löschen_geht', {:action => "destroy", :id => @materialtext.id}, :confirm => 'Are you sure?', :method => "delete", :remote => true, :disable_with => 'loading...', class: "btn btn-xs btn-primary"%>
