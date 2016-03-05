@@ -1,5 +1,7 @@
 <h1>Neuen Link erstellen</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Zurück', materials_path %>
+<%= button_to 'Zurück', materials_path, :method => "get" %>
+<!--
+%= link_to 'Zurück', materials_path %>
+-->

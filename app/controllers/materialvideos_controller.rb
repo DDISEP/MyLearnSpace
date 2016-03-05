@@ -33,7 +33,7 @@ class MaterialvideosController < ApplicationController
 
     respond_to do |format|
       if @materialvideo.save
-        format.html { redirect_to @materialvideo, notice: 'Materialvideo was successfully created.' }
+        format.html { redirect_to @materialvideo, notice: 'Das Video wurde erfolgreich erstellt!' }
         format.json { render action: 'show', status: :created, location: @materialvideo }
       else
         format.html { render action: 'new' }
@@ -76,7 +76,7 @@ class MaterialvideosController < ApplicationController
     if (@user_author.id == @current_user.id) || @current_user.admin?
       @materialvideo.destroy
       respond_to do |format|
-        format.html { redirect_to materials_url }
+        format.html { redirect_to materials_url, notice: 'Das Video wurde erfolgreich gelöscht!' }
         format.json { head :no_content }
       end
     else

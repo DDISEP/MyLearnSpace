@@ -78,7 +78,7 @@ class MaterialtextsController < ApplicationController
     if (@user_author.id == @current_user.id) || @current_user.admin?
       @materialtext.destroy
       respond_to do |format|
-        format.html { redirect_to materials_url }
+        format.html { redirect_to materials_url, notice: 'Der Text wurde erfolgreich gelöscht!' }
         format.json { head :no_content }
       end
     else

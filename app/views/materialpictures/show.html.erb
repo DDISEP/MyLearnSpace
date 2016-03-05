@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>Titel:</strong>
   <%= @materialpicture.title %>
 </p>
 
@@ -18,9 +18,9 @@
   </thead>
   <tbody>
   <tr>
-    <td><%= button_to 'Bearbeiten', edit_materialpicture_path, {:method => "get", :id => @materialpicture.id}%></td>
-    <td><%= button_to 'Löschen', materialpicture_path, {:method => "delete", :id => @materialpicture.id}%></td>
-    <td><%= button_to 'Zurück', materials_path, :method => "get"%></td>
+    <td><%= button_to 'Bearbeiten', edit_materialpicture_path, {:method => "get", :id => @materialpicture.id} %></td>
+    <td><%= button_to 'Löschen', materialpicture_path, {:method => "delete", :id => @materialpicture.id, data: { confirm: "Bist Du sicher?"}} %></td>
+    <td><%= button_to 'Zurück', materials_path, :method => "get" %></td>
   </tr>
   </tbody>
 </table>

@@ -1,5 +1,7 @@
 <h1>Bild bearbeiten</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Zurück', @materialpicture %>
+<%= button_to 'Zurück', @materialpicture, :method => "get" %>
+<!--
+%= link_to 'Zurück', @materialpicture %>
+-->

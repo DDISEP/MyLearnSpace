@@ -23,9 +23,9 @@
   </thead>
   <tbody>
       <tr>
-        <td><%= button_to 'Bearbeiten', edit_materialtext_path, {:method => "get", :id => @materialtext.id}%></td>
-        <td><%= button_to 'Löschen', materialtext_path, {:method => "delete", :id => @materialtext.id}%></td>
-        <td><%= button_to 'Zurück', materials_path, :method => "get"%></td>
+        <td><%= button_to 'Bearbeiten', edit_materialtext_path, {:method => "get", :id => @materialtext.id} %></td>
+        <td><%= button_to 'Löschen', materialtext_path, {:method => "delete", :id => @materialtext.id, data: { confirm: "Bist Du sicher?"}} %></td>
+        <td><%= button_to 'Zurück', materials_path, :method => "get" %></td>
       </tr>
   </tbody>
 </table>

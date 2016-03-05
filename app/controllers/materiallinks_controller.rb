@@ -33,7 +33,7 @@ class MateriallinksController < ApplicationController
 
     respond_to do |format|
       if @materiallink.save
-        format.html { redirect_to @materiallink, notice: 'Materiallink was successfully created.' }
+        format.html { redirect_to @materiallink, notice: 'Der Link wurde erfolgreich erstellt!' }
         format.json { render action: 'show', status: :created, location: @materiallink }
       else
         format.html { render action: 'new' }
@@ -76,7 +76,7 @@ class MateriallinksController < ApplicationController
     if (@user_author.id == @current_user.id) || @current_user.admin?
       @materiallink.destroy
       respond_to do |format|
-        format.html { redirect_to materials_url }
+        format.html { redirect_to materials_url, notice: 'Der Link wurde erfolgreich gelöscht!' }
         format.json { head :no_content }
       end
     else

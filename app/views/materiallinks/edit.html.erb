@@ -1,5 +1,7 @@
 <h1>Link bearbeiten</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Zurück', @materiallink %>
+<%= button_to 'Zurück', @materiallink, :method => "get" %>
+<!--
+%= link_to 'Zurück', @materiallink %>
+-->

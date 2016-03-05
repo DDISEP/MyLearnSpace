@@ -28,6 +28,23 @@ class MaterialpicturesController < ApplicationController
   # POST /materialpictures
   # POST /materialpictures.json
   def create
+    @materialpicture = Materiallink.new(materialpicture_params)
+    @materialpicture.user_id = @current_user.id
+
+    respond_to do |format|
+      if @materialpicture.save
+        format.html { redirect_to @materialpicture, notice: 'Das Bild wurde erfolgreich erstellt!' }
+        format.json { render action: 'show', status: :created, location: @materialpicture }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @materialpicture.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /materialpictures/1
+  # PATCH/PUT /materialpictures/1.json
+  def update
     @materialpicture = Materialpicture.new(materialpicture_params)
     @materialpicture.user_id = @current_user.id
 
@@ -50,23 +67,6 @@ class MaterialpicturesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /materialpictures/1
-  # PATCH/PUT /materialpictures/1.json
-  def update
-    @current_user = User.find(session[:current_user_id])
-    @user_author = User.find_by_id(@materialpicture.user_id)
-
-    respond_to do |format|
-      if @materialpicture.update(materialpicture_params)
-        format.html { redirect_to @materialpicture, notice: 'Materialpicture was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @materialpicture.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /materialpictures/1
   # DELETE /materialpictures/1.json
   def destroy
@@ -76,7 +76,7 @@ class MaterialpicturesController < ApplicationController
     if (@user_author.id == @current_user.id) || @current_user.admin?
       @materialpicture.destroy
       respond_to do |format|
-        format.html { redirect_to materials_url }
+        format.html { redirect_to materials_url, notice: 'Das Bild wurde erfolgreich gelöscht!' }
         format.json { head :no_content }
       end
     else
