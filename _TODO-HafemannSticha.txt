@@ -11,6 +11,8 @@ https://gist.github.com/macek/610596
 https://stackoverflow.com/questions/22247582/rails-4-saving-images-in-database
 http://forum.ruby-portal.de/viewtopic.php?f=14&t=2801
 https://matt.berther.io/2007/10/19/uploading-files-to-a-database-using-rails/
+http://stackoverflow.com/a/1857302
+http://railscasts.com/episodes/134-paperclip
 
 ### forum & question ###
 question text:string -> text:text
@@ -18,4 +20,5 @@ answer text:string -> text:text
 erkennung des autors über user_id und nicht user_name
 
 ### materialXXXs ###
-delete-Methode loggt Benutzer aus ???
+- Hochladen von Bildern und Videos
+- Bilder in der show anzeigen lassen
