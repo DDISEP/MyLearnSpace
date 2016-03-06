@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303135016) do
+ActiveRecord::Schema.define(version: 20160306135645) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -285,6 +285,7 @@ ActiveRecord::Schema.define(version: 20160303135016) do
     t.boolean  "moderated"
     t.boolean  "active"
     t.boolean  "examItem"
+    t.integer  "learning_objective_id"
   end
 
   add_index "subexercises", ["exercise_id"], name: "index_subexercises_on_exercise_id"

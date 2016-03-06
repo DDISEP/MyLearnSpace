@@ -1,15 +1,29 @@
 <div class="container-fluid">
 <h4>Bitte beachte, dass deine Klausur abgegeben wird, sobald du sie Seite verlässt.</h4>
 
-<div class="col-sm-9"><div class="row-fluid"><h3><%= @knowledgeElement.name %></h3></div></div>
+<div class="col-sm-9"><div class="row-fluid"><h3><%= @knowledgeElements.name %></h3></div></div>
+
+<% array= Array[]%>
+<%array2=Array[]%>
+
+<% @subexercises1.each do |sub1| %>
+     <% array.push (sub1) %>
+      <% result = array.select do |hash|
+        hash[:points] == @knowledgeElements.id end%>
+      <% array2=result.sort_by {rand}%>
+<%end%>
+  <% if array2.empty?%>
+       <%="keine Aufgabe"%>
+       <%else %>
+  <%=array2.first.text%> <%end%>
 
 
-<% @subexercises.each do |sub| %>
-    <tr>
-      <% if sub.examItem? && sub.active? %>
 
-          <%= sub.text %>
-     <% end %>
+<% @subexercises2.each do |sub2|%>
+          <% if sub2.points== @knowledgeElements.id %>
+              <%= sub2.text %>
+          <%end%>
+  <%end%>
+
 </div>
 
-<% end %>
