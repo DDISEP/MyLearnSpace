@@ -1,11 +1,15 @@
-<h4>Bitte beachte, dass deine Klausur abgegeben wird, sobald du auf einen anderen Link drückst.</h4>
+<div class="container-fluid">
+<h4>Bitte beachte, dass deine Klausur abgegeben wird, sobald du sie Seite verlässt.</h4>
 
-<%= render 'form' %>
+<div class="col-sm-9"><div class="row-fluid"><h3><%= @knowledgeElement.name %></h3></div></div>
+
+
 <% @subexercises.each do |sub| %>
     <tr>
+      <% if sub.examItem? && sub.active? %>
 
-      <td> <%= sub.text %></td>
-
-
+          <%= sub.text %>
+     <% end %>
+</div>
 
 <% end %>

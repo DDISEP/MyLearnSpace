@@ -10,5 +10,6 @@ class ExamsController < ApplicationController
  def edit
    @subexercises = Subexercise.all
    @exercises = Exercise.all
+   @knowledgeElement = KnowledgeElement.find_by_id(params[:id])
  end
 end
