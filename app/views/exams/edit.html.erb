@@ -1,9 +1,14 @@
-<div class="container-fluid">
+<div class="container-fluid" xmlns="http://www.w3.org/1999/html">
 <h4>Bitte beachte, dass deine Klausur abgegeben wird, sobald du sie Seite verlässt.</h4>
 
 <div class="col-sm-9"><div class="row-fluid"><h3><%= @knowledgeElements.name %></h3></div></div>
+  <br><br><br><br>
 
-<% array= Array[]%>
+  <t>Aufgabe 1:</t>
+  <br>
+
+
+<%array= Array[]%>
 <%array2=Array[]%>
 
 <% @subexercises1.each do |sub1| %>
@@ -15,7 +20,13 @@
   <% if array2.empty?%>
        <%="keine Aufgabe vorhanden."%>
        <%else %>
-  <%=array2.first.text%> <%end%>
+
+      <%=@exercises.find_by(id: array2.first.exercise_id).title  %>
+      <br>
+      <%=@exercises.find_by(id: array2.first.exercise_id).description %>
+      <br>
+      <%=array2.first.text%> <%end%>
+      <br>
 
 
 
