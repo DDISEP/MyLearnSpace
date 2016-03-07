@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b53cebfc-f08e-477c-afaa-d56d54149ce5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/exams/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/exams/edit.html.erb" />
+    <list default="true" id="b53cebfc-f08e-477c-afaa-d56d54149ce5" name="Default" comment="Textfeld und Button für Exam Verbesserung&#10;Unterscheidung Teacher und Learner">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MyLearnSpace.iws" />
@@ -38,8 +36,8 @@
       <file leaf-file-name="edit.html.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/exams/edit.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.734252">
-              <caret line="45" column="103" selection-start-line="45" selection-start-column="103" selection-end-line="45" selection-end-column="103" />
+            <state vertical-scroll-proportion="0.23622048">
+              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -48,8 +46,8 @@
       <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/knowledge_elements/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.041667">
-              <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="37" selection-end-column="128" />
+            <state vertical-scroll-proportion="-4.375">
+              <caret line="7" column="63" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -215,60 +213,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="MyLearnSpace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyLearnSpace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyLearnSpace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyLearnSpace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyLearnSpace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="knowledge_elements" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyLearnSpace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyLearnSpace" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -573,7 +517,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457360015927</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Textfeld und Button für Exam Verbesserung&#10;Unterscheidung Teacher und Learner">
+      <created>1457363113660</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1457363113660</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -647,7 +597,8 @@
     <MESSAGE value="Zufällige Unteraufgabe für ein Exam mit richtigem KE und LO Verbesserung 2" />
     <MESSAGE value="Richtige Exercise für Subexercise in Exam" />
     <MESSAGE value="Textfeld und Button für Exam" />
-    <option name="LAST_COMMIT_MESSAGE" value="Textfeld und Button für Exam" />
+    <MESSAGE value="Textfeld und Button für Exam Verbesserung&#10;Unterscheidung Teacher und Learner" />
+    <option name="LAST_COMMIT_MESSAGE" value="Textfeld und Button für Exam Verbesserung&#10;Unterscheidung Teacher und Learner" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1024,16 +975,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/knowledge_elements/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.041667">
-          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="37" selection-end-column="128" />
+        <state vertical-scroll-proportion="-4.375">
+          <caret line="7" column="63" selection-start-line="7" selection-start-column="63" selection-end-line="7" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/exams/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.734252">
-          <caret line="45" column="103" selection-start-line="45" selection-start-column="103" selection-end-line="45" selection-end-column="103" />
+        <state vertical-scroll-proportion="0.23622048">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
           <folding />
         </state>
       </provider>
