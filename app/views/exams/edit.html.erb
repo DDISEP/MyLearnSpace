@@ -4,8 +4,6 @@
 <div class="col-sm-9"><div class="row-fluid"><h3><%= @knowledgeElements.name %></h3></div></div>
   <br><br><br><br>
 
-  <t>Aufgabe 1:</t>
-  <br>
 
 
 <%array= Array[]%>
@@ -20,21 +18,25 @@
   <% if array2.empty?%>
        <%="keine Aufgabe vorhanden."%>
        <%else %>
-
+      <t>Aufgabe 1:</t>
       <%=@exercises.find_by(id: array2.first.exercise_id).title  %>
       <br>
       <%=@exercises.find_by(id: array2.first.exercise_id).description %>
       <br>
       <%=array2.first.text%> <%end%>
       <br>
-
+ <%= text_field :max_points,  maxlength:"40", style:"width:100%; height:100%;" %>
+       <br>
 
 
 <% @subexercises2.each do |sub2|%>
           <% if sub2.points== @knowledgeElements.id %>
-              <%= sub2.text %>
+              <%= sub2.text %></div>
           <%end%>
   <%end%>
+
+
+  <%= button_to 'Klausur abgeben', exerciseoverviews_path, :method => "get", class:"btn btn-xs btn-primary" %>
 
 </div>
 
