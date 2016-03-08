@@ -1,19 +1,6 @@
-<!--
-% @answers.each do |answer| %>
-	<p>
-		<strong>Antwort von %= answer.user_id %> vom %= answer.created_at %>:</strong>
-		%= answer.text%>
-	</p>
-% end %>
-% if @answers.empty? %>
-	<em>Diese Frage wurde noch nicht beantwortet</em>
-% end %>
--->
-
 <table>
   <thead>
   <tr>
-    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -26,11 +13,10 @@
   <% @answers.each do |answer| %>
       <tr>
         <td><strong><%= answer.user_id %>: &nbsp;</strong></td>
-        <td><%= answer.text %>&nbsp; &nbsp;</td>
+        <td><%= answer.text %>&nbsp;&nbsp;</td>
         <td><i><%= answer.created_at %> &nbsp; &nbsp;</i></td>
         <td><%= button_to 'Bearbeiten', edit_answer_path, {:method => "get", :id => answer.id} %></td>
-        <td><%= button_to 'Löschen', answer_path, {:method => "delete", :id => @answer.id, data: { confirm: "Bist Du sicher?"}} %></td>
-        <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Löschen', answer, :method => "get" %></td>
       </tr>
   <% end %>
   </tbody>

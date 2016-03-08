@@ -1,4 +1,5 @@
 class Answer < ActiveRecord::Base
+
   attr_protected
 
   validates :text, presence: true
