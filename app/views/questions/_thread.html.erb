@@ -12,7 +12,7 @@
   <tbody>
   <% @answers.each do |answer| %>
       <tr>
-        <td><strong><%= answer.user_id %>: &nbsp;</strong></td>
+        <td><strong><%= User.find_by_id(answer.user_id).username %>: &nbsp;</strong></td>
         <td><%= answer.text %>&nbsp;&nbsp;</td>
         <td><i><%= answer.created_at %> &nbsp; &nbsp;</i></td>
         <td><%= button_to 'Bearbeiten', edit_answer_path, {:method => "get", :id => answer.id} %></td>
