@@ -24,10 +24,10 @@ class SubexercisesController < ApplicationController
     @exercise = Exercise.find(params[:exercise_id])
   end
   
-  def post_new
-    @exercise = Exercise.find(params[:exercise_id])
-    @subexercise = Subexercise.new
-  end
+  #def post_new
+  #  @exercise = Exercise.find(params[:exercise_id])
+  #  @subexercise = Subexercise.new
+  #end
 
   def new
     @exercise = Exercise.find(params[:exercise_id])

@@ -255,6 +255,7 @@ ActiveRecord::Schema.define(version: 20160308154008) do
   end
 
   create_table "progresses", force: true do |t|
+    t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "teacher_id"
