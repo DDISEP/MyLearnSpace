@@ -1,6 +1,4 @@
-<h1>Editing answer</h1>
+<h1>Antwort bearbeiten</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @answer %> |
-<%= link_to 'Back', answers_path %>
+<%= button_to 'Zurück', @answer.question, :method => "get" %>

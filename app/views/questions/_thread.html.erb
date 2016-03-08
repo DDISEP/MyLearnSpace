@@ -2,10 +2,6 @@
   <thead>
   <tr>
     <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
   </thead>
 
@@ -15,7 +11,8 @@
         <td><strong><%= User.find_by_id(answer.user_id).username %>: &nbsp;</strong></td>
         <td><%= answer.text %>&nbsp;&nbsp;</td>
         <td><i><%= answer.created_at %> &nbsp; &nbsp;</i></td>
-        <td><%= button_to 'Bearbeiten', edit_answer_path, {:method => "get", :id => answer.id} %></td>
+        <td><%= button_to 'Bearbeiten', edit_answer_path, :method => "get" %></td>
+        <td><%= button_to 'Bearbeiten2', answer, :method => "patch" %></td>
         <td><%= button_to 'Löschen', answer, :method => "get" %></td>
       </tr>
   <% end %>

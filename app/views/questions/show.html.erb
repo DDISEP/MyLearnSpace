@@ -16,32 +16,34 @@
 <%= render 'thread'%>
 </div>
 
-<div>
-	<%= form_for [@question, @answer], :remote => true do |f| %>
-	  <% if @answer.errors.any? %>
-	    <div id="error_explanation">
-	      <h2>Wegen folgender Fehler konnte deine Antwort nicht gespeichert werden:</h2>
-	
-	      <ul>
-	      <% @answer.errors.full_messages.each do |msg| %>		        <li><%= msg %></li>
-	      <% end %>
-	      </ul>
-	    </div>
-	  <% end %>
-	
-	  <% if @answers.empty? %>
-	  	Frage beantworten:
-  	  <% else %>
-  	  	Eigene Antwort hinzufügen:
-	  <% end %>
-	
-	  <div class="field">
-	    <%= f.text_field :text %>
-	  </div>
-	  <div class="actions">
-	    <%= f.submit 'Antwort abschicken' %>
-	  </div>
-	<% end %>
-</div>
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    # TODO: question_id muss definiert werden
+    <td><%= button_to 'Frage beantworten', new_answer_path, :method => "get" %></td>
+    # TODO: kein edit im question controller
+    <td><%= button_to 'Frage bearbeiten', edit_question_path, :method => "get" %></td>
+  </tr>
+  </tbody>
+</table>
 
-<%= link_to 'Zurück', questions_path %>
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    # TODO: Frage löschen und alle unterfragen müssen gelöscht werden (model dependent destroy)
+    # TODO: if-Abfrage auf author oder admin geht noch nicht
+    <td><%= button_to 'Frage löschen', question_path, {:method => "delete", :id => @question.id, data: { confirm: "Bist Du sicher?"}} %></td>
+    <td><%= button_to 'Zurück', questions_path, :method => "get" %></td>
+  </tr>
+  </tbody>
+</table>

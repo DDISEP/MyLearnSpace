@@ -42,13 +42,20 @@ class AnswersController < ApplicationController
   # PATCH/PUT /answers/1
   # PATCH/PUT /answers/1.json
   def update
-    respond_to do |format|
-      if @answer.update(answer_params)
-        format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
+    if @current_user.id == @answer.user_id
+      respond_to do |format|
+        if @answer.update(answer_params)
+          format.html { redirect_to @answer.question, notice: 'Die Antwort wurde erfolgreich bearbeitet!' }
+          format.json { head :no_content }
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @answer.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @answer.question, notice: 'Nur der Autor darf seine Antworten bearbeiten!' }
+        format.html {render text: "Nur der Autor darf seine Antworten bearbeiten"}
       end
     end
   end
@@ -56,10 +63,17 @@ class AnswersController < ApplicationController
   # DELETE /answers/1
   # DELETE /answers/1.json
   def destroy
-    @answer.destroy
-    respond_to do |format|
-      format.html { redirect_to answers_url }
-      format.json { head :no_content }
+    if (@current_user.id == @answer.user_id) || @current_user.admin?
+      @answer.destroy
+      respond_to do |format|
+        format.html { redirect_to questions_url, notice: 'Die Antwort wurde erfolgreich gelöscht!' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to questions_url, notice: 'Nur der Autor oder ein Admin dürfen Antworten löschen!' }
+        format.html {render text: "Nur der Autor oder ein Admin dürfen Antworten löschen!"}
+      end
     end
   end
 
