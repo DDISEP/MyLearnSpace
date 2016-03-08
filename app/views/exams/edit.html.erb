@@ -17,9 +17,8 @@
   <% if array2.empty?%>
        <%="keine Aufgabe vorhanden."%>
        <%else %>
-      <t>Aufgabe 1:</t>
-      <%=@exercises.find_by(id: array2.first.exercise_id).title  %>
-      <br>
+      <h5><t>Aufgabe 1:</t>
+      <%=@exercises.find_by(id: array2.first.exercise_id).title  %></h5>
       <%=@exercises.find_by(id: array2.first.exercise_id).description %>
       <br>
       <%=array2.first.text%> <%end%>
@@ -36,15 +35,68 @@
   <br>
 
 
-<% @subexercises2.each do |sub2|%>
-          <% if sub2.points== @knowledgeElements.id %>
-              <%= sub2.text %>
-          <%end%>
+  <%array3= Array[]%>
+  <%array4=Array[]%>
+
+  <% @subexercises2.each do |sub1| %>
+      <% array3.push (sub1) %>
+      <% result = array3.select do |hash|
+        hash[:points] == @knowledgeElements.id end%>
+      <% array4=result.sort_by {rand}%>
   <%end%>
+  <% if array4.empty?%>
+      <%="keine Aufgabe vorhanden."%>
+  <%else %>
+      <h5><t>Aufgabe 2:</t>
+      <%=@exercises.find_by(id: array4.first.exercise_id).title  %></h5>
+      <%=@exercises.find_by(id: array4.first.exercise_id).description %>
+      <br>
+      <%=array4.first.text%> <%end%>
+  <br>
+  <%#= text_field :max_points,  maxlength:"40", style:"width:100%; height:100%;" %>
+
+  <form action="textarea.html" method="post">
+    <div>
+      <textarea id="text" name="text" cols="40" rows="4"></textarea>
+    </div>
+  </form>
+
+
+  <br>
+
+  <%array5= Array[]%>
+  <%array6=Array[]%>
+
+  <% @subexercises3.each do |sub1| %>
+      <% array5.push (sub1) %>
+      <% result = array5.select do |hash|
+        hash[:points] == @knowledgeElements.id end%>
+      <% array6=result.sort_by {rand}%>
+  <%end%>
+  <% if array6.empty?%>
+      <%="keine Aufgabe vorhanden."%>
+  <%else %>
+      <h5><t>Aufgabe 2:</t>
+      <%=@exercises.find_by(id: array6.first.exercise_id).title  %></h5>
+      <%=@exercises.find_by(id: array6.first.exercise_id).description %>
+      <br>
+      <%=array6.first.text%> <%end%>
+  <br>
+  <%#= text_field :max_points,  maxlength:"40", style:"width:100%; height:100%;" %>
+
+  <form action="textarea.html" method="post">
+    <div>
+      <textarea id="text" name="text" cols="40" rows="4"></textarea>
+    </div>
+  </form>
+
+
+  <br>
+
+
 
 
   <%= button_to 'Klausur abgeben', users_profile_path,:method => "get", class:"btn btn-xs btn-primary"  %></div>
-
 
 
 

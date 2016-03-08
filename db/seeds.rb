@@ -60,6 +60,10 @@ Wiki.create(:article => "DerTitel2", :title => "WikiInhalt2")
 ### Grett ###
 #Subexercise
 Subexercise.create(:position => 1, :text => "Funktion", :solution => "ja", :exercise_id => 1, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
-Subexercise.create(:position => 1, :text => "Funktion2", :solution => "nein", :exercise_id => 1, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => FALSE, :cognitive_dimension => 2)
+Subexercise.create(:position => 1, :text => "Funktion2", :solution => "nein", :exercise_id => 1, :points => 2, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
 Subexercise.create(:position => 1, :text => "Funktion3", :solution => "ja", :exercise_id => 1, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
 Subexercise.create(:position => 1, :text => "Funktion4", :solution => "ja", :exercise_id => 2, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
+
+#Exercise
+Exercise.create(:title=> "Funktionen", :description=> "Berechne die Nullstelle")
+Exercise.create(:title=> "Brüche", :description=> "Berechne den Bruch")
