@@ -20,9 +20,8 @@
   </thead>
   <tbody>
   <tr>
-    # TODO: kein edit im question controller
+    # TODO: falls Rechte ok sind: ActionController::ParameterMissing in AnswersController#update
     <td><%= button_to 'Frage bearbeiten', edit_question_path, :method => "get" %></td>
-    # TODO: Frage löschen und alle unterfragen müssen gelöscht werden (model dependent destroy)
     <td><%= button_to 'Frage löschen', question_path, {:method => "delete", :id => @question.id, data: { confirm: "Bist Du sicher?"}} %></td>
   </tr>
   </tbody>
