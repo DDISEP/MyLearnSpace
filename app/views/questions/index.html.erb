@@ -1,22 +1,21 @@
-<h1>Alle Fragen in diesem Forum</h1>
+<h1>Forum</h1>
+
+<br>
+<%= link_to 'Neue Frage stellen', new_question_path %>
+<br>
 
 <table>
   <thead>
-    <tr>
-      <th>Überschrift</th>
-      <th></th>
-    </tr>
+  <caption><h3>Fragen</h3></caption>
+  <tr>
+    <th></th>
+  </tr>
   </thead>
-
   <tbody>
-    <% @questions.each do |question| %>
+  <% @questions.each do |question| %>
       <tr>
         <td><%= link_to question.title, question %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'Neue Frage Stellen', new_question_path %>
