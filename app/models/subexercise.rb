@@ -6,7 +6,8 @@ class Subexercise < ActiveRecord::Base
   #belongs_to :solution
   belongs_to :learning_objective
 
-  def cognitive_dimension
-    #return @learning_objective.cognitive_dimension
-  end
+  #Falls man das so macht funktioniert rake db:reset nicht mehr
+  #def cognitive_dimension
+   # return @learning_objective.cognitive_dimension
+  #end
 end
