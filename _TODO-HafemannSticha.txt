@@ -22,3 +22,11 @@ erkennung des autors über user_id und nicht user_name
 ### materialXXXs ###
 - Hochladen von Bildern und Videos
 - Bilder in der show anzeigen lassen
+
+
+Protokoll:
+
+08.03.
+- answer model neu erstellt
+    Datentyp der Antwort von String auf Text
+    Identifizierung über answer_id
