@@ -1,0 +1,32 @@
+<h4>Alle von mir bewerteten Leistungen:</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @progresses.each do |progress| %>
+      <tr>
+        <%if progress.teacher_id == @current_user.id%>
+            <td><%=@knowledgeElements.find_by(id: progress.knowledge_element_id).name%></td>
+            <td><%=@Users.find_by(id: progress.learner_id).username%></td>
+            <td><%=progress.grade%></td>
+            <td><%=progress.updated_at%></td>
+            <td><%= link_to 'Show', progress %></td>
+            <td><%= link_to 'Edit', edit_progress_path(progress) %></td>
+            <td><%= link_to 'Destroy', progress, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+        <%else%>
+            <%="keine Leistung verfügbar"%>
+  </tbody>
+</table><%end%>
+
+<br>
+
+<%= link_to 'New Progress', new_progress_path %>
+<%end%>

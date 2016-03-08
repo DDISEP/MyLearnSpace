@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308125826) do
+ActiveRecord::Schema.define(version: 20160308154008) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -112,12 +112,13 @@ ActiveRecord::Schema.define(version: 20160308125826) do
 
   create_table "exercises", force: true do |t|
     t.string   "title"
-    t.string   "description", limit: 1000
+    t.string   "description",          limit: 1000
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "moderated"
     t.boolean  "sequence"
+    t.integer  "knowledge_element_id"
   end
 
   add_index "exercises", ["user_id"], name: "index_exercises_on_user_id"
@@ -254,9 +255,12 @@ ActiveRecord::Schema.define(version: 20160308125826) do
   end
 
   create_table "progresses", force: true do |t|
-    t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "teacher_id"
+    t.integer  "learner_id"
+    t.integer  "knowledge_element_id"
+    t.integer  "grade"
   end
 
   create_table "questions", force: true do |t|

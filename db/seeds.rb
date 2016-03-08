@@ -65,5 +65,8 @@ Subexercise.create(:position => 1, :text => "Funktion3", :solution => "ja", :exe
 Subexercise.create(:position => 1, :text => "Funktion4", :solution => "ja", :exercise_id => 2, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
 
 #Exercise
-Exercise.create(:title=> "Funktionen", :description=> "Berechne die Nullstelle")
-Exercise.create(:title=> "Brüche", :description=> "Berechne den Bruch")
+Exercise.create(:title=> "Funktionen", :description=> "Berechne die Nullstelle", :user_id => 1)
+Exercise.create(:title=> "Brüche", :description=> "Berechne den Bruch", :user_id => 2)
+
+#Progress
+Progress.create(:learner_id =>3, :teacher_id=>2, :knowledge_element_id=>1, :grade =>3)
