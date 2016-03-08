@@ -95,7 +95,8 @@ MyLearnSpace::Application.routes.draw do
   resources :learning_objectives
 
   resources :preconditions
- 
+
+  resources :topics
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

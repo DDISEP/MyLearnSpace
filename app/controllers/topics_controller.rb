@@ -6,4 +6,12 @@ class TopicsController < ApplicationController
       redirect_to @topic
     end
   end
+
+  def index
+
+  end
+
+  def new
+
+  end
 end
