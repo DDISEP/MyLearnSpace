@@ -149,14 +149,14 @@ class ExercisesController < ApplicationController
       redirect_to(exercise_path(@exercise), notice: "Keine Teilaufgaben vorhanden!")
     else
       firstQuestion = Subexercise.where(exercise_id: @exercise.id).order('position ASC').first   # first question doens't have to have position 0
-      @performance = Performance.new          # for some (unknown) reason mass assignment via create didn't work
-      @performance.exercise_id = params[:id]
-      @performance.user_id = session[:current_user_id]
-      @performance.current_position = firstQuestion.position
-      @performance.achieved_points = 0
-      @performance.max_points = @exercise.max_points
-      @performance.save
-      redirect_to perform_exercise_subexercise_path(@exercise, firstQuestion)
+      #@performance = Performance.new          # for some (unknown) reason mass assignment via create didn't work
+      #@performance.exercise_id = params[:id]
+      #@performance.user_id = session[:current_user_id]
+      #@performance.current_position = firstQuestion.position
+      #@performance.achieved_points = 0
+      #@performance.max_points = @exercise.max_points
+      #@performance.save
+      redirect_to subexercise_path(@exercise, firstQuestion)
     end
   end
   

@@ -24,6 +24,11 @@ class SubexercisesController < ApplicationController
     @exercise = Exercise.find(params[:exercise_id])
   end
   
+  def post_new
+    @exercise = Exercise.find(params[:exercise_id])
+    @subexercise = Subexercise.new
+  end
+
   def new
     @exercise = Exercise.find(params[:exercise_id])
     @subexercise = Subexercise.new
@@ -33,7 +38,7 @@ class SubexercisesController < ApplicationController
     @subexercise = Subexercise.new          # for some (unknown) reason mass assignment via create didn't work
     @subexercise.exercise_id = params[:exercise_id]
     @subexercise.text = params[:subexercise][:text]
-    @subexercise.solution = params[:subexercise][:solution]
+    #@subexercise.solution = params[:subexercise][:solution]
     @subexercise.points = params[:subexercise][:points]
     @subexercise.position = @exercise.subexercise_counter
     @subexercise.save

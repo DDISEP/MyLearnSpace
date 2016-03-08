@@ -94,6 +94,15 @@
 		<% end %>
 	</div>
 	<% end %>
+
+    <!-- Neue Teilaufgabe-Button -->
+    <% if @exercise.user_id == session[:current_user_id] || session[:admin] || session[:teacher] == true then%>
+      <div class="row-fluid">
+        <%= button_to new_subexercise_path(@subexercises), {:exercise_id => @exercise_id} , :method => :get, style:"width: 100%", class:"btn btn-xs btn-primary" do %>
+            Neue Teilaufgabe hinzufügen   <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+      </div>
+    <% end %>
 	
 	<!-- Zurück-Button -->
 	<div class="row-fluid"><%= button_to 'Zurück zur Lernaufgabenübersicht' , exercises_path, :method => :get, style:"width: 100%", class:"btn btn-xs btn-primary" %></div>
