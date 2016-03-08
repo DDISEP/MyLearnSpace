@@ -1,9 +1,11 @@
-<div class="container-fluid">
+<div class="container-fluid" xmlns="http://www.w3.org/1999/html">
 <h4>Bitte beachte, dass deine Klausur abgegeben wird, sobald du sie Seite verlässt.</h4>
 
-<div class="col-sm-9"><div class="row-fluid"><h3><%= @knowledgeElements.name %></h3></div></div>
+<h3><%= @knowledgeElements.name %></h3>
+  <br>
 
-<% array= Array[]%>
+
+<%array= Array[]%>
 <%array2=Array[]%>
 
 <% @subexercises1.each do |sub1| %>
@@ -15,8 +17,23 @@
   <% if array2.empty?%>
        <%="keine Aufgabe vorhanden."%>
        <%else %>
-  <%=array2.first.text%> <%end%>
+      <t>Aufgabe 1:</t>
+      <%=@exercises.find_by(id: array2.first.exercise_id).title  %>
+      <br>
+      <%=@exercises.find_by(id: array2.first.exercise_id).description %>
+      <br>
+      <%=array2.first.text%> <%end%>
+      <br>
+ <%#= text_field :max_points,  maxlength:"40", style:"width:100%; height:100%;" %>
 
+  <form action="textarea.html" method="post">
+    <div>
+      <textarea id="text" name="text" cols="40" rows="4"></textarea>
+    </div>
+  </form>
+
+
+  <br>
 
 
 <% @subexercises2.each do |sub2|%>
@@ -24,6 +41,12 @@
               <%= sub2.text %>
           <%end%>
   <%end%>
+
+
+  <%= button_to 'Klausur abgeben', users_profile_path,:method => "get", class:"btn btn-xs btn-primary"  %></div>
+
+
+
 
 </div>
 
