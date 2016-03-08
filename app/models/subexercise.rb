@@ -7,6 +7,6 @@ class Subexercise < ActiveRecord::Base
   belongs_to :learning_objective
 
   def cognitive_dimension
-    return @learning_objective.cognitive_dimension
+    #return @learning_objective.cognitive_dimension
   end
 end
