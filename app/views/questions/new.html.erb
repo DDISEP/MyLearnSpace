@@ -1,5 +1,4 @@
-<h1>Neue Frage anlegen</h1>
+<h1>Neue Frage schreiben</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Zurück', questions_path %>
+<%= button_to 'Zurück', questions_path, :method => "get" %>

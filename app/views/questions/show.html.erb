@@ -41,7 +41,6 @@
   <tbody>
   <tr>
     # TODO: Frage löschen und alle unterfragen müssen gelöscht werden (model dependent destroy)
-    # TODO: if-Abfrage auf author oder admin geht noch nicht
     <td><%= button_to 'Frage löschen', question_path, {:method => "delete", :id => @question.id, data: { confirm: "Bist Du sicher?"}} %></td>
     <td><%= button_to 'Zurück', questions_path, :method => "get" %></td>
   </tr>

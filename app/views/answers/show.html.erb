@@ -1,3 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @answer.text %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @answer.user_id %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @answer.question_id %>
+</p>
+
+<%= link_to 'Edit', edit_answer_path(@answer) %> |
+<%= link_to 'Back', answers_path %>
+
+<br>
+<strong>!!! Should be deleted !!!</strong>
 <h1>Antwort löschen</h1>
 <strong>Bist du sicher?</strong>
 <br>
