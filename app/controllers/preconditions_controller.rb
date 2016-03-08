@@ -18,16 +18,21 @@ class PreconditionsController < ApplicationController
   end
 
   def create
-    #@precondition = LearningObjective.find_by_id(params[:learning_objective_id]).parent_learning_objective_preconditions.build(:parent_learning_objective_id => params[:parent_learning_objective_id])
-    @precondition = LearningObjective.find_by_id(params[:learning_objective_id]).parent_learning_objective_preconditions.build(params.require(:precondition).permit(:necessity, :learning_objective_id, :parent_learning_objective_id))
+    @learningObjective = LearningObjective.find_by_id(params[:learning_objective_id])
+    #@parent_learning_objective = LearningObjective.find_by_id(params[:preconditions[:parent_learning_objective_id]][:value].to_i)
+    #@necessity = params[:preconditions[:necessity]].to_s.to_i
+    #@precondition = @learningObjective.parent_learning_objective_preconditions.build(:learning_objective => @learningObjective, :necessity => @necessity, :parent_learning_objective => @parent_learning_objective)
 
-    flash[:notice] = params.inspect
+    @precondition = @learningObjective.parent_learning_objective_preconditions.build(params.require(:precondition).permit(:necessity, :parent_learning_objective_id))#, params.require(:learning_objective_id))
+
+    #flash[:notice] = params.inspect
     if @precondition.save
       flash[:notice] = "Die Lernvorraussetzung wurde erfolgreich gespeichert"
       redirect_to root_url
     else
-      flash[:notice] = "Es ist ein Fehler beim speichern der Lernvorraussetzung aufgetreten. Bitte versuchen Sie es später erneut"
-      redirect_to root_url
+      #flash[:notice] = "Es ist ein Fehler beim speichern der Lernvorraussetzung aufgetreten. Bitte versuchen Sie es später erneut"
+      flash[:notice] = params[preconditions][necessity]
+      redirect_to knowledge_elements_url
     end
   end
 
