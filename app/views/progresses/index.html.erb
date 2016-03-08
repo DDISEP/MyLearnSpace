@@ -1,32 +1,65 @@
-<h4>Alle von mir bewerteten Leistungen:</h4>
+<% if @current_user.teacher?%>
+    <h4>Alle von mir bewerteten Leistungen:</h4>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @progresses.each do |progress| %>
+    <table>
+      <thead>
       <tr>
-        <%if progress.teacher_id == @current_user.id%>
-            <td><%=@knowledgeElements.find_by(id: progress.knowledge_element_id).name%></td>
-            <td><%=@Users.find_by(id: progress.learner_id).username%></td>
-            <td><%=progress.grade%></td>
-            <td><%=progress.updated_at%></td>
-            <td><%= link_to 'Show', progress %></td>
-            <td><%= link_to 'Edit', edit_progress_path(progress) %></td>
-            <td><%= link_to 'Destroy', progress, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-        <%else%>
-            <%="keine Leistung verfügbar"%>
-  </tbody>
-</table><%end%>
+      </thead>
 
-<br>
+      <tbody>
 
-<%= link_to 'New Progress', new_progress_path %>
+      <% @progresses.each do |progress| %>
+          <tr>
+            <%if progress.teacher_id == @current_user.id%>
+                <td><%=@knowledgeElements.find_by(id: progress.knowledge_element_id).name%></td>
+                <td><%=@Users.find_by(id: progress.learner_id).username%></td>
+                <td><%=progress.grade%></td>
+                <td><%=progress.updated_at%></td>
+                <td><%= link_to 'Show', progress %></td>
+                <td><%= link_to 'Edit', edit_progress_path(progress) %></td>
+                <td><%= link_to 'Destroy', progress, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+            <%else%>
+                <%="keine Leistung verfügbar"%>
+            <%end%>
+      <%end%>
+      </tbody>
+    </table>
+
+    <br>
+
+    <%= link_to 'New Progress', new_progress_path %>
+
+
+<% elsif @current_user.learner?%>
+    <h4>Deine Leistungen:</h4>
+
+    <tbody>
+
+    <% @progresses.each do |progress| %>
+        <tr>
+          <%if progress.learner_id == @current_user.id%>
+              <td><%=@knowledgeElements.find_by(id: progress.knowledge_element_id).name%></td>
+              <td><%=progress.grade%></td>
+              <td><%=@Users.find_by(id: progress.teacher_id).username%></td>
+              <td><%=progress.updated_at%></td>
+              </tr>
+          <%else%>
+              <%="keine Leistung verfügbar"%>
+          <%end%>
+    <%end%>
+    </tbody>
+
+
 <%end%>
+
+
+
+
+
+
+

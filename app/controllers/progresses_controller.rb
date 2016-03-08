@@ -74,4 +74,6 @@ class ProgressesController < ApplicationController
     def progress_params
       params[:progress]
     end
+
+
 end
