@@ -17,24 +17,3 @@
 
 <%= link_to 'Edit', edit_answer_path(@answer) %> |
 <%= link_to 'Back', answers_path %>
-
-<br>
-<strong>!!! Should be deleted !!!</strong>
-<h1>Antwort löschen</h1>
-<strong>Bist du sicher?</strong>
-<br>
-<table>
-  <thead>
-  <tr>
-    <th></th>
-    <th></th>
-  </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <td><%= button_to 'Ja', answer_path, {:method => "delete", :id => @answer.id} %></td>
-        <td><%= button_to 'Nein', @question, :method => "get" %></td>
-      </tr>
-  </tbody>
-</table>

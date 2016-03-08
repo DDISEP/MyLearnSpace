@@ -12,6 +12,22 @@
 	<i>Gefragt von <%= @question.user_name %> am <%= @question.created_at %></i>
 </p>
 
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    # TODO: kein edit im question controller
+    <td><%= button_to 'Frage bearbeiten', edit_question_path, :method => "get" %></td>
+    # TODO: Frage löschen und alle unterfragen müssen gelöscht werden (model dependent destroy)
+    <td><%= button_to 'Frage löschen', question_path, {:method => "delete", :id => @question.id, data: { confirm: "Bist Du sicher?"}} %></td>
+  </tr>
+  </tbody>
+</table>
+
 <div id='thread'>
 <%= render 'thread'%>
 </div>
@@ -26,22 +42,6 @@
   <tr>
     # TODO: question_id muss definiert werden
     <td><%= button_to 'Frage beantworten', new_answer_path, :method => "get" %></td>
-    # TODO: kein edit im question controller
-    <td><%= button_to 'Frage bearbeiten', edit_question_path, :method => "get" %></td>
-  </tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-  <tr>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    # TODO: Frage löschen und alle unterfragen müssen gelöscht werden (model dependent destroy)
-    <td><%= button_to 'Frage löschen', question_path, {:method => "delete", :id => @question.id, data: { confirm: "Bist Du sicher?"}} %></td>
     <td><%= button_to 'Zurück', questions_path, :method => "get" %></td>
   </tr>
   </tbody>
