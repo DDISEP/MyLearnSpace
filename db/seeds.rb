@@ -31,10 +31,10 @@ Question.create(:title => "Frage1?", :text => "FragentextZurFrage1", :user_name 
 Question.create(:title => "Frage2?", :text => "FragentextZurFrage2", :user_name => "teacher")
 Question.create(:title => "Frage3?", :text => "FragentextZurFrage3", :user_name => "learner")
 #Answer
-Answer.create(:text => "Antwort1AufFrage1", :question_id => 1, :user_name => "teacher")
-Answer.create(:text => "Antwort2AufFrage1", :question_id => 1, :user_name => "learner")
-Answer.create(:text => "Antwort3AufFrage1", :question_id => 1, :user_name => "admin")
-Answer.create(:text => "Antwort1AufFrage2", :question_id => 2, :user_name => "learner")
+Answer.create(:text => "Antwort1AufFrage1", :question_id => 1, :user_id => 2)
+Answer.create(:text => "Antwort2AufFrage1", :question_id => 1, :user_id => 3)
+Answer.create(:text => "Antwort3AufFrage1", :question_id => 1, :user_id => 1)
+Answer.create(:text => "Antwort1AufFrage2", :question_id => 2, :user_id => 3)
 #Wiki
 Wiki.create(:title => "DerTitel1", :article => "WikiInhalt1")
 Wiki.create(:article => "DerTitel2", :title => "WikiInhalt2")

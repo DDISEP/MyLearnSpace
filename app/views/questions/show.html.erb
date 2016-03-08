@@ -1,17 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Überschrift:</strong>
-  <%= @question.title %>
+  <strong><%= @question.title %></strong>
 </p>
 
 <p>
-  <strong>Frage:</strong>
   <%= @question.text %>
 </p>
 
 <p>
-	Gefragt von <%= @question.user_name %> am <%= @question.created_at %>
+	<i>Gefragt von <%= @question.user_name %> am <%= @question.created_at %></i>
 </p>
 
 <div id='thread'>
