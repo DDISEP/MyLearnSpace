@@ -8,10 +8,11 @@ class ExamsController < ApplicationController
  end
 
  def edit
-   @subexercises1 = Subexercise.where(examItem: TRUE, active: TRUE, learning_objective_id: 1)
+   @subexercises1 = Subexercise.where(examItem: TRUE, active: TRUE, cognitive_dimension: 1)
    @exercises = Exercise.all
    @knowledgeElements = KnowledgeElement.find_by_id(params[:id])
-   @subexercises2 = Subexercise.where(examItem: TRUE, active: TRUE, learning_objective_id: 3)
+   @subexercises2 = Subexercise.where(examItem: TRUE, active: TRUE, cognitive_dimension: 3)
+   @subexercises3 = Subexercise.where(examItem: TRUE, active: TRUE, cognitive_dimension: 6)
 
  end
 end

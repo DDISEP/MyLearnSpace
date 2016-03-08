@@ -59,7 +59,14 @@ Wiki.create(:article => "DerTitel2", :title => "WikiInhalt2")
 
 ### Grett ###
 #Subexercise
-Subexercise.create(:position => 1, :text => "Funktion", :solution => "ja", :exercise_id => 1, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :learning_objective_id => 1)
-Subexercise.create(:position => 1, :text => "Funktion2", :solution => "nein", :exercise_id => 1, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => FALSE, :learning_objective_id => 2)
-Subexercise.create(:position => 1, :text => "Funktion3", :solution => "ja", :exercise_id => 1, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :learning_objective_id => 3)
-Subexercise.create(:position => 1, :text => "Funktion4", :solution => "ja", :exercise_id => 2, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :learning_objective_id => 1)
+Subexercise.create(:position => 1, :text => "Funktion", :solution => "ja", :exercise_id => 1, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
+Subexercise.create(:position => 1, :text => "Funktion2", :solution => "nein", :exercise_id => 1, :points => 2, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
+Subexercise.create(:position => 1, :text => "Funktion3", :solution => "ja", :exercise_id => 1, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
+Subexercise.create(:position => 1, :text => "Funktion4", :solution => "ja", :exercise_id => 2, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
+
+#Exercise
+Exercise.create(:title=> "Funktionen", :description=> "Berechne die Nullstelle", :user_id => 1)
+Exercise.create(:title=> "Brüche", :description=> "Berechne den Bruch", :user_id => 2)
+
+#Progress
+Progress.create(:learner_id =>3, :teacher_id=>2, :knowledge_element_id=>1, :grade =>3)
