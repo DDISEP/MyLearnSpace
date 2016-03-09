@@ -27,17 +27,22 @@ class ProgressesController < ApplicationController
   # POST /progresses
   # POST /progresses.json
   def create
-    @progress = Progress.new(progress_params)
+    @progress = Progress.new
+    @progress.learner_id = params[:progress][:learner_id]
+    @progress.knowledge_element_id = params[:progress][:knowledge_element_id]
+    @progress.teacher_id = session[:current_user_id]
+    @progress.save
+    #@progress = Progress.new(progress_params)
 
-    respond_to do |format|
-      if @progress.save
-        format.html { redirect_to @progress, notice: 'Progress was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @progress }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @progress.errors, status: :unprocessable_entity }
-      end
-    end
+    #respond_to do |format|
+      #if @progress.save
+        #format.html { redirect_to @progress, notice: 'Progress was successfully created.' }
+        #format.json { render action: 'show', status: :created, location: @progress }
+      #else
+        #format.html { render action: 'new' }
+        #format.json { render json: @progress.errors, status: :unprocessable_entity }
+      #end
+    #end
   end
 
   # PATCH/PUT /progresses/1
