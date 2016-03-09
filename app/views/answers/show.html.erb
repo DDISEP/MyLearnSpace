@@ -1,19 +1,19 @@
-<p id="notice"><%= notice %></p>
+<h1>Antwort löschen</h1>
 
-<p>
-  <strong>Text:</strong>
-  <%= @answer.text %>
-</p>
+<strong>Bist du sicher?</strong>
 
-<p>
-  <strong>User:</strong>
-  <%= @answer.user_id %>
-</p>
+<table>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
 
-<p>
-  <strong>Question:</strong>
-  <%= @answer.question_id %>
-</p>
-
-<%= link_to 'Edit', edit_answer_path(@answer) %> |
-<%= link_to 'Back', answers_path %>
+  <tbody>
+  <tr>
+    <td><%= button_to 'Ja', answer_path, {:method => "delete", :id => @answer.id} %></td>
+    <td><%= button_to 'Nein', @question, :method => "get" %></td>
+  </tr>
+  </tbody>
+</table>
