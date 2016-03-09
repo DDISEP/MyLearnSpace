@@ -28,6 +28,10 @@ class ProgressesController < ApplicationController
   # POST /progresses.json
   def create
     @progress = Progress.new
+    #@learner_name = params[:learner_id]
+    #@learner_id2 = User.where(:username => @learner_name)
+    #@learner_id2 = User.find_by_username(@learner_name)
+    #@progress.learner_id = @learner_id2.first.id
     @progress.learner_id = params[:progress][:learner_id]
     @progress.knowledge_element_id = params[:progress][:knowledge_element_id]
     @progress.grade = params[:progress][:grade]
