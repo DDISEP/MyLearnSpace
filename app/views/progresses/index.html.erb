@@ -24,7 +24,6 @@
                 <td><%= link_to 'Destroy', progress, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
             <%else%>
-                <%="keine Leistung verfügbar"%>
             <%end%>
       <%end%>
       </tbody>
@@ -42,14 +41,13 @@
 
     <% @progresses.each do |progress| %>
         <tr>
-          <%if progress.learner_id == @current_user.id%>
+          <%if progress.learner_id == @current_user.id%><br>
               <td><%=@knowledgeElements.find_by(id: progress.knowledge_element_id).name%></td>
               <td><%=progress.grade%></td>
               <td><%=@Users.find_by(id: progress.teacher_id).username%></td>
               <td><%=progress.updated_at%></td>
               </tr>
           <%else%>
-              <%="keine Leistung verfügbar"%>
           <%end%>
     <%end%>
     </tbody>

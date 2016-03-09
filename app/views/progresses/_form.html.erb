@@ -1,22 +1,33 @@
 <%= form_for(@progress) do |f| %>
+        <% if @progress.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@progress.errors.count, "error") %> prohibited this progress from being saved:</h2>
+
+              <ul>
+                <% @progress.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
     <div class="container-fluid">
       <div class="panel panel-primary">
         <div class="panel-body">
-          <div id="title_field" class="row-fluid">
+          <div id="grade_field" class="row-fluid">
             <div class="span2"><%= f.label :grade, "Note" %></div>
-            <div class="span10"><%= f.text_area :grade, placeholder:"Gib hier einen Titel ein...", maxlength:"1000", style:"width:100%" %></div>
+            <div class="span10"><%= f.text_area :grade, placeholder:"Gib hier die Note ein...", maxlength:"1000", style:"width:30%" %></div>
           </div>
-          <div id="description_field" class="row-fluid">
+          <div id="learner_field" class="row-fluid">
             <div class="span2"><%= f.label :learner_id, "Schüler" %></div>
-            <div class="span10"><%= f.text_area :learner_id, placeholder:"Gib hier eine Beschreibung ein...", maxlength:"1000", style:"width:100%" %></div>
+            <div class="span10"><%= f.text_area :learner_id, placeholder:"Gib hier den Schüler...", maxlength:"1000", style:"width:30%" %></div>
           </div>
-          <div id="tags_field" class="row-fluid">
+          <div id="ke_field" class="row-fluid">
             <div class="span2"><%= label_tag :knowledge_element_id, "Knowlede Element" %></div>
-            <div class="span10"><%= f.text_area :knowledge_element_id, placeholder:"Gib hier eine Beschreibung ein...", maxlength:"1000", style:"width:100%" %></div>
+            <div class="span10"><%= f.text_area :knowledge_element_id, placeholder:"Gib hier das Knowledge Element ein...", maxlength:"1000", style:"width:30%" %></div>
           </div>
 
           <div id="save_button" class="row-fluid">
-            <div class="span10 offset2"><%= f.submit "Titel, Beschreibung und Tags speichern", class:"btn btn-xs btn-success", style:"width:100%" %></div>
+            <div class="span10 offset2"><%= f.submit "Leistung speichern", class:"btn btn-xs btn-success", style:"width:30%" %></div>
           </div>
         </div>
       </div>
