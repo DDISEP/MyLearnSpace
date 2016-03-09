@@ -20,7 +20,8 @@
   </thead>
   <tbody>
   <tr>
-    <td><%= button_to 'Frage bearbeiten', edit_question_path, :method => "get" %></td>
+    <!--Frage bearbeiten wurde nach Diskussion entfernt, da sonst etwaige Antworten nicht mehr auf die Frage passen könnten.-->
+    <!--td>%= button_to 'Frage bearbeiten', edit_question_path, :method => "get" %></td-->
     <td><%= button_to 'Frage löschen', question_path, {:method => "delete", :id => @question.id, data: { confirm: "Bist Du sicher?"}} %></td>
   </tr>
   </tbody>
