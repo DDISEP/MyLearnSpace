@@ -29,8 +29,6 @@
   </tbody>
 </table>
 
-
-
 <div id='thread'>
 <%= render 'thread'%>
 </div>
@@ -43,10 +41,7 @@
   </thead>
   <tbody>
   <tr>
-    <td><%= text_field(:textfield_content, placeholder: "placeholder text") %></td>
-    # TODO: question_id muss definiert werden
-    <td><%= button_to 'Frage beantworten', new_answer_path(@question, :question_id => @question.id, :text => @question.text), :method => "post" %></td>
-    <td><%= link_to 'Frage beantworten', new_answer_path(question_id: @question, text: @question.text), :method => "get" %></td>
+    <td><%= form_tag(new_answer_path, :method=>'get') do %><%= text_field_tag "text" %><%= hidden_field_tag "question_id", @question.id %>&nbsp;&nbsp;<%= submit_tag 'Frage beantworten' %><% end %></td>
   </tr>
   </tbody>
 </table>
