@@ -22,8 +22,8 @@
   <tr>
     # TODO: falls Rechte ok sind: ActionController::ParameterMissing in AnswersController#update
     <td><%= button_to 'Frage bearbeiten', edit_question_path, :method => "get" %></td>
-    <td><%= button_to 'Frage bearbeiten2', edit_question_answer_path, :method => "edit" %></td>
-    <td><%= button_to 'Frage bearbeiten3', edit_question_answer_path, :method => "get" %></td>
+    <!--<td>%= button_to 'Frage bearbeiten2', edit_question_answer_path, :method => "edit" %></td>-->
+    <!--<td>%= button_to 'Frage bearbeiten3', edit_question_answer_path, :method => "get" %></td>-->
     <td><%= button_to 'Frage löschen', question_path, {:method => "delete", :id => @question.id, data: { confirm: "Bist Du sicher?"}} %></td>
   </tr>
   </tbody>
@@ -42,7 +42,7 @@
   <tbody>
   <tr>
     # TODO: question_id muss definiert werden
-    <td><%= button_to 'Frage beantworten', new_answer_path, :method => "get" %></td>
+    <td><%= button_to 'Frage beantworten', new_answer_path(@question.id), :method => "get" %></td>
     <td><%= button_to 'Zurück', questions_path, :method => "get" %></td>
   </tr>
   </tbody>

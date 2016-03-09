@@ -27,6 +27,8 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
     @answer.user_id = @current_user.id
+    @answer.question_id = params[:id]
+
 
     respond_to do |format|
       if @answer.save
