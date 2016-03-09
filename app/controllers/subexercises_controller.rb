@@ -21,7 +21,7 @@ class SubexercisesController < ApplicationController
   end
   
   def get_exercise
-    @exercise = Exercise.find(params[:exercise_id])
+    return @exercise
   end
   
   #def post_new
@@ -30,7 +30,7 @@ class SubexercisesController < ApplicationController
   #end
 
   def new
-    @exercise = Exercise.find(params[:exercise_id])
+    @exercise = Exercise.find(session[:exercise_id])
     @subexercise = Subexercise.new
   end
   

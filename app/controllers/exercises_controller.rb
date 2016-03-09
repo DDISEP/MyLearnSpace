@@ -65,6 +65,7 @@ class ExercisesController < ApplicationController
   end
 
   def show
+    session[:exercise_id] = @exercise.id
     if @latest_performance != nil && @latest_performance.current_position > -1 then
       #last performance unfinished, set next subexercise to do
       @next = Subexercise.where(exercise_id: params[:id], position: @latest_performance.current_position).first 
