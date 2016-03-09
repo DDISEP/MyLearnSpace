@@ -10,13 +10,9 @@
       <tr>
         <td><strong><%= User.find_by_id(answer.user_id).username %>: &nbsp;</strong></td>
         <td><%= answer.text %>&nbsp;&nbsp;</td>
-        <td><i><%= answer.created_at %> &nbsp; &nbsp;</i></td>
-        <td><%=link_to 'Bearbeiten', edit_answer_path %></td>
-        <td><%=link_to 'Löschen', answer_path, {:method => "delete", data: { confirm: "Bist Du sicher?"} } %></td>
-        <td><%= button_to 'Bearbeiten', answer, :method => "patch" %></td>
-        <td><%= button_to 'Löschen', answer, {:method => "delete", data: { confirm: "Bist Du sicher?"}} %></td>
-        <!-- td><%= button_to 'Bearbeiten', edit_answer_path, :method => "get" %></td> -->
-        <!-- td><%= button_to 'Löschen', answer, :method => "delete" %></td> -->
+        <td><i><%= answer.created_at %>&nbsp;&nbsp;</i></td>
+        <td><%= link_to 'Bearbeiten', edit_answer_path %>&nbsp;|&nbsp;</td>
+        <td><%= link_to 'Löschen', answer, :method => "get" %></td>
       </tr>
   <% end %>
   </tbody>
