@@ -13,7 +13,7 @@
   <tbody>
   <tr>
     <td><%= button_to 'Ja', answer_path, {:method => "delete", :id => @answer.id} %></td>
-    <td><%= button_to 'Nein', @question, :method => "get" %></td>
+    <td><%= button_to 'Nein', questions_path, :method => "get" %></td>
   </tr>
   </tbody>
 </table>
