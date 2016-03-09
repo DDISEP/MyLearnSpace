@@ -16,6 +16,25 @@ class AnswersController < ApplicationController
   # GET /answers/new
   def new
     @answer = Answer.new
+
+    @current_user  = User.find(session[:current_user_id])
+
+    @question_id = params[:question_id]
+    @question = Question.find_by_id(@question_id)
+
+    @answer.user_id = @current_user.id
+    @answer.question_id = @question.id
+    @answer.text = params[:text]
+
+    respond_to do |format|
+      if @answer.save
+        format.html { redirect_to @answer, notice: 'Die Antwort wurde erfolgreich erstellt.' }
+        format.json { render action: 'show', status: :created, location: @answer }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @answer.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /answers/1/edit
@@ -26,7 +45,9 @@ class AnswersController < ApplicationController
   # POST /answers.json
   def create
     @answer = Answer.new(answer_params)
+
     @answer.user_id = @current_user.id
+
     @answer.question_id = params[:id]
 
 
