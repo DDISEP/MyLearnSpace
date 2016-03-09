@@ -61,6 +61,8 @@
             <%= link_to 'Nachrichten', questions_path %>
             &nbsp;&nbsp;
             <%= link_to 'Newsfeed', questions_path %>
+            &nbsp;&nbsp;
+            <%= link_to 'Leistungen', progresses_path%>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <% elsif @current_user.teacher?%>
             &nbsp;&nbsp;
@@ -80,7 +82,7 @@
             &nbsp;&nbsp;
             <%= link_to 'Wiki', wikis_path %>
             &nbsp;&nbsp;
-            <%= link_to 'Leistung eintragen', progresses_path %>
+            <%= link_to 'Leistungen', progresses_path %>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <% else %>
             &nbsp;&nbsp;

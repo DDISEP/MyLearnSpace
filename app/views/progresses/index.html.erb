@@ -4,9 +4,10 @@
     <table>
       <thead>
       <tr>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>Lerneinheit</th>
+        <th>Schüler</th>
+        <th>Note</th>
+        <th>Datum</th>
       </tr>
       </thead>
 
@@ -19,9 +20,7 @@
                 <td><%=@Users.find_by(id: progress.learner_id).username%></td>
                 <td><%=progress.grade%></td>
                 <td><%=progress.updated_at%></td>
-                <td><%= link_to 'Show', progress %></td>
-                <td><%= link_to 'Edit', edit_progress_path(progress) %></td>
-                <td><%= link_to 'Destroy', progress, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to 'Bearbeiten', edit_progress_path(progress) %></td>
                 </tr>
             <%else%>
             <%end%>
@@ -36,12 +35,20 @@
 
 <% elsif @current_user.learner?%>
     <h4>Deine Leistungen:</h4>
-
+    <table>
+      <thead>
+      <tr>
+        <th>Lerneinheit</th>
+        <th>Note</th>
+        <th>Lehrer</th>
+        <th>Datum</th>
+      </tr>
+      </thead>
     <tbody>
 
     <% @progresses.each do |progress| %>
         <tr>
-          <%if progress.learner_id == @current_user.id%><br>
+          <%if progress.learner_id == @current_user.id%>
               <td><%=@knowledgeElements.find_by(id: progress.knowledge_element_id).name%></td>
               <td><%=progress.grade%></td>
               <td><%=@Users.find_by(id: progress.teacher_id).username%></td>
@@ -49,11 +56,41 @@
               </tr>
           <%else%>
           <%end%>
-    <%end%>
+          <%end%>
     </tbody>
+        </table>
+
+<%elsif @current_user.admin?%>
+        <h4>Alle Leistungen:</h4>
+
+        <table>
+          <thead>
+          <tr>
+            <th>Lerneinheit</th>
+            <th>Schüler</th>
+            <th>Lehrer</th>
+            <th>Note</th>
+            <th>Datum</th>
+          </tr>
+          </thead>
+
+          <tbody>
+
+          <% @progresses.each do |progress| %>
+              <tr>
+                    <td><%=@knowledgeElements.find_by(id: progress.knowledge_element_id).name%></td>
+                    <td><%=@Users.find_by(id: progress.learner_id).username%></td>
+                    <td><%=@Users.find_by(id: progress.teacher_id).username%></td>
+                    <td><%=progress.grade%></td>
+                    <td><%=progress.updated_at%></td>
+                    <td><%= link_to 'Bearbeiten', edit_progress_path(progress) %></td>
+                    </tr>
+                <%end%>
+          <%end%>
+          </tbody>
+        </table>
 
 
-<%end%>
 
 
 
