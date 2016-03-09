@@ -10,6 +10,7 @@ class Exercise < ActiveRecord::Base
   has_many :performances, dependent: :destroy
   has_many :exercise_contents, dependent: :destroy
   has_many :contents, through: :exercise_contents
+  belongs_to :knowledge_element
   
   # returns String representation of associated contents
   def tags

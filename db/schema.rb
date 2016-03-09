@@ -237,7 +237,7 @@ ActiveRecord::Schema.define(version: 20160308154008) do
   create_table "performances", force: true do |t|
     t.integer  "achieved_points"
     t.integer  "user_id"
-    t.integer  "exercise_id"
+    t.integer  "subexercise_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "handedin"
@@ -281,7 +281,7 @@ ActiveRecord::Schema.define(version: 20160308154008) do
   create_table "subexercises", force: true do |t|
     t.integer  "position"
     t.string   "text"
-    t.string   "solution"
+    t.integer  "solution_id"
     t.integer  "exercise_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -289,10 +289,12 @@ ActiveRecord::Schema.define(version: 20160308154008) do
     t.boolean  "moderated"
     t.boolean  "active"
     t.boolean  "examItem"
-    t.integer  "cognitive_dimension"
+    t.integer  "learning_objective_id"
   end
 
   add_index "subexercises", ["exercise_id"], name: "index_subexercises_on_exercise_id"
+  add_index "subexercises", ["solution_id"], name: "index_subexercises_on_solution_id"
+  add_index "subexercises", ["learning_objective_id"], name: "index_subexercises_on_learning_objective_id"
 
   create_table "topics", force: true do |t|
     t.string   "name"
