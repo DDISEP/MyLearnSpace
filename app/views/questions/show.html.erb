@@ -43,7 +43,7 @@
   <tr>
     <td>
       <%= form_tag(new_answer_path, :method=>'get') do %>
-          <%= text_field_tag "text" %>
+          <%= text_area_tag "text" %>
           <%= hidden_field_tag "question_id", @question.id %>
           &nbsp;&nbsp;&nbsp;
           <%= submit_tag 'Frage beantworten' %>
