@@ -11,7 +11,7 @@ class Materialpicture < ActiveRecord::Base
 
   validates_attachment_presence :file
   validates_attachment_size :file, :less_than => 5.megabytes
-  validates_attachment_content_type :file, :content_type => ['image/jpeg', 'image/png', 'image/gif']
+  validates_attachment_content_type :file, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']
 
   has_one :users
   has_and_belongs_to_many :knowledge_elements
