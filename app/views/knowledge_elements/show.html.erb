@@ -5,6 +5,7 @@
   <% else %>
       <div class="col-sm-9"><div class="row-fluid"><h1>KnowledgeElement</h1></div></div>
       <%end%>
+  <td width="300"></td><%= button_to 'Zurück zur Übersicht', knowledge_elements_path, :method => :get, class:"btn btn-xs btn-primary"%></td>
   <div class="col-sm-9">
 
 
@@ -16,9 +17,14 @@
           <p>
             <%= @knowledgeElement.description %>
           </p>
+          <table class="table table-striped">
+            <tbody>
+            <th>
+            <td width="100"><%= button_to 'Bearbeiten', edit_knowledge_element_path, :method => :get, class:"btn btn-xs btn-primary"%></td>
 
-          <%= button_to 'Bearbeiten', edit_knowledge_element_path, :method => :get, class:"btn btn-xs btn-primary"%>
-
+            </th>
+            </tbody>
+          </table>
           <br>
           <br>
 
@@ -92,6 +98,10 @@
                   <td> <%= link_to e.name, e %> </td>
               <%end%>
           <%end%>
+          <% if @exercises1 == nil && @exercises2 == nil && @exercises3 == nil && @exercises4 == nil && @exercises5 == nil && @exercises6 == nil%>
+          <p> Es gibt noch keine Aufgaben </p>
+          <%end%>
+
 
           </p>
 
@@ -102,10 +112,6 @@
           </p>
       <%end%>
 
-
-      <p>
-        <%= link_to 'Zurück zur Übersicht', knowledge_elements_path%>
-      </p>
     </div>
   </div>
 
