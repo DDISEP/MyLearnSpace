@@ -15,8 +15,6 @@ http://guides.rubyonrails.org/command_line.html
 
 rails console
 rails server
-rails generate
-rails dbconsole
 ~/RubymineProjects/MyLearnSpace
 http://127.0.0.1:3000
 
@@ -29,21 +27,6 @@ rake db:setup       #does db:create, db:schema:load, db:seed
 rake db:reset       #does db:drop, db:setup
 rake db:seed        #(only) runs the db/seed.rb file
 
-### mySQL data types ###
-NATIVE_DATABASE_TYPES = {
-        :primary_key => "int(11) auto_increment PRIMARY KEY",
-        :string      => { :name => "varchar", :limit => 255 },
-        :text        => { :name => "text" },
-        :integer     => { :name => "int", :limit => 4 },
-        :float       => { :name => "float" },
-        :decimal     => { :name => "decimal" },
-        :datetime    => { :name => "datetime" },
-        :time        => { :name => "time" },
-        :date        => { :name => "date" },
-        :binary      => { :name => "blob" },
-        :boolean     => { :name => "tinyint", :limit => 1 }
-      }
-
 ### rails relationships ###
 http://openbook.rheinwerk-verlag.de/ruby_on_rails/ruby_on_rails_10_010.htm
 http://ruby-auf-schienen.de/3.2/ar-has_one.html
@@ -53,8 +36,6 @@ http://ruby-auf-schienen.de/3.2/ar-many_to_many.html
 ### rails generate ###
 rails generate model/controller/view name
 rails generate scaffold name attribute:type
-rails generate migration AddPartNumberToProducts part_number:string:index
-rails generate migration RemovePartNumberFromProducts part_number:string
 rails generate migration CreateJoinFlightsPassengers
 
 ### rails guides ###
