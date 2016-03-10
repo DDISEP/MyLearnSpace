@@ -6,8 +6,8 @@ class Materialpicture < ActiveRecord::Base
   validates :user_id, presence: true
 
   has_attached_file :file,
-                    :url  => "/assets/products/:id/:style/:basename.:extension",
-                    :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension"
+                    :url  => "/assets/products/pictures/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/assets/products/pictures/:id/:style/:basename.:extension"
 
   validates_attachment_presence :file
   validates_attachment_size :file, :less_than => 5.megabytes

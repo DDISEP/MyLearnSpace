@@ -11,8 +11,9 @@
 </p>
 
 <p>
-<!--%= video_tag @materialvideo.file.url(:original) %-->
-<%= video_tag @materialvideo.file.url(:medium), controls: true, type: "video/mp4", size: "400x400" %>
+<%= video_tag @materialvideo.file.url(:original) %><br>
+<%= video_tag @materialvideo.file.url(:medium), controls: true, type: "video/mp4", size: "400x400" %><br>
+<%= video_tag @materialvideo.file.url(:medium), controls: true, style: "max-width: 100%;" %><br>
 </p>
 
 <table>
