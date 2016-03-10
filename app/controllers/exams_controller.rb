@@ -8,6 +8,7 @@ class ExamsController < ApplicationController
  end
 
  def edit
+   @exam =Exam.new
    @subexercises1 = Subexercise.where(examItem: TRUE, active: TRUE, cognitive_dimension: 1)
    @exercises = Exercise.all
    @knowledgeElements = KnowledgeElement.find_by_id(params[:id])

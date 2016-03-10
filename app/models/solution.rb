@@ -1,4 +1,4 @@
-class solution < ActiveRecord::Base
+class Solution < ActiveRecord::Base
   attr_accessible :solution, :description
 
   belongs_to :subexercise

@@ -6,14 +6,13 @@
 
 
 <%array= Array[]%>
-<%array2=Array[]%>
 
 <% @subexercises1.each do |sub1| %>
-     <% array.push (sub1) %>
-      <% result = array.select do |hash|
-        hash[:points] == @knowledgeElements.id end%>
-      <% array2=result.sort_by {rand}%>
+  <% if sub1.exercise.knowledge_element_id == @knowledgeElements.id%>
+      <%array.push(sub1)%>
+  <%end%>
 <%end%>
+  <%array2=array.sort_by {rand}%>
   <% if array2.empty?%>
        <%="keine Aufgabe vorhanden."%>
        <%else %>
@@ -36,14 +35,13 @@
 
 
   <%array3= Array[]%>
-  <%array4=Array[]%>
 
-  <% @subexercises2.each do |sub1| %>
-      <% array3.push (sub1) %>
-      <% result = array3.select do |hash|
-        hash[:points] == @knowledgeElements.id end%>
-      <% array4=result.sort_by {rand}%>
-  <%end%>
+<% @subexercises2.each do |sub1| %>
+      <% if sub1.exercise.knowledge_element_id == @knowledgeElements.id%>
+          <%array3.push(sub1)%>
+      <%end%>
+<%end%>
+  <%array4=array3.sort_by {rand}%>
   <% if array4.empty?%>
       <%="keine Aufgabe vorhanden."%>
   <%else %>
@@ -62,17 +60,17 @@
   </form>
 
 
+
   <br>
 
   <%array5= Array[]%>
-  <%array6=Array[]%>
 
-  <% @subexercises3.each do |sub1| %>
-      <% array5.push (sub1) %>
-      <% result = array5.select do |hash|
-        hash[:points] == @knowledgeElements.id end%>
-      <% array6=result.sort_by {rand}%>
-  <%end%>
+<% @subexercises3.each do |sub1| %>
+      <% if sub1.exercise.knowledge_element_id == @knowledgeElements.id%>
+          <%array5.push(sub1)%>
+      <%end%>
+<%end%>
+  <%array6=array5.sort_by {rand}%>
   <% if array6.empty?%>
       <%="keine Aufgabe vorhanden."%>
   <%else %>
@@ -94,10 +92,7 @@
   <br>
 
 
-
-
   <%= button_to 'Klausur abgeben', users_profile_path,:method => "get", class:"btn btn-xs btn-primary"  %></div>
-
 
 
 </div>

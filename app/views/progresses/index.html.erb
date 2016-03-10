@@ -1,14 +1,14 @@
 <% if @current_user.teacher?%>
     <h4>Alle von mir bewerteten Leistungen:</h4>
 
-    <table>
+    <table class="table table-striped">
       <thead>
-      <tr>
+      <tr><strong>
         <th>Lerneinheit</th>
         <th>Schüler</th>
         <th>Note</th>
         <th>Datum</th>
-      </tr>
+      </strong></tr>
       </thead>
 
       <tbody>
@@ -35,7 +35,7 @@
 
 <% elsif @current_user.learner?%>
     <h4>Deine Leistungen:</h4>
-    <table>
+    <table class="table table-striped">
       <thead>
       <tr>
         <th>Lerneinheit</th>
@@ -63,7 +63,7 @@
 <%elsif @current_user.admin?%>
         <h4>Alle Leistungen:</h4>
 
-        <table>
+        <table class="table table-striped">
           <thead>
           <tr>
             <th>Lerneinheit</th>
