@@ -14,6 +14,9 @@ https://matt.berther.io/2007/10/19/uploading-files-to-a-database-using-rails/
 http://stackoverflow.com/a/1857302
 http://railscasts.com/episodes/134-paperclip
 
+### picture einbinden ###
+http://openbook.rheinwerk-verlag.de/ruby_on_rails/ruby_on_rails_08_003.htm
+
 ### forum & question ###
 question text:string -> text:text
 answer text:string -> text:text
