@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308130124) do
+ActiveRecord::Schema.define(version: 20160310134454) do
 
   create_table "answers", force: true do |t|
     t.text     "text"
@@ -197,12 +197,13 @@ ActiveRecord::Schema.define(version: 20160308130124) do
 
   create_table "materialpictures", force: true do |t|
     t.string   "title"
-    t.binary   "file"
-    t.string   "filename"
-    t.string   "fileformat"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "materials", force: true do |t|

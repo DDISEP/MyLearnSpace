@@ -23,7 +23,7 @@ Materiallink.create(:title => "Materiallink1", :link => "http://mylollispace.de"
 Materiallink.create(:title => "Materiallink2", :link => "http://google.de", :user_id => 2)
 Materiallink.create(:title => "Materiallink3", :link => "http://youtube.de", :user_id => 3)
 #Materialpicture
-Materialpicture.create(:title => "Materialpicture1", :file => '010101001101', :filename => "file1", :fileformat => "png", :user_id => 1)
+#Materialpicture.create(:title => "Materialpicture1", :file => '010101001101', :filename => "file1", :fileformat => "png", :user_id => 1)
 #Materialvideo
 Materialvideo.create(:title => "Materialvideo1", :file => '010101001110001', :filename => "file1", :fileformat => "avi", :user_id => 1)
 #Question

@@ -65,3 +65,7 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Use paperclip for uploading files
+# https://github.com/thoughtbot/paperclip
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
