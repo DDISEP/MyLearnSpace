@@ -2,40 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b53cebfc-f08e-477c-afaa-d56d54149ce5" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/MyLearnSpace-b767cdc0626e68332cbc63d0c4958fb5.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/MyLearnSpace5-9662a3e0f26bdfb762cedd949c9f00ed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/MyLearnSpace6-c50a7a963dc9ad176472d8c46f081303.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/MyLearnSpaceLehrplan-632fd1059d486b0d9856a5c035ab14ae.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application-2b8448ea3453c3a679bd65619378877b.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application-2b8448ea3453c3a679bd65619378877b.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application-5fc66bcf7d5f3d8edeee163fd21263a5.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application-5fc66bcf7d5f3d8edeee163fd21263a5.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application-da9094f51731e6152707b659c56b5c51.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/application-da9094f51731e6152707b659c56b5c51.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/bootstrap-wysihtml5-0658d6cd820e1b548822f131bd97b506.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/bootstrap-wysihtml5-0658d6cd820e1b548822f131bd97b506.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/bootstrap-wysihtml5/index-14d14d15aede6c6c3784883bf3790f96.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/bootstrap-wysihtml5/index-14d14d15aede6c6c3784883bf3790f96.js.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/bootstrap-wysihtml5/wysiwyg-color-9d38316e663212c2edc28910e660718f.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/bootstrap-wysihtml5/wysiwyg-color-9d38316e663212c2edc28910e660718f.css.gz" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/fontawesome-webfont-7b48b85d03cfdf95bad2e0d54c847ba8.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/fontawesome-webfont-bbb7e630a85c70a280c5f842435be2b7.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/fontawesome-webfont-c8a9652b81f82bd95e88e8b833d0b965.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/fontawesome-webfont-e1dacabb4f5b6bf370aad9b971aa5c27.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/glyphicons-halflings-e97115e859a2dca8486d43adfcb23127.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/glyphicons-halflings-regular-2a998ec890f4efaabaa96e9a05bea36c.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/glyphicons-halflings-regular-38faf686e6b14c64cb78bd9bbaf6e437.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/glyphicons-halflings-regular-a17d04d6bfad86fcfb01d2110a9362ff.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/glyphicons-halflings-regular-f4be650343b7201c30a44a0f14fe7562.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/glyphicons-halflings-white-0ff8850c7e10f567e1ff129071381130.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/lehrplaene-a87840112676bd6366b3654b3cfae15f.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/loader-a4ecd9170ae145dad0aa6059b9a82276.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/manifest-c2d9516310b339e2eb317be5b430f5c6.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/twitter/bootstrap/glyphicons-halflings-e97115e859a2dca8486d43adfcb23127.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/twitter/bootstrap/glyphicons-halflings-white-0ff8850c7e10f567e1ff129071381130.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/wiki-6b085a410429aceb1e867046ad6741eb.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/MyLearnSpace.iml" afterPath="$PROJECT_DIR$/.idea/MyLearnSpace.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/materialpicture.rb" afterPath="$PROJECT_DIR$/app/models/materialpicture.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/materialvideo.rb" afterPath="$PROJECT_DIR$/app/models/materialvideo.rb" />
     </list>
     <ignored path="MyLearnSpace.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,7 +28,28 @@
     <favorites_list name="MyLearnSpace" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="materialvideo.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/materialvideo.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="59" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="materialpicture.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/materialpicture.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.19368723">
+              <caret line="9" column="79" selection-start-line="9" selection-start-column="79" selection-end-line="9" selection-end-column="79" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -127,13 +117,13 @@
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/controllers/materialvideos_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/materialpictures/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/materialpicture.rb" />
         <option value="$PROJECT_DIR$/app/views/materialvideos/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/materialvideos/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/materialvideos/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/materialpictures/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/models/materialvideo.rb" />
         <option value="$USER_HOME$/RubymineProjectsNotes.txt" />
+        <option value="$PROJECT_DIR$/app/models/materialvideo.rb" />
+        <option value="$PROJECT_DIR$/app/models/materialpicture.rb" />
       </list>
     </option>
   </component>
@@ -173,7 +163,6 @@
     </navigator>
     <panes>
       <pane id="RailsProjectView" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -276,6 +265,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -691,7 +681,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457642505052</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="delete temp data">
+      <created>1457643349472</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1457643349472</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TodoView">
@@ -705,27 +701,27 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24922441" sideWeight="0.4936034" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24974093" sideWeight="0.4936034" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32883817" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28221512" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28487754" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32676348" sideWeight="0.510661" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3236815" sideWeight="0.48933902" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291592" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -740,7 +736,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="material in Leiste" />
     <MESSAGE value="material-view" />
     <MESSAGE value="forum &quot;illegaler frager&quot; fixed" />
     <MESSAGE value="show username instead of user_id" />
@@ -765,7 +760,8 @@
     <MESSAGE value="rename todo, notes, glossar" />
     <MESSAGE value="upload videos (not working yet)" />
     <MESSAGE value="upload videos (working for mp4)" />
-    <option name="LAST_COMMIT_MESSAGE" value="upload videos (working for mp4)" />
+    <MESSAGE value="delete temp data" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete temp data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -998,20 +994,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/materialvideo.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.528">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/materialpicture.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.192">
-          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/materialvideos/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
@@ -1107,7 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.09569378">
           <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1115,15 +1096,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tmp/pids/server.pid">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1131,6 +1103,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/materialvideo.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="59" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/materialpicture.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19368723">
+          <caret line="9" column="79" selection-start-line="9" selection-start-column="79" selection-end-line="9" selection-end-column="79" />
           <folding />
         </state>
       </provider>

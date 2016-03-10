@@ -6,8 +6,8 @@ class Materialvideo < ActiveRecord::Base
   validates :user_id, presence: true
 
   has_attached_file :file,
-                    :url  => "/assets/products/videos/:id/:style/:basename.:extension",
-                    :path => ":rails_root/public/assets/products/videos/:id/:style/:basename.:extension",
+                    :url  => "/assets/materials/videos/:id/:basename.:extension",
+                    :path => ":rails_root/public/assets/materials/videos/:id/:basename.:extension",
                     #:processors => [:transcoder]
                     :processors => [:ffmpeg]
 
