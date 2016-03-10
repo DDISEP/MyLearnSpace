@@ -28,7 +28,7 @@ class MaterialpicturesController < ApplicationController
   # POST /materialpictures
   # POST /materialpictures.json
   def create
-    @materialpicture = Materiallink.new(materialpicture_params)
+    @materialpicture = Materialpicture.new(materialpicture_params)
     @materialpicture.user_id = @current_user.id
 
     respond_to do |format|
@@ -96,6 +96,6 @@ class MaterialpicturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def materialpicture_params
-      params.require(:materialpicture).permit(:title, :file, :filename, :fileformat, :user_id)
+      params.require(:materialpicture).permit(:title, :file, :user_id)
     end
 end

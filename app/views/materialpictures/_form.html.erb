@@ -1,4 +1,4 @@
-<%= form_for(@materialpicture) do |f| %>
+<%= form_for @materialpicture, :html => { :multipart => true } do |f| %>
   <% if @materialpicture.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@materialpicture.errors.count, "error") %> prohibited this materialpicture from being saved:</h2>
