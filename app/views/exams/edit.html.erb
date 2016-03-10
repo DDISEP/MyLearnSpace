@@ -5,7 +5,7 @@
   <br>
 
 
-<%= form_tag(new_progress_path, :method=>'get') do %>
+<%= form_tag(progresses_path, :method=>'post') do %>
       <%= hidden_field_tag "ke_id", @knowledgeElements.id %>
   <%array= Array[]%>
 

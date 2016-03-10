@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308154008) do
+ActiveRecord::Schema.define(version: 20160310200206) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -261,6 +261,9 @@ ActiveRecord::Schema.define(version: 20160308154008) do
     t.integer  "learner_id"
     t.integer  "knowledge_element_id"
     t.integer  "grade"
+    t.text     "submission1"
+    t.text     "submission2"
+    t.text     "submission3"
   end
 
   create_table "questions", force: true do |t|

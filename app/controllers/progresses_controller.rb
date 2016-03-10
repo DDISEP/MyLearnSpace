@@ -17,7 +17,6 @@ class ProgressesController < ApplicationController
 
   # GET /progresses/new
   def new
-    @progress = Progress.new
   end
 
   # GET /progresses/1/edit
@@ -28,20 +27,15 @@ class ProgressesController < ApplicationController
   # POST /progresses.json
   def create
     @progress = Progress.new
-    #@learner_name = params[:learner_id]
-    #@learner_id2 = User.where(:username => @learner_name)
-    #@learner_id2 = User.find_by_username(@learner_name)
-    #@progress.learner_id = @learner_id2.first.id
-    @progress.learner_id = params[:progress][:learner_id]
-    @progress.knowledge_element_id = params[:progress][:knowledge_element_id]
-    @progress.grade = params[:progress][:grade]
-    @progress.teacher_id = session[:current_user_id]
-    @progress.save
-    #@progress = Progress.new(progress_params)
+    @progress.submission1 = params[:text1]
+    @progress.submission2 = params[:text2]
+    @progress.submission3 = params[:text3]
+    @progress.knowledge_element_id = params[:ke_id]
+    @progress.learner_id = session[:current_user_id]
 
     respond_to do |format|
       if @progress.save
-        format.html { redirect_to @progress, notice: 'Progress was successfully created.' }
+        format.html { redirect_to @progress, notice: 'Die Klausur wurde erfolgreich abgegeben.' }
         format.json { render action: 'show', status: :created, location: @progress }
       else
         format.html { render action: 'new' }
@@ -82,8 +76,6 @@ class ProgressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def progress_params
-      params[:progress]
+      params.require(:progress).permit(:learner_id, :teacher_id, :knowledge_element_id, :grade, :submission1,:submission2,:submission3)
     end
-
-
 end
