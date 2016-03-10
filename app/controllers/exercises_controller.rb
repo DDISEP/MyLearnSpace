@@ -29,10 +29,6 @@ class ExercisesController < ApplicationController
   def get_likes
       @likes = Like.where(exercise_id: @exercise.id)
   end
-
-  def get_knowlegde_elements
-      return @knowlegde_elements
-  end
   
   def index
     case params[:sort_by]       # you can add other cases when new sort options are implemented in _list_exercises.html.erb

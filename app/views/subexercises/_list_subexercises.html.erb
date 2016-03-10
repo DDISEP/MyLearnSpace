@@ -15,7 +15,7 @@
 		<% @subexercises.each do |s| %>
 			<tr>
 				<td><%= s.text %></td>
-				<td><%= s.solution %></td>
+				<td><#%= s.solution end %></td>
 				<td><%= s.points %></td>
 				<td>
 					<%= button_to edit_exercise_subexercise_path(s.exercise, s),
