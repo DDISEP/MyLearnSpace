@@ -33,6 +33,8 @@
               <td width="100">
                 <%= button_to 'Löschen', {:action => "destroy", :id => top.id}, :confirm => 'Are you sure?', :method => "delete",
                               :remote => true, :disable_with => 'loading...', class: "btn btn-xs btn-primary"%></td>
+              <td width="100">
+                <%= button_to 'Bearbeiten',{:action => "edit", :id => top.id}, :method => :get, class:"btn btn-xs btn-primary"%></td>
             </tr>
         <% end %>
         </tbody>

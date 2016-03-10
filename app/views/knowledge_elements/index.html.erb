@@ -34,6 +34,8 @@
                   <%#= button_to ("löschen", :id => ke.id, :method => :delete, data: {confirm: "Are you sure?"},
                                                :remote => true, :disable_with => 'loading...'")
                                               %></td>
+                <td width="100">
+                <%= button_to 'Bearbeiten',{:action => "edit", :id => ke.id}, :method => :get, class:"btn btn-xs btn-primary"%></td>
               </tr>
           <% end %>
           </tbody>

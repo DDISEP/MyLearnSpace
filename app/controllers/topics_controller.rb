@@ -15,6 +15,10 @@ class TopicsController < ApplicationController
 
   end
 
+  def edit
+
+  end
+
   def create
     @admin = session[:admin]
     @topic = Topic.new(params.require(:topic).permit(:name, :subject, :description))
