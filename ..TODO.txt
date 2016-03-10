@@ -1,0 +1,9 @@
+Todo Hafemann-Sticha
+---------------------
+
+### schema ###
+ist klasse forum nötig (direkte Verbindung zwischen den questions und den KEs)
+    neues Attribut in questions mit KEs_id
+
+### forum & question ###
+question text:string -> text:text
