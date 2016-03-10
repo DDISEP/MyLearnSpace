@@ -9,6 +9,14 @@ GIT
       mime-types
       mimemagic (~> 0.3.0)
 
+GIT
+  remote: https://github.com/ruby-av/paperclip-av-transcoder
+  revision: a07e2100377681717da96d7af2e02aa4c5a31845
+  specs:
+    paperclip-av-transcoder (0.6.4)
+      av (~> 0.9.0)
+      paperclip (>= 2.5.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -38,6 +46,8 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    av (0.9.0)
+      cocaine (~> 0.5.3)
     bcrypt-ruby (3.1.2)
     bcrypt-ruby (3.1.2-x86-mingw32)
     bootstrap-wysihtml5-rails (0.3.1.23)
@@ -161,6 +171,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails (= 2.1.4)
   paperclip!
+  paperclip-av-transcoder!
   protected_attributes
   rails (= 4.0.1)
   rails-i18n

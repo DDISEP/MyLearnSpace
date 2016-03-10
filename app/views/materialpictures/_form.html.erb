@@ -19,6 +19,6 @@
     <%= f.file_field :file %>
   </div>
   <div class="actions">
-    <%= f.submit 'Bild hochladen' %>
+    <%= f.submit 'Bild hochladen', data: { disable_with: 'Lädt hoch' } %>
   </div>
 <% end %>

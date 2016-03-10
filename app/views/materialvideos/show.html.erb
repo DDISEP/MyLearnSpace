@@ -10,6 +10,11 @@
   <%= @user_author_name %>
 </p>
 
+<p>
+<!--%= video_tag @materialvideo.file.url(:original) %-->
+<%= video_tag @materialvideo.file.url(:medium), controls: true, type: "video/mp4", size: "400x400" %>
+</p>
+
 <table>
   <thead>
   <tr>

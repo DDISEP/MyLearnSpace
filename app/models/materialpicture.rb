@@ -5,7 +5,7 @@ class Materialpicture < ActiveRecord::Base
   validates :title, presence: true
   validates :user_id, presence: true
 
-  has_attached_file :file,# :styles => { :small => "500x500>" }, #pictures are always saved in original size
+  has_attached_file :file,
                     :url  => "/assets/products/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension"
 

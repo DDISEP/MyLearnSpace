@@ -1,4 +1,4 @@
-<%= form_for(@materialvideo) do |f| %>
+<%= form_for @materialvideo, :html => { :multipart => true } do |f| %>
   <% if @materialvideo.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@materialvideo.errors.count, "error") %> prohibited this materialvideo from being saved:</h2>
@@ -19,6 +19,6 @@
     <%= f.file_field :file %>
   </div>
   <div class="actions">
-    <%= f.submit 'Video hochladen' %>
+    <%= f.submit 'Video hochladen', data: { disable_with: 'Lädt hoch' } %>
   </div>
 <% end %>
