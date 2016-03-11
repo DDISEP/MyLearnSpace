@@ -11,9 +11,16 @@ class Materialdocument < ActiveRecord::Base
 
   validates_attachment_presence :file
   validates_attachment_size :file, :less_than => 5.megabytes
-  # TODO excel powerpoint und jewils open document
-  #validates_attachment_content_type :file, :content_type => ['text/plain', 'application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.oasis.opendocument.text']
-  do_not_validate_attachment_file_type :file
+  validates_attachment_content_type :file, :content_type =>
+      # pdf
+      ['application/pdf',
+       # texts
+       'text/plain', 'application/rtf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.oasis.opendocument.text',
+       # spreadsheets
+       'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.oasis.opendocument.spreadsheet',
+       # presentations
+       'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.oasis.opendocument.presentation']
+  #do_not_validate_attachment_file_type :file
 
   has_one :users
   has_and_belongs_to_many :knowledge_elements
