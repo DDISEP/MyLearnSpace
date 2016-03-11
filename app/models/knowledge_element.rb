@@ -23,4 +23,7 @@ class KnowledgeElement < ActiveRecord::Base
   has_and_belongs_to_many :materialpictures
   has_and_belongs_to_many :materialvideos
 
+  #1:n relation between KnowledgeElement and Question
+  has_many :questions
+
 end
