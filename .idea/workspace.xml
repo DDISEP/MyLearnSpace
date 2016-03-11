@@ -77,8 +77,8 @@
       <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/progresses/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8050314">
-              <caret line="57" column="47" selection-start-line="57" selection-start-column="47" selection-end-line="57" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.43396226">
+              <caret line="95" column="33" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -770,7 +770,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457710361206</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="In Learner Progress Teacher anzeigen">
+      <created>1457710825752</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1457710825752</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -831,7 +837,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Button für Aufgabe und Exam hinzugefügt" />
     <MESSAGE value="Verbesserung Button für Aufgabe und Exam hinzugefügt" />
     <MESSAGE value="KE auf Klausur" />
     <MESSAGE value="Zufällige Unteraufgabe für ein Exam mit richtigem KE und LO" />
@@ -856,7 +861,8 @@
     <MESSAGE value="Speicherung der Bearbeitung eines Exams in Progress" />
     <MESSAGE value="Bearbeiten von Progress" />
     <MESSAGE value="Teacher_id in Progress beim Bearbeiten eines Progresses" />
-    <option name="LAST_COMMIT_MESSAGE" value="Teacher_id in Progress beim Bearbeiten eines Progresses" />
+    <MESSAGE value="In Learner Progress Teacher anzeigen" />
+    <option name="LAST_COMMIT_MESSAGE" value="In Learner Progress Teacher anzeigen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1228,8 +1234,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/progresses/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8050314">
-          <caret line="57" column="47" selection-start-line="57" selection-start-column="47" selection-end-line="57" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.43396226">
+          <caret line="95" column="33" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
           <folding />
         </state>
       </provider>
