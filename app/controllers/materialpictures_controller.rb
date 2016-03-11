@@ -46,7 +46,7 @@ class MaterialpicturesController < ApplicationController
   # PATCH/PUT /materialpictures/1.json
   def update
     @current_user = User.find(session[:current_user_id])
-    @user_author = User.find_by_id(@materialvideo.user_id)
+    @user_author = User.find_by_id(@materialpicture.user_id)
 
     if @user_author.id == @current_user.id
       respond_to do |format|
