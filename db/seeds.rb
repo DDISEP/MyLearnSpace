@@ -69,4 +69,4 @@ Exercise.create(:title=> "Funktionen", :description=> "Berechne die Nullstelle",
 Exercise.create(:title=> "Brüche", :description=> "Berechne den Bruch", :user_id => 2, :knowledge_element_id =>1)
 
 #Progress
-Progress.create(:learner_id =>3, :teacher_id=>2, :knowledge_element_id=>1, :grade =>3)
+Progress.create(:learner_id =>3, :teacher_id=>1, :knowledge_element_id=>1, :grade =>3)

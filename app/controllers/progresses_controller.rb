@@ -33,6 +33,10 @@ class ProgressesController < ApplicationController
     @progress.knowledge_element_id = params[:ke_id]
     @progress.learner_id = session[:current_user_id]
 
+    if User.find_by_id(session[:current_user_id]).teacher?
+      @progress.teacher_id=session[:current_user_id]
+    end
+
     respond_to do |format|
       if @progress.save
         format.html { redirect_to @progress, notice: 'Die Klausur wurde erfolgreich abgegeben.' }
@@ -47,9 +51,11 @@ class ProgressesController < ApplicationController
   # PATCH/PUT /progresses/1
   # PATCH/PUT /progresses/1.json
   def update
+    @progress=Progress.find(params[:id])
+    @progress.teacher_id= session[:current_user_id]
     respond_to do |format|
       if @progress.update(progress_params)
-        format.html { redirect_to @progress, notice: 'Progress was successfully updated.' }
+        format.html { redirect_to @progress, notice: 'Die Leistung wurde erfolgreich bearbeitet' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
