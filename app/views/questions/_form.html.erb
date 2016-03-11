@@ -26,7 +26,7 @@
     :id => Werte, der übergeben wird (welchen value haben die sichtbaren Zeilen)
     :name => Felderbezeichnungen des Drop-Downs (was sieht man)
     -->
-    <%= f.collection_select :knowledge_element_id, KnowledgeElement.order(:name),:id, :name, prompt: 'Wähle ein Thema der Frage' %>
+    <%= f.collection_select :knowledge_element_id, KnowledgeElement.order(:name),:id, :name, prompt: 'Wähle ein Thema' %>
   </div>
   <div class="actions">
     <%= f.submit 'Frage erstellen' %>

@@ -1,6 +1,6 @@
 class Materialtext < ActiveRecord::Base
 
-  attr_accessible :title, :text, :user_id
+  attr_accessible :title, :text, :user_id, :knowledge_element_id
 
   validates :title, presence: true
   validates :text, presence: true
