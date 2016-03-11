@@ -15,22 +15,22 @@
 
       <% @progresses.each do |progress| %>
           <tr>
-            <%if progress.teacher_id == @current_user.id%>
+            <%#if progress.teacher_id == @current_user.id%>
                 <td><%=@knowledgeElements.find_by(id: progress.knowledge_element_id).name%></td>
                 <td><%=@Users.find_by(id: progress.learner_id).username%></td>
                 <td><%=progress.grade%></td>
                 <td><%=progress.updated_at%></td>
                 <td><%= link_to 'Bearbeiten', edit_progress_path(progress) %></td>
                 </tr>
-            <%else%>
-            <%end%>
+            <%#else%>
+            <%#end%>
       <%end%>
       </tbody>
     </table>
 
     <br>
 
-    <%= link_to 'Neue Leistung eintragen.', new_progress_path %>
+    <%#= link_to 'Neue Leistung eintragen.', new_progress_path %>
 
 
 <% elsif @current_user.learner?%>
@@ -51,7 +51,7 @@
           <%if progress.learner_id == @current_user.id%>
               <td><%=@knowledgeElements.find_by(id: progress.knowledge_element_id).name%></td>
               <td><%=progress.grade%></td>
-              <td><%=@Users.find_by(id: progress.teacher_id).username%></td>
+              <td><%#=@Users.find_by(id: progress.teacher_id).username%></td>
               <td><%=progress.updated_at%></td>
               </tr>
           <%else%>

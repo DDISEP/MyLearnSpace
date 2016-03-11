@@ -35,6 +35,7 @@
       <%end%>
       <%array4=array3.sort_by {rand}%>
       <% if array4.empty?%>
+          <br>
           <%="keine Aufgabe vorhanden."%>
       <%else %>
           <h5><t>Aufgabe 2:</t>
@@ -45,7 +46,7 @@
       <br>
       <%#= text_field :max_points,  maxlength:"40", style:"width:100%; height:100%;" %>
   <%= text_area_tag "text2" %>
-      <br>
+
 
       <%array5= Array[]%>
 
@@ -56,6 +57,7 @@
       <%end%>
       <%array6=array5.sort_by {rand}%>
       <% if array6.empty?%>
+          <br>
           <%="keine Aufgabe vorhanden."%>
       <%else %>
           <h5><t>Aufgabe 2:</t>
@@ -66,7 +68,7 @@
       <br>
   <%= text_area_tag "text3" %>
       <br>
-  <%= submit_tag 'Frage beantworten' %>
+  <%= submit_tag 'Klausur abgeben' %>
 <% end %>
 
 
