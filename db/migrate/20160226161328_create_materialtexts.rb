@@ -7,7 +7,7 @@ class CreateMaterialtexts < ActiveRecord::Migration
 
       t.timestamps
     end
-
-    create_join_table :knowledge_elements, :materialtexts
+    # generator for m:n association
+    #create_join_table :knowledge_elements, :materialtexts
   end
 end

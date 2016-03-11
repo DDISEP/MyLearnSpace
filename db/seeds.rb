@@ -15,13 +15,13 @@ User.create(:username => "learner", :email => "learner@mls.de", :password => "pa
 
 ### Hafemann-Sticha ###
 #Materialtext
-Materialtext.create(:title => "Materialtext1", :text => "TextZuMaterialtext1", :user_id => 1)
-Materialtext.create(:title => "Materialtext2", :text => "TextZuMaterialtext2", :user_id => 2)
-Materialtext.create(:title => "Materialtext3", :text => "TextZuMaterialtext3", :user_id => 3)
+Materialtext.create(:title => "Materialtext1", :text => "TextZuMaterialtext1", :user_id => 1, :knowledge_element_id => 1)
+Materialtext.create(:title => "Materialtext2", :text => "TextZuMaterialtext2", :user_id => 2, :knowledge_element_id => 2)
+Materialtext.create(:title => "Materialtext3", :text => "TextZuMaterialtext3", :user_id => 3, :knowledge_element_id => 3)
 #Materiallink
-Materiallink.create(:title => "Materiallink1", :link => "http://mylollispace.de", :user_id => 1)
-Materiallink.create(:title => "Materiallink2", :link => "http://google.de", :user_id => 2)
-Materiallink.create(:title => "Materiallink3", :link => "http://youtube.de", :user_id => 3)
+Materiallink.create(:title => "Materiallink1", :link => "http://mylollispace.de", :user_id => 1, :knowledge_element_id => 1)
+Materiallink.create(:title => "Materiallink2", :link => "http://google.de", :user_id => 2, :knowledge_element_id => 2)
+Materiallink.create(:title => "Materiallink3", :link => "http://youtube.de", :user_id => 3, :knowledge_element_id => 3)
 #Question
 Question.create(:title => "Frage1?", :text => "FragentextZurFrage1", :user_name => "admin", :knowledge_element_id => 1)
 Question.create(:title => "Frage2?", :text => "FragentextZurFrage2", :user_name => "teacher", :knowledge_element_id => 2)

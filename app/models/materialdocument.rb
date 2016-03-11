@@ -4,6 +4,7 @@ class Materialdocument < ActiveRecord::Base
 
   validates :title, presence: true
   validates :user_id, presence: true
+  validates :knowledge_element_id, presence: true
 
   has_attached_file :file,
                     :url  => "/assets/materials/documents/:id/:basename.:extension",
@@ -23,6 +24,6 @@ class Materialdocument < ActiveRecord::Base
   #do_not_validate_attachment_file_type :file
 
   has_one :users
-  has_and_belongs_to_many :knowledge_elements
+  has_one :knowledge_elements
 
 end

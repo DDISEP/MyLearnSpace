@@ -6,7 +6,7 @@ class KnowledgeElement < ActiveRecord::Base
 
   #Relations between different parts of the website
   #1:1 relation between KnowledgeElement and KnowledgeElement_Chat join table (?) with destroy dependence
-  has_one :knowledge_element_chat#, :dependent => :destroy
+  #has_one :knowledge_element_chat#, :dependent => :destroy
   #has_one :forum#, :dependent => :destroy
 
   #1:n relation between KnowledgeElement and LearningObjective with destroy dependence
@@ -16,12 +16,12 @@ class KnowledgeElement < ActiveRecord::Base
 
   has_and_belongs_to_many :topic
   
-  #n:m relation between KnowledgeElement and Material
-  has_and_belongs_to_many :materialtexts
-  has_and_belongs_to_many :materiallinks
-  has_and_belongs_to_many :materialdocuments
-  has_and_belongs_to_many :materialpictures
-  has_and_belongs_to_many :materialvideos
+  #1:n relation between KnowledgeElement and Material
+  has_many :materialtexts
+  has_many :materiallinks
+  has_many :materialdocuments
+  has_many :materialpictures
+  has_many :materialvideos
 
   #1:n relation between KnowledgeElement and Question
   has_many :questions

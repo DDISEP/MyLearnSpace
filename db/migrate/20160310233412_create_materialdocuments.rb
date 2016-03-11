@@ -6,7 +6,5 @@ class CreateMaterialdocuments < ActiveRecord::Migration
 
       t.timestamps
     end
-
-    create_join_table :knowledge_elements, :materialdocuments
   end
 end

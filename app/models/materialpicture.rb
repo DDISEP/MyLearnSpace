@@ -4,6 +4,7 @@ class Materialpicture < ActiveRecord::Base
 
   validates :title, presence: true
   validates :user_id, presence: true
+  validates :knowledge_element_id, presence: true
 
   has_attached_file :file,
                     :url  => "/assets/materials/pictures/:id/:basename.:extension",
@@ -14,6 +15,6 @@ class Materialpicture < ActiveRecord::Base
   validates_attachment_content_type :file, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']
 
   has_one :users
-  has_and_belongs_to_many :knowledge_elements
+  has_one :knowledge_elements
 
 end

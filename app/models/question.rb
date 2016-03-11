@@ -9,5 +9,5 @@ class Question < ActiveRecord::Base
 
   has_many :answers, dependent: :destroy
   has_one :users
-  belongs_to :knowledge_element
+  has_one :knowledge_element
 end

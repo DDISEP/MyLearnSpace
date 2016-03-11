@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311143457) do
+ActiveRecord::Schema.define(version: 20160311152851) do
 
   create_table "answers", force: true do |t|
     t.text     "text"
@@ -133,31 +133,6 @@ ActiveRecord::Schema.define(version: 20160311143457) do
     t.datetime "updated_at"
   end
 
-  create_table "knowledge_elements_materialdocuments", id: false, force: true do |t|
-    t.integer "knowledge_element_id", null: false
-    t.integer "materialdocument_id",  null: false
-  end
-
-  create_table "knowledge_elements_materiallinks", id: false, force: true do |t|
-    t.integer "knowledge_element_id", null: false
-    t.integer "materiallink_id",      null: false
-  end
-
-  create_table "knowledge_elements_materialpictures", id: false, force: true do |t|
-    t.integer "knowledge_element_id", null: false
-    t.integer "materialpicture_id",   null: false
-  end
-
-  create_table "knowledge_elements_materialtexts", id: false, force: true do |t|
-    t.integer "knowledge_element_id", null: false
-    t.integer "materialtext_id",      null: false
-  end
-
-  create_table "knowledge_elements_materialvideos", id: false, force: true do |t|
-    t.integer "knowledge_element_id", null: false
-    t.integer "materialvideo_id",     null: false
-  end
-
   create_table "knowledge_elements_topics", id: false, force: true do |t|
     t.integer "knowledge_element_id", null: false
     t.integer "topic_id",             null: false
@@ -196,6 +171,7 @@ ActiveRecord::Schema.define(version: 20160311143457) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.integer  "knowledge_element_id"
   end
 
   create_table "materiallinks", force: true do |t|
@@ -204,6 +180,7 @@ ActiveRecord::Schema.define(version: 20160311143457) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "knowledge_element_id"
   end
 
   create_table "materialpictures", force: true do |t|
@@ -215,6 +192,7 @@ ActiveRecord::Schema.define(version: 20160311143457) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.integer  "knowledge_element_id"
   end
 
   create_table "materials", force: true do |t|
@@ -228,6 +206,7 @@ ActiveRecord::Schema.define(version: 20160311143457) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "knowledge_element_id"
   end
 
   create_table "materialvideos", force: true do |t|
@@ -239,6 +218,7 @@ ActiveRecord::Schema.define(version: 20160311143457) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.integer  "knowledge_element_id"
   end
 
   create_table "performances", force: true do |t|

@@ -6,7 +6,5 @@ class CreateMaterialpictures < ActiveRecord::Migration
 
       t.timestamps
     end
-
-    create_join_table :knowledge_elements, :materialpictures
   end
 end
