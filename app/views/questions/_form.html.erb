@@ -20,12 +20,8 @@
     <%= f.text_area :text %>
   </div>
   <div class="field">
-    <% collection_select(:knowledge_element, :name, KnowledgeElement.all.collect, :id, :name, {:prompt => true}) %>
-    <%= f.collection_select :id, KnowledgeElement.order(:name),:id, :name, prompt: 'Wähle ein KE' %>
-    collection_select("knowledge_element", "name", KnowledgeElement.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Select Person'})
-    select("post", "person_id", Person.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Select Person'})
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
+    <%= f.label :Thema %><br>
+    <%= f.collection_select :knowledge_element_id, KnowledgeElement.order(:name),:id, :name, prompt: 'Wähle ein Thema der Frage' %>
   </div>
   <div class="actions">
     <%= f.submit 'Frage erstellen' %>
