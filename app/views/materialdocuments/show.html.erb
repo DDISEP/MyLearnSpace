@@ -5,17 +5,15 @@
 </p>
 
 <p>
-  <strong>Titel:</strong>
-  <%= @materialdocument.title %>
-</p>
-
-<p>
-  <strong>Autor:</strong>
-  <%= @user_author_name %>
+  <strong> <%= @materialdocument.title %> </strong>
 </p>
 
 <p>
   <%= link_to "[ angehängtes Dokument ]", @materialdocument.file.url, target: "blank" %>
+</p>
+
+<p>
+  <i>Erstellt von <%= User.find_by(@materialdocument.user_id).username %> am <%= @materialdocument.created_at %></i>
 </p>
 
 <table>

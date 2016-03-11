@@ -5,17 +5,15 @@
 </p>
 
 <p>
-  <strong>Titel:</strong>
-  <%= @materialvideo.title %>
-</p>
-
-<p>
-  <strong>Autor:</strong>
-  <%= @user_author_name %>
+  <strong><%= @materialvideo.title %></strong>
 </p>
 
 <p>
 <%= video_tag @materialvideo.file.url, controls: true %><br>
+</p>
+
+<p>
+  <i>Erstellt von <%= User.find_by(@materialvideo.user_id).username %> am <%= @materialvideo.created_at %></i>
 </p>
 
 <table>

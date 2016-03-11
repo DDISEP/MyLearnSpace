@@ -5,17 +5,15 @@
 </p>
 
 <p>
-  <strong>Titel:</strong>
-  <%= @materialpicture.title %>
-</p>
-
-<p>
-  <strong>Autor:</strong>
-  <%= @user_author_name %>
+  <strong><%= @materialpicture.title %></strong>
 </p>
 
 <p>
 <%= image_tag @materialpicture.file.url %>
+</p>
+
+<p>
+  <i>Erstellt von <%= User.find_by(@materialpicture.user_id).username %> am <%= @materialpicture.created_at %></i>
 </p>
 
 <table>

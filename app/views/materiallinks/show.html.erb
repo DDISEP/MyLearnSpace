@@ -5,18 +5,15 @@
 </p>
 
 <p>
-  <strong>Titel:</strong>
-  <%= @materiallink.title %>
+  <strong><%= @materiallink.title %></strong>
 </p>
 
 <p>
-  <strong>Link:</strong>
   <%= @materiallink.link %>
 </p>
 
 <p>
-  <strong>Autor:</strong>
-  <%= @user_author_name %>
+  <i>Erstellt von <%= User.find_by(@materiallink.user_id).username %> am <%= @materiallink.created_at %></i>
 </p>
 
 <table>
