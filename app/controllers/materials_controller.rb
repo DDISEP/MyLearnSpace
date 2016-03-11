@@ -8,6 +8,7 @@ class MaterialsController < ApplicationController
 
     @materialtexts = Materialtext.all
     @materiallinks = Materiallink.all
+    @materialdocuments = Materialdocument.all
     @materialpictures = Materialpicture.all
     @materialvideos = Materialvideo.all
   end

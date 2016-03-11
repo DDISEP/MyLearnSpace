@@ -19,6 +19,7 @@ class KnowledgeElement < ActiveRecord::Base
   #n:m relation between KnowledgeElement and Material
   has_and_belongs_to_many :materialtexts
   has_and_belongs_to_many :materiallinks
+  has_and_belongs_to_many :materialdocuments
   has_and_belongs_to_many :materialpictures
   has_and_belongs_to_many :materialvideos
 

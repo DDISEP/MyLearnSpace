@@ -5,6 +5,8 @@
 <br>
 <%= link_to 'Neuen Link erstellen', new_materiallink_path %>
 <br>
+<%= link_to 'Neues Dokument hochladen', new_materialdocument_path %>
+<br>
 <%= link_to 'Neues Bild hochladen', new_materialpicture_path %>
 <br>
 <%= link_to 'Neues Video hochladen', new_materialvideo_path %>
@@ -43,6 +45,21 @@
   </tbody>
 </table>
 
+<table>
+  <thead>
+  <caption><h3>Dokumente</h3></caption>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @materialdocuments.each do |material| %>
+      <tr>
+        <td><%= link_to material.title, material %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 
 <table>
   <thead>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160310171150) do
+ActiveRecord::Schema.define(version: 20160310233629) do
 
   create_table "answers", force: true do |t|
     t.text     "text"
@@ -138,6 +138,11 @@ ActiveRecord::Schema.define(version: 20160310171150) do
     t.datetime "updated_at"
   end
 
+  create_table "knowledge_elements_materialdocuments", id: false, force: true do |t|
+    t.integer "knowledge_element_id", null: false
+    t.integer "materialdocument_id",  null: false
+  end
+
   create_table "knowledge_elements_materiallinks", id: false, force: true do |t|
     t.integer "knowledge_element_id", null: false
     t.integer "materiallink_id",      null: false
@@ -185,6 +190,17 @@ ActiveRecord::Schema.define(version: 20160310171150) do
   create_table "logins", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "materialdocuments", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "materiallinks", force: true do |t|

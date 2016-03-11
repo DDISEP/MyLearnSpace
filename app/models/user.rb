@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
     #n:1 to materialXs
     has_many :materialtexts
     has_many :materiallinks
+    has_many :materialdocuments
     has_many :materialpictures
     has_many :materialvideos
 

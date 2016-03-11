@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titel:</strong>
+  <%= @materialdocument.title %>
+</p>
+
+<p>
+  <strong>Autor:</strong>
+  <%= @user_author_name %>
+</p>
+
+<p>
+  <%= link_to "→ angehängtes Dokument", @materialdocument.file.url, target: "blank" %>
+</p>
+
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <!--td><%= button_to 'Bearbeiten', edit_materialdocument_path, {:method => "get", :id => @materialdocument.id} %></td-->
+    <td><%= button_to 'Löschen', materialdocument_path, {:method => "delete", :id => @materialdocument.id, data: { confirm: "Bist Du sicher?"}} %></td>
+    <td><%= button_to 'Zurück', materials_path, :method => "get" %></td>
+  </tr>
+  </tbody>
+</table>
+
+<!--
+%= link_to 'Bearbeiten', edit_materialdocument_path(@materialdocument) %> |
+%= link_to 'Löschen', materialdocument_path, method: :delete, data: { confirm: 'Bist du sicher?' } %> |
+%= link_to 'Zurück', materials_path %>
+-->

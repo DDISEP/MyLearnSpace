@@ -12,7 +12,7 @@ class Materialvideo < ActiveRecord::Base
                     :processors => [:ffmpeg]
 
   validates_attachment_presence :file
-  validates_attachment_size :file, :less_than => 20.megabytes
+  validates_attachment_size :file, :less_than => 25.megabytes
   validates_attachment_content_type :file, :content_type => ['video/mp4']#, "video/x-matroska", "video/x-flv", "video/webm", "video/x-msvideo", "video/avi", "video/mpeg"]
   #do_not_validate_attachment_file_type :file
 
