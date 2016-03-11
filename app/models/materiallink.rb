@@ -1,6 +1,6 @@
 class Materiallink < ActiveRecord::Base
 
-  attr_accessible :title, :link, :user_id
+  attr_accessible :title, :link, :user_id, :knowledge_element_id
 
   validates :title, presence: true
   validates :link, presence: true

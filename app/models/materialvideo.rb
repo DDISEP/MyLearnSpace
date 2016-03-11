@@ -1,6 +1,6 @@
 class Materialvideo < ActiveRecord::Base
 
-  attr_accessible :title, :file, :user_id
+  attr_accessible :title, :file, :user_id, :knowledge_element_id
 
   validates :title, presence: true
   validates :user_id, presence: true

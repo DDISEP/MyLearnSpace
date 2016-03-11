@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <%= KnowledgeElement.find_by_id(@materialvideo.knowledge_element_id).name %>
+</p>
+
+<p>
   <strong>Titel:</strong>
   <%= @materialvideo.title %>
 </p>

@@ -18,6 +18,12 @@
   <div class="field">
     <%= f.file_field :file %>
   </div>
+
+  <div class="field">
+    <%= f.label :Thema %><br>
+    <%= f.collection_select :knowledge_element_id, KnowledgeElement.order(:name),:id, :name, prompt: 'Wähle ein Thema' %>
+  </div>
+
   <div class="actions">
     <%= f.submit 'Video hochladen', data: { disable_with: 'Lädt hoch' } %>
   </div>

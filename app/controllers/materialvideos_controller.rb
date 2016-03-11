@@ -96,6 +96,6 @@ class MaterialvideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def materialvideo_params
-      params.require(:materialvideo).permit(:title, :file, :user_id)
+      params.require(:materialvideo).permit(:title, :file, :user_id, :knowledge_element_id)
     end
 end

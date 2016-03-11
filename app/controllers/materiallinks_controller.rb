@@ -96,6 +96,6 @@ class MateriallinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def materiallink_params
-      params.require(:materiallink).permit(:title, :link, :user_id)
+      params.require(:materiallink).permit(:title, :link, :user_id, :knowledge_element_id)
     end
 end
