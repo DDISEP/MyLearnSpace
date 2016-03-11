@@ -33,7 +33,7 @@ Answer.create(:text => "Antwort3AufFrage1", :question_id => 1, :user_id => 1)
 Answer.create(:text => "Antwort1AufFrage2", :question_id => 2, :user_id => 3)
 #Wiki
 Wiki.create(:title => "DerTitel1", :article => "WikiInhalt1")
-Wiki.create(:article => "DerTitel2", :title => "WikiInhalt2")
+Wiki.create(:title => "DerTitel2", :article => "WikiInhalt2")
 
 
 ### Ellermeier-Zach ###

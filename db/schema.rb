@@ -126,11 +126,6 @@ ActiveRecord::Schema.define(version: 20160310233629) do
     t.datetime "updated_at"
   end
 
-  create_table "knowledge_element_chats", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "knowledge_elements", force: true do |t|
     t.string   "name"
     t.text     "description"
