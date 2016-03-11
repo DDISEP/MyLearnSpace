@@ -1,5 +1,5 @@
 class KnowledgeElement < ActiveRecord::Base
-  attr_accessible :name, :description, :learning_objectives, :exams
+  attr_accessible :name, :description, :learning_objectives, :exams, :topic
 
   validates :name, presence: true
   validates :description, presence: true

@@ -23,7 +23,7 @@ class TopicsController < ApplicationController
     @admin = session[:admin]
     @topic = Topic.new(params.require(:topic).permit(:name, :subject, :description))
     if @topic.save
-      redirect_to @topic
+      redirect_to topics_url
     else
       #render method is used so that the @knowledgeElement object is passed backto the new template when it is rendered
       #this rendering isdone within the same request as the form submission whereas the redirect_to will tell the browser to issue another request
