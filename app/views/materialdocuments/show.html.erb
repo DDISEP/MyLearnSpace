@@ -9,7 +9,8 @@
 </p>
 
 <p>
-  <%= link_to "[ angehängtes Dokument ]", @materialdocument.file.url, target: "blank" %>
+  <a href=<%= @materialdocument.file.url %>><%= @materialdocument.file_file_name %></a>
+  <!--%= link_to "[ angehängtes Dokument ]", @materialdocument.file.url, target: "blank" %-->
 </p>
 
 <p>

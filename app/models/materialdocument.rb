@@ -1,6 +1,6 @@
 class Materialdocument < ActiveRecord::Base
 
-  attr_accessible :title, :file, :user_id, :knowledge_element_id
+  attr_accessible :title, :file, :user_id, :knowledge_element_id, :file_file_name
 
   validates :title, presence: true
   validates :user_id, presence: true
