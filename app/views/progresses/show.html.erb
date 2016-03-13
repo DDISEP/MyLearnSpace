@@ -1,8 +1,36 @@
 <p id="notice"><%= notice %></p>
-<%#=@a=User.find_by_username("admin").id %><br>
-<%#= @learner_name = "admin" %><br>
-<%#= @learner_id2 = User.where(:username => @learner_name) %><br>
-<%#= @learner_id2.first.id%><br>
+
+<p>
+  <i>Klausur zum Thema <%= KnowledgeElement.find_by_id(@progress.knowledge_element_id).name %></i>
+</p>
+
+<p>
+  <i>Geschrieben von <%= User.find_by_id(@progress.learner_id).username%> mit ID
+  <%= User.find_by_id(@progress.learner_id).id%> am <%= @progress.created_at%></i>
+</p>
+
+
+<p>
+  <i>Bearbeitung: <%= @progress.submission1%>, <%= @progress.submission2%>, <%= @progress.submission3%></i>
+</p>
+
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  </tr>
+  </tbody>
+</table>
+
+
+<%#=@a=User.find_by_username("admin").id %>
+<%#= @learner_name = "admin" %>
+<%#= @learner_id2 = User.where(:username => @learner_name) %>
+<%#= @learner_id2.first.id%>
 
 <%#= link_to 'Edit', edit_progress_path(@progress) %>
-<%#= link_to 'Back', progresses_path %>
+<%= link_to 'Back', progresses_path %>
