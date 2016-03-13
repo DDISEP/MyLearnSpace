@@ -18,7 +18,8 @@
           <thead>
           <tr><strong>
             <th width="20%"> Name des Knowledge Elements </th>
-            <th> Beschreibung </th>
+            <th width="20%"> Beschreibung </th>
+            <th> Zugehöriges Topic</th>
           </strong></tr>
           </thead>
 
@@ -28,12 +29,15 @@
                 <!-- show title, author, and creation date for each exercise -->
                 <td> <%= link_to ke.name, ke %> </td>
                 <td> <%= ke.description %></td>
+                <td> <%= ke.topic %></td>
                 <td width="100">
                   <%= button_to 'Löschen', {:action => "destroy", :id => ke.id}, :confirm => 'Are you sure?', :method => "delete",
                                                :remote => true, :disable_with => 'loading...', class: "btn btn-xs btn-primary"%>
                   <%#= button_to ("löschen", :id => ke.id, :method => :delete, data: {confirm: "Are you sure?"},
                                                :remote => true, :disable_with => 'loading...'")
                                               %></td>
+                <td width="100">
+                <%= button_to 'Bearbeiten',{:action => "edit", :id => ke.id}, :method => :get, class:"btn btn-xs btn-primary"%></td>
               </tr>
           <% end %>
           </tbody>

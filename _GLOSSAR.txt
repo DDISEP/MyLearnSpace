@@ -33,3 +33,18 @@ Comment:
 
 
 Wiki:
+
+
+### Ellermeier - Zach ###
+
+Subject:
+Entsprechen der Fächereinteilung des Lehrplans.
+
+Topic:
+Eindeutig abgegrenzter Themenbereich von Lerninhalten. Dieser kann mehreren Fächern zugeteilt werden. Beispiel: Funktionen und funktionale Zusammenhänge für Mathematik und Informatik.
+
+KnowledgeElement:
+Aufteilung eines Topics in Lerneinheiten. Beispiel: Lineare Funktionen.
+
+LearningObjective:
+Aufteilung eines KnowledgeElements auf die sechs Cognitive Process Dimensions nach Anderson/Krathwohl. Beispiel: Anwendungen von Linearen Funktionen.
