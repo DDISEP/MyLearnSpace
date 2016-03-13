@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160310200206) do
+ActiveRecord::Schema.define(version: 20160313111922) do
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -264,6 +264,9 @@ ActiveRecord::Schema.define(version: 20160310200206) do
     t.text     "submission1"
     t.text     "submission2"
     t.text     "submission3"
+    t.integer  "subexercise1_id"
+    t.integer  "subexercise2_id"
+    t.integer  "subexercise3_id"
   end
 
   create_table "questions", force: true do |t|

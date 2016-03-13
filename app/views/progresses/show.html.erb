@@ -11,7 +11,36 @@
 
 
 <p>
-  <i>Bearbeitung: <%= @progress.submission1%>, <%= @progress.submission2%>, <%= @progress.submission3%></i>
+  <h3>Bearbeitung:</h3>
+<%if @progress.subexercise1_id.blank?%>
+<%else%>
+    <h5><t>Aufgabe 1:</t>
+    <%=Exercise.find_by_id(Subexercise.find_by_id(@progress.subexercise1_id).exercise_id).title  %></h5>
+    <%=Exercise.find_by(Subexercise.find_by_id(@progress.subexercise1_id).exercise_id).description %><br>
+    <%=Subexercise.find_by_id(@progress.subexercise1_id).text %><br>
+    <%= @progress.submission1%>
+<%end%>
+
+
+<%if @progress.subexercise2_id.blank?%>
+<%else%>
+    <h5><t>Aufgabe 2:</t>
+    <%=Exercise.find_by_id(Subexercise.find_by_id(@progress.subexercise2_id).exercise_id).title  %></h5>
+    <%=Exercise.find_by(Subexercise.find_by_id(@progress.subexercise2_id).exercise_id).description %><br>
+    <%=Subexercise.find_by_id(@progress.subexercise2_id).text %><br>
+    <%= @progress.submission2%>
+<%end%>
+
+
+<%if @progress.subexercise3_id.blank?%>
+<%else%>
+    <h5><t>Aufgabe 3:</t>
+    <%=Exercise.find_by_id(Subexercise.find_by_id(@progress.subexercise3_id).exercise_id).title  %></h5>
+    <%=Exercise.find_by(Subexercise.find_by_id(@progress.subexercise3_id).exercise_id).description %><br>
+    <%=Subexercise.find_by_id(@progress.subexercise3_id).text %><br>
+    <%= @progress.submission3%>
+<%end%>
+
 </p>
 
 <table>

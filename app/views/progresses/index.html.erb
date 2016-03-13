@@ -87,9 +87,10 @@
                 <% if progress.teacher_id.nil?%>
                     <td><%=@knowledgeElements.find_by(id: progress.knowledge_element_id).name%></td>
                     <td><%=@Users.find_by(id: progress.learner_id).username%></td>
-                    <td><%#=@Users.find_by(id: progress.teacher_id).username%></td>
+                    <td></td>
                     <td><%=progress.grade%></td>
                     <td><%=progress.updated_at%></td>
+                    <td><%= link_to 'Show', progress %></td>
                     <td><%= link_to 'Bearbeiten', edit_progress_path(progress) %></td>
                     </tr>
                 <%else%>

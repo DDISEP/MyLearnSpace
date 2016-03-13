@@ -27,11 +27,15 @@ class ProgressesController < ApplicationController
   # POST /progresses.json
   def create
     @progress = Progress.new
+    @progress.subexercise1_id= params[:ex1_id]
+    @progress.subexercise2_id= params[:ex2_id]
+    @progress.subexercise3_id= params[:ex3_id]
     @progress.submission1 = params[:text1]
     @progress.submission2 = params[:text2]
     @progress.submission3 = params[:text3]
     @progress.knowledge_element_id = params[:ke_id]
     @progress.learner_id = session[:current_user_id]
+
 
     if User.find_by_id(session[:current_user_id]).teacher?
       @progress.teacher_id=session[:current_user_id]

@@ -1,5 +1,5 @@
 <div class="container-fluid" xmlns="http://www.w3.org/1999/html">
-<h4>Bitte beachte, dass deine Klausur abgegeben wird, sobald du sie Seite verlässt.</h4>
+<h4>Bitte beachte, dass deine Klausur ungültig ist, sobald du die Seite verlässt.</h4>
 
 <h3><%= @knowledgeElements.name %></h3>
   <br>
@@ -22,9 +22,14 @@
         <%=@exercises.find_by(id: array2.first.exercise_id).title  %></h5>
       <%=@exercises.find_by(id: array2.first.exercise_id).description %>
       <br>
-      <%=array2.first.text%> <%end%>
+      <%=array2.first.text%><%end%>
   <br>
   <%= text_area_tag "text1" %>
+      <% if array2.empty?%>
+      <%else%>
+          <%= hidden_field_tag "ex1_id", array2.first.id %>
+          <%end%>
+
 
       <%array3= Array[]%>
 
@@ -42,10 +47,15 @@
             <%=@exercises.find_by(id: array4.first.exercise_id).title  %></h5>
           <%=@exercises.find_by(id: array4.first.exercise_id).description %>
           <br>
-          <%=array4.first.text%> <%end%>
+          <%=array4.first.text%><%end%>
       <br>
       <%#= text_field :max_points,  maxlength:"40", style:"width:100%; height:100%;" %>
   <%= text_area_tag "text2" %>
+      <% if array4.empty?%>
+      <%else%>
+          <%= hidden_field_tag "ex2_id", array4.first.id %>
+      <%end%>
+
 
 
       <%array5= Array[]%>
@@ -64,9 +74,13 @@
             <%=@exercises.find_by(id: array6.first.exercise_id).title  %></h5>
           <%=@exercises.find_by(id: array6.first.exercise_id).description %>
           <br>
-          <%=array6.first.text%> <%end%>
+          <%=array6.first.text%><%end%>
       <br>
   <%= text_area_tag "text3" %>
+      <% if array6.empty?%>
+      <%else%>
+          <%= hidden_field_tag "ex3_id", array6.first.id %>
+      <%end%>
       <br>
   <%= submit_tag 'Klausur abgeben' %>
 <% end %>
