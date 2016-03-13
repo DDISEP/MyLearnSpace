@@ -24,10 +24,10 @@
                 <%end%></td>
                 <td><%=progress.grade%></td>
                 <td><%=progress.updated_at%></td>
-                <td><%= link_to 'Bearbeiten', edit_progress_path(progress) %></td>
+                <td><%= link_to 'Anzeigen', progress %></td>
+                <td><%= link_to 'Note bearbeiten', edit_progress_path(progress) %></td>
                 </tr>
-            <%#else%>
-            <%#end%>
+
       <%end%>
       </tbody>
     </table>
@@ -90,8 +90,8 @@
                     <td></td>
                     <td><%=progress.grade%></td>
                     <td><%=progress.updated_at%></td>
-                    <td><%= link_to 'Show', progress %></td>
-                    <td><%= link_to 'Bearbeiten', edit_progress_path(progress) %></td>
+                    <td><%= link_to 'Anzeigen', progress %></td>
+                    <td><%= link_to 'Note bearbeiten', edit_progress_path(progress) %></td>
                     </tr>
                 <%else%>
                     <%if progress.teacher_id == @current_user.id%>
@@ -100,8 +100,8 @@
                         <td><%=@Users.find_by(id: progress.teacher_id).username%></td>
                         <td><%=progress.grade%></td>
                         <td><%=progress.updated_at%></td>
-                        <td><%= link_to 'Show', progress %></td>
-                        <td><%= link_to 'Bearbeiten', edit_progress_path(progress) %></td> </tr>
+                        <td><%= link_to 'Anzeigen', progress %></td>
+                        <td><%= link_to 'Note bearbeiten', edit_progress_path(progress) %></td> </tr>
                     <%else%>
                     <%end%>
                 <%end%>

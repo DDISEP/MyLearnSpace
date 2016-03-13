@@ -40,6 +40,15 @@
     <%=Subexercise.find_by_id(@progress.subexercise3_id).text %><br>
     <%= @progress.submission3%>
 <%end%>
+</p>
+
+<p>
+<%if @progress.grade.blank?%>
+<%else%>
+  <t>Note:</t>
+  <%=@progress.grade%>
+      <%end%>
+
 
 </p>
 
@@ -62,4 +71,4 @@
 <%#= @learner_id2.first.id%>
 
 <%#= link_to 'Edit', edit_progress_path(@progress) %>
-<%= link_to 'Back', progresses_path %>
+<%= link_to 'Zur Übersicht', progresses_path %>
