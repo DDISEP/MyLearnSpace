@@ -24,7 +24,7 @@ class KnowledgeElementsController < ApplicationController
   end
 
   def update
-    KnowledgeElement.update(params[:id], :name => params[:knowledge_element][:name], :description=> params[:knowledge_element][:description])
+    KnowledgeElement.update(params[:id], :name => params[:knowledge_element][:name], :description=> params[:knowledge_element][:description], :topic => params[:knowledge_element][:topic])
     #flash[:notice] = params.inspect
     redirect_to knowledge_element_path(params[:id])
   end

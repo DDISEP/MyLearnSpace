@@ -28,7 +28,7 @@
 
             <div id="name_field" class="row-fluid">
               <div class="span2"><%= f.label :topic, "zugehöriges Topic" %></div>
-              <div class="span10">  <%= f.collection_select :topic, Topic.all, :id, :name %>
+              <div class="span10">  <%= f.collection_select :topic, Topic.all, :id, :name, :prompt => true%>
               </div>
             </div>
             <div id="save_button" class="row-fluid">
