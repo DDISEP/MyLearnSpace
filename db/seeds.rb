@@ -17,7 +17,7 @@ User.create(:username => "learner", :email => "learner@mls.de", :password => "pa
 #Materialtext
 Materialtext.create(:title => "Lorem ipsum", :text => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", :user_id => 1, :knowledge_element_id => 1)
 Materialtext.create(:title => "Goethe: Faust", :text => "Habe nun, ach! Philosophie, Juristerei und Medizin, Und leider auch Theologie Durchaus studiert, mit heißem Bemühn. Da steh ich nun, ich armer Tor! Und bin so klug als wie zuvor.", :user_id => 2, :knowledge_element_id => 2)
-Materialtext.create(:title => "Robby Williams: Angels", :text => "I sit and waitdoes an angel contemplate my fateAnd do they knowThe places where we goWhen we're grey and old'cause I have been toldThat salvation lets their wings unfoldSo when I'm lying in my bedThoughts running through my headAnd I feel that love is deadI'm loving angels instead", :user_id => 3, :knowledge_element_id => 3)
+Materialtext.create(:title => "Robby Williams: Angels", :text => "I sit and wait, does an angel contemplate my fate, And do they know, The places where we go, When we're grey and old, 'cause I have been told, That salvation lets their wings unfold, So when I'm lying in my bed, Thoughts running through my head, And I feel that love is dead, I'm loving angels instead", :user_id => 3, :knowledge_element_id => 3)
 #Materiallink
 Materiallink.create(:title => "Facebook", :link => "http://facebook.com", :user_id => 1, :knowledge_element_id => 1)
 Materiallink.create(:title => "Google", :link => "http://google.de", :user_id => 2, :knowledge_element_id => 2)
@@ -29,17 +29,17 @@ Materialvideo.create(:title => "Häschen", :user_id => 3, :file_file_name => "ha
 #Materialdocument
 Materialdocument.create(:title => "Druckertest", :user_id => 2, :file_file_name => "testfile.pdf", :file_content_type => "application/pdf", :file_file_size => 80513, :knowledge_element_id => 3)
 #Question
-Question.create(:title => "Frage1?", :text => "FragentextZurFrage1", :user_name => "admin", :knowledge_element_id => 1)
-Question.create(:title => "Frage2?", :text => "FragentextZurFrage2", :user_name => "teacher", :knowledge_element_id => 2)
-Question.create(:title => "Frage3?", :text => "FragentextZurFrage3", :user_name => "learner", :knowledge_element_id => 3)
+Question.create(:title => "Welche Farbe hat euer Kugelschreiber?", :text => "Mich interessiert, welche Farbe euer Kugelschreiber hat :)", :user_name => "admin", :knowledge_element_id => 1)
+Question.create(:title => "Gefällt dir MLS?", :text => "Habt ihr Anregungen oder Feedback?", :user_name => "teacher", :knowledge_element_id => 2)
+Question.create(:title => "Käse oder Schinken?", :text => "Was esst ihr denn lieber?", :user_name => "learner", :knowledge_element_id => 3)
 #Answer
-Answer.create(:text => "Antwort1AufFrage1", :question_id => 1, :user_id => 2)
-Answer.create(:text => "Antwort2AufFrage1", :question_id => 1, :user_id => 3)
-Answer.create(:text => "Antwort3AufFrage1", :question_id => 1, :user_id => 1)
-Answer.create(:text => "Antwort1AufFrage2", :question_id => 2, :user_id => 3)
+Answer.create(:text => "blau", :question_id => 1, :user_id => 2)
+Answer.create(:text => "schwarz", :question_id => 1, :user_id => 3)
+Answer.create(:text => "auch blau", :question_id => 1, :user_id => 1)
+Answer.create(:text => "nur Dienstags ...", :question_id => 2, :user_id => 3)
 #Wiki
-Wiki.create(:title => "DerTitel1", :article => "WikiInhalt1")
-Wiki.create(:title => "DerTitel2", :article => "WikiInhalt2")
+Wiki.create(:title => "Föhn(elektronisches_Gerät)", :article => "Ein elektronisches Gerät zum Haare trocknen")
+Wiki.create(:title => "Föhn(Wind)", :article => "Ein warmer Luftstrom aus den Alpen")
 
 
 ### Ellermeier-Zach ###
