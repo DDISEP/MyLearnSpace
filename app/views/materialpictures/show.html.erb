@@ -25,7 +25,7 @@
   <tbody>
   <tr>
     <!-- TODO: Message an alle Admins und Teacher -->
-    <td><%= button_to 'Bild melden', materialpicture_path, :method => "get" %></td>
+    <td><%= button_to 'Bild melden', @materialpicture, :method => "get" %></td>
     <td><%= button_to 'Löschen', materialpicture_path, {:method => "delete", :id => @materialpicture.id, data: { confirm: "Bist Du sicher?"}} %></td>
     <td><%= button_to 'Zurück', materials_path, :method => "get" %></td>
   </tr>

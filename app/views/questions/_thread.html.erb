@@ -11,7 +11,8 @@
         <td><strong><%= User.find_by_id(answer.user_id).username %>: &nbsp;</strong></td>
         <td><%= answer.text %>&nbsp;&nbsp;</td>
         <td><i><%= answer.created_at %>&nbsp;&nbsp;</i></td>
-        <td><%= link_to 'Bearbeiten', edit_answer_path(answer.id)%>&nbsp;|&nbsp;</td>
+        <td><%= link_to 'Bearbeiten', edit_answer_path(answer.id) %>&nbsp;|&nbsp;</td>
+        <td><%= link_to 'Beitrag melden', @question %>&nbsp;|&nbsp;</td>
         <td><%= link_to 'Löschen', answer, :method => "get" %></td>
       </tr>
   <% end %>

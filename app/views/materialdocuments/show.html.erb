@@ -25,7 +25,7 @@
   <tbody>
   <tr>
     <!-- TODO: Message an alle Admins und Teacher -->
-    <td><%= button_to 'Dokument melden', materialdocument_path, :method => "get" %></td>
+    <td><%= button_to 'Dokument melden', @materialdocument, :method => "get" %></td>
     <td><%= button_to 'Löschen', materialdocument_path, {:method => "delete", :id => @materialdocument.id, data: { confirm: "Bist Du sicher?"}} %></td>
     <td><%= button_to 'Zurück', materials_path, :method => "get" %></td>
   </tr>
