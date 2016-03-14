@@ -24,15 +24,10 @@
   </thead>
   <tbody>
   <tr>
-    <td><!--%= button_to 'Bearbeiten', edit_materialpicture_path, {:method => "get", :id => @materialpicture.id} %--></td>
+    <!-- TODO: Message an alle Admins und Teacher -->
+    <td><%= button_to 'Bild melden', materialpicture_path, :method => "get" %></td>
     <td><%= button_to 'Löschen', materialpicture_path, {:method => "delete", :id => @materialpicture.id, data: { confirm: "Bist Du sicher?"}} %></td>
     <td><%= button_to 'Zurück', materials_path, :method => "get" %></td>
   </tr>
   </tbody>
 </table>
-
-<!--
-%= link_to 'Bearbeiten', edit_materialpicture_path(@materialpicture) %> |
-%= link_to 'Löschen', materialpicture_path, method: :delete, data: { confirm: 'Bist du sicher?' } %> |
-%= link_to 'Zurück', materials_path %>
--->

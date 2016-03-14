@@ -24,15 +24,10 @@
   </thead>
   <tbody>
   <tr>
-    <td><!--%= button_to 'Bearbeiten', edit_materialvideo_path, {:method => "get", :id => @materialvideo.id} %--></td>
+    <!-- TODO: Message an alle Admins und Teacher -->
+    <td><%= button_to 'Video melden', materialvideo_path, :method => "get" %></td>
     <td><%= button_to 'Löschen', materialvideo_path, {:method => "delete", :id => @materialvideo.id, data: { confirm: "Bist Du sicher?"}} %></td>
     <td><%= button_to 'Zurück', materials_path, :method => "get" %></td>
   </tr>
   </tbody>
 </table>
-
-<!--
-%= link_to 'Bearbeiten', edit_materialvideo_path(@materialvideo) %> |
-%= link_to 'Löschen', materialvideo_path, method: :delete, data: { confirm: 'Bist du sicher?' } %> |
-%= link_to 'Zurück', materials_path %>
--->
