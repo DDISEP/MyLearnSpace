@@ -15,13 +15,19 @@ User.create(:username => "learner", :email => "learner@mls.de", :password => "pa
 
 ### Hafemann-Sticha ###
 #Materialtext
-Materialtext.create(:title => "Materialtext1", :text => "TextZuMaterialtext1", :user_id => 1, :knowledge_element_id => 1)
-Materialtext.create(:title => "Materialtext2", :text => "TextZuMaterialtext2", :user_id => 2, :knowledge_element_id => 2)
-Materialtext.create(:title => "Materialtext3", :text => "TextZuMaterialtext3", :user_id => 3, :knowledge_element_id => 3)
+Materialtext.create(:title => "Lorem ipsum", :text => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", :user_id => 1, :knowledge_element_id => 1)
+Materialtext.create(:title => "Goethe: Faust", :text => "Habe nun, ach! Philosophie, Juristerei und Medizin, Und leider auch Theologie Durchaus studiert, mit heißem Bemühn. Da steh ich nun, ich armer Tor! Und bin so klug als wie zuvor;", :user_id => 2, :knowledge_element_id => 2)
+Materialtext.create(:title => "Robby Williams: Angels", :text => "I sit and waitdoes an angel contemplate my fateAnd do they knowThe places where we goWhen we're grey and old'cause I have been toldThat salvation lets their wings unfoldSo when I'm lying in my bedThoughts running through my headAnd I feel that love is deadI'm loving angels instead", :user_id => 3, :knowledge_element_id => 3)
 #Materiallink
-Materiallink.create(:title => "Materiallink1", :link => "http://mylollispace.de", :user_id => 1, :knowledge_element_id => 1)
-Materiallink.create(:title => "Materiallink2", :link => "http://google.de", :user_id => 2, :knowledge_element_id => 2)
-Materiallink.create(:title => "Materiallink3", :link => "http://youtube.de", :user_id => 3, :knowledge_element_id => 3)
+Materiallink.create(:title => "Facebook", :link => "http://facebook.com", :user_id => 1, :knowledge_element_id => 1)
+Materiallink.create(:title => "Google", :link => "http://google.de", :user_id => 2, :knowledge_element_id => 2)
+Materiallink.create(:title => "Youtube", :link => "http://youtube.de", :user_id => 3, :knowledge_element_id => 3)
+#Materialpicture
+Materialpicture.create(:title => "Testbild", :user_id => 2, :file_file_name => "image.gif", :file_content_type => "image/gif", :file_file_size => 10641, :knowledge_element_id => 2)
+#Materialvideo
+Materialvideo.create(:title => "Häschen", :user_id => 3, :file_file_name => "hasi.mp4", :file_content_type => "video/mp4", :file_file_size => 1057149, :knowledge_element_id => 1)
+#Materialdocument
+Materialdocument.create(:title => "Druckertest", :user_id => 2, :file_file_name => "testfile.pdf", :file_content_type => "application/pdf", :file_file_size => 80513, :knowledge_element_id => 3)
 #Question
 Question.create(:title => "Frage1?", :text => "FragentextZurFrage1", :user_name => "admin", :knowledge_element_id => 1)
 Question.create(:title => "Frage2?", :text => "FragentextZurFrage2", :user_name => "teacher", :knowledge_element_id => 2)
