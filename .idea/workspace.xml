@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b53cebfc-f08e-477c-afaa-d56d54149ce5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/questions/index.html.erb" afterPath="$PROJECT_DIR$/app/views/questions/index.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
     </list>
     <ignored path="MyLearnSpace.iws" />
@@ -31,8 +32,18 @@
       <file leaf-file-name="seeds.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/db/seeds.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38732395">
-              <caret line="19" column="378" selection-start-line="19" selection-start-column="378" selection-end-line="19" selection-end-column="378" />
+            <state vertical-scroll-proportion="0.76760566">
+              <caret line="40" column="112" selection-start-line="40" selection-start-column="112" selection-end-line="40" selection-end-column="112" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/questions/index.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.5">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -62,7 +73,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/db/migrate/20160311143457_add_knowledge_element_id_to_question.rb" />
         <option value="$PROJECT_DIR$/app/controllers/questions_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20160226162839_create_materiallinks.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20160226165925_create_materialvideos.rb" />
@@ -112,6 +122,7 @@
         <option value="$PROJECT_DIR$/app/views/materialtexts/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/materialvideos/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/materials/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/questions/index.html.erb" />
         <option value="$PROJECT_DIR$/db/seeds.rb" />
       </list>
     </option>
@@ -199,6 +210,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyLearnSpace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyLearnSpace" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="questions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -599,12 +632,6 @@
       <option name="number" value="Default" />
       <updated>1456743081710</updated>
     </task>
-    <task id="LOCAL-00005" summary="forum &quot;illegaler frager&quot; fixed">
-      <created>1456939649889</created>
-      <option name="number" value="00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1456939649889</updated>
-    </task>
     <task id="LOCAL-00006" summary="forum &quot;illegaler frager&quot; fixed">
       <created>1456941892129</created>
       <option name="number" value="00006" />
@@ -893,7 +920,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457968292478</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="seeds">
+      <created>1457969465956</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1457969465956</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TodoView">
@@ -963,7 +996,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="answer question (&lt;3 working &lt;3)" />
     <MESSAGE value="delete answers" />
     <MESSAGE value="delete answer" />
     <MESSAGE value="edit answer (not working)" />
@@ -988,7 +1020,8 @@
     <MESSAGE value="Button Materiallink melden" />
     <MESSAGE value="MaterialXXX &quot;melden&quot;-Buttons" />
     <MESSAGE value="materials index" />
-    <option name="LAST_COMMIT_MESSAGE" value="materials index" />
+    <MESSAGE value="seeds" />
+    <option name="LAST_COMMIT_MESSAGE" value="seeds" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1330,14 +1363,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/questions/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45918366">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/questions/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08746356">
@@ -1394,10 +1419,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/questions/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.5">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/db/seeds.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38732395">
-          <caret line="19" column="378" selection-start-line="19" selection-start-column="378" selection-end-line="19" selection-end-column="378" />
+        <state vertical-scroll-proportion="0.76760566">
+          <caret line="40" column="112" selection-start-line="40" selection-start-column="112" selection-end-line="40" selection-end-column="112" />
           <folding />
         </state>
       </provider>

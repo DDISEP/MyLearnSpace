@@ -38,7 +38,7 @@ Answer.create(:text => "schwarz", :question_id => 1, :user_id => 3)
 Answer.create(:text => "auch blau", :question_id => 1, :user_id => 1)
 Answer.create(:text => "nur Dienstags ...", :question_id => 2, :user_id => 3)
 #Wiki
-Wiki.create(:title => "Föhn(elektronisches_Gerät)", :article => "Ein elektronisches Gerät zum Haare trocknen")
+Wiki.create(:title => "Föhn(elektronisches_Gerät)", :article => "Ein elektronisches Gerät zum Trocknen der Haare")
 Wiki.create(:title => "Föhn(Wind)", :article => "Ein warmer Luftstrom aus den Alpen")
 
 
