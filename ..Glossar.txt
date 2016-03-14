@@ -3,21 +3,40 @@ Glossar
 
 ### Hafemann - Sticha ###
 Material:
-
+Die Klasse Material fungiert lediglich als zusammenfassende View aller einzelnen MaterialXXX-Klassen.
+Model/Controller werden nicht genutzt. Material wird im Navigationsmenü verlinkt.
 
 Materialtext:
-
+Die Klasse Materialtext gibt die Möglichkeit Texte als Material zu erstellen und zu speichern.
+Die Klasse Materialtext hat neben Titel und Text noch einen Autor (user_id) und ein zugehöriges KnowledgeElement (knowledge_element_id).
+In der View werden der Titel, Text, der Name des zugehörigen KnowledgeElements, der Autor und das Datum angezeigt.
 
 Materiallink:
+Die Klasse Materiallink gibt die Möglichkeit einzelne Links als Material zu erstellen und zu speichern.
+Die Klasse Materiallink hat neben Titel und Link noch einen Autor (user_id) und ein zugehöriges KnowledgeElement (knowledge_element_id).
+In der View werden der Titel, der Hyperlink, der Name des zugehörigen KnowledgeElements, der Autor und das Datum angezeigt.
+
+Materialdocument:
+Die Klasse Materialdocument gibt die Möglichkeit einzelne Dokumente als Material zu erstellen und zu speichern.
+Die Klasse Materialdocument hat neben Titel und Datei noch einen Autor (user_id) und ein zugehöriges KnowledgeElement (knowledge_element_id).
+In der View werden der Titel, das Dokument als Link, der Name des zugehörigen KnowledgeElements, der Autor und das Datum angezeigt.
+Das Bild wird als Datei im Verzeichnis /public/assets/materials/documents/... gespeichert.
+Zulässige Dateiformate sind neben PDF alle gängigen Text-, Präsentations- und Tabellenkalkulationsdateiformate.
 
 
 Materialpicture:
-
+Die Klasse Materialpicture gibt die Möglichkeit einzelne Bilder als Material zu erstellen und zu speichern.
+Die Klasse Materialpicture hat neben Titel und Datei noch einen Autor (user_id) und ein zugehöriges KnowledgeElement (knowledge_element_id).
+In der View werden der Titel, das Bild, der Name des zugehörigen KnowledgeElements, der Autor und das Datum angezeigt.
+Das Bild wird als Datei im Verzeichnis /public/assets/materials/pictures/... gespeichert.
+Zulässige Dateiformate sind gif, jpeg und png.
 
 Materialvideo:
-
-
-Forum:
+Die Klasse Materialvideo gibt die Möglichkeit einzelne Videos als Material zu erstellen und zu speichern.
+Die Klasse Materialvideo hat neben Titel und Datei noch einen Autor (user_id) und ein zugehöriges KnowledgeElement (knowledge_element_id).
+In der View werden der Titel, das Video, der Name des zugehörigen KnowledgeElements, der Autor und das Datum angezeigt.
+Das Video wird als Datei im Verzeichnis /public/assets/materials/videos/... gespeichert.
+Derzeit sind nur mp4-Videos zulässig.
 
 
 Question:
