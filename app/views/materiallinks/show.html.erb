@@ -25,6 +25,8 @@
   <tbody>
       <tr>
         <td><%= button_to 'Bearbeiten', edit_materiallink_path, {:method => "get", :id => @materiallink.id} %></td>
+        <!-- TODO: Message an alle Admins und Teacher -->
+        <td><%= button_to 'Link melden', materiallink_path, :method => "get" %></td>
         <td><%= button_to 'Löschen', materiallink_path, {:method => "delete", :id => @materiallink.id, data: { confirm: "Bist Du sicher?"}} %></td>
         <td><%= button_to 'Zurück', materials_path, :method => "get" %></td>
       </tr>
