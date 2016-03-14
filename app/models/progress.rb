@@ -5,7 +5,6 @@ class Progress < ActiveRecord::Base
   validates :learner_id, presence: true
   validates :knowledge_element_id, presence: true
   validates :grade, :inclusion => 1..6, allow_blank: true
-  
 
   belongs_to :user
   belongs_to :knowledge_element

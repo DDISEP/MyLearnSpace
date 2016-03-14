@@ -1,6 +1,39 @@
 Glossar
 -------
 
+## Grett - Ottinger ##
+Exam:
+Die Klasse Exam gibt die Möglichkeit Exams zu einem KnowledegElement zusammenzustellen und diese von einem Learner bearbeiten zu lassen.
+Jedes Exam besteht aus drei Exercise mit jeweils einer Subexercise. Das KnowledeElement jeder Exercise muss hierfür mit dem KnowledegElement des Exams übereinstimmen
+und das Attribut sequence jeder Exercise muss False gesetzt sein.
+Außerdem bestitzt die erste Subexercise die cognitive_dimension 1, die zweite Subexercise die cognitive_dimension 3 und die dritte Subexercise die cognitive_dimension 6.
+Desweitern müssen die Attribute active und examItem jeder Subexercise auf True gesetzt sein.
+Nach diesen Kriterien wird ein Exam zufällig zusammengestellt, sodass sich die Exams zu einem KnowledegeElement unterscheiden können.
+Das Attribut minPoints speichert die minimale Punktzahl, das Attribut maxPoints die maximale Punktzahl und maxTime die Zeit, in der das Exam bearbeitet werden muss.
+Diese drei Attribute sind weitere Kriterien für die Zusammenstellung eines Exams, die jedoch zu diesem Zeitpunkt auf Grund de rgeringen Aufgabenmenge noch außenvor gelassen wurden.
+
+Exercise:
+
+Performance:
+
+Progress:
+In der Klasse Progress wird die Bearbeitung eines Exams zusammen mit dem Learner, der das Exam bearbeitet hat, gespeichert.
+Hierbei wird der Learner mit Hilfe seiner User Id gespeichert. Die Bearbeitung der einzelnen Aufgaben wird in den Attributen submission1, submission2 und submission3 als Text gespeichert.
+Außerdem werden die Ids der drei im Exam verwendeten Subexercises gespeichert, um die Bearbeitung auch zu einem späteren Zeitpunkt nachvollziehen zu können.
+Zuständig hierfür sind die Attribute subexercise1, subexercise2 und subexercise3.
+Auch das KnowledgeElement, welches durch das Exam abgeschlossen wurde, wird im Progress gespeichert. Hierfür ist das Attribut knowledge_element_id zuständig.
+Nachdem ein Learner ein Exam erfolgreich bearbeitet und abgegeben hat, wird allen Teachern in der View die Bearbeitung zusammen mit den jeweiligen Exercise und Subexercise und der Learner angezeigt.
+Ein Teacher hat nun die Möglichkeit eine Note einzutragen. Wobei diese Note einen Wert zwischen 1 und 6 annehmen muss. Der zuständige Teacher und die Note werden in der Klasse Progress in den Attributen teacher_id bzw. grade gespeichert.
+Sobald ein Teacher eine Note eingetragen hat, kann sich nur noch der Teacher selber oder ein Admin die Bearbeitung anzeigen lassen und gegebenenfalls die Note ändern.
+Für alle anderen Teacher ist die Bearbeitung ab diesem Zeitpunkt nicht mehr sichtbar. In der View des Learners werden für jedes von ihm geschriebene Exam das KnowledegeElement, die erhaltene Note,
+der zuständige Teacher und der Zeitpunkt der Abgaben angezeigt. Außerdem kann sich ein Learner seine Bearbeitung anzeigen lassen.
+
+Solution:
+
+Subexercise:
+
+
+
 ### Hafemann - Sticha ###
 Material:
 
