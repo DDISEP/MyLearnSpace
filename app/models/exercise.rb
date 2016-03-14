@@ -1,7 +1,7 @@
 class Exercise < ActiveRecord::Base
   
   #attr_accessor :like_counter, :max_points, :subexercise_counter, :author_name, :title, :description
-  attr_accessible :like_counter, :max_points, :subexercise_counter, :author_name, :title, :description, :user_id, :knowledge_element_id
+  attr_accessible :like_counter, :max_points, :subexercise_counter, :author_name, :title, :description, :user_id, :knowledge_element_id, :sequence
   
   belongs_to :user
   has_many :comments, dependent: :destroy

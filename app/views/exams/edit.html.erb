@@ -10,7 +10,7 @@
   <%array= Array[]%>
 
   <% @subexercises1.each do |sub1| %>
-      <% if sub1.exercise.knowledge_element_id == @knowledgeElements.id%>
+      <% if sub1.exercise.knowledge_element_id == @knowledgeElements.id && !(sub1.exercise.sequence)%>
           <%array.push(sub1)%>
       <%end%>
   <%end%>
@@ -34,7 +34,7 @@
       <%array3= Array[]%>
 
       <% @subexercises2.each do |sub1| %>
-          <% if sub1.exercise.knowledge_element_id == @knowledgeElements.id%>
+          <% if sub1.exercise.knowledge_element_id == @knowledgeElements.id && !(sub1.exercise.sequence)%>
               <%array3.push(sub1)%>
           <%end%>
       <%end%>
@@ -61,7 +61,7 @@
       <%array5= Array[]%>
 
       <% @subexercises3.each do |sub1| %>
-          <% if sub1.exercise.knowledge_element_id == @knowledgeElements.id%>
+          <% if sub1.exercise.knowledge_element_id == @knowledgeElements.id && !(sub1.exercise.sequence)%>
               <%array5.push(sub1)%>
           <%end%>
       <%end%>
