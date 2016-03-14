@@ -2,36 +2,42 @@ Glossar
 -------
 
 ### Hafemann - Sticha ###
-Material:
+* Material:
 Die Klasse Material fungiert lediglich als zusammenfassende View aller einzelnen MaterialXXX-Klassen.
 Model/Controller werden nicht genutzt. Material wird im Navigationsmenü verlinkt.
 
-Materialtext:
+Für alle Materialtypen gilt:
+Die Methode "Melden" ist lediglich in der View implementiert und noch nicht funktionsfähig.
+Jeder User hat das Recht neue Materialien hochzuladen/zu erstellen.
+Lediglich Administratoten und der jeweilige Autor dürfen die Materialien löschen.
+
+* Materialtext:
 Die Klasse Materialtext gibt die Möglichkeit Texte als Material zu erstellen und zu speichern.
 Die Klasse Materialtext hat neben Titel und Text noch einen Autor (user_id) und ein zugehöriges KnowledgeElement (knowledge_element_id).
 In der View werden der Titel, Text, der Name des zugehörigen KnowledgeElements, der Autor und das Datum angezeigt.
+Texte können nur vom jeweiligen Autor bearbeitet werden.
 
-Materiallink:
+* Materiallink:
 Die Klasse Materiallink gibt die Möglichkeit einzelne Links als Material zu erstellen und zu speichern.
 Die Klasse Materiallink hat neben Titel und Link noch einen Autor (user_id) und ein zugehöriges KnowledgeElement (knowledge_element_id).
 In der View werden der Titel, der Hyperlink, der Name des zugehörigen KnowledgeElements, der Autor und das Datum angezeigt.
+Links können nur vom jeweiligen Autor bearbeitet werden.
 
-Materialdocument:
+* Materialdocument:
 Die Klasse Materialdocument gibt die Möglichkeit einzelne Dokumente als Material zu erstellen und zu speichern.
 Die Klasse Materialdocument hat neben Titel und Datei noch einen Autor (user_id) und ein zugehöriges KnowledgeElement (knowledge_element_id).
 In der View werden der Titel, das Dokument als Link, der Name des zugehörigen KnowledgeElements, der Autor und das Datum angezeigt.
 Das Bild wird als Datei im Verzeichnis /public/assets/materials/documents/... gespeichert.
 Zulässige Dateiformate sind neben PDF alle gängigen Text-, Präsentations- und Tabellenkalkulationsdateiformate.
 
-
-Materialpicture:
+* Materialpicture:
 Die Klasse Materialpicture gibt die Möglichkeit einzelne Bilder als Material zu erstellen und zu speichern.
 Die Klasse Materialpicture hat neben Titel und Datei noch einen Autor (user_id) und ein zugehöriges KnowledgeElement (knowledge_element_id).
 In der View werden der Titel, das Bild, der Name des zugehörigen KnowledgeElements, der Autor und das Datum angezeigt.
 Das Bild wird als Datei im Verzeichnis /public/assets/materials/pictures/... gespeichert.
 Zulässige Dateiformate sind gif, jpeg und png.
 
-Materialvideo:
+* Materialvideo:
 Die Klasse Materialvideo gibt die Möglichkeit einzelne Videos als Material zu erstellen und zu speichern.
 Die Klasse Materialvideo hat neben Titel und Datei noch einen Autor (user_id) und ein zugehöriges KnowledgeElement (knowledge_element_id).
 In der View werden der Titel, das Video, der Name des zugehörigen KnowledgeElements, der Autor und das Datum angezeigt.
@@ -39,16 +45,20 @@ Das Video wird als Datei im Verzeichnis /public/assets/materials/videos/... gesp
 Derzeit sind nur mp4-Videos zulässig.
 
 
-Question:
+* Question:
+Die Klasse Question fungiert als Thread eines Forums. Dabei können von jedem User neue Fragen gestellt/Themen eröffnet werden..
+In den Attributen werden neben dem Titel der Frage und der Frage noch ein Autor (user_id) und ein zugehöriges KnowledgeElement (knowledge_element_id) gespeichert.
+Es existiert in der View bereits ein Melden-Button, der bisher ohne Funktion ist.
+Jeder Admin und der Autor können eine Frage löschen, wobei alle zugehörigen Antworten ebenfalls gelöscht werden.
+
+* Answer:
+Die Klasse Answer beschreibt die Antworten auf eine Question.
+Sie speichert den Autor und den Antworttext (die zugehörige question_id wird automatisch ergänzt).
+Eine Antwort kann vom Autor bearbeitet werden und von Admins und dem Autor gelöscht werden.
+Der Melden-Link ist ebenfalls ohne Funktion bereits in der View vorhanden.
 
 
-Answer:
-
-
-Like:
-
-
-Comment:
-
-
-Wiki:
+* Wiki:
+Ein Wikiartikel kann von jedem User erstellt und bearbeitet werden.
+Löschen kann nur ein Admin (da mehrere Autoren).
+In einem Wikiartikel werden Informationen zu einem Thema aufbereitet und gebündelt.
