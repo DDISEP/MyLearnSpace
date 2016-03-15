@@ -50,16 +50,17 @@ class User < ActiveRecord::Base
     end
 
     def valid_password
-      if self.password.length.in?(12..20)
-        if self.password.include?("0"||"1"||"2"||"3"||"4"||"5"||"6"||"7"||"8"||"9")
-          if self.password.include?("°"||"^"||"!"||"§"||"$"||"%"||"&"||"/"||"{"||"("||"["||")"||"]"||"="||"}"||"?"||"ß"||"´"||"`"||"@"||"€"||"+"||"*"||"~"||"#"||"'"||"<"||">"||"|"||"µ"||","||";"||"."||":"||"-"||"_")
-            if self.password.include?("A"||"B"||"C"||"D"||"E"||"F"||"G"||"H"||"I"||"J"||"K"||"L"||"M"||"N"||"O"||"P"||"Q"||"R"||"S"||"T"||"U"||"V"||"W"||"X"||"Y"||"Z"||"Ä"||"Ö"||"Ü")
-              if self.password.include?("a"||"b"||"c"||"d"||"e"||"f"||"g"||"h"||"i"||"j"||"k"||"l"||"m"||"n"||"o"||"p"||"q"||"r"||"s"||"t"||"u"||"v"||"w"||"x"||"y"||"z"||"ä"||"ö"||"ü"||"ß")
-              end
+        if self.password.length.in?(12..20)
+            if self.password.include?("0") || self.password.include?("1") || self.password.include?("2") || self.password.include?("3") || self.password.include?("4") || self.password.include?("5") || self.password.include?("6") || self.password.include?("7") || self.password.include?("8") || self.password.include?("9")
+                if self.password.include?("°") || self.password.include?("^") || self.password.include?("!") || self.password.include?("§") || self.password.include?("$") || self.password.include?("%") || self.password.include?("&") || self.password.include?("/") || self.password.include?("{") || self.password.include?("(") || self.password.include?("[") || self.password.include?(")") || self.password.include?("]") || self.password.include?("=") || self.password.include?("}") || self.password.include?("?") || self.password.include?("ß") || self.password.include?("´") || self.password.include?("`") || self.password.include?("@") || self.password.include?("€") || self.password.include?("+") || self.password.include?("*") || self.password.include?("~") || self.password.include?("#") || self.password.include?("'") || self.password.include?("<") || self.password.include?(">") || self.password.include?("|") || self.password.include?("µ") || self.password.include?(",") || self.password.include?(";") || self.password.include?(".") || self.password.include?(":") || self.password.include?("-") ||  self.password.include?("_")
+                    if self.password.include?("A") || self.password.include?("B") || self.password.include?("C") || self.password.include?("D") || self.password.include?("E") || self.password.include?("F") || self.password.include?("G") || self.password.include?("H") || self.password.include?("I") || self.password.include?("J") || self.password.include?("K") || self.password.include?("L") || self.password.include?("M") || self.password.include?("N") || self.password.include?("O") || self.password.include?("P") || self.password.include?("Q") || self.password.include?("R") || self.password.include?("S") || self.password.include?("T") || self.password.include?("U") || self.password.include?("V") || self.password.include?("W") || self.password.include?("X") || self.password.include?("Y") || self.password.include?("Z") || self.password.include?("Ä") || self.password.include?("Ö") || self.password.include?("Ü")
+                        if self.password.include?("a") || self.password.include?("b") || self.password.include?("c") || self.password.include?("d") || self.password.include?("e") || self.password.include?("f") || self.password.include?("g") || self.password.include?("h") || self.password.include?("i") || self.password.include?("j") || self.password.include?("k") || self.password.include?("l") || self.password.include?("m") ||  self.password.include?("n") || self.password.include?("o") || self.password.include?("p") || self.password.include?("q") || self.password.include?("r") || self.password.include?("s") || self.password.include?("t") || self.password.include?("u") || self.password.include?("v") || self.password.include?("w") || self.password.include?("x") || self.password.include?("y") || self.password.include?("z") || self.password.include?("ä") || self.password.include?("ö") || self.password.include?("ü") || self.password.include?("ß")
+                            true
+                        end
+                    end
+                end
             end
-          end
         end
-      end
     end
     
 end
