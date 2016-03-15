@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
         errors.add(:base, "Gib bitte noch einen Benutzernamen an!")
       end
     #  if firstName.blank?
-     # errors.add(:base, "Gib bitte deinen Vornamen an!")
+     #  errors.add(:base, "Gib bitte deinen Vornamen an!")
       #end
     #  if lastName.blank?
      #   errors.add(:base, "Gib bitte deinen Nachnamen an!")
