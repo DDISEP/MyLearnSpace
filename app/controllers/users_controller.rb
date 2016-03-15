@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :check_login, only: [:new, :create]
   
   def index
-    @users = User.all.sort{|a,b| a.username.downcase <=> b.username.downcase } #Sortierung nach Alphabet um Suche zu ersetzem
+    @users = User.all.sort{|a,b| a.lastName.downcase <=> b.lastName.downcase } #Sortierung nach Alphabet um Suche zu ersetzem
   end
   
   def new     
