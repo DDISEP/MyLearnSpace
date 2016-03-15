@@ -23,12 +23,12 @@ class User < ActiveRecord::Base
       if username.blank?
         errors.add(:base, "Gib bitte noch einen Benutzernamen an!")
       end
-      if firstName.blank?
-      errors.add(:base, "Gib bitte deinen Vornamen an!")
-      end
-      if lastName.blank?
-        errors.add(:base, "Gib bitte deinen Nachnamen an!")
-      end
+    #  if firstName.blank?
+     # errors.add(:base, "Gib bitte deinen Vornamen an!")
+      #end
+    #  if lastName.blank?
+     #   errors.add(:base, "Gib bitte deinen Nachnamen an!")
+     # end
       if email.blank?
         errors.add(:base, "Wir brauchen noch deine E-Mail Adresse!")
       end
