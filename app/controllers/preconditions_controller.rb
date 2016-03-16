@@ -39,8 +39,9 @@ class PreconditionsController < ApplicationController
   end
 
   def destroy
-    @precondition = LearningObjetive.get_learning_objective(:learning_objective_id).preconditions.find(params[:perconditions_id])
+    @precondition = Precondition.find_by_id(params[:id])
     @precondition.destroy
+    flash[:notice] = "Die Precondition wurde gelöscht"
     #output missing
     redirect_to
   end
