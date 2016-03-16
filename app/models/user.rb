@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
     has_many :exercises, dependent: :nullify # mit Gruppe Ottinger Grett absprechen
     has_many :likes, dependent: :destroy # mit Grupee Hafemann Sticha absprechen
     has_many :performances, dependent: :destroy # mit Gruppe Ottinger Grett absprechen
+    #has_many :messages
 
     def hash_password
       self.password = Digest::MD5.hexdigest(self.password)
