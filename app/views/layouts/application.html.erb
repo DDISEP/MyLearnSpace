@@ -29,7 +29,8 @@
           &nbsp;&nbsp;
           <%= link_to 'Benutzer', users_path %>
           &nbsp;&nbsp;
-          <%= link_to 'Material', materials_path %>
+          <%= link_to 'Neuen Admin erstellen',  new_user_path(@current_user) %>
+
           &nbsp;&nbsp;
           <%= link_to 'Aufgaben', exercises_path %>
           &nbsp;&nbsp;
@@ -60,8 +61,7 @@
           <%= link_to 'Persönliche Daten', users_profile_path %>
           &nbsp;&nbsp;
           <%= link_to 'Benutzer', users_path %>
-          &nbsp;&nbsp;
-          <%= link_to 'Material', materials_path %>
+
           &nbsp;&nbsp;
           <%= link_to 'Aufgaben', exercises_path %>
           &nbsp;&nbsp;

@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
       if password.blank?
         errors.add(:base, "Es wurde kein Passwort eingegeben!")
       else 
-        errors.add(:base, "Dein Passwort muss mind. 6 und max. 20 Zeichen umfassen!") unless valid_password
+        errors.add(:base, "Dein Passwort muss zwischen 12 und 20 Zeichen umfassen! Darunter müssen mindestens eine Zahl, ein Groß-, ein Kleinbuchstabe und ein Sonderzeichen enthalten sein.") unless valid_password
       end  
       return errors.count == 0
     end
