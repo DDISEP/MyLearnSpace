@@ -23,7 +23,7 @@
                   <%=@Users.find_by(id: progress.teacher_id).username%>
                 <%end%></td>
                 <td><%=progress.grade%></td>
-                <td><%=progress.updated_at%></td>
+                <td><%=progress.created_att%></td>
                 <td><%= link_to 'Anzeigen', progress %></td>
                 <td><%= link_to 'Note bearbeiten', edit_progress_path(progress) %></td>
                 </tr>
@@ -58,7 +58,8 @@
                 <%else%>
                     <%=@Users.find_by(id: progress.teacher_id).username%>
                 <%end%></td>
-              <td><%=progress.updated_at%></td>
+              <td><%=progress.created_at%></td>
+              <td><%= link_to 'Anzeigen', progress %></td>
               </tr>
           <%else%>
           <%end%>
@@ -99,7 +100,7 @@
                         <td><%=@Users.find_by(id: progress.learner_id).username%></td>
                         <td><%=@Users.find_by(id: progress.teacher_id).username%></td>
                         <td><%=progress.grade%></td>
-                        <td><%=progress.updated_at%></td>
+                        <td><%=progress.created_at%></td>
                         <td><%= link_to 'Anzeigen', progress %></td>
                         <td><%= link_to 'Note bearbeiten', edit_progress_path(progress) %></td> </tr>
                     <%else%>

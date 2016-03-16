@@ -1,5 +1,8 @@
-<h2>Leistung bearbeiten:</h2>
+<div style="text-indent: 20px"><h2>Leistung bearbeiten:</h2></div>
 <%= render 'form' %>
 
-<%= link_to 'Show', @progress %> |
-<%= link_to 'Back', progresses_path %>
+
+<%= button_to 'Zur Leistungsübersicht', progresses_path, :method => "get", class:"btn btn-xs btn-primary"%>
+
+<%= link_to 'Anzeigen', @progress %> |
+<%= link_to 'Zurück', progresses_path %>

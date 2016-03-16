@@ -1,12 +1,12 @@
-<p id="notice"><%= notice %></p>
+<div style="text-indent: 30px"> <p id="notice"><%= notice %></p>
 
 <p>
-  <i>Klausur zum Thema <%= KnowledgeElement.find_by_id(@progress.knowledge_element_id).name %></i>
+  <h5>Klausur zum Thema <%= KnowledgeElement.find_by_id(@progress.knowledge_element_id).name %></h5>
 </p>
 
 <p>
   <i>Geschrieben von <%= User.find_by_id(@progress.learner_id).username%> mit ID
-  <%= User.find_by_id(@progress.learner_id).id%> am <%= @progress.created_at%></i>
+  <%= User.find_by_id(@progress.learner_id).id%> am <%= @progress.created_at%>.</i>
 </p>
 
 
@@ -16,9 +16,9 @@
 <%else%>
     <h5><t>Aufgabe 1:</t>
     <%=Exercise.find_by_id(Subexercise.find_by_id(@progress.subexercise1_id).exercise_id).title  %></h5>
-    <%=Exercise.find_by(Subexercise.find_by_id(@progress.subexercise1_id).exercise_id).description %><br>
-    <%=Subexercise.find_by_id(@progress.subexercise1_id).text %><br>
-    <%= @progress.submission1%>
+    <div style="text-indent: 30px"><%=Exercise.find_by(Subexercise.find_by_id(@progress.subexercise1_id).exercise_id).description %></div>
+    <div style="text-indent: 30px"><%=Subexercise.find_by_id(@progress.subexercise1_id).text %></div>
+    <div style="text-indent: 30px"><strong><%= @progress.submission1%></strong></div><br>
 <%end%>
 
 
@@ -26,9 +26,9 @@
 <%else%>
     <h5><t>Aufgabe 2:</t>
     <%=Exercise.find_by_id(Subexercise.find_by_id(@progress.subexercise2_id).exercise_id).title  %></h5>
-    <%=Exercise.find_by(Subexercise.find_by_id(@progress.subexercise2_id).exercise_id).description %><br>
-    <%=Subexercise.find_by_id(@progress.subexercise2_id).text %><br>
-    <%= @progress.submission2%>
+    <div style="text-indent: 30px"><%=Exercise.find_by(Subexercise.find_by_id(@progress.subexercise2_id).exercise_id).description %></div>
+    <div style="text-indent: 30px"><%=Subexercise.find_by_id(@progress.subexercise2_id).text %></div>
+    <div style="text-indent: 30px"><strong><%= @progress.submission2%></strong></div><br>
 <%end%>
 
 
@@ -36,39 +36,24 @@
 <%else%>
     <h5><t>Aufgabe 3:</t>
     <%=Exercise.find_by_id(Subexercise.find_by_id(@progress.subexercise3_id).exercise_id).title  %></h5>
-    <%=Exercise.find_by(Subexercise.find_by_id(@progress.subexercise3_id).exercise_id).description %><br>
-    <%=Subexercise.find_by_id(@progress.subexercise3_id).text %><br>
-    <%= @progress.submission3%>
+    <div style="text-indent: 30px"><%=Exercise.find_by(Subexercise.find_by_id(@progress.subexercise3_id).exercise_id).description %></div>
+    <div style="text-indent: 30px"><%=Subexercise.find_by_id(@progress.subexercise3_id).text %></div>
+    <div style="text-indent: 30px"><strong><%= @progress.submission3%></strong></div><br>
 <%end%>
 </p>
 
 <p>
 <%if @progress.grade.blank?%>
 <%else%>
-  <t>Note:</t>
-  <%=@progress.grade%>
+  <t>Der Schüler <%= User.find_by_id(@progress.learner_id).username%> hat auf seine Bearbeitung die Note <strong><%=@progress.grade%></strong> erhalten.</t>
       <%end%>
 
 
 </p>
 
-<table>
-  <thead>
-  <tr>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  </tr>
-  </tbody>
-</table>
 
 
-<%#=@a=User.find_by_username("admin").id %>
-<%#= @learner_name = "admin" %>
-<%#= @learner_id2 = User.where(:username => @learner_name) %>
-<%#= @learner_id2.first.id%>
 
-<%#= link_to 'Edit', edit_progress_path(@progress) %>
-<%= link_to 'Zur Übersicht', progresses_path %>
+<%= button_to 'Zur Leistungsübersicht', progresses_path, :method => "get", class:"btn btn-xs btn-primary"%>
+
+</div>
