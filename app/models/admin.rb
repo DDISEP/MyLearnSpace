@@ -1,3 +1,3 @@
 class Admin < ActiveRecord::Base
-  #Inhalt fehlt
+  attr_accessible :lastName, :firstName
 end
