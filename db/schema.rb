@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226173830) do
+ActiveRecord::Schema.define(version: 20160316144550) do
+
+  create_table "admins", force: true do |t|
+    t.string   "lastName"
+    t.string   "firstName"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "answers", force: true do |t|
     t.string   "text"
@@ -168,6 +175,18 @@ ActiveRecord::Schema.define(version: 20160226173830) do
     t.integer "topic_id",             null: false
   end
 
+  create_table "learners", force: true do |t|
+    t.string   "firstName"
+    t.string   "lastName"
+    t.date     "birthday"
+    t.string   "lastNameParent"
+    t.string   "firstNameParent"
+    t.string   "adressParent"
+    t.string   "emailParent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "learning_objectives", force: true do |t|
     t.integer  "cognitiveDimension"
     t.integer  "knowledge_element_id"
@@ -283,6 +302,13 @@ ActiveRecord::Schema.define(version: 20160226173830) do
   end
 
   add_index "subexercises", ["exercise_id"], name: "index_subexercises_on_exercise_id"
+
+  create_table "teachers", force: true do |t|
+    t.string   "lastName"
+    t.string   "firstName"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "topics", force: true do |t|
     t.string   "name"
