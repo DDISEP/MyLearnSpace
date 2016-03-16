@@ -6,14 +6,14 @@ class User < ActiveRecord::Base
     include ActiveModel::Validations
     attr_accessible :username, :lastName, :firstName, :email, :birthday, :lastNameParent, :firstNameParent, :adressParent, :emailParent, :password, :pupil, :admin, :learner, :teacher
     validate :valid_user
-    has_and_belongs_to_many :curriculums
+    has_and_belongs_to_many :curriculums # mit Gruppe Zach Ellermeier abklären
     before_create :hash_password
     before_update :hash_password
     validates_uniqueness_of :username, :email
-    has_many :comments, dependent: :nullify
-    has_many :exercises, dependent: :nullify
-    has_many :likes, dependent: :destroy
-    has_many :performances, dependent: :destroy
+    has_many :comments, dependent: :nullify # mit Gruppe Hafemann Sticha absprechen
+    has_many :exercises, dependent: :nullify # mit Gruppe Ottinger Grett absprechen
+    has_many :likes, dependent: :destroy # mit Grupee Hafemann Sticha absprechen
+    has_many :performances, dependent: :destroy # mit Gruppe Ottinger Grett absprechen
 
     def hash_password
       self.password = Digest::MD5.hexdigest(self.password)
