@@ -24,7 +24,7 @@
 **/public/uploads/
 # **/public/assets/materials/
 
-# Ignore .idea
+# Ignore unnecessary folders
 **/.idea/
 **/.metadata/
 **/.settings/
