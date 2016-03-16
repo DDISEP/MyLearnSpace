@@ -2,7 +2,7 @@
 <%= render 'form' %>
 
 
-<%= button_to 'Zur Leistungsübersicht', progresses_path, :method => "get", class:"btn btn-xs btn-primary"%>
+<div style="text-indent: 20px"><%= button_to 'Zur Leistungsübersicht', progresses_path, :method => "get", class:"btn btn-xs btn-primary"%></div>
 
-<%= link_to 'Anzeigen', @progress %> |
-<%= link_to 'Zurück', progresses_path %>
+<div style="text-indent: 20px"><%= link_to 'Anzeigen', @progress %> </div>
+<%#= link_to 'Zurück', progresses_path %>
