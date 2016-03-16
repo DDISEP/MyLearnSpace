@@ -29,7 +29,7 @@
                 <!-- show title, author, and creation date for each exercise -->
                 <td> <%= link_to ke.name, ke %> </td>
                 <td> <%= ke.description %></td>
-                <td> <%= link_to ke.topic.name, ke.topic %></td>
+                <td> <% if !ke.topic.nil?%><%= link_to ke.topic.name, ke.topic %><%end%></td>
                 <td width="100">
                   <%= button_to 'Löschen', {:action => "destroy", :id => ke.id}, :confirm => 'Are you sure?', :method => "delete",
                                                :remote => true, :disable_with => 'loading...', class: "btn btn-xs btn-primary"%>
