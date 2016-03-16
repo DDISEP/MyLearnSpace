@@ -24,8 +24,15 @@ class KnowledgeElementsController < ApplicationController
   end
 
   def update
+    if(!params[:knowledge_element][:topic].nil?)
+      @topic = Topic.find_by_id(params[:knowledge_element][:topic])
+      @knowledgeElement = KnowledgeElement.find_by_id(params[:id])
+      @knowledgeElement.topic = @topic
+      @knowledgeElement.save
+    end
     KnowledgeElement.update(params[:id], :name => params[:knowledge_element][:name], :description=> params[:knowledge_element][:description], :topic_id => params[:knowledge_element][:topic])
     #flash[:notice] = params.inspect
+
     redirect_to knowledge_element_path(params[:id])
   end
 

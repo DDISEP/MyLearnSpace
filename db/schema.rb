@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 20160226173830) do
   create_table "knowledge_elements", force: true do |t|
     t.string   "name"
     t.text     "description"
+    t.integer  "topic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
