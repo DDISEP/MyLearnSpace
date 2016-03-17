@@ -8,9 +8,9 @@
 
 ### Arndt-Olwitz ###
 #User
-User.create(:username => "admin", :email => "admin@mls.de", :password => "password", :admin => TRUE)
-User.create(:username => "teacher", :email => "teacher@mls.de", :password => "password", :teacher => TRUE)
-User.create(:username => "learner", :email => "learner@mls.de", :password => "password", :learner => TRUE, :pupil => TRUE)
+User.create(:username => "admin", :email => "admin@mls.de", :password => "Password123!", :admin => TRUE)
+User.create(:username => "teacher", :email => "teacher@mls.de", :password => "Password123!", :teacher => TRUE)
+User.create(:username => "learner", :email => "learner@mls.de", :password => "Password123!", :learner => TRUE, :pupil => TRUE)
 
 
 ### Hafemann-Sticha ###
@@ -58,10 +58,10 @@ Wiki.create(:title => "Föhn (Wind)", :article => "Ein warmer Luftstrom aus den 
 @lo = LearningObjective.where(:knowledge_element_id => @ke1.id, :cognitiveDimension => 4).first
 @pc = @ke2.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke2.learning_objectives.first, :necessity => true, :parent_learning_objective => @lo)
 @pc.parent_learning_objective = @lo
-puts @pc.save!
+@pc.save!
 @pc = @ke3.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke3.learning_objectives.first, :necessity => true, :parent_learning_objective => @lo)
 @pc.parent_learning_objective = @lo
-puts @pc.save!
+@pc.save!
 
 
 ### Grett ###

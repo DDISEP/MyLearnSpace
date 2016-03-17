@@ -1,8 +1,8 @@
 class CreateNewsfeeds < ActiveRecord::Migration
   def change
     create_table :newsfeeds do |t|
-      t.String :subject
-      t.String :message
+      t.string :subject
+      t.string :message
       t.boolean :newsfeedToAll
 
       t.timestamps

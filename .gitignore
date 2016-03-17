@@ -22,7 +22,7 @@
 
 # Ignore uploaded files
 **/public/uploads/
-# **/public/assets/materials/
+**/public/assets/materials/
 
 # Ignore unnecessary folders
 **/.idea/
