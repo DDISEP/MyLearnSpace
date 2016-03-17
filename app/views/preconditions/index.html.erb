@@ -25,6 +25,12 @@
                <tr>
                  <td><%=p.parent_learning_objective.cognitiveDimension_to_s%> <%= link_to p.parent_learning_objective.knowledge_element.name, p.parent_learning_objective.knowledge_element%></td>
                  <td><%=p.learning_objective.cognitiveDimension_to_s%> <%=link_to p.learning_objective.knowledge_element.name, p.learning_objective.knowledge_element%></td>
+                 <td>
+                   <%= button_to 'Löschen', {:action => "destroy", :id => p.id}, :confirm => 'Are you sure?', :method => "delete",
+                                 :remote => true, :disable_with => 'loading...', class: "btn btn-xs btn-primary"%>
+                   <%#= button_to ("löschen", :id => ke.id, :method => :delete, data: {confirm: "Are you sure?"},
+                                               :remote => true, :disable_with => 'loading...'")
+                   %></td>
                </tr>
               </tbody>
             <%end%>

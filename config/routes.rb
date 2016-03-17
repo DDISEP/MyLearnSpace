@@ -108,6 +108,8 @@ MyLearnSpace::Application.routes.draw do
 
   resources :preconditions
 
+  resources :topics
+
   resources :subexercises
 
   # The priority is based upon order of creation: first created -> highest priority.

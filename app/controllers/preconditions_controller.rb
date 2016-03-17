@@ -18,22 +18,30 @@ class PreconditionsController < ApplicationController
   end
 
   def create
-    #@precondition = LearningObjective.find_by_id(params[:learning_objective_id]).parent_learning_objective_preconditions.build(:parent_learning_objective_id => params[:parent_learning_objective_id])
-    @precondition = LearningObjective.find_by_id(params[:learning_objective_id]).parent_learning_objective_preconditions.build(params.require(:precondition).permit(:necessity, :learning_objective_id, :parent_learning_objective_id))
+    @learningObjective = LearningObjective.find_by_id(params[:learning_objective_id])
+    @necessity = params["precondition"]["necessity"]
+    @parent_learning_objective = LearningObjective.find_by_id(params["precondition"]["parent_learning_objective_id"])
+    #@parent_learning_objective = LearningObjective.find_by_id(params[:preconditions[:parent_learning_objective_id]][:value].to_i)
+    #@necessity = params[:precondition[:necessity]].to_s.to_i
+    #@precondition = @learningObjective.parent_learning_objective_preconditions.build(:learning_objective => @learningObjective, :necessity => @necessity, :parent_learning_objective => @parent_learning_objective)
+    @precondition = @learningObjective.parent_learning_objective_preconditions.build(:learning_objective => @learningObjective, :necessity => @necessity, :parent_learning_objective => @parent_learning_objective)
+    #@precondition = @learningObjective.parent_learning_objective_preconditions.build(params.require(:precondition).permit(:necessity, :parent_learning_objective_id), :learning_objective_id)
+    @precondition.parent_learning_objective = @parent_learning_objective
 
-    flash[:notice] = params.inspect
+    #flash[:notice] = params.inspect
     if @precondition.save
       flash[:notice] = "Die Lernvorraussetzung wurde erfolgreich gespeichert"
-      redirect_to root_url
+      redirect_to knowledge_elements_path
     else
       flash[:notice] = "Es ist ein Fehler beim speichern der Lernvorraussetzung aufgetreten. Bitte versuchen Sie es später erneut"
-      redirect_to root_url
+      redirect_to knowledge_elements_url
     end
   end
 
   def destroy
-    @precondition = LearningObjetive.get_learning_objective(:learning_objective_id).preconditions.find(params[:perconditions_id])
+    @precondition = Precondition.find_by_id(params[:id])
     @precondition.destroy
+    flash[:notice] = "Die Precondition wurde gelöscht"
     #output missing
     redirect_to
   end

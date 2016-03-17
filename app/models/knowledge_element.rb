@@ -1,5 +1,5 @@
 class KnowledgeElement < ActiveRecord::Base
-  attr_accessible :name, :description, :learning_objectives, :exams
+  attr_accessible :name, :description, :learning_objectives, :exams, :topic
 
   validates :name, presence: true
   validates :description, presence: true
@@ -13,8 +13,8 @@ class KnowledgeElement < ActiveRecord::Base
   has_many :learning_objectives, :dependent => :destroy, inverse_of: :knowledge_element
   has_many :exams
 
-
-  has_and_belongs_to_many :topic
+  #n:1 relation between KnowledgeElement and Topic
+  belongs_to :topic
   
   #1:n relation between KnowledgeElement and Material
   has_many :materialtexts
