@@ -23,7 +23,7 @@
                   <%=@Users.find_by(id: progress.teacher_id).username%>
                 <%end%></td>
                 <td><%=progress.grade%></td>
-                <td><%=progress.created_att%></td>
+                <td><%=progress.created_at%></td>
                 <td><%= link_to 'Anzeigen', progress %></td>
                 <td><%= link_to 'Note bearbeiten', edit_progress_path(progress) %></td>
                 </tr>

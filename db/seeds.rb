@@ -8,9 +8,9 @@
 
 ### Arndt-Olwitz ###
 #User
-User.create(:username => "admin", :email => "admin@mls.de", :password => "password", :admin => TRUE)
-User.create(:username => "teacher", :email => "teacher@mls.de", :password => "password", :teacher => TRUE)
-User.create(:username => "learner", :email => "learner@mls.de", :password => "password", :learner => TRUE, :pupil => TRUE)
+User.create(:username => "admin", :email => "admin@mls.de", :password => "Password123!", :admin => TRUE)
+User.create(:username => "teacher", :email => "teacher@mls.de", :password => "Password123!", :teacher => TRUE)
+User.create(:username => "learner", :email => "learner@mls.de", :password => "Password123!", :learner => TRUE, :pupil => TRUE)
 
 
 ### Hafemann-Sticha ###
@@ -43,24 +43,25 @@ Wiki.create(:title => "Föhn (Wind)", :article => "Ein warmer Luftstrom aus den 
 
 
 ### Ellermeier-Zach ###
+#Knowledge_Element
 @ke1 = KnowledgeElement.create(:name=> "Information und Ihre Darstellung", :description => "Anhand von Beispielen aus ihrer Erfahrungswelt wird den Schülern deutlich, dass Information auf ganz unterschiedliche Weise dargestellt werden kann")
 @ke2 = KnowledgeElement.create(:name=> "Informationsdarstellung mit Graphikdokumenten - Graphiksoftware", :description => "Objekte als Informationseinheiten in Graphiken/n Objekte einer Vektorgraphik: Attribut, Attributwert und Methode")
 @ke3 = KnowledgeElement.create(:name=> "Informationsdarstellung mit Textdokumenten - Textverarbeitungssoftware", :description => "Objekte und Klassen in Texten, Zeichen, Absatz, Textdokument")
-
+#Learning_Objective
 6.times {|i| @ke1.learning_objectives.build(cognitiveDimension: (i+1))}
 6.times {|i| @ke2.learning_objectives.build(cognitiveDimension: (i+1))}
 6.times {|i| @ke3.learning_objectives.build(cognitiveDimension: (i+1))}
 @ke1.save
 @ke2.save
 @ke3.save
-
+#Precondition
 @lo = LearningObjective.where(:knowledge_element_id => @ke1.id, :cognitiveDimension => 4).first
 @pc = @ke2.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke2.learning_objectives.first, :necessity => true, :parent_learning_objective => @lo)
 @pc.parent_learning_objective = @lo
-puts @pc.save!
+@pc.save!
 @pc = @ke3.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke3.learning_objectives.first, :necessity => true, :parent_learning_objective => @lo)
 @pc.parent_learning_objective = @lo
-puts @pc.save!
+@pc.save!
 
 
 ### Grett ###
@@ -70,14 +71,10 @@ Subexercise.create(:position => 1, :text => "Funktion2", :solution_id => 2, :exe
 Subexercise.create(:position => 1, :text => "Funktion3", :solution_id => 4, :exercise_id => 1, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
 Subexercise.create(:position => 1, :text => "Funktion4", :solution_id => 2, :exercise_id => 2, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
 Subexercise.create(:position => 1, :text => "Term1", :solution_id => 2, :exercise_id => 3, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
-
-
-
 #Exercise
 Exercise.create(:title=> "Funktionen", :description=> "Berechne die Nullstelle", :user_id => 1, :knowledge_element_id=>1, :sequence => FALSE)
 Exercise.create(:title=> "Brüche", :description=> "Berechne den Bruch", :user_id => 2, :knowledge_element_id =>1, :sequence => FALSE)
 Exercise.create(:title=> "Terme", :description=> "Berechne den Term", :user_id => 2, :knowledge_element_id =>1, :sequence => TRUE)
-
 #Progress
 Progress.create(:learner_id =>3, :teacher_id=>1, :knowledge_element_id=>1, :grade =>3)
 Progress.create(:learner_id =>3, :teacher_id=>2, :knowledge_element_id=>2, :grade =>2)
