@@ -1,0 +1,29 @@
+<h1>Listing materialdocuments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @materialdocuments.each do |materialdocument| %>
+      <tr>
+        <td><%= materialdocument.title %></td>
+        <td><%= materialdocument.user_id %></td>
+        <td><%= link_to 'Show', materialdocument %></td>
+        <td><%= link_to 'Edit', edit_materialdocument_path(materialdocument) %></td>
+        <td><%= link_to 'Destroy', materialdocument, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Materialdocument', new_materialdocument_path %>

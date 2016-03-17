@@ -134,7 +134,7 @@ def index
 end
 
 def destroy
-if session[:admin].nil?
+if !@current_user.admin?
   respond_to do |format|
       format.js {render js: "alert('Nur Administratoren duerfen Artikel loeschen!');"}
       format.html {render text: "Nur Administratoren duerfen Dateien loeschen!"}
