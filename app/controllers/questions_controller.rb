@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     @questions = Question.all
+    @current_user = User.find(session[:current_user_id])
   end
 
   # GET /questions/1
@@ -24,12 +25,7 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
-    
-    if session[:name] == nil
-      @question.user_name = 'Illegaler Frager'
-    else
-      @question.user_name = session[:name]
-    end
+    @question.user_name = @current_user.username
 
     respond_to do |format|
       if @question.save
@@ -45,13 +41,20 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
-    respond_to do |format|
-      if @question.update(question_params)
-        format.html { redirect_to @question, notice: 'Question was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
+    if @current_user.id == User.find_by_username(@question.user_name).id
+      respond_to do |format|
+        if @question.update(question_params)
+          format.html { redirect_to @question, notice: 'Die Frage wurde erfolgreich bearbeitet!' }
+          format.json { head :no_content }
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @question.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @question, notice: 'Nur der Autor darf seine Fragen bearbeiten!' }
+        format.html {render text: "Nur der Autor darf seine Fragen bearbeiten"}
       end
     end
   end
@@ -59,10 +62,17 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
-    @question.destroy
-    respond_to do |format|
-      format.html { redirect_to questions_url }
-      format.json { head :no_content }
+    if (@current_user.id == User.find_by_username(@question.user_name).id) || @current_user.admin?
+      @question.destroy
+      respond_to do |format|
+        format.html { redirect_to questions_url, notice: 'Die Frage wurde erfolgreich gelöscht!' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to @question, notice: 'Nur der Autor oder ein Admin dürfen Fragen löschen!' }
+        format.html {render text: "Nur der Autor oder ein Admin dürfen Fragen löschen!"}
+      end
     end
   end
 
@@ -74,6 +84,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:title, :text)
+      params.require(:question).permit(:title, :text, :user_name, :knowledge_element_id)
     end
 end

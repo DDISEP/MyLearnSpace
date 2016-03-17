@@ -1,0 +1,28 @@
+<%= form_for @materialdocument, :html => { :multipart => true } do |f| %>
+  <% if @materialdocument.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@materialdocument.errors.count, "error") %> prohibited this materialdocument from being saved:</h2>
+
+      <ul>
+      <% @materialdocument.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.file_field :file %>
+  </div>
+  <div class="field">
+    <%= f.label :Thema %><br>
+    <%= f.collection_select :knowledge_element_id, KnowledgeElement.order(:name), :id, :name, prompt: 'Wähle ein Thema' %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Dokument hochladen', data: { disable_with: 'Lädt hoch' } %>
+  </div>
+<% end %>

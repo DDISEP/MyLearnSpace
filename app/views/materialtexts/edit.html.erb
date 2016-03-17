@@ -1,6 +1,4 @@
-<h1>Editing materialtext</h1>
+<h1>Text bearbeiten</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @materialtext %> |
-<%= link_to 'Back', materialtexts_path %>
+<%= button_to 'Zurück', @materialtext, :method => "get" %>

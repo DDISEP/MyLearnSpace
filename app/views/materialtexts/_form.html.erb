@@ -20,10 +20,10 @@
     <%= f.text_area :text %>
   </div>
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.label :Thema %><br>
+    <%= f.collection_select :knowledge_element_id, KnowledgeElement.order(:name), :id, :name, prompt: 'Wähle ein Thema' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Text erstellen' %>
   </div>
 <% end %>

@@ -1,49 +1,70 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Überschrift:</strong>
-  <%= @question.title %>
+  <%= KnowledgeElement.find_by_id(@question.knowledge_element_id).name %>
 </p>
 
 <p>
-  <strong>Frage:</strong>
+  <strong><%= @question.title %></strong>
+</p>
+
+<p>
   <%= @question.text %>
 </p>
 
 <p>
-	Gefragt von <%= @question.user_name %> am <%= @question.created_at %>
+	<i>Gefragt von <%= @question.user_name %> am <%= @question.created_at %></i>
 </p>
+
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= button_to 'Frage melden', @question, :method => "get" %></td>
+    <!--Frage bearbeiten wurde nach Diskussion entfernt, da sonst etwaige Antworten nicht mehr auf die Frage passen könnten.-->
+    <!--td>%= button_to 'Frage bearbeiten', edit_question_path, :method => "get" %></td-->
+    <td><%= button_to 'Frage löschen', question_path, {:method => "delete", :id => @question.id, data: { confirm: "Bist Du sicher?"}} %></td>
+  </tr>
+  </tbody>
+</table>
 
 <div id='thread'>
 <%= render 'thread'%>
 </div>
 
-<div>
-	<%= form_for [@question, @answer], :remote => true do |f| %>
-	  <% if @answer.errors.any? %>
-	    <div id="error_explanation">
-	      <h2>Wegen folgender Fehler konnte deine Antwort nicht gespeichert werden:</h2>
-	
-	      <ul>
-	      <% @answer.errors.full_messages.each do |msg| %>		        <li><%= msg %></li>
-	      <% end %>
-	      </ul>
-	    </div>
-	  <% end %>
-	
-	  <% if @answers.empty? %>
-	  	Frage beantworten:
-  	  <% else %>
-  	  	Eigene Antwort hinzufügen:
-	  <% end %>
-	
-	  <div class="field">
-	    <%= f.text_field :text %>
-	  </div>
-	  <div class="actions">
-	    <%= f.submit 'Antwort abschicken' %>
-	  </div>
-	<% end %>
-</div>
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <%= form_tag(new_answer_path, :method=>'get') do %>
+          <%= text_area_tag "text" %>
+          <%= hidden_field_tag "question_id", @question.id %>
+          &nbsp;&nbsp;&nbsp;
+          <%= submit_tag 'Frage beantworten' %>
+      <% end %>
+    </td>
+  </tr>
+  </tbody>
+</table>
 
-<%= link_to 'Zurück', questions_path %>
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= button_to 'Zurück', questions_path, :method => "get" %></td>
+  </tr>
+  </tbody>
+</table>
