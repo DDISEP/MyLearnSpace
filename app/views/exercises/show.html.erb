@@ -30,7 +30,7 @@
 </div>
 <% end %>
 
-<div class="col-sm-4" id="info_and_actions" style="overflow-y:scroll; height:350px;"> 
+<div class="col-sm-4" id="info_and_actions" style="overflow-y:scroll; height:350px;">
 	<h3> Info </h3> <!-- Informationen zur Aufgabe -->
 	von <%= link_to @exercise.user.username, @exercise.user %> <br/>
 	erstellt: <%= @exercise.created_at.to_s(format = :db) %> <br/>
@@ -94,13 +94,22 @@
 		<% end %>
 	</div>
 	<% end %>
+
+    <!-- Neue Teilaufgabe-Button -->
+    <% if @exercise.user_id == session[:current_user_id] || session[:admin] || session[:teacher] == true then%>
+      <div class="row-fluid">
+        <%= button_to new_subexercise_path(@exercise),  :method => :get, :params => {:exercise_id => @exercise}, style:"width: 100%", class:"btn btn-xs btn-primary" do %>
+            Neue Teilaufgabe hinzufügen   <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+      </div>
+    <% end %>
 	
 	<!-- Zurück-Button -->
 	<div class="row-fluid"><%= button_to 'Zurück zur Lernaufgabenübersicht' , exercises_path, :method => :get, style:"width: 100%", class:"btn btn-xs btn-primary" %></div>
 		
 </div> <!-- /col-4-sm -->
 
-<div class="col-sm-8 panel panel-default" id="comment_column" style="overflow-y:scroll; height:350px;S">
+<div class="col-sm-8 panel panel-default" id="comment_column" style="overflow-y:scroll; height:350px;">
 	<h3> Kommentare </h3>
 	<div id="comment_form">
 		<%= render 'comments/form' %>

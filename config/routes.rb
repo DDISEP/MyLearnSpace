@@ -1,5 +1,11 @@
 MyLearnSpace::Application.routes.draw do
   
+  resources :progresses
+
+  resources :exams
+
+  resources :exerciseoverviews
+
   resources :materialdocuments
 
   resources :answers
@@ -101,7 +107,8 @@ MyLearnSpace::Application.routes.draw do
   resources :learning_objectives
 
   resources :preconditions
- 
+
+  resources :subexercises
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

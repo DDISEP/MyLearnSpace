@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  maxPoints: 
-  minPoints: 
+  maxPoints: 1
+  minPoints: 1
+  maxTime: 2016-03-03 14:50:16
 
 two:
-  maxPoints: 
-  minPoints: 
+  maxPoints: 1
+  minPoints: 1
+  maxTime: 2016-03-03 14:50:16

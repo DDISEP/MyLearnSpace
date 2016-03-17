@@ -21,6 +21,10 @@ class LearningObjectivesController < ApplicationController
 
   end
 
+  def get_knowlegde_element
+    return @knowledge_element
+  end
+
 
 
 end

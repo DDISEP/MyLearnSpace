@@ -1,0 +1,121 @@
+<% if @current_user.admin?%>
+    <h4>Alle Leistungen:</h4>
+
+    <table class="table table-striped">
+      <thead>
+      <tr><strong>
+        <th>Lerneinheit</th>
+        <th>Schüler</th>
+        <th>Lehrer</th>
+        <th>Note</th>
+        <th>Datum</th>
+      </strong></tr>
+      </thead>
+
+      <tbody>
+
+      <% @progresses.each do |progress| %>
+          <tr>
+                <td><%=@knowledgeElements.find_by(id: progress.knowledge_element_id).name%></td>
+                <td><%=@Users.find_by(id: progress.learner_id).username%></td>
+                <td><%if progress.teacher_id.nil?%>
+                <%else%>
+                  <%=@Users.find_by(id: progress.teacher_id).username%>
+                <%end%></td>
+                <td><%=progress.grade%></td>
+                <td><%=progress.created_att%></td>
+                <td><%= link_to 'Anzeigen', progress %></td>
+                <td><%= link_to 'Note bearbeiten', edit_progress_path(progress) %></td>
+                </tr>
+
+      <%end%>
+      </tbody>
+    </table>
+
+    <br>
+
+
+
+<% elsif @current_user.learner?%>
+    <h4>Deine Leistungen:</h4>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Lerneinheit</th>
+        <th>Note</th>
+        <th>Lehrer</th>
+        <th>Datum</th>
+      </tr>
+      </thead>
+    <tbody>
+
+    <% @progresses.each do |progress| %>
+        <tr>
+          <%if progress.learner_id == @current_user.id%>
+              <td><%=@knowledgeElements.find_by(id: progress.knowledge_element_id).name%></td>
+              <td><%=progress.grade%></td>
+              <td><%if progress.teacher_id.nil?%>
+                <%else%>
+                    <%=@Users.find_by(id: progress.teacher_id).username%>
+                <%end%></td>
+              <td><%=progress.created_at%></td>
+              <td><%= link_to 'Anzeigen', progress %></td>
+              </tr>
+          <%else%>
+          <%end%>
+          <%end%>
+    </tbody>
+        </table>
+
+<%elsif @current_user.teacher?%>
+        <h4>Alle von mir bewerteten Leistungen:</h4>
+
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Lerneinheit</th>
+            <th>Schüler</th>
+            <th>Lehrer</th>
+            <th>Note</th>
+            <th>Datum</th>
+          </tr>
+          </thead>
+
+          <tbody>
+
+          <% @progresses.each do |progress| %>
+              <tr>
+                <% if progress.teacher_id.nil?%>
+                    <td><%=@knowledgeElements.find_by(id: progress.knowledge_element_id).name%></td>
+                    <td><%=@Users.find_by(id: progress.learner_id).username%></td>
+                    <td></td>
+                    <td><%=progress.grade%></td>
+                    <td><%=progress.updated_at%></td>
+                    <td><%= link_to 'Anzeigen', progress %></td>
+                    <td><%= link_to 'Note bearbeiten', edit_progress_path(progress) %></td>
+                    </tr>
+                <%else%>
+                    <%if progress.teacher_id == @current_user.id%>
+                        <td><%=@knowledgeElements.find_by(id: progress.knowledge_element_id).name%></td>
+                        <td><%=@Users.find_by(id: progress.learner_id).username%></td>
+                        <td><%=@Users.find_by(id: progress.teacher_id).username%></td>
+                        <td><%=progress.grade%></td>
+                        <td><%=progress.created_at%></td>
+                        <td><%= link_to 'Anzeigen', progress %></td>
+                        <td><%= link_to 'Note bearbeiten', edit_progress_path(progress) %></td> </tr>
+                    <%else%>
+                    <%end%>
+                <%end%>
+          <%end%>
+          </tbody>
+        </table>
+<%end%>
+
+
+
+
+
+
+
+
+

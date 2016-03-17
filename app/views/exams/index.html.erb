@@ -1,0 +1,9 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <h4>Wähle die Lerneinheit aus, in der du die Klausur schreiben möchtest.</h4>
+    <% @knowledgeElements.each do |ex| %>
+          <li> <%= link_to ex.name, edit_exam_path(ex.id)%> </li>
+    <% end %>
+
+  </div>
+</div>
