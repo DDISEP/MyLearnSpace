@@ -1,6 +1,4 @@
-<h1>Editing materialpicture</h1>
+<h1>Bild bearbeiten</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @materialpicture %> |
-<%= link_to 'Back', materialpictures_path %>
+<%= button_to 'Zurück', @materialpicture, :method => "get" %>

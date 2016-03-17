@@ -21,13 +21,12 @@
 	<div class="span4">
 		<%= button_to  exercise_path(@exercise, :authenticity_token => form_authenticity_token),
 			:method => :delete, data: {confirm:"Willst Du die Lernaufgabe wirklich löschen?"}, class:"btn btn-xs btn-primary", style:"width:100%" do %>
-			<span class="glyphicon glyphicon-trash"</span> Löschen
+			<span class="glyphicon glyphicon-trash"></span> Löschen
 		<% end%>
 	</div>	
 	<div class="span4">
 		<%= button_to "zurück",  exercise_path(@exercise), :method => :get, class:"btn btn-xs btn-primary", style:"width:100%" %>
 	</div>	
-</div>	<!-- /row-fluid -->
+</div>	<!-- /row-fluid --<
 <%= render 'subexercises/list_subexercises' %>
-	
-</div> 
+</div>

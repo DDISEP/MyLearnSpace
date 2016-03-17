@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Maxpoints:</strong>
+  <%= @exam.maxPoints %>
+</p>
+
+<p>
+  <strong>Minpoints:</strong>
+  <%= @exam.minPoints %>
+</p>
+
+<p>
+  <strong>Maxtime:</strong>
+  <%= @exam.maxTime %>
+</p>
+
+<%= link_to 'Edit', edit_exam_path(@exam) %> |
+<%= link_to 'Back', exams_path %>

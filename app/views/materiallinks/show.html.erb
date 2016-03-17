@@ -1,19 +1,34 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @materiallink.title %>
+  <%= KnowledgeElement.find_by_id(@materiallink.knowledge_element_id).name %>
 </p>
 
 <p>
-  <strong>Link:</strong>
-  <%= @materiallink.link %>
+  <strong><%= @materiallink.title %></strong>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @materiallink.user_id %>
+  <a href=<%= @materiallink.link %>><%= @materiallink.link %></a>
 </p>
 
-<%= link_to 'Edit', edit_materiallink_path(@materiallink) %> |
-<%= link_to 'Back', materiallinks_path %>
+<p>
+  <i>Erstellt von <%= User.find_by(@materiallink.user_id).username %> am <%= @materiallink.created_at %></i>
+</p>
+
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= button_to 'Bearbeiten', edit_materiallink_path, {:method => "get", :id => @materiallink.id} %></td>
+        <!-- TODO: Message an alle Admins und Teacher -->
+        <td><%= button_to 'Link melden', @materiallink, :method => "get" %></td>
+        <td><%= button_to 'Löschen', materiallink_path, {:method => "delete", :id => @materiallink.id, data: { confirm: "Bist Du sicher?"}} %></td>
+        <td><%= button_to 'Zurück', materials_path, :method => "get" %></td>
+      </tr>
+  </tbody>
+</table>

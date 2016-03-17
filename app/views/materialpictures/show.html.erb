@@ -1,29 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @materialpicture.title %>
+  <%= KnowledgeElement.find_by_id(@materialpicture.knowledge_element_id).name %>
 </p>
 
 <p>
-  <strong>File:</strong>
-  <%= @materialpicture.file %>
+  <strong><%= @materialpicture.title %></strong>
 </p>
 
 <p>
-  <strong>Filename:</strong>
-  <%= @materialpicture.filename %>
+<%= image_tag @materialpicture.file.url %>
 </p>
 
 <p>
-  <strong>Fileformat:</strong>
-  <%= @materialpicture.fileformat %>
+  <i>Erstellt von <%= User.find_by(@materialpicture.user_id).username %> am <%= @materialpicture.created_at %></i>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @materialpicture.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_materialpicture_path(@materialpicture) %> |
-<%= link_to 'Back', materialpictures_path %>
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <!-- TODO: Message an alle Admins und Teacher -->
+    <td><%= button_to 'Bild melden', @materialpicture, :method => "get" %></td>
+    <td><%= button_to 'Löschen', materialpicture_path, {:method => "delete", :id => @materialpicture.id, data: { confirm: "Bist Du sicher?"}} %></td>
+    <td><%= button_to 'Zurück', materials_path, :method => "get" %></td>
+  </tr>
+  </tbody>
+</table>

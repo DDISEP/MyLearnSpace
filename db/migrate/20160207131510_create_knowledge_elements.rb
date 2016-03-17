@@ -8,6 +8,7 @@ class CreateKnowledgeElements < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_join_table :knowledge_elements, :materials
+    #not necessary (vier Jointabellen mit jeweils materialtext, -link, etc.)
+    #create_join_table :knowledge_elements, :materials
   end
 end

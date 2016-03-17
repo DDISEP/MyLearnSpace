@@ -1,9 +1,20 @@
-<% @answers.each do |answer| %>
-	<p>
-		<strong>Antwort von <%= answer.user_name %> vom <%= answer.created_at %>:</strong>
-		<%= answer.text%>
-	</p>
-<% end %>
-<% if @answers.empty? %>
-	<em>Diese Frage wurde noch nicht beantwortet</em>
-<% end %>
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @answers.each do |answer| %>
+      <tr>
+        <td><strong><%= User.find_by_id(answer.user_id).username %>: &nbsp;</strong></td>
+        <td><%= answer.text %>&nbsp;&nbsp;</td>
+        <td><i><%= answer.created_at %>&nbsp;&nbsp;</i></td>
+        <td><%= link_to 'Bearbeiten', edit_answer_path(answer.id) %>&nbsp;|&nbsp;</td>
+        <td><%= link_to 'Beitrag melden', @question %>&nbsp;|&nbsp;</td>
+        <td><%= link_to 'Löschen', answer, :method => "get" %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
