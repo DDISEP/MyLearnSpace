@@ -54,3 +54,8 @@ Wiki.create(:article => "DerTitel2", :title => "WikiInhalt2")
 
 @lo = LearningObjective.where(:knowledge_element_id => @ke1.id, :cognitiveDimension => 4).first
 @pc = @ke2.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke2.learning_objectives.first, :necessity => true, :parent_learning_objective => @lo)
+@pc.parent_learning_objective = @lo
+puts @pc.save!
+@pc = @ke3.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke3.learning_objectives.first, :necessity => true, :parent_learning_objective => @lo)
+@pc.parent_learning_objective = @lo
+puts @pc.save!
