@@ -1,0 +1,89 @@
+<div class="container-fluid" xmlns="http://www.w3.org/1999/html">
+<h4>Bitte beachte, dass deine Klausur ungültig ist, sobald du die Seite verlässt.</h4>
+
+<h3><%= @knowledgeElements.name %></h3>
+  <br>
+
+
+<%= form_tag(progresses_path, :method=>'post') do %>
+      <%= hidden_field_tag "ke_id", @knowledgeElements.id %>
+  <%exerciseOnes= Array[]%>
+
+  <% @subexercises1.each do |sub1| %>
+      <% if sub1.exercise.knowledge_element_id == @knowledgeElements.id && !(sub1.exercise.sequence)%>
+          <%exerciseOnes.push(sub1)%>
+      <%end%>
+  <%end%>
+  <%randomExercise1=exerciseOnes.sort_by {rand}%>
+  <% if randomExercise1.empty?%>
+      <%="keine Aufgabe vorhanden."%>
+  <%else %>
+      <h5><t>Aufgabe 1:</t>
+        <%=@exercises.find_by(id: randomExercise1.first.exercise_id).title  %></h5>
+      <%=@exercises.find_by(id: randomExercise1.first.exercise_id).description %>
+      <br>
+      <%=randomExercise1.first.text%><%end%>
+  <br>
+  <%= text_area_tag "text1" %>
+      <% if randomExercise1.empty?%>
+      <%else%>
+          <%= hidden_field_tag "ex1_id", randomExercise1.first.id %>
+          <%end%>
+
+
+      <%exerciseTwos= Array[]%>
+
+      <% @subexercises2.each do |sub1| %>
+          <% if sub1.exercise.knowledge_element_id == @knowledgeElements.id && !(sub1.exercise.sequence)%>
+              <%exerciseTwos.push(sub1)%>
+          <%end%>
+      <%end%>
+      <%randomExercise2=exerciseTwos.sort_by {rand}%>
+      <% if randomExercise2.empty?%>
+          <br>
+          <%="keine Aufgabe vorhanden."%>
+      <%else %>
+          <h5><t>Aufgabe 2:</t>
+            <%=@exercises.find_by(id: randomExercise2.first.exercise_id).title  %></h5>
+          <%=@exercises.find_by(id: randomExercise2.first.exercise_id).description %>
+          <br>
+          <%=randomExercise2.first.text%><%end%>
+      <br>
+  <%= text_area_tag "text2" %>
+      <% if randomExercise2.empty?%>
+      <%else%>
+          <%= hidden_field_tag "ex2_id", randomExercise2.first.id %>
+      <%end%>
+
+
+
+      <%exerciseThrees= Array[]%>
+
+      <% @subexercises3.each do |sub1| %>
+          <% if sub1.exercise.knowledge_element_id == @knowledgeElements.id && !(sub1.exercise.sequence)%>
+              <%exerciseThrees.push(sub1)%>
+          <%end%>
+      <%end%>
+      <%randomExercise3=exerciseThrees.sort_by {rand}%>
+      <% if randomExercise3.empty?%>
+          <br>
+          <%="keine Aufgabe vorhanden."%>
+      <%else %>
+          <h5><t>Aufgabe 2:</t>
+            <%=@exercises.find_by(id: randomExercise3.first.exercise_id).title  %></h5>
+          <%=@exercises.find_by(id: randomExercise3.first.exercise_id).description %>
+          <br>
+          <%=randomExercise3.first.text%><%end%>
+      <br>
+  <%= text_area_tag "text3" %>
+      <% if randomExercise3.empty?%>
+      <%else%>
+          <%= hidden_field_tag "ex3_id", randomExercise3.first.id %>
+      <%end%>
+      <br>
+  <%= submit_tag 'Klausur abgeben',class:"btn btn-xs btn-primary" %>
+<% end %>
+
+</div>
+
+

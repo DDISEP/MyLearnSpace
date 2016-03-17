@@ -1,7 +1,7 @@
 class Exercise < ActiveRecord::Base
   
-  attr_accessor :like_counter, :max_points, :subexercise_counter, :author_name
-  attr_accessible :like_counter, :max_points, :subexercise_counter, :author_name
+  #attr_accessor :like_counter, :max_points, :subexercise_counter, :author_name, :title, :description
+  attr_accessible :like_counter, :max_points, :subexercise_counter, :author_name, :title, :description, :user_id, :knowledge_element_id, :sequence
   
   belongs_to :user
   has_many :comments, dependent: :destroy
@@ -10,6 +10,7 @@ class Exercise < ActiveRecord::Base
   has_many :performances, dependent: :destroy
   has_many :exercise_contents, dependent: :destroy
   has_many :contents, through: :exercise_contents
+  belongs_to :knowledge_element
   
   # returns String representation of associated contents
   def tags

@@ -1,4 +1,4 @@
-<%= form_for(@materialpicture) do |f| %>
+<%= form_for @materialpicture, :html => { :multipart => true } do |f| %>
   <% if @materialpicture.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@materialpicture.errors.count, "error") %> prohibited this materialpicture from being saved:</h2>
@@ -16,22 +16,13 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :file %><br>
-    <%= f.text_field :file %>
+    <%= f.file_field :file %>
   </div>
   <div class="field">
-    <%= f.label :filename %><br>
-    <%= f.text_field :filename %>
-  </div>
-  <div class="field">
-    <%= f.label :fileformat %><br>
-    <%= f.text_field :fileformat %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.label :Thema %><br>
+    <%= f.collection_select :knowledge_element_id, KnowledgeElement.order(:name), :id, :name, prompt: 'Wähle ein Thema' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Bild hochladen', data: { disable_with: 'Lädt hoch' } %>
   </div>
 <% end %>

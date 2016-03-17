@@ -15,29 +15,31 @@ User.create(:username => "learner", :email => "learner@mls.de", :password => "pa
 
 ### Hafemann-Sticha ###
 #Materialtext
-Materialtext.create(:title => "Materialtext1", :text => "TextZuMaterialtext1", :user_id => 1)
-Materialtext.create(:title => "Materialtext2", :text => "TextZuMaterialtext2", :user_id => 2)
-Materialtext.create(:title => "Materialtext3", :text => "TextZuMaterialtext3", :user_id => 3)
+Materialtext.create(:title => "Lorem ipsum", :text => "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.", :user_id => 1, :knowledge_element_id => 1)
+Materialtext.create(:title => "Goethe: Faust", :text => "Habe nun, ach! Philosophie, Juristerei und Medizin, Und leider auch Theologie Durchaus studiert, mit heißem Bemühn. Da steh ich nun, ich armer Tor! Und bin so klug als wie zuvor.", :user_id => 2, :knowledge_element_id => 2)
+Materialtext.create(:title => "Robbie Williams: Angels", :text => "I sit and wait, does an angel contemplate my fate, And do they know, The places where we go, When we're grey and old, 'cause I have been told, That salvation lets their wings unfold, So when I'm lying in my bed, Thoughts running through my head, And I feel that love is dead, I'm loving angels instead", :user_id => 3, :knowledge_element_id => 3)
 #Materiallink
-Materiallink.create(:title => "Materiallink1", :link => "http://mylollispace.de", :user_id => 1)
-Materiallink.create(:title => "Materiallink2", :link => "http://google.de", :user_id => 2)
-Materiallink.create(:title => "Materiallink3", :link => "http://youtube.de", :user_id => 3)
+Materiallink.create(:title => "Facebook", :link => "http://facebook.com", :user_id => 1, :knowledge_element_id => 1)
+Materiallink.create(:title => "Google", :link => "http://google.de", :user_id => 2, :knowledge_element_id => 2)
+Materiallink.create(:title => "Youtube", :link => "http://youtube.de", :user_id => 3, :knowledge_element_id => 3)
 #Materialpicture
-Materialpicture.create(:title => "Materialpicture1", :file => '010101001101', :filename => "file1", :fileformat => "png", :user_id => 1)
+Materialpicture.create(:title => "Testbild", :user_id => 2, :file_file_name => "image.gif", :file_content_type => "image/gif", :file_file_size => 10641, :knowledge_element_id => 2)
 #Materialvideo
-Materialvideo.create(:title => "Materialpicture1", :file => '010101001110001', :filename => "file1", :fileformat => "avi", :user_id => 1)
+Materialvideo.create(:title => "Häschen", :user_id => 3, :file_file_name => "hasi.mp4", :file_content_type => "video/mp4", :file_file_size => 1057149, :knowledge_element_id => 1)
+#Materialdocument
+Materialdocument.create(:title => "Druckertest", :user_id => 2, :file_file_name => "testfile.pdf", :file_content_type => "application/pdf", :file_file_size => 80513, :knowledge_element_id => 3)
 #Question
-Question.create(:title => "Frage1?", :text => "FragentextZurFrage1", :user_name => "admin")
-Question.create(:title => "Frage2?", :text => "FragentextZurFrage2", :user_name => "teacher")
-Question.create(:title => "Frage3?", :text => "FragentextZurFrage3", :user_name => "learner")
+Question.create(:title => "Welche Farbe hat euer Kugelschreiber?", :text => "Mich interessiert, welche Farbe euer Kugelschreiber hat :)", :user_name => "admin", :knowledge_element_id => 1)
+Question.create(:title => "Gefällt dir MLS?", :text => "Habt ihr Anregungen oder Feedback?", :user_name => "teacher", :knowledge_element_id => 2)
+Question.create(:title => "Käse oder Schinken?", :text => "Was esst ihr denn lieber?", :user_name => "learner", :knowledge_element_id => 3)
 #Answer
-Answer.create(:text => "Antwort1AufFrage1", :question_id => 1, :user_name => "teacher")
-Answer.create(:text => "Antwort2AufFrage1", :question_id => 1, :user_name => "learner")
-Answer.create(:text => "Antwort3AufFrage1", :question_id => 1, :user_name => "admin")
-Answer.create(:text => "Antwort1AufFrage2", :question_id => 2, :user_name => "learner")
+Answer.create(:text => "blau", :question_id => 1, :user_id => 2)
+Answer.create(:text => "schwarz", :question_id => 1, :user_id => 3)
+Answer.create(:text => "auch blau", :question_id => 1, :user_id => 1)
+Answer.create(:text => "nur Dienstags ...", :question_id => 2, :user_id => 3)
 #Wiki
-Wiki.create(:title => "DerTitel1", :article => "WikiInhalt1")
-Wiki.create(:article => "DerTitel2", :title => "WikiInhalt2")
+Wiki.create(:title => "Föhn (elektronisches_Gerät)", :article => "Ein elektronisches Gerät zum Trocknen der Haare")
+Wiki.create(:title => "Föhn (Wind)", :article => "Ein warmer Luftstrom aus den Alpen")
 
 
 ### Ellermeier-Zach ###
@@ -54,3 +56,23 @@ Wiki.create(:article => "DerTitel2", :title => "WikiInhalt2")
 
 @lo = LearningObjective.where(:knowledge_element_id => @ke1.id, :cognitiveDimension => 4).first
 @pc = @ke2.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke2.learning_objectives.first, :necessity => true, :parent_learning_objective => @lo)
+
+
+### Grett ###
+#Subexercise
+Subexercise.create(:position => 1, :text => "Funktion", :solution_id =>1, :exercise_id => 1, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
+Subexercise.create(:position => 1, :text => "Funktion2", :solution_id => 2, :exercise_id => 1, :points => 2, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
+Subexercise.create(:position => 1, :text => "Funktion3", :solution_id => 4, :exercise_id => 1, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
+Subexercise.create(:position => 1, :text => "Funktion4", :solution_id => 2, :exercise_id => 2, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
+Subexercise.create(:position => 1, :text => "Term1", :solution_id => 2, :exercise_id => 3, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
+
+
+
+#Exercise
+Exercise.create(:title=> "Funktionen", :description=> "Berechne die Nullstelle", :user_id => 1, :knowledge_element_id=>1, :sequence => FALSE)
+Exercise.create(:title=> "Brüche", :description=> "Berechne den Bruch", :user_id => 2, :knowledge_element_id =>1, :sequence => FALSE)
+Exercise.create(:title=> "Terme", :description=> "Berechne den Term", :user_id => 2, :knowledge_element_id =>1, :sequence => TRUE)
+
+#Progress
+Progress.create(:learner_id =>3, :teacher_id=>1, :knowledge_element_id=>1, :grade =>3)
+Progress.create(:learner_id =>3, :teacher_id=>2, :knowledge_element_id=>2, :grade =>2)

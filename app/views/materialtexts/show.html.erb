@@ -1,19 +1,34 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @materialtext.title %>
+  <%= KnowledgeElement.find_by_id(@materialtext.knowledge_element_id).name %>
 </p>
 
 <p>
-  <strong>Text:</strong>
+  <strong> <%= @materialtext.title %> </strong>
+</p>
+
+<p>
   <%= @materialtext.text %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @materialtext.user_id %>
+  <i>Erstellt von <%= User.find_by(@materialtext.user_id).username %> am <%= @materialtext.created_at %></i>
 </p>
 
-<%= link_to 'Edit', edit_materialtext_path(@materialtext) %> |
-<%= link_to 'Back', materialtexts_path %>
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= button_to 'Bearbeiten', edit_materialtext_path, {:method => "get", :id => @materialtext.id} %></td>
+        <!-- TODO: Message an alle Admins und Teacher -->
+        <td><%= button_to 'Text melden', @materialtext, :method => "get" %></td>
+        <td><%= button_to 'Löschen', materialtext_path, {:method => "delete", :id => @materialtext.id, data: { confirm: "Bist Du sicher?"}} %></td>
+        <td><%= button_to 'Zurück', materials_path, :method => "get" %></td>
+      </tr>
+  </tbody>
+</table>

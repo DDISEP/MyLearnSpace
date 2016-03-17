@@ -1,6 +1,50 @@
 Glossar
 -------
 
+## Grett - Ottinger ##
+Exam:
+Die Klasse Exam gibt die Möglichkeit Exams zu einem KnowledegElement zusammenzustellen und diese von einem Learner bearbeiten zu lassen.
+Jedes Exam besteht aus drei Exercise mit jeweils einer Subexercise. Das KnowledeElement jeder Exercise muss hierfür mit dem KnowledegElement des Exams übereinstimmen
+und das Attribut sequence jeder Exercise muss False gesetzt sein.
+Außerdem bestitzt die erste Subexercise die cognitive_dimension 1, die zweite Subexercise die cognitive_dimension 3 und die dritte Subexercise die cognitive_dimension 6.
+Desweitern müssen die Attribute active und examItem jeder Subexercise auf True gesetzt sein.
+Nach diesen Kriterien wird ein Exam zufällig zusammengestellt, sodass sich Exams zum gleichen KnowledegeElement unterscheiden können.
+Das Attribut minPoints speichert die minimale Punktzahl, das Attribut maxPoints die maximale Punktzahl und maxTime die Zeit, in der das Exam bearbeitet werden muss.
+Diese drei Attribute sind weitere Kriterien für die Zusammenstellung eines Exams, die jedoch zu diesem Zeitpunkt auf Grund der geringen Aufgabenmenge noch außer Acht gelassen wurden.
+
+Exercise:
+
+Performance:
+
+Progress:
+In der Klasse Progress wird die Bearbeitung eines Exams zusammen mit dem Learner, von welchem das Exam bearbeitet wurde, gespeichert.
+Hierbei wird der Learner mit Hilfe seiner User Id gespeichert. Die Bearbeitung der einzelnen Aufgaben wird in den Attributen submission1, submission2 und submission3 als Text gespeichert.
+Außerdem werden die Ids der drei im Exam verwendeten Subexercises gespeichert. Dies ist sinnvoll, damit die Bearbeitung auch zu einem späteren Zeitpunkt nachvollziehbar ist.
+Zuständig hierfür sind die Attribute subexercise1, subexercise2 und subexercise3.
+Auch das KnowledgeElement, welches durch das Exam abgeschlossen wurde, wird im Progress gespeichert. Hierfür ist das Attribut knowledge_element_id zuständig.
+Nachdem ein Learner ein Exam erfolgreich bearbeitet und abgegeben hat, wird allen Teachern in der View die Bearbeitung zusammen mit den jeweiligen Exercise und Subexercise und der Learner angezeigt.
+Ein Teacher hat nun die Möglichkeit eine Note einzutragen. Wobei diese Note einen Wert zwischen 1 und 6 annehmen muss. Der zuständige Teacher und die Note werden in der Klasse Progress in den Attributen teacher_id bzw. grade gespeichert.
+Sobald ein Teacher eine Note eingetragen hat, kann sich nur noch der Teacher selber oder ein Admin die Bearbeitung anzeigen lassen und gegebenenfalls die Note ändern.
+Für alle anderen Teacher ist die Bearbeitung ab diesem Zeitpunkt nicht mehr sichtbar. In der View des Learners werden für jedes von ihm geschriebene Exam das KnowledegeElement, die erhaltene Note,
+der zuständige Teacher und der Zeitpunkt der Abgaben angezeigt. Außerdem kann sich ein Learner seine Bearbeitung anzeigen lassen.
+
+Solution:
+
+Subexercise:
+Die Klasse Subxercise bietet die Möglichkeit Unteraufgaben zu bestehenden Exercise zu erstellen und zu speichern.
+Um die Subexercise mit der zugehörigen Exercise zu verknüpfen, besitzt die Klasse Subexercise ein Attribut exercise_id.
+Da eine Exercise mehrere Subexercise besitzen kann und die Reihenfolge der Subexercise von Bedeutung sein kann, wird im Attribut position die Position der jeweiligen Subexercise gespeichert.
+Natürlich muss auch der Inhalt der Subexercise gespeichert werden. Dies geschieht im Attribut text. Die Lösung einer Subexercise wird im Attribut solution gespeichert,
+die Punkte, die erreicht werden können, im Attribut points. Außerdem wird jeder Subexercise eine CognitiveDimension zugeordnet.
+Hierfür wird im Attribut cognitive_dimension ein Integerwert von 1="remember" bis 6="create" gespeichert.
+Ob eine Subexercise für ein Exam ausgewählt werden kann entscheidet das Attribut examItem, welches beim Erstellen einer Subexercise festgelegt werden muss.
+Wird eine Subexercise gelöscht, so wird das Attribut active auf False gesetzt. Dieses Attribut ist standardmäßig auf True gesetzt.
+Falls eine Subexercise von einem Learner erstellt wurde, muss das Attribut moderated von einem Teacher auf True gesetzt werden um die Subexercise für alle sichtbar zu schalten.
+Bevor dies nicht geschehen ist, wird die Subexercise nicht angezeigt. In den Attributen created_at bzw. updated_at wird gespeichert wann eine Subexercise erstellt bzw. überarbeitet wurde.
+
+
+
+
 ### Hafemann - Sticha ###
 Material:
 

@@ -1,0 +1,28 @@
+<%= form_for(@progress) do |f| %>
+    <% if @progress.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@progress.errors.count, "error") %> prohibited this progress from being saved:</h2>
+
+          <ul>
+            <% @progress.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="container-fluid">
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <div id="grade_field" class="row-fluid">
+            <div class="span2"><%= f.label :grade, "Note:" %></div>
+            <div class="span10"><%= f.text_area :grade, placeholder:"Gib hier die Note ein...", maxlength:"1000", style:"width:30%" %></div>
+          </div>
+          <div id="save_button" class="row-fluid">
+            <div class="span10 offset2"><%= f.submit "Note speichern", class:"btn btn-xs btn-primary", style:"width:30%" %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<% end %>

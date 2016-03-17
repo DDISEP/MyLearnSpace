@@ -1,29 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @materialvideo.title %>
+  <%= KnowledgeElement.find_by_id(@materialvideo.knowledge_element_id).name %>
 </p>
 
 <p>
-  <strong>File:</strong>
-  <%= @materialvideo.file %>
+  <strong><%= @materialvideo.title %></strong>
 </p>
 
 <p>
-  <strong>Filename:</strong>
-  <%= @materialvideo.filename %>
+<%= video_tag @materialvideo.file.url, controls: true %><br>
 </p>
 
 <p>
-  <strong>Fileformat:</strong>
-  <%= @materialvideo.fileformat %>
+  <i>Erstellt von <%= User.find_by(@materialvideo.user_id).username %> am <%= @materialvideo.created_at %></i>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @materialvideo.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_materialvideo_path(@materialvideo) %> |
-<%= link_to 'Back', materialvideos_path %>
+<table>
+  <thead>
+  <tr>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <!-- TODO: Message an alle Admins und Teacher -->
+    <td><%= button_to 'Video melden', @materialvideo, :method => "get" %></td>
+    <td><%= button_to 'Löschen', materialvideo_path, {:method => "delete", :id => @materialvideo.id, data: { confirm: "Bist Du sicher?"}} %></td>
+    <td><%= button_to 'Zurück', materials_path, :method => "get" %></td>
+  </tr>
+  </tbody>
+</table>
