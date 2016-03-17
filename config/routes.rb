@@ -1,5 +1,9 @@
 MyLearnSpace::Application.routes.draw do
   
+  resources :newsfeeds
+
+  resources :peer_to_peers
+
   resources :progresses
 
   resources :exams

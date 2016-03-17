@@ -1,6 +1,11 @@
 <h3>Hier kannst du dir ein Profil anlegen:</h3>
 
+<body>
+<% if @user.admin?%>
+    <%= render "createAdminForm" %>
+<% else %>
 <%= render "createUserForm" %>
 <%= link_to 'Zu den anderen Benutzern', users_path %>
+<%end%>
 
- 
+</body>
