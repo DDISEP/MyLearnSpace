@@ -70,6 +70,6 @@ end
 # https://github.com/thoughtbot/paperclip
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 
-# Use paperclip-av-transcoder for playing uploaded videos
+# Use paperclip-av-transcoder for transcoding uploaded videos
 # https://github.com/ruby-av/paperclip-av-transcoder
 gem "paperclip-av-transcoder", git: "https://github.com/ruby-av/paperclip-av-transcoder"
