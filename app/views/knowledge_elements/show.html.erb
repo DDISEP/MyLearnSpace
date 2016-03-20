@@ -4,11 +4,16 @@
     <div class="col-sm-9"><div class="row-fluid"><h1><%= @knowledgeElement.name %></h1></div></div>
   <% else %>
       <div class="col-sm-9"><div class="row-fluid"><h1>KnowledgeElement</h1></div></div>
-      <%end%>
+  <%end%>
   <td width="300"></td><%= button_to 'Zurück zur Übersicht', knowledge_elements_path, :method => :get, class:"btn btn-xs btn-primary"%></td>
+
+  </br>
+  </br>
+
   <div class="col-sm-9">
 
-
+    </br>
+    </br>
 
     <div class="panel panel-primary">
 
@@ -17,94 +22,152 @@
           <p>
             <%= @knowledgeElement.description %>
           </p>
-          <table class="table table-striped">
-            <tbody>
-            <th>
-            <td width="100"><%= button_to 'Bearbeiten', edit_knowledge_element_path, :method => :get, class:"btn btn-xs btn-primary"%></td>
-
-            </th>
-            </tbody>
-          </table>
-          <br>
-          <br>
 
           <p>
+            <% if @current_user.admin? %>
+              <table class="table table-striped">
+                <tbody>
+                  <th>
+                    <td width="100"><%= button_to 'Bearbeiten', edit_knowledge_element_path, :method => :get, class:"btn btn-xs btn-primary"%></td>
+                  </th>
+                </tbody>
+              </table>
+          <% end %>
+          </p>
+
+          <p> <!-- Code für weitere Erklärungen (Materialtexts) -->
+          <table class="table table-striped">
+
+            <tbody>
+            <% if @materialtexts != nil%>
+                <% @materialtexts.each do |mt| %>
+                    <tr>
+                      <td> <%= link_to mt.title, mt %> </td>
+                    </tr>
+                    <tr>
+                      <td> <%= mt.text %> </td>
+                    </tr>
+                <% end %>
+            <%end%>
+            <% if @current_user.admin? %>
+              <tr>
+                <td>
+                  Neuen Text hinzufügen
+                  <% link_to "Neuen Text hinzufügen", :controller => :materialtexts, :action => :new %>
+                </td>
+              </tr>
+            <%end%>
+            </tbody>
+          </table>
+          </p><!-- Code für weitere Erklärungen (Materialtexts) -->
+
+          <br>
+          <br>
+
+          <p><!-- Code für LearningObjectives, nur für Admins -->
+          <% if @current_user.admin? %>
+            <table class="table table-striped">
+              <thead>
+              <tr><strong>
+                <th colspan="6">Klicken Sie auf die cognitive Dimension der Learning Objectives um zur entsprechden Seite zu gelangen und Preconditions zu erstellen:</th>
+              </strong></tr>
+              </thead>
+
+              <tbody>
+              <tr>
+
+                <% @learningObjectives.each do |lo| %>
+                    <!-- show the different cognitive Dimensions, and -->
+                    <td width = "16%" > <%= link_to lo.cognitiveDimension_to_s, knowledge_element_learning_objective_path(:id => lo.id, :knowledge_element_id => lo.knowledge_element_id) %> </td>
+
+                <% end %>
+              </tr>
+              </tbody>
+            </table>
+          <% end %>
+          </p><!-- Ende Code für LearningObjectives, nur für Admins -->
+
+          <br>
+          <br>
+
+          <p><!-- Code für Prüfungen -->
+            <table class="table table-striped">
+              <thead>
+                <tr><strong>
+                  <th><H4><strong>Tests:</strong></H4></th>
+                </strong></tr>
+              </thead>
+
+              <tbody>
+                <% if @exams != nil %>
+                  <% @exams.each do |e| %>
+                    <tr>
+                      <td> <%= link_to e.name, e %> </td>
+                    </tr>
+                  <% end %>
+                <%else%>
+                  <tr>
+                    <td>Es gibt noch keine Tests für <%= @knowledgeElement.name %></td>
+                  </tr>
+                <%end%>
+              </tbody>
+            </table>
+          </p><!-- Ende Code für Prüfungen -->
+
+          <br>
+          <br>
+
+          <p> <!-- Code für Aufgaben -->
           <table class="table table-striped">
             <thead>
             <tr><strong>
-              <th colspan="6">Klicken Sie auf die cognitive Dimension der Learning Objectives um zur entsprechden Seite zu gelangen und Preconditions zu erstellen:</th>
+              <th><H4><strong>Aufgaben:</strong></H4></th>
             </strong></tr>
             </thead>
 
             <tbody>
+              <% if @exercises != nil%>
+                <% @exercises.each do |e| %>
+                  <tr>
+                    <td> <%= link_to e.title, e %> </td>
+                  </tr>
+                <% end %>
+              <%else%>
+                <tr>
+                  <td>Es gibt noch keine Aufgaben für <%= @knowledgeElement.name %></td>
+                </tr>
+              <%end%>
+            </tbody>
+          </table>
+          </p><!--Ende Code für Aufgaben -->
+
+          <p><!--Code für Fragenforum -->
+          <table class="table table-striped">
+            <thead>
+            <tr><strong>
+              <th><H4><strong>Fragen und Antworten zum Thema:</strong></H4></th>
+            </strong></tr>
+            </thead>
+
+            <tbody>
+            <% if @questions != nil%>
+                <% @questions.each do |q| %>
+                    <tr>
+                      <td> <%= link_to q.title, q %> </td>
+                    </tr>
+                <% end %>
+            <%else%>
+                <tr>
+                  <td>Es gibt keine Fragen zum Thema <%= @knowledgeElement.name %></td>
+                </tr>
+            <%end%>
             <tr>
-
-              <% @learningObjectives.each do |lo| %>
-                  <!-- show the different cognitive Dimensions, and -->
-                  <td width = "16%" > <%= link_to lo.cognitiveDimension_to_s, knowledge_element_learning_objective_path(:id => lo.id, :knowledge_element_id => lo.knowledge_element_id) %> </td>
-
-              <% end %>
+              <% link_to "Neue Frage erstellen? ", :controller => :questions, :action => :new %>
             </tr>
             </tbody>
           </table>
-          </p>
 
-          <br>
-          <br>
-
-          <p>
-            <H4><strong>Tests:</strong></H4>
-          <% if @exams != nil %>
-              <% @exams.each do |e| %>
-                  <td> <%= link_to e.name, e %> </td>
-              <%end%>
-          <%else%>
-              Es gibt noch keine Tests für <%= @knowledgeElement.name %>
-          <%end%>
-          </p>
-
-          <br>
-          <br>
-
-          <p>
-            <H4><strong>Aufgaben:</strong></H4>
-          <% if @exercises1 != nil%>
-              <% @exercises1.each do |e| %>
-                  <td> <%= link_to e.name, e %> </td>
-              <%end%>
-          <%end%>
-          <% if @exercises2 != nil%>
-              <% @exercises1.each do |e| %>
-                  <td> <%= link_to e.name, e %> </td>
-              <%end%>
-          <%end%>
-          <% if @exercises3 != nil%>
-              <% @exercises1.each do |e| %>
-                  <td> <%= link_to e.name, e %> </td>
-              <%end%>
-          <%end%>
-          <% if @exercises4 != nil%>
-              <% @exercises1.each do |e| %>
-                  <td> <%= link_to e.name, e %> </td>
-              <%end%>
-          <%end%>
-          <% if @exercises5 != nil%>
-              <% @exercises1.each do |e| %>
-                  <td> <%= link_to e.name, e %> </td>
-              <%end%>
-          <%end%>
-          <% if @exercises6 != nil%>
-              <% @exercises1.each do |e| %>
-                  <td> <%= link_to e.name, e %> </td>
-              <%end%>
-          <%end%>
-          <% if @exercises1 == nil && @exercises2 == nil && @exercises3 == nil && @exercises4 == nil && @exercises5 == nil && @exercises6 == nil%>
-          <p> Es gibt noch keine Aufgaben </p>
-          <%end%>
-
-
-          </p>
-
+          </p><!--Ende Code für Fragenforum -->
 
       <%else%>
           <p>

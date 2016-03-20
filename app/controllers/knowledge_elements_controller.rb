@@ -59,14 +59,14 @@ class KnowledgeElementsController < ApplicationController
     @knowledgeElement = KnowledgeElement.find_by_id(params[:id])
     if !@knowledgeElement.nil?
       @learningObjectives = @knowledgeElement.learning_objectives.all
-      @exams = nil
-      @knowledgeElementForum = nil
-      @exercises1=nil
-      @exercises2=nil
-      @exercises3=nil
-      @exercises4=nil
-      @exercises5=nil
-      @exercises6=nil
+      @exams = @knowledgeElement.exams
+      @questions = @knowledgeElement.questions
+      @exercises = @knowledgeElement.exercises
+      @materialtexts = @knowledgeElement.materialtexts
+      @materiallinks = @knowledgeElement.materiallinks
+      @materialdocuments = @knowledgeElement.materialdocuments
+      @materialpictures = @knowledgeElement.materialpictures
+      @materialvideos = @knowledgeElement.materialvideos
     end
     #@exams = KnowledgeElement.exams.all
     #@knowledgeElementForum = KnowledgeElement.forum.first

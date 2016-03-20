@@ -12,6 +12,7 @@ class KnowledgeElement < ActiveRecord::Base
   #1:n relation between KnowledgeElement and LearningObjective with destroy dependence
   has_many :learning_objectives, :dependent => :destroy, inverse_of: :knowledge_element
   has_many :exams
+  has_many :exercises
 
   #n:1 relation between KnowledgeElement and Topic
   belongs_to :topic
