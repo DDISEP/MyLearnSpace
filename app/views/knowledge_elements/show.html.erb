@@ -37,9 +37,13 @@
 
           <p> <!-- Code für weitere Erklärungen (Materialtexts) -->
           <table class="table table-striped">
-
+            <thead>
+              <tr><strong>
+                <th></th>
+              </strong></tr>
+            </thead>
             <tbody>
-            <% if @materialtexts != nil%>
+            <% if @materialtexts.first != nil%>
                 <% @materialtexts.each do |mt| %>
                     <tr>
                       <td> <%= link_to mt.title, mt %> </td>
@@ -60,7 +64,10 @@
           </table>
           </p><!-- Code für weitere Erklärungen (Materialtexts) -->
 
-          <p> <!-- Code für weitere Erklärungen (Materialtexts) -->
+          </br>
+          </br>
+
+          <p> <!-- Code für verlinkte Dokumente (Materialdocuments) und Links (Materiallinks)-->
           <table class="table table-striped">
             <thead>
             <tr><strong>
@@ -68,13 +75,22 @@
             </strong></tr>
             </thead>
             <tbody>
-            <% if @materialdocuments != nil%>
+            <% if @materialdocuments.first != nil%>
                 <% @materialdocuments.each do |md| %>
                     <tr>
                       <td> <%= link_to md.title, md %> </td>
                     </tr>
                     <tr>
                       <td> <%= md.text %> </td>
+                    </tr>
+                <% end %>
+            <% elseif @materiallinks.first != nil%>
+                <% @materiallinks.each do |ml| %>
+                    <tr>
+                      <td> <%= link_to ml.title, ml %> </td>
+                    </tr>
+                    <tr>
+                      <td> <%= ml.text %> </td>
                     </tr>
                 <% end %>
             <%else%>
@@ -85,13 +101,49 @@
             <% if @current_user.admin? || @current_user.teacher%>
                 <tr>
                   <td>
-                    <%= link_to "Neues Dokument hinzufügen", new_materialtext_path %>
+                    <%= link_to "Neues Dokument hochladen", new_materialdocument_path %>
+                    <%= link_to 'Neuen Link erstellen', new_materiallink_path %>
                   </td>
                 </tr>
             <%end%>
             </tbody>
           </table>
-          </p><!-- Code für weitere Erklärungen (Materialtexts) -->
+          </p><!-- Ende Code für verlinkte Dokumente (Materialdocuments) und Links (Materiallink)-->
+
+          <br>
+          <br>
+
+          <p> <!-- Code für Videos (Materialvideos)-->
+          <table class="table table-striped">
+            <thead>
+            <tr><strong>
+              <th>Videos zum Thema:</th>
+            </strong></tr>
+            </thead>
+            <tbody>
+            <% if @materialvideos.first != nil%>
+                <% @materialvideos.each do |mv| %>
+                    <tr>
+                      <td> <%= link_to mv.title, mv %> </td>
+                    </tr>
+                <% end %>
+            <%else%>
+                <tr>
+                  <td>Es sind keine Videos zum Thema verlinkt</td>
+                </tr>
+            <%end%>
+            <% if @current_user.admin? || @current_user.teacher%>
+                <tr>
+                  <td>
+                    <%= link_to "Neues Video hochladen", new_materialvideo_path %>
+                  </td>
+                </tr>
+            <%end%>
+            </tbody>
+          </table>
+          </p>
+
+
 
           <br>
           <br>
@@ -131,7 +183,7 @@
               </thead>
 
               <tbody>
-                <% if @exams != nil %>
+                <% if @exams.first != nil %>
                   <% @exams.each do |e| %>
                     <tr>
                       <td> <%= link_to e.name, e %> </td>
@@ -167,7 +219,7 @@
             </thead>
 
             <tbody>
-              <% if @exercises != nil%>
+              <% if @exercises.first != nil%>
                 <% @exercises.each do |e| %>
                   <tr>
                     <td> <%= link_to e.title, e %> </td>
@@ -190,6 +242,9 @@
           </table>
           </p><!--Ende Code für Aufgaben -->
 
+          <br>
+          <br>
+
           <p><!--Code für Fragenforum -->
           <table class="table table-striped">
             <thead>
@@ -199,7 +254,7 @@
             </thead>
 
             <tbody>
-            <% if @questions != nil%>
+            <% if @questions.first != nil%>
                 <% @questions.each do |q| %>
                     <tr>
                       <td> <%= link_to q.title, q %> </td>
@@ -217,8 +272,40 @@
             </tr>
             </tbody>
           </table>
-
           </p><!--Ende Code für Fragenforum -->
+
+          <br>
+          <br>
+
+          <p><!--Code für Bilder -->
+          <table class="table table-striped">
+            <thead>
+            <tr><strong>
+              <th><H4><strong>Bilder:</strong></H4></th>
+            </strong></tr>
+            </thead>
+
+            <tbody>
+            <% if @materialpictures.first != nil%>
+                <% @materialpictures.each do |mp| %>
+                    <tr>
+                      <td> <%= image_tag mp.file, alt: mp.title %> </td>
+                    </tr>
+                <% end %>
+            <%else%>
+                <tr>
+                  <td>Es gibt keine Bilder zum Thema <%= @knowledgeElement.name %></td>
+                </tr>
+            <%end%>
+            <tr>
+              <td>
+                <%= link_to "Neues Bild hochladen? ", :controller => :materialpictures, :action => :new %>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          </p><!--Ende Code für Bilder -->
+
 
       <%else%>
           <p>
