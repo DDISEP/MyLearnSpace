@@ -35,6 +35,34 @@
           <% end %>
           </p>
 
+          <br>
+          <br>
+
+          <p><!-- Code für LearningObjectives, nur für Admins -->
+            <% if @current_user.admin? %>
+              <table class="table table-striped">
+                <thead>
+                <tr><strong>
+                  <th colspan="6">Klicken Sie auf die cognitive Dimension der Learning Objectives um zur entsprechden Seite zu gelangen und Preconditions zu erstellen:</th>
+                </strong></tr>
+                </thead>
+
+                <tbody>
+                <tr>
+
+                  <% @learningObjectives.each do |lo| %>
+                      <!-- show the different cognitive Dimensions, and -->
+                      <td width = "16%" > <%= link_to lo.cognitiveDimension_to_s, knowledge_element_learning_objective_path(:id => lo.id, :knowledge_element_id => lo.knowledge_element_id) %> </td>
+
+                  <% end %>
+                </tr>
+                </tbody>
+              </table>
+          <% end %>
+          </br>
+          </br>
+          </p><!-- Ende Code für LearningObjectives, nur für Admins -->
+
           <p> <!-- Code für weitere Erklärungen (Materialtexts) -->
           <table class="table table-striped">
             <thead>
@@ -71,7 +99,7 @@
           <table class="table table-striped">
             <thead>
             <tr><strong>
-              <th>Weitere Dokumente zum Thema:</th>
+              <th>Weitere Dokumente und Links zum Thema:</th>
             </strong></tr>
             </thead>
             <tbody>
@@ -95,7 +123,7 @@
                 <% end %>
             <%else%>
               <tr>
-                <td>Es sind keine Dokumente zum Thema verlinkt</td>
+                <td>Es sind keine Dokumente und Links zum Thema vorhanden</td>
               </tr>
             <%end%>
             <% if @current_user.admin? || @current_user.teacher%>
@@ -145,31 +173,7 @@
 
 
 
-          <br>
-          <br>
 
-          <p><!-- Code für LearningObjectives, nur für Admins -->
-          <% if @current_user.admin? %>
-            <table class="table table-striped">
-              <thead>
-              <tr><strong>
-                <th colspan="6">Klicken Sie auf die cognitive Dimension der Learning Objectives um zur entsprechden Seite zu gelangen und Preconditions zu erstellen:</th>
-              </strong></tr>
-              </thead>
-
-              <tbody>
-              <tr>
-
-                <% @learningObjectives.each do |lo| %>
-                    <!-- show the different cognitive Dimensions, and -->
-                    <td width = "16%" > <%= link_to lo.cognitiveDimension_to_s, knowledge_element_learning_objective_path(:id => lo.id, :knowledge_element_id => lo.knowledge_element_id) %> </td>
-
-                <% end %>
-              </tr>
-              </tbody>
-            </table>
-          <% end %>
-          </p><!-- Ende Code für LearningObjectives, nur für Admins -->
 
           <br>
           <br>
