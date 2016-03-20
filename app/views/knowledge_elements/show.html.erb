@@ -49,13 +49,45 @@
                     </tr>
                 <% end %>
             <%end%>
-            <% if @current_user.admin? %>
+            <% if @current_user.admin? || @current_user.teacher%>
               <tr>
                 <td>
-                  Neuen Text hinzufügen
-                  <% link_to "Neuen Text hinzufügen", :controller => :materialtexts, :action => :new %>
+                  <%= link_to "Neuen Text hinzufügen", new_materialtext_path %>
                 </td>
               </tr>
+            <%end%>
+            </tbody>
+          </table>
+          </p><!-- Code für weitere Erklärungen (Materialtexts) -->
+
+          <p> <!-- Code für weitere Erklärungen (Materialtexts) -->
+          <table class="table table-striped">
+            <thead>
+            <tr><strong>
+              <th>Weitere Dokumente zum Thema:</th>
+            </strong></tr>
+            </thead>
+            <tbody>
+            <% if @materialdocuments != nil%>
+                <% @materialdocuments.each do |md| %>
+                    <tr>
+                      <td> <%= link_to md.title, md %> </td>
+                    </tr>
+                    <tr>
+                      <td> <%= md.text %> </td>
+                    </tr>
+                <% end %>
+            <%else%>
+              <tr>
+                <td>Es sind keine Dokumente zum Thema verlinkt</td>
+              </tr>
+            <%end%>
+            <% if @current_user.admin? || @current_user.teacher%>
+                <tr>
+                  <td>
+                    <%= link_to "Neues Dokument hinzufügen", new_materialtext_path %>
+                  </td>
+                </tr>
             <%end%>
             </tbody>
           </table>
@@ -110,6 +142,15 @@
                     <td>Es gibt noch keine Tests für <%= @knowledgeElement.name %></td>
                   </tr>
                 <%end%>
+
+                <% if @current_user.admin? || @current_user.teacher? %>
+                  <tr>
+                    <td>
+                      <%= link_to "Neuen Test hinzufügen", new_exam_path %>
+                    </td>
+                  </tr>
+                <%end%>
+
               </tbody>
             </table>
           </p><!-- Ende Code für Prüfungen -->
@@ -137,6 +178,14 @@
                   <td>Es gibt noch keine Aufgaben für <%= @knowledgeElement.name %></td>
                 </tr>
               <%end%>
+
+              <% if @current_user.admin?%>
+                <tr>
+                  <td>
+                    <%= link_to "Neue Aufgabe hinzufügen", new_exercise_path %>
+                  </td>
+                </tr>
+              <%end%>
             </tbody>
           </table>
           </p><!--Ende Code für Aufgaben -->
@@ -162,7 +211,9 @@
                 </tr>
             <%end%>
             <tr>
-              <% link_to "Neue Frage erstellen? ", :controller => :questions, :action => :new %>
+              <td>
+                <%= link_to "Neue Frage stellen? ", :controller => :questions, :action => :new %>
+              </td>
             </tr>
             </tbody>
           </table>
