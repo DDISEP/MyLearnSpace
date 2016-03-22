@@ -73,7 +73,6 @@ Subexercise.create(:position => 1, :text => "Die Gerade verläuft durch die Punk
 Subexercise.create(:position => 1, :text => "y-Achsenabschnitt", :solution_id => 2, :exercise_id => 3, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
 Subexercise.create(:position => 1, :text => "Steigung", :solution_id => 2, :exercise_id => 3, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
 Subexercise.create(:position => 1, :text => "Geg.: A(0/3), B(4/6). Vorgehen: 6=m4 + t => t=6/4m => 6=m4 + 6/4m ...", :solution_id => 2, :exercise_id => 10, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 5)
-
 Subexercise.create(:position => 1, :text => "Nenner", :solution_id => 2, :exercise_id => 4, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
 Subexercise.create(:position => 1, :text => "Zähler", :solution_id => 2, :exercise_id => 4, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
 Subexercise.create(:position => 1, :text => "1/2 + 3/4", :solution_id => 2, :exercise_id => 5, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
