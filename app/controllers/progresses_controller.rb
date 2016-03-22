@@ -21,8 +21,6 @@ class ProgressesController < ApplicationController
 
   # GET /progresses/1/edit
   def edit
-    #@progress=Progress.find(params[:id])
-    #@progress.explanation= params[:explanation_field]
   end
 
   # POST /progresses
@@ -88,6 +86,6 @@ class ProgressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def progress_params
-      params.require(:progress).permit(:learner_id, :teacher_id, :knowledge_element_id, :grade, :submission1,:submission2,:submission3)
+      params.require(:progress).permit(:learner_id, :teacher_id, :knowledge_element_id, :grade, :submission1,:submission2,:submission3, :explanation)
     end
 end
