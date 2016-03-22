@@ -102,7 +102,7 @@ Außerdem werden die Ids der drei im Exam verwendeten Subexercises gespeichert. 
 Zuständig hierfür sind die Attribute subexercise1, subexercise2 und subexercise3.
 Auch das KnowledgeElement, welches durch das Exam abgeschlossen wurde, wird im Progress gespeichert. Hierfür ist das Attribut knowledge_element_id zuständig.
 Nachdem ein Learner ein Exam erfolgreich bearbeitet und abgegeben hat, wird allen Teachern in der View die Bearbeitung zusammen mit den jeweiligen Exercise und Subexercise und der Learner angezeigt.
-Ein Teacher hat nun die Möglichkeit eine Note einzutragen. Wobei diese Note einen Wert zwischen 1 und 6 annehmen muss. Der zuständige Teacher und die Note werden in der Klasse Progress in den Attributen teacher_id bzw. grade gespeichert.
+Ein Teacher hat nun die Möglichkeit eine Note sowie eine Begründung einzutragen. Wobei die Note einen Wert zwischen 1 und 6 annehmen muss. Der zuständige Teacher und die Note werden in der Klasse Progress in den Attributen teacher_id bzw. grade gespeichert, die Begründung im Attribut explanation.
 Sobald ein Teacher eine Note eingetragen hat, kann sich nur noch der Teacher selber oder ein Admin die Bearbeitung anzeigen lassen und gegebenenfalls die Note ändern.
 Für alle anderen Teacher ist die Bearbeitung ab diesem Zeitpunkt nicht mehr sichtbar. In der View des Learners werden für jedes von ihm geschriebene Exam das KnowledegeElement, die erhaltene Note,
 der zuständige Teacher und der Zeitpunkt der Abgaben angezeigt. Außerdem kann sich ein Learner seine Bearbeitung anzeigen lassen.

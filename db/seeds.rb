@@ -66,15 +66,39 @@ Wiki.create(:title => "Föhn (Wind)", :article => "Ein warmer Luftstrom aus den 
 
 ### Grett ###
 #Subexercise
-Subexercise.create(:position => 1, :text => "Funktion", :solution_id =>1, :exercise_id => 1, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
-Subexercise.create(:position => 1, :text => "Funktion2", :solution_id => 2, :exercise_id => 1, :points => 2, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
-Subexercise.create(:position => 1, :text => "Funktion3", :solution_id => 4, :exercise_id => 1, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
-Subexercise.create(:position => 1, :text => "Funktion4", :solution_id => 2, :exercise_id => 2, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
-Subexercise.create(:position => 1, :text => "Term1", :solution_id => 2, :exercise_id => 3, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
+Subexercise.create(:position => 1, :text => "y= 2x + 1", :solution_id =>1, :exercise_id => 1, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
+Subexercise.create(:position => 1, :text => "y = x - 1", :solution_id => 2, :exercise_id => 1, :points => 2, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
+Subexercise.create(:position => 1, :text => "Die Gerade verläuft durch den Punkt A(2/3) und m=2", :solution_id => 4, :exercise_id => 2, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
+Subexercise.create(:position => 1, :text => "Die Gerade verläuft durch die Punkte A(1/6) und B(-3/1)", :solution_id => 2, :exercise_id => 2, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
+Subexercise.create(:position => 1, :text => "y-Achsenabschnitt", :solution_id => 2, :exercise_id => 3, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
+Subexercise.create(:position => 1, :text => "Steigung", :solution_id => 2, :exercise_id => 3, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
+Subexercise.create(:position => 1, :text => "Geg.: A(0/3), B(4/6). Vorgehen: 6=m4 + t => t=6/4m => 6=m4 + 6/4m ...", :solution_id => 2, :exercise_id => 10, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 5)
+
+Subexercise.create(:position => 1, :text => "Nenner", :solution_id => 2, :exercise_id => 4, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
+Subexercise.create(:position => 1, :text => "Zähler", :solution_id => 2, :exercise_id => 4, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
+Subexercise.create(:position => 1, :text => "1/2 + 3/4", :solution_id => 2, :exercise_id => 5, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
+Subexercise.create(:position => 1, :text => "5/3 - 7/8", :solution_id => 2, :exercise_id => 5, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
+Subexercise.create(:position => 1, :text => "3/5 : 4/3", :solution_id => 2, :exercise_id => 5, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
+Subexercise.create(:position => 1, :text => "6/9", :solution_id => 2, :exercise_id => 6, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
+Subexercise.create(:position => 1, :text => "5/10", :solution_id => 2, :exercise_id => 6, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
+Subexercise.create(:position => 1, :text => "Rationale Zahlen", :solution_id => 2, :exercise_id => 8, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 1)
+Subexercise.create(:position => 1, :text => "3/4  1/2  5/6  ", :solution_id => 2, :exercise_id => 9, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 3)
+Subexercise.create(:position => 1, :text => "Für dein neues Smartphone zahlst du zunächst nur die Hälfte, muss dann aber ein Jahr lang jeden Monat 1/10 vom Kaufpreis zahlen.", :solution_id => 2, :exercise_id => 7, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 5)
+Subexercise.create(:position => 1, :text => "Paula bezahlt 20% mehr für ihr Smartphone als Toni, ihr Vertrag kostet jedoch 10% weniger als Tonis. ", :solution_id => 2, :exercise_id => 7, :points => 1, :moderated => TRUE, :active => TRUE, :examItem => TRUE, :cognitive_dimension => 5)
+
 #Exercise
-Exercise.create(:title=> "Funktionen", :description=> "Berechne die Nullstelle", :user_id => 1, :knowledge_element_id=>1, :sequence => FALSE)
-Exercise.create(:title=> "Brüche", :description=> "Berechne den Bruch", :user_id => 2, :knowledge_element_id =>1, :sequence => FALSE)
-Exercise.create(:title=> "Terme", :description=> "Berechne den Term", :user_id => 2, :knowledge_element_id =>1, :sequence => TRUE)
+Exercise.create(:title=> "Berechnung der Nullstelle", :description=> "Berechne die Nullstelle der folgenden linearen Funktion", :user_id => 1, :knowledge_element_id=>2, :sequence => FALSE)
+Exercise.create(:title=> "Aufstellen von Geradengleichungen", :description=> "Stelle die Gleichung der linearen Funktion auf, für die gilt:", :user_id => 2, :knowledge_element_id =>2, :sequence => FALSE)
+Exercise.create(:title=> "Fachbegriffe zum Thema lineare Funktionen", :description=> "Erkläre folgende Fachbegriffe", :user_id => 2, :knowledge_element_id =>2, :sequence => FALSE)
+Exercise.create(:title=> "Fachbegriffe zum Thema Brüche", :description=> "Erkläre folgende Fachbegriffe", :user_id => 2, :knowledge_element_id =>1, :sequence => FALSE)
+Exercise.create(:title=> "Berechnung von Brüchen", :description=> "Berechne folgende Bruchaufgaben", :user_id => 2, :knowledge_element_id =>1, :sequence => FALSE)
+Exercise.create(:title=> "Kürzen von Brüchen", :description=> "Kürze folgende Brüche", :user_id => 2, :knowledge_element_id =>1, :sequence => FALSE)
+Exercise.create(:title=> "Bewerten von Angeboten", :description=> "Bewerte folgendes Angebot", :user_id => 2, :knowledge_element_id =>1, :sequence => FALSE)
+Exercise.create(:title=> "Rationale Zahlen", :description=> "Erläutere die Menge", :user_id => 2, :knowledge_element_id =>1, :sequence => FALSE)
+Exercise.create(:title=> "Ordnen von Brüchen", :description=> "Ordne folgende Brüche der Größe nach", :user_id => 2, :knowledge_element_id =>1, :sequence => FALSE)
+Exercise.create(:title=> "Bewertung des Vorgehens", :description=> "Bewerte das Vorgehen zum Aufstellen von Geradengleichungen", :user_id => 2, :knowledge_element_id =>2, :sequence => FALSE)
+
+
 #Progress
 Progress.create(:learner_id =>3, :teacher_id=>1, :knowledge_element_id=>1, :grade =>3)
 Progress.create(:learner_id =>3, :teacher_id=>2, :knowledge_element_id=>2, :grade =>2)
