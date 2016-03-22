@@ -21,6 +21,8 @@ class ProgressesController < ApplicationController
 
   # GET /progresses/1/edit
   def edit
+    #@progress=Progress.find(params[:id])
+    #@progress.explanation= params[:explanation_field]
   end
 
   # POST /progresses

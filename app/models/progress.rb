@@ -1,6 +1,6 @@
 class Progress < ActiveRecord::Base
 
-  attr_accessible :learner_id, :teacher_id, :knowledge_element_id, :grade, :submission1,:submission2,:submission3, :subexercise1_id, :subexercise2_id, :subexercise3_id
+  attr_accessible :learner_id, :teacher_id, :knowledge_element_id, :grade, :submission1,:submission2,:submission3, :subexercise1_id, :subexercise2_id, :subexercise3_id, :explanation
 
   validates :learner_id, presence: true
   validates :knowledge_element_id, presence: true
