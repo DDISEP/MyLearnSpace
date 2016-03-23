@@ -1,3 +1,4 @@
+<% if @current_user.admin? %>
 <div class="container-fluid">
 
   <% if @learningObjective !=nil%>
@@ -57,3 +58,4 @@
 
 
 </div>
+<% end %>

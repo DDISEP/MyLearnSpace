@@ -9,6 +9,8 @@ class KnowledgeElement < ActiveRecord::Base
   #has_one :knowledge_element_chat#, :dependent => :destroy
   #has_one :forum#, :dependent => :destroy
 
+  has_one :progress
+
   #1:n relation between KnowledgeElement and LearningObjective with destroy dependence
   has_many :learning_objectives, :dependent => :destroy, inverse_of: :knowledge_element
   has_many :exams

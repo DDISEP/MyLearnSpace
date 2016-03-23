@@ -1,12 +1,9 @@
+<% if @current_user.admin? %>
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span10"><h2>KnowledgeElemente anlegen</h2></div>
     <div class="span2"><%= button_to "zurück", knowledge_elements_path, :method => :get, class:"btn btn-xs btn-primary", style:"width:100%"%></div>
   </div>
-
-  <% if @knowledgeElements.to_s.length == 0 then %>
-      <div id="notice"> Noch keine KnowledgeElemente vorhanden! Bitte erstellen Sie ein KnowledgeElement</div>
-  <% end %>
 
   <%# When you callform_for, you pass it an identifying object for this form. In this case it is the symbol :knowledgeElement %>
   <%# This tells the form_for helper what this form is for. Inside the block for this method, the FormBuilder object- %>
@@ -37,4 +34,5 @@
   </div>
   <% end %>
 </div>
+<% end %>
 

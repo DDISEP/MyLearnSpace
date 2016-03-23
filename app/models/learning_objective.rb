@@ -10,7 +10,7 @@ class LearningObjective < ActiveRecord::Base
   #self-referential relation between different LearningObjectives in the map through preconditions
   # 1:m relation between LearningObjective and Precondition with destroy dependency
   has_many :parent_learning_objective_preconditions, class_name: "Precondition"
-  has_many :parent_learning_objectives, through: :parent_learning_objectives_preconditions, source: :parent_learning_objective
+  has_many :parent_learning_objectives, through: :parent_learning_objective_preconditions, source: :parent_learning_objective
 
   #has_many :parent_learning_objective_preconditions, foreign_key: :child_learning_objective_id, class_name: "Precondition"
   #has_many :parent_learning_objectives, through: :parent_learning_objectives_preconditions, source: :parent_learning_objective

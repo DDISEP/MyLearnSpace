@@ -11,6 +11,55 @@ class PreconditionsController < ApplicationController
     @preconditions = Precondition.all
   end
 
+  def map
+    #@knowledgeElements = KnowledgeElement.where(learning_objectives.first.parent_learning_objective.empty?)
+    #@Array = []
+    @first_learning_objectives = []
+    KnowledgeElement.all.each do |ke|
+        @first_learning_objectives << ke.learning_objectives.first
+    end
+
+    @passed_knowledge_elements = []
+    @accessible_knowledge_elements = []
+    @locked_knowledge_elements = []
+
+    #@baeh = @first_learning_objectives.third.parent_learning_objectives.first.knowledge_element.progress.grade
+    #@baeh = @first_learning_objectives.fourth.parent_learning_objectives.first.knowledge_element.progress.grade
+
+
+    @first_learning_objectives.each do |flo|
+      if flo.parent_learning_objective_preconditions.length <1
+        if !flo.knowledge_element.progress.nil? && flo.knowledge_element.progress.grade <5
+          @passed_knowledge_elements << flo.knowledge_element
+        else
+          @accessible_knowledge_elements << flo.knowledge_element
+        end
+
+      elsif
+        @number_of_unsolved_preconditions = flo.parent_learning_objective_preconditions.length
+        flo.parent_learning_objective_preconditions.each do |plop|
+          if !plop.parent_learning_objective.knowledge_element.progress.nil? && plop.parent_learning_objective.knowledge_element.progress.grade >0 && plop.parent_learning_objective.knowledge_element.progress.grade <5
+            @number_of_unsolved_preconditions = @number_of_unsolved_preconditions - 1
+          end
+        end
+
+        if @number_of_unsolved_preconditions == 0
+          if !flo.knowledge_element.progress.nil? && flo.knowledge_element.progress.grade <5
+            @passed_knowledge_elements << flo.knowledge_element
+          else
+            @accessible_knowledge_elements << flo.knowledge_element
+          end
+        else
+          @locked_knowledge_elements << flo.knowledge_element
+        end
+      end
+      flash[@accessible_knowledge_elements.length]
+    end
+
+    #@knowledgeElements = KnowledgeElement.all
+
+  end
+
   def new
     @learningObjective = LearningObjective.find_by_id(:learning_objective_id)
     @knowledgeElements = KnowledgeElement.all
