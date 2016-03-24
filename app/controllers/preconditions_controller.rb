@@ -14,11 +14,14 @@ class PreconditionsController < ApplicationController
   def map
     #@knowledgeElements = KnowledgeElement.where(learning_objectives.first.parent_learning_objective.empty?)
     #@Array = []
+    @knowledgeElements = KnowledgeElement.all
+    @preconditions = Precondition.all
     @first_learning_objectives = []
     KnowledgeElement.all.each do |ke|
         @first_learning_objectives << ke.learning_objectives.first
     end
 
+    @starting_knowledge_elements = []
     @passed_knowledge_elements = []
     @accessible_knowledge_elements = []
     @locked_knowledge_elements = []
@@ -29,6 +32,7 @@ class PreconditionsController < ApplicationController
 
     @first_learning_objectives.each do |flo|
       if flo.parent_learning_objective_preconditions.length <1
+        @starting_knowledge_elements << flo.knowledge_element
         if !flo.knowledge_element.progress.nil? && flo.knowledge_element.progress.grade <5
           @passed_knowledge_elements << flo.knowledge_element
         else
