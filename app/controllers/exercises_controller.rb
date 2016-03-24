@@ -93,6 +93,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new
     @exercise.title = params[:exercise][:title]
     @exercise.description = params[:exercise][:description]
+    @exercise.knowledge_element = params[:exercise][:knowlegde_element].to_i
     @exercise.user_id = session[:current_user_id]
     @exercise.save      # exercises created and saved
     tags = params[:tags].split(",").map{|tag| tag.strip }

@@ -35,6 +35,7 @@ class SubexercisesController < ApplicationController
     @subexercise.text = params[:subexercise][:text]
     #@subexercise.solution = params[:subexercise][:solution]
     @subexercise.points = params[:subexercise][:points]
+    @subexercise.learning_objective = params[:subexercise][:learning_objective]
     @subexercise.position = Subexercise.where(exercise_id: @exercise).length + 1
     @subexercise.save
     flash[:notice] = "Teilaufgabe erfolgreich angelegt."

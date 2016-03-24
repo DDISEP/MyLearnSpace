@@ -11,12 +11,12 @@
 				<div class="span10"><%= f.text_area :description, placeholder:"Gib hier eine Beschreibung ein...", maxlength:"1000", style:"width:100%; height:60px; resize:vertical;" %></div>
 			</div>
 			<div id="tags_field" class="row-fluid">
-				<div class="span2"><%= label_tag :tags, "Tags" %></div>
-				<div class="span10"><%= text_field_tag :tags, @exercise.tags, placeholder:"Gib hier passende Tags ein...", maxlength:"1000", style:"width:100%; height:100%;" %></div>
+				<div class="span2"><%= f.label :knowlegde_element, "KE" %></div>
+				<div class="span10"><%= text_field_tag :knowlegde_element, placeholder:"Gib hier die Nummer des passenden Knowlegde Elements ein...", maxlength:"1000", style:"width:100%; height:100%;" %></div>
 			</div>
 			
 			<div id="save_button" class="row-fluid">
-				<div class="span10 offset2"><%= f.submit "Titel, Beschreibung und Tags speichern", class:"btn btn-xs btn-success", style:"width:100%" %></div>
+				<div class="span10 offset2"><%= f.submit "Titel, Beschreibung und Knowlegde Element speichern", class:"btn btn-xs btn-success", style:"width:100%" %></div>
 			</div>
 		</div>
 	</div>
