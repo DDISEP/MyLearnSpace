@@ -1,7 +1,7 @@
 <% if @current_user.admin? %>
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span10"><h2>KnowledgeElemente bearbeiten</h2></div>
+    <div class="span10"><h2>Lerneinheit bearbeiten</h2></div>
     <div class="span2"><%= button_to "zurück", knowledge_elements_path, :method => :get, class:"btn btn-xs btn-primary", style:"width:100%"%></div>
   </div>
 
@@ -28,7 +28,7 @@
             </div>
 
             <div id="name_field" class="row-fluid">
-              <div class="span2"><%= f.label :topic, "zugehöriges Topic" %></div>
+              <div class="span2"><%= f.label :topic, "Übergreifendes Themengebiet" %></div>
               <div class="span10">  <%= f.collection_select :topic, Topic.all, :id, :name, :prompt => true%>
               </div>
             </div>

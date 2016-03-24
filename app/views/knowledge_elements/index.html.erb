@@ -11,7 +11,7 @@
           <% if @current_user.admin? %>
           <div class="span3" style="padding-top: 20px"> <!-- link to creating new knowledgeElement -->
             <%= button_to new_knowledge_element_path, :method => :get, class:"btn btn-xs btn-primary" do %>
-              <span class="glyphicon glyphicon-plus"></span> Neues KnowledgeElement
+              <span class="glyphicon glyphicon-plus"></span> Neue Lerneinheit
             <% end %>
           </div>
           <%end%>
@@ -21,9 +21,9 @@
         <table class="table table-striped">
           <thead>
           <tr><strong>
-            <th width="20%"> Name des Knowledge Elements </th>
+            <th width="20%"> Name der Lerneinheit </th>
             <th width="20%"> Beschreibung </th>
-            <th> Zugehöriges Topic</th>
+            <th>Übergreifendes Themengebiet</th>
           </strong></tr>
           </thead>
 

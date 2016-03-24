@@ -3,7 +3,7 @@
   <% if @knowledgeElement !=nil%>
     <div class="col-sm-9"><div class="row-fluid"><h1><%= @knowledgeElement.name %></h1></div></div>
   <% else %>
-      <div class="col-sm-9"><div class="row-fluid"><h1>KnowledgeElement</h1></div></div>
+      <div class="col-sm-9"><div class="row-fluid"><h1>Lerneinheit</h1></div></div>
   <%end%>
   <td width="300"></td><%= button_to 'Zurück zur Übersicht', knowledge_elements_path, :method => :get, class:"btn btn-xs btn-primary"%></td>
 
@@ -40,10 +40,12 @@
 
           <p><!-- Code für LearningObjectives, nur für Admins -->
             <% if @current_user.admin? %>
+              Die Teillerneinheiten dieser Seite, die durch die cognitiven Dimensionen gebildet werden können aufeinander aufbauen.
+              Diese Lernvoraussetzungen werden auf den Seiten der cognitiven Dimensionen erstellt:
               <table class="table table-striped">
                 <thead>
                 <tr><strong>
-                  <th colspan="6">Klicken Sie auf die cognitive Dimension der Learning Objectives um zur entsprechden Seite zu gelangen und Preconditions zu erstellen:</th>
+                  <th colspan="6">Klicken Sie auf die cognitive Dimension der Learning Objectives um zur entsprechden Seite zu gelangen und Lernvoraussetzung zu erstellen:</th>
                 </strong></tr>
                 </thead>
 
@@ -108,11 +110,9 @@
                     <tr>
                       <td> <%= link_to md.title, md %> </td>
                     </tr>
-                    <tr>
-                      <td> <%= md.text %> </td>
-                    </tr>
+
                 <% end %>
-            <% elseif @materiallinks.first != nil%>
+            <% elsif @materiallinks.first != nil%>
                 <% @materiallinks.each do |ml| %>
                     <tr>
                       <td> <%= link_to ml.title, ml %> </td>
@@ -313,7 +313,7 @@
 
       <%else%>
           <p>
-            Dieses KnowledgeElement existiert nicht
+            Diese Lerneinheit existiert nicht
           </p>
       <%end%>
 
