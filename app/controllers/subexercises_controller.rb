@@ -35,8 +35,9 @@ class SubexercisesController < ApplicationController
     @subexercise.text = params[:subexercise][:text]
     #@subexercise.solution = params[:subexercise][:solution]
     @subexercise.points = params[:subexercise][:points]
-    @subexercise.learning_objective = params[:subexercise][:learning_objective]
+    @subexercise.cognitive_dimension = params[:subexercise][:learning_objective].to_i
     @subexercise.position = Subexercise.where(exercise_id: @exercise).length + 1
+    @subexercise.active = :true
     @subexercise.save
     flash[:notice] = "Teilaufgabe erfolgreich angelegt."
     redirect_to edit_exercise_path(params[:exercise_id])
@@ -60,7 +61,6 @@ class SubexercisesController < ApplicationController
   end
 
   def destroy
-    @subexercise.destroy
     flash[:notice] = "Teilaufgabe erfolgreich entfernt."
     respond_to do |format|
       format.js {}
@@ -69,7 +69,7 @@ class SubexercisesController < ApplicationController
     @subexercise.active = :false
     @subexercise.position = nil
     @subexercise.save
-    @exercise.update_subnumbers #Nummerierungen der Teilaufgaben aktualisieren
+    #@exercise.update_subnumbers #Nummerierungen der Teilaufgaben aktualisieren
     #redirect_to edit_exercise_path(@exercise) #subexercise soll nicht ganz gelöscht werden, sondern nur unsichtbar geschalten werden
   end
 
