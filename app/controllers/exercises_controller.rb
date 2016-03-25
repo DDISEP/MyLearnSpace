@@ -93,9 +93,15 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new
     @exercise.title = params[:exercise][:title]
     @exercise.description = params[:exercise][:description]
-    @exercise.knowledge_element_id = (params[:exercise][:knowlegde_element]).to_i
-    @exercise.knowlegde_element = KnowledgeElement.where(knowledge_elements: @exercise.knowledge_element_id)
+    @exercise.knowledge_element_id = (params[:exercise][:knowledge_element_id]).to_i
+    @exercise.knowledge_element = KnowledgeElement.find(@exercise.knowledge_element_id)
     @exercise.user_id = session[:current_user_id]
+    @exercise.sequence = :false
+    if session[:admin] || session[:teacher] then
+      @exercise.moderated = :true
+    else
+      @exercise.moderated = :false
+    end
     @exercise.save      # exercises created and saved
     flash[:notice] = "Aufgabe erfolgreich angelegt"
     redirect_to exercise_path(@exercise)

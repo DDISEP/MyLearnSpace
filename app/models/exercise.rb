@@ -32,11 +32,15 @@ class Exercise < ActiveRecord::Base
   end
   
   def max_points
-    return Subexercise.where(exercise_id: self.id).map{ |s| s.points}.sum
+    return Subexercise.where(exercise_id: self.id, active: :true).map{ |s| s.points}.sum
   end
   
   def author_name
     return self.user.username
+  end
+
+  def knowledge_element_title
+    return KnowledgeElement.find(knowledge_element_id).name
   end
   
 end

@@ -16,7 +16,9 @@
 			<tr>
 				<td><%= s.text %></td>
                 <% if Solution.where(subexercise_id: s.id) != nil then %>
-				    <td><%= Solution.where(subexercise_id: s.id).first.solution.to_str %></td>
+				    <td> <%= Solution.find_by_subexercise_id(s).solution %>
+                    </td>
+
                 <% else %>
                     <td>Keine Lösung vorhanden</td>
                 <% end %>

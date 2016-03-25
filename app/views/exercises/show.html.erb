@@ -49,10 +49,9 @@
 		Noch keine!
 	<% end %>
 	<br />
-    Knowlegde Element:
+    Knowledge Element:
     <% if @exercise.knowledge_element_id != nil then %>
-        <% link_to knowledge_elements_path(@exercise.knowledge_element_id) %>
-        <% KnowledgeElement.find(@exercise.knowledge_element_id).name.to_str %>
+        <%= KnowledgeElement.find(@exercise.knowledge_element_id).name %>
     <% else %>
         Keinem Knowledge Element zugeordnet!
     <% end %>
