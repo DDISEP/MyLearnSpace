@@ -93,20 +93,10 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new
     @exercise.title = params[:exercise][:title]
     @exercise.description = params[:exercise][:description]
-    @exercise.knowledge_element = params[:exercise][:knowlegde_element].to_i
+    @exercise.knowledge_element_id = (params[:exercise][:knowlegde_element]).to_i
+    @exercise.knowlegde_element = KnowledgeElement.where(knowledge_elements: @exercise.knowledge_element_id)
     @exercise.user_id = session[:current_user_id]
     @exercise.save      # exercises created and saved
-    tags = params[:tags].split(",").map{|tag| tag.strip }
-    tags.each do |t|
-      # attention: works only with SQLite!
-      matching_tag = Content.find_by_sql("SELECT * FROM contents WHERE tag = '" + t + "' COLLATE NOCASE;").first    
-      if matching_tag != nil then
-        to_create = ExerciseContent.new
-        to_create.exercise_id = @exercise.id
-        to_create.content_id = matching_tag.id
-        to_create.save   
-      end
-    end     # links between exercise and contents created and saved
     flash[:notice] = "Aufgabe erfolgreich angelegt"
     redirect_to exercise_path(@exercise)
   end
@@ -115,33 +105,7 @@ class ExercisesController < ApplicationController
     @exercise.title = params[:exercise][:title]
     @exercise.description = params[:exercise][:description]
     @exercise.save
-    
-    old_tags = @exercise.contents.map{|t| t.tag}                # tags as they were before editing
-    new_tags = params[:tags].split(",").map{|tag| tag.strip }   # tags that have now been entered
-    tags_to_create = new_tags - old_tags                        # tags that now have to be created
-    tags_to_delete = old_tags - new_tags                        # tags that now have to be removed
-    
-    tags_to_delete.each do |t|
-      # matching_tag = Content.where(tag: t).first
-      # attention: wors only with SQLite!
-      matching_tag = Content.find_by_sql("SELECT * FROM contents WHERE tag = '" + t + "' COLLATE NOCASE;").first 
-      matching_link = matching_tag.nil? ? nil : ExerciseContent.where(content_id: matching_tag.id, exercise_id: @exercise.id).first         
-                                      # should never be nil because link already existed, check just for security
-      if matching_link != nil then    # should also never be nil because link already existed, check just for security
-        matching_link.destroy
-      end
-    end     # deleted all tags that aren't enumerated anymore
-    
-    tags_to_create.each do |t|
-      # attention: wors only with SQLite!
-      matching_tag = Content.find_by_sql("SELECT * FROM contents WHERE tag = '" + t + "' COLLATE NOCASE;").first
-      if matching_tag != nil then
-        to_create = ExerciseContent.new
-        to_create.exercise_id = @exercise.id
-        to_create.content_id = matching_tag.id
-        to_create.save
-      end
-    end       # created the newly entered tags
+
     flash[:notice] = "Aufgabe erfolgreich bearbeitet!"
     redirect_to exercise_path(@exercise)
   end

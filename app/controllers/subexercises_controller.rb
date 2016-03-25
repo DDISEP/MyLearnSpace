@@ -40,7 +40,7 @@ class SubexercisesController < ApplicationController
     @subexercise.active = :true
     @subexercise.save
     flash[:notice] = "Teilaufgabe erfolgreich angelegt."
-    redirect_to edit_exercise_path(params[:exercise_id])
+    redirect_to new_solution_path(subexercise_id: @subexercise)
   end
 
   def index
@@ -86,20 +86,19 @@ class SubexercisesController < ApplicationController
     puts @performance.achieved_points
   end
 
-  def solution
+  #def solution
+  #  @answer = params[:answer]
+  #  @current_subexercise_position = Subexercise.all(:conditions => ["exercise_id = ? AND position <= ?", @exercise.id, @performance.current_position]).length
+  #  @next = Subexercise.all(:conditions => ["exercise_id = ? AND position > ?", @exercise.id, @performance.current_position] ).sort_by{|s| s.position}.first
+  #  if @next != nil then
+  #    @performance.current_position = @next.position
+  #    @performance.save
+  #  else                                            # Solution of last subexercise, meaning the exercise has benn completed
+  #    @performance.current_position = -1            # -1 as mark for end
+  #    @performance.save
+  #  end
 
-    @answer = params[:answer]
-    @current_subexercise_position = Subexercise.all(:conditions => ["exercise_id = ? AND position <= ?", @exercise.id, @performance.current_position]).length
-    @next = Subexercise.all(:conditions => ["exercise_id = ? AND position > ?", @exercise.id, @performance.current_position] ).sort_by{|s| s.position}.first
-    if @next != nil then
-      @performance.current_position = @next.position
-      @performance.save
-    else                                            # Solution of last subexercise, meaning the exercise has benn completed
-      @performance.current_position = -1            # -1 as mark for end
-      @performance.save
-    end
-
-  end
+  #end
 
   def show
 
@@ -107,6 +106,10 @@ class SubexercisesController < ApplicationController
 
   def setNumber
     @position = params[:number]
+  end
+
+  def setSolution
+    @solution_id = params[:solution_id]
   end
 
 end

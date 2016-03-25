@@ -15,7 +15,11 @@
 		<% @subexercises.each do |s| %>
 			<tr>
 				<td><%= s.text %></td>
-				<td><#%= s.solution end %></td>
+                <% if Solution.where(subexercise_id: s.id) != nil then %>
+				    <td><%= Solution.where(subexercise_id: s.id).first.solution.to_str %></td>
+                <% else %>
+                    <td>Keine Lösung vorhanden</td>
+                <% end %>
 				<td><%= s.points %></td>
 				<td>
 					<%= button_to edit_exercise_subexercise_path(s.exercise, s),

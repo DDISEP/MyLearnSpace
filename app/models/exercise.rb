@@ -22,7 +22,7 @@ class Exercise < ActiveRecord::Base
     tags = tags.chop.chop
     return tags
   end
-  
+
   def like_counter
     return Like.where(exercise_id: self.id).length
   end

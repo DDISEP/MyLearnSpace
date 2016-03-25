@@ -1,0 +1,36 @@
+<%= form_for [@subexercise, @solution], :html => {:onsubmit => "return validateForm();"} do |f| %>
+    <div class="row-fluid">
+      <div class="span10">Aufgabe: <%= Subexercise.find(params[:subexercise_id]).exercise.title%> </div>
+      <div class="span10"><%= Subexercise.find(params[:subexercise_id]).exercise.description %></div>
+      <div class="spann10">Teilaufgabe: <%= Subexercise.find(params[:subexercise_id]).text%></div>
+      <div class="spann2">Maximale Punktezahl: <%= Subexercise.find(params[:subexercise_id]).points%></div>
+    </div>
+
+    <div id="solution_field" class="row-fluid">
+      <div class="span6"><%= f.text_area :solution, placeholder:"Gib hier die Lösung der Aufgabe...", id:"solution", maxlength:"255", style:"width:100%; resize:vertical;" %></div>
+      <div class="span6"><%= f.text_area :description, placeholder:"Gib hier eine ausführliche Erklärung und ein Bepunktungsschema für die Aufgabe an ...", id:"description", maxlength:"255", style:"width:100%; resize:vertical;" %></div>
+      </div>
+
+	<div class="row-fluid">
+        <%= f.hidden_field :subexercise_id, :value => params[:subexercise_id] %>
+		<div class="span6"><%= f.submit "Lösung anlegen", id:"submit_button", params: {subexercise_id: params[:subexercise_id]}, class:"btn btn-xs btn-primary" %></div>
+	</div>
+<% end %>
+
+<script>
+
+function validateForm(){
+	var sol = document.getElementById('solution').value;
+	var descr = document.getElementById('description').value;
+	if (sol == "" || sol == null ) {
+		alert('Du kannst keine leere Antwort eingeben!');
+		return false;
+	} else if (descr == "" || descr == null ) {
+        alert('Du kannst keine leere Beschreibung eingeben!');
+        return false;
+    } else {
+		return true;
+	}
+}
+
+</script>

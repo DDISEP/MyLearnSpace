@@ -49,15 +49,14 @@
 		Noch keine!
 	<% end %>
 	<br />
-	Tags:
-	<% i = 0 %>
-	<% while i < @exercise.contents.length - 1 do %>
-		<%= link_to @exercise.contents[i].tag, @exercise.contents[i] %>, 
-		<% i += 1 %>
-	<% end %>
-	<% if @exercise.contents.last != nil %>
-		<%= link_to @exercise.contents.last.tag, @exercise.contents.last %>
-	<% end %>
+    Knowlegde Element:
+    <% if @exercise.knowledge_element_id != nil then %>
+        <% link_to knowledge_elements_path(@exercise.knowledge_element_id) %>
+        <% KnowledgeElement.find(@exercise.knowledge_element_id).name.to_str %>
+    <% else %>
+        Keinem Knowledge Element zugeordnet!
+    <% end %>
+
 	
 	<hr/> <!-- Aufgabenaktionen -->
 	

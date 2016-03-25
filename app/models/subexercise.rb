@@ -1,6 +1,6 @@
 class Subexercise < ActiveRecord::Base
   #attr_accessor :position,  :text , :solution, :exercise_id, :points, :moderated, :active, :examItem
-  attr_accessible :position,  :text, :solution, :exercise_id, :points, :moderated, :active, :examItem, :cognitive_dimension
+  attr_accessible :position,  :text, :solution_id, :exercise_id, :points, :moderated, :active, :examItem, :cognitive_dimension
 
   belongs_to :exercise
   has_one :solution

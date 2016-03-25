@@ -70,6 +70,7 @@ MyLearnSpace::Application.routes.draw do
     resources :subexercises do
       get 'perform', on: :member
       get 'solution', on: :member
+
     end
     
     resources :likes
@@ -115,6 +116,8 @@ MyLearnSpace::Application.routes.draw do
   resources :topics
 
   resources :subexercises
+
+  resources :solutions
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
