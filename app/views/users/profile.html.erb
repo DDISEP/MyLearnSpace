@@ -1,5 +1,5 @@
 
-<p style="font-size: 25pt; color: cornflowerblue">Herzlich Willkommen, <%= @current_user.username %></p>
+<p style="font-size: 25pt; color: cornflowerblue">Herzlich Willkommen, <%= @current_user.firstname %></p>
 
 <p id="notice"><%= notice %></p>
 <p>&nbsp;</p>
@@ -7,6 +7,8 @@
 <table>
 <tr><td><p style="font-size: 13pt; color: gold"> Dein Benutzername: <%=@current_user.username%></p></td></tr>
 <tr><td><p style="font-size: 13pt; color: gold">Deine E-Mail Adresse: <%=@current_user.email%></p></td></tr>
+<tr><td><p style="font-size: 13pt; color: gold">Dein Vorname: <%=@current_user.firstname%></p></td></tr>
+<tr><td><p style="font-size: 13pt; color: gold">Dein Nachname: <%=@current_user.lastname%></p></td></tr>
 <tr><td><p style="font-size: 13pt; color: gold">Adminstatus: <%=@current_user.admin%></p></td></tr>
 <tr><td><p style="font-size: 13pt; color: gold">Lehrerstatus: <%=@current_user.teacher%></p></td></tr>
 <tr><td><p style="font-size: 13pt; color: gold">Schülerstatus: <%=@current_user.learner%></p></td></tr>

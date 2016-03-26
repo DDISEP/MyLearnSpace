@@ -69,6 +69,6 @@ class PeerToPeersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def peer_to_peer_params
-      params.require(:peer_to_peer).permit(:sender, :receiver, :subject, :message)
+      params.require(:peer_to_peer).permit(:sender, :reciever, :subject, :message)
     end
 end

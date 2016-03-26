@@ -1,12 +1,12 @@
-<h1>Listing peer_to_peers</h1>
+<h1>Nachrichten</h1>
 
 <table>
   <thead>
     <tr>
       <th>Sender</th>
-      <th>Receiver</th>
-      <th>Subject</th>
-      <th>Message</th>
+      <th>Empfänger</th>
+      <th>Betreff</th>
+      <th>Inhalt</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,7 +17,7 @@
     <% @peer_to_peers.each do |peer_to_peer| %>
       <tr>
         <td><%= peer_to_peer.sender %></td>
-        <td><%= peer_to_peer.receiver %></td>
+        <td><%= peer_to_peer.reciever %></td>
         <td><%= peer_to_peer.subject %></td>
         <td><%= peer_to_peer.message %></td>
         <td><%= link_to 'Show', peer_to_peer %></td>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Peer to peer', new_peer_to_peer_path %>
+<%= link_to 'Neue Nachricht erstellen', new_peer_to_peer_path %>

@@ -18,7 +18,7 @@ class PeerToPeersControllerTest < ActionController::TestCase
 
   test "should create peer_to_peer" do
     assert_difference('PeerToPeer.count') do
-      post :create, peer_to_peer: { message: @peer_to_peer.message, receiver: @peer_to_peer.receiver, sender: @peer_to_peer.sender, subject: @peer_to_peer.subject }
+      post :create, peer_to_peer: { message: @peer_to_peer.message, reciever: @peer_to_peer.reciever, sender: @peer_to_peer.sender, subject: @peer_to_peer.subject }
     end
 
     assert_redirected_to peer_to_peer_path(assigns(:peer_to_peer))
@@ -35,7 +35,7 @@ class PeerToPeersControllerTest < ActionController::TestCase
   end
 
   test "should update peer_to_peer" do
-    patch :update, id: @peer_to_peer, peer_to_peer: { message: @peer_to_peer.message, receiver: @peer_to_peer.receiver, sender: @peer_to_peer.sender, subject: @peer_to_peer.subject }
+    patch :update, id: @peer_to_peer, peer_to_peer: { message: @peer_to_peer.message, reciever: @peer_to_peer.reciever, sender: @peer_to_peer.sender, subject: @peer_to_peer.subject }
     assert_redirected_to peer_to_peer_path(assigns(:peer_to_peer))
   end
 

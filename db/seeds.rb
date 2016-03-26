@@ -8,9 +8,9 @@
 
 ### Arndt-Olwitz ###
 #User
-User.create(:username => "admin", :email => "admin@mls.de", :password => "Password123!", :admin => TRUE)
-User.create(:username => "teacher", :email => "teacher@mls.de", :password => "Password123!", :teacher => TRUE)
-User.create(:username => "learner", :email => "learner@mls.de", :password => "Password123!", :learner => TRUE, :pupil => TRUE)
+User.create(:username => "admin", :email => "admin@mls.de", :firstname => "Learner", :lastname => "Test", :password => "Password123!", :admin => TRUE)
+User.create(:username => "teacher", :email => "teacher@mls.de", :firstname => "Teacher", :lastname => "Test", :password => "Password123!", :teacher => TRUE)
+User.create(:username => "learner", :email => "learner@mls.de", :firstname => "Admin", :lastname => "Test", :password => "Password123!", :learner => TRUE, :pupil => TRUE)
 
 
 ### Hafemann-Sticha ###
