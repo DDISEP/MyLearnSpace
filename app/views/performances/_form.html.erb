@@ -1,0 +1,17 @@
+<%= form_for [@subexercise, @performance] do |f| %>
+    <div class="row-fluid">
+      <div class="span10">Aufgabe: <%= @subexercise.exercise.title%> </div>
+      <div class="span10"><%= @subexercise.exercise.description %></div>
+      <div class="span10"><%= @subexercise.text%></div>
+    </div>
+
+	<div id="description_field" class="row-fluid">
+
+		<div class="span6"><%= f.text_area :handedin, placeholder:"Gib hier deine Lösung ein...", id:"handedin", maxlength:"1000", style:"width:100%; resize:vertical;" %></div>
+	</div>
+
+
+	<div class="row-fluid">
+		<div class="span6"><%= f.submit "Lösung abgeben", id:"submit_button", class:"btn btn-xs btn-primary" %></div>
+	</div>
+<% end %>

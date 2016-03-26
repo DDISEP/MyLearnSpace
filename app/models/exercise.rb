@@ -30,6 +30,10 @@ class Exercise < ActiveRecord::Base
   def subexercise_counter
     return Subexercise.where(exercise_id: self.id).length
   end
+
+  def subexercises
+    return Subexercise.where(exercise_id: self.id)
+  end
   
   def max_points
     return Subexercise.where(exercise_id: self.id, active: :true).map{ |s| s.points}.sum

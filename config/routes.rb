@@ -64,8 +64,7 @@ MyLearnSpace::Application.routes.draw do
     get 'finish', on: :member
     
     resources :comments 
-    
-    resources :performances
+
     
     resources :subexercises do
       get 'perform', on: :member
@@ -115,7 +114,9 @@ MyLearnSpace::Application.routes.draw do
 
   resources :topics
 
-  resources :subexercises
+  resources :subexercises do
+    resources :performances
+  end
 
   resources :solutions
 

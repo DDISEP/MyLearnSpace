@@ -1,0 +1,36 @@
+<% if @exercise.subexercise_counter == 0 then %>
+	<h3> Noch keine Teilaufgaben vorhanden!</h3>
+<% else %>
+<table class="table table-striped table-condensed">
+	<thead>
+		<tr>
+			<th>Aufgabentext</th>
+			<th>Punkte</th>
+            <th>Anzahl Bearbeitungen</th>
+			<th>Aufgabe starten</th>
+			<th></th>
+		</tr>
+	</thead>	
+	<tbody>
+		<% @exercise.subexercises.each do |s| %>
+			<tr>
+				<td><%= s.text %></td>
+				<td><%= s.points %></td>
+                <td><%= Performance.where(:subexercise_id => s.id, :user_id => session[:current_user_id]).count %></td>
+                <td>
+					<%= button_to new_subexercise_performance_path(s),
+						:method => :get, class:"btn btn-xs btn-warning" do %>
+							<span class="glyphicon glyphicon-pencil"></span>
+					<% end %>
+				</td>
+				<td>
+					<%= button_to exercise_subexercise_path(s.exercise, s, :authenticity_token => form_authenticity_token), :method => :delete, 
+					data:{confirm:"Willst Du die Teilaufgabe wirklich loeschen?"}, class:"btn btn-xs btn-danger" do %>
+						<span class="glyphicon glyphicon-trash"></span>
+				<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<% end %>

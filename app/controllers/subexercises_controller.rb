@@ -4,6 +4,11 @@ class SubexercisesController < ApplicationController
   before_action :get_exercise, only: [:edit, :destroy, :create, :show, :perform, :solution, :check_auth]
   before_action :get_performance, only: [:perform, :solution]
   #before_action :check_auth, only:[:edit, :update, :destroy]
+  before_action :check_refs
+
+  def check_refs
+    @exercise = Exercise.find(@subexercise.exercise_id)
+  end
 
   def check_auth
     if @exercise.user_id != session[:current_user_id] && session[:admin] != true then
@@ -32,8 +37,8 @@ class SubexercisesController < ApplicationController
   def create
     @subexercise = Subexercise.new          # for some (unknown) reason mass assignment via create didn't work
     @subexercise.exercise_id = params[:exercise_id]
+    @subexercise.exercise = Exercise.find(@subexercise.exercise_id)
     @subexercise.text = params[:subexercise][:text]
-    #@subexercise.solution = params[:subexercise][:solution]
     @subexercise.points = params[:subexercise][:points]
     @subexercise.cognitive_dimension = params[:subexercise][:learning_objective].to_i
     @subexercise.position = Subexercise.where(exercise_id: @exercise).length + 1
@@ -101,7 +106,6 @@ class SubexercisesController < ApplicationController
   #end
 
   def show
-
   end
 
   def setNumber

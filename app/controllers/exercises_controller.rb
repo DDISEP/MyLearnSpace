@@ -15,7 +15,7 @@ class ExercisesController < ApplicationController
   end
   
   def get_latest_performance
-    @latest_performance = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id]).order('updated_at DESC').first
+    #@latest_performance = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id]).order('updated_at DESC').first
   end
   
   def get_exercise
@@ -66,15 +66,15 @@ class ExercisesController < ApplicationController
 
   def show
     session[:exercise_id] = @exercise.id
-    if @latest_performance != nil && @latest_performance.current_position > -1 then
+    #if @latest_performance != nil && @latest_performance.current_position > -1 then
       #last performance unfinished, set next subexercise to do
-      @next = Subexercise.where(exercise_id: params[:id], position: @latest_performance.current_position).first 
-    end
+    #  @next = Subexercise.where(exercise_id: params[:id], position: @latest_performance.current_position).first
+    #end
     @comment = Comment.new      # needed for comment/_form.html.erb
     @existingLike = Like.where(exercise_id: params[:id], user_id: session[:current_user_id]).first #check, if user already likes this exercise
     @comments = @comments.paginate(:page => params[:page], :per_page => 10)
     @page = params[:page].nil? ? 1 : params[:page]
-    @top_performance = Performance.where(exercise_id: @exercise.id, user_id: session[:current_user_id]).order('achieved_points DESC').first
+    @top_performance = Performance.where(user_id: session[:current_user_id]).order('achieved_points DESC').first
   end
 
   def edit  # even admin isn't allowed to edit exercises, he/she may only delete it
@@ -120,6 +120,7 @@ class ExercisesController < ApplicationController
     if @exercise.subexercise_counter == 0 then
       redirect_to(exercise_path(@exercise), notice: "Keine Teilaufgaben vorhanden!")
     else
+      redirect_to
       firstQuestion = Subexercise.where(exercise_id: @exercise.id).order('position ASC').first   # first question doens't have to have position 0
       #@performance = Performance.new          # for some (unknown) reason mass assignment via create didn't work
       #@performance.exercise_id = params[:id]
@@ -133,15 +134,7 @@ class ExercisesController < ApplicationController
   end
   
   def finish
-    @performance = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id]).order('created_at DESC').first
-    if @performance.current_position > -2 && params[:given_points] != nil then                    # necessary to prevent multiple adding of points when reloading page
-                                                                                                  # params[:given_points} should never be nil, check just for security
-        @performance.achieved_points = @performance.achieved_points + params[:given_points].to_i
-        puts "HELLO" +  params[:given_points].to_s
-    end
-    @performance.current_position = -2
-    @performance.save
-    @performances = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id]).order('created_at DESC')
+
   end
   
   def destroy
@@ -186,7 +179,7 @@ class ExercisesController < ApplicationController
   end
   
   def statistics
-    @performances = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id], current_position: -2).order('created_at DESC')
+    #@performances = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id], current_position: -2).order('created_at DESC')
   end
 
   def update_subnumbers
