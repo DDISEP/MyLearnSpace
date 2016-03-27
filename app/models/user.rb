@@ -4,7 +4,7 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
     
     include ActiveModel::Validations
-    attr_accessible :username, :email, :firstname, :lastname, :password,  :pupil, :admin, :learner, :teacher
+    attr_accessible :username, :email, :firstname, :lastname, :birthday, :password,  :pupil, :admin, :learner, :teacher
     validate :valid_user
     has_and_belongs_to_many :curriculums # mit Gruppe Zach Ellermeier abklären
     before_create :hash_password
@@ -42,6 +42,9 @@ class User < ActiveRecord::Base
       end
       if lastname.blank?
         errors.add(:base, "Bitte gib deinen Nachnamen an!")
+      end
+      if birthday.blank?
+        errors.add(:base, "Wir benötigen dein Geburtsdatum! Bitte gib dies an!")
       end
       if password.blank?
         errors.add(:base, "Es wurde kein Passwort eingegeben!")
@@ -100,7 +103,6 @@ class User < ActiveRecord::Base
         digit and uppercase and lowercase and special
       end
     end
-
 
 
     def self.authenticate email, password

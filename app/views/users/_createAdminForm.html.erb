@@ -11,21 +11,27 @@
         </div>
     <% end %>
 
+<h1>AdminForm</h1>
+
     <div class="field">
       <%= f.label :username %><br>
       <%= f.text_field :username %>
     </div>
     <div class="field">
-      <%= f.label :lastName %><br>
-      <%= f.text_field :lastName %>
-    </div>
-    <div class="field">
-      <%= f.label :firstName %><br>
-      <%= f.text_field :firstName %>
-    </div>
-    <div class="field">
       <%= f.label :email %><br>
       <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :vorname %><br>
+      <%= f.text_field :firstname %>
+    </div>
+    <div class="field">
+      <%= f.label :nachname %><br>
+      <%= f.text_field :lastname %>
+    </div>
+    <div class="field">
+      <%= f.label :geburtsdatum %><br>
+      <%= f.date_select :birthday %>
     </div>
     <div class="field">
       <%= f.label :password %><br />
@@ -36,6 +42,14 @@
       <%= f.password_field :password_confirmation %>
     </div>
     <div class="field">
+      <%= f.label :admin %><br />
+      <%= f.check_box :admin %>
+    </div>
+    <div class="field">
+      <%= f.label :learner %><br />
+      <%= f.check_box :learner %>
+    </div>
+    <div class="field">
       <%= f.label :teacher %><br />
       <%= f.check_box :teacher %>
     </div>
@@ -43,4 +57,4 @@
       <%= f.submit %>
     </div>
 
-<% end
+<% end %>

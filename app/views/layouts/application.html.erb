@@ -38,6 +38,12 @@
           <%= link_to 'Wiki', wikis_path %>
           &nbsp;&nbsp;
           <%= link_to 'Leistungen', progresses_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Nachrichten', peer_to_peers_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Newsfeed', newsfeeds_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Neuen Admin erstellen', new_user_path %>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <% elsif @current_user.teacher? %>
           &nbsp;&nbsp;
@@ -56,6 +62,10 @@
           <%= link_to 'Wiki', wikis_path %>
           &nbsp;&nbsp;
           <%= link_to 'Leistungen', progresses_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Nachrichten', peer_to_peers_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Neuen Teacher erstellen', new_user_path %>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <% else %>
           &nbsp;&nbsp;

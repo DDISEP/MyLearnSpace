@@ -3,6 +3,7 @@
 
 <table width="70%">
 	<tr>
+    <td style="padding-left:5px"></td>
 		<td>
 			<b><p style="font-size: 15pt">Name</p></b>
 		</td>
@@ -18,13 +19,14 @@
 	</tr>
 	<% @users.each do |u| 	%>
 	<tr>
+    <td style="padding-left:5px"></td>
 		<td>
 			<%= u.username %>
 		</td>
 		<td>
-			<%if u.pupil == true%>
+			<%if u.learner == true%>
 				<%="Schüler"%><!--statt t und f muss hier noch ja nein eingefügt werden!!-->
-			<%elsif u.pupil == false%>
+			<%elsif u.learner == false%>
 				<%="Kein Schüler"%>
 			<%else%>
 				<%="Keine Angabe"%>

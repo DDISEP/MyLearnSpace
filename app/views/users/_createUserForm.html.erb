@@ -38,6 +38,8 @@
         </div>
     <% end %>
 
+<h1>UserForm</h1>
+
     <div class="field">
       <%= f.label :username %><br>
       <%= f.text_field :username %>
@@ -55,6 +57,10 @@
       <%= f.text_field :lastname %>
     </div>
     <div class="field">
+      <%= f.label :geburtsdatum %><br>
+      <%= f.date_select :birthday %>
+    </div>
+    <div class="field">
       <%= f.label :password %><br />
       <%= f.password_field :password %>
     </div>
@@ -63,16 +69,8 @@
       <%= f.password_field :password_confirmation %>
     </div>
     <div class="field">
-      <%= f.label :admin %><br />
-      <%= f.check_box :admin %>
-    </div>
-    <div class="field">
       <%= f.label :learner %><br />
       <%= f.check_box :learner %>
-    </div>
-    <div class="field">
-      <%= f.label :teacher %><br />
-      <%= f.check_box :teacher %>
     </div>
     <div class="actions">
       <%= f.submit %>

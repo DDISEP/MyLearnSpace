@@ -19,13 +19,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-       redirect_to new_login_path, :notice => "Dein Profil wurde erfolgreich angelegt! Um alle Funktionen nutzen zu können, melde dich jetzt hier an."
+      redirect_to new_login_path, :notice => "Hier sind wir gelandet!"#"Dein Profil wurde erfolgreich angelegt! Um alle Funktionen nutzen zu können, melde dich jetzt hier an."
     else
-       render "new.html.erb"
+      render "new.html.erb"
     end
   end
-  
- 
+
+
   def show 
     
   end
@@ -51,11 +51,22 @@ class UsersController < ApplicationController
   end
   end
 
+  def createadmin
+     @newuser = User.new(params[:user])
+    if @newuser.save
+      redirect_to user_path, :notice => "Herzlichen Glückwunsch. Du hast erfolgreich einen neuen Admin erstellt!"#"Dein Profil wurde erfolgreich angelegt! Um alle Funktionen nutzen zu können, melde dich jetzt hier an."
+    else
+      render "createadmin.html.erb"
+    end
+  end
+
+
   def destroy
     @user= @current_user
     @user.destroy
     session.clear
     redirect_to root_url   
   end
+
   
 end
