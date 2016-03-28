@@ -13,24 +13,27 @@
 	</thead>	
 	<tbody>
 		<% @exercise.subexercises.each do |s| %>
+        <% if s.moderated then %>
 			<tr>
 				<td><%= s.text %></td>
 				<td><%= s.points %></td>
                 <td><%= Performance.where(:subexercise_id => s.id, :user_id => session[:current_user_id]).count %></td>
                 <td>
 					<%= button_to new_subexercise_performance_path(s),
-						:method => :get, class:"btn btn-xs btn-warning" do %>
-							<span class="glyphicon glyphicon-pencil"></span>
+						:method => :get, class:"btn btn-xs btn-primary" do %>
+							<span class="glyphicon glyphicon-play"></span>
 					<% end %>
 				</td>
-				<td>
+				<td><% if User.find(session[:current_user_id]).admin || s.user_id == session[:current_user_id] then %>
 					<%= button_to exercise_subexercise_path(s.exercise, s, :authenticity_token => form_authenticity_token), :method => :delete, 
 					data:{confirm:"Willst Du die Teilaufgabe wirklich loeschen?"}, class:"btn btn-xs btn-danger" do %>
 						<span class="glyphicon glyphicon-trash"></span>
 				<% end %>
+                  <%end %>
 				</td>
 			</tr>
 		<% end %>
+        <% end %>
 	</tbody>
 </table>
 <% end %>

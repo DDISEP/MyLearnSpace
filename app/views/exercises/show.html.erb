@@ -38,10 +38,9 @@
 	Beschreibung: <%= @exercise.description %> <br/>
 	Anzahl der Fragen: <%= @exercise.subexercise_counter %><br />
 	Likes: <span id="like_counter"><%= @exercise.like_counter %></span><br/>
-	Erreichbare Punkte: <%= @exercise.max_points %>	<br/>
-	Deine Bestleistung:
+	<!--Erreichbare Punkte: <%= @exercise.max_points %>	<br/> -->
+	Statistik:
 	<% if @top_performance != nil then %>
-		<%= @top_performance.achieved_points %>
 		<%= link_to statistics_exercise_path(@exercise.id) do %>
 			( Statistik <span class="glyphicon glyphicon-stats"></span> )
 		<% end %>
@@ -59,26 +58,14 @@
 	
 	<hr/> <!-- Aufgabenaktionen -->
 	
-	<!-- Start- bzw. Fortsetzen-/Löschen-Button -->
-	<% if @next == nil then%>
+	<!-- Start-Button -->
+	<% if Subexercise.where(exercise_id: @exercise).count > 0 then%>
 	<div class="row-fluid"><%= button_to start_exercise_path(@exercise.id), :method => :get, 
 		style:"width: 100%", class:"btn btn-xs btn-primary" do %>
-			Lernaufgabe starten   <span class="glyphicon glyphicon-play"></span>
+			zufällige Lernaufgabe starten   <span class="glyphicon glyphicon-play"></span>
 		<% end %>
 	</div>
-	<% else %>
-	<div class="row-fluid"><%= button_to perform_exercise_subexercise_path(@exercise.id, @next), 
-		:method => :get, style:"width: 100%", class:"btn btn-xs btn-primary" do %>
-			Lernaufgabe fortsetzen   <span class="glyphicon glyphicon-share-alt"></span>
-		<% end %>
-	</div>
-	<div class="row-fluid"><%= button_to exercise_performance_path(@exercise.id, @latest_performance, :authenticity_token => form_authenticity_token), 
-		:method => :delete, :remote => true, style:"width: 100%", class:"btn btn-xs btn-primary"  do%>
-			Bearbeitung löschen   <span class="glyphicon glyphicon-trash"></span>
-		<% end %>
-	</div>
-	<% end%>
-	
+	<% end %>
 	<!-- Like- bzw. Disklike-Button -->
 	<div id="like_button">
 		<%= render 'likes/button'%>
@@ -87,7 +74,7 @@
 	<!-- Bearbeiten-Button -->
 	<% if @exercise.user_id == session[:current_user_id] || session[:admin] == true then%>
 	<div class="row-fluid">
-		<%= button_to edit_exercise_path(@exercise) , :method => :get, style:"width: 100%", class:"btn btn-xs btn-primary" do %>
+		<%= button_to edit_exercise_path(@exercise) , :method => :get, style:"width: 100%", class:"btn btn-xs btn-warning" do %>
 			Lernaufgabe bearbeiten   <span class="glyphicon glyphicon-pencil"></span>
 		<% end %>
 	</div>
@@ -96,10 +83,16 @@
     <!-- Neue Teilaufgabe-Button -->
     <% if User.find(session[:current_user_id]).admin == true || session[:admin] || session[:teacher] then%>
       <div class="row-fluid">
-        <%= button_to new_subexercise_path(@exercise),  :method => :get, :params => {:exercise_id => @exercise}, style:"width: 100%", class:"btn btn-xs btn-primary" do %>
+        <%= button_to new_subexercise_path(@exercise),  :method => :get, :params => {:exercise_id => @exercise}, style:"width: 100%", class:"btn btn-xs btn-warning" do %>
             Neue Teilaufgabe hinzufügen   <span class="glyphicon glyphicon-pencil"></span>
         <% end %>
       </div>
+      <% else %>
+        <div class="row-fluid">
+          <%= button_to new_subexercise_path(@exercise),  :method => :get, :params => {:exercise_id => @exercise}, style:"width: 100%", class:"btn btn-xs btn-warning" do %>
+              Neue Teilaufgabe vorschlagen   <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+        </div>
     <% end %>
 	
 	<!-- Zurück-Button -->

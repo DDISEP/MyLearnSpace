@@ -4,7 +4,7 @@ class SubexercisesController < ApplicationController
   before_action :get_exercise, only: [:edit, :destroy, :create, :show, :perform, :solution, :check_auth]
   before_action :get_performance, only: [:perform, :solution]
   #before_action :check_auth, only:[:edit, :update, :destroy]
-  before_action :check_refs
+  before_action :check_refs, only:[:edit, :update, :destroy, :show, :perform, :solution]
 
   def check_refs
     @exercise = Exercise.find(@subexercise.exercise_id)
@@ -18,7 +18,11 @@ class SubexercisesController < ApplicationController
   end
 
   def get_performance
-    @performance = Performance.where(exercise_id: params[:exercise_id], user_id: session[:current_user_id]).order('created_at DESC').first
+    @performance = Performance.where(subexercise_id: @subexercise, user_id: session[:current_user_id]).order('created_at DESC').first
+  end
+
+  def count_performance
+    return Performance.where(subexercise_id: @subexercise, user_id: session[:current_user_id]).count
   end
 
   def get_subexercise
@@ -43,6 +47,11 @@ class SubexercisesController < ApplicationController
     @subexercise.cognitive_dimension = params[:subexercise][:learning_objective].to_i
     @subexercise.position = Subexercise.where(exercise_id: @exercise).length + 1
     @subexercise.active = :true
+    @subexercise.user_id = session[:current_user_id]
+    @subexercise.moderated = :false
+    if User.find(session[:current_user_id]).admin || User.find(session[:current_user_id]).teacher then
+      @subexercise.moderated = :true
+    end
     @subexercise.save
     flash[:notice] = "Teilaufgabe erfolgreich angelegt."
     redirect_to new_solution_path(subexercise_id: @subexercise)

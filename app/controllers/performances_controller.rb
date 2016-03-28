@@ -9,11 +9,11 @@ class PerformancesController < ApplicationController
   def create
     @performance = Performance.new
     @performance.user_id = session[:current_user_id]
-    @performance.subexercise_id = params[:subexercise_id]
     @performance.handedin = params[:performance][:handedin]
+    @performance.subexercise_id = params[:subexercise_id]
     @performance.save
     flash[:notice] = "Abgabe eingegangen."
-    redirect_to exercise_path(Subexercise.find(params[:subexercise_id]).exercise)
+    redirect_to edit_subexercise_performance_path(params[:subexercise_id], @performance)
   end
 
   def destroy
@@ -25,6 +25,19 @@ class PerformancesController < ApplicationController
         flash[:notice] = "Bearbeitungsstand geloescht."
         redirect_to @exercise}
     end 
+  end
+
+  def edit
+    @subexercise = Subexercise.find(params[:subexercise_id])
+    @performance = Performance.find(params[:id])
+  end
+
+  def update
+    @performance = Performance.find(params[:id])
+    @performance.achieved_points = params[:performance][:achieved_points]
+    @performance.save
+    flash[:notice] = "Gespeichert."
+    redirect_to exercise_path(Exercise.find(session[:exercise_id]))
   end
   
 end

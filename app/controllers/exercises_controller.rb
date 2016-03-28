@@ -117,11 +117,12 @@ class ExercisesController < ApplicationController
   end
   
   def start
-    if @exercise.subexercise_counter == 0 then
+    if Subexercise.where(exercise_id: @exercise).count == 0 then
       redirect_to(exercise_path(@exercise), notice: "Keine Teilaufgaben vorhanden!")
     else
-      redirect_to
-      firstQuestion = Subexercise.where(exercise_id: @exercise.id).order('position ASC').first   # first question doens't have to have position 0
+      random = rand(Subexercise.where(exercise_id: @exercise.id).count).to_i
+      firstQuestion = Subexercise.where(exercise_id: @exercise.id).to_a.at(random)
+      #order('position ASC').first   # first question doens't have to have position 0
       #@performance = Performance.new          # for some (unknown) reason mass assignment via create didn't work
       #@performance.exercise_id = params[:id]
       #@performance.user_id = session[:current_user_id]
@@ -129,7 +130,7 @@ class ExercisesController < ApplicationController
       #@performance.achieved_points = 0
       #@performance.max_points = @exercise.max_points
       #@performance.save
-      redirect_to subexercise_path(@exercise, firstQuestion)
+      redirect_to new_subexercise_performance_path(firstQuestion)
     end
   end
   
