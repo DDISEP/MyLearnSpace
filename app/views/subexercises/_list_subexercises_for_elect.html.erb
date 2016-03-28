@@ -1,5 +1,5 @@
-<% if @exercise.subexercise_counter == 0 then %>
-	<h3> Noch keine Teilaufgaben vorhanden!</h3>
+<% if Subexercise.where(exercise_id: @exercise, active: :true, moderated: :true).count == 0 then %>
+	<h3> Keine Teilaufgaben vorhanden!</h3>
 <% else %>
 <table class="table table-striped table-condensed">
 	<thead>
@@ -13,7 +13,7 @@
 	</thead>	
 	<tbody>
 		<% @exercise.subexercises.each do |s| %>
-        <% if s.moderated then %>
+        <% if s.moderated && s.active then %>
 			<tr>
 				<td><%= s.text %></td>
 				<td><%= s.points %></td>

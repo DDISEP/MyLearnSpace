@@ -96,11 +96,13 @@ class ExercisesController < ApplicationController
     @exercise.knowledge_element_id = (params[:exercise][:knowledge_element_id]).to_i
     @exercise.knowledge_element = KnowledgeElement.find(@exercise.knowledge_element_id)
     @exercise.user_id = session[:current_user_id]
-    @exercise.sequence = :false
-    if session[:admin] || session[:teacher] then
-      @exercise.moderated = :true
+    @exercise.sequence = TRUEs
+    if User.find(session[:current_user_id]).admin == :true then
+      @exercise.moderated = TRUE
+    elsif User.find(session[:current_user_id]).teacher == :true then
+       @exercise.moderated = TRUE
     else
-      @exercise.moderated = :false
+      @exercise.moderated = FALSE
     end
     @exercise.save      # exercises created and saved
     flash[:notice] = "Aufgabe erfolgreich angelegt"

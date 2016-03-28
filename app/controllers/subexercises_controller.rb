@@ -46,11 +46,11 @@ class SubexercisesController < ApplicationController
     @subexercise.points = params[:subexercise][:points]
     @subexercise.cognitive_dimension = params[:subexercise][:learning_objective].to_i
     @subexercise.position = Subexercise.where(exercise_id: @exercise).length + 1
-    @subexercise.active = :true
+    @subexercise.active = TRUE
     @subexercise.user_id = session[:current_user_id]
-    @subexercise.moderated = :false
+    @subexercise.moderated = FALSE
     if User.find(session[:current_user_id]).admin || User.find(session[:current_user_id]).teacher then
-      @subexercise.moderated = :true
+      @subexercise.moderated = TRUE
     end
     @subexercise.save
     flash[:notice] = "Teilaufgabe erfolgreich angelegt."
@@ -84,7 +84,7 @@ class SubexercisesController < ApplicationController
     @subexercise.position = nil
     @subexercise.save
     #@exercise.update_subnumbers #Nummerierungen der Teilaufgaben aktualisieren
-    #redirect_to edit_exercise_path(@exercise) #subexercise soll nicht ganz gelöscht werden, sondern nur unsichtbar geschalten werden
+    redirect_to exercise_path(session[:exercise_id]) #subexercise soll nicht ganz gelöscht werden, sondern nur unsichtbar geschalten werden
   end
 
   def perform
