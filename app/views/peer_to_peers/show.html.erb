@@ -1,16 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Sender:</strong>
-  <%= @peer_to_peer.sender %>
-</p>
-
-<p>
-  <strong>Reciever:</strong>
-  <%= @peer_to_peer.reciever %>
-</p>
-
-<p>
   <strong>Subject:</strong>
   <%= @peer_to_peer.subject %>
 </p>
@@ -18,6 +8,11 @@
 <p>
   <strong>Message:</strong>
   <%= @peer_to_peer.message %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @peer_to_peer.user %>
 </p>
 
 <%= link_to 'Edit', edit_peer_to_peer_path(@peer_to_peer) %> |

@@ -1,7 +1,14 @@
 <h3>Hier kannst du dir ein Profil anlegen:</h3>
 
 <body>
-
-  <%= render "createUserForm" %>
-  <%= link_to 'Zu den anderen Benutzern', users_path %>
+<% if logged_in_as_admin? %>
+  <%= render "createAdminForm" %>
+  <%= link_to 'hier', users_path %>
+<% elsif logged_in_as_teacher? %>
+    <%= render "createTeacherForm" %>
+    <%= link_to 'Zu den anderen Benutzern', users_path %>
+<% else %>
+    <%= render "createUserForm" %>
+    <%= link_to 'Zu den anderen Benutzern', users_path %>
+<% end -%>
 </body>

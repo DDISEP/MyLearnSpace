@@ -12,20 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :Sender %><br>
-    <%= f.number_field :sender %>
-  </div>
-  <div class="field">
-    <%= f.label :Empfänger %><br>
-    <%= f.number_field :reciever %>
-  </div>
-  <div class="field">
     <%= f.label :Betreff %><br>
     <%= f.text_field :subject %>
   </div>
   <div class="field">
     <%= f.label :Nachricht %><br>
     <%= f.text_field :message %>
+  </div>
+  <div class="field">
+    <%= f.label :Empfänger %><br>
+    <%= f.text_field :user_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

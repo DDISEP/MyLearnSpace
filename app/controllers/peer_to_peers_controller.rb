@@ -1,5 +1,10 @@
 class PeerToPeersController < ApplicationController
+  before_action :get_peer_to_peer, only: [:show, :destroy, :edit, :update]
   before_action :set_peer_to_peer, only: [:show, :edit, :update, :destroy]
+
+  def get_peer_to_peer
+    @peer_to_peer = PeerToPeer.find(params[:id])
+  end
 
   # GET /peer_to_peers
   # GET /peer_to_peers.json
@@ -24,11 +29,11 @@ class PeerToPeersController < ApplicationController
   # POST /peer_to_peers
   # POST /peer_to_peers.json
   def create
-    @peer_to_peer = PeerToPeer.new(peer_to_peer_params)
+    @peer_to_peer = PeerToPeer.new(params[:peer_to_peer])
 
     respond_to do |format|
       if @peer_to_peer.save
-        format.html { redirect_to @peer_to_peer, notice: 'Peer to peer was successfully created.' }
+        format.html { redirect_to @peer_to_peer, notice: 'Deine Nachricht wurde erfolgreich versendet!' }
         format.json { render action: 'show', status: :created, location: @peer_to_peer }
       else
         format.html { render action: 'new' }
@@ -41,7 +46,7 @@ class PeerToPeersController < ApplicationController
   # PATCH/PUT /peer_to_peers/1.json
   def update
     respond_to do |format|
-      if @peer_to_peer.update(peer_to_peer_params)
+      if @peer_to_peer.update(params[:peer_to_peer])
         format.html { redirect_to @peer_to_peer, notice: 'Peer to peer was successfully updated.' }
         format.json { head :no_content }
       else
@@ -69,6 +74,6 @@ class PeerToPeersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def peer_to_peer_params
-      params.require(:peer_to_peer).permit(:sender, :reciever, :subject, :message)
+      params.require(:peer_to_peer).permit(:subject, :message, :user_id)
     end
 end

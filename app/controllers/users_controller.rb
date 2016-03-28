@@ -1,6 +1,8 @@
 #Encoding: utf-8
 class UsersController < ApplicationController
+  helper_method :current_user, :logged_in_as_admin?, :logged_in_as_teacher?
   skip_before_action :check_login, only: [:new, :create]
+
   
   def index
     @users = User.all.sort{|a,b| a.username.downcase <=> b.username.downcase } #Sortierung nach Alphabet um Suche zu ersetzem
@@ -17,9 +19,9 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      redirect_to new_login_path, :notice => "Hier sind wir gelandet!"#"Dein Profil wurde erfolgreich angelegt! Um alle Funktionen nutzen zu können, melde dich jetzt hier an."
+    @newUser = User.new(params[:user])
+    if @newUser.save
+      redirect_to users_path, :notice => "Hier sind wir gelandet!"#"Dein Profil wurde erfolgreich angelegt! Um alle Funktionen nutzen zu können, melde dich jetzt hier an."
     else
       render "new.html.erb"
     end
@@ -51,15 +53,24 @@ class UsersController < ApplicationController
   end
   end
 
-  def createadmin
-     @newuser = User.new(params[:user])
-    if @newuser.save
-      redirect_to user_path, :notice => "Herzlichen Glückwunsch. Du hast erfolgreich einen neuen Admin erstellt!"#"Dein Profil wurde erfolgreich angelegt! Um alle Funktionen nutzen zu können, melde dich jetzt hier an."
-    else
-      render "createadmin.html.erb"
-    end
+  def add_new_user
+
   end
 
+  def current_user
+    @current_user ||= User.find_by_id(session[:user])
+  end
+
+  def logged_in_as_admin?
+    current_user != nil and current_user.admin?
+  end
+
+  def logged_in_as_teacher?
+    current_user != nil and current_user.teacher?
+  end
+  def newAdmin
+
+  end
 
   def destroy
     @user= @current_user

@@ -1,13 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  sender: 1
-  reciever: 1
   subject: MyString
   message: MyString
+  user_id: 
 
 two:
-  sender: 1
-  reciever: 1
   subject: MyString
   message: MyString
+  user_id: 

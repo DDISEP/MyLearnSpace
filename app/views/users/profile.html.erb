@@ -15,6 +15,7 @@
 
       <tr><td><p style="font-size: 13pt; color: #ff9004">Du bist als Admin angemeldet!</p></td></tr>
 
+
   <% elsif @current_user.teacher %>
 
       <tr><td><p style="font-size: 13pt; color: #ff9004">Du bist als Lehrer angemeldet!%></p></td></tr>
@@ -29,6 +30,7 @@
 
 <p>&nbsp;</p>
 <table>
+
 <tr><td><%= link_to 'Benutzerprofil bearbeiten', edit_user_path(@current_user) %></td></tr>
 <tr><td><%= link_to "Benutzerprofil löschen", users_profile_path(@current_user, :authenticity_token => form_authenticity_token), data:{confirm: ('Bist du dir sicher?')}, method: :delete%></td></tr>
 </table>

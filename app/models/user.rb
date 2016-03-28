@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
     has_many :questions
     has_many :answers
 
+    has_many :peer_to_peers
+
     def hash_password
       self.password = Digest::MD5.hexdigest(self.password)
     end    
