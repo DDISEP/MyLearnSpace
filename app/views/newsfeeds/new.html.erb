@@ -1,5 +1,12 @@
-<h1>New newsfeed</h1>
+<div class="container">
+<h1>Neue Newsfeednachricht erstellen</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', newsfeeds_path %>
+<div class="span3" style="padding-top: 20px">
+  <%= button_to newsfeeds_path, :method => :get, class:"btn btn-xs btn-primary" do %>
+      <span class="glyphicon glyphicon-arrow-left"></span> zurück
+  <% end %>
+</div>
+
+</div>

@@ -1,51 +1,53 @@
-<h1>Newsfeed</h1>
-<div class="dreispaltig">
+<div class="container-fluid">
+  <h1>Newsfeed</h1>
 
-<table width = "70%">
-  <thead>
-    <tr>
-      <td style="padding-left:5px"></td>
-      <td>
-        <b><p style="font-size: 15pt">Betreff</p></b>
-      </td>
-      <td>
-        <b><p style="font-size: 15pt">Inhalt</p></b>
-      </td>
-      <td>
-        <%if @admin%>
-            <b><p style="font-size: 15pt">An alle gesendet?</p></b>
-        <%end%>
-      </td>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @newsfeeds.each do |newsfeed| %>
-      <tr>
-        <td style="padding-left:5px"></td>
-        <td>
-          <%= newsfeed.subject %>
-        </td>
-        <td>
-          <%= newsfeed.message %>
-        </td>
-        <td>
-          <%= newsfeed.newsfeedToAll %>
-        </td>
-        <% if @current_user.admin %>
-            <td><%= link_to 'anzeigen', newsfeed %></td>
-            <td><%= link_to 'bearbeiten', edit_newsfeed_path(newsfeed) %></td>
-            <td><%= link_to 'löschen', newsfeed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% else %>
-            <td><%= link_to 'anzeigen', newsfeed %></td>
+  <% if @current_user.admin %>
+      <div class="span3" style="padding-top: 20px">
+        <%= button_to new_newsfeed_path, :method => :get, class:"btn btn-xs btn-primary" do %>
+            <span class="glyphicon glyphicon-plus"></span> Neue Newsfeednachricht erstellen
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </div>
+  <% end %>
 
-<br>
-  &nbsp;
-<% if @current_user.admin %>
-<%= link_to 'Neue Newsfeed Nachricht erstellen', new_newsfeed_path %>
-<% end %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <td width="20%">
+            <b><p style="font-size: 15pt">Betreff</p></b>
+          </td>
+          <td width="30%">
+           <b><p style="font-size: 15pt">Inhalt</p></b>
+          </td>
+          <td width="15%">
+            <b><p style="font-size: 15pt">zuletzt geändert</p></b>
+          </td>
+          <td width="10%">
+            <%if @current_user.admin %>
+              <b><p style="font-size: 15pt">an alle?</p></b>
+            <%end%>
+          </td>
+        </tr>
+        </thead>
+        <tbody>
+          <% @newsfeeds.each do |newsfeed| %>
+            <tr>
+              <td><b><%= newsfeed.subject %></b></td>
+              <td><%= newsfeed.message %></td>
+              <td><%= newsfeed.updated_at%></td>
+              <% if @current_user.admin %>
+                  <td><%= newsfeed.newsfeedToAll %></td>
+                  <td width="7%"><%= link_to 'anzeigen', newsfeed %></td>
+                  <td width="7%"><%= link_to 'bearbeiten', edit_newsfeed_path(newsfeed) %></td>
+                  <td width="7%"><%= link_to 'löschen', newsfeed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% else %>
+                  <td width="20%"><%= link_to 'anzeigen', newsfeed %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

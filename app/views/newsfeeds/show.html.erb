@@ -1,23 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Betreff:</strong>
-  <%= @newsfeed.subject %>
-</p>
-
-<p>
-  <strong>Nachricht:</strong>
-  <%= @newsfeed.message %>
-</p>
-
-<p>
-  <strong>An alle gesendet?:</strong>
-  <%= @newsfeed.newsfeedToAll %>
-</p>
-
-<% if @current_user.admin? %>
-<%= link_to 'Edit', edit_newsfeed_path(@newsfeed) %> |
-<%= link_to 'Back', newsfeeds_path %>
-<% else %>
-<%= link_to 'Back', newsfeeds_path %>
-<% end %>
+<div class="container">
+<h1><%=@newsfeed.subject%></h1>
+  <p id="notice"><%= notice %></p>
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <div id="subject_field" class="row-fluid">
+        <div class="span1"><b>Betreff</b></div>
+        <div class="span11"><%= @newsfeed.subject %></div>
+      </div>
+      <div id="message_field" class="row-fluid">
+        <div class="span1"><b>Inhalt</b></div>
+        <div class="span11"><%= @newsfeed.message %></div>
+      </div>
+      <% if @current_user.admin %>
+          <% if @newsfeed.newsfeedToAll %>
+              <p>Newsfeednachricht wurde an alle gesendet.</p>
+          <% else %>
+              <p>Newsfeednachricht wurde nur an die Administratoren gesendet.</p>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="span3" style="padding-top: 20px">
+    <%= button_to newsfeeds_path, :method => :get, class:"btn btn-xs btn-primary" do %>
+        <span class="glyphicon glyphicon-arrow-left"></span> zurück
+    <% end %>
+  </div>
+  <div class="span3" style="padding-top: 20px">
+    <%= button_to edit_newsfeed_path, :method => :get, class:"btn btn-xs btn-primary" do %>
+        <span class="glyphicon glyphicon-pencil"></span> bearbeiten
+    <% end %>
+  </div>
+</div>

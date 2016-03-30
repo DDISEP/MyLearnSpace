@@ -4,7 +4,11 @@ class NewsfeedsController < ApplicationController
   # GET /newsfeeds
   # GET /newsfeeds.json
   def index
-    @newsfeeds = Newsfeed.all
+    if @current_user.admin
+      @newsfeeds = Newsfeed.all.order('updated_at desc')
+    else
+      @newsfeeds = Newsfeed.where(newsfeedToAll: true).order('updated_at desc')
+    end
   end
 
   # GET /newsfeeds/1
@@ -28,7 +32,7 @@ class NewsfeedsController < ApplicationController
 
     respond_to do |format|
       if @newsfeed.save
-        format.html { redirect_to @newsfeed, notice: 'Newsfeed was successfully created.' }
+        format.html { redirect_to @newsfeed, notice: 'Newsfeednachricht wurde erfolgreich erstellt.' }
         format.json { render action: 'show', status: :created, location: @newsfeed }
       else
         format.html { render action: 'new' }
@@ -42,7 +46,7 @@ class NewsfeedsController < ApplicationController
   def update
     respond_to do |format|
       if @newsfeed.update(newsfeed_params)
-        format.html { redirect_to @newsfeed, notice: 'Newsfeed was successfully updated.' }
+        format.html { redirect_to @newsfeed, notice: 'Newsfeednachricht wurde erfolgreich geändert.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
