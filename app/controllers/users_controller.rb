@@ -1,6 +1,6 @@
 #Encoding: utf-8
 class UsersController < ApplicationController
-  helper_method :current_user, :logged_in_as_admin?, :logged_in_as_teacher?
+  helper_method :current_user, :logged_in_as_admin?, :logged_in_as_teacher?, :newAdmin
   skip_before_action :check_login, only: [:new, :create]
 
   
@@ -19,8 +19,8 @@ class UsersController < ApplicationController
   end
   
   def create
-    @newUser = User.new(params[:user])
-    if @newUser.save
+    @user = User.new(params[:user])
+    if @user.save
       redirect_to users_path, :notice => "Hier sind wir gelandet!"#"Dein Profil wurde erfolgreich angelegt! Um alle Funktionen nutzen zu können, melde dich jetzt hier an."
     else
       render "new.html.erb"
@@ -68,8 +68,9 @@ class UsersController < ApplicationController
   def logged_in_as_teacher?
     current_user != nil and current_user.teacher?
   end
-  def newAdmin
 
+  def newAdmin
+    @user = User.new
   end
 
   def destroy

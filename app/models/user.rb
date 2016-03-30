@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
     has_many :exercises, dependent: :nullify # mit Gruppe Ottinger Grett absprechen
     has_many :likes, dependent: :destroy # mit Grupee Hafemann Sticha absprechen
     has_many :performances, dependent: :destroy # mit Gruppe Ottinger Grett absprechen
-    #has_many :messages
 
     #n:1 to materialXs
     has_many :materialtexts
@@ -26,7 +25,7 @@ class User < ActiveRecord::Base
     has_many :questions
     has_many :answers
 
-    has_many :peer_to_peers
+    has_and_belongs_to_many :peer_to_peers
 
     def hash_password
       self.password = Digest::MD5.hexdigest(self.password)
@@ -88,13 +87,29 @@ class User < ActiveRecord::Base
       if self.password.length.in?(12..20)
         #überprüft ob Ziffern, Groß-, Kleinbuchstaben und Sonderzeichen enthalten sind
         while i < self.password.length
-          if self.password.chars.fetch(i).eql? ('1') or self.password.chars.fetch(i).eql? ('2') or self.password.chars.fetch(i).eql? '3' or self.password.chars.fetch(i).eql? '4' or self.password.chars.fetch(i).eql? '5' or self.password.chars.fetch(i).eql? '6' or self.password.chars.fetch(i).eql? '7' or self.password.chars.fetch(i).eql? '8' or self.password.chars.fetch(i).eql? '9' or self.password.chars.fetch(i).eql? '0'
+          if self.password.chars.fetch(i).eql? ('1') or self.password.chars.fetch(i).eql? ('2') or self.password.chars.fetch(i).eql? '3' or self.password.chars.fetch(i).eql? '4' or
+              self.password.chars.fetch(i).eql? '5' or self.password.chars.fetch(i).eql? '6' or self.password.chars.fetch(i).eql? '7' or self.password.chars.fetch(i).eql? '8' or
+              self.password.chars.fetch(i).eql? '9' or self.password.chars.fetch(i).eql? '0'
             digit = true
             i = i+1
-          elsif self.password.chars.fetch(i).eql? 'A' or self.password.chars.fetch(i).eql? 'B' or self.password.chars.fetch(i).eql? 'C' or self.password.chars.fetch(i).eql? 'D' or self.password.chars.fetch(i).eql? 'E' or self.password.chars.fetch(i).eql? 'F' or self.password.chars.fetch(i).eql? 'G' or self.password.chars.fetch(i).eql? 'H' or self.password.chars.fetch(i).eql? 'I' or self.password.chars.fetch(i).eql? 'J' or self.password.chars.fetch(i).eql? 'K' or self.password.chars.fetch(i).eql? 'L' or self.password.chars.fetch(i).eql? 'M' or self.password.chars.fetch(i).eql? 'N' or self.password.chars.fetch(i).eql? 'O' or self.password.chars.fetch(i).eql? 'P' or self.password.chars.fetch(i).eql? 'Q' or self.password.chars.fetch(i).eql? 'R' or self.password.chars.fetch(i).eql? 'S' or self.password.chars.fetch(i).eql? 'T' or self.password.chars.fetch(i).eql? 'U' or self.password.chars.fetch(i).eql? 'V' or self.password.chars.fetch(i).eql? 'W' or self.password.chars.fetch(i).eql? 'X' or self.password.chars.fetch(i).eql? 'Y' or self.password.chars.fetch(i).eql? 'Z' or self.password.chars.fetch(i).eql? 'Ä' or self.password.chars.fetch(i).eql? 'Ö' or self.password.chars.fetch(i).eql? 'Ü'
+          elsif self.password.chars.fetch(i).eql? 'A' or self.password.chars.fetch(i).eql? 'B' or self.password.chars.fetch(i).eql? 'C' or self.password.chars.fetch(i).eql? 'D' or
+              self.password.chars.fetch(i).eql? 'E' or self.password.chars.fetch(i).eql? 'F' or self.password.chars.fetch(i).eql? 'G' or self.password.chars.fetch(i).eql? 'H' or
+              self.password.chars.fetch(i).eql? 'I' or self.password.chars.fetch(i).eql? 'J' or self.password.chars.fetch(i).eql? 'K' or self.password.chars.fetch(i).eql? 'L' or
+              self.password.chars.fetch(i).eql? 'M' or self.password.chars.fetch(i).eql? 'N' or self.password.chars.fetch(i).eql? 'O' or self.password.chars.fetch(i).eql? 'P' or
+              self.password.chars.fetch(i).eql? 'Q' or self.password.chars.fetch(i).eql? 'R' or self.password.chars.fetch(i).eql? 'S' or self.password.chars.fetch(i).eql? 'T' or
+              self.password.chars.fetch(i).eql? 'U' or self.password.chars.fetch(i).eql? 'V' or self.password.chars.fetch(i).eql? 'W' or self.password.chars.fetch(i).eql? 'X' or
+              self.password.chars.fetch(i).eql? 'Y' or self.password.chars.fetch(i).eql? 'Z' or self.password.chars.fetch(i).eql? 'Ä' or self.password.chars.fetch(i).eql? 'Ö' or
+              self.password.chars.fetch(i).eql? 'Ü'
             uppercase = true
             i = i+1
-          elsif self.password.chars.fetch(i).eql? 'a' or self.password.chars.fetch(i).eql? 'b' or self.password.chars.fetch(i).eql? 'c' or self.password.chars.fetch(i).eql? 'd' or self.password.chars.fetch(i).eql? 'e' or self.password.chars.fetch(i).eql? 'f' or self.password.chars.fetch(i).eql? 'g' or self.password.chars.fetch(i).eql? 'h' or self.password.chars.fetch(i).eql? 'i' or self.password.chars.fetch(i).eql? 'j' or self.password.chars.fetch(i).eql? 'k' or self.password.chars.fetch(i).eql? 'l' or self.password.chars.fetch(i).eql? 'm' or self.password.chars.fetch(i).eql? 'n' or self.password.chars.fetch(i).eql? 'o' or self.password.chars.fetch(i).eql? 'p' or self.password.chars.fetch(i).eql? 'q' or self.password.chars.fetch(i).eql? 'r' or self.password.chars.fetch(i).eql? 's' or self.password.chars.fetch(i).eql? 't' or self.password.chars.fetch(i).eql? 'u' or self.password.chars.fetch(i).eql? 'v' or self.password.chars.fetch(i).eql? 'w' or self.password.chars.fetch(i).eql? 'x' or self.password.chars.fetch(i).eql? 'y' or self.password.chars.fetch(i).eql? 'z' or self.password.chars.fetch(i).eql? 'ä' or self.password.chars.fetch(i).eql? 'ö' or self.password.chars.fetch(i).eql? 'ü'
+          elsif self.password.chars.fetch(i).eql? 'a' or self.password.chars.fetch(i).eql? 'b' or self.password.chars.fetch(i).eql? 'c' or self.password.chars.fetch(i).eql? 'd' or
+              self.password.chars.fetch(i).eql? 'e' or self.password.chars.fetch(i).eql? 'f' or self.password.chars.fetch(i).eql? 'g' or self.password.chars.fetch(i).eql? 'h' or
+              self.password.chars.fetch(i).eql? 'i' or self.password.chars.fetch(i).eql? 'j' or self.password.chars.fetch(i).eql? 'k' or self.password.chars.fetch(i).eql? 'l' or
+              self.password.chars.fetch(i).eql? 'm' or self.password.chars.fetch(i).eql? 'n' or self.password.chars.fetch(i).eql? 'o' or self.password.chars.fetch(i).eql? 'p' or
+              self.password.chars.fetch(i).eql? 'q' or self.password.chars.fetch(i).eql? 'r' or self.password.chars.fetch(i).eql? 's' or self.password.chars.fetch(i).eql? 't' or
+              self.password.chars.fetch(i).eql? 'u' or self.password.chars.fetch(i).eql? 'v' or self.password.chars.fetch(i).eql? 'w' or self.password.chars.fetch(i).eql? 'x' or
+              self.password.chars.fetch(i).eql? 'y' or self.password.chars.fetch(i).eql? 'z' or self.password.chars.fetch(i).eql? 'ä' or self.password.chars.fetch(i).eql? 'ö' or
+              self.password.chars.fetch(i).eql? 'ü'
             lowercase = true
             i = i+1
           else

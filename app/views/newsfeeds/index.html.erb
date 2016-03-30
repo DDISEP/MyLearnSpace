@@ -1,31 +1,51 @@
 <h1>Newsfeed</h1>
+<div class="dreispaltig">
 
-<table>
+<table width = "70%">
   <thead>
     <tr>
-      <th>Betreff</th>
-      <th>Inhalt</th>
-      <th>Newsfeedtoall</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <td style="padding-left:5px"></td>
+      <td>
+        <b><p style="font-size: 15pt">Betreff</p></b>
+      </td>
+      <td>
+        <b><p style="font-size: 15pt">Inhalt</p></b>
+      </td>
+      <td>
+        <%if @admin%>
+            <b><p style="font-size: 15pt">An alle gesendet?</p></b>
+        <%end%>
+      </td>
     </tr>
   </thead>
 
   <tbody>
     <% @newsfeeds.each do |newsfeed| %>
       <tr>
-        <td><%= newsfeed.subject %></td>
-        <td><%= newsfeed.message %></td>
-        <td><%= newsfeed.newsfeedToAll %></td>
-        <td><%= link_to 'Show', newsfeed %></td>
-        <td><%= link_to 'Edit', edit_newsfeed_path(newsfeed) %></td>
-        <td><%= link_to 'Destroy', newsfeed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td style="padding-left:5px"></td>
+        <td>
+          <%= newsfeed.subject %>
+        </td>
+        <td>
+          <%= newsfeed.message %>
+        </td>
+        <td>
+          <%= newsfeed.newsfeedToAll %>
+        </td>
+        <% if @current_user.admin %>
+            <td><%= link_to 'anzeigen', newsfeed %></td>
+            <td><%= link_to 'bearbeiten', edit_newsfeed_path(newsfeed) %></td>
+            <td><%= link_to 'löschen', newsfeed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+            <td><%= link_to 'anzeigen', newsfeed %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+  &nbsp;
+<% if @current_user.admin %>
 <%= link_to 'Neue Newsfeed Nachricht erstellen', new_newsfeed_path %>
+<% end %>

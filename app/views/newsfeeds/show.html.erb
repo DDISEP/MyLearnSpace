@@ -1,19 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Subject:</strong>
+  <strong>Betreff:</strong>
   <%= @newsfeed.subject %>
 </p>
 
 <p>
-  <strong>Message:</strong>
+  <strong>Nachricht:</strong>
   <%= @newsfeed.message %>
 </p>
 
 <p>
-  <strong>Newsfeedtoall:</strong>
+  <strong>An alle gesendet?:</strong>
   <%= @newsfeed.newsfeedToAll %>
 </p>
 
+<% if @current_user.admin? %>
 <%= link_to 'Edit', edit_newsfeed_path(@newsfeed) %> |
 <%= link_to 'Back', newsfeeds_path %>
+<% else %>
+<%= link_to 'Back', newsfeeds_path %>
+<% end %>

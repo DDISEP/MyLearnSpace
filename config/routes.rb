@@ -1,6 +1,6 @@
 MyLearnSpace::Application.routes.draw do
   
-  resources :peer_to_peers
+  resources :peer_to_peer_messages
 
   resources :newsfeeds
 

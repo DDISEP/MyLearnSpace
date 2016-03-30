@@ -1,5 +1,5 @@
 <h3> Benutzer </h3>
-<div class="zweispaltig">
+<div class="dreispaltig">
 
 <table width="70%">
 	<tr>
@@ -8,7 +8,7 @@
 			<b><p style="font-size: 15pt">Name</p></b>
 		</td>
 		<td>
-			<b><p style="font-size: 15pt">Schülerstatus</p></b>
+			<b><p style="font-size: 15pt">Status</p></b>
 		</td>
 		<td>
 		<%if @admin%>			
@@ -26,14 +26,16 @@
 		<td>
 			<%if u.learner == true%>
 				<%="Schüler"%><!--statt t und f muss hier noch ja nein eingefügt werden!!-->
-			<%elsif u.learner == false%>
-				<%="Kein Schüler"%>
+			<%elsif u.teacher == true%>
+				<%="Lehrer"%>
+      <%elsif u.admin == true%>
+          <%="Administrator"%>
 			<%else%>
-				<%="Keine Angabe"%>
+				<%="Keine Schüler"%>
 			<%end%>
 		</td>
 		<td>
-		<%if @admin%>			
+		<%if @current_user.admin %>
 				<%= u.email %>			
 		<%end%>
 		</td>
@@ -41,7 +43,6 @@
 	<% end %>
 	
 </table></div>
-
 
 
 
