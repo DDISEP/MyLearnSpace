@@ -31,7 +31,7 @@ class NewsfeedsController < ApplicationController
   # POST /newsfeeds
   # POST /newsfeeds.json
   def create
-    @newsfeed = Newsfeed.new(newsfeed_params)
+    @newsfeed = Newsfeed.new(params[:newsfeed])
 
     respond_to do |format|
       if @newsfeed.save
@@ -48,7 +48,7 @@ class NewsfeedsController < ApplicationController
   # PATCH/PUT /newsfeeds/1.json
   def update
     respond_to do |format|
-      if @newsfeed.update(newsfeed_params)
+      if @newsfeed.update(params[:newsfeed])
         format.html { redirect_to @newsfeed, notice: 'Newsfeednachricht wurde erfolgreich geändert.' }
         format.json { head :no_content }
       else

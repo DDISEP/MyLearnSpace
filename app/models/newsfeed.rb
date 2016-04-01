@@ -1,5 +1,5 @@
 class Newsfeed < ActiveRecord::Base
 
-  attr_accessible :subject, :message, :newsfeedToAll, :newsfeedToAdmins, :newsfeedToTeachers
+  attr_accessible :subject, :message, :newsfeedToAdmins, :newsfeedToTeachers, :newsfeedToAll
 
 end

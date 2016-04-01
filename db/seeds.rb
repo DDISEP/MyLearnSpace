@@ -15,6 +15,7 @@ User.create(:username => "learner", :email => "learner@mls.de", :firstname => "L
 Newsfeed.create(:subject => "Ein Testnewsfeed an alle", :message => "Dies ist der Inhalt der Testnachricht an alle. Sehr wichtig.. ;)", :newsfeedToAll => TRUE)
 Newsfeed.create(:subject => "Ein Testnewsfeed für ADMINS", :message => "Dies ist der Inhalt der Testnachricht an die ADMINS. Noch wichtiger.. ;)", :newsfeedToAll => FALSE)
 Newsfeed.create(:subject => "Ein Testnewsfeed für TEACHER", :message => "Dies ist der Inhalt der Testnachricht an die Lehrer. Eventuell interessant :P", :newsfeedToTeachers => TRUE)
+Newsfeed.create(:subject => "Ein Testnewsfeed für ADMINS mit nur ADMINS", :message => "Dies ist der Inhalt der Testnachricht an die ADMINS. 2", :newsfeedToAdmins => TRUE)
 
 ### Hafemann-Sticha ###
 #Materialtext
