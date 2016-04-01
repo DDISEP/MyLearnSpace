@@ -65,13 +65,25 @@ class SubexercisesController < ApplicationController
 
   end
 
+  def moderate
+    @subexercise.moderated = TRUE
+    redirect_to exercises_path
+  end
+
   def update
     @subexercise.text = params[:subexercise][:text]
-    @subexercise.solution = params[:subexercise][:solution]
+    @subexercise.cognitive_dimension = params[:subexercise][:learning_objective].to_i
     @subexercise.points = params[:subexercise][:points]
+    if User.find(session[:current_user_id]).admin || User.find(session[:current_user_id]).teacher then
+      @subexercise.moderated = TRUE
+    end
     @subexercise.save
     flash[:notice] = "Teilaufgabe erfolgreich geaendert."
-    redirect_to edit_exercise_path(params[:exercise_id])
+    if Solution.where(subexercise_id: @subexercise.id).count > 0 then
+      redirect_to edit_solution_path(Solution.where(subexercise_id: @subexercise.id).first)
+    else
+      redirect_to new_solution_path(subexercise_id: @subexercise)
+    end
   end
 
   def destroy

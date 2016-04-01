@@ -96,7 +96,7 @@ class ExercisesController < ApplicationController
     @exercise.knowledge_element_id = (params[:exercise][:knowledge_element_id]).to_i
     @exercise.knowledge_element = KnowledgeElement.find(@exercise.knowledge_element_id)
     @exercise.user_id = session[:current_user_id]
-    @exercise.sequence = TRUEs
+    @exercise.sequence = TRUE
     if User.find(session[:current_user_id]).admin == :true then
       @exercise.moderated = TRUE
     elsif User.find(session[:current_user_id]).teacher == :true then

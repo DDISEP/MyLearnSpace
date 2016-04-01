@@ -7,13 +7,19 @@
 <% if @exercises.length == 0 then %>
 	<div id="notice"> Noch keine Aufgaben vorhanden! </div> 
 <% end %>
-	
-	
+
+
 	<div class="panel panel-primary">
 		<div class="panel-body" id="exercise_list">
 			<%= render 'list_exercises'%>
 		</div>
 	</div>
+
+  <div class="panel panel-primary">
+    <div class="panel-body" id="exercise_list">
+      <%= render 'subexercises/list_subexercises_for_moderating'%>
+    </div>
+  </div>
 	
 	
 </div> <!-- /col-sm-9 -->
