@@ -6,8 +6,11 @@ class NewsfeedsController < ApplicationController
   def index
     if @current_user.admin
       @newsfeeds = Newsfeed.all.order('updated_at desc')
+    elsif @current_user.teacher
+      @newsfeeds = Newsfeed.where(newsfeedToAll: true) or Newsfeed.where(newsfeedToTeachers: true)
+      @newsfeeds.order('updated_at desc')
     else
-      @newsfeeds = Newsfeed.where(newsfeedToAll: true).order('updated_at desc')
+      @newsfeeds = Newsfeed.where(newsfeedToAll: true)
     end
   end
 
