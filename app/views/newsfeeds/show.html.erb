@@ -14,20 +14,33 @@
       <% if @current_user.admin %>
           <% if @newsfeed.newsfeedToAll %>
               <p>Newsfeednachricht wurde an alle gesendet.</p>
+          <% elsif @newsfeed.newsfeedToAdmins %>
+              <p>Newsfeednachricht wurde an die Administratoren gesendet.</p>
           <% else %>
-              <p>Newsfeednachricht wurde nur an die Administratoren gesendet.</p>
+              <p>Newsfeednachricht wurde an die Lehrer gesendet.</p>
           <% end %>
       <% end %>
     </div>
   </div>
+  <% if @current_user.admin %>
+      <div class="span3" style="padding-top: 20px">
+        <%= button_to edit_newsfeed_path, :method => :get, class:"btn btn-xs btn-primary" do %>
+            <span class="glyphicon glyphicon-pencil"></span> bearbeiten
+        <% end %>
+      </div>
+  <% elsif @current_user.teacher %>
+      <% if @newsfeed.newsfeedToTeachers %>
+          <div class="span3" style="padding-top: 20px">
+            <%= button_to edit_newsfeed_path, :method => :get, class:"btn btn-xs btn-primary" do %>
+                <span class="glyphicon glyphicon-pencil"></span> bearbeiten
+            <% end %>
+          </div>
+      <% end %>
+  <% end %>
   <div class="span3" style="padding-top: 20px">
     <%= button_to newsfeeds_path, :method => :get, class:"btn btn-xs btn-primary" do %>
         <span class="glyphicon glyphicon-arrow-left"></span> zurück
     <% end %>
   </div>
-  <div class="span3" style="padding-top: 20px">
-    <%= button_to edit_newsfeed_path, :method => :get, class:"btn btn-xs btn-primary" do %>
-        <span class="glyphicon glyphicon-pencil"></span> bearbeiten
-    <% end %>
-  </div>
+
 </div>
