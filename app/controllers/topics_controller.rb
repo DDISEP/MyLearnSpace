@@ -39,5 +39,6 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find_by_id(params[:id])
+    @knowledgeElements = @topic.knowledge_elements
   end
 end
