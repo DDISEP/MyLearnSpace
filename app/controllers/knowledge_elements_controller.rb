@@ -67,6 +67,7 @@ class KnowledgeElementsController < ApplicationController
       @materialdocuments = @knowledgeElement.materialdocuments
       @materialpictures = @knowledgeElement.materialpictures
       @materialvideos = @knowledgeElement.materialvideos
+      @topic = @knowledgeElement.topic
     end
     #@exams = KnowledgeElement.exams.all
     #@knowledgeElementForum = KnowledgeElement.forum.first

@@ -38,6 +38,13 @@
           <br>
           <br>
 
+          <p>
+            <H5>Übergeordnetes Themengebiet: <%= link_to @topic.name, topic_path%></H5>
+          </p>
+
+          <br>
+          <br>
+
           <p><!-- Code für LearningObjectives, nur für Admins -->
             <% if @current_user.admin? %>
               Die Teillerneinheiten dieser Seite, die durch die cognitiven Dimensionen gebildet werden können aufeinander aufbauen.
