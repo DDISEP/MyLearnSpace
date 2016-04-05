@@ -2,7 +2,9 @@
 <div class="container-fluid">
 
   <% if @learningObjective !=nil%>
-      <div class="col-sm-9"><div class="row-fluid"><h1><%= @learningObjective.cognitiveDimension_to_s%> <%= @learningObjective.knowledge_element.name %></h1></div></div>
+      <div class="col-sm-9"><div class="row-fluid"><h1><%= @learningObjective.cognitiveDimension_to_s%> -
+        </br>
+        <%= @learningObjective.knowledge_element.name %></h1></div></div>
   <% else %>
       <div class="col-sm-9"><div class="row-fluid"><h1>LearningObjective</h1></div></div>
   <%end%>
@@ -20,6 +22,33 @@
 
           <br>
           <br>
+
+          <% if @preconditions != nil%>
+              <% @preconditions.each do |p| %>
+                  <table class="table table-striped">
+                    <thead>
+                    <tr><strong>
+                      <th width="50%"> Parent LearningObjective </th>
+                      <th> Child LearningObjective </th>
+                    </strong></tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                      <td> <%=p.parent_learning_objective.cognitiveDimension_to_s%> <%= p.parent_learning_objective.knowledge_element.name%></td>
+                      <td> <%=p.learning_objective.cognitiveDimension_to_s%> <%= p.learning_objective.knowledge_element.name%></td>
+                    </tr>
+                    </tbody>
+                  </table>
+
+
+              <%end%>
+
+          <%else%>
+              <p>
+                Es gibt keine Voraussetzungen für dieses Learning Objective
+              </p>
+          <%end%>
 
           <%= link_to 'Neue Precondition', new_knowledge_element_learning_objective_precondition_path(knowledge_element_id: @learningObjective.knowledge_element_id, learning_objective_id: @learningObjective.id)%>
 
