@@ -16,6 +16,13 @@ Newsfeed.create(:subject => "Ein Testnewsfeed an alle", :message => "Dies ist de
 Newsfeed.create(:subject => "Ein Testnewsfeed für ADMINS", :message => "Dies ist der Inhalt der Testnachricht an die ADMINS. Noch wichtiger.. ;)", :newsfeedToAll => FALSE)
 Newsfeed.create(:subject => "Ein Testnewsfeed für TEACHER", :message => "Dies ist der Inhalt der Testnachricht an die Lehrer. Eventuell interessant :P", :newsfeedToTeachers => TRUE)
 Newsfeed.create(:subject => "Ein Testnewsfeed für ADMINS mit nur ADMINS", :message => "Dies ist der Inhalt der Testnachricht an die ADMINS. 2", :newsfeedToAdmins => TRUE)
+#PeerToPeerMessages
+PeerToPeerMessage.create(:sender => 1, :reciever => 2, :subject => "von 1 zu 2", :message => "Vom Admin an den Teacher.")
+PeerToPeerMessage.create(:sender => 1, :reciever => 3, :subject => "von 1 zu 3", :message => "Vom Admin an den Learner.")
+PeerToPeerMessage.create(:sender => 2, :reciever => 3, :subject => "von 2 zu 3", :message => "Vom Teacher an den Learner.")
+PeerToPeerMessage.create(:sender => 2, :reciever => 1, :subject => "von 2 zu 1", :message => "Vom Teacher an den Admin.")
+PeerToPeerMessage.create(:sender => 3, :reciever => 1, :subject => "von 3 zu 1", :message => "Vom Learner an den Admin.")
+PeerToPeerMessage.create(:sender => 3, :reciever => 2, :subject => "von 3 zu 2", :message => "Vom Learner an den Teacher.")
 
 ### Hafemann-Sticha ###
 #Materialtext

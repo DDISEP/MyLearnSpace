@@ -1,18 +1,20 @@
 <div class="container-fluid">
   <h1>Benutzer</h1>
-
   <div class="panel panel-default">
     <div class="panel-body">
       <table class="table table-striped">
         <thead>
         <tr>
-          <td width="20%">
-            <b><p style="font-size: 15pt">Name</p></b>
-          </td>
-          <td width="10%">
-            <b><p style="font-size: 15pt">Status</p></b>
+          <td width="30%">
+            <b><p style="font-size: 15pt">Username</p></b>
           </td>
           <td width="30%">
+            <b><p style="font-size: 15pt">Name</p></b>
+          </td>
+          <td width="20%">
+            <b><p style="font-size: 15pt">Status</p></b>
+          </td>
+          <td width="20%">
             <%if @current_user.admin %>
                 <b><p style="font-size: 15pt">E-Mail Adresse</p></b>
             <%end%>
@@ -23,15 +25,16 @@
         <% @users.each do |user| %>
             <tr>
               <td><b><%= user.username %></b></td>
+              <td><%= user.firstname + ", " + user.lastname %></td>
               <% if user.learner %>
-                  <td><b>"Learner"</b></td>
+                  <td><b>Schüler</b></td>
               <% elsif user.teacher %>
-                  <td><b>"Teacher"</b></td>
+                  <td><b>Lehrer</b></td>
               <% else %>
-                  <td><b>"Admin"</b></td>
+                  <td><b>Admin</b></td>
               <% end %>
-              <td><%= user.email%></td>
               <% if @current_user.admin %>
+                  <td><b><%= user.email%></b></td>
                   <td width="7%"><%= link_to 'löschen', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               <% end %>
             </tr>
@@ -40,13 +43,4 @@
       </table>
     </div>
   </div>
-
 </div>
-
-
-
-
-
-
-
-
