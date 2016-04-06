@@ -1,5 +1,32 @@
+<div class="container-fluid">
+  <h1>Persönliche Daten von <%= @current_user.firstname %></h1>
 
-<p style="font-size: 25pt; color: cornflowerblue">Herzlich Willkommen, <%= @current_user.firstname %></p>
+  <b><p style="font-size: 13pt">Benutzername: <%= @current_user.username%></p></b>
+  <b><p style="font-size: 13pt">E-Mail Adresse: <%=@current_user.email%></p></b>
+  <b><p style="font-size: 13pt">Vorname: <%=@current_user.firstname%></p></b>
+  <b><p style="font-size: 13pt">Nachname: <%=@current_user.lastname%></p></b>
+  <b><p style="font-size: 13pt">Geburtsdatum: <%=@current_user.birthday.to_formatted_s(:rfc822)%></p></b>
+  <% if @current_user.admin %>
+      <b><p style="font-size: 13pt">Status: Admin</p></b>
+  <% elsif @current_user.teacher %>
+      <b><p style="font-size: 13pt">Status: Teacher</p></b>
+  <% else %>
+      <% if @current_user.birthday.years_since(18) > Date.today %>
+      <b><p style="font-size: 13pt">Vorname Erziehungsberechtigter: <%=@current_user.firstNameParent%></p></b>
+      <b><p style="font-size: 13pt">Nachname Erziehungsberechtigter: <%=@current_user.lastNameParent%></p></b>
+      <b><p style="font-size: 13pt">E-Mail Adresse Erziehungsberechtigter: <%=@current_user.emailParent%></p></b>
+      <% end %>
+      <b><p style="font-size: 13pt">Status: Learner</p></b>
+  <% end %>
+
+  <%= button_to edit_user_path(@current_user), :method => :get, class:"btn btn-xs btn-primary" do %>
+      <span class="glyphicon glyphicon-pencil"></span> Benutzerprofil bearbeiten
+  <% end %>
+  <%= button_to users_profile_path(@current_user, :authenticity_token => form_authenticity_token), data:{confirm: ('Bist du dir sicher?')}, method: :delete, :method => :get, class:"btn btn-xs btn-primary" do %>
+      <span class="glyphicon glyphicon-trash"></span> Benutzerprofil löschen
+  <% end %>
+
+<!--<p style="font-size: 25pt; color: cornflowerblue">Herzlich Willkommen, <%= @current_user.firstname %></p>
 
 <p id="notice"><%= notice %></p>
 <p>&nbsp;</p>
@@ -33,4 +60,4 @@
 
 <tr><td><%= link_to 'Benutzerprofil bearbeiten', edit_user_path(@current_user) %></td></tr>
 <tr><td><%= link_to "Benutzerprofil löschen", users_profile_path(@current_user, :authenticity_token => form_authenticity_token), data:{confirm: ('Bist du dir sicher?')}, method: :delete%></td></tr>
-</table>
+</table>-->

@@ -1,5 +1,47 @@
-<h3> Benutzer </h3>
-<div class="dreispaltig">
+<div class="container-fluid">
+  <h1>Benutzer</h1>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <td width="20%">
+            <b><p style="font-size: 15pt">Name</p></b>
+          </td>
+          <td width="10%">
+            <b><p style="font-size: 15pt">Status</p></b>
+          </td>
+          <td width="30%">
+            <%if @current_user.admin %>
+                <b><p style="font-size: 15pt">E-Mail Adresse</p></b>
+            <%end%>
+          </td>
+        </tr>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+            <tr>
+              <td><b><%= user.username %></b></td>
+              <% if user.learner %>
+                  <td><b>"Learner"</b></td>
+              <% elsif user.teacher %>
+                  <td><b>"Teacher"</b></td>
+              <% else %>
+                  <td><b>"Admin"</b></td>
+              <% end %>
+              <td><%= user.email%></td>
+              <% if @current_user.admin %>
+
+              <% end %>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<!--<div class="dreispaltig">
 
 <table width="70%">
 	<tr>
@@ -12,7 +54,7 @@
 		</td>
 		<td>
 		<%if @admin%>			
-				<b><p style="font-size: 15pt">E-Mail Adresse</p></b>			
+			<b><p style="font-size: 15pt">E-Mail Adresse</p></b>
 		<%end%>
 		</td>
 			

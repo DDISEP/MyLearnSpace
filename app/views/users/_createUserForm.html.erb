@@ -13,10 +13,11 @@
         </div>
     <% end %>
 
+<div class="container-fluid">
 <h1>UserForm</h1>
 
     <div class="field">
-      <%= f.label :username %><br>
+      <b><p style="..."><%= f.label :username %></p></b><!--<br>-->
       <%= f.text_field :username %>
     </div>
     <div class="field">
@@ -33,7 +34,19 @@
     </div>
     <div class="field">
       <%= f.label :geburtsdatum %><br>
-      <%= f.date_select :birthday %>
+      <%= f.date_select :birthday, start_year: 1900, end_year: Date.today.year %>
+    </div>
+    <div class="field">
+      <%= f.label :vorname_erziehungsberechtigter %><br>
+      <%= f.text_field :firstNameParent %>
+    </div>
+    <div class="field">
+      <%= f.label :nachname_erziehungsberechtigter %><br>
+      <%= f.text_field :lastNameParent %>
+    </div>
+    <div class="field">
+      <%= f.label :email_erziehungsberechtigter %><br>
+      <%= f.text_field :emailParent %>
     </div>
     <div class="field">
       <%= f.label :password %><br />
@@ -58,7 +71,7 @@
     <div class="actions">
       <%= f.submit %>
     </div>
-
+</div>
 <% end %>
 
  

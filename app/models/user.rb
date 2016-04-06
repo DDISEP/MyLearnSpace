@@ -29,8 +29,8 @@ class User < ActiveRecord::Base
 
     def hash_password
       self.password = Digest::MD5.hexdigest(self.password)
-    end    
-    
+    end
+
     def valid_user
       if username.blank?
         errors.add(:base, "Gib bitte noch einen Benutzernamen an!")
@@ -44,9 +44,18 @@ class User < ActiveRecord::Base
       if lastname.blank?
         errors.add(:base, "Bitte gib deinen Nachnamen an!")
       end
-      #if birthday.blank?
-      #  errors.add(:base, "Wir benötigen dein Geburtsdatum! Bitte gib dies an!")
-      #end
+      if birthday.blank?
+        errors.add(:base, "Wir benötigen dein Geburtsdatum! Bitte gib dies an!")
+      end
+      if birthday.years_since(18) > Date.today and firstNameParent.blank?
+        errors.add(:base, "Bitte gib den Vornamen eines Erziehungsberechtigten an!")
+      end
+      if birthday.years_since(18) > Date.today and lastNameParent.blank?
+        errors.add(:base, "Bitte gib den Nachnamen eines Erziehungsberechtigten an!")
+      end
+      if birthday.years_since(18) > Date.today and emailParent.blank?
+        errors.add(:base, "Bitte gib die Email eines Erziehungsberechtigten an!")
+      end
       if password.blank?
         errors.add(:base, "Es wurde kein Passwort eingegeben!")
       else 
