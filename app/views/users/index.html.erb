@@ -32,7 +32,7 @@
               <% end %>
               <td><%= user.email%></td>
               <% if @current_user.admin %>
-
+                  <td width="7%"><%= link_to 'löschen', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               <% end %>
             </tr>
         <% end %>
@@ -41,50 +41,7 @@
     </div>
   </div>
 
-<!--<div class="dreispaltig">
-
-<table width="70%">
-	<tr>
-    <td style="padding-left:5px"></td>
-		<td>
-			<b><p style="font-size: 15pt">Name</p></b>
-		</td>
-		<td>
-			<b><p style="font-size: 15pt">Status</p></b>
-		</td>
-		<td>
-		<%if @admin%>			
-			<b><p style="font-size: 15pt">E-Mail Adresse</p></b>
-		<%end%>
-		</td>
-			
-	</tr>
-	<% @users.each do |u| 	%>
-	<tr>
-    <td style="padding-left:5px"></td>
-		<td>
-			<%= u.username %>
-		</td>
-		<td>
-			<%if u.learner == true%>
-				<%="Schüler"%><!--statt t und f muss hier noch ja nein eingefügt werden!!-->
-			<%elsif u.teacher == true%>
-				<%="Lehrer"%>
-      <%elsif u.admin == true%>
-          <%="Administrator"%>
-			<%else%>
-				<%="Keine Schüler"%>
-			<%end%>
-		</td>
-		<td>
-		<%if @current_user.admin %>
-				<%= u.email %>			
-		<%end%>
-		</td>
-	</tr>	
-	<% end %>
-	
-</table></div>
+</div>
 
 
 
