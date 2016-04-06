@@ -47,7 +47,7 @@ class SubexercisesController < ApplicationController
     @subexercise.cognitive_dimension = params[:subexercise][:learning_objective].to_i
     @subexercise.position = Subexercise.where(exercise_id: @exercise).length + 1
     @subexercise.active = TRUE
-    @subexercise.user_id = session[:current_user_id]
+    @subexercise.users_id = session[:current_user_id]
     @subexercise.moderated = FALSE
     if User.find(session[:current_user_id]).admin || User.find(session[:current_user_id]).teacher then
       @subexercise.moderated = TRUE

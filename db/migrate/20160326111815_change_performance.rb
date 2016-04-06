@@ -3,6 +3,6 @@ class ChangePerformance < ActiveRecord::Migration
     remove_column :performances, :exercise_id
     remove_reference :performances, :exercise
     add_column :performances, :subexercise_id, :integer
-    add_reference :performances, :subexercise
+    #add_reference :performances, :subexercise
   end
 end
