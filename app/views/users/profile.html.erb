@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <h1>Persönliche Daten von <%= @current_user.firstname %></h1>
+  <h1>Hier findest du deine Daten, <%= @current_user.firstname %></h1>
 
   <b><p style="font-size: 13pt">Benutzername: <%= @current_user.username%></p></b>
   <b><p style="font-size: 13pt">E-Mail Adresse: <%=@current_user.email%></p></b>
@@ -18,46 +18,11 @@
       <% end %>
       <b><p style="font-size: 13pt">Status: Learner</p></b>
   <% end %>
-
   <%= button_to edit_user_path(@current_user), :method => :get, class:"btn btn-xs btn-primary" do %>
       <span class="glyphicon glyphicon-pencil"></span> Benutzerprofil bearbeiten
   <% end %>
   <%= button_to users_profile_path(@current_user, :authenticity_token => form_authenticity_token), data:{confirm: ('Bist du dir sicher?')}, method: :delete, :method => :get, class:"btn btn-xs btn-primary" do %>
       <span class="glyphicon glyphicon-trash"></span> Benutzerprofil löschen
   <% end %>
+</div>
 
-<!--<p style="font-size: 25pt; color: cornflowerblue">Herzlich Willkommen, <%= @current_user.firstname %></p>
-
-<p id="notice"><%= notice %></p>
-<p>&nbsp;</p>
-<p style="font-size: 17pt; color: #3db029">Dies sind deine aktuellen Daten:</p>
-<table>
-<tr><td><p style="font-size: 13pt; color: #ff9004">Benutzername: <%= @current_user.username%></p></td></tr>
-<tr><td><p style="font-size: 13pt; color: #ff9004">E-Mail Adresse: <%=@current_user.email%></p></td></tr>
-<tr><td><p style="font-size: 13pt; color: #ff9004">Vorname: <%=@current_user.firstname%></p></td></tr>
-<tr><td><p style="font-size: 13pt; color: #ff9004">Nachname: <%=@current_user.lastname%></p></td></tr>
-<tr><td><p style="font-size: 13pt; color: #ff9004">Geburtsdatum: <%=@current_user.birthday%></p></td></tr>
-
-  <% if @current_user.admin %>
-
-      <tr><td><p style="font-size: 13pt; color: #ff9004">Du bist als Admin angemeldet!</p></td></tr>
-
-
-  <% elsif @current_user.teacher %>
-
-      <tr><td><p style="font-size: 13pt; color: #ff9004">Du bist als Lehrer angemeldet!%></p></td></tr>
-
-  <% else %>
-
-      <tr><td><p style="font-size: 13pt; color: #ff9004">Du bist als Schüler angemeldet!</p></td></tr>
-
-  <% end %>
-
-</table>
-
-<p>&nbsp;</p>
-<table>
-
-<tr><td><%= link_to 'Benutzerprofil bearbeiten', edit_user_path(@current_user) %></td></tr>
-<tr><td><%= link_to "Benutzerprofil löschen", users_profile_path(@current_user, :authenticity_token => form_authenticity_token), data:{confirm: ('Bist du dir sicher?')}, method: :delete%></td></tr>
-</table>-->
