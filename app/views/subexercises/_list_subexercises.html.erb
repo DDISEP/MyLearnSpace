@@ -25,7 +25,7 @@
                     <td>Keine Lösung vorhanden</td>
                 <% end %>
 				<td><%= s.points %></td>
-                <td><%= if s.user_id != nil then User.find(s.user_id).username  end %></td>
+                <td><%= if s.users_id != nil then User.find(s.users_id).username  end %></td>
                 <td><% if s.active then
                          if s.moderated then%>
                             aktiv
