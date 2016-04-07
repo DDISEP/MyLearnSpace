@@ -3,11 +3,11 @@
   <p id="notice"><%= notice %></p>
   <div class="panel panel-primary">
     <div class="panel-body">
-      <div id="subject_field" class="row-fluid">
+      <div class="row-fluid">
         <div class="span1"><b>Betreff</b></div>
         <div class="span11"><%= @newsfeed.subject %></div>
       </div>
-      <div id="message_field" class="row-fluid">
+      <div class="row-fluid">
         <div class="span1"><b>Inhalt</b></div>
         <div class="span11"><%= @newsfeed.message %></div>
       </div>
@@ -29,7 +29,7 @@
         <% end %>
       </div>
   <% elsif @current_user.teacher %>
-      <% if @newsfeed.newsfeedToTeachers %>
+      <% if @newsfeed.newsfeedToTeachers and @newsfeed.newsfeedToAll.blank? %>
           <div class="span3" style="padding-top: 20px">
             <%= button_to edit_newsfeed_path, :method => :get, class:"btn btn-xs btn-primary" do %>
                 <span class="glyphicon glyphicon-pencil"></span> bearbeiten

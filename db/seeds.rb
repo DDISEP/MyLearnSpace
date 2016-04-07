@@ -10,7 +10,8 @@
 #User
 User.create(:username => "admin", :email => "admin@mls.de", :firstname => "Admin", :lastname => "Test", :birthday => Date.new(1990,1,1), :password => "Password123!", :admin => TRUE)
 User.create(:username => "teacher", :email => "teacher@mls.de", :firstname => "Teacher", :lastname => "Test", :birthday => Date.new(1990,1,1),:password => "Password123!", :teacher => TRUE)
-User.create(:username => "learner", :email => "learner@mls.de", :firstname => "Learner", :lastname => "Test", :birthday => Date.new(2000,1,1), :password => "Password123!", :learner => TRUE, :pupil => TRUE)
+User.create(:username => "learner", :email => "learner@mls.de", :firstname => "Learner", :lastname => "Test", :birthday => Date.new(1995,1,1), :password => "Password123!", :learner => TRUE, :pupil => TRUE)
+User.create(:username => "learner2", :email => "learner2@mls.de", :firstname => "Learner2", :lastname => "Test2", :birthday => Date.new(2000,1,1), :password => "Password123!", :learner => TRUE, :pupil => TRUE)
 #Newsfeed
 Newsfeed.create(:subject => "Ein Testnewsfeed an alle", :message => "Dies ist der Inhalt der Testnachricht an alle. Sehr wichtig.. ;)", :newsfeedToAll => TRUE)
 Newsfeed.create(:subject => "Ein Testnewsfeed für ADMINS", :message => "Dies ist der Inhalt der Testnachricht an die ADMINS. Noch wichtiger.. ;)", :newsfeedToAll => FALSE)

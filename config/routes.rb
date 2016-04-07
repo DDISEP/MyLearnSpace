@@ -50,7 +50,7 @@ MyLearnSpace::Application.routes.draw do
   
   post 'users/destroy' =>"users#destroy"
 
-  
+
   
   resources :users
   

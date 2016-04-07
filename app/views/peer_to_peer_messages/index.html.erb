@@ -1,11 +1,15 @@
 <div class="container-fluid">
   <h1>Nachrichten</h1>
+
   <div class="span3" style="padding-top: 20px">
     <%= button_to new_peer_to_peer_message_path, :method => :get, class:"btn btn-xs btn-primary" do %>
         <span class="glyphicon glyphicon-plus"></span> Neue Nachricht erstellen
     <% end %>
   </div>
+</div>
+<div class="container-fluid">
   <div class="panel panel-default">
+    <div class="panel-heading"><h4>Posteingang</h4></div>
     <div class="panel-body">
       <table class="table table-striped">
         <thead>
@@ -25,13 +29,49 @@
         </tr>
         </thead>
         <tbody>
-        <% @peer_to_peer_messages.each do |p| %>
+        <% @peer_to_peer_messages_incoming.each do |p| %>
             <tr>
-              <td><b><%= p.sender %></b></td>
-              <td><%= p.reciever %></td>
+              <td><b><%= User.where(id: p.sender).first.username %></b></td>
+              <td><%= User.where(id: p.reciever).first.username %></td>
               <td><%= p.subject %></td>
               <td><%= p.message %></td>
               <td width="7%"><%= link_to 'anzeigen', p %></td>
+              <td width="7%"><%= link_to 'antworten', edit_peer_to_peer_message_path(p) %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h4>Postausgang</h4></div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <td width="10%">
+            <b><p style="font-size: 15pt">Absender</p></b>
+          </td>
+          <td width="10%">
+            <b><p style="font-size: 15pt">Empfänger</p></b>
+          </td>
+          <td width="15%">
+            <b><p style="font-size: 15pt">Betreff</p></b>
+          </td>
+          <td width="40%">
+            <b><p style="font-size: 15pt">Nachricht</p></b>
+          </td>
+        </tr>
+        </thead>
+        <tbody>
+        <% @peer_to_peer_messages_outgoing.each do |p| %>
+            <tr>
+              <td><b><%= User.where(id: p.sender).first.username %></b></td>
+              <td><%= User.where(id: p.reciever).first.username %></td>
+              <td><%= p.subject %></td>
+              <td><%= p.message %></td>
+              <td width="7%"><%= link_to 'anzeigen', p %></td>
+              <td width="7%"><%= link_to 'antworten', edit_peer_to_peer_message_path(p) %></td>
             </tr>
         <% end %>
         </tbody>

@@ -5,10 +5,9 @@ class NewsfeedsController < ApplicationController
   # GET /newsfeeds.json
   def index
     if @current_user.admin
-      @newsfeeds = Newsfeed.all.order('updated_at desc')
+      @newsfeeds = Newsfeed.where(newsfeedToAdmins: true).order('updated_at desc')
     elsif @current_user.teacher
-      @newsfeeds = Newsfeed.where(newsfeedToTeachers: true)
-      @newsfeeds.order('updated_at desc')
+      @newsfeeds = Newsfeed.where(newsfeedToTeachers: true).order('updated_at desc')
     else
       @newsfeeds = Newsfeed.where(newsfeedToAll: true)
     end

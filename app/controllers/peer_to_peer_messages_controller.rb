@@ -1,12 +1,13 @@
 class PeerToPeerMessagesController < ApplicationController
-  helper_method :current_user
+  helper_method :current_user, :all_users
   before_action :set_peer_to_peer_message, only: [:show, :edit, :update, :destroy]
 
 
   # GET /peer_to_peer_messages
   # GET /peer_to_peer_messages.json
   def index
-    @peer_to_peer_messages = PeerToPeerMessage.where(reciever: @current_user.id)
+    @peer_to_peer_messages_incoming = PeerToPeerMessage.where(reciever: @current_user.id).order('updated_at desc')
+    @peer_to_peer_messages_outgoing = PeerToPeerMessage.where(sender: @current_user.id).order('updated_at desc')
   end
 
   # GET /peer_to_peer_messages/1
@@ -40,7 +41,7 @@ class PeerToPeerMessagesController < ApplicationController
     @peer_to_peer_message = PeerToPeerMessage.find(params[:id])
     respond_to do |format|
       if @peer_to_peer_message.update(params[:peer_to_peer_message])
-        format.html { redirect_to @peer_to_peer_message, notice: 'Deine Nachricht soll nicht geändert werden können.' }
+        format.html { redirect_to @peer_to_peer_message, notice: 'Deine Nachricht wurde erfolgreich abgeschickt.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -61,6 +62,10 @@ class PeerToPeerMessagesController < ApplicationController
 
   def current_user
     @current_user.id
+  end
+
+  def all_users
+    @all_Users = User.ids
   end
 
   private
