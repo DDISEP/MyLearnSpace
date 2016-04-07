@@ -1,4 +1,4 @@
-<% if Subexercise.where(exercise_id: @exercise, active: :true, moderated: :true).count == 0 then %>
+<% if Subexercise.where(exercise_id: @exercise, active: TRUE, moderated: TRUE).count == 0 then %>
 	<h3> Keine Teilaufgaben vorhanden!</h3>
 <% else %>
 <table class="table table-striped table-condensed">

@@ -90,7 +90,12 @@
       <% else %>
         <div class="row-fluid">
           <%= button_to new_subexercise_path(@exercise),  :method => :get, :params => {:exercise_id => @exercise}, style:"width: 100%", class:"btn btn-xs btn-warning" do %>
-              Neue Teilaufgabe vorschlagen   <span class="glyphicon glyphicon-pencil"></span>
+              <% if User.find(session[:current_user_id]).learner then %>
+                Neue Teilaufgabe vorschlagen
+                <% else %>
+                Teilaufgabe hinzufügen
+                <% end %>
+                   <span class="glyphicon glyphicon-pencil"></span>
           <% end %>
         </div>
     <% end %>

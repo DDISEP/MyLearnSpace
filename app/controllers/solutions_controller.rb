@@ -4,12 +4,6 @@ class SolutionsController < ApplicationController
 
   end
 
-  #def initialize (solution, description, subexercise)
-  #    @solution = solution
-  #    @description = description
-  #    @subexercise = Subexercise.find(subexercise)
-  #end
-
   def edit
 
   end
