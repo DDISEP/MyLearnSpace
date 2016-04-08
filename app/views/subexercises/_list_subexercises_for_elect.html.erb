@@ -24,7 +24,7 @@
 							<span class="glyphicon glyphicon-play"></span>
 					<% end %>
 				</td>
-				<td><% if User.find(session[:current_user_id]).admin || s.users_id == session[:current_user_id] then %>
+				<td><% if User.find(session[:current_user_id]).admin || s.user_id == session[:current_user_id] then %>
 					<%= button_to exercise_subexercise_path(s.exercise, s, :authenticity_token => form_authenticity_token), :method => :delete, 
 					data:{confirm:"Willst Du die Teilaufgabe wirklich loeschen?"}, class:"btn btn-xs btn-danger" do %>
 						<span class="glyphicon glyphicon-trash"></span>
