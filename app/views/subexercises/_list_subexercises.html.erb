@@ -7,6 +7,8 @@
 			<th>Aufgabentext</th>
 			<th>Lösungstext</th>
 			<th>Punkte</th>
+            <th>Autor</th>
+            <th>Status</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -15,8 +17,25 @@
 		<% @subexercises.each do |s| %>
 			<tr>
 				<td><%= s.text %></td>
-				<td><#%= s.solution end %></td>
+                <% if Solution.where(subexercise_id: s.id).count > 0 then %>
+				    <td> <%= Solution.where(subexercise_id: s.id).first.solution %>
+                    </td>
+
+                <% else %>
+                    <td>Keine Lösung vorhanden</td>
+                <% end %>
 				<td><%= s.points %></td>
+                <td><%= if s.users_id != nil then User.find(s.users_id).username  end %></td>
+                <td><% if s.active then
+                         if s.moderated then%>
+                            aktiv
+                         <% else %>
+                            nicht freigeschalten
+                         <% end %>
+                      <% else %>
+                          inaktiv - gelöscht
+                      <% end %>
+                           </td>
 				<td>
 					<%= button_to edit_exercise_subexercise_path(s.exercise, s),
 						:method => :get, class:"btn btn-xs btn-warning" do %>

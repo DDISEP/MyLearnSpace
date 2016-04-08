@@ -7,23 +7,19 @@
     <div class="panel panel-primary">
       <div class="panel-body" id="knowledgeelements_list">
         <div class="row-fluid">
-
-          <% if @current_user.admin? %>
-          <div class="span3" style="padding-top: 20px"> <!-- link to creating new knowledgeElement -->
+          <div class="span3" style="padding-top: 20px">
             <%= button_to new_knowledge_element_path, :method => :get, class:"btn btn-xs btn-primary" do %>
-              <span class="glyphicon glyphicon-plus"></span> Neue Lerneinheit
+              <span class="glyphicon glyphicon-plus"></span> Neues KnowledgeElement
             <% end %>
           </div>
-          <%end%>
-
           </div>
         </div>
         <table class="table table-striped">
           <thead>
           <tr><strong>
-            <th width="20%"> Name der Lerneinheit </th>
+            <th width="20%"> Name des Knowledge Elements </th>
             <th width="20%"> Beschreibung </th>
-            <th>Übergreifendes Themengebiet</th>
+            <th> Zugehöriges Topic</th>
           </strong></tr>
           </thead>
 
@@ -34,7 +30,6 @@
                 <td> <%= link_to ke.name, ke %> </td>
                 <td> <%= ke.description %></td>
                 <td> <% if !ke.topic.nil?%><%= link_to ke.topic.name, ke.topic %><%end%></td>
-                <% if @current_user.admin? %>
                 <td width="100">
                   <%= button_to 'Löschen', {:action => "destroy", :id => ke.id}, :confirm => 'Are you sure?', :method => "delete",
                                                :remote => true, :disable_with => 'loading...', class: "btn btn-xs btn-primary"%>
@@ -43,7 +38,6 @@
                                               %></td>
                 <td width="100">
                 <%= button_to 'Bearbeiten',{:action => "edit", :id => ke.id}, :method => :get, class:"btn btn-xs btn-primary"%></td>
-                    <% end %>
               </tr>
           <% end %>
           </tbody>

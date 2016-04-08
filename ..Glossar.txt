@@ -97,8 +97,19 @@ Das Attribut minPoints speichert die minimale Punktzahl, das Attribut maxPoints 
 Diese drei Attribute sind weitere Kriterien für die Zusammenstellung eines Exams, die jedoch zu diesem Zeitpunkt auf Grund der geringen Aufgabenmenge noch außer Acht gelassen wurden.
 
 * Exercise:
+Eine Exercise ist die eigentliche Aufgabenstellung, die einem Learning Objective zugeordnet ist und dazu verschiedene Teilaufgaben (Subexercises) unter sich bündelt.
+Die Klasse Exercise speichert dazu neben einem Aufgabentitel auch eine globale Aufgabenstellung, die durch die konkreten Situationsbeschreibungen (z.B. Terme, zu übersetzende Wörter) in den Subexercises ergänzt werden.
+Eine Exercises kann von jedem User erstellt werden.
+Durch die Methode start bzw. den Button Lernaufgabe starten wird eine Subexercises ausgewählt, die dann angezeigt und bearbeitet werden kann.
+Das Attribut sequence: boolean stellt fest, ob die Teilaufgaben in angegebener Reihenfolge abzuarbeiten sind oder eine zufällige Bearbeitung der Teilaufgaben möglich ist.
+Die Wählbarkeit dieses Attributs sowie in Folge dessen die Notwendigkeit des Starts bei Exams oder dem Button Lernaufgabe starten, mit Teilaufgabe a zu starten ist nicht umgesetzt.
 
 * Performance:
+Jede Bearbeitung einer Subexercises durch einen User wird gespeichert.
+Die eingereichte Lösung wird in der Variable handedin: text gespeichert.
+Der User bekommt dazu nach Bearbeitung einer Subexercises die Lösung dieser und eine Beschreibung dazu angezeigt. Aufgrund dieser Anzeige kann sich der User selbst bewerten.
+Diese Selbstbewertung wird im Attribut achieved_points: integer gespeichert und vertraut auf eine ehrliche Selbsteinschätzung der Bearbeitenden.
+Die Performance kann in der Ansicht zu einer Exercise über eine Statistik für jeden User selbst abgerufen werden.
 
 * Progress:
 In der Klasse Progress wird die Bearbeitung eines Exams zusammen mit dem Learner, von welchem das Exam bearbeitet wurde, gespeichert.
@@ -107,12 +118,17 @@ Außerdem werden die Ids der drei im Exam verwendeten Subexercises gespeichert. 
 Zuständig hierfür sind die Attribute subexercise1, subexercise2 und subexercise3.
 Auch das KnowledgeElement, welches durch das Exam abgeschlossen wurde, wird im Progress gespeichert. Hierfür ist das Attribut knowledge_element_id zuständig.
 Nachdem ein Learner ein Exam erfolgreich bearbeitet und abgegeben hat, wird allen Teachern in der View die Bearbeitung zusammen mit den jeweiligen Exercise und Subexercise und der Learner angezeigt.
-Ein Teacher hat nun die Möglichkeit eine Note einzutragen. Wobei diese Note einen Wert zwischen 1 und 6 annehmen muss. Der zuständige Teacher und die Note werden in der Klasse Progress in den Attributen teacher_id bzw. grade gespeichert.
+Ein Teacher hat nun die Möglichkeit eine Note sowie eine Begründung einzutragen. Wobei die Note einen Wert zwischen 1 und 6 annehmen muss. Der zuständige Teacher und die Note werden in der Klasse Progress in den Attributen teacher_id bzw. grade gespeichert, die Begründung im Attribut explanation.
 Sobald ein Teacher eine Note eingetragen hat, kann sich nur noch der Teacher selber oder ein Admin die Bearbeitung anzeigen lassen und gegebenenfalls die Note ändern.
 Für alle anderen Teacher ist die Bearbeitung ab diesem Zeitpunkt nicht mehr sichtbar. In der View des Learners werden für jedes von ihm geschriebene Exam das KnowledegeElement, die erhaltene Note,
 der zuständige Teacher und der Zeitpunkt der Abgaben angezeigt. Außerdem kann sich ein Learner seine Bearbeitung anzeigen lassen.
 
 * Solution:
+Zu jeder Subexercise wird in einer Solution eine Lösung (solution) und eine Beschreibung, Erklärung bzw. ein Bepunktungsschema (description) hinterlegt.
+Eine Solution wird nach der Bearbeitung einer Subexercises angezeigt, so dass der User seine Lösung kontrollieren kann.
+Eine Solution kann nur in Verbindung mit der dazugehörigen Subexercises erstellt bzw. bearbeitet werden.
+Für die Klasse Solution ist es bei m Erstellen nicht mögilch, die Attribute bzw. Textfelder solution und description leer zu lassen.
+Die Abkopplung der Klasse Solution von der dazugehörigen Subexercises soll es zukünftigen Entwicklern ermöglichen, eine automatische Korrektur (das wäre der Idealzustand) getrennt von der Klasse Subexercises zu realisieren.
 
 * Subexercise:
 Die Klasse Subxercise bietet die Möglichkeit Unteraufgaben zu bestehenden Exercise zu erstellen und zu speichern.

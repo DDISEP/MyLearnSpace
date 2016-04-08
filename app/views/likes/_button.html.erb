@@ -1,13 +1,13 @@
 <% if @existingLike != nil then %>
 	<div class="row-fluid">
 		<%= button_to exercise_like_path(@exercise, @existingLike, :authenticity_token => form_authenticity_token),
-			:method => :delete, :remote => true, style:"width: 100%", class:"btn btn-xs btn-primary" do %>
+			:method => :delete, :remote => true, style:"width: 100%", class:"btn btn-xs btn-danger" do %>
 			Gefällt mir nicht mehr <span class='glyphicon glyphicon-heart-empty'></span> 
 		<% end %>
 	</div>
 <% else %>
 	<div class="row-fluid">
-		<%= button_to new_exercise_like_path(@exercise), :method => :get, :remote => true , style:"width: 100%", class:"btn btn-xs btn-primary" do%>
+		<%= button_to new_exercise_like_path(@exercise), :method => :get, :remote => true , style:"width: 100%", class:"btn btn-xs btn-danger" do%>
 			Gefällt mir   <span class='glyphicon glyphicon-heart'></span>
 		<% end %>
 	</div>
