@@ -1,0 +1,128 @@
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span10">
+      <%= javascript_include_tag "springy.js" %>
+      <%= javascript_include_tag "springyui.js"%>
+      <% if @current_user.admin? %>
+          <table>
+            <tr>
+              <td width="30%"><%= link_to 'Themengebiete', topics_path %></td>
+              <td width="30%"><%= link_to 'Lerneinheiten', knowledge_elements_path %></td>
+              <td width="30%"><%= link_to 'Lernvoraussetzungen', preconditions_path%></td>
+            </tr>
+          </table>
+          </br>
+          </br>
+      <%end%>
+      <h2>Lernkarte</h2></div>
+  </div>
+
+  <%= @baeh%>
+
+
+
+
+
+  <table class="table table-striped">
+    <thead>
+    <tr colspan = "3"><h3>Offene Lernelemente:</h3> </tr>
+    <tr><strong>
+      <th width="20%"> Name des Lernelements </th>
+      <th width="20%"> Beschreibung </th>
+      <th> Zugehöriges Themengebiet</th>
+    </strong></tr>
+    </thead>
+
+    <tbody>
+    <% if @accessible_knowledge_elements.any? %>
+    <% @accessible_knowledge_elements.each do |ke| %>
+        <tr>
+          <!-- show name, description and linked topic for each knowledgeElement -->
+          <td> <%= link_to ke.name, ke %> </td>
+          <td> <%= ke.description %></td>
+          <td> <% if !ke.topic.nil?%><%= link_to ke.topic.name, ke.topic %><%end%></td>
+          <% if @current_user.admin? %>
+              <td width="100">
+                <%= button_to 'Löschen', {:action => "destroy", :id => ke.id}, :confirm => 'Are you sure?', :method => "delete",
+                              :remote => true, :disable_with => 'loading...', class: "btn btn-xs btn-primary"%>
+                <%#= button_to ("löschen", :id => ke.id, :method => :delete, data: {confirm: "Are you sure?"},
+                                               :remote => true, :disable_with => 'loading...'")
+                %></td>
+              <td width="100">
+                <%= button_to 'Bearbeiten',{:action => "edit", :id => ke.id}, :method => :get, class:"btn btn-xs btn-primary"%></td>
+          <% end %>
+        </tr>
+    <% end %>
+        <%end%>
+    </tbody>
+  </table>
+
+  <table class="table table-striped">
+    <thead>
+    <tr colspan = "3"><h3>Bestandene Lernelemente:</h3> </tr>
+    <tr><strong>
+      <th width="20%"> Name des Lernelements </th>
+      <th width="20%"> Beschreibung </th>
+      <th> Zugehöriges Themengebiet</th>
+    </strong></tr>
+    </thead>
+
+    <tbody>
+    <% if @passed_knowledge_elements.any? %>
+        <% @passed_knowledge_elements.each do |ke| %>
+            <tr>
+              <!-- show name, description and linked topic for each knowledgeElement -->
+              <td> <%= link_to ke.name, ke %> </td>
+              <td> <%= ke.description %></td>
+              <td> <% if !ke.topic.nil?%><%= link_to ke.topic.name, ke.topic %><%end%></td>
+              <% if @current_user.admin? %>
+                  <td width="100">
+                    <%= button_to 'Löschen', {:action => "destroy", :id => ke.id}, :confirm => 'Are you sure?', :method => "delete",
+                                  :remote => true, :disable_with => 'loading...', class: "btn btn-xs btn-primary"%>
+                    <%#= button_to ("löschen", :id => ke.id, :method => :delete, data: {confirm: "Are you sure?"},
+                                               :remote => true, :disable_with => 'loading...'")
+                    %></td>
+                  <td width="100">
+                    <%= button_to 'Bearbeiten',{:action => "edit", :id => ke.id}, :method => :get, class:"btn btn-xs btn-primary"%></td>
+              <% end %>
+            </tr>
+        <% end %>
+    <%end%>
+    </tbody>
+  </table>
+
+
+</div>
+</div>
+<script>
+  var graphJSON = {
+    "nodes": [
+      <% @knowledgeElements.each do |ke|%>
+      "<%= ke.name%>",
+      <%end%>
+      "Lernkarte"
+    ],
+    "edges": [
+      <% @preconditions.each do |p| %>
+      [ "<%= p.parent_learning_objective.knowledge_element.name%>", "<%= p.learning_objective.knowledge_element.name %>"],
+      <%end%>
+      <% @starting_knowledge_elements.each do |ske| %>
+      [ "Lernkarte", "<%= ske.name %>"],
+      <%end%>
+      [ "Lernkarte", "<%=@starting_knowledge_elements.first.name%>"]
+
+    ]
+  };
+
+  jQuery(function(){
+    var graph = new Springy.Graph();
+    graph.loadJSON(graphJSON);
+
+    var springy = jQuery('#springydemo').springy({
+      graph: graph
+    });
+  });
+</script>
+
+<canvas id="springydemo" width="1300" height="700" />

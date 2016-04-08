@@ -1,5 +1,6 @@
 MyLearnSpace::Application.routes.draw do
   
+  get "preconditions/map"
   resources :newsfeeds
 
   resources :peer_to_peers

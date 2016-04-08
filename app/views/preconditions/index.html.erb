@@ -1,7 +1,8 @@
+<% if @current_user.admin? %>
 <div class="container-fluid">
 
 
-  <div class="col-sm-9"><div class="row-fluid"><h1>Preconditions</h1></div></div>
+  <div class="col-sm-9"><div class="row-fluid"><h1>Lernvoraussetzungen</h1></div></div>
   <div class="col-sm-9">
 
 
@@ -9,14 +10,11 @@
     <div class="panel panel-primary">
 
       <% if @preconditions != nil%>
-          <p>
-            Sie haben <%= @preconditions.count %> Preconditions
-          </p>
           <table class="table table-striped">
             <thead>
             <tr><strong>
-              <th width="50%"> Parent LearningObjective </th>
-              <th> Child LearningObjective </th>
+              <th width="50%"> Parent Learning Objective </th>
+              <th> Child Learning Objective </th>
             </strong></tr>
             </thead>
 
@@ -24,8 +22,11 @@
               <tbody>
                <tr>
                  <td><%=p.parent_learning_objective.cognitiveDimension_to_s%> <%= link_to p.parent_learning_objective.knowledge_element.name, p.parent_learning_objective.knowledge_element%></td>
-                 <td><%=p.learning_objective.cognitiveDimension_to_s%> <%=link_to p.learning_objective.knowledge_element.name, p.learning_objective.knowledge_element%></td>
                  <td>
+                   <%if !p.learning_objective.nil?%>
+                    <%=p.learning_objective.cognitiveDimension_to_s%> <%=link_to p.learning_objective.knowledge_element.name, p.learning_objective.knowledge_element%></td>
+                   <%end%>
+                  <td>
                    <%= button_to 'Löschen', {:action => "destroy", :id => p.id}, :confirm => 'Are you sure?', :method => "delete",
                                  :remote => true, :disable_with => 'loading...', class: "btn btn-xs btn-primary"%>
                    <%#= button_to ("löschen", :id => ke.id, :method => :delete, data: {confirm: "Are you sure?"},
@@ -40,15 +41,16 @@
 
       <%else%>
           <p>
-            Diese Precondition existiert nicht
+            Es existiert noch keine Lernvoraussetzungen
           </p>
       <%end%>
 
 
-      <p>
-        <%= link_to 'Zurück zur Übersicht', preconditions_path%>
-      </p>
+
     </div>
+    <p>
+      <%= link_to 'Zurück zur Übersicht', preconditions_map_path%>
+    </p>
   </div>
 
 
@@ -60,3 +62,4 @@
 
 
 </div>
+<%end%>
