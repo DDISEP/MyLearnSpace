@@ -26,6 +26,7 @@ class ProgressesController < ApplicationController
   # POST /progresses
   # POST /progresses.json
   def create
+    #hier werden der learner sowie die Eingaben der Textfelder gespeichert
     @progress = Progress.new
     @progress.subexercise1_id= params[:ex1_id]
     @progress.subexercise2_id= params[:ex2_id]
@@ -35,6 +36,7 @@ class ProgressesController < ApplicationController
     @progress.submission3 = params[:text3]
     @progress.knowledge_element_id = params[:ke_id]
     @progress.learner_id = session[:current_user_id]
+
 
 
     if User.find_by_id(session[:current_user_id]).teacher?
@@ -86,6 +88,6 @@ class ProgressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def progress_params
-      params.require(:progress).permit(:learner_id, :teacher_id, :knowledge_element_id, :grade, :submission1,:submission2,:submission3)
+      params.require(:progress).permit(:learner_id, :teacher_id, :knowledge_element_id, :grade, :submission1,:submission2,:submission3, :explanation)
     end
 end

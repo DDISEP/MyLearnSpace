@@ -15,7 +15,7 @@ class ExercisesController < ApplicationController
   end
   
   def get_latest_performance
-    @latest_performance = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id]).order('updated_at DESC').first
+    #@latest_performance = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id]).order('updated_at DESC').first
   end
   
   def get_exercise
@@ -66,15 +66,15 @@ class ExercisesController < ApplicationController
 
   def show
     session[:exercise_id] = @exercise.id
-    if @latest_performance != nil && @latest_performance.current_position > -1 then
+    #if @latest_performance != nil && @latest_performance.current_position > -1 then
       #last performance unfinished, set next subexercise to do
-      @next = Subexercise.where(exercise_id: params[:id], position: @latest_performance.current_position).first 
-    end
+    #  @next = Subexercise.where(exercise_id: params[:id], position: @latest_performance.current_position).first
+    #end
     @comment = Comment.new      # needed for comment/_form.html.erb
     @existingLike = Like.where(exercise_id: params[:id], user_id: session[:current_user_id]).first #check, if user already likes this exercise
     @comments = @comments.paginate(:page => params[:page], :per_page => 10)
     @page = params[:page].nil? ? 1 : params[:page]
-    @top_performance = Performance.where(exercise_id: @exercise.id, user_id: session[:current_user_id]).order('achieved_points DESC').first
+    @top_performance = Performance.where(user_id: session[:current_user_id]).order('achieved_points DESC').first
   end
 
   def edit  # even admin isn't allowed to edit exercises, he/she may only delete it
@@ -93,19 +93,18 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new
     @exercise.title = params[:exercise][:title]
     @exercise.description = params[:exercise][:description]
+    @exercise.knowledge_element_id = (params[:exercise][:knowledge_element_id]).to_i
+    @exercise.knowledge_element = KnowledgeElement.find(@exercise.knowledge_element_id)
     @exercise.user_id = session[:current_user_id]
+    @exercise.sequence = TRUE
+    if User.find(session[:current_user_id]).admin == :true then
+      @exercise.moderated = TRUE
+    elsif User.find(session[:current_user_id]).teacher == :true then
+       @exercise.moderated = TRUE
+    else
+      @exercise.moderated = FALSE
+    end
     @exercise.save      # exercises created and saved
-    tags = params[:tags].split(",").map{|tag| tag.strip }
-    tags.each do |t|
-      # attention: works only with SQLite!
-      matching_tag = Content.find_by_sql("SELECT * FROM contents WHERE tag = '" + t + "' COLLATE NOCASE;").first    
-      if matching_tag != nil then
-        to_create = ExerciseContent.new
-        to_create.exercise_id = @exercise.id
-        to_create.content_id = matching_tag.id
-        to_create.save   
-      end
-    end     # links between exercise and contents created and saved
     flash[:notice] = "Aufgabe erfolgreich angelegt"
     redirect_to exercise_path(@exercise)
   end
@@ -114,42 +113,18 @@ class ExercisesController < ApplicationController
     @exercise.title = params[:exercise][:title]
     @exercise.description = params[:exercise][:description]
     @exercise.save
-    
-    old_tags = @exercise.contents.map{|t| t.tag}                # tags as they were before editing
-    new_tags = params[:tags].split(",").map{|tag| tag.strip }   # tags that have now been entered
-    tags_to_create = new_tags - old_tags                        # tags that now have to be created
-    tags_to_delete = old_tags - new_tags                        # tags that now have to be removed
-    
-    tags_to_delete.each do |t|
-      # matching_tag = Content.where(tag: t).first
-      # attention: wors only with SQLite!
-      matching_tag = Content.find_by_sql("SELECT * FROM contents WHERE tag = '" + t + "' COLLATE NOCASE;").first 
-      matching_link = matching_tag.nil? ? nil : ExerciseContent.where(content_id: matching_tag.id, exercise_id: @exercise.id).first         
-                                      # should never be nil because link already existed, check just for security
-      if matching_link != nil then    # should also never be nil because link already existed, check just for security
-        matching_link.destroy
-      end
-    end     # deleted all tags that aren't enumerated anymore
-    
-    tags_to_create.each do |t|
-      # attention: wors only with SQLite!
-      matching_tag = Content.find_by_sql("SELECT * FROM contents WHERE tag = '" + t + "' COLLATE NOCASE;").first
-      if matching_tag != nil then
-        to_create = ExerciseContent.new
-        to_create.exercise_id = @exercise.id
-        to_create.content_id = matching_tag.id
-        to_create.save
-      end
-    end       # created the newly entered tags
+
     flash[:notice] = "Aufgabe erfolgreich bearbeitet!"
     redirect_to exercise_path(@exercise)
   end
   
   def start
-    if @exercise.subexercise_counter == 0 then
+    if Subexercise.where(exercise_id: @exercise).count == 0 then
       redirect_to(exercise_path(@exercise), notice: "Keine Teilaufgaben vorhanden!")
     else
-      firstQuestion = Subexercise.where(exercise_id: @exercise.id).order('position ASC').first   # first question doens't have to have position 0
+      random = rand(Subexercise.where(exercise_id: @exercise.id).count).to_i
+      firstQuestion = Subexercise.where(exercise_id: @exercise.id).to_a.at(random)
+      #order('position ASC').first   # first question doens't have to have position 0
       #@performance = Performance.new          # for some (unknown) reason mass assignment via create didn't work
       #@performance.exercise_id = params[:id]
       #@performance.user_id = session[:current_user_id]
@@ -157,20 +132,12 @@ class ExercisesController < ApplicationController
       #@performance.achieved_points = 0
       #@performance.max_points = @exercise.max_points
       #@performance.save
-      redirect_to subexercise_path(@exercise, firstQuestion)
+      redirect_to new_subexercise_performance_path(firstQuestion)
     end
   end
   
   def finish
-    @performance = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id]).order('created_at DESC').first
-    if @performance.current_position > -2 && params[:given_points] != nil then                    # necessary to prevent multiple adding of points when reloading page
-                                                                                                  # params[:given_points} should never be nil, check just for security
-        @performance.achieved_points = @performance.achieved_points + params[:given_points].to_i
-        puts "HELLO" +  params[:given_points].to_s
-    end
-    @performance.current_position = -2
-    @performance.save
-    @performances = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id]).order('created_at DESC')
+
   end
   
   def destroy
@@ -215,7 +182,7 @@ class ExercisesController < ApplicationController
   end
   
   def statistics
-    @performances = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id], current_position: -2).order('created_at DESC')
+    #@performances = Performance.where(exercise_id: params[:id], user_id: session[:current_user_id], current_position: -2).order('created_at DESC')
   end
 
   def update_subnumbers
@@ -230,5 +197,6 @@ class ExercisesController < ApplicationController
       end
     end
   end
+
 
 end

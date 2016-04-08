@@ -30,6 +30,7 @@
 			<th> Autor </th>
 			<th> Likes </th>
 			<th> erstellt am </th>
+            <th> Teilaufgaben</th>
 		</tr>
 	</thead>
 
@@ -41,6 +42,7 @@
 			<td> <%= link_to exercise.user.username, exercise.user %> </td>
 			<td> <%= exercise.likes.length %> </td>
 			<td> <%= exercise.created_at.to_s(format = :db) %> </td>
+            <td> <%= Subexercise.where(exercise_id: exercise.id, active: TRUE, moderated: TRUE).count %></td>
 		</tr>
 	<% end %>
 	</tbody> 

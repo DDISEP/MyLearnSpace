@@ -1,14 +1,19 @@
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="span2">Aufgabe: </div>
+		<div class="span5"><h3>Aufgabe: <%= @exercise.title%> </h3></div>
+        <div class="span10"><%= @exercise.description%></div>
 		<div class="span10"><%= @subexercise.text %></div>
 	</div>
-	<div class="row-fluid">
+    <%= form_for [@exercise, @subexercise] do |f| %>
 		<div class="span2">Deine Antwort: </div>
-		<div class="span10">Hier muss ein Textfeld hin, auf das ich zugreifen kann.</div>
-	</div>
+        <div class="span6"><%= f.text_area :handedin, placeholder:"Gib hier deine Antwort ein...", maxlength:"1000", style:"width:100%; resize:vertical;" %></div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6"><%= f.submit "Lösung anzeigen", id:"submit_button", class:"btn btn-xs btn-primary" %></div>
+        </div>
+    <% end %>
 	<div class="row-fluid">
-		<div class="span2"><%= link_to "Lösung anzeigen", solution_path(@subexercise)%></div>
+		<div class="span2"><%= button_to "Lösung anzeigen", new_exercise_subexercise_performance_path(@subexercise, :handedin)%></div>
 		
 	</div>
 </div>

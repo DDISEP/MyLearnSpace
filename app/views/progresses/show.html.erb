@@ -47,10 +47,14 @@
 <%else%>
   <t>Der Schüler <%= User.find_by_id(@progress.learner_id).username%> hat auf seine Bearbeitung die Note <strong><%=@progress.grade%></strong> erhalten.</t>
       <%end%>
-
-
 </p>
 
+<p>
+  <%if @progress.explanation.blank?%>
+  <%else%>
+        <t>Begründung: <%= @progress.explanation%></t>
+  <%end%>
+</p>
 
 
 

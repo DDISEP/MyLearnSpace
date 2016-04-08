@@ -1,6 +1,7 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
+            <th>Teilaufgabe</th>
 			<th>Datum</th>
 			<th>erreichte Punkte</th>
 			<th>/</th>
@@ -8,13 +9,16 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% @performances.each do |p| %>
+		<% Subexercise.where(exercise_id: @exercise).each do |s| %>
+            <% Performance.where(subexercise_id: s).each do |p| %>
 			<tr>
+                <td><%= s.text %></td>
 				<td><%= p.updated_at %></td>
 				<td><%= p.achieved_points %></td>
-				<td></td>
-				<td><%= p.max_points %></td>
+				<td> von </td>
+				<td><%= s.points %></td>
 			</tr>
+            <% end %>
 		<% end %>
 	</tbody>
 	
