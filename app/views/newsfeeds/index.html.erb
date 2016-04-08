@@ -35,7 +35,7 @@
             <tr>
               <td><b><%= newsfeed.subject %></b></td>
               <td><%= newsfeed.message %></td>
-              <td><%= newsfeed.updated_at%></td>
+              <td><%= newsfeed.updated_at.to_formatted_s(:long)%></td>
               <% if @current_user.admin %>
                   <% if newsfeed.newsfeedToAll %>
                       <td>Schüler, Lehrer, Admins</td>
