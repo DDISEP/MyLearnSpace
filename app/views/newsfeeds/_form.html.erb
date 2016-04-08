@@ -44,15 +44,15 @@
             <div class="span11"><%= f.text_area :message, style:"width:100%; height:80px; resize:vertical;" %></div>
           </div>
           <div class="field">
-            <%= f.label :an_alle_Administratoren_senden? %>
+            <%= f.label :newsfeedToAdmins, 'An alle Admins senden?' %>
             <%= f.check_box :newsfeedToAdmins %>
           </div>
           <div class="field">
-            <%= f.label :an_alle_Lehrer_senden? %>
+            <%= f.label :newsfeedToTeachers, 'An alle Lehrer senden?' %>
             <%= f.check_box :newsfeedToTeachers %>
           </div>
           <div class="field">
-            <%= f.label :an_alle_senden? %>
+            <%= f.label :newsfeedToAll, 'An alle senden?' %>
             <%= f.check_box :newsfeedToAll %>
           </div>
           <div id="send_button" class="row-fluid">
