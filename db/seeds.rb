@@ -46,10 +46,13 @@ Wiki.create(:title => "Föhn (Wind)", :article => "Ein warmer Luftstrom aus den 
 #Topic
 @to1 = Topic.create(:name=> "Einführung in die Informationsverarbeitung", :description => "Erste Erfahrungen mit Informationen und wie man sie verarbeitet.", :subject => "Informatik")
 @to2 = Topic.create(:name=> "Rechnen in Zahlenräumen", :description => "Zahlenräume der natürlichen Zahlen, ganze Zahlen, rationale Zahlen und reelle Zahlen und wie man in diesen rechnet", :subject => "Mathematik")
+@to3 = Topic.createA(:name=> "Funktionen und funktionale Zusammenhänge", :description => "Rechnen mit Funktionen und Erlernen der Funktionsweise von funktionalen Zusammenhängen in vielerlei Hinsicht", :subject => "Mathematik, Informatik")
 #Knowledge_Element
-@ke1 = KnowledgeElement.create(:name=> "Information und Ihre Darstellung", :description => "Anhand von Beispielen aus ihrer Erfahrungswelt wird den Schülern deutlich, dass Information auf ganz unterschiedliche Weise dargestellt werden kann", :topic => @to1)
-@ke2 = KnowledgeElement.create(:name=> "Informationsdarstellung mit Graphikdokumenten - Graphiksoftware", :description => "Objekte als Informationseinheiten in Graphiken/n Objekte einer Vektorgraphik: Attribut, Attributwert und Methode", :topic => @to1)
-@ke3 = KnowledgeElement.create(:name=> "Informationsdarstellung mit Textdokumenten - Textverarbeitungssoftware", :description => "Objekte und Klassen in Texten, Zeichen, Absatz, Textdokument", :topic => @to1)
+@ke1 = KnowledgeElement.create(:name=> "Rechnen mit Brüchen", :description => "Berechnungen von Zahlen im Zahlenraum der rationalen Zahlen", :topic => @to2)
+@ke2 = KnowledgeElement.create(:name=> "LineareFunktionen", :description => "Rechnen und Anwenden von linearen Funktionen", :topic => @to3)
+@ke3 = KnowledgeElement.create(:name=> "Information und Ihre Darstellung", :description => "Anhand von Beispielen aus ihrer Erfahrungswelt wird den Schülern deutlich, dass Information auf ganz unterschiedliche Weise dargestellt werden kann", :topic => @to1)
+@ke4 = KnowledgeElement.create(:name=> "Informationsdarstellung mit Graphikdokumenten - Graphiksoftware", :description => "Objekte als Informationseinheiten in Graphiken/n Objekte einer Vektorgraphik: Attribut, Attributwert und Methode", :topic => @to1)
+@ke5 = KnowledgeElement.create(:name=> "Informationsdarstellung mit Textdokumenten - Textverarbeitungssoftware", :description => "Objekte und Klassen in Texten, Zeichen, Absatz, Textdokument", :topic => @to1)
 #Learning_Objective
 6.times {|i| @ke1.learning_objectives.build(cognitiveDimension: (i+1))}
 6.times {|i| @ke2.learning_objectives.build(cognitiveDimension: (i+1))}
