@@ -1,9 +1,13 @@
 MyLearnSpace::Application.routes.draw do
   
+
   get "preconditions/map"
   resources :newsfeeds
 
-  resources :peer_to_peers
+  resources :peer_to_peer_messages
+
+
+  resources :newsfeeds
 
   resources :progresses
 
@@ -51,7 +55,7 @@ MyLearnSpace::Application.routes.draw do
   
   post 'users/destroy' =>"users#destroy"
 
-  
+
   
   resources :users
   

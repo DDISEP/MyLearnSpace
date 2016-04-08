@@ -4,7 +4,13 @@ class NewsfeedsController < ApplicationController
   # GET /newsfeeds
   # GET /newsfeeds.json
   def index
-    @newsfeeds = Newsfeed.all
+    if @current_user.admin
+      @newsfeeds = Newsfeed.where(newsfeedToAdmins: true).order('updated_at desc')
+    elsif @current_user.teacher
+      @newsfeeds = Newsfeed.where(newsfeedToTeachers: true).order('updated_at desc')
+    else
+      @newsfeeds = Newsfeed.where(newsfeedToAll: true)
+    end
   end
 
   # GET /newsfeeds/1
@@ -24,11 +30,11 @@ class NewsfeedsController < ApplicationController
   # POST /newsfeeds
   # POST /newsfeeds.json
   def create
-    @newsfeed = Newsfeed.new(newsfeed_params)
+    @newsfeed = Newsfeed.new(params[:newsfeed])
 
     respond_to do |format|
       if @newsfeed.save
-        format.html { redirect_to @newsfeed, notice: 'Newsfeed was successfully created.' }
+        format.html { redirect_to @newsfeed, notice: 'Newsfeednachricht wurde erfolgreich erstellt.' }
         format.json { render action: 'show', status: :created, location: @newsfeed }
       else
         format.html { render action: 'new' }
@@ -41,8 +47,8 @@ class NewsfeedsController < ApplicationController
   # PATCH/PUT /newsfeeds/1.json
   def update
     respond_to do |format|
-      if @newsfeed.update(newsfeed_params)
-        format.html { redirect_to @newsfeed, notice: 'Newsfeed was successfully updated.' }
+      if @newsfeed.update(params[:newsfeed])
+        format.html { redirect_to @newsfeed, notice: 'Newsfeednachricht wurde erfolgreich geändert.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -57,7 +63,7 @@ class NewsfeedsController < ApplicationController
     @newsfeed.destroy
     respond_to do |format|
       format.html { redirect_to newsfeeds_url }
-      format.json { head :no_content }
+      format.json { }
     end
   end
 

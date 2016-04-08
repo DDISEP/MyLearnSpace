@@ -12,7 +12,7 @@
   <% if @current_user.nil? %>
       <%=  link_to image_tag('MyLearnSpace.png', border:"0", width:"150", height:"150", :mouseover => "/images/MyLearnSpace5.png"), welcome_index_path %>
   <% else %>
-      <%= link_to image_tag('MyLearnSpace.png', border:"0", width:"150", height:"150", :mouseover => "/images/MyLearnSpace5.png"), users_profile_path %>
+      <%= link_to image_tag('MyLearnSpace.png', border:"0", width:"150", height:"150", :mouseover => "/images/MyLearnSpace5.png"), newsfeeds_path %>
   <% end %>
 
   <% if @current_user.nil? %>
@@ -36,12 +36,24 @@
           <%= link_to 'Wiki', wikis_path %>
           &nbsp;&nbsp;
           <%= link_to 'Leistungen', progresses_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Nachrichten', peer_to_peer_messages_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Newsfeed', newsfeeds_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Neuen User erstellen', new_user_path %>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <% elsif @current_user.teacher? %>
           &nbsp;&nbsp;
           <%= link_to 'Persönliche Daten', users_profile_path %>
           &nbsp;&nbsp;
           <%= link_to 'Lernkarte', preconditions_map_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Benutzer', users_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Themengebiete', topics_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Lerneinheiten', knowledge_elements_path %>
           &nbsp;&nbsp;
           <%= link_to 'Aufgaben', exercises_path %>
           &nbsp;&nbsp;
@@ -52,12 +64,24 @@
           <%= link_to 'Wiki', wikis_path %>
           &nbsp;&nbsp;
           <%= link_to 'Leistungen', progresses_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Nachrichten', peer_to_peer_messages_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Newsfeed', newsfeeds_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Neuen Teacher erstellen', new_user_path %>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <% else %>
           &nbsp;&nbsp;
           <%= link_to 'Persönliche Daten', users_profile_path %>
           &nbsp;&nbsp;
           <%= link_to 'Lernkarte', preconditions_map_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Benutzer', users_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Themengebiete', topics_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Lerneinheiten', knowledge_elements_path %>
           &nbsp;&nbsp;
           <%= link_to 'Aufgaben', exerciseoverviews_path %>
           &nbsp;&nbsp;
@@ -68,6 +92,10 @@
           <%= link_to 'Wiki', wikis_path %>
           &nbsp;&nbsp;
           <%= link_to 'Leistungen', progresses_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Nachrichten',peer_to_peer_messages_path %>
+          &nbsp;&nbsp;
+          <%= link_to 'Newsfeed', newsfeeds_path %>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <% end %>
 

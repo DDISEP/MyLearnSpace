@@ -1,6 +1,9 @@
-<h1>Editing newsfeed</h1>
+<div class="container-fluid">
+<h1>Newsfeednachricht bearbeiten</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @newsfeed %> |
-<%= link_to 'Back', newsfeeds_path %>
+<%= button_to newsfeeds_path, :method => :get, class:"btn btn-xs btn-primary" do %>
+    <span class="glyphicon glyphicon-arrow-left"></span> zurück
+<% end %>
+</div>

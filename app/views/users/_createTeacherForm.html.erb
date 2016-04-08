@@ -16,16 +16,20 @@
       <%= f.text_field :username %>
     </div>
     <div class="field">
-      <%= f.label :lastName %><br>
-      <%= f.text_field :lastName %>
-    </div>
-    <div class="field">
-      <%= f.label :firstName %><br>
-      <%= f.text_field :firstName %>
-    </div>
-    <div class="field">
       <%= f.label :email %><br>
       <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :vorname %><br>
+      <%= f.text_field :firstname %>
+    </div>
+    <div class="field">
+      <%= f.label :nachname %><br>
+      <%= f.text_field :lastname %>
+    </div>
+    <div class="field">
+      <%= f.label :geburtsdatum %><br>
+      <%= f.date_select :birthday, start_year: 1900, end_year: Date.today.year  %>
     </div>
     <div class="field">
       <%= f.label :password %><br />
@@ -43,4 +47,4 @@
       <%= f.submit %>
     </div>
 
-<% end
+<% end %>

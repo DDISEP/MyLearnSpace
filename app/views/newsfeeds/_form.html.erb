@@ -9,21 +9,57 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :subject %><br>
-    <%= f.text_field :subject %>
-  </div>
-  <div class="field">
-    <%= f.label :message %><br>
-    <%= f.text_field :message %>
-  </div>
-  <div class="field">
-    <%= f.label :newsfeedToAll %><br>
-    <%= f.check_box :newsfeedToAll %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <% elsif @current_user.teacher %>
+    <div class="container-fluid">
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <div id="subject_field" class="row-fluid">
+            <div class="span1"><b><%= f.label :subject, "Betreff" %></b></div>
+            <div class="span11"><%= f.text_field :subject, style:"width:100%; height:100%;" %></div>
+          </div>
+          <div id="message_field" class="row-fluid">
+            <div class="span1"><%= f.label :message, "Inhalt" %></div>
+            <div class="span11"><%= f.text_area :message, style:"width:100%; height:80px; resize:vertical;" %></div>
+          </div>
+          <div class="field">
+            <%= f.label :an_alle_Lehrer_senden? %>
+            <%= f.check_box :newsfeedToTeachers %>
+          </div>
+          <div id="send_button" class="row-fluid">
+            <div class="span4 offset4"><%= f.submit "Newsfeednachricht speichern", class:"btn btn-xs btn-success", style:"width:100%" %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% elsif @current_user.admin %>
+    <div class="container-fluid">
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <div id="subject_field" class="row-fluid">
+            <div class="span1"><b><%= f.label :subject, "Betreff" %></b></div>
+            <div class="span11"><%= f.text_field :subject, style:"width:100%; height:100%;" %></div>
+          </div>
+          <div id="message_field" class="row-fluid">
+            <div class="span1"><%= f.label :message, "Inhalt" %></div>
+            <div class="span11"><%= f.text_area :message, style:"width:100%; height:300px; resize:vertical;" %></div>
+          </div>
+          <div class="field">
+            <%= f.label :newsfeedToAdmins, 'An alle Admins senden?' %>
+            <%= f.check_box :newsfeedToAdmins %>
+          </div>
+          <div class="field">
+            <%= f.label :newsfeedToTeachers, 'An alle Lehrer senden?' %>
+            <%= f.check_box :newsfeedToTeachers %>
+          </div>
+          <div class="field">
+            <%= f.label :newsfeedToAll, 'An alle senden?' %>
+            <%= f.check_box :newsfeedToAll %>
+          </div>
+          <div id="send_button" class="row-fluid">
+            <div class="span4 offset4"><%= f.submit "Newsfeednachricht speichern", class:"btn btn-xs btn-success", style:"width:100%" %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
 <% end %>

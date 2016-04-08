@@ -1,50 +1,54 @@
-<h3> Benutzer </h3>
-<div class="zweispaltig">
-
-<table width="70%">
-	<tr>
-		<td>
-			<b><p style="font-size: 15pt">Name</p></b>
-		</td>
-		<td>
-			<b><p style="font-size: 15pt">Schülerstatus</p></b>
-		</td>
-		<td>
-		<%if @admin%>			
-				<b><p style="font-size: 15pt">E-Mail Adresse</p></b>			
-		<%end%>
-		</td>
-			
-	</tr>
-	<% @users.each do |u| 	%>
-	<tr>
-		<td>
-			<%= u.username %>
-		</td>
-		<td>
-			<%if u.pupil == true%>
-				<%="Schüler"%><!--statt t und f muss hier noch ja nein eingefügt werden!!-->
-			<%elsif u.pupil == false%>
-				<%="Kein Schüler"%>
-			<%else%>
-				<%="Keine Angabe"%>
-			<%end%>
-		</td>
-		<td>
-		<%if @admin%>			
-				<%= u.email %>			
-		<%end%>
-		</td>
-	</tr>	
-	<% end %>
-	
-</table></div>
-
-
-
-
-
-
-
-
-
+<div class="container-fluid">
+  <h1>Benutzer</h1>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <td width="20%">
+            <b><p style="font-size: 15pt">Username</p></b>
+          </td>
+          <td width="15%">
+            <b><p style="font-size: 15pt">Name</p></b>
+          </td>
+          <td width="15%">
+            <b><p style="font-size: 15pt">Status</p></b>
+          </td>
+          <td width="10%">
+            <b><p style="font-size: 15pt">Id</p></b>
+          </td>
+          <td width="20%">
+            <%if @current_user.admin %>
+                <b><p style="font-size: 15pt">E-Mail Adresse</p></b>
+            <%end%>
+          </td>
+        </tr>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+            <tr>
+              <td><b><%= user.username %></b></td>
+              <td><%= user.firstname + ", " + user.lastname %></td>
+              <% if user.learner %>
+                  <td><b>Schüler</b></td>
+              <% elsif user.teacher %>
+                  <td><b>Lehrer</b></td>
+              <% else %>
+                  <td><b>Admin</b></td>
+              <% end %>
+              <td><%= user.id %></td>
+              <% if @current_user.admin %>
+                  <td><b><%= user.email%></b></td>
+              <% end %>
+              <% if @current_user.id.eql? user.id %>
+                  <td width="7%"><%= link_to 'löschen', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% else %>
+                  <td width="7%"></td>
+              <% end %>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
