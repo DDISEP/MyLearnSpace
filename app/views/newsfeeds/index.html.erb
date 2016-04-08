@@ -1,31 +1,76 @@
-<h1>Listing newsfeeds</h1>
+<div class="container-fluid">
+  <h1>Newsfeed</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Subject</th>
-      <th>Message</th>
-      <th>Newsfeedtoall</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <% if @current_user.admin or @current_user.teacher %>
+      <div class="span3" style="padding-top: 20px">
+        <%= button_to new_newsfeed_path, :method => :get, class:"btn btn-xs btn-primary" do %>
+            <span class="glyphicon glyphicon-plus"></span> Neue Newsfeednachricht erstellen
+        <% end %>
+      </div>
+  <% end %>
 
-  <tbody>
-    <% @newsfeeds.each do |newsfeed| %>
-      <tr>
-        <td><%= newsfeed.subject %></td>
-        <td><%= newsfeed.message %></td>
-        <td><%= newsfeed.newsfeedToAll %></td>
-        <td><%= link_to 'Show', newsfeed %></td>
-        <td><%= link_to 'Edit', edit_newsfeed_path(newsfeed) %></td>
-        <td><%= link_to 'Destroy', newsfeed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Newsfeed', new_newsfeed_path %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <td width="20%">
+            <b><p style="font-size: 15pt">Betreff</p></b>
+          </td>
+          <td width="30%">
+           <b><p style="font-size: 15pt">Inhalt</p></b>
+          </td>
+          <td width="15%">
+            <b><p style="font-size: 15pt">zuletzt geändert</p></b>
+          </td>
+          <td width="10%">
+            <%if @current_user.admin or @current_user.teacher %>
+              <b><p style="font-size: 15pt">an wen?</p></b>
+            <%end%>
+          </td>
+        </tr>
+        </thead>
+        <tbody>
+          <% @newsfeeds.each do |newsfeed| %>
+            <tr>
+              <td><b><%= newsfeed.subject %></b></td>
+              <td><%= newsfeed.message %></td>
+              <td><%= newsfeed.updated_at.to_formatted_s(:long)%></td>
+              <% if @current_user.admin %>
+                  <% if newsfeed.newsfeedToAll %>
+                      <td>Schüler, Lehrer, Admins</td>
+                  <% elsif newsfeed.newsfeedToTeachers %>
+                      <td>Lehrer, Admins</td>
+                  <% else %>
+                      <td>Admins</td>
+                  <% end %>
+                  <td width="7%"><%= link_to 'anzeigen', newsfeed %></td>
+                  <td width="7%"><%= link_to 'bearbeiten', edit_newsfeed_path(newsfeed) %></td>
+                  <td width="7%"><%= link_to 'löschen', newsfeed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% elsif @current_user.teacher  %>
+                  <% if newsfeed.newsfeedToTeachers %>
+                      <% if newsfeed.newsfeedToAll %>
+                          <td>Schüler, Lehrer, Admins</td>
+                      <% elsif newsfeed.newsfeedToTeachers %>
+                          <td>Lehrer, Admins</td>
+                      <% end %>
+                    <% if newsfeed.newsfeedToAll.blank? %>
+                          <td width="7%"><%= link_to 'anzeigen', newsfeed %></td>
+                          <td width="7%"><%= link_to 'bearbeiten', edit_newsfeed_path(newsfeed) %></td>
+                          <td width="7%"><%= link_to 'löschen', newsfeed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <% else %>
+                          <td width="7%"><%= link_to 'anzeigen', newsfeed %></td>
+                          <td width="7%"></td>
+                          <td width="7%"></td>
+                    <% end %>
+                  <% end %>
+              <% else  %>
+                  <td width="7%"><%= link_to 'anzeigen', newsfeed %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

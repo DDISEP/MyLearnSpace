@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <h1><%=@peer_to_peer_message.subject%></h1>
+  <p id="notice"><%= notice %></p>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row-fluid">
+        <div class="span1"><b>Absender</b></div>
+        <div class="span11"><%= @peer_to_peer_message.sender %></div>
+      </div>
+      <div class="row-fluid">
+        <div class="span1"><b>Betreff</b></div>
+        <div class="span11"><%= @peer_to_peer_message.subject %></div>
+      </div>
+      <div class="row-fluid">
+        <div class="span1"><b>Inhalt</b></div>
+        <div class="span11"><%= @peer_to_peer_message.message %></div>
+      </div>
+      <div class="span3" style="padding-top: 20px">
+        <%= button_to edit_peer_to_peer_message_path, :method => :get, class:"btn btn-xs btn-success" do %>
+            <span class="glyphicon glyphicon-envelope"></span> antworten
+        <% end %>
+      </div>
+    </div>
+    <div class="span3" style="padding-top: 20px">
+      <%= button_to peer_to_peer_messages_path, :method => :get, class:"btn btn-xs btn-primary" do %>
+          <span class="glyphicon glyphicon-arrow-left"></span> zurück
+      <% end %>
+    </div>
+  </div>
+</div>

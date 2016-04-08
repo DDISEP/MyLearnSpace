@@ -1,6 +1,8 @@
 #Encoding: utf-8
 class UsersController < ApplicationController
+  helper_method :current_user, :logged_in_as_admin?, :logged_in_as_teacher?, :newAdmin
   skip_before_action :check_login, only: [:new, :create]
+
   
   def index
     @users = User.all.sort{|a,b| a.username.downcase <=> b.username.downcase } #Sortierung nach Alphabet um Suche zu ersetzem
@@ -19,13 +21,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-       redirect_to new_login_path, :notice => "Dein Profil wurde erfolgreich angelegt! Um alle Funktionen nutzen zu können, melde dich jetzt hier an."
+      redirect_to users_path, :notice => "Das Profil wurde erfolgreich angelegt."#"Dein Profil wurde erfolgreich angelegt! Um alle Funktionen nutzen zu können, melde dich jetzt hier an."
     else
-       render "new.html.erb"
+      render "new.html.erb"
     end
   end
-  
- 
+
+
   def show 
     
   end
@@ -33,7 +35,6 @@ class UsersController < ApplicationController
   
   def edit
       @user = @current_user
-      #Passwortfeld bleibt in der Anzeige zunächst leer und muss vom Benutzer nochmal ausgefüllt werden
       flash.now[:notice] = 'Bitte gib zur Speicherung der geänderten Daten erneut dein Passwort ein. Falls du dein Passwort ändern möchtest, dann gib dein neues Passwort ein.'
   end 
 
@@ -51,11 +52,32 @@ class UsersController < ApplicationController
   end
   end
 
+  def add_new_user
+
+  end
+
+  def current_user
+    @current_user ||= User.find_by_id(session[:user])
+  end
+
+  def logged_in_as_admin?
+    current_user != nil and current_user.admin?
+  end
+
+  def logged_in_as_teacher?
+    current_user != nil and current_user.teacher?
+  end
+
+  def newAdmin
+    @user = User.new
+  end
+
   def destroy
-    @user= @current_user
-    @user.destroy
+    @user = @current_user
+    @user.delete
     session.clear
     redirect_to root_url   
   end
+
   
 end

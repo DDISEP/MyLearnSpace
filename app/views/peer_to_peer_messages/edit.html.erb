@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <h1><%= "Re: " + @peer_to_peer_message.subject %></h1>
+
+<%= render 'editForm' %>
+
+  <div class="span3" style="padding-top: 20px">
+    <%= button_to peer_to_peer_messages_path, :method => :get, class:"btn btn-xs btn-primary" do %>
+        <span class="glyphicon glyphicon-arrow-left"></span> zurück
+    <% end %>
+  </div>
+
+</div>
