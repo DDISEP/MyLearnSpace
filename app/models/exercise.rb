@@ -46,5 +46,17 @@ class Exercise < ActiveRecord::Base
   def knowledge_element_title
     return KnowledgeElement.find(knowledge_element_id).name
   end
+
+  def exists_performance (userid)
+    tmp = FALSE
+    Performance.each do |p|
+      Subexercise.each do |s|
+        if @exercise.id == s.exercise_id && s.id == p.subexercise_id && p.user_id == userid then
+          tmp = TRUE
+        end
+      end
+    end
+    return tmp
+  end
   
 end

@@ -117,7 +117,7 @@ Solution.create(:solution => "19/24", :description => "5/3-7/8 = 40/24 - 21/24 =
 Solution.create(:solution => "9/20", :description => "3/5 : 4/3 = (3*3)/(5*4) = 9/20", :subexercise_id => 12)
 Solution.create(:solution => "2/3", :description => "ggT (6,9)= 3; 6:3 = 2; 9:3 = 3", :subexercise_id => 13)
 Solution.create(:solution => "1/2", :description => "ggT(5,10) = 5; 5:5 = 1; 10:5 = 2", :subexercise_id => 14)
-Solution.create(:solution => "Q = {p/q | p aus Z und q aus N\{0}", :description => "Die Menge aller Brüche mit einer ganzen Zahl im Nenner und einer natürlichen Zahl im Zähler. 0 darf dabei nicht im Zähler stehen.", :subexercise_id => 15)
+Solution.create(:solution => "Q = {p/q | p aus Z und q aus N/{0}", :description => "Die Menge aller Brüche mit einer ganzen Zahl im Nenner und einer natürlichen Zahl im Zähler. 0 darf dabei nicht im Zähler stehen.", :subexercise_id => 15)
 Solution.create(:solution => "1/2 < 3/4 < 5/6", :description => "kgV(2,6,4) = 12; 3/4 = 9/12 1/2 = 6/12; 5/6 = 10/12;", :subexercise_id => 16)
 Solution.create(:solution => "Schlechtes Angebot", :description => "0,5 * p + 12*1/10 * p = 5/10 * p + 12/10 * p = 22/10 * p; Man müsste mehr als doppelt so viel zahlen", :subexercise_id => 17)
 Solution.create(:solution => "Abhängig von der Vertragslaufzeit", :description => "Sobald der Vertrag eine gewisse Lauftzeit hat, ist Paulas Vertrag besser. Dieser Laufzeitwert bestimmt sich als der Schnittpunkt der Geraden der Kosten pro Monat.", :subexercise_id => 18)

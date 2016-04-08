@@ -72,7 +72,7 @@
 	</div>
 	
 	<!-- Bearbeiten-Button -->
-	<% if @exercise.user_id == session[:current_user_id] then%>
+	<% if @exercise.user_id == session[:current_user_id] || User.find(session[:current_user_id]).teacher || User.find(session[:current_user_id]).admin then%>
 	<div class="row-fluid">
 		<%= button_to edit_exercise_path(@exercise) , :method => :get, style:"width: 100%", class:"btn btn-xs btn-warning" do %>
 			Lernaufgabe bearbeiten   <span class="glyphicon glyphicon-pencil"></span>
