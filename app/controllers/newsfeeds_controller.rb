@@ -63,7 +63,7 @@ class NewsfeedsController < ApplicationController
     @newsfeed.destroy
     respond_to do |format|
       format.html { redirect_to newsfeeds_url }
-      format.json { head :no_content }
+      format.json { }
     end
   end
 

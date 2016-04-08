@@ -74,7 +74,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = @current_user
-    @user.destroy
+    @user.delete
     session.clear
     redirect_to root_url   
   end
