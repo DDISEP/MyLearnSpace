@@ -35,7 +35,6 @@ class UsersController < ApplicationController
   
   def edit
       @user = @current_user
-      #Passwortfeld bleibt in der Anzeige zunächst leer und muss vom Benutzer nochmal ausgefüllt werden
       flash.now[:notice] = 'Bitte gib zur Speicherung der geänderten Daten erneut dein Passwort ein. Falls du dein Passwort ändern möchtest, dann gib dein neues Passwort ein.'
   end 
 
