@@ -18,11 +18,11 @@ class SubexercisesController < ApplicationController
   end
 
   def get_performance
-    @performance = Performance.where(subexercise_id: @subexercise, user_id: session[:current_user_id]).order('created_at DESC').first
+    @performance = Performance.where(subexercise_id: @subexercise, users_id: session[:current_user_id]).order('created_at DESC').first
   end
 
   def count_performance
-    return Performance.where(subexercise_id: @subexercise, user_id: session[:current_user_id]).count
+    return Performance.where(subexercise_id: @subexercise, users_id: session[:current_user_id]).count
   end
 
   def get_subexercise
