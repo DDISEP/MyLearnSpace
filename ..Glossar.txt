@@ -78,6 +78,10 @@ Aufteilung eines Topics in Lerneinheiten. Beispiel: Lineare Funktionen.
 * LearningObjective:
 Aufteilung eines KnowledgeElements auf die sechs Cognitive Process Dimensions nach Anderson/Krathwohl. Beispiel: Anwendungen von Linearen Funktionen.
 
+* Precondition:
+Entsprechen Voraussetzungen, auf denen die Lernkarte basiert. Besteht immer aus zwei LearningObjectives, wobei das eine LearningObjective Voraussetzung für das andere LearningObjective ist.
+
+
 
 
 ## Grett - Ottinger ##
