@@ -43,10 +43,13 @@ Wiki.create(:title => "Föhn (Wind)", :article => "Ein warmer Luftstrom aus den 
 
 
 ### Ellermeier-Zach ###
+#Topic
+@to1 = Topic.create(:name=> "Einführung in die Informationsverarbeitung", :description => "Erste Erfahrungen mit Informationen und wie man sie verarbeitet.", :subject => "Informatik")
+@to2 = Topic.create(:name=> "Rechnen in Zahlenräumen", :description => "Zahlenräume der natürlichen Zahlen, ganze Zahlen, rationale Zahlen und reelle Zahlen und wie man in diesen rechnet", :subject => "Mathematik")
 #Knowledge_Element
-@ke1 = KnowledgeElement.create(:name=> "Information und Ihre Darstellung", :description => "Anhand von Beispielen aus ihrer Erfahrungswelt wird den Schülern deutlich, dass Information auf ganz unterschiedliche Weise dargestellt werden kann")
-@ke2 = KnowledgeElement.create(:name=> "Informationsdarstellung mit Graphikdokumenten - Graphiksoftware", :description => "Objekte als Informationseinheiten in Graphiken/n Objekte einer Vektorgraphik: Attribut, Attributwert und Methode")
-@ke3 = KnowledgeElement.create(:name=> "Informationsdarstellung mit Textdokumenten - Textverarbeitungssoftware", :description => "Objekte und Klassen in Texten, Zeichen, Absatz, Textdokument")
+@ke1 = KnowledgeElement.create(:name=> "Information und Ihre Darstellung", :description => "Anhand von Beispielen aus ihrer Erfahrungswelt wird den Schülern deutlich, dass Information auf ganz unterschiedliche Weise dargestellt werden kann", :topic => @to1)
+@ke2 = KnowledgeElement.create(:name=> "Informationsdarstellung mit Graphikdokumenten - Graphiksoftware", :description => "Objekte als Informationseinheiten in Graphiken/n Objekte einer Vektorgraphik: Attribut, Attributwert und Methode", :topic => @to1)
+@ke3 = KnowledgeElement.create(:name=> "Informationsdarstellung mit Textdokumenten - Textverarbeitungssoftware", :description => "Objekte und Klassen in Texten, Zeichen, Absatz, Textdokument", :topic => @to1)
 #Learning_Objective
 6.times {|i| @ke1.learning_objectives.build(cognitiveDimension: (i+1))}
 6.times {|i| @ke2.learning_objectives.build(cognitiveDimension: (i+1))}
@@ -62,6 +65,7 @@ Wiki.create(:title => "Föhn (Wind)", :article => "Ein warmer Luftstrom aus den 
 @pc = @ke3.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke3.learning_objectives.first, :necessity => true, :parent_learning_objective => @lo)
 @pc.parent_learning_objective = @lo
 @pc.save!
+
 
 
 ### Grett ###
