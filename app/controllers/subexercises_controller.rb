@@ -62,6 +62,7 @@ class SubexercisesController < ApplicationController
   end
 
   def edit
+    session[:exercise_id] = @exercise.id
 
   end
 
