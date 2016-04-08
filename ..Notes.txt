@@ -1,14 +1,14 @@
-Notes Hafemann-Sticha
----------------------
-
 ### Git ###
 https://www.git-tower.com/blog/git-cheat-sheet-de
 
 clone https://github.com/DDISEP/MyLearnSpace.git
+git fetch -all
 git pull <remote> <branch>
-git rm -r --cached .idea
+git rm -r --cached <files>
 git commit -m "message"
 git push
+git diff
+git reset --hard HEAD
 
 ### rails console ###
 http://guides.rubyonrails.org/command_line.html
@@ -34,9 +34,10 @@ http://ruby-auf-schienen.de/3.2/activerecord_has_many.html
 http://ruby-auf-schienen.de/3.2/ar-many_to_many.html
 
 ### rails generate ###
-rails generate model/controller/view name
-rails generate scaffold name attribute:type
-rails generate migration CreateJoinFlightsPassengers
+rails generate model/controller/view User
+rails generate scaffold User firstname:string
+rails destroy scaffold User
+rails generate migration AddLastnameToUser
 
 ### rails guides ###
 http://guides.rubyonrails.org/getting_started.html
