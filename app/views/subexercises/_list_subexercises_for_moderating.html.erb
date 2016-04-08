@@ -23,7 +23,7 @@
                 <td><%= if Solution.where(subexercise_id: s.id).count > 0 then
                           Solution.where(subexercise_id: s.id).first.solution else Solution.where(subexercise_id: s.id).count end %></td>
                 <td><% if User.find(session[:current_user_id]).admin || User.find(session[:current_user_id]).teacher then %>
-                      <%= if s.user_id != nil then User.find(s.user_id).username end %>
+                      <%= if s.users_id != nil then User.find(s.users_id).username end %>
                 <% end %>
                 <td>
                     <%= button_to edit_exercise_subexercise_path(s.exercise, s),
