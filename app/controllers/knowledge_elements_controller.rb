@@ -7,7 +7,7 @@ class KnowledgeElementsController < ApplicationController
 
   def check_auth
     if session[:admin] != true then
-      flash[:notice] = "Nur Administratoren dürfen KnowledgeElemente erstellen und bearbeiten"
+      flash[:error] = "Nur Administratoren dürfen KnowledgeElemente erstellen und bearbeiten"
       redirect_to @knowledgeElement
     end
   end
@@ -56,7 +56,7 @@ class KnowledgeElementsController < ApplicationController
         render 'new'
       end
     elsif
-      flash[:info] = "Dieses KnowledgeElement existiert bereits"
+      flash[:error] = "Dieses KnowledgeElement existiert bereits"
       render 'new'
     end
   end
