@@ -42,10 +42,18 @@ class TopicsController < ApplicationController
       @topic = Topic.find_by_id(params[:id])
       @topic.save
     end
-    Topic.update(params[:id], :name => params[:topic][:name], :description=> params[:topic][:description], :subject => params[:topic][:subject])
-    #flash[:notice] = params.inspect
-
-    redirect_to topic_path(params[:id])
+    @name = params[:topic][:name]
+    if Topic.where(:name => @name).length < 1
+      if Topic.update(params[:id], :name => params[:topic][:name], :description=> params[:topic][:description], :subject => params[:topic][:subject])
+        redirect_to topic_path(params[:id])
+      elsif
+      flash[:error] = "Die Änderung konnte nicht gespeichert werden. Überprüfe bitte, ob das Topic schon vorhanden ist, oder alle Felder ausgefüllt sind"
+        render 'edit'
+      end
+    elsif
+    flash[:error] = "Ein Topic mit diesem Namen existiert bereits"
+      render 'edit'
+    end
   end
 
   def destroy
