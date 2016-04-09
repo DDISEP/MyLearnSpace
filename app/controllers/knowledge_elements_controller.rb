@@ -39,18 +39,24 @@ class KnowledgeElementsController < ApplicationController
   # method for craeting new KnowledgeElements
   def create
     @admin = session[:admin]
-    @knowledgeElement = KnowledgeElement.new(params.require(:knowledgeElement).permit(:name, :description))
-    #You can add an object to a collection without saving it by using the collection.build method
-    #The Object has been instantiated with attributes and linked to this object through the join table, but has not yet been saved
-    #Important if you haven't saved the Object (knowledgeElement) before building the collection
-    6.times {|i| @knowledgeElement.learning_objectives.build(cognitiveDimension: (i+1))}
-    #@knowledgeElement.knowledge_element_chat
-    #@knowledgeElement.forum
-    if @knowledgeElement.save
-      redirect_to @knowledgeElement
-    else
-      #render method is used so that the @knowledgeElement object is passed back to the new template when it is rendered
-      #this rendering is done within the same request as the form submission whereas the redirect_to will tell the browser to issue another request
+    @name = params[:knowledgeElement][:name]
+    if KnowledgeElement.where(:name => @name ).length <1
+      @knowledgeElement = KnowledgeElement.new(params.require(:knowledgeElement).permit(:name, :description))
+      #You can add an object to a collection without saving it by using the collection.build method
+      #The Object has been instantiated with attributes and linked to this object through the join table, but has not yet been saved
+      #Important if you haven't saved the Object (knowledgeElement) before building the collection
+      6.times {|i| @knowledgeElement.learning_objectives.build(cognitiveDimension: (i+1))}
+      #@knowledgeElement.knowledge_element_chat
+      #@knowledgeElement.forum
+      if @knowledgeElement.save
+        redirect_to @knowledgeElement
+      else
+        #render method is used so that the @knowledgeElement object is passed back to the new template when it is rendered
+        #this rendering is done within the same request as the form submission whereas the redirect_to will tell the browser to issue another request
+        render 'new'
+      end
+    elsif
+      flash[:info] = "Dieses KnowledgeElement existiert bereits"
       render 'new'
     end
   end
