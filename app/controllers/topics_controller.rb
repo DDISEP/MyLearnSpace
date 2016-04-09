@@ -16,7 +16,7 @@ class TopicsController < ApplicationController
   end
 
   def edit
-
+    @topic = Topic.find_by_id(params[:id])
   end
 
   def create

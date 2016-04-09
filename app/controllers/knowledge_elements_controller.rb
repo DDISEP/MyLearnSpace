@@ -19,7 +19,7 @@ class KnowledgeElementsController < ApplicationController
   end
 
   def edit
-    @knowledgeElement = KnowledgeElement.find(params[:id])
+    @knowledgeElement = KnowledgeElement.find_by_id(params[:id])
     @topics = Topic.all
   end
 

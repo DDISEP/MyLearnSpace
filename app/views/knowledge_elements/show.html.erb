@@ -39,7 +39,9 @@
           <br>
 
           <p>
-            <H5>Übergeordnetes Themengebiet: <%= link_to @topic.name, topic_path%></H5>
+            <% if !@topic.nil? %>
+              <H5>Übergeordnetes Themengebiet: <%= link_to @topic.name, topic_path%></H5>
+            <%end%>
           </p>
 
           <br>

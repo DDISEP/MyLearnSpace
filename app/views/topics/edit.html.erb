@@ -13,7 +13,7 @@
           <%# Typically in Rails, the action that is used for new form submissions like this is called "create", and so the form should be pointed to that action %>
           <%# The articles_path helper tells Rails to point the form to the URI Patters associated with the articles prefix; and the form will (by default) %>
           <%# send a POST request to that route. This is associated with the create action on the current controller. The KnowledgeElementsController %>
-          <%= form_for :topic, url: topics_path  do |f| %>
+          <%= form_for (@topic)  do |f| %>
               <div class="container-fluid">
                 <div class="panel panel-primary">
           <div class="panel-body">
