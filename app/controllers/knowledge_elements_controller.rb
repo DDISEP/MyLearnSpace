@@ -36,11 +36,11 @@ class KnowledgeElementsController < ApplicationController
         redirect_to knowledge_element_path(params[:id])
       elsif
         flash[:error] = "Die Änderung konnte nicht gespeichert werden. Überprüfe bitte, ob das KnowledgeElement schon vorhanden ist, oder alle Felder ausgefüllt sind"
-        render 'new'
+        render 'edit'
       end
     elsif
       flash[:error] = "Ein KnowledgeElement mit diesem Namen existiert bereits"
-      render 'new'
+      render 'edit'
     end
 
 
