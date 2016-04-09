@@ -30,7 +30,8 @@ class KnowledgeElementsController < ApplicationController
       @knowledgeElement.topic = @topic
       @knowledgeElement.save
     end
-    if KnowledgeElement.where(:name => params[:knowledgeElement][:name]).length < 1
+    @name = params[:knowledge_element][:name]
+    if KnowledgeElement.where(:name => @name).length < 1
       if KnowledgeElement.update(params[:id], :name => params[:knowledge_element][:name], :description=> params[:knowledge_element][:description], :topic_id => params[:knowledge_element][:topic])
         redirect_to knowledge_element_path(params[:id])
       elsif
