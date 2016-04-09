@@ -70,15 +70,20 @@ Wiki.create(:title => "Föhn (Wind)", :article => "Ein warmer Luftstrom aus den 
 6.times {|i| @ke1.learning_objectives.build(cognitiveDimension: (i+1))}
 6.times {|i| @ke2.learning_objectives.build(cognitiveDimension: (i+1))}
 6.times {|i| @ke3.learning_objectives.build(cognitiveDimension: (i+1))}
+6.times {|i| @ke4.learning_objectives.build(cognitiveDimension: (i+1))}
+6.times {|i| @ke5.learning_objectives.build(cognitiveDimension: (i+1))}
 @ke1.save
 @ke2.save
 @ke3.save
+@ke4.save
+@ke5.save
+
 #Precondition
-@lo = LearningObjective.where(:knowledge_element_id => @ke1.id, :cognitiveDimension => 4).first
-@pc = @ke2.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke2.learning_objectives.first, :necessity => true, :parent_learning_objective => @lo)
+@lo = LearningObjective.where(:knowledge_element_id => @ke3.id, :cognitiveDimension => 4).first
+@pc = @ke4.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke4.learning_objectives.first, :necessity => true, :parent_learning_objective => @lo)
 @pc.parent_learning_objective = @lo
 @pc.save!
-@pc = @ke3.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke3.learning_objectives.first, :necessity => true, :parent_learning_objective => @lo)
+@pc = @ke5.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke5.learning_objectives.first, :necessity => true, :parent_learning_objective => @lo)
 @pc.parent_learning_objective = @lo
 @pc.save!
 
