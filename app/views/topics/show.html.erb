@@ -31,7 +31,6 @@ Zum Themengebiet gehörige Lerneinheiten
               <!-- show title, author, and creation date for each exercise -->
               <td> <%= link_to ke.name, ke %> </td>
               <td> <%= ke.description %></td>
-              <td> <% if !ke.topic.nil?%><%= link_to ke.topic.name, ke.topic %><%end%></td>
             </tr>
         <% end %>
         </tbody>
