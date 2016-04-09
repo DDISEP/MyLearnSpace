@@ -51,7 +51,7 @@ class TopicsController < ApplicationController
   def destroy
     @topic = Topic.find(params[:id])
     @topic.destroy
-    redirect_to @topic, :notice => "The Topic has been deleted"
+    redirect_to @topic, :notice => "Das Topic wurde erfolgreich gelöscht!"
   end
 
   def show

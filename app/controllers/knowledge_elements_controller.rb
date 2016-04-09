@@ -93,6 +93,6 @@ class KnowledgeElementsController < ApplicationController
   def destroy
     @knowledgeElement = KnowledgeElement.find(params[:id])
     @knowledgeElement.destroy
-    redirect_to @knowledgeElement #knowledge_elements_path, :notice => "The knowledgeElement has been deleted"
+    redirect_to @knowledgeElement, :notice => "Das KnowledgeElement wurde erfolgreich gelöscht!"
   end
 end
