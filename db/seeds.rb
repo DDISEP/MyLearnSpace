@@ -78,7 +78,11 @@ Wiki.create(:title => "Föhn (Wind)", :article => "Ein warmer Luftstrom aus den 
 @ke4.save
 @ke5.save
 
-#Precondition
+#Preconditions
+@lo= LearningObjective.where(:knowledge_element_id => @ke2.id, :cognitiveDimension => 3).first
+@pc = @ke2.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke2.learning_objectives.first, :necessity => true, :parent_learning_objective => @lo)
+@pc.parent_learning_objective = @lo
+@pc.save!
 @lo = LearningObjective.where(:knowledge_element_id => @ke3.id, :cognitiveDimension => 4).first
 @pc = @ke4.learning_objectives.first.parent_learning_objective_preconditions.build(:learning_objective => @ke4.learning_objectives.first, :necessity => true, :parent_learning_objective => @lo)
 @pc.parent_learning_objective = @lo
