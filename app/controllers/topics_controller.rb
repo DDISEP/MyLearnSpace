@@ -31,6 +31,17 @@ class TopicsController < ApplicationController
     end
   end
 
+  def update
+    if(!params[:topic].nil?)
+      @topic = Topic.find_by_id(params[:id])
+      @topic.save
+    end
+    Topic.update(params[:id], :name => params[:topic][:name], :description=> params[:topic][:description], :subject => params[:topic][:subject])
+    #flash[:notice] = params.inspect
+
+    redirect_to topic_path(params[:id])
+  end
+
   def destroy
     @topic = Topic.find(params[:id])
     @topic.destroy
