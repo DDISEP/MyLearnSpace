@@ -30,10 +30,19 @@ class KnowledgeElementsController < ApplicationController
       @knowledgeElement.topic = @topic
       @knowledgeElement.save
     end
-    KnowledgeElement.update(params[:id], :name => params[:knowledge_element][:name], :description=> params[:knowledge_element][:description], :topic_id => params[:knowledge_element][:topic])
-    #flash[:notice] = params.inspect
+    if KnowledgeElement.where(:name => params[:knowledgeElement][:name]).length < 1
+      if KnowledgeElement.update(params[:id], :name => params[:knowledge_element][:name], :description=> params[:knowledge_element][:description], :topic_id => params[:knowledge_element][:topic])
+        redirect_to knowledge_element_path(params[:id])
+      elsif
+        flash[:error] = "Die Änderung konnte nicht gespeichert werden. Überprüfe bitte, ob das KnowledgeElement schon vorhanden ist, oder alle Felder ausgefüllt sind"
+        render 'new'
+      end
+    elsif
+      flash[:error] = "Ein KnowledgeElement mit diesem Namen existiert bereits"
+      render 'new'
+    end
 
-    redirect_to knowledge_element_path(params[:id])
+
   end
 
   # method for craeting new KnowledgeElements
@@ -53,6 +62,7 @@ class KnowledgeElementsController < ApplicationController
       else
         #render method is used so that the @knowledgeElement object is passed back to the new template when it is rendered
         #this rendering is done within the same request as the form submission whereas the redirect_to will tell the browser to issue another request
+        flash[:error] = "Das KnowledgeElement konnte nicht gespeichert werden"
         render 'new'
       end
     elsif
