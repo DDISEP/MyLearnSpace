@@ -1,25 +1,28 @@
 class TopicsController < ApplicationController
 
-  def index
-    @topics = Topic.all
-  end
-
   def check_auth
-    if session[:admin] != true then
-      flash[:notice] = "Nur Administratoren dürfen Topics erstellen und bearbeiten"
-      redirect_to @topic
+    if @current_user.admin? != true then
+      flash[:error] = "Nur Administratoren dürfen Topics einsehen und bearbeiten!"
+      redirect_to preconditions_map_path
     end
   end
 
-  def new
+  def index
+    check_auth
+    @topics = Topic.all
+  end
 
+  def new
+check_auth
   end
 
   def edit
+    check_auth
     @topic = Topic.find_by_id(params[:id])
   end
 
   def create
+    check_auth
     @admin = session[:admin]
     @name = params[:topic][:name]
     if Topic.where(:name => @name).length <1
@@ -63,6 +66,7 @@ class TopicsController < ApplicationController
   end
 
   def show
+    check_auth
     @topic = Topic.find_by_id(params[:id])
     @knowledgeElements = @topic.knowledge_elements
   end

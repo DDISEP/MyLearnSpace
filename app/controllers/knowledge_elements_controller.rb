@@ -1,24 +1,26 @@
 class KnowledgeElementsController < ApplicationController
 
-  # method for the index view, that lists all knowledgeElements
-  def index
-    @knowledgeElements = KnowledgeElement.all
-  end
-
   def check_auth
-    if session[:admin] != true then
-      flash[:error] = "Nur Administratoren dürfen KnowledgeElemente erstellen und bearbeiten"
-      redirect_to @knowledgeElement
+    if @current_user.admin? != true then
+      flash[:error] = "Nur Administratoren dürfen KnowledgeElemente einsehen und bearbeiten"
+      redirect_to preconditions_map_path
     end
   end
 
+  # method for the index view, that lists all knowledgeElements
+  def index
+    check_auth
+    @knowledgeElements = KnowledgeElement.all
+  end
 
   # method for the new view, the form in the view calls the create method, so this method is empty
   def new
+    check_auth
 
   end
 
   def edit
+    check_auth
     @knowledgeElement = KnowledgeElement.find_by_id(params[:id])
     @topics = Topic.all
   end
@@ -73,6 +75,7 @@ class KnowledgeElementsController < ApplicationController
   end
 
   def show
+    check_auth
     @knowledgeElement = KnowledgeElement.find_by_id(params[:id])
     if !@knowledgeElement.nil?
       @learningObjectives = @knowledgeElement.learning_objectives.all
