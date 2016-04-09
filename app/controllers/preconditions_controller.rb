@@ -74,7 +74,7 @@ class PreconditionsController < ApplicationController
     @learningObjective = LearningObjective.find_by_id(params[:learning_objective_id])
     @necessity = params["precondition"]["necessity"]
     @parent_learning_objective = LearningObjective.find_by_id(params["precondition"]["parent_learning_objective_id"])
-    if Precondition.where(:learning_objective_id => @learningObjective.id, :parent_learning_objective_id => @parent_learning_objective.id).lenght < 1
+    if Precondition.where(:learning_objective_id => @learningObjective.id, :parent_learning_objective_id => @parent_learning_objective.id).length < 1
       @precondition = @learningObjective.parent_learning_objective_preconditions.build(:learning_objective => @learningObjective, :necessity => @necessity, :parent_learning_objective => @parent_learning_objective)
       @precondition.parent_learning_objective = @parent_learning_objective
 
