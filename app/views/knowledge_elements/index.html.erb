@@ -31,8 +31,10 @@
                 <td> <%= ke.description %></td>
                 <td> <% if !ke.topic.nil?%><%= link_to ke.topic.name, ke.topic %><%end%></td>
                 <td width="100">
-                  <%= button_to 'Löschen', {:action => "destroy", :id => ke.id}, :confirm => 'Are you sure?', :method => "delete",
-                                               :remote => true, :disable_with => 'loading...', class: "btn btn-xs btn-primary"%>
+                  <%= button_to knowledge_element_path(ke.id),  :method => :delete,
+                                data:{confirm:"Willst Du dieses KnowledgeElement wirklich loeschen?"}, class:"btn btn-xs btn-danger" do %>
+                      <span class="glyphicon glyphicon-trash"></span>
+                      <%end%>
                   <%#= button_to ("löschen", :id => ke.id, :method => :delete, data: {confirm: "Are you sure?"},
                                                :remote => true, :disable_with => 'loading...'")
                                               %></td>
