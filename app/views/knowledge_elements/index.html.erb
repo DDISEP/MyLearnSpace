@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-  <div class="col-sm-9"><div class="row-fluid"><h1>KnowledgeElement</h1></div></div>
+  <div class="col-sm-9"><div class="row-fluid"><h1>Lerneinheiten</h1></div></div>
 
   <div class="col-sm-9">
 
@@ -9,7 +9,7 @@
         <div class="row-fluid">
           <div class="span3" style="padding-top: 20px">
             <%= button_to new_knowledge_element_path, :method => :get, class:"btn btn-xs btn-primary" do %>
-              <span class="glyphicon glyphicon-plus"></span> Neues KnowledgeElement
+              <span class="glyphicon glyphicon-plus"></span> Neue Lerneinheit
             <% end %>
           </div>
           </div>
@@ -17,9 +17,9 @@
         <table class="table table-striped">
           <thead>
           <tr><strong>
-            <th width="20%"> Name des Knowledge Elements </th>
+            <th width="20%"> Name der Lerneinheit </th>
             <th width="20%"> Beschreibung </th>
-            <th> Zugehöriges Topic</th>
+            <th> Zugehöriges Themengebiet</th>
           </strong></tr>
           </thead>
 
@@ -32,7 +32,7 @@
                 <td> <% if !ke.topic.nil?%><%= link_to ke.topic.name, ke.topic %><%end%></td>
                 <td width="100">
                   <%= button_to knowledge_element_path(ke.id),  :method => :delete,
-                                data:{confirm:"Willst Du dieses KnowledgeElement wirklich loeschen?"}, class:"btn btn-xs btn-danger" do %>
+                                data:{confirm:"Willst Du diese Lerneinheit wirklich loeschen?"}, class:"btn btn-xs btn-danger" do %>
                       <span class="glyphicon glyphicon-trash"></span>
                       <%end%>
                 </td>

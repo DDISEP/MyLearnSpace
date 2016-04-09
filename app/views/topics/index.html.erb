@@ -7,9 +7,9 @@
     <div class="panel panel-primary">
       <div class="panel-body" id="knowledgeelements_list">
         <div class="row-fluid">
-          <div class="span3" style="padding-top: 20px"> <!-- link to creating new knowledgeElement -->
+          <div class="span3" style="padding-top: 20px"> <!-- link to creating new Topic -->
             <%= button_to new_topic_path, :method => :get, class:"btn btn-xs btn-primary" do %>
-                <span class="glyphicon glyphicon-plus"></span> Neues Topic
+                <span class="glyphicon glyphicon-plus"></span> Neues Themengebiet
             <% end %>
           </div>
         </div>
@@ -17,7 +17,7 @@
       <table class="table table-striped">
         <thead>
         <tr><strong>
-          <th width="20%"> Name des Topics </th>
+          <th width="20%"> Name des Themengebiets </th>
           <th width="15%"> Zugeordnetes Fach</th>
           <th> Beschreibung </th>
         </strong></tr>
@@ -32,7 +32,7 @@
               <td> <%= top.description %></td>
               <td width="100">
                 <%= button_to topic_path(top.id),  :method => :delete,
-                              data:{confirm:"Willst Du dieses Topic wirklich loeschen?"}, class:"btn btn-xs btn-danger" do %>
+                              data:{confirm:"Willst Du dieses Themengebiet wirklich loeschen?"}, class:"btn btn-xs btn-danger" do %>
                     <span class="glyphicon glyphicon-trash"></span>
                 <%end%><td width="100">
                 <%= button_to 'Bearbeiten',{:action => "edit", :id => top.id}, :method => :get, class:"btn btn-xs btn-primary"%></td>
