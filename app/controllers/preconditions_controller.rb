@@ -57,7 +57,7 @@ class PreconditionsController < ApplicationController
           @locked_knowledge_elements << flo.knowledge_element
         end
       end
-      flash[@accessible_knowledge_elements.length]
+      #flash[@accessible_knowledge_elements.length]
     end
 
     #@knowledgeElements = KnowledgeElement.all
