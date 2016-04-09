@@ -21,12 +21,18 @@ class TopicsController < ApplicationController
 
   def create
     @admin = session[:admin]
-    @topic = Topic.new(params.require(:topic).permit(:name, :subject, :description))
-    if @topic.save
-      redirect_to topics_url
-    else
-      #render method is used so that the @knowledgeElement object is passed backto the new template when it is rendered
-      #this rendering isdone within the same request as the form submission whereas the redirect_to will tell the browser to issue another request
+    @name = params[:topic][:name]
+    if Topic.where(:name => @name).length <1
+      @topic = Topic.new(params.require(:topic).permit(:name, :subject, :description))
+      if @topic.save
+        redirect_to topics_url
+      else
+        #render method is used so that the @knowledgeElement object is passed backto the new template when it is rendered
+        #this rendering isdone within the same request as the form submission whereas the redirect_to will tell the browser to issue another request
+        render 'new'
+      end
+    elsif
+      flash[:error] = "Dieses Topic existiert bereits!"
       render 'new'
     end
   end
