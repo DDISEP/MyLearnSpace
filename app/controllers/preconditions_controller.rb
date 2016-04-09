@@ -87,8 +87,7 @@ class PreconditionsController < ApplicationController
       end
     elsif
       flash[:error] = "Diese Lernvoraussetzung existiert bereits"
-      render 'new'
-      #redirect_to knowledge_element_learning_objective_path(:id => :learning_objective_id)
+      redirect_to new_knowledge_element_learning_objective_precondition_path
     end
   end
 
