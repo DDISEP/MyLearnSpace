@@ -5,7 +5,7 @@
       <%= javascript_include_tag "springy.js" %>
       <%= javascript_include_tag "springyui.js"%>
       <% if @current_user.admin? %>
-          Nur für Administratoren: Links zur Bearbeitung von Themengebieten, Lerneinheiten und Lernvoraussetzungen
+          Nur für Administratoren: Links zur Bearbeitung von Themengebieten, Lerneinheiten und Lernvoraussetzungen:
           <table>
             <tr>
               <td width="30%"><%= link_to 'Themengebiete', topics_path %></td>
