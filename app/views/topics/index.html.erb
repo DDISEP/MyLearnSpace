@@ -31,9 +31,10 @@
               <td> <%= top.subject %></td>
               <td> <%= top.description %></td>
               <td width="100">
-                <%= button_to 'Löschen', {:action => "destroy", :id => top.id}, :confirm => 'Are you sure?', :method => "delete",
-                              :remote => true, :disable_with => 'loading...', class: "btn btn-xs btn-primary"%></td>
-              <td width="100">
+                <%= button_to topic_path(top.id),  :method => :delete,
+                              data:{confirm:"Willst Du dieses Topic wirklich loeschen?"}, class:"btn btn-xs btn-danger" do %>
+                    <span class="glyphicon glyphicon-trash"></span>
+                <%end%><td width="100">
                 <%= button_to 'Bearbeiten',{:action => "edit", :id => top.id}, :method => :get, class:"btn btn-xs btn-primary"%></td>
             </tr>
         <% end %>
