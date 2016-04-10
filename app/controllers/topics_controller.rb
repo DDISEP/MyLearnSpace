@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
 
   def check_auth
     if @current_user.admin? != true then
-      flash[:error] = "Nur Administratoren dürfen Topics einsehen und bearbeiten!"
+      flash[:error] = "Nur Administratoren dürfen Topics anlegen und bearbeiten!"
       redirect_to preconditions_map_path
     end
   end
