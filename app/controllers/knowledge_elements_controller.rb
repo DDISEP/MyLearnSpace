@@ -1,5 +1,7 @@
 class KnowledgeElementsController < ApplicationController
 
+  before_action :check_auth, only:[:update, :destroy, :new, :edit, :create ]
+
   def check_auth
     if @current_user.admin? != true then
       flash[:error] = "Nur Administratoren dürfen KnowledgeElemente einsehen und bearbeiten"
@@ -76,7 +78,6 @@ class KnowledgeElementsController < ApplicationController
   end
 
   def show
-    check_auth
     @knowledgeElement = KnowledgeElement.find_by_id(params[:id])
     if !@knowledgeElement.nil?
       @learningObjectives = @knowledgeElement.learning_objectives.all

@@ -1,5 +1,7 @@
 class TopicsController < ApplicationController
 
+  before_action :check_auth, only:[:update, :destroy, :new, :edit, :create ]
+
   def check_auth
     if @current_user.admin? != true then
       flash[:error] = "Nur Administratoren dürfen Topics einsehen und bearbeiten!"
@@ -67,7 +69,6 @@ check_auth
   end
 
   def show
-    check_auth
     @topic = Topic.find_by_id(params[:id])
     @knowledgeElements = @topic.knowledge_elements
   end
