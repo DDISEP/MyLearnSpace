@@ -37,7 +37,7 @@ class PerformancesController < ApplicationController
     @performance.achieved_points = params[:performance][:achieved_points]
     @performance.save
     flash[:notice] = "Gespeichert."
-    redirect_to exercise_path(Exercise.find(session[:exercise_id]))
+    redirect_to exercises_path()
   end
   
 end

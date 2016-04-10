@@ -27,10 +27,10 @@ class SolutionsController < ApplicationController
   end
 
   def update
-    Solution.find(params[:id]).solution = params[:solution][:solution]
-    Solution.find(params[:id]).description = params[:solution][:description]
+    @solution = params[:solution][:solution]
+    @description = params[:solution][:description]
     Solution.find(params[:id]).save
-    flash[:notice] = "Teilaufgabe erfolgreich geaendert."
+    flash[:notice] = "Teilaufgabe erfolgreich geändert."
     redirect_to exercises_path
   end
 
