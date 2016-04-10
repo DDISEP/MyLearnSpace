@@ -24,14 +24,15 @@ class KnowledgeElementsController < ApplicationController
   end
 
   def update
+
+    @knowledgeElement = KnowledgeElement.find_by_id(params[:id])
     if(!params[:knowledge_element][:topic].nil?)
       @topic = Topic.find_by_id(params[:knowledge_element][:topic])
-      @knowledgeElement = KnowledgeElement.find_by_id(params[:id])
       @knowledgeElement.topic = @topic
       @knowledgeElement.save
     end
     @name = params[:knowledge_element][:name]
-    if KnowledgeElement.where(:name => @name).length < 1
+    if @knowledgeElement.name == @name || KnowledgeElement.where(:name => @name).length < 1
       if KnowledgeElement.update(params[:id], :name => params[:knowledge_element][:name], :description=> params[:knowledge_element][:description], :topic_id => params[:knowledge_element][:topic])
         redirect_to knowledge_element_path(params[:id])
       elsif

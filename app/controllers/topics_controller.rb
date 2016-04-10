@@ -38,12 +38,13 @@ class TopicsController < ApplicationController
   end
 
   def update
+    @topic = Topic.find_by_id(params[:id])
     if(!params[:topic].nil?)
-      @topic = Topic.find_by_id(params[:id])
+
       @topic.save
     end
     @name = params[:topic][:name]
-    if Topic.where(:name => @name).length < 1
+    if @topic.name == @name || Topic.where(:name => @name).length < 1
       if Topic.update(params[:id], :name => params[:topic][:name], :description=> params[:topic][:description], :subject => params[:topic][:subject])
         redirect_to topic_path(params[:id])
       elsif
