@@ -1,13 +1,14 @@
 class LearningObjectivesController < ApplicationController
 
   def check_auth
-    if session[:admin] != true then
-      flash[:notice] = "Nur Administratoren dürfen LearningObjectives bearbeiten"
-      redirect_to @learningObjective
+    if @current_user.admin? != true then
+      flash[:error] = "Nur Administratoren dürfen LearningObjectives einsehen und bearbeiten!"
+      redirect_to preconditions_map_path
     end
   end
 
   def index
+    check_auth
     @learningObjectives = LearningObjective.all
   end
 
@@ -16,6 +17,7 @@ class LearningObjectivesController < ApplicationController
   end
 
   def show
+    check_auth
     @learningObjective = LearningObjective.find_by_id(params[:id])
     @cognitiveDimension = @learningObjective.cognitiveDimension_to_s
     @preconditions = @learningObjective.parent_learning_objective_preconditions

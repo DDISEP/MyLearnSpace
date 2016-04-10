@@ -1,13 +1,14 @@
 class PreconditionsController < ApplicationController
 
   def check_auth
-    if session[:admin] != true then
-      flash[:notice] = "Nur Administratoren dürfen Preconditions erstellen und bearbeiten"
-      redirect_to @precondition
+    if @current_user.admin? != true then
+      flash[:error] = "Nur Administratoren dürfen Preconditions erstellen und bearbeiten"
+      redirect_to preconditions_map_path
     end
   end
 
   def index
+    check_auth
     @preconditions = Precondition.all
   end
 
@@ -65,6 +66,7 @@ class PreconditionsController < ApplicationController
   end
 
   def new
+    check_auth
     @learningObjective = LearningObjective.find_by_id(:learning_objective_id)
     @knowledgeElements = KnowledgeElement.all
     @preconditions = Precondition.all
@@ -100,6 +102,7 @@ class PreconditionsController < ApplicationController
   end
 
   def show
+    check_auth
     @precondition = Precondition.find_by_id(params[:id])
   end
 
