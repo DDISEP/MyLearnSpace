@@ -1,15 +1,24 @@
 class KnowledgeElementsController < ApplicationController
 
+  before_action :check_auth, only:[:update, :destroy, :new, :edit, :create ]
+
   def check_auth
     if @current_user.admin? != true then
-      flash[:error] = "Nur Administratoren dürfen KnowledgeElemente einsehen und bearbeiten"
+      flash[:error] = "Nur Administratoren dürfen KnowledgeElemente anlegen und bearbeiten"
+      redirect_to preconditions_map_path
+    end
+  end
+
+  def check_not_learner
+    if @current_user.learner?
+      flash[:error] = "Nur Administratoren und Lehrer dürfen auf diese Seite zugreifen"
       redirect_to preconditions_map_path
     end
   end
 
   # method for the index view, that lists all knowledgeElements
   def index
-    check_auth
+    check_not_learner
     @knowledgeElements = KnowledgeElement.all
   end
 
@@ -76,7 +85,6 @@ class KnowledgeElementsController < ApplicationController
   end
 
   def show
-    check_auth
     @knowledgeElement = KnowledgeElement.find_by_id(params[:id])
     if !@knowledgeElement.nil?
       @learningObjectives = @knowledgeElement.learning_objectives.all

@@ -1,14 +1,23 @@
 class TopicsController < ApplicationController
 
+  before_action :check_auth, only:[:update, :destroy, :new, :edit, :create ]
+
   def check_auth
     if @current_user.admin? != true then
-      flash[:error] = "Nur Administratoren dürfen Topics einsehen und bearbeiten!"
+      flash[:error] = "Nur Administratoren dürfen Topics anlegen und bearbeiten!"
+      redirect_to preconditions_map_path
+    end
+  end
+
+  def check_not_learner
+    if @current_user.learner?
+      flash[:error] = "Nur Administratoren und Lehrer dürfen auf diese Seite zugreifen"
       redirect_to preconditions_map_path
     end
   end
 
   def index
-    check_auth
+    check_not_learner
     @topics = Topic.all
   end
 
@@ -67,7 +76,6 @@ check_auth
   end
 
   def show
-    check_auth
     @topic = Topic.find_by_id(params[:id])
     @knowledgeElements = @topic.knowledge_elements
   end
