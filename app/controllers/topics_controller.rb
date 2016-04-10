@@ -9,8 +9,15 @@ class TopicsController < ApplicationController
     end
   end
 
+  def check_not_learner
+    if @current_user.learner?
+      flash[:error] = "Nur Administratoren und Lehrer dürfen auf diese Seite zugreifen"
+      redirect_to preconditions_map_path
+    end
+  end
+
   def index
-    check_auth
+    check_not_learner
     @topics = Topic.all
   end
 

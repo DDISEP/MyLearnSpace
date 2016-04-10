@@ -9,9 +9,16 @@ class KnowledgeElementsController < ApplicationController
     end
   end
 
+  def check_not_learner
+    if @current_user.learner?
+      flash[:error] = "Nur Administratoren und Lehrer dürfen auf diese Seite zugreifen"
+      redirect_to preconditions_map_path
+    end
+  end
+
   # method for the index view, that lists all knowledgeElements
   def index
-    check_auth
+    check_not_learner
     @knowledgeElements = KnowledgeElement.all
   end
 
