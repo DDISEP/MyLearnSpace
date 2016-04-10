@@ -5,7 +5,7 @@ class SolutionsController < ApplicationController
   end
 
   def edit
-
+    session[:exercise_id] = @id
   end
 
   def new

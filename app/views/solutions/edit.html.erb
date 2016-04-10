@@ -1,17 +1,17 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span10"><h2>Lösung zur Teilaufgabe</h2></div>
-    <div class="span2"><%= button_to subexercise_path(Subexercise.where(solution_id: params[:id]).first), :method => :get, class:"btn btn-xs btn-primary", style:"width:100%" do %>
+    <div class="span2"><%= button_to subexercise_path(Subexercise.where(solution_id: params[:@id]).first), :method => :get, class:"btn btn-xs btn-primary", style:"width:100%" do %>
           zurück  <% end %> </span>
     </div>
   </div>
 
   <%= form_for Solution.find(params[:id]), :html => {:onsubmit => "return validateForm();"} do |f| %>
       <div class="row-fluid">
-        <div class="span10">Aufgabe: <%= Subexercise.where(solution_id: params[:id]).first.exercise.title%> </div>
-        <div class="span10"><%= Subexercise.where(solution_id: params[:id]).first.exercise.description %></div>
-        <div class="spann10">Teilaufgabe: <%= Subexercise.where(solution_id: params[:id]).first.text%></div>
-        <div class="spann2">Maximale Punktezahl: <%= Subexercise.where(solution_id: params[:id]).first.points%></div>
+        <div class="span10">Aufgabe: <%= Subexercise.where(solution_id: params[:@id]).first.exercise.title%> </div>
+        <div class="span10"><%= Subexercise.where(solution_id: params[:@id]).first.exercise.description %></div>
+        <div class="spann10">Teilaufgabe: <%= Subexercise.where(solution_id: params[:@id]).first.text%></div>
+        <div class="spann2">Maximale Punktezahl: <%= Subexercise.where(solution_id: params[:@id]).first.points%></div>
       </div>
 
       <div id="solution_field" class="row-fluid">
