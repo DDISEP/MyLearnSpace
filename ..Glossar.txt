@@ -141,3 +141,35 @@ Ob eine Subexercise für ein Exam ausgewählt werden kann entscheidet das Attrib
 Wird eine Subexercise gelöscht, so wird das Attribut active auf False gesetzt. Dieses Attribut ist standardmäßig auf True gesetzt.
 Falls eine Subexercise von einem Learner erstellt wurde, muss das Attribut moderated von einem Teacher auf True gesetzt werden um die Subexercise für alle sichtbar zu schalten.
 Bevor dies nicht geschehen ist, wird die Subexercise nicht angezeigt. In den Attributen created_at bzw. updated_at wird gespeichert wann eine Subexercise erstellt bzw. überarbeitet wurde.
+
+## Arndt - Olwitz ##
+* Admin:
+Admins sind die Verwalter des Systems. Sie können zusätzlich Newsfeednachrichten und neue User erstellen.
+
+* Learner:
+Learner sind die Schüler des Systems.
+
+* Newsfeed:
+Im Newsfeed werden kurze, aktuelle und wichtige Informationen angezeigt.Newsfeednachrichten haben einen Betreff, einen Inhalt und es muss ausgewählt werden, an wenn die Nachricht geht.
+Erstellt werden können Newsfeednachrichten von Admins und Teachern.
+Admins können Newsfeednachrichten entweder an die Admins, an die Teacher oder an alle schicken.
+Teacher können Newsfeednachrichten an die Teacher schicken. Diese werden dann auch automatisch an die Admins gesendet, damit diese die Übersicht über alle Nachrichten haben.
+In der Übersicht des Newsfeeds werden der Betreff, der Inhalt und das letzte Änderungsdatum angezeigt. Außerdem kann man sich hier die einzelnen Newsfeednachrichten ganz anzeigen lassen.
+Admins können zusätzlich alle Nachrichten bearbeiten und löschen.
+Teacher können zusätzlich ihre Nachrichten bearbeiten und löschen.
+
+* PeerToPeerMessage:
+Unter PeerToPeerMessage versteht man das Senden einer Nachricht von einem User zu einem Anderen.
+PeerToPeerMessage-Nachrichten haben einen Absender, einen Empfänger, einen Betreff und einen Inhalt.
+In der Übersicht aller Nachrichten kann man neue Nachrichten erstellen und es wird der Posteingang und-ausgang angezeigt.
+Dort werden jeweils der Absender, Empfänger, Betreff und die Nachricht selbst angezeigt.
+Außerdem kann man sich hier die einzelnen Nachrichten ganz anzeigen lassen und auf eine Nachricht antworten.
+
+* Teacher:
+Teacher übernehmen die Rolle des Lehrers im Systems. Sie können zusätzlich Newsfeednachrichten für Teacher und neue Teacher erstellen.
+
+* User:
+User sind die Benutzer des Systems. Es gibt drei verschiedene Arten von Usern: Admin, Learner undTeacher.
+User haben einen Benutzer-, Vor- und Nachnamen, eine E-Mail Adresse, ein Geburtsdatum und ein
+Passwort. Wenn sie unter 18 Jahre alt sind, müssen sie zusätzlich den Vor- und Nachnamen, sowie die E-Mail Adresse eines Erziehungsberechtigten angeben.
+User können sich ihre Persönlichen Daten, die anderen Benutzer, ihre Lernkarte, die Themengebiete, die Lerneinheiten, die Aufgaben, die Materialien, das Fragenforum, das Wiki, ihre Leistungen, ihre Nachrichten und den Newsfeed anschauen.
