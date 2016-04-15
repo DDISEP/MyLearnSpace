@@ -22,7 +22,7 @@
           </div>
           <div class="row-fluid">
             <div class="span1"><b><%= f.label :reciever, 'Empfänger' %></b></div>
-            <div class="span6"><%= f.select :reciever, options_for_select([@peer_to_peer_message.sender]) %></div>
+            <div class="span6"><%= f.select :reciever, options_for_select([@peer_to_peer_message.sender, @peer_to_peer_message.reciever]) %></div>
           </div>
           <div class="row-fluid">
             <div class="span1"><b><%= f.label :subject, 'Betreff' %></b></div>
