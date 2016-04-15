@@ -16,8 +16,8 @@
 <%else%>
     <h5>Aufgabe 1:
     <%=Exercise.find_by_id(Subexercise.find_by_id(@progress.subexercise1_id).exercise_id).title  %></h5>
-    <div style="text-indent: 30px"><%=Exercise.find_by(Subexercise.find_by_id(@progress.subexercise1_id).exercise_id).description %></div>
-    <div style="text-indent: 30px"><%=Subexercise.find_by_id(@progress.subexercise1_id).text %></div><br>
+    <div style="text-indent: 30px"><%=Exercise.find_by_id(Subexercise.find_by_id(@progress.subexercise1_id).exercise_id).description  %></div>
+    <div style="text-indent: 30px"><%=Subexercise.find_by_id(@progress.subexercise1_id).text%></div><br>
     <div style="text-indent: 30px"><strong><%= @progress.submission1%></strong></div><br><br>
 <%end%>
 
@@ -26,7 +26,7 @@
 <%else%>
     <h5>Aufgabe 2:
     <%=Exercise.find_by_id(Subexercise.find_by_id(@progress.subexercise2_id).exercise_id).title  %></h5>
-    <div style="text-indent: 30px"><%=Exercise.find_by(Subexercise.find_by_id(@progress.subexercise2_id).exercise_id).description %></div>
+    <div style="text-indent: 30px"><%=Exercise.find_by_id(Subexercise.find_by_id(@progress.subexercise2_id).exercise_id).description %></div>
     <div style="text-indent: 30px"><%=Subexercise.find_by_id(@progress.subexercise2_id).text %></div><br>
     <div style="text-indent: 30px"><strong><%= @progress.submission2%></strong></div><br><br>
 <%end%>
@@ -36,7 +36,7 @@
 <%else%>
     <h5>Aufgabe 3:
     <%=Exercise.find_by_id(Subexercise.find_by_id(@progress.subexercise3_id).exercise_id).title  %></h5>
-    <div style="text-indent: 30px"><%=Exercise.find_by(Subexercise.find_by_id(@progress.subexercise3_id).exercise_id).description %></div>
+    <div style="text-indent: 30px"><%=Exercise.find_by_id(Subexercise.find_by_id(@progress.subexercise3_id).exercise_id).description %></div>
     <div style="text-indent: 30px"><%=Subexercise.find_by_id(@progress.subexercise3_id).text %></div><br>
     <div style="text-indent: 30px"><strong><%= @progress.submission3%></strong></div><br><br>
 <%end%>
