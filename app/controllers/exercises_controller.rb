@@ -78,7 +78,7 @@ class ExercisesController < ApplicationController
   end
 
   def edit  # even admin isn't allowed to edit exercises, he/she may only delete it
-    if @exercise.user_id != session[:current_user_id] then
+    if @exercise.user_id != session[:current_user_id] && !User.find(session[:current_user_id]).admin && !User.find(session[:current_user_id]).admin then
       flash[:notice] = "Nur der Autor einer Aufgabe darf diese aendern!"
       redirect_to @exercise
     end

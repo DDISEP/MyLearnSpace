@@ -52,9 +52,6 @@ class UsersController < ApplicationController
   end
   end
 
-  def add_new_user
-
-  end
 
   def current_user
     @current_user ||= User.find_by_id(session[:user])
@@ -66,10 +63,6 @@ class UsersController < ApplicationController
 
   def logged_in_as_teacher?
     current_user != nil and current_user.teacher?
-  end
-
-  def newAdmin
-    @user = User.new
   end
 
   def destroy
