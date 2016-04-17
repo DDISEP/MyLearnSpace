@@ -12,13 +12,8 @@ class LearningObjective < ActiveRecord::Base
   has_many :parent_learning_objective_preconditions, class_name: "Precondition", :dependent => :destroy
   has_many :parent_learning_objectives, through: :parent_learning_objective_preconditions, source: :parent_learning_objective
 
-  #has_many :parent_learning_objective_preconditions, foreign_key: :child_learning_objective_id, class_name: "Precondition"
-  #has_many :parent_learning_objectives, through: :parent_learning_objectives_preconditions, source: :parent_learning_objective
-  #has_many :child_learning_objective_preconditions, foreign_key: :parent_learning_objective_id, class_name: "Precondition"
-  #has_many :child_learning_objectives, through: :child_learning_objectives_preconditions, source: :child_learning_objective
-
   #1:n relation between LearningObjective and KnowledgeElement
-  belongs_to :knowledge_element, inverse_of: :learning_objectives #required: true, ging nicht muss nachschauen wieso
+  belongs_to :knowledge_element, inverse_of: :learning_objectives
 
   has_many :items
 
