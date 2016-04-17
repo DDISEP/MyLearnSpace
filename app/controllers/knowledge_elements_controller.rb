@@ -64,12 +64,13 @@ class KnowledgeElementsController < ApplicationController
     @name = params[:knowledgeElement][:name]
     if KnowledgeElement.where(:name => @name ).length <1
       @knowledgeElement = KnowledgeElement.new(params.require(:knowledgeElement).permit(:name, :description))
+
       #You can add an object to a collection without saving it by using the collection.build method
       #The Object has been instantiated with attributes and linked to this object through the join table, but has not yet been saved
       #Important if you haven't saved the Object (knowledgeElement) before building the collection
+      # Code creates the LearningObjectives for the KnowledgeElement
       6.times {|i| @knowledgeElement.learning_objectives.build(cognitiveDimension: (i+1))}
-      #@knowledgeElement.knowledge_element_chat
-      #@knowledgeElement.forum
+      
       if @knowledgeElement.save
         redirect_to @knowledgeElement
       else
@@ -98,8 +99,6 @@ class KnowledgeElementsController < ApplicationController
       @materialvideos = @knowledgeElement.materialvideos
       @topic = @knowledgeElement.topic
     end
-    #@exams = KnowledgeElement.exams.all
-    #@knowledgeElementForum = KnowledgeElement.forum.first
   end
 
   def destroy
